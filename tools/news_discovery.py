@@ -292,9 +292,14 @@ class Fetcher:
             parser = urllib.robotparser.RobotFileParser()
             parser.set_url(origin + "/robots.txt")
             try:
+                request = urllib.request.Request(
+                    origin + "/robots.txt", headers={"User-Agent": USER_AGENT}
+                )
                 self._pace()
-                parser.read()
+                with urllib.request.urlopen(request, timeout=self.timeout) as response:
+                    robots_text = response.read().decode("utf-8", errors="replace")
                 self.last_request = time.monotonic()
+                parser.parse(robots_text.splitlines())
                 self.robots[origin] = parser
             except Exception:
                 self.robots[origin] = None
