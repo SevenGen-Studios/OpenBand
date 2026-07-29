@@ -74,14 +74,15 @@ jobs:
           if [ "$USE_OPENAI" = "true" ]; then
             COMMON_ARGS+=(--use-openai)
           fi
-          for YEAR in "${YEARS[@]}"; do
-            YEAR="$(echo "$YEAR" | xargs)"
-            [ -z "$YEAR" ] && continue
-            echo "::group::Community Capital $YEAR"
-            python tools/capital_parser.py "${COMMON_ARGS[@]}" --year "$YEAR"
-            echo "::endgroup::"
-          done
-          if [ "${{ inputs.refresh_existing }}" = "true" ]; then
+          if [ "${{ inputs.refresh_existing }}" != "true" ]; then
+            for YEAR in "${YEARS[@]}"; do
+              YEAR="$(echo "$YEAR" | xargs)"
+              [ -z "$YEAR" ] && continue
+              echo "::group::Community Capital $YEAR"
+              python tools/capital_parser.py "${COMMON_ARGS[@]}" --year "$YEAR"
+              echo "::endgroup::"
+            done
+          else
             DETAIL_ARGS=(--limit "$CAPITAL_LIMIT")
             for YEAR in "${YEARS[@]}"; do
               YEAR="$(echo "$YEAR" | xargs)"
