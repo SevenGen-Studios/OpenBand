@@ -63,13 +63,17 @@ jobs:
 
           before_count = len(before.get("articles", []))
           after_count = len(after.get("articles", []))
+          report = json.loads(
+              Path("news-coverage-report.json").read_text(encoding="utf-8")
+          )
+          removed_count = len(report.get("invalidExistingRemoved", []))
           band_count = len(json.loads(Path("data.json").read_text(encoding="utf-8"))["bands"])
           registry_count = len(registry.get("communities", []))
           urls = [item.get("url") for item in after.get("articles", [])]
 
           print(f"articles: {before_count} -> {after_count}")
           print(f"registry communities: {registry_count}/{band_count}")
-          if after_count < before_count:
+          if after_count + removed_count < before_count:
               raise SystemExit("Refusing to commit: news article count regressed")
           if registry_count != band_count:
               raise SystemExit("Refusing to commit: source registry coverage is incomplete")

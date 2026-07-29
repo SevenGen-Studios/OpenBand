@@ -1,5 +1,6 @@
 import json
 import unittest
+from datetime import date
 from pathlib import Path
 
 from tools.news_discovery import (
@@ -14,6 +15,7 @@ from tools.news_discovery import (
     is_supported_update,
     merge_articles,
     parse_date_text,
+    prune_invalid_generated_articles,
 )
 
 
@@ -209,6 +211,32 @@ class NewsDiscoveryTests(unittest.TestCase):
         self.assertEqual("Bearer secret-token", headers["Authorization"])
         self.assertFalse(respect_robots)
         self.assertEqual(1, len(rows))
+
+    def test_future_event_date_is_not_kept_as_publication_date(self):
+        retained, removed = prune_invalid_generated_articles(
+            [
+                {
+                    "title": "Future community meeting",
+                    "publishedAt": "2026-09-09",
+                    "discoveredAt": "2026-07-29T00:00:00Z",
+                },
+                {
+                    "title": "Manually verified scheduled item",
+                    "publishedAt": "2026-09-09",
+                },
+                {
+                    "title": "Current update",
+                    "publishedAt": "2026-07-29",
+                    "discoveredAt": "2026-07-29T00:00:00Z",
+                },
+            ],
+            date(2026, 7, 29),
+        )
+        self.assertEqual(
+            ["Manually verified scheduled item", "Current update"],
+            [item["title"] for item in retained],
+        )
+        self.assertEqual(["Future community meeting"], [item["title"] for item in removed])
 
 
 if __name__ == "__main__":
