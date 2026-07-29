@@ -6,6 +6,7 @@ from pathlib import Path
 from tools.news_discovery import (
     PILOT_BAND_IDS,
     canonical_url,
+    candidate_review_reason,
     communities_for_targeted_search,
     community_name_match,
     discover_gdelt_articles,
@@ -237,6 +238,18 @@ class NewsDiscoveryTests(unittest.TestCase):
             [item["title"] for item in retained],
         )
         self.assertEqual(["Future community meeting"], [item["title"] for item in removed])
+
+    def test_non_https_candidate_is_sent_to_review(self):
+        reason = candidate_review_reason(
+            {
+                "url": "http://example.com/community-update",
+                "publishedAt": "2026-07-28",
+                "communityConfidence": 0.98,
+            },
+            date(2026, 7, 29),
+            0.82,
+        )
+        self.assertEqual("Original source URL is not HTTPS", reason)
 
 
 if __name__ == "__main__":
