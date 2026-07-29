@@ -1,11 +1,34 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-07-29T09:19:07Z",
-  "articlesBefore": 23,
-  "articlesAfter": 56,
-  "newAccepted": 33,
-  "manualReviewCount": 0,
-  "sourceFailureCount": 3,
+  "generated": "2026-07-29T09:24:13Z",
+  "articlesBefore": 56,
+  "articlesAfter": 53,
+  "newAccepted": 0,
+  "invalidExistingRemoved": [
+    {
+      "bandId": 361,
+      "communityName": "Cowessess First Nation",
+      "title": "News & updates",
+      "url": "https://cowessessfn.com/category/news",
+      "reason": "Future event date was previously stored as publication date"
+    },
+    {
+      "bandId": 361,
+      "communityName": "Cowessess First Nation",
+      "title": "Charter Services – Cowessess Homecoming",
+      "url": "https://cowessessfn.com/charter-services-cowessess-homecoming",
+      "reason": "Future event date was previously stored as publication date"
+    },
+    {
+      "bandId": 361,
+      "communityName": "Cowessess First Nation",
+      "title": "Cowessess Homecoming 2026 – Call Out for Security",
+      "url": "https://cowessessfn.com/cowessess-homecoming-2026-call-out-for-security",
+      "reason": "Future event date was previously stored as publication date"
+    }
+  ],
+  "manualReviewCount": 5,
+  "sourceFailureCount": 2,
   "communitiesTracked": 69,
   "communitiesWithResults": 10,
   "communitiesWithRecentResults": 5,
@@ -179,13 +202,13 @@
     {
       "bandId": 361,
       "communityName": "Cowessess First Nation",
-      "resultCount": 16,
-      "resultsLast90Days": 16,
-      "newestResult": "2026-09-09",
+      "resultCount": 13,
+      "resultsLast90Days": 13,
+      "newestResult": "2026-07-28",
       "knownSourceCount": 4,
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": false,
-      "manualReviewCount": 0,
+      "manualReviewCount": 5,
       "failedSourceCount": 0
     },
     {
@@ -594,7 +617,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 1
+      "failedSourceCount": 0
     },
     {
       "bandId": 353,
@@ -921,14 +944,6 @@
     {
       "bandId": 395,
       "communityName": "Flying Dust First Nation",
-      "sourceName": "GDELT public news index",
-      "sourceType": "Discovery Search",
-      "url": "https://api.gdeltproject.org/",
-      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 352,
-      "communityName": "Hatchet Lake Denesuline",
       "sourceName": "GDELT public news index",
       "sourceType": "Discovery Search",
       "url": "https://api.gdeltproject.org/",
