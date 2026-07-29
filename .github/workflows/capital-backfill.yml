@@ -16,6 +16,11 @@ on:
         required: true
         type: boolean
         default: true
+      refresh_existing:
+        description: "Reparse existing summaries to add source-backed expense details"
+        required: true
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -76,6 +81,15 @@ jobs:
             python tools/capital_parser.py "${COMMON_ARGS[@]}" --year "$YEAR"
             echo "::endgroup::"
           done
+          if [ "${{ inputs.refresh_existing }}" = "true" ]; then
+            DETAIL_ARGS=(--limit "$CAPITAL_LIMIT")
+            for YEAR in "${YEARS[@]}"; do
+              YEAR="$(echo "$YEAR" | xargs)"
+              [ -z "$YEAR" ] && continue
+              DETAIL_ARGS+=(--year "$YEAR")
+            done
+            python tools/capital_detail_enricher.py "${DETAIL_ARGS[@]}"
+          fi
 
       - name: Validate capital data did not regress
         run: |

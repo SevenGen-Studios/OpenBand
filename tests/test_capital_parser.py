@@ -6,6 +6,7 @@ from pathlib import Path
 from unittest import mock
 
 from tools import capital_parser
+from tools import capital_detail_enricher
 
 
 class CapitalParserTests(unittest.TestCase):
@@ -291,6 +292,145 @@ class CapitalParserTests(unittest.TestCase):
             "Total expenditures",
             [row["label"] for row in result["sourceExpenseRows"]],
         )
+
+    def test_program_schedule_extracts_source_backed_expense_details(self):
+        page = """
+        Pheasant Rump Nakota First Nation #68
+        Education
+        Schedule 5 - Schedule of Revenue and Expenses
+        For the year ended March 31, 2025
+        2025 2025 2024
+        Budget Actual Actual
+        Revenue
+        Indigenous Services Canada 1,164,532 1,468,777 1,229,055
+        Other - 3,692 52,680
+        1,164,532 1,472,469 1,281,735
+        Expenses
+        Salaries and benefits 396,887 324,642 336,437
+        Tuition 268,410 244,589 269,219
+        Transportation - 140,814 -
+        Supplies 38,622 89,452 5,515
+        Administration 77,523 77,523 115,124
+        Amortization - 63,086 31,543
+        Professional fees 84,500 55,968 101,011
+        Living Allowance 65,082 35,650 64,700
+        Utilities 18,500 33,617 22,267
+        Student expenses 17,000 29,972 8,015
+        Repairs and maintenance 30,478 22,413 21,452
+        Travel 6,500 22,165 4,244
+        Contracted services 8,000 21,806 3,525
+        Program expense 107,238 16,169 28,835
+        Insurance 1,200 12,965 2,586
+        Professional development 12,000 12,834 3,826
+        Telephone 3,220 4,359 2,879
+        Groceries, food and meal preparation 1,500 3,494 4,640
+        Meetings 9,872 395 344
+        Office supplies - 26 -
+        1,164,532 1,211,939 1,040,708
+        Surplus - 260,530 241,027
+        """
+
+        details, schedules = capital_parser.parse_expense_detail_schedules([page])
+
+        self.assertEqual(len(details), 20)
+        self.assertEqual(
+            next(row for row in details if row["label"] == "Tuition")["amount"],
+            244589,
+        )
+        self.assertTrue(all(row["category"] == "Education" for row in details))
+        self.assertNotIn(
+            "Indigenous Services Canada",
+            [row["label"] for row in details],
+        )
+        self.assertEqual(schedules[0]["reportedTotal"], 1211939)
+        self.assertEqual(schedules[0]["extractedTotal"], 1211939)
+        self.assertTrue(schedules[0]["reconciles"])
+        self.assertEqual(schedules[0]["schedule"], "Schedule 5")
+        self.assertEqual(schedules[0]["page"], 1)
+
+    def test_expense_details_never_include_revenue_lines(self):
+        page = """
+        Example First Nation
+        Housing
+        Schedule 4 - Schedule of Revenue and Expenses
+        2025 2024
+        Revenue
+        Government transfer 500,000 450,000
+        Rental income 25,000 20,000
+        Expenses
+        Repairs and maintenance 100,000 90,000
+        Insurance 25,000 20,000
+        Total expenses 125,000 110,000
+        Surplus 400,000 360,000
+        """
+
+        details, schedules = capital_parser.parse_expense_detail_schedules([page])
+
+        self.assertEqual(
+            [(row["label"], row["amount"]) for row in details],
+            [("Repairs and maintenance", 100000), ("Insurance", 25000)],
+        )
+        self.assertNotIn("Government transfer", [row["label"] for row in details])
+        self.assertNotIn("Rental income", [row["label"] for row in details])
+        self.assertTrue(schedules[0]["reconciles"])
+
+    def test_expense_details_refuse_unlabelled_non_schedule_page(self):
+        page = """
+        Example First Nation
+        Note 12 - Commitments
+        Revenue 500,000
+        Expenses
+        Construction project 250,000
+        """
+
+        details, schedules = capital_parser.parse_expense_detail_schedules([page])
+
+        self.assertEqual(details, [])
+        self.assertEqual(schedules, [])
+
+    def test_detail_enrichment_requires_reconciled_existing_program_total(self):
+        existing = {
+            "sourceExpenseRows": [
+                {"label": "Education", "category": "Education", "amount": 500000},
+                {"label": "Health", "category": "Health", "amount": 300000},
+            ]
+        }
+        parsed = {
+            "expenseDetails": [
+                {
+                    "sourceLabel": "Education",
+                    "category": "Education",
+                    "label": "Tuition",
+                    "amount": 500000,
+                },
+                {
+                    "sourceLabel": "Health",
+                    "category": "Health",
+                    "label": "Supplies",
+                    "amount": 350000,
+                },
+            ],
+            "expenseDetailSchedules": [
+                {
+                    "sourceLabel": "Education",
+                    "reportedTotal": 500000,
+                    "reconciles": True,
+                },
+                {
+                    "sourceLabel": "Health",
+                    "reportedTotal": 350000,
+                    "reconciles": True,
+                },
+            ],
+        }
+
+        details, schedules = capital_detail_enricher.select_safe_details(
+            existing,
+            parsed,
+        )
+
+        self.assertEqual([row["sourceLabel"] for row in details], ["Education"])
+        self.assertEqual([row["sourceLabel"] for row in schedules], ["Education"])
 
     def test_revenue_value_in_expense_category_requires_manual_review(self):
         summary = {

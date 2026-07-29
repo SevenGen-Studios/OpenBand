@@ -82,6 +82,11 @@ SEGMENT_SCHEDULE_RE = re.compile(
     r"(?:schedule|statement).{0,45}(?:revenues?|income).{0,20}(?:expenses?|expenditures?)",
     re.I,
 )
+DETAIL_SECTION_END_RE = re.compile(
+    r"^(?:surplus|deficit|excess|shortfall|other income|other revenue|"
+    r"transfers? between programs?|net revenue|net expenses?)\b",
+    re.I,
+)
 
 
 def now_iso():
@@ -448,6 +453,155 @@ def parse_segment_schedule_expenses(page_texts):
     ]
 
 
+def schedule_context(lines, page_number):
+    """Return source context only for a clearly labelled program expense schedule."""
+    header = lines[:14]
+    schedule_index = next(
+        (index for index, line in enumerate(header) if SEGMENT_SCHEDULE_RE.search(line)),
+        None,
+    )
+    if schedule_index is None:
+        return None
+
+    schedule_label = normalize_category(header[schedule_index])
+    if re.search(r"consolidated expenses by object", schedule_label, re.I):
+        return None
+
+    suffix = re.search(
+        r"(?:revenues?|income)\s+(?:and|&)\s+(?:expenses?|expenditures?)"
+        r"\s*[-:]\s*(.+)$",
+        schedule_label,
+        re.I,
+    )
+    source_label = normalize_category(suffix.group(1)) if suffix else ""
+    if not source_label and schedule_index > 0:
+        source_label = normalize_category(header[schedule_index - 1])
+    if (
+        not source_label
+        or re.search(r"first nation|financial statements?|year ended", source_label, re.I)
+        or re.match(r"^(?:schedule|statement)\b", source_label, re.I)
+    ):
+        return None
+
+    schedule_number = re.search(r"\bschedule\s+([A-Za-z0-9.-]+)", schedule_label, re.I)
+    return {
+        "sourceLabel": source_label,
+        "category": broad_expense_category(source_label),
+        "schedule": f"Schedule {schedule_number.group(1)}" if schedule_number else schedule_label,
+        "page": page_number,
+    }
+
+
+def source_program_amount(source_rows, source_label):
+    target = normalize_category(source_label).lower()
+    for row in source_rows or []:
+        label = normalize_category(row.get("label")).lower()
+        if label == target:
+            return parse_money(row.get("amount"))
+    return None
+
+
+def parse_expense_detail_schedules(page_texts, source_rows=None):
+    """Extract explicit current-year expense lines from labelled schedules."""
+    details = []
+    schedules = []
+    seen = set()
+
+    for page_number, page_text in enumerate(page_texts, start=1):
+        lines = [clean_text(line) for line in page_text.splitlines() if clean_text(line)]
+        if len(lines) < 5:
+            continue
+        context = schedule_context(lines, page_number)
+        if not context:
+            continue
+
+        expense_index = next(
+            (
+                index
+                for index, line in enumerate(lines)
+                if re.fullmatch(
+                    r"(?:program\s+)?(?:expenses?|expenditures?)(?:\s+\(.*\))?",
+                    line,
+                    re.I,
+                )
+            ),
+            None,
+        )
+        if expense_index is None:
+            continue
+
+        schedule_rows = []
+        reported_total = None
+        for raw_line in lines[expense_index + 1 :]:
+            line = clean_text(raw_line)
+            label, values = line_parts(line)
+            if DETAIL_SECTION_END_RE.match(label):
+                break
+            if re.match(
+                r"^total\s+(?:(?:program|operating)\s+)?"
+                r"(?:expenses?|expenditures?)",
+                label,
+                re.I,
+            ):
+                reported_total = actual_value(values, page_text, line)
+                break
+            if not label and values:
+                reported_total = actual_value(values, page_text, line)
+                break
+            if (
+                not label
+                or not values
+                or SKIP_LINE_RE.search(label)
+                or REVENUE_SECTION_RE.match(label)
+                or TOTAL_REVENUE_RE.match(label)
+            ):
+                continue
+            amount = actual_value(values, page_text, line)
+            if amount in (None, 0):
+                continue
+            item_label = normalize_category(label)
+            key = (
+                context["sourceLabel"].lower(),
+                item_label.lower(),
+                rounded(amount),
+                page_number,
+            )
+            if key in seen:
+                continue
+            seen.add(key)
+            item = {
+                **context,
+                "label": item_label,
+                "amount": rounded(amount),
+            }
+            schedule_rows.append(item)
+            details.append(item)
+
+        if not schedule_rows:
+            continue
+        extracted_total = sum_rows(schedule_rows)
+        expected_total = (
+            reported_total
+            if reported_total is not None
+            else source_program_amount(source_rows, context["sourceLabel"])
+        )
+        schedules.append(
+            {
+                **context,
+                "reportedTotal": rounded(expected_total),
+                "extractedTotal": rounded(extracted_total),
+                "reconciles": (
+                    nearly_equal(extracted_total, expected_total)
+                    if expected_total is not None
+                    else None
+                ),
+                "itemCount": len(schedule_rows),
+            }
+        )
+
+    return details, schedules
+
+
 def aggregate_categories(rows):
     totals = {}
     source_rows = []
@@ -609,6 +763,10 @@ def parse_page_texts(page_texts, source_url=None, fiscal_year=None):
         expense_rows = parse_segment_schedule_expenses(page_texts)
     revenue_breakdown, revenue_source_rows = aggregate_categories(revenue_rows)
     expense_breakdown, expense_source_rows = aggregate_categories(expense_rows)
+    expense_details, expense_detail_schedules = parse_expense_detail_schedules(
+        page_texts,
+        expense_source_rows,
+    )
 
     total_revenue = find_named_amount(operations, TOTAL_REVENUE_RE) or sum_rows(revenue_rows)
     total_expenses = find_named_amount(operations, TOTAL_EXPENSE_RE) or sum_rows(expense_rows)
@@ -649,6 +807,8 @@ def parse_page_texts(page_texts, source_url=None, fiscal_year=None):
         "debt": debt,
         "sourceRevenueRows": revenue_source_rows,
         "sourceExpenseRows": expense_source_rows,
+        "expenseDetails": expense_details,
+        "expenseDetailSchedules": expense_detail_schedules,
         "surplusAdjustments": surplus_adjustments,
         "sourceUrl": source_url,
         "fiscalYear": fiscal_year,
@@ -747,7 +907,11 @@ def extract_with_openai(pdf_bytes, source_url, fiscal_year):
         "Use the actual current-year column, not budget or prior-year values. Return JSON only "
         "with keys totalRevenue, totalExpenses, annualSurplusDeficit, cashInvestments, "
         "capitalAssets, capitalSpending, debt, revenueBreakdown, expenseBreakdown, warnings. "
-        "Breakdown rows must have category, sourceLabel, and amount. Do not infer missing values."
+        "Also return expenseDetails when a schedule, note, or supplementary table explicitly "
+        "lists the items making up a program expense. Each expenseDetails row must have category, "
+        "sourceLabel (the program or schedule name), label (the disclosed expense item), amount, "
+        "page, and schedule. Breakdown rows must have category, sourceLabel, and amount. "
+        "Do not infer missing values, create categories, or treat revenue as an expense."
     )
     payload = {
         "model": os.getenv("OPENAI_MODEL", "gpt-4.1"),
