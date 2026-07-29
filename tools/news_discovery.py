@@ -786,7 +786,36 @@ def merge_articles(existing, candidates):
     return merged, accepted
 
 
-def build_coverage_report(registry, articles, review, failures, before_count, accepted):
+def prune_invalid_generated_articles(articles, today):
+    """Remove only machine-discovered rows with impossible future publication dates."""
+    retained = []
+    removed = []
+    today_text = today.isoformat()
+    for item in articles:
+        if item.get("discoveredAt") and str(item.get("publishedAt") or "") > today_text:
+            removed.append(
+                {
+                    "bandId": item.get("bandId"),
+                    "communityName": item.get("communityName"),
+                    "title": item.get("title"),
+                    "url": item.get("url"),
+                    "reason": "Future event date was previously stored as publication date",
+                }
+            )
+            continue
+        retained.append(item)
+    return retained, removed
+
+
+def build_coverage_report(
+    registry,
+    articles,
+    review,
+    failures,
+    before_count,
+    accepted,
+    invalid_existing_removed,
+):
     today = utc_now().date()
     recent_cutoff = (today - timedelta(days=90)).isoformat()
     review_counts = Counter(str(item.get("bandId")) for item in review)
@@ -837,6 +866,7 @@ def build_coverage_report(registry, articles, review, failures, before_count, ac
         "articlesBefore": before_count,
         "articlesAfter": len(articles),
         "newAccepted": len(accepted),
+        "invalidExistingRemoved": invalid_existing_removed,
         "manualReviewCount": len(review),
         "sourceFailureCount": len(failures),
         "communitiesTracked": len(rows),
@@ -1094,6 +1124,12 @@ def run(args):
     for item in candidates:
         if item.get("publishedAt", "") < cutoff:
             continue
+        if item.get("publishedAt", "") > today.isoformat():
+            item["reviewReason"] = (
+                "Date appears to be a future event date, not a publication date"
+            )
+            review.append(item)
+            continue
         item_url = canonical_url(item.get("url"))
         if item_url in cached_urls and item_url in existing_urls:
             continue
@@ -1103,7 +1139,10 @@ def run(args):
             continue
         acceptable.append(item)
 
-    before = list(news.get("articles") or [])
+    original_before = list(news.get("articles") or [])
+    before, invalid_existing_removed = prune_invalid_generated_articles(
+        original_before, today
+    )
     merged, accepted = merge_articles(before, acceptable)
     for item in merged:
         url = canonical_url(item.get("url"))
@@ -1123,7 +1162,13 @@ def run(args):
         }
     )
     report = build_coverage_report(
-        registry, merged, review, failures, len(before), accepted
+        registry,
+        merged,
+        review,
+        failures,
+        len(original_before),
+        accepted,
+        invalid_existing_removed,
     )
     review_output = {
         "schemaVersion": 1,
@@ -1139,7 +1184,8 @@ def run(args):
     print(
         f"communities={len(communities)} candidates={len(candidates)} "
         f"accepted={len(accepted)} review={len(review)} failures={len(failures)} "
-        f"articles={len(before)}->{len(merged)}"
+        f"articles={len(original_before)}->{len(merged)} "
+        f"invalid_removed={len(invalid_existing_removed)}"
     )
     return report
 
