@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-07-29T09:47:52Z",
+  "generated": "2026-07-29T14:37:05Z",
   "articlesBefore": 86,
-  "articlesAfter": 86,
-  "newAccepted": 0,
+  "articlesAfter": 90,
+  "newAccepted": 4,
   "invalidExistingRemoved": [],
   "manualReviewCount": 14,
-  "sourceFailureCount": 5,
+  "sourceFailureCount": 0,
   "communitiesTracked": 69,
-  "communitiesWithResults": 10,
-  "communitiesWithRecentResults": 6,
+  "communitiesWithResults": 13,
+  "communitiesWithRecentResults": 9,
   "communitiesWithoutRecentResults": [
     "Cote First Nation",
     "George Gordon First Nation",
@@ -62,12 +62,9 @@
     "Okanese First Nation",
     "One Arrow First Nation",
     "Piapot First Nation",
-    "Saulteaux First Nation",
     "Standing Buffalo Dakota Nation",
     "Star Blanket Cree Nation",
-    "Sturgeon Lake First Nation",
     "Big River First Nation",
-    "Birch Narrows Dene Nation",
     "Black Lake Denesuline First Nation",
     "Fond du Lac Denesuline First Nation",
     "James Smith Cree Nation",
@@ -558,7 +555,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 1
+      "failedSourceCount": 0
     },
     {
       "bandId": 390,
@@ -570,7 +567,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 1
+      "failedSourceCount": 0
     },
     {
       "bandId": 395,
@@ -594,7 +591,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 1
+      "failedSourceCount": 0
     },
     {
       "bandId": 353,
@@ -606,7 +603,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 1
+      "failedSourceCount": 0
     },
     {
       "bandId": 340,
@@ -618,7 +615,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 1
+      "failedSourceCount": 0
     },
     {
       "bandId": 397,
@@ -767,9 +764,9 @@
     {
       "bandId": 347,
       "communityName": "Saulteaux First Nation",
-      "resultCount": 0,
-      "resultsLast90Days": 0,
-      "newestResult": null,
+      "resultCount": 2,
+      "resultsLast90Days": 2,
+      "newestResult": "2026-06-14",
       "knownSourceCount": 0,
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
@@ -803,9 +800,9 @@
     {
       "bandId": 360,
       "communityName": "Sturgeon Lake First Nation",
-      "resultCount": 0,
-      "resultsLast90Days": 0,
-      "newestResult": null,
+      "resultCount": 1,
+      "resultsLast90Days": 1,
+      "newestResult": "2026-06-09",
       "knownSourceCount": 0,
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
@@ -827,9 +824,9 @@
     {
       "bandId": 403,
       "communityName": "Birch Narrows Dene Nation",
-      "resultCount": 0,
-      "resultsLast90Days": 0,
-      "newestResult": null,
+      "resultCount": 1,
+      "resultsLast90Days": 1,
+      "newestResult": "2026-05-10",
       "knownSourceCount": 0,
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
@@ -909,46 +906,5 @@
       "failedSourceCount": 0
     }
   ],
-  "sourceFailures": [
-    {
-      "bandId": 400,
-      "communityName": "English River Dene Nation",
-      "sourceName": "GDELT public news index",
-      "sourceType": "Discovery Search",
-      "url": "https://api.gdeltproject.org/",
-      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 390,
-      "communityName": "Fishing Lake First Nation",
-      "sourceName": "GDELT public news index",
-      "sourceType": "Discovery Search",
-      "url": "https://api.gdeltproject.org/",
-      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 352,
-      "communityName": "Hatchet Lake Denesuline",
-      "sourceName": "GDELT public news index",
-      "sourceType": "Discovery Search",
-      "url": "https://api.gdeltproject.org/",
-      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 353,
-      "communityName": "Lac La Ronge Indian Band",
-      "sourceName": "GDELT public news index",
-      "sourceType": "Discovery Search",
-      "url": "https://api.gdeltproject.org/",
-      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 340,
-      "communityName": "Little Pine First Nation",
-      "sourceName": "GDELT public news index",
-      "sourceType": "Discovery Search",
-      "url": "https://api.gdeltproject.org/",
-      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
-    }
-  ]
+  "sourceFailures": []
 }
