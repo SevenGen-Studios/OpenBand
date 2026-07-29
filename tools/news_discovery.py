@@ -1110,7 +1110,9 @@ def run(args):
             pilot=args.pilot,
             cursor=int(cache.get("searchCursor") or 0),
         )
-        for community in search_communities:
+        for index, community in enumerate(search_communities):
+            if index and args.search_delay > 0:
+                time.sleep(args.search_delay)
             try:
                 candidates.extend(discover_gdelt_articles(fetcher, community))
             except Exception as error:
@@ -1206,6 +1208,7 @@ def parse_args():
     parser.add_argument("--delay", type=float, default=0.35)
     parser.add_argument("--timeout", type=int, default=25)
     parser.add_argument("--max-search-communities", type=int, default=15)
+    parser.add_argument("--search-delay", type=float, default=6.0)
     parser.add_argument("--skip-search", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()
