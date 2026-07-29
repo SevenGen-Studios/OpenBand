@@ -1,0 +1,93 @@
+name: Update Saskatchewan community news
+
+on:
+  workflow_dispatch:
+    inputs:
+      pilot_only:
+        description: "Run only the five-community pilot"
+        required: true
+        default: false
+        type: boolean
+  schedule:
+    - cron: "23 12 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: openband-v2-data-writers
+  cancel-in-progress: false
+
+jobs:
+  discover-community-news:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Preserve current news data
+        run: cp news-data.json news-data.before.json
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run news pipeline tests
+        run: python -m unittest tests/test_news_integrity.py tests/test_news_discovery.py -v
+
+      - name: Discover community updates
+        env:
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+        run: |
+          ARGS=()
+          if [ "${{ github.event.inputs.pilot_only || 'false' }}" = "true" ]; then
+            ARGS+=(--pilot)
+          fi
+          python tools/news_discovery.py "${ARGS[@]}"
+
+      - name: Validate news data did not regress
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          before = json.loads(Path("news-data.before.json").read_text(encoding="utf-8"))
+          after = json.loads(Path("news-data.json").read_text(encoding="utf-8"))
+          registry = json.loads(Path("news-sources.json").read_text(encoding="utf-8"))
+
+          before_count = len(before.get("articles", []))
+          after_count = len(after.get("articles", []))
+          band_count = len(json.loads(Path("data.json").read_text(encoding="utf-8"))["bands"])
+          registry_count = len(registry.get("communities", []))
+          urls = [item.get("url") for item in after.get("articles", [])]
+
+          print(f"articles: {before_count} -> {after_count}")
+          print(f"registry communities: {registry_count}/{band_count}")
+          if after_count < before_count:
+              raise SystemExit("Refusing to commit: news article count regressed")
+          if registry_count != band_count:
+              raise SystemExit("Refusing to commit: source registry coverage is incomplete")
+          if any(not str(url or "").startswith("https://") for url in urls):
+              raise SystemExit("Refusing to commit: a news item lacks an HTTPS source URL")
+          PY
+
+      - name: Run full test suite
+        run: python -m unittest discover -s tests -v
+
+      - name: Rebuild static pages
+        run: python tools/build_site.py
+
+      - name: Remove validation snapshot
+        run: rm -f news-data.before.json
+
+      - name: Commit community news updates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update Saskatchewan community news"
+          file_pattern: news-data.json news-sources.json news-discovery-cache.json news-review-queue.json news-coverage-report.json news first-nations sitemap.xml robots.txt
