@@ -807,6 +807,16 @@ def prune_invalid_generated_articles(articles, today):
     return retained, removed
 
 
+def candidate_review_reason(item, today, confidence_threshold):
+    if str(item.get("publishedAt") or "") > today.isoformat():
+        return "Date appears to be a future event date, not a publication date"
+    if not canonical_url(item.get("url")).startswith("https://"):
+        return "Original source URL is not HTTPS"
+    if item.get("communityConfidence", 0) < confidence_threshold:
+        return "Community association confidence below threshold"
+    return None
+
+
 def build_coverage_report(
     registry,
     articles,
@@ -1124,17 +1134,14 @@ def run(args):
     for item in candidates:
         if item.get("publishedAt", "") < cutoff:
             continue
-        if item.get("publishedAt", "") > today.isoformat():
-            item["reviewReason"] = (
-                "Date appears to be a future event date, not a publication date"
-            )
-            review.append(item)
-            continue
         item_url = canonical_url(item.get("url"))
         if item_url in cached_urls and item_url in existing_urls:
             continue
-        if item.get("communityConfidence", 0) < args.confidence_threshold:
-            item["reviewReason"] = "Community association confidence below threshold"
+        review_reason = candidate_review_reason(
+            item, today, args.confidence_threshold
+        )
+        if review_reason:
+            item["reviewReason"] = review_reason
             review.append(item)
             continue
         acceptable.append(item)
