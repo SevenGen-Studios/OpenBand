@@ -643,13 +643,16 @@ def community_name_match(community, value):
     return False
 
 
-def discover_gdelt_articles(fetcher, community):
-    """Search GDELT's free public index and retain direct, strongly matched links."""
+def discover_gdelt_batch(fetcher, communities):
+    """Search GDELT once for several communities and retain strongly matched links."""
+    community_query = " OR ".join(
+        f'"{community["communityName"]}"' for community in communities
+    )
     params = urllib.parse.urlencode(
         {
-            "query": f'"{community["communityName"]}" Saskatchewan',
+            "query": f"({community_query}) Saskatchewan",
             "mode": "ArtList",
-            "maxrecords": "25",
+            "maxrecords": "250",
             "format": "json",
             "sort": "DateDesc",
         }
@@ -663,10 +666,18 @@ def discover_gdelt_articles(fetcher, community):
     for article in payload.get("articles") or []:
         title = clean_text(article.get("title"))
         original_url = canonical_url(article.get("url"))
+        community = next(
+            (
+                candidate
+                for candidate in communities
+                if community_name_match(candidate, title)
+            ),
+            None,
+        )
         if (
             not title
             or not original_url.startswith("https://")
-            or not community_name_match(community, title)
+            or community is None
             or not is_supported_update(title)
         ):
             continue
@@ -698,6 +709,16 @@ def discover_gdelt_articles(fetcher, community):
             )
         )
     return candidates
+
+
+def discover_gdelt_articles(fetcher, community):
+    """Compatibility wrapper for a single-community discovery search."""
+    return discover_gdelt_batch(fetcher, [community])
+
+
+def chunks(values, size):
+    for index in range(0, len(values), size):
+        yield values[index : index + size]
 
 
 def communities_for_targeted_search(communities, articles, *, limit, pilot, cursor):
@@ -1110,22 +1131,23 @@ def run(args):
             pilot=args.pilot,
             cursor=int(cache.get("searchCursor") or 0),
         )
-        for index, community in enumerate(search_communities):
+        for index, community_batch in enumerate(chunks(search_communities, 5)):
             if index and args.search_delay > 0:
                 time.sleep(args.search_delay)
             try:
-                candidates.extend(discover_gdelt_articles(fetcher, community))
+                candidates.extend(discover_gdelt_batch(fetcher, community_batch))
             except Exception as error:
-                failures.append(
-                    {
-                        "bandId": community["bandId"],
-                        "communityName": community["communityName"],
-                        "sourceName": "GDELT public news index",
-                        "sourceType": "Discovery Search",
-                        "url": "https://api.gdeltproject.org/",
-                        "reason": f"{type(error).__name__}: {error}",
-                    }
-                )
+                for community in community_batch:
+                    failures.append(
+                        {
+                            "bandId": community["bandId"],
+                            "communityName": community["communityName"],
+                            "sourceName": "GDELT public news index",
+                            "sourceType": "Discovery Search",
+                            "url": "https://api.gdeltproject.org/",
+                            "reason": f"{type(error).__name__}: {error}",
+                        }
+                    )
         cache["searchCursor"] = next_cursor
 
     acceptable = []
