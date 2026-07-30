@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-07-29T14:37:05Z",
-  "articlesBefore": 86,
-  "articlesAfter": 90,
-  "newAccepted": 4,
+  "generated": "2026-07-30T14:39:12Z",
+  "articlesBefore": 90,
+  "articlesAfter": 97,
+  "newAccepted": 7,
   "invalidExistingRemoved": [],
-  "manualReviewCount": 14,
-  "sourceFailureCount": 0,
+  "manualReviewCount": 13,
+  "sourceFailureCount": 11,
   "communitiesTracked": 69,
-  "communitiesWithResults": 13,
-  "communitiesWithRecentResults": 9,
+  "communitiesWithResults": 14,
+  "communitiesWithRecentResults": 10,
   "communitiesWithoutRecentResults": [
     "Cote First Nation",
     "George Gordon First Nation",
@@ -21,7 +21,6 @@
     "Carry the Kettle Nakoda Nation",
     "Day Star First Nation",
     "Lucky Man Cree Nation",
-    "Makwa Sahgaiehcan First Nation",
     "Mistawasis Nehiyawak",
     "Muskoday First Nation",
     "Ochapowace First Nation",
@@ -87,7 +86,7 @@
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 391,
@@ -99,7 +98,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 362,
@@ -111,7 +110,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 367,
@@ -123,7 +122,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 377,
@@ -135,7 +134,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 379,
@@ -147,7 +146,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 394,
@@ -159,7 +158,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 378,
@@ -171,18 +170,18 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 361,
       "communityName": "Cowessess First Nation",
-      "resultCount": 13,
-      "resultsLast90Days": 13,
-      "newestResult": "2026-07-28",
+      "resultCount": 15,
+      "resultsLast90Days": 15,
+      "newestResult": "2026-07-29",
       "knownSourceCount": 4,
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": false,
-      "manualReviewCount": 3,
+      "manualReviewCount": 2,
       "failedSourceCount": 0
     },
     {
@@ -195,7 +194,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 341,
@@ -207,14 +206,14 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 396,
       "communityName": "Makwa Sahgaiehcan First Nation",
-      "resultCount": 0,
-      "resultsLast90Days": 0,
-      "newestResult": null,
+      "resultCount": 1,
+      "resultsLast90Days": 1,
+      "newestResult": "2026-07-29",
       "knownSourceCount": 0,
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
@@ -260,8 +259,8 @@
     {
       "bandId": 344,
       "communityName": "Onion Lake Cree Nation",
-      "resultCount": 9,
-      "resultsLast90Days": 9,
+      "resultCount": 13,
+      "resultsLast90Days": 13,
       "newestResult": "2026-07-29",
       "knownSourceCount": 1,
       "missingOfficialWebsite": false,
@@ -579,7 +578,7 @@
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 352,
@@ -906,5 +905,94 @@
       "failedSourceCount": 0
     }
   ],
-  "sourceFailures": []
+  "sourceFailures": [
+    {
+      "bandId": 395,
+      "communityName": "Flying Dust First Nation",
+      "sourceName": "Flying Dust First Nation",
+      "sourceType": "Official First Nation Website",
+      "url": "https://www.flyingdust.net/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 366,
+      "communityName": "Cote First Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 391,
+      "communityName": "George Gordon First Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 362,
+      "communityName": "Kahkewistahaw First Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 367,
+      "communityName": "Keeseekoose First Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 377,
+      "communityName": "Kinistin Saulteaux Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 379,
+      "communityName": "Little Black Bear First Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 394,
+      "communityName": "Canoe Lake Cree First Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 378,
+      "communityName": "Carry the Kettle Nakoda Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 389,
+      "communityName": "Day Star First Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 341,
+      "communityName": "Lucky Man Cree Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    }
+  ]
 }
