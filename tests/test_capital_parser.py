@@ -418,8 +418,50 @@ class CapitalParserTests(unittest.TestCase):
         )
         self.assertEqual(
             {row["category"] for row in summary["revenueBreakdown"]},
-            {"Settlements / claim proceeds", "Own-source revenue"},
+            {"Settlement and claim revenue", "Business and enterprise revenue"},
         )
+
+    def test_revenue_taxonomy_preserves_original_label_and_provenance(self):
+        page = """
+        Example First Nation
+        Statement of Operations
+        For the year ended March 31, 2025
+        2025 2024
+        Revenue
+        Indigenous Services Canada 900,000 800,000
+        Limited Partnership Earnings 60,000 50,000
+        Rental income 20,000 15,000
+        Taxation 10,000 8,000
+        Interest income 5,000 4,000
+        Donations and sponsorships 5,000 3,000
+        Total revenue 1,000,000 880,000
+        Expenses
+        Education 600,000 550,000
+        Administration 300,000 250,000
+        Total expenses 900,000 800,000
+        Annual surplus 100,000 80,000
+        """
+
+        result = capital_parser.parse_page_texts(
+            [page], source_url="https://example.test/statement.pdf", fiscal_year="2024-2025"
+        )
+
+        categories = {row["category"] for row in result["revenueBreakdown"]}
+        self.assertIn("Government funding and transfers", categories)
+        self.assertIn("Business and enterprise revenue", categories)
+        self.assertIn("Rental and property income", categories)
+        self.assertIn("Taxation and local revenue", categories)
+        self.assertIn("Investment income", categories)
+        self.assertIn("Donations or contributions", categories)
+        partnership = next(
+            row for row in result["sourceRevenueRows"]
+            if row["originalLabel"] == "Limited Partnership Earnings"
+        )
+        self.assertEqual(partnership["subcategory"], "Limited partnership earnings")
+        self.assertEqual(partnership["sourceDocument"], "https://example.test/statement.pdf")
+        self.assertEqual(partnership["fiscalYear"], "2024-2025")
+        self.assertEqual(partnership["sourceReference"]["pdfPage"], 1)
+        self.assertEqual(partnership["extractionConfidence"], "high")
 
     def test_pheasant_rump_2024_2025_regression(self):
         pages = [
