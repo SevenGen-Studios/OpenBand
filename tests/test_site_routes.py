@@ -74,7 +74,9 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("revenue-segment", javascript)
         self.assertIn("setRevenueMode", javascript)
         self.assertIn("setRevenueFocus", javascript)
-        self.assertIn("Categories reconcile", javascript)
+        self.assertIn("Revenue sources reconcile", javascript)
+        self.assertIn("revenue-source-browser", javascript)
+        self.assertIn("breakdowns.after(section)", javascript)
 
 
 if __name__ == "__main__":
