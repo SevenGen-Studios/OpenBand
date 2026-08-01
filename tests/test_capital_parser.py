@@ -273,6 +273,15 @@ class CapitalParserTests(unittest.TestCase):
         self.assertEqual(expenses["Operations"], 35512677)
         self.assertIn("Settlement Distribution", revenue_labels)
         self.assertNotIn("Settlement Distribution", expense_labels)
+        settlement = next(
+            row
+            for row in result["sourceRevenueRows"]
+            if row["label"] == "Settlement Distribution"
+        )
+        self.assertEqual(settlement["amount"], 81525381)
+        self.assertEqual(settlement["sourceReference"]["section"], "revenue")
+        self.assertEqual(settlement["sourceReference"]["selectedYear"], "2025")
+        self.assertTrue(settlement["sourceReference"]["yearValidated"])
         self.assertEqual(
             sum(row["amount"] for row in result["expenseDetails"]),
             78308074,
