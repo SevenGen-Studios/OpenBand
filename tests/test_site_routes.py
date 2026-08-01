@@ -69,6 +69,12 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("function restoreRoute", javascript)
         self.assertIn("window.addEventListener('popstate'", javascript)
         self.assertIn("activeProfileTab='overview'", javascript)
+        self.assertIn("function getRevenueHistory", javascript)
+        self.assertIn("Where the Revenue Came From", javascript)
+        self.assertIn("revenue-segment", javascript)
+        self.assertIn("setRevenueMode", javascript)
+        self.assertIn("setRevenueFocus", javascript)
+        self.assertIn("Categories reconcile", javascript)
 
 
 if __name__ == "__main__":
