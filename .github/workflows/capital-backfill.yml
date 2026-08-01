@@ -21,6 +21,11 @@ on:
         required: true
         type: boolean
         default: false
+      reparse_existing:
+        description: "Force the hardened parser across existing unverified summaries"
+        required: true
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -74,6 +79,9 @@ jobs:
           if [ "$USE_OPENAI" = "true" ]; then
             COMMON_ARGS+=(--use-openai)
           fi
+          if [ "${{ inputs.reparse_existing }}" = "true" ]; then
+            COMMON_ARGS+=(--force)
+          fi
           if [ "${{ inputs.refresh_existing }}" != "true" ]; then
             for YEAR in "${YEARS[@]}"; do
               YEAR="$(echo "$YEAR" | xargs)"
@@ -91,6 +99,9 @@ jobs:
             done
             python tools/capital_detail_enricher.py "${DETAIL_ARGS[@]}"
           fi
+
+      - name: Audit every stored Community Capital summary
+        run: python tools/audit_capital_data.py --apply --report capital-validation-report.json
 
       - name: Validate capital data did not regress
         run: |
@@ -148,4 +159,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Backfill Community Capital data"
-          file_pattern: capital-data.json capital-extraction-report.json
+          file_pattern: capital-data.json capital-extraction-report.json capital-validation-report.json

@@ -7,6 +7,7 @@ from unittest import mock
 
 from tools import capital_parser
 from tools import capital_detail_enricher
+from tools import audit_capital_data
 
 
 class CapitalParserTests(unittest.TestCase):
@@ -208,11 +209,216 @@ class CapitalParserTests(unittest.TestCase):
     def test_land_claims_are_not_classified_as_economic_development(self):
         self.assertEqual(
             capital_parser.broad_expense_category("Land Claims"),
-            "Operations",
+            "Land Claims",
         )
         self.assertEqual(
             capital_parser.broad_expense_category("Land Management"),
             "Economic development",
+        )
+
+    def test_carry_the_kettle_2024_2025_land_claims_regression(self):
+        pages = [
+            """
+            Carry the Kettle Nakoda Nation
+            Consolidated Statement of Operations
+            For the year ended March 31, 2025
+            2025 2025 2024
+            Budget Actual Actual
+            Revenue
+            Settlement Distribution - 81,525,381 -
+            Other revenue 30,000,000 40,734,079 35,000,000
+            Total revenue 30,000,000 122,259,460 35,000,000
+            Expenses
+            Land Claims - 78,308,074 549,356
+            Other Programs 30,000,000 35,512,677 26,000,000
+            Total expenses 30,000,000 113,820,751 26,549,356
+            Annual surplus - 8,438,709 8,450,644
+            """,
+            """
+            Carry the Kettle Nakoda Nation
+            Land Claims
+            Schedule 7 - Schedule of Revenue and Expenses
+            For the year ended March 31, 2025
+            2025 2025 2024
+            Budget Actual Actual
+            Revenue
+            Settlement Distribution - 81,525,381 -
+            Legacy Trust Annual Revenue - 3,469,917 -
+            Other revenue - 92,121 -
+            Expenses
+            Transfer to trust - 36,875,382 -
+            Per Capita Distribution - 30,660,000 -
+            Professional fees - 9,473,926 326,129
+            Insurance - 1,169,853 101,367
+            Interest and bank charges - 128,913 121,860
+            Total expenses - 78,308,074 549,356
+            Current surplus - 6,779,345 3,012,682
+            """,
+        ]
+
+        result = capital_parser.parse_page_texts(
+            pages,
+            source_url="https://example.test/carry-2025.pdf",
+            fiscal_year="2024-2025",
+        )
+        expenses = {row["category"]: row["amount"] for row in result["expenseBreakdown"]}
+        revenue_labels = [row["label"] for row in result["sourceRevenueRows"]]
+        expense_labels = [row["label"] for row in result["sourceExpenseRows"]]
+
+        self.assertTrue(result["publishable"])
+        self.assertEqual(result["totalRevenue"], 122259460)
+        self.assertEqual(result["totalExpenses"], 113820751)
+        self.assertEqual(result["annualSurplusDeficit"], 8438709)
+        self.assertEqual(expenses["Land Claims"], 78308074)
+        self.assertEqual(expenses["Operations"], 35512677)
+        self.assertIn("Settlement Distribution", revenue_labels)
+        self.assertNotIn("Settlement Distribution", expense_labels)
+        self.assertEqual(
+            sum(row["amount"] for row in result["expenseDetails"]),
+            78308074,
+        )
+        self.assertEqual(result["expenseDetailSchedules"][0]["schedule"], "Schedule 7")
+        self.assertEqual(
+            result["sourceReferences"]["totalExpenses"]["section"],
+            "expenses",
+        )
+        self.assertTrue(
+            result["sourceReferences"]["totalExpenses"]["yearValidated"]
+        )
+        self.assertIn(
+            "Extreme expense category amount; source verification recommended",
+            result["warnings"],
+        )
+
+    def test_settlement_proceeds_are_never_accepted_as_expenses(self):
+        page = """
+        Example First Nation
+        Statement of Operations
+        For the year ended March 31, 2025
+        2025 2024
+        Revenue
+        Settlement proceeds 2,000,000 -
+        Other revenue 500,000 400,000
+        Total revenue 2,500,000 400,000
+        Expenses
+        Settlement proceeds 2,000,000 -
+        Education 300,000 250,000
+        Operations 200,000 150,000
+        Total expenses 500,000 400,000
+        Annual surplus 2,000,000 -
+        """
+
+        result = capital_parser.parse_page_texts([page], fiscal_year="2024-2025")
+
+        self.assertTrue(result["publishable"])
+        self.assertNotIn(
+            "Settlement proceeds",
+            [row["label"] for row in result["sourceExpenseRows"]],
+        )
+
+    def test_wrong_fiscal_year_column_requires_manual_review(self):
+        page = """
+        Example First Nation
+        Statement of Operations
+        For the year ended March 31, 2024
+        2024 2023
+        Revenue
+        Government transfer 900,000 800,000
+        Other revenue 100,000 90,000
+        Total revenue 1,000,000 890,000
+        Expenses
+        Education 500,000 450,000
+        Operations 300,000 250,000
+        Total expenses 800,000 700,000
+        Annual surplus 200,000 190,000
+        """
+
+        result = capital_parser.parse_page_texts([page], fiscal_year="2024-2025")
+
+        self.assertFalse(result["publishable"])
+        self.assertIn(
+            "A reported total was extracted from the wrong fiscal-year column",
+            result["warnings"],
+        )
+
+    def test_ai_summary_without_source_references_is_not_publishable(self):
+        summary = {
+            "totalRevenue": 1000000,
+            "totalExpenses": 800000,
+            "annualSurplusDeficit": 200000,
+            "revenueBreakdown": [
+                {"category": "Government transfers", "amount": 900000},
+                {"category": "Other revenue", "amount": 100000},
+            ],
+            "expenseBreakdown": [
+                {"category": "Education", "amount": 500000},
+                {"category": "Operations", "amount": 300000},
+            ],
+            "capitalSpending": {"total": 1},
+            "debt": {"total": 1},
+            "parser": "capital_openai_v2",
+        }
+
+        validation = capital_parser.validate_summary(summary)
+
+        self.assertFalse(validation["publishable"])
+        self.assertIn(
+            "AI extraction is missing required source page/table references",
+            validation["warnings"],
+        )
+
+    def test_major_year_over_year_change_is_flagged(self):
+        warnings = capital_parser.year_over_year_warnings(
+            {"totalRevenue": 122259460, "totalExpenses": 113820751},
+            {"totalRevenue": 42974586, "totalExpenses": 33669003},
+        )
+
+        self.assertIn("Major year-over-year change in expenses", warnings)
+
+    def test_sitewide_audit_normalizes_categories_without_changing_values(self):
+        data = {
+            "bands": {
+                "1": {
+                    "name": "Example First Nation",
+                    "years": {
+                        "2024-2025": {
+                            "totalRevenue": 200,
+                            "totalExpenses": 200,
+                            "annualSurplusDeficit": 0,
+                            "revenueBreakdown": [],
+                            "expenseBreakdown": [],
+                            "sourceRevenueRows": [
+                                {"label": "Settlement Distribution", "amount": 100},
+                                {"label": "Store sales", "amount": 100},
+                            ],
+                            "sourceExpenseRows": [
+                                {"label": "Specific Land Claim", "amount": 100},
+                                {"label": "Other Programs", "amount": 100},
+                            ],
+                            "capitalSpending": {"total": 1},
+                            "debt": {"total": 1},
+                            "parseStatus": "parsed",
+                            "publishable": True,
+                        }
+                    },
+                }
+            }
+        }
+
+        report = audit_capital_data.audit_dataset(data)
+        summary = data["bands"]["1"]["years"]["2024-2025"]
+
+        self.assertEqual(report["audited"], 1)
+        self.assertEqual(len(report["corrected"]), 1)
+        self.assertEqual(report["suppressed"], [])
+        self.assertEqual(sum(row["amount"] for row in summary["expenseBreakdown"]), 200)
+        self.assertEqual(
+            {row["category"] for row in summary["expenseBreakdown"]},
+            {"Land Claims", "Operations"},
+        )
+        self.assertEqual(
+            {row["category"] for row in summary["revenueBreakdown"]},
+            {"Settlements / claim proceeds", "Own-source revenue"},
         )
 
     def test_pheasant_rump_2024_2025_regression(self):
