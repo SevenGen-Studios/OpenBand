@@ -238,14 +238,53 @@ def normalize_category(label):
 def broad_revenue_category(label):
     low = label.lower()
     if re.search(r"settlement|land claim", low):
-        return "Settlements / claim proceeds"
-    if re.search(r"indigenous services|government|cmhc|canada|province|tribal council|health.*authority|child.*family", low):
-        return "Government transfers"
-    if re.search(r"rent|lease|sales|fees?|royalt|investment|interest|business entit|farming|store|bingo|fundraising", low):
-        return "Own-source revenue"
+        return "Settlement and claim revenue"
+    if re.search(
+        r"indigenous services|government|\bcmhc\b|canada mortgage|"
+        r"canadian heritage|province|tribal council|health.*authority|"
+        r"child.*family|first nations and inuit health|sitag",
+        low,
+    ):
+        return "Government funding and transfers"
+    if re.search(r"tax(?:ation|es)?|property tax|local revenue|levy", low):
+        return "Taxation and local revenue"
+    if re.search(r"rent|lease|property (?:income|management)", low):
+        return "Rental and property income"
+    if re.search(r"donation|sponsor|fundrais|contribution", low):
+        return "Donations or contributions"
+    if re.search(r"trust|investment income|interest|dividend", low):
+        return "Investment income"
+    if re.search(
+        r"business|enterprise|limited partnership|\blp\b|holdings?|"
+        r"store|retail|gaming|bingo|casino|sales|royalt|farming|"
+        r"earnings? (?:from|in) (?:g?be|investment)",
+        low,
+    ):
+        return "Business and enterprise revenue"
+    if re.search(r"program|service|administration fee|management fee|tuition", low):
+        return "Program and service revenue"
+    if re.search(r"other revenue|insurance proceeds?|gain on", low):
+        return "Other revenue"
+    return "Unclassified"
+
+
+def revenue_subcategory(label, category):
+    low = label.lower()
     if "trust" in low:
-        return "Trust distributions"
-    return "Other revenue"
+        return "Trust distribution"
+    if re.search(r"limited partnership|\blp\b", low):
+        return "Limited partnership earnings"
+    if re.search(r"store|retail|gaming|bingo|casino|sales", low):
+        return "Operating revenue"
+    if re.search(r"interest|dividend|investment", low):
+        return "Investment return"
+    if re.search(r"rent|lease|property", low):
+        return "Property income"
+    if re.search(r"administration fee|management fee|service", low):
+        return "Service fees"
+    if category == "Settlement and claim revenue":
+        return "Settlement or claim proceeds"
+    return None
 
 
 def broad_expense_category(label):
@@ -1066,6 +1105,23 @@ def parse_page_texts(page_texts, source_url=None, fiscal_year=None):
         [record["page"] for record in position_records],
         fiscal_year,
     )
+
+    for row in revenue_source_rows:
+        reference = row.get("sourceReference") or {}
+        row.update(
+            {
+                "originalLabel": row.get("label"),
+                "normalizedCategory": row.get("category"),
+                "subcategory": revenue_subcategory(
+                    str(row.get("label") or ""), str(row.get("category") or "")
+                ),
+                "sourceDocument": source_url,
+                "fiscalYear": fiscal_year,
+                "extractionConfidence": (
+                    "high" if reference.get("yearValidated") is True else "medium"
+                ),
+            }
+        )
 
     summary = {
         "totalRevenue": rounded(total_revenue),
