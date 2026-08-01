@@ -48,6 +48,18 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn(f"{ORIGIN}/browse/", sitemap)
         self.assertIn(f"{ORIGIN}/news/", sitemap)
 
+    def test_public_pages_share_dynamic_copyright_footer(self):
+        pages = [ROOT / "index.html", ROOT / "browse" / "index.html", ROOT / "news" / "index.html"]
+        pages.extend((ROOT / "first-nations").glob("*/index.html"))
+        self.assertGreater(len(pages), 3)
+        for page in pages:
+            with self.subTest(page=page):
+                markup = page.read_text(encoding="utf-8")
+                self.assertIn("<footer>", markup)
+                self.assertIn("&copy; <span data-current-year>2026</span> OpenBand. All rights reserved.", markup)
+        javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
+        self.assertIn("document.querySelectorAll('[data-current-year]')", javascript)
+
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="/assets/openband.css"', profile)
