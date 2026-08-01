@@ -341,6 +341,32 @@ class CapitalParserTests(unittest.TestCase):
             result["warnings"],
         )
 
+    def test_ai_summary_without_source_references_is_not_publishable(self):
+        summary = {
+            "totalRevenue": 1000000,
+            "totalExpenses": 800000,
+            "annualSurplusDeficit": 200000,
+            "revenueBreakdown": [
+                {"category": "Government transfers", "amount": 900000},
+                {"category": "Other revenue", "amount": 100000},
+            ],
+            "expenseBreakdown": [
+                {"category": "Education", "amount": 500000},
+                {"category": "Operations", "amount": 300000},
+            ],
+            "capitalSpending": {"total": 1},
+            "debt": {"total": 1},
+            "parser": "capital_openai_v2",
+        }
+
+        validation = capital_parser.validate_summary(summary)
+
+        self.assertFalse(validation["publishable"])
+        self.assertIn(
+            "AI extraction is missing required source page/table references",
+            validation["warnings"],
+        )
+
     def test_major_year_over_year_change_is_flagged(self):
         warnings = capital_parser.year_over_year_warnings(
             {"totalRevenue": 122259460, "totalExpenses": 113820751},

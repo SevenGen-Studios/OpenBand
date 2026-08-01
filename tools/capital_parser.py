@@ -862,6 +862,10 @@ def validate_summary(summary):
     for reference in source_references.values():
         if reference and reference.get("yearValidated") is False:
             severe.append("A reported total was extracted from the wrong fiscal-year column")
+    if str(summary.get("parser") or "").startswith("capital_openai"):
+        required_references = ("totalRevenue", "totalExpenses")
+        if any(not source_references.get(key) for key in required_references):
+            severe.append("AI extraction is missing required source page/table references")
     if any((parse_money(row.get("amount")) or 0) < 0 for row in expense_rows):
         severe.append("A negative expense category requires manual review")
     if expenses and any(
@@ -1192,7 +1196,11 @@ def extract_with_openai(pdf_bytes, source_url, fiscal_year):
         "Extract a conservative summary from this First Nation audited financial statement. "
         "Use the actual current-year column, not budget or prior-year values. Return JSON only "
         "with keys totalRevenue, totalExpenses, annualSurplusDeficit, cashInvestments, "
-        "capitalAssets, capitalSpending, debt, revenueBreakdown, expenseBreakdown, warnings. "
+        "capitalAssets, capitalSpending, debt, revenueBreakdown, expenseBreakdown, "
+        "sourceRevenueRows, sourceExpenseRows, sourceReferences, warnings. "
+        "sourceReferences must include totalRevenue and totalExpenses, each with pdfPage, "
+        "table, section, fiscalYear, selectedYear, selectedColumn, and yearValidated. "
+        "Every source row must include sourceLabel, category, amount, and a sourceReference. "
         "Also return expenseDetails when a schedule, note, or supplementary table explicitly "
         "lists the items making up a program expense. Each expenseDetails row must have category, "
         "sourceLabel (the program or schedule name), label (the disclosed expense item), amount, "
@@ -1235,7 +1243,7 @@ def extract_with_openai(pdf_bytes, source_url, fiscal_year):
         summary = json.loads(text)
         summary["sourceUrl"] = source_url
         summary["fiscalYear"] = fiscal_year
-        summary["parser"] = "capital_openai_v1"
+        summary["parser"] = "capital_openai_v2"
         summary.update(validate_summary(summary))
         return summary
     except urllib.error.HTTPError as exc:
