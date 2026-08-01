@@ -11,12 +11,13 @@ on:
       - news-data.json
       - tools/build_site.py
       - tests/test_site_routes.py
+      - .github/workflows/build-site.yml
 
 permissions:
   contents: write
 
 concurrency:
-  group: openband-v2-site-build
+  group: openband-v2-site-build-v2
   cancel-in-progress: true
 
 jobs:
