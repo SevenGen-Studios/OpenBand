@@ -1,0 +1,43 @@
+name: Deploy OpenBand analytics worker
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Create deployment configuration
+        run: |
+          cat > analytics-worker/wrangler.toml <<'EOF'
+          name = "openband-analytics"
+          main = "src/index.ts"
+          compatibility_date = "2026-08-05"
+          account_id = "8ee1724e78c7c2488d51da2b84298aa6"
+
+          [vars]
+          ALLOWED_ORIGINS = "https://openband.ca,https://www.openband.ca"
+          DATA_RETENTION_DAYS = "760"
+
+          [[d1_databases]]
+          binding = "DB"
+          database_name = "openband-analytics"
+          database_id = "0ceb0a04-8695-4fed-b0ba-7a5d6c70979f"
+          EOF
+
+      - name: Deploy Worker
+        run: npx --yes wrangler@4 deploy --config analytics-worker/wrangler.toml
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_ANALYTICS_DEPLOY_TOKEN }}
