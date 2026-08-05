@@ -41,7 +41,7 @@ class SiteRouteTests(unittest.TestCase):
             self.assertIn(f"<h1>{expected_heading}</h1>", markup)
 
     def test_indexable_routes_and_seo_files_exist(self):
-        for relative in ["browse/index.html", "news/index.html", "admin/analytics/index.html", "robots.txt", "sitemap.xml", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js"]:
+        for relative in ["browse/index.html", "news/index.html", "admin/index.html", "admin/analytics/index.html", "robots.txt", "sitemap.xml", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js"]:
             self.assertTrue((ROOT / relative).is_file(), relative)
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
         self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 3)
@@ -49,6 +49,17 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn(f"{ORIGIN}/news/", sitemap)
         self.assertNotIn("/admin/", sitemap)
         self.assertIn("Disallow: /admin/", (ROOT / "robots.txt").read_text(encoding="utf-8"))
+
+    def test_admin_portal_links_operational_services_without_credentials(self):
+        portal = (ROOT / "admin" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('content="noindex,nofollow,noarchive"', portal)
+        self.assertIn('href="/admin/analytics/"', portal)
+        self.assertIn("analytics.google.com", portal)
+        self.assertIn("openband-analytics", portal)
+        self.assertIn("workers/d1/databases", portal)
+        self.assertIn("github.com/Sheekee011/openband-v2/actions", portal)
+        self.assertNotIn("ANALYTICS_ADMIN_TOKEN", portal)
+        self.assertNotIn("Bearer ", portal)
 
     def test_public_pages_share_dynamic_copyright_footer(self):
         pages = [ROOT / "index.html", ROOT / "browse" / "index.html", ROOT / "news" / "index.html"]
