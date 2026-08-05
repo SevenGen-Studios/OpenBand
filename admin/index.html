@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Administration | OpenBand</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/openband.css?v=20260804a">
+<link rel="stylesheet" href="/assets/analytics-admin.css?v=20260805a">
+</head>
+<body class="analytics-admin-page admin-portal-page">
+<nav aria-label="Administration navigation">
+  <a class="logo" href="/">Open<em>Band</em></a>
+  <div class="admin-nav-label">Administration</div>
+  <a class="admin-back" href="/">Return to OpenBand</a>
+</nav>
+
+<main class="admin-shell portal-shell">
+  <header class="portal-head">
+    <div>
+      <p class="portal-kicker">OpenBand operations</p>
+      <h1>Administration portal</h1>
+      <p>One place to review traffic, service health, deployments, and production configuration.</p>
+    </div>
+    <a class="portal-primary" href="/admin/analytics/">Open analytics dashboard</a>
+  </header>
+
+  <section class="portal-section" aria-labelledby="monitoringTitle">
+    <div class="portal-section-head">
+      <div><h2 id="monitoringTitle">Analytics and monitoring</h2><p>Traffic reporting and infrastructure health.</p></div>
+    </div>
+    <div class="portal-grid">
+      <article class="portal-card portal-card-featured">
+        <div class="portal-card-meta"><span class="portal-status">Live</span><span>OpenBand</span></div>
+        <h3>Private analytics dashboard</h3>
+        <p>Visits, page views, community activity, searches, documents, traffic sources, and journeys.</p>
+        <a href="/admin/analytics/">View dashboard</a>
+      </article>
+      <article class="portal-card">
+        <div class="portal-card-meta"><span class="portal-status">Live</span><span>Google</span></div>
+        <h3>Google Analytics 4</h3>
+        <p>Realtime activity, acquisition reports, engagement, and longer-term audience trends.</p>
+        <a href="https://analytics.google.com/analytics/web/" target="_blank" rel="noopener">Open GA4</a>
+      </article>
+      <article class="portal-card">
+        <div class="portal-card-meta"><span class="portal-status">Live</span><span>Cloudflare</span></div>
+        <h3>Analytics Worker</h3>
+        <p>Worker requests, errors, execution time, and production deployment information.</p>
+        <a href="https://dash.cloudflare.com/8ee1724e78c7c2488d51da2b84298aa6/workers/services/view/openband-analytics/production" target="_blank" rel="noopener">View Worker metrics</a>
+      </article>
+      <article class="portal-card">
+        <div class="portal-card-meta"><span class="portal-status">Live</span><span>Cloudflare</span></div>
+        <h3>Analytics database</h3>
+        <p>D1 storage metrics and the console for inspecting recently collected analytics events.</p>
+        <a href="https://dash.cloudflare.com/8ee1724e78c7c2488d51da2b84298aa6/workers/d1/databases/0ceb0a04-8695-4fed-b0ba-7a5d6c70979f/metrics" target="_blank" rel="noopener">Open D1 database</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="portal-section" aria-labelledby="operationsTitle">
+    <div class="portal-section-head">
+      <div><h2 id="operationsTitle">Site operations</h2><p>Deployments, workflows, and production configuration.</p></div>
+    </div>
+    <div class="portal-list">
+      <a href="https://github.com/Sheekee011/openband-v2/actions" target="_blank" rel="noopener"><span><strong>GitHub Actions</strong><small>Scrapers, parsers, audits, and site builds</small></span><span class="portal-link-label">Open</span></a>
+      <a href="https://github.com/Sheekee011/openband-v2" target="_blank" rel="noopener"><span><strong>OpenBand repository</strong><small>Source code, data, workflows, and history</small></span><span class="portal-link-label">Open</span></a>
+      <a href="https://github.com/Sheekee011/openband-v2/blob/main/assets/analytics-config.js" target="_blank" rel="noopener"><span><strong>Production analytics configuration</strong><small>GA4 measurement ID, API endpoint, and enabled state</small></span><span class="portal-link-label">Review</span></a>
+      <a href="https://openband-analytics.kakakawaybrennan-ee1.workers.dev/health" target="_blank" rel="noopener"><span><strong>Analytics service health</strong><small>Direct health response from the production Worker</small></span><span class="portal-link-label">Check</span></a>
+      <a href="https://openband.ca/" target="_blank" rel="noopener"><span><strong>Live OpenBand website</strong><small>Open the current public production site</small></span><span class="portal-link-label">Visit</span></a>
+    </div>
+  </section>
+
+  <aside class="portal-note">
+    <strong>Access note</strong>
+    <p>The private OpenBand dashboard requires your administrator token. Google, Cloudflare, and GitHub use their own account sign-ins. No credentials are stored on this page.</p>
+  </aside>
+</main>
+
+<footer><div class="fl">Open<em>Band</em></div><p class="footer-copyright">&copy; <span data-current-year>2026</span> OpenBand. All rights reserved.</p></footer>
+<script>document.querySelectorAll("[data-current-year]").forEach(function(element){element.textContent=String(new Date().getFullYear())});</script>
+</body>
+</html>
