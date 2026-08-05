@@ -1,0 +1,20 @@
+name = "openband-analytics"
+main = "src/index.ts"
+compatibility_date = "2026-08-01"
+workers_dev = false
+
+[[d1_databases]]
+binding = "DB"
+database_name = "openband-analytics"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+[vars]
+ALLOWED_ORIGINS = "https://openband.ca,https://www.openband.ca"
+DATA_RETENTION_DAYS = "760"
+
+[triggers]
+crons = ["17 4 * * *"]
+
+# Add these with `wrangler secret put` rather than committing them:
+# VISITOR_HASH_SALT
+# ANALYTICS_ADMIN_TOKEN

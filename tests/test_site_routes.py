@@ -41,12 +41,14 @@ class SiteRouteTests(unittest.TestCase):
             self.assertIn(f"<h1>{expected_heading}</h1>", markup)
 
     def test_indexable_routes_and_seo_files_exist(self):
-        for relative in ["browse/index.html", "news/index.html", "robots.txt", "sitemap.xml", "assets/favicon.svg", "assets/openband-social.png"]:
+        for relative in ["browse/index.html", "news/index.html", "admin/analytics/index.html", "robots.txt", "sitemap.xml", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js"]:
             self.assertTrue((ROOT / relative).is_file(), relative)
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
         self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 3)
         self.assertIn(f"{ORIGIN}/browse/", sitemap)
         self.assertIn(f"{ORIGIN}/news/", sitemap)
+        self.assertNotIn("/admin/", sitemap)
+        self.assertIn("Disallow: /admin/", (ROOT / "robots.txt").read_text(encoding="utf-8"))
 
     def test_public_pages_share_dynamic_copyright_footer(self):
         pages = [ROOT / "index.html", ROOT / "browse" / "index.html", ROOT / "news" / "index.html"]
@@ -62,8 +64,9 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260801d"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260801d"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260804a"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260804a"', profile)
+        self.assertIn('src="/assets/analytics.js?v=20260804a"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
         self.assertIn("function restoreRoute", javascript)

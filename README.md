@@ -83,6 +83,21 @@ python -m unittest tests/test_site_routes.py -v
 The scraper workflows and **Build static OpenBand routes** workflow run this
 step automatically for GitHub-hosted updates.
 
+## Analytics
+
+The public site includes a centralized, production-only analytics service in
+`assets/analytics.ts` with the compiled browser asset in
+`assets/analytics.js`. It lazy-loads GA4, tracks static-route changes, batches
+internal events, retries failed submissions, respects Do Not Track, and avoids
+arbitrary search text.
+
+The optional internal API and protected aggregate dashboard are in
+`analytics-worker/` and `/admin/analytics/`. The site remains fully static;
+the API deploys separately to Cloudflare Workers with D1. Analytics is disabled
+in the committed default configuration so an unfinished endpoint never collects
+or queues data. Follow `analytics-worker/README.md` to deploy it and set the
+three GitHub Actions variables that activate production tracking.
+
 ## Secrets
 
 Add `OPENAI_API_KEY` under Settings -> Secrets and variables -> Actions before running parser workflows.

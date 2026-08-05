@@ -6,11 +6,13 @@ on:
     branches: [main]
     paths:
       - index.html
+      - admin/**
       - assets/**
       - data.json
       - news-data.json
       - tools/build_site.py
-      - tests/test_site_routes.py
+      - tests/**
+      - tools/build_analytics_config.py
       - .github/workflows/build-site.yml
 
 permissions:
@@ -34,13 +36,19 @@ jobs:
           python-version: "3.11"
 
       - name: Generate permanent pages
-        run: python tools/build_site.py
+        env:
+          OPENBAND_GA4_ID: ${{ vars.OPENBAND_GA4_ID }}
+          OPENBAND_ANALYTICS_ENDPOINT: ${{ vars.OPENBAND_ANALYTICS_ENDPOINT }}
+          OPENBAND_ANALYTICS_ENABLED: ${{ vars.OPENBAND_ANALYTICS_ENABLED || 'true' }}
+        run: |
+          python tools/build_analytics_config.py
+          python tools/build_site.py
 
-      - name: Run site route tests
-        run: python -m unittest tests/test_site_routes.py -v
+      - name: Run site and analytics tests
+        run: python -m unittest discover -s tests -v
 
       - name: Commit generated routes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Build permanent OpenBand profile routes"
-          file_pattern: first-nations browse news sitemap.xml robots.txt .nojekyll
+          file_pattern: assets/analytics-config.js first-nations browse news sitemap.xml robots.txt .nojekyll

@@ -146,8 +146,8 @@ def build() -> None:
         page = page.replace('<body data-page="home">', f'<body data-page="profile" data-band-id="{band["id"]}">', 1)
         page = page.replace('<div id="profilePrerender" class="profile-prerender" hidden></div>', profile_prerender(band), 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260801d" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260801d" defer></script>',
+            '<script src="/assets/openband.js?v=20260804a" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260804a" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)
@@ -201,7 +201,7 @@ def build() -> None:
         encoding="utf-8",
     )
     (ROOT / "robots.txt").write_text(
-        f"User-agent: *\nAllow: /\nSitemap: {ORIGIN}/sitemap.xml\n", encoding="utf-8"
+        f"User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: {ORIGIN}/sitemap.xml\n", encoding="utf-8"
     )
     (ROOT / ".nojekyll").touch()
     print(f"Generated {len(bands)} profile pages, browse, news, robots.txt, and sitemap.xml")

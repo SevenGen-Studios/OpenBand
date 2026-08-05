@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Analytics Administration | OpenBand</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/openband.css?v=20260804a">
+<link rel="stylesheet" href="/assets/analytics-admin.css?v=20260804a">
+</head>
+<body class="analytics-admin-page">
+<nav aria-label="Analytics navigation"><a class="logo" href="/">Open<em>Band</em></a><div class="admin-nav-label">Analytics administration</div><a class="admin-back" href="/">Return to OpenBand</a></nav>
+<main class="admin-shell">
+  <section id="analyticsLogin" class="admin-login" aria-labelledby="analyticsLoginTitle">
+    <h1 id="analyticsLoginTitle">OpenBand Analytics</h1>
+    <p>Administrator authentication is required.</p>
+    <form id="analyticsLoginForm">
+      <label for="analyticsToken">Administrator token</label>
+      <div class="admin-login-row"><input id="analyticsToken" type="password" autocomplete="current-password" required><button type="submit">Open dashboard</button></div>
+      <p id="analyticsLoginError" class="admin-error" role="alert" hidden></p>
+    </form>
+  </section>
+
+  <section id="analyticsDashboard" hidden>
+    <header class="admin-head"><div><h1>OpenBand Analytics</h1><p id="analyticsGenerated">Reporting data is loading.</p></div><label>Reporting range<select id="analyticsRange"><option value="7">7 days</option><option value="30" selected>30 days</option><option value="90">90 days</option><option value="365">12 months</option></select></label></header>
+    <div class="admin-tabs" role="tablist" aria-label="Analytics sections">
+      <button class="active" type="button" role="tab" data-admin-tab="overview" aria-selected="true">Overview</button>
+      <button type="button" role="tab" data-admin-tab="content" aria-selected="false">Content</button>
+      <button type="button" role="tab" data-admin-tab="acquisition" aria-selected="false">Acquisition</button>
+      <button type="button" role="tab" data-admin-tab="journeys" aria-selected="false">Journeys</button>
+    </div>
+
+    <section class="admin-panel active" data-admin-panel="overview">
+      <h2>Today</h2><div id="todayMetrics" class="admin-metrics primary"></div>
+      <h2>Last 30 Days</h2><div id="periodMetrics" class="admin-metrics"></div>
+      <div class="admin-chart-grid"><section class="admin-card wide"><div class="admin-card-head"><h3>Daily visitors</h3></div><div id="dailyVisitors"></div></section><section class="admin-card"><h3>Returning vs new users</h3><div id="visitorTypes"></div></section><section class="admin-card wide"><h3>Monthly visitors</h3><div id="monthlyVisitors"></div></section></div>
+    </section>
+
+    <section class="admin-panel" data-admin-panel="content">
+      <div class="admin-chart-grid"><section class="admin-card"><h3>Top viewed communities</h3><div id="communityChart"></div></section><section class="admin-card"><h3>Most searched communities</h3><div id="searchChart"></div></section><section class="admin-card"><h3>Most viewed fiscal years</h3><div id="fiscalYearChart"></div></section><section class="admin-card"><h3>Top downloads</h3><div id="downloadChart"></div></section></div>
+      <div class="admin-table-grid"><section class="admin-card"><h3>Top Communities</h3><div id="topCommunities"></div></section><section class="admin-card"><h3>Top Searches</h3><div id="topSearches"></div></section><section class="admin-card"><h3>Top Downloads</h3><div id="topDownloads"></div></section></div>
+    </section>
+
+    <section class="admin-panel" data-admin-panel="acquisition">
+      <div class="admin-chart-grid"><section class="admin-card wide"><h3>Traffic sources</h3><div id="trafficSources"></div></section><section class="admin-card"><h3>Device breakdown</h3><div id="deviceBreakdown"></div></section><section class="admin-card"><h3>Browser breakdown</h3><div id="browserBreakdown"></div></section><section class="admin-card wide"><h3>Province and country distribution</h3><div id="geography"></div></section></div>
+      <div class="admin-table-grid two"><section class="admin-card"><h3>Top Landing Pages</h3><div id="landingPages"></div></section><section class="admin-card"><h3>Top Exit Pages</h3><div id="exitPages"></div></section></div>
+    </section>
+
+    <section class="admin-panel" data-admin-panel="journeys">
+      <section class="admin-card"><div class="admin-card-head"><div><h3>Common user journeys</h3><p>Landing page → next page → pages visited → exit page</p></div></div><div id="userJourneys"></div></section>
+    </section>
+    <p id="analyticsDashboardError" class="admin-error" role="alert" hidden></p>
+  </section>
+</main>
+<footer><div class="fl">Open<em>Band</em></div><p class="footer-copyright">&copy; <span data-current-year>2026</span> OpenBand. All rights reserved.</p></footer>
+<script src="/assets/analytics-config.js"></script>
+<script src="/assets/analytics-admin.js?v=20260804a" defer></script>
+</body>
+</html>
