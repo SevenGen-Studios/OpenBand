@@ -17,7 +17,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
 
       - name: Create deployment configuration
         run: |
@@ -41,3 +41,15 @@ jobs:
         run: npx --yes wrangler@4 deploy --config analytics-worker/wrangler.toml
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_ANALYTICS_DEPLOY_TOKEN }}
+
+      - name: Verify health and D1 ingestion
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_ANALYTICS_DEPLOY_TOKEN }}
+        run: |
+          endpoint="https://openband-analytics.kakakawaybrennan-ee1.workers.dev"
+          curl --fail --silent --show-error --retry 5 "$endpoint/health" | grep -q '"status":"ok"'
+          response="$(
+            curl --fail --silent --show-error               -H 'Content-Type: application/json'               -H 'Origin: https://openband.ca'               --data '{"events":[{"timestamp":"2026-08-05T06:30:00.000Z","page":"/analytics-deployment-test","event":"page_view","session_id":"deploytest-20260805","visitor_id":"deploytest-visitor-20260805","device_type":"desktop","browser":"Other","referrer":"direct","parameters":{"page_title":"Analytics deployment test"}}]}'               "$endpoint/v1/events"
+          )"
+          echo "$response" | grep -q '"accepted":1'
+          npx --yes wrangler@4 d1 execute openband-analytics             --remote             --config analytics-worker/wrangler.toml             --command "SELECT COUNT(*) AS event_count FROM analytics_events WHERE session_id = 'deploytest-20260805';"
