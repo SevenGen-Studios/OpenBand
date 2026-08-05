@@ -77,7 +77,7 @@ class SiteRouteTests(unittest.TestCase):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="/assets/openband.css?v=20260804a"', profile)
         self.assertIn('src="/assets/openband.js?v=20260804a"', profile)
-        self.assertIn('src="/assets/analytics.js?v=20260804a"', profile)
+        self.assertIn('src="/assets/analytics.js?v=20260805b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
         self.assertIn("function restoreRoute", javascript)
@@ -92,6 +92,15 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("revenue-source-browser", javascript)
         self.assertIn("revenue-year-body", javascript)
         self.assertIn("breakdowns.after(section)", javascript)
+
+    def test_ga4_tag_is_present_on_every_public_page(self):
+        pages = [ROOT / "index.html", ROOT / "browse" / "index.html", ROOT / "news" / "index.html"]
+        pages.extend((ROOT / "first-nations").glob("*/index.html"))
+        for page in pages:
+            with self.subTest(page=page):
+                markup = page.read_text(encoding="utf-8")
+                self.assertEqual(markup.count("googletagmanager.com/gtag/js?id=G-JYWTEVQ5JG"), 1)
+                self.assertIn("send_page_view:false", markup)
 
 
 if __name__ == "__main__":
