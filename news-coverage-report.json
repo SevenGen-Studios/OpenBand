@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-04T14:46:57Z",
+  "generated": "2026-08-05T14:41:43Z",
   "articlesBefore": 102,
-  "articlesAfter": 102,
-  "newAccepted": 0,
+  "articlesAfter": 103,
+  "newAccepted": 1,
   "invalidExistingRemoved": [],
-  "manualReviewCount": 13,
-  "sourceFailureCount": 5,
+  "manualReviewCount": 16,
+  "sourceFailureCount": 10,
   "communitiesTracked": 69,
   "communitiesWithResults": 15,
   "communitiesWithRecentResults": 11,
@@ -174,13 +174,13 @@
     {
       "bandId": 361,
       "communityName": "Cowessess First Nation",
-      "resultCount": 16,
-      "resultsLast90Days": 16,
-      "newestResult": "2026-07-31",
+      "resultCount": 17,
+      "resultsLast90Days": 17,
+      "newestResult": "2026-08-04",
       "knownSourceCount": 4,
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": false,
-      "manualReviewCount": 2,
+      "manualReviewCount": 5,
       "failedSourceCount": 0
     },
     {
@@ -313,7 +313,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 1
+      "failedSourceCount": 0
     },
     {
       "bandId": 409,
@@ -325,7 +325,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 1
+      "failedSourceCount": 0
     },
     {
       "bandId": 345,
@@ -337,7 +337,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 1
+      "failedSourceCount": 0
     },
     {
       "bandId": 356,
@@ -349,7 +349,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 1
+      "failedSourceCount": 0
     },
     {
       "bandId": 346,
@@ -361,7 +361,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 1
+      "failedSourceCount": 0
     },
     {
       "bandId": 364,
@@ -517,7 +517,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 401,
@@ -529,7 +529,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 350,
@@ -541,7 +541,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 400,
@@ -553,7 +553,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 390,
@@ -565,7 +565,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 395,
@@ -589,7 +589,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 353,
@@ -601,7 +601,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 340,
@@ -613,7 +613,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 397,
@@ -625,7 +625,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 354,
@@ -637,7 +637,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 342,
@@ -906,40 +906,80 @@
   ],
   "sourceFailures": [
     {
-      "bandId": 355,
-      "communityName": "Peter Ballantyne Cree Nation",
+      "bandId": 398,
+      "communityName": "Buffalo River Dene Nation",
       "sourceName": "GDELT public news index",
       "sourceType": "Discovery Search",
       "url": "https://api.gdeltproject.org/",
       "reason": "HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
-      "bandId": 409,
-      "communityName": "Pheasant Rump Nakota Nation",
+      "bandId": 401,
+      "communityName": "Clearwater River Dene Nation",
       "sourceName": "GDELT public news index",
       "sourceType": "Discovery Search",
       "url": "https://api.gdeltproject.org/",
       "reason": "HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
-      "bandId": 345,
-      "communityName": "Poundmaker Cree Nation",
+      "bandId": 350,
+      "communityName": "Cumberland House Cree Nation",
       "sourceName": "GDELT public news index",
       "sourceType": "Discovery Search",
       "url": "https://api.gdeltproject.org/",
       "reason": "HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
-      "bandId": 356,
-      "communityName": "Red Earth Cree Nation",
+      "bandId": 400,
+      "communityName": "English River Dene Nation",
       "sourceName": "GDELT public news index",
       "sourceType": "Discovery Search",
       "url": "https://api.gdeltproject.org/",
       "reason": "HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
-      "bandId": 346,
-      "communityName": "Red Pheasant Cree Nation",
+      "bandId": 390,
+      "communityName": "Fishing Lake First Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 352,
+      "communityName": "Hatchet Lake Denesuline",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 353,
+      "communityName": "Lac La Ronge Indian Band",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 340,
+      "communityName": "Little Pine First Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 397,
+      "communityName": "Ministikwan Lake Cree Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 354,
+      "communityName": "Montreal Lake Cree Nation",
       "sourceName": "GDELT public news index",
       "sourceType": "Discovery Search",
       "url": "https://api.gdeltproject.org/",
