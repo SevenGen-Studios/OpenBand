@@ -26,6 +26,15 @@ class AnalyticsTests(unittest.TestCase):
         self.assertIn("requestIdleCallback", self.client)
         self.assertIn("navigator.sendBeacon", self.client)
         self.assertIn("send_page_view:false", self.client)
+        self.assertIn("OPENBAND_GA4_BOOTSTRAPPED", self.client)
+        self.assertIn('document.querySelector(`script[src="${source}"]`)', self.client)
+
+    def test_public_template_contains_single_safe_ga4_bootstrap(self):
+        markup = (ROOT / "index.html").read_text(encoding="utf-8")
+        self.assertEqual(markup.count("googletagmanager.com/gtag/js?id=G-JYWTEVQ5JG"), 1)
+        self.assertIn("gtag('config', 'G-JYWTEVQ5JG', {send_page_view:false", markup)
+        self.assertIn('window["ga-disable-G-JYWTEVQ5JG"]', markup)
+        self.assertIn("OPENBAND_GA4_BOOTSTRAPPED", markup)
 
     def test_required_events_are_centralized(self):
         for event in [
