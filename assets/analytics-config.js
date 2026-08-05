@@ -1,1 +1,1 @@
-window.OPENBAND_ANALYTICS_CONFIG = Object.freeze({"enabled":false,"gaMeasurementId":"","apiEndpoint":"","productionHosts":["openband.ca","www.openband.ca"],"debug":false});
+window.OPENBAND_ANALYTICS_CONFIG = Object.freeze({"enabled":true,"gaMeasurementId":"G-JYWTEVQ5JG","apiEndpoint":"https://openband-analytics.kakakawaybrennan-ee1.workers.dev/v1/events","productionHosts":["openband.ca","www.openband.ca"],"debug":false});
