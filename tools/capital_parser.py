@@ -16,6 +16,8 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
+from tools import local_ocr
+
 try:
     import pdfplumber
 except ImportError:  # pragma: no cover
@@ -1197,6 +1199,34 @@ def summary_score(summary):
     return score
 
 
+def extraction_stage(name, status, warnings=None):
+    return {
+        "stage": name,
+        "status": status,
+        "warnings": list(warnings or []),
+    }
+
+
+def with_extraction_stages(summary, stages):
+    result = dict(summary or {})
+    result["warnings"] = list(dict.fromkeys(result.get("warnings") or []))
+    if not result.get("extractionCompleteness"):
+        has_values = any(
+            result.get(key) not in (None, [], {})
+            for key in (
+                "totalRevenue",
+                "totalExpenses",
+                "revenueBreakdown",
+                "expenseBreakdown",
+            )
+        )
+        result["extractionCompleteness"] = (
+            "complete" if result.get("publishable") else "partial" if has_values else "failed"
+        )
+    result["extractionStages"] = stages
+    return result
+
+
 def parse_pdf_bytes(pdf_bytes, source_url=None, fiscal_year=None):
     if pdfplumber is None:
         return {
@@ -1223,6 +1253,106 @@ def parse_pdf_bytes(pdf_bytes, source_url=None, fiscal_year=None):
             )
             return fallback
     return primary
+
+
+def parse_pdf_with_fallbacks(
+    pdf_bytes,
+    source_url=None,
+    fiscal_year=None,
+    use_openai=False,
+):
+    """Run free extraction tiers first and use OpenAI only by explicit opt-in."""
+    stages = []
+    try:
+        best = parse_pdf_bytes(pdf_bytes, source_url, fiscal_year)
+    except Exception as exc:
+        best = {
+            "parseStatus": "error_local_parser",
+            "confidence": "low",
+            "warnings": [f"Local capital parser failed: {type(exc).__name__}: {exc}"],
+            "publishable": False,
+            "sourceUrl": source_url,
+            "fiscalYear": fiscal_year,
+            "parser": "capital_text_v3",
+        }
+    stages.append(
+        extraction_stage(
+            "local",
+            best.get("parseStatus", "error"),
+            best.get("warnings"),
+        )
+    )
+    if best.get("publishable") or best.get("parseStatus") == "not_applicable":
+        return with_extraction_stages(best, stages)
+
+    ocr_result = local_ocr.ocr_pdf_bytes(
+        pdf_bytes,
+        max_pages=int(os.getenv("OPENBAND_CAPITAL_OCR_MAX_PAGES", "80")),
+        timeout=int(os.getenv("OPENBAND_CAPITAL_OCR_TIMEOUT", "600")),
+    )
+    ocr_warnings = list(ocr_result.get("warnings") or [])
+    if ocr_result.get("pages"):
+        try:
+            ocr_summary = parse_page_texts(
+                ocr_result["pages"],
+                source_url,
+                fiscal_year,
+            )
+            ocr_summary["parser"] = "capital_ocr_v1"
+            ocr_summary.setdefault("warnings", []).append(
+                "Parsed from free local OCR text"
+            )
+            ocr_summary.update(validate_summary(ocr_summary))
+            ocr_warnings.extend(ocr_summary.get("warnings") or [])
+            stages.append(
+                extraction_stage(
+                    "ocr",
+                    ocr_summary.get("parseStatus", "error"),
+                    ocr_summary.get("warnings"),
+                )
+            )
+            if summary_score(ocr_summary) > summary_score(best):
+                best = ocr_summary
+            if ocr_summary.get("publishable"):
+                return with_extraction_stages(ocr_summary, stages)
+        except Exception as exc:
+            ocr_warnings.append(
+                f"OCR capital parsing failed: {type(exc).__name__}: {exc}"
+            )
+            stages.append(extraction_stage("ocr", "error_ocr_parse", ocr_warnings))
+    else:
+        stages.append(
+            extraction_stage(
+                "ocr",
+                ocr_result.get("status", "no_ocr_text"),
+                ocr_warnings,
+            )
+        )
+
+    if not use_openai:
+        warning = (
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+        )
+        best.setdefault("warnings", []).append(warning)
+        stages.append(extraction_stage("openai", "disabled", [warning]))
+        return with_extraction_stages(best, stages)
+
+    ai_summary = extract_with_openai(pdf_bytes, source_url, fiscal_year)
+    if ai_summary:
+        stages.append(
+            extraction_stage(
+                "openai",
+                ai_summary.get("parseStatus", "error"),
+                ai_summary.get("warnings"),
+            )
+        )
+        if summary_score(ai_summary) > summary_score(best):
+            best = ai_summary
+        if ai_summary.get("publishable"):
+            return with_extraction_stages(ai_summary, stages)
+    else:
+        stages.append(extraction_stage("openai", "skipped_openai_no_key"))
+    return with_extraction_stages(best, stages)
 
 
 def response_output_text(payload):
@@ -1479,6 +1609,7 @@ def extraction_records(capital_data):
                 "confidence": summary.get("confidence"),
                 "parser": summary.get("parser"),
                 "sourceUrl": summary.get("sourceUrl"),
+                "extractionStages": summary.get("extractionStages") or [],
                 "reasons": summary.get("warnings") or [],
             }
             if (
@@ -1563,15 +1694,18 @@ def main():
         print(f"[{index}/{len(candidates)}] {band['name']} {filing['year']}")
         try:
             pdf_bytes = fetch_pdf(filing["href"])
-            summary = parse_pdf_bytes(pdf_bytes, filing["href"], filing["year"])
-            if not summary.get("publishable") and args.use_openai:
-                ai_summary = extract_with_openai(pdf_bytes, filing["href"], filing["year"])
-                if ai_summary and ai_summary.get("publishable"):
-                    summary = ai_summary
+            summary = parse_pdf_with_fallbacks(
+                pdf_bytes,
+                filing["href"],
+                filing["year"],
+                use_openai=args.use_openai,
+            )
             preserved = bool(
                 existing
-                and existing.get("publishable")
-                and not summary.get("publishable")
+                and (
+                    (existing.get("publishable") and not summary.get("publishable"))
+                    or summary_score(existing) > summary_score(summary)
+                )
             )
             if not preserved:
                 save_summary(capital_data, band, filing, summary)
@@ -1583,6 +1717,7 @@ def main():
                     "status": "preserved_existing" if preserved else summary.get("parseStatus"),
                     "completeness": summary.get("extractionCompleteness"),
                     "parser": summary.get("parser"),
+                    "extractionStages": summary.get("extractionStages") or [],
                     "reasons": (
                         ["New extraction was less complete; existing publishable data preserved"]
                         if preserved

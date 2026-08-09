@@ -272,6 +272,17 @@ def response_output_text(response_json):
 
 
 def extract_with_openai_vision(pdf_bytes):
+    if os.getenv("OPENBAND_ALLOW_OPENAI", "").strip().lower() not in {
+        "1",
+        "true",
+        "yes",
+        "on",
+    }:
+        return {
+            "parse_status": "skipped_openai_disabled",
+            "warnings": ["OpenAI fallback requires explicit OPENBAND_ALLOW_OPENAI opt-in"],
+            "people": [],
+        }
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
         return {
@@ -538,12 +549,53 @@ def should_parse_people(filing):
     return filing.get("posted") and "remuneration" in filing.get("docType", "").lower()
 
 
+def successful_filing_index(path="data.json"):
+    """Index completed filings so routine retries never pay to parse them again."""
+    try:
+        with open(path, encoding="utf-8") as handle:
+            existing = json.load(handle)
+    except (OSError, ValueError, TypeError):
+        return {}
+
+    indexed = {}
+    for band in existing.get("bands", []):
+        for filing in band.get("filings", []):
+            if not filing.get("people"):
+                continue
+            key = (
+                str(band.get("id")),
+                str(filing.get("year") or ""),
+                str(filing.get("docType") or "").strip().lower(),
+            )
+            indexed[key] = filing
+    return indexed
+
+
+def metric_for_result(result):
+    status = str(result.get("parse_status") or "")
+    if result.get("people") and status == "ok_ocr":
+        return "ocr_success"
+    if result.get("people") and status == "ok_openai":
+        return "ai_success"
+    if result.get("people") and status.startswith("ok_"):
+        return "local_success"
+    return "still_pending"
+
+
 def main():
     print(f"OpenBand scraper starting - {utc_now()}")
     print(f"Scraping {len(BANDS)} bands...\n")
 
     results = []
     errors = 0
+    successful = successful_filing_index()
+    parse_metrics = {
+        "local_success": 0,
+        "ocr_success": 0,
+        "ai_success": 0,
+        "reused_success": 0,
+        "still_pending": 0,
+    }
 
     for index, band in enumerate(BANDS, start=1):
         print(f"[{index}/{len(BANDS)}] {band['name']} (ISC #{band['id']})")
@@ -567,10 +619,37 @@ def main():
             enriched_filing["warnings"] = []
 
             if should_parse_people(enriched_filing):
-                parsed = extract_remuneration_rows(enriched_filing.get("href"))
-                enriched_filing["people"] = parsed.get("people", [])
-                enriched_filing["parse_status"] = parsed.get("parse_status", "error")
-                enriched_filing["warnings"] = parsed.get("warnings", [])
+                existing_key = (
+                    str(band.get("id")),
+                    str(enriched_filing.get("year") or ""),
+                    str(enriched_filing.get("docType") or "").strip().lower(),
+                )
+                prior = successful.get(existing_key)
+                if prior:
+                    for key in (
+                        "people",
+                        "parse_status",
+                        "warnings",
+                        "parse_confidence",
+                        "manual_review_required",
+                        "parse_stages",
+                    ):
+                        if key in prior:
+                            enriched_filing[key] = prior[key]
+                    parse_metrics["reused_success"] += 1
+                else:
+                    parsed = extract_remuneration_rows(enriched_filing.get("href"))
+                    for key in (
+                        "people",
+                        "parse_status",
+                        "warnings",
+                        "parse_confidence",
+                        "manual_review_required",
+                        "parse_stages",
+                    ):
+                        if key in parsed:
+                            enriched_filing[key] = parsed[key]
+                    parse_metrics[metric_for_result(parsed)] += 1
 
             enriched.append(enriched_filing)
 
@@ -593,6 +672,7 @@ def main():
         "generated": utc_now(),
         "band_count": len(results),
         "error_count": errors,
+        "parse_metrics": parse_metrics,
         "bands": results,
     }
 
@@ -600,9 +680,12 @@ def main():
         json.dump(output, handle, ensure_ascii=False, indent=2)
 
     print(f"\nDone. {len(results)} bands scraped, {errors} errors.")
+    print(
+        "Parse metrics: "
+        + ", ".join(f"{key}={value}" for key, value in parse_metrics.items())
+    )
     print("Saved to data.json")
 
 
 if __name__ == "__main__":
     main()
-

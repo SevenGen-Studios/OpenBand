@@ -2,6 +2,12 @@ name: Auto backfill all pending remuneration data
 
 on:
   workflow_dispatch:
+    inputs:
+      use_openai:
+        description: "Last resort: allow paid OpenAI fallback after local parsing and OCR fail"
+        required: true
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -24,6 +30,9 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install free local OCR tools
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils tesseract-ocr
+
       - name: Install dependencies
         run: pip install -r requirements.txt
 
@@ -31,6 +40,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: gpt-4.1-mini
+          OPENBAND_ALLOW_OPENAI: ${{ inputs.use_openai }}
           OPENBAND_MAX_PDF_ATTEMPTS: "240"
           OPENBAND_REQUEST_DELAY: "0.25"
         run: |

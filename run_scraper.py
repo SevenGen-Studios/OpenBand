@@ -2,8 +2,9 @@
 
 Keeps the nightly run bounded and adds a text-parser fallback for FNFTA PDFs.
 Some ISC PDFs do not expose clean table grids to pdfplumber, but their visible
-text still contains the Chief and Council rows. This launcher parses those rows
-before falling back to OpenAI.
+text still contains the Chief and Council rows. This launcher tries structured
+text and free local OCR first. OpenAI is an explicit, disabled-by-default last
+resort.
 """
 
 import base64
@@ -25,11 +26,22 @@ def _patched_urlopen(request, *args, **kwargs):
 urllib.request.urlopen = _patched_urlopen
 
 import scraper  # noqa: E402
+from tools import local_ocr  # noqa: E402
 from tools import parser_quality  # noqa: E402
 
 scraper.urllib.request.urlopen = _patched_urlopen
 
 _openai_blocked_reason = None
+
+
+def openai_fallback_enabled():
+    """Require an explicit opt-in before any paid parser request is made."""
+    return os.getenv("OPENBAND_ALLOW_OPENAI", "").strip().lower() in {
+        "1",
+        "true",
+        "yes",
+        "on",
+    }
 
 
 def _json_from_model_text(text):
@@ -61,6 +73,12 @@ def _openai_file_part(pdf_bytes, pdf_url=None):
 def _extract_with_openai_vision_fixed(pdf_bytes, pdf_url=None):
     global _openai_blocked_reason
 
+    if not openai_fallback_enabled():
+        return {
+            "parse_status": "skipped_openai_disabled",
+            "warnings": ["OpenAI fallback requires explicit OPENBAND_ALLOW_OPENAI opt-in"],
+            "people": [],
+        }
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
         return {
@@ -148,12 +166,19 @@ def _extract_with_openai_vision_fixed(pdf_bytes, pdf_url=None):
             "insufficient_quota" in body.lower()
             or "exceeded your current quota" in body.lower()
         )
+        auth_error = exc.code in {401, 403}
         if quota_error:
             _openai_blocked_reason = (
                 "OpenAI API quota is unavailable; remaining AI fallbacks were skipped"
             )
         return {
-            "parse_status": "error_openai_quota" if quota_error else "error_openai_http",
+            "parse_status": (
+                "error_openai_quota"
+                if quota_error
+                else "error_openai_auth"
+                if auth_error
+                else "error_openai_http"
+            ),
             "warnings": [f"OpenAI HTTP {exc.code}: {body}"],
             "people": [],
         }
@@ -697,38 +722,62 @@ def _dedupe_people(people):
 def _extract_people_from_text(pdf_bytes):
     if scraper.pdfplumber is None:
         return []
-    people = []
+    pages = []
     with scraper.pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
         for page in pdf.pages:
-            text = page.extract_text(x_tolerance=1, y_tolerance=3) or ""
-            page_is_schedule = bool(
-                re.search(r"chief\s+and\s+council|chief\s+and\s+councillors|remuneration\s+and\s+expenses", text, re.I)
+            pages.append(page.extract_text(x_tolerance=1, y_tolerance=3) or "")
+    return _extract_people_from_text_pages(pages)
+
+
+def _extract_people_from_text_pages(pages):
+    """Parse extracted or OCR-produced page text through the same row parser."""
+    people = []
+    for text in pages:
+        page_is_schedule = bool(
+            re.search(
+                r"chief\s+and\s+council|chief\s+and\s+councillors|remuneration\s+and\s+expenses",
+                text,
+                re.I,
             )
-            header_context = ""
-            in_data_section = False
-            for line in text.splitlines():
-                if _is_column_header_line(line):
-                    header_context = (header_context + " " + _clean_cell(line)).strip()
-                    header_hits = {
-                        match.lower()
-                        for match in _COLUMN_HEADER_RE.findall(header_context)
-                    }
-                    in_data_section = in_data_section or (
-                        "months" in header_context.lower()
-                        and bool(re.search(r"\b(remuneration|salary|honou?raria|wages?)\b", header_context, re.I))
-                        and len(header_hits) >= 3
+        )
+        header_context = ""
+        in_data_section = False
+        for line in text.splitlines():
+            if _is_column_header_line(line):
+                header_context = (header_context + " " + _clean_cell(line)).strip()
+                header_hits = {
+                    match.lower() for match in _COLUMN_HEADER_RE.findall(header_context)
+                }
+                in_data_section = in_data_section or (
+                    "months" in header_context.lower()
+                    and bool(
+                        re.search(
+                            r"\b(remuneration|salary|honou?raria|wages?)\b",
+                            header_context,
+                            re.I,
+                        )
                     )
-                    continue
-                if not page_is_schedule or not in_data_section:
-                    continue
-                person = _parse_text_line(
-                    line,
-                    allow_inferred_councillor=True,
-                    header_context=header_context,
+                    and len(header_hits) >= 3
                 )
-                if person:
-                    people.append(person)
+                continue
+            if not page_is_schedule or not in_data_section:
+                continue
+            person = _parse_text_line(
+                line,
+                allow_inferred_councillor=True,
+                header_context=header_context,
+            )
+            if person:
+                people.append(person)
     return _dedupe_people(people)
+
+
+def _stage(name, status, warnings=None):
+    return {
+        "stage": name,
+        "status": status,
+        "warnings": list(warnings or []),
+    }
 
 
 def _extract_remuneration_rows_enhanced(pdf_url):
@@ -736,6 +785,7 @@ def _extract_remuneration_rows_enhanced(pdf_url):
         return {"parse_status": "no_pdf_url", "warnings": ["No PDF URL available"], "people": []}
 
     warnings = []
+    stages = []
     try:
         pdf_bytes = scraper.fetch_url(scraper.normalize_pdf_url(pdf_url), timeout=30)
     except Exception as exc:
@@ -781,11 +831,13 @@ def _extract_remuneration_rows_enhanced(pdf_url):
                 source_total = source_totals[0] if source_totals else None
                 result = {"parse_status": method, "warnings": warnings, "people": people}
                 result = parser_quality.apply_validation_metadata(result, source_total, quality)
-                if result.get("manual_review_required"):
-                    result["parse_status"] = "pending_manual_review"
-                    result["people"] = []
-                return result
-            if people:
+                if not result.get("manual_review_required"):
+                    result["parse_stages"] = stages + [_stage("local", method, result.get("warnings"))]
+                    return result
+                warnings.extend(result.get("warnings") or [])
+                warnings.append("Local table output failed validation; trying the next free stage")
+                stages.append(_stage("local", "failed_validation", result.get("warnings")))
+            if people and _looks_project_heavy(people):
                 warnings.append("Discarded table extraction because rows looked project-heavy")
             elif candidate_count == 0:
                 warnings.append("No clear Chief and Council remuneration table found")
@@ -801,14 +853,57 @@ def _extract_remuneration_rows_enhanced(pdf_url):
                     "people": text_people,
                 }
                 result = parser_quality.apply_validation_metadata(result)
-                if result.get("manual_review_required"):
-                    result["parse_status"] = "pending_manual_review"
-                    result["people"] = []
-                return result
+                if not result.get("manual_review_required"):
+                    result["parse_stages"] = stages + [_stage("local", "ok_pdf_text", result.get("warnings"))]
+                    return result
+                warnings.extend(result.get("warnings") or [])
+                warnings.append("Local text output failed validation; trying free local OCR")
+                stages.append(_stage("local", "failed_validation", result.get("warnings")))
         except Exception as exc:
             warnings.append(f"PDF text extraction failed: {exc}")
     else:
         warnings.append("pdfplumber unavailable")
+
+    if not stages:
+        stages.append(_stage("local", "no_reliable_rows", warnings))
+
+    ocr_result = local_ocr.ocr_pdf_bytes(pdf_bytes)
+    ocr_warnings = ocr_result.get("warnings") or []
+    if ocr_result.get("pages"):
+        ocr_people = _extract_people_from_text_pages(ocr_result["pages"])
+        if ocr_people:
+            result = parser_quality.apply_validation_metadata(
+                {
+                    "parse_status": "ok_ocr",
+                    "warnings": warnings + ["Parsed via free local OCR fallback"] + ocr_warnings,
+                    "people": ocr_people,
+                }
+            )
+            if not result.get("manual_review_required"):
+                result["parse_stages"] = stages + [_stage("ocr", "ok_ocr")]
+                return result
+            ocr_warnings = ocr_warnings + result.get("warnings", [])
+            ocr_warnings.append("OCR output failed validation")
+        else:
+            ocr_result["status"] = "no_ocr_rows"
+            ocr_warnings.append("Local OCR text contained no reliable official rows")
+    stages.append(_stage("ocr", ocr_result.get("status", "no_reliable_rows"), ocr_warnings))
+    warnings.extend(ocr_warnings)
+
+    if not openai_fallback_enabled():
+        warning = (
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+        )
+        warnings.append(warning)
+        stages.append(_stage("openai", "disabled", [warning]))
+        return {
+            "parse_status": "pending_openai_opt_in",
+            "warnings": list(dict.fromkeys(warnings)),
+            "people": [],
+            "parse_stages": stages,
+            "parse_confidence": "low",
+            "manual_review_required": True,
+        }
 
     ai_result = scraper.extract_with_openai_vision(pdf_bytes, pdf_url)
     if not ai_result.get("people") and ai_result.get("parse_status") == "error_openai_http":
@@ -829,16 +924,25 @@ def _extract_remuneration_rows_enhanced(pdf_url):
         ai_result["warnings"] = warnings + ["Parsed via OpenAI fallback"] + ai_result.get("warnings", [])
         ai_result = parser_quality.apply_validation_metadata(ai_result)
         if ai_result.get("manual_review_required"):
-            ai_result["parse_status"] = "pending_manual_review"
-            ai_result["people"] = []
-        return ai_result
+            warnings.extend(ai_result.get("warnings") or [])
+            stages.append(_stage("openai", "failed_validation", ai_result.get("warnings")))
+        else:
+            ai_result["parse_stages"] = stages + [_stage("openai", "ok_openai")]
+            return ai_result
 
-    warnings.append("No remuneration rows detected from PDF table or text extraction")
+    warnings.append("No extraction stage produced reliable remuneration rows")
     warnings.extend(ai_result.get("warnings", []))
+    if not stages or stages[-1].get("stage") != "openai":
+        stages.append(
+            _stage("openai", ai_result.get("parse_status", "no_rows"), ai_result.get("warnings"))
+        )
     return {
         "parse_status": ai_result.get("parse_status", "no_rows"),
         "warnings": warnings,
         "people": [],
+        "parse_stages": stages,
+        "parse_confidence": "low",
+        "manual_review_required": True,
     }
 
 

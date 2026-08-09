@@ -28,6 +28,7 @@ The public website focuses on Saskatchewan FNFTA Chief and Council remuneration 
 - `run_scraper_v2.py` - v2 launcher with extra Saskatchewan coverage
 - `tools/merge_previous_data.py` - preserves already parsed rows and pending statuses during incremental runs
 - `tools/sanitize_data.py` - removes obvious non-person rows and repairs broken totals
+- `tools/local_ocr.py` - free local Poppler/Tesseract fallback for scanned remuneration PDFs
 - `tools/audit_data.py` - checks coverage and pending parser work
 - `tools/capital_parser.py` - extracts validated audited-statement summaries into `capital-data.json`
 - `tools/member_count_scraper.py` - updates registered population counts from official ISC First Nation Profiles
@@ -51,8 +52,10 @@ python tools/capital_parser.py --year 2024-2025 --limit 10
 ```
 
 The `Backfill Community Capital data` GitHub Actions workflow supports larger
-batches and an optional OpenAI fallback. Summaries that fail reconciliation
-remain marked for manual review and are not displayed as parsed data.
+batches. It tries local PDF extraction, then free Tesseract OCR. Its optional
+OpenAI fallback is off by default and only runs after both free stages fail
+validation. Summaries that fail reconciliation remain marked for manual review
+and are not displayed as parsed data.
 
 Each run also writes `capital-extraction-report.json`, including before/after
 coverage, successful and partial records, failed records, non-applicable source
@@ -62,7 +65,7 @@ documents, unresolved filings, parser method, and extraction warnings.
 
 - **Scrape FNFTA data**: manual current-year scraper run. It validates the new `data.json` before committing so a bad scrape cannot easily overwrite the working site data.
 - **Backfill pending remuneration data**: manual batch parser for reducing the pending posted filing count.
-- **Retry pending remuneration parsing**: retries all year groups and requires `OPENAI_API_KEY` so hard PDFs can use the AI fallback.
+- **Retry pending remuneration parsing**: retries all year groups with local parsing and OCR; its paid OpenAI fallback is an explicit, disabled-by-default option.
 - **Sanitize OpenBand data**: cleans parsed rows and refreshes the audit.
 - **Audit OpenBand data**: manual/PR health check for missing expected Saskatchewan First Nations and pending posted filings.
 - **Update registered population counts**: monthly or manual refresh of sourced ISC registered population totals.
@@ -100,7 +103,13 @@ three GitHub Actions variables that activate production tracking.
 
 ## Secrets
 
-Add `OPENAI_API_KEY` under Settings -> Secrets and variables -> Actions before running parser workflows.
+No API key is required for normal parser workflows. Both financial pipelines try
+local PDF parsing first and free Tesseract OCR second, validate totals, and save
+successful results to their JSON data files. OpenAI is a last-resort option that
+must be deliberately enabled on a manual workflow run; merely storing
+`OPENAI_API_KEY` does not authorize a paid request. Unresolved filings remain
+pending for manual review, and successful stored results are reused rather than
+parsed again.
 
 ## Verification Standard
 
