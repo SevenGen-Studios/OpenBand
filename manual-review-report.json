@@ -1,426 +1,184 @@
 {
-  "generatedFrom": "2026-06-19T08:41:53.140054Z",
-  "manualReviewCount": 59,
+  "generatedFrom": "2026-08-09T22:53:57Z",
+  "manualReviewCount": 26,
   "reasonCounts": {
-    "implausibly small remuneration values appear in money columns": 2,
-    "month values appear in money columns": 19,
-    "month values appear in money columns; implausibly small remuneration values appear in money columns": 1,
-    "month values appear in money columns; total column appears duplicated into payment columns": 1,
-    "no Chief row in a small parsed filing": 1,
-    "no reliable official rows remain after validation": 17,
-    "only one parsed row; no Chief row in a small parsed filing": 6,
-    "parser confidence is low": 1,
-    "total column appears duplicated into payment columns": 11
+    "implausibly small remuneration values appear in money columns": 4,
+    "month values appear in money columns": 4,
+    "month values appear in money columns; implausibly small remuneration values appear in money columns": 16,
+    "parser confidence is low": 2
   },
   "filings": [
-    {
-      "bandId": 406,
-      "band": "Ahtahkakoop Cree Nation",
-      "year": "2017-2018",
-      "reason": "month values appear in money columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=406&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 18",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 18, fixed totals 0"
-      ]
-    },
     {
       "bandId": 369,
       "band": "Beardy's and Okemasis' Cree Nation",
       "year": "2016-2017",
-      "reason": "month values appear in money columns",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
       "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=369&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
+        "No clear Chief and Council remuneration table found",
         "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 2",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 12, fixed totals 0"
+        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 11, fixed totals 0",
+        "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {
-      "bandId": 359,
-      "band": "Black Lake Denesuline First Nation",
-      "year": "2021-2022",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=359&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "bandId": 404,
+      "band": "Big River First Nation",
+      "year": "2013-2014",
+      "reason": "implausibly small remuneration values appear in money columns",
+      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2013-2014&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 1",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Sanitized parsed rows: removed 1, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 378,
-      "band": "Carry the Kettle Nakoda Nation",
-      "year": "2020-2021",
-      "reason": "total column appears duplicated into payment columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=378&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 2",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: total column appears duplicated into payment columns",
-        "Sanitized parsed rows: removed 7, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 378,
-      "band": "Carry the Kettle Nakoda Nation",
-      "year": "2021-2022",
-      "reason": "total column appears duplicated into payment columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=378&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 1",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: total column appears duplicated into payment columns",
-        "Sanitized parsed rows: removed 7, fixed totals 0"
+        "No clear Chief and Council remuneration table found",
+        "Parsed via free local OCR fallback",
+        "Quarantined parsed rows: implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 11, fixed totals 0"
       ]
     },
     {
       "bandId": 378,
       "band": "Carry the Kettle Nakoda Nation",
       "year": "2022-2023",
-      "reason": "month values appear in money columns; total column appears duplicated into payment columns",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
       "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=378&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
+        "No clear Chief and Council remuneration table found",
         "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 1",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: month values appear in money columns; total column appears duplicated into payment columns",
-        "Sanitized parsed rows: removed 10, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 366,
-      "band": "Cote First Nation",
-      "year": "2013-2014",
-      "reason": "only one parsed row; no Chief row in a small parsed filing",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=366&FY=2013-2014&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Quarantined parsed rows: only one parsed row; no Chief row in a small parsed filing",
-        "Sanitized parsed rows: removed 1, fixed totals 0"
+        "Row 7: total does not equal remuneration + travel/expenses + other",
+        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 10, fixed totals 0",
+        "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {
       "bandId": 407,
       "band": "Cree Nation of Chitek Lake",
-      "year": "2019-2020",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=407&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 2",
-        "Sanitized parsed rows: removed 0, fixed totals 2",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Sanitized parsed rows: removed 2, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 391,
-      "band": "George Gordon First Nation",
-      "year": "2015-2016",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=391&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 352,
-      "band": "Hatchet Lake Denesuline",
-      "year": "2013-2014",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=352&FY=2013-2014&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 352,
-      "band": "Hatchet Lake Denesuline",
       "year": "2014-2015",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=352&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "reason": "implausibly small remuneration values appear in money columns",
+      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=407&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 0"
+        "No clear Chief and Council remuneration table found",
+        "Parsed via free local OCR fallback",
+        "Row 1: total does not equal remuneration + travel/expenses + other",
+        "Quarantined parsed rows: implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 7, fixed totals 1"
       ]
     },
     {
-      "bandId": 352,
-      "band": "Hatchet Lake Denesuline",
-      "year": "2015-2016",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=352&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 352,
-      "band": "Hatchet Lake Denesuline",
+      "bandId": 341,
+      "band": "Lucky Man Cree Nation",
       "year": "2016-2017",
-      "reason": "no Chief row in a small parsed filing",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=352&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 3",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: no Chief row in a small parsed filing",
-        "Sanitized parsed rows: removed 3, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 370,
-      "band": "James Smith Cree Nation",
-      "year": "2017-2018",
-      "reason": "total column appears duplicated into payment columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=370&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Skipped after 180 PDF parse attempts in this run",
-        "Quarantined parsed rows: total column appears duplicated into payment columns",
-        "Sanitized parsed rows: removed 21, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 370,
-      "band": "James Smith Cree Nation",
-      "year": "2021-2022",
-      "reason": "total column appears duplicated into payment columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=370&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 9",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: total column appears duplicated into payment columns",
-        "Sanitized parsed rows: removed 19, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 370,
-      "band": "James Smith Cree Nation",
-      "year": "2024-2025",
-      "reason": "total column appears duplicated into payment columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=370&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: total column appears duplicated into payment columns",
-        "Sanitized parsed rows: removed 17, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 362,
-      "band": "Kahkewistahaw First Nation",
-      "year": "2017-2018",
       "reason": "month values appear in money columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=362&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=341&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 8",
+        "No clear Chief and Council remuneration table found",
+        "Parsed via free local OCR fallback",
         "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 8, fixed totals 0"
+        "Sanitized parsed rows: removed 12, fixed totals 0",
+        "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {
-      "bandId": 353,
-      "band": "Lac La Ronge Indian Band",
-      "year": "2013-2014",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=353&FY=2013-2014&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "bandId": 341,
+      "band": "Lucky Man Cree Nation",
+      "year": "2020-2021",
+      "reason": "parser confidence is low",
+      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=341&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
+        "No clear Chief and Council remuneration table found",
         "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 353,
-      "band": "Lac La Ronge Indian Band",
-      "year": "2014-2015",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=353&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 353,
-      "band": "Lac La Ronge Indian Band",
-      "year": "2015-2016",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=353&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 353,
-      "band": "Lac La Ronge Indian Band",
-      "year": "2016-2017",
-      "reason": "only one parsed row; no Chief row in a small parsed filing",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=353&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 1",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: only one parsed row; no Chief row in a small parsed filing",
-        "Sanitized parsed rows: removed 1, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 353,
-      "band": "Lac La Ronge Indian Band",
-      "year": "2017-2018",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=353&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
+        "No Chief row detected",
+        "Only one official row parsed",
+        "No official rows parsed",
+        "Quarantined parsed rows: parser confidence is low",
         "Sanitized parsed rows: removed 1, fixed totals 0",
         "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {
-      "bandId": 353,
-      "band": "Lac La Ronge Indian Band",
-      "year": "2018-2019",
-      "reason": "only one parsed row; no Chief row in a small parsed filing",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=353&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 1",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: only one parsed row; no Chief row in a small parsed filing",
-        "Sanitized parsed rows: removed 1, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 353,
-      "band": "Lac La Ronge Indian Band",
-      "year": "2020-2021",
-      "reason": "only one parsed row; no Chief row in a small parsed filing",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=353&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 1",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: only one parsed row; no Chief row in a small parsed filing",
-        "Sanitized parsed rows: removed 1, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 341,
-      "band": "Lucky Man Cree Nation",
-      "year": "2020-2021",
-      "reason": "only one parsed row; no Chief row in a small parsed filing",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=341&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: only one parsed row; no Chief row in a small parsed filing",
-        "Sanitized parsed rows: removed 1, fixed totals 0"
-      ]
-    },
-    {
       "bandId": 341,
       "band": "Lucky Man Cree Nation",
       "year": "2021-2022",
-      "reason": "only one parsed row; no Chief row in a small parsed filing",
+      "reason": "parser confidence is low",
       "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=341&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
+        "No clear Chief and Council remuneration table found",
         "Parsed from PDF text fallback",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: only one parsed row; no Chief row in a small parsed filing",
-        "Sanitized parsed rows: removed 1, fixed totals 0"
+        "No Chief row detected",
+        "Only one official row parsed",
+        "No official rows parsed",
+        "Quarantined parsed rows: parser confidence is low",
+        "Sanitized parsed rows: removed 1, fixed totals 0",
+        "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {
       "bandId": 396,
       "band": "Makwa Sahgaiehcan First Nation",
       "year": "2022-2023",
-      "reason": "month values appear in money columns",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
       "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=396&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
+        "No clear Chief and Council remuneration table found",
         "Parsed from PDF text fallback",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 12, fixed totals 0"
+        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 12, fixed totals 0",
+        "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {
       "bandId": 397,
       "band": "Ministikwan Lake Cree Nation",
       "year": "2021-2022",
-      "reason": "month values appear in money columns",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
       "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=397&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
+        "No clear Chief and Council remuneration table found",
         "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 9",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 9, fixed totals 0"
+        "Totals do not reconcile for many rows",
+        "Row 1: total does not equal remuneration + travel/expenses + other",
+        "Row 2: total does not equal remuneration + travel/expenses + other",
+        "Row 3: total does not equal remuneration + travel/expenses + other",
+        "Row 4: total does not equal remuneration + travel/expenses + other",
+        "Row 5: total does not equal remuneration + travel/expenses + other",
+        "Row 6: total does not equal remuneration + travel/expenses + other",
+        "Row 7: total does not equal remuneration + travel/expenses + other",
+        "Row 8: total does not equal remuneration + travel/expenses + other",
+        "Local text output failed validation; trying free local OCR",
+        "Parsed via free local OCR fallback",
+        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 8, fixed totals 0",
+        "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {
       "bandId": 397,
       "band": "Ministikwan Lake Cree Nation",
       "year": "2023-2024",
-      "reason": "month values appear in money columns",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
       "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=397&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
+        "No clear Chief and Council remuneration table found",
         "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 1",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 6, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 374,
-      "band": "Mistawasis Nehiyawak",
-      "year": "2017-2018",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=374&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 0",
+        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 8, fixed totals 0",
         "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {
-      "bandId": 374,
-      "band": "Mistawasis Nehiyawak",
-      "year": "2019-2020",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=374&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "bandId": 354,
+      "band": "Montreal Lake Cree Nation",
+      "year": "2014-2015",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
+      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=354&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 0",
-        "Preserved pending parse status from previous data.json snapshot"
-      ]
-    },
-    {
-      "bandId": 374,
-      "band": "Mistawasis Nehiyawak",
-      "year": "2021-2022",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=374&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Preserved parsed rows from previous data.json snapshot",
-        "Sanitized parsed rows: removed 2, fixed totals 0"
+        "No clear Chief and Council remuneration table found",
+        "Parsed via free local OCR fallback",
+        "Row 8: total does not equal remuneration + travel/expenses + other",
+        "Row 10: total does not equal remuneration + travel/expenses + other",
+        "Row 12: total does not equal remuneration + travel/expenses + other",
+        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 12, fixed totals 3"
       ]
     },
     {
@@ -430,25 +188,27 @@
       "reason": "month values appear in money columns",
       "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=354&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
+        "No clear Chief and Council remuneration table found",
         "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 8",
-        "Preserved parsed rows from previous data.json snapshot",
         "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 8, fixed totals 0"
+        "Sanitized parsed rows: removed 8, fixed totals 0",
+        "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {
       "bandId": 354,
       "band": "Montreal Lake Cree Nation",
       "year": "2019-2020",
-      "reason": "month values appear in money columns",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
       "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=354&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
+        "No clear Chief and Council remuneration table found",
         "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 9",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 9, fixed totals 0"
+        "Row 5: total does not equal remuneration + travel/expenses + other",
+        "Row 6: total does not equal remuneration + travel/expenses + other",
+        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 9, fixed totals 2",
+        "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {
@@ -458,91 +218,84 @@
       "reason": "month values appear in money columns",
       "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=354&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
+        "No clear Chief and Council remuneration table found",
         "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 11",
-        "Preserved parsed rows from previous data.json snapshot",
+        "Row 10: total does not equal remuneration + travel/expenses + other",
+        "Row 11: total does not equal remuneration + travel/expenses + other",
         "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 11, fixed totals 0"
+        "Sanitized parsed rows: removed 11, fixed totals 2",
+        "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {
       "bandId": 342,
       "band": "Moosomin First Nation",
       "year": "2018-2019",
-      "reason": "month values appear in money columns",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
       "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=342&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
+        "No clear Chief and Council remuneration table found",
         "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 0",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 9, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 375,
-      "band": "Muskeg Lake Cree Nation",
-      "year": "2020-2021",
-      "reason": "month values appear in money columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=375&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 7",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 7, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 371,
-      "band": "Muskoday First Nation",
-      "year": "2018-2019",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=371&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Sanitized parsed rows: removed 1, fixed totals 0",
+        "Row 7: total does not equal remuneration + travel/expenses + other",
+        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 9, fixed totals 2",
         "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {
       "bandId": 371,
       "band": "Muskoday First Nation",
-      "year": "2021-2022",
-      "reason": "total column appears duplicated into payment columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=371&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "year": "2015-2016",
+      "reason": "implausibly small remuneration values appear in money columns",
+      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=371&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 0",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: total column appears duplicated into payment columns",
-        "Sanitized parsed rows: removed 5, fixed totals 0"
+        "No clear Chief and Council remuneration table found",
+        "Parsed via free local OCR fallback",
+        "Quarantined parsed rows: implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 6, fixed totals 0"
       ]
     },
     {
       "bandId": 371,
       "band": "Muskoday First Nation",
-      "year": "2022-2023",
-      "reason": "total column appears duplicated into payment columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=371&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "year": "2020-2021",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
+      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=371&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 0",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: total column appears duplicated into payment columns",
-        "Sanitized parsed rows: removed 5, fixed totals 0"
+        "No clear Chief and Council remuneration table found",
+        "Parsed via free local OCR fallback",
+        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 9, fixed totals 0",
+        "Preserved pending parse status from previous data.json snapshot"
+      ]
+    },
+    {
+      "bandId": 382,
+      "band": "Okanese First Nation",
+      "year": "2018-2019",
+      "reason": "implausibly small remuneration values appear in money columns",
+      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=382&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "No clear Chief and Council remuneration table found",
+        "Parsed via free local OCR fallback",
+        "No Chief row detected",
+        "Quarantined parsed rows: implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 4, fixed totals 0",
+        "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {
       "bandId": 383,
       "band": "Pasqua First Nation",
       "year": "2016-2017",
-      "reason": "month values appear in money columns",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
       "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=383&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
+        "No clear Chief and Council remuneration table found",
         "Parsed from PDF text fallback",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 12, fixed totals 0"
+        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 12, fixed totals 0",
+        "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {
@@ -552,236 +305,100 @@
       "reason": "month values appear in money columns",
       "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=355&FY=2013-2014&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
+        "No clear Chief and Council remuneration table found",
         "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 1",
         "Quarantined parsed rows: month values appear in money columns",
         "Sanitized parsed rows: removed 24, fixed totals 1"
-      ]
-    },
-    {
-      "bandId": 409,
-      "band": "Pheasant Rump Nakota Nation",
-      "year": "2014-2015",
-      "reason": "total column appears duplicated into payment columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=409&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Quarantined parsed rows: total column appears duplicated into payment columns",
-        "Sanitized parsed rows: removed 9, fixed totals 0"
       ]
     },
     {
       "bandId": 345,
       "band": "Poundmaker Cree Nation",
       "year": "2016-2017",
-      "reason": "month values appear in money columns",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
       "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=345&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
+        "No clear Chief and Council remuneration table found",
         "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 4",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 8, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 356,
-      "band": "Red Earth Cree Nation",
-      "year": "2019-2020",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=356&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Sanitized parsed rows: removed 1, fixed totals 0",
-        "Preserved pending parse status from previous data.json snapshot"
-      ]
-    },
-    {
-      "bandId": 356,
-      "band": "Red Earth Cree Nation",
-      "year": "2020-2021",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=356&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Sanitized parsed rows: removed 1, fixed totals 0",
-        "Preserved pending parse status from previous data.json snapshot"
-      ]
-    },
-    {
-      "bandId": 356,
-      "band": "Red Earth Cree Nation",
-      "year": "2023-2024",
-      "reason": "total column appears duplicated into payment columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=356&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: total column appears duplicated into payment columns",
-        "Sanitized parsed rows: removed 5, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 347,
-      "band": "Saulteaux First Nation",
-      "year": "2024-2025",
-      "reason": "implausibly small remuneration values appear in money columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=347&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 6",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: implausibly small remuneration values appear in money columns",
-        "Sanitized parsed rows: removed 6, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 357,
-      "band": "Shoal Lake Cree Nation",
-      "year": "2017-2018",
-      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=357&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 6",
-        "Preserved parsed rows from previous data.json snapshot",
         "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
-        "Sanitized parsed rows: removed 7, fixed totals 0"
+        "Sanitized parsed rows: removed 8, fixed totals 0",
+        "Preserved pending parse status from previous data.json snapshot"
+      ]
+    },
+    {
+      "bandId": 356,
+      "band": "Red Earth Cree Nation",
+      "year": "2013-2014",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
+      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=356&FY=2013-2014&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "No clear Chief and Council remuneration table found",
+        "Parsed via free local OCR fallback",
+        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 9, fixed totals 0"
       ]
     },
     {
       "bandId": 357,
       "band": "Shoal Lake Cree Nation",
       "year": "2019-2020",
-      "reason": "month values appear in money columns",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
       "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=357&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
+        "No clear Chief and Council remuneration table found",
         "Parsed from PDF text fallback",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 10, fixed totals 0"
+        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 10, fixed totals 0",
+        "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {
       "bandId": 357,
       "band": "Shoal Lake Cree Nation",
       "year": "2022-2023",
-      "reason": "month values appear in money columns",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
       "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=357&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
+        "No clear Chief and Council remuneration table found",
         "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 5",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 7, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 386,
-      "band": "Standing Buffalo Dakota Nation",
-      "year": "2016-2017",
-      "reason": "month values appear in money columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=386&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 12",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 12, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 368,
-      "band": "The Key First Nation",
-      "year": "2014-2015",
-      "reason": "total column appears duplicated into payment columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=368&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Quarantined parsed rows: total column appears duplicated into payment columns",
-        "Sanitized parsed rows: removed 12, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 368,
-      "band": "The Key First Nation",
-      "year": "2017-2018",
-      "reason": "total column appears duplicated into payment columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=368&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: total column appears duplicated into payment columns",
-        "Sanitized parsed rows: removed 6, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 368,
-      "band": "The Key First Nation",
-      "year": "2020-2021",
-      "reason": "month values appear in money columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=368&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 6",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 6, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 358,
-      "band": "Wahpeton Dakota Nation",
-      "year": "2014-2015",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=358&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Sanitized parsed rows: removed 1, fixed totals 0",
         "Totals do not reconcile for many rows",
         "Row 1: total does not equal remuneration + travel/expenses + other",
         "Row 2: total does not equal remuneration + travel/expenses + other",
         "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
         "Row 6: total does not equal remuneration + travel/expenses + other",
-        "No Chief row detected",
-        "Quarantined parsed rows: parser confidence is low",
+        "Row 7: total does not equal remuneration + travel/expenses + other",
+        "Local text output failed validation; trying free local OCR",
+        "Parsed via free local OCR fallback",
+        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 7, fixed totals 0",
+        "Preserved pending parse status from previous data.json snapshot"
+      ]
+    },
+    {
+      "bandId": 348,
+      "band": "Sweetgrass First Nation",
+      "year": "2013-2014",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
+      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=348&FY=2013-2014&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "No clear Chief and Council remuneration table found",
+        "Parsed via free local OCR fallback",
+        "Row 8: total does not equal remuneration + travel/expenses + other",
+        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 8, fixed totals 1"
+      ]
+    },
+    {
+      "bandId": 368,
+      "band": "The Key First Nation",
+      "year": "2013-2014",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
+      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=368&FY=2013-2014&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "No clear Chief and Council remuneration table found",
+        "Parsed via free local OCR fallback",
+        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
         "Sanitized parsed rows: removed 6, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 402,
-      "band": "Waterhen Lake First Nation",
-      "year": "2015-2016",
-      "reason": "implausibly small remuneration values appear in money columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=402&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 3",
-        "Quarantined parsed rows: implausibly small remuneration values appear in money columns",
-        "Sanitized parsed rows: removed 5, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 402,
-      "band": "Waterhen Lake First Nation",
-      "year": "2020-2021",
-      "reason": "month values appear in money columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=402&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 0, fixed totals 3",
-        "Preserved parsed rows from previous data.json snapshot",
-        "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 8, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 372,
-      "band": "Whitecap Dakota First Nation",
-      "year": "2014-2015",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=372&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Sanitized parsed rows: removed 1, fixed totals 0"
       ]
     }
   ]

@@ -1,69 +1,70 @@
-generated: 2026-06-19T08:41:53.140054Z
+generated: 2026-08-09T22:53:57Z
 bands: 69
 error_count: 0
-bands with parsed remuneration: 65
-parsed remuneration filings: 341
-posted remuneration filings still pending: 361
+bands with parsed remuneration: 68
+parsed remuneration filings: 528
+posted remuneration filings still pending: 196
 
 pending by fiscal year:
-  2024-2025: 10 pending, 26 parsed
-  2023-2024: 11 pending, 35 parsed
-  2022-2023: 15 pending, 38 parsed
-  2021-2022: 18 pending, 38 parsed
-  2020-2021: 27 pending, 32 parsed
-  2019-2020: 25 pending, 37 parsed
-  2018-2019: 31 pending, 32 parsed
-  2017-2018: 33 pending, 32 parsed
-  2016-2017: 39 pending, 26 parsed
-  2015-2016: 39 pending, 27 parsed
-  2014-2015: 55 pending, 11 parsed
-  2013-2014: 58 pending, 7 parsed
+  2025-2026: 6 pending, 0 parsed
+  2024-2025: 2 pending, 37 parsed
+  2023-2024: 4 pending, 44 parsed
+  2022-2023: 10 pending, 45 parsed
+  2021-2022: 5 pending, 52 parsed
+  2020-2021: 14 pending, 46 parsed
+  2019-2020: 10 pending, 53 parsed
+  2018-2019: 14 pending, 50 parsed
+  2017-2018: 11 pending, 55 parsed
+  2016-2017: 18 pending, 48 parsed
+  2015-2016: 19 pending, 48 parsed
+  2014-2015: 33 pending, 34 parsed
+  2013-2014: 50 pending, 16 parsed
 
 pending by parse status:
-  error_openai_http: 279
-  pending_manual_review: 59
-  pending_retry: 23
+  pending_openai_opt_in: 164
+  pending_manual_review: 26
+  not_required: 6
 
 expected SK names missing: 0
 
 first pending examples:
-  PENDING: Cote First Nation 2013-2014 (pending_manual_review)
-  PENDING: Cote First Nation 2014-2015 (error_openai_http)
-  PENDING: Cote First Nation 2015-2016 (error_openai_http)
-  PENDING: Cote First Nation 2016-2017 (error_openai_http)
-  PENDING: Cote First Nation 2017-2018 (error_openai_http)
-  PENDING: Cote First Nation 2018-2019 (error_openai_http)
-  PENDING: Cote First Nation 2019-2020 (error_openai_http)
-  PENDING: Cote First Nation 2020-2021 (error_openai_http)
-  PENDING: George Gordon First Nation 2013-2014 (error_openai_http)
-  PENDING: George Gordon First Nation 2014-2015 (error_openai_http)
-  PENDING: George Gordon First Nation 2015-2016 (pending_manual_review)
-  PENDING: George Gordon First Nation 2016-2017 (error_openai_http)
-  PENDING: George Gordon First Nation 2017-2018 (error_openai_http)
-  PENDING: Kahkewistahaw First Nation 2013-2014 (error_openai_http)
-  PENDING: Kahkewistahaw First Nation 2014-2015 (error_openai_http)
-  PENDING: Kahkewistahaw First Nation 2015-2016 (error_openai_http)
-  PENDING: Kahkewistahaw First Nation 2017-2018 (pending_manual_review)
-  PENDING: Keeseekoose First Nation 2013-2014 (error_openai_http)
-  PENDING: Keeseekoose First Nation 2014-2015 (error_openai_http)
-  PENDING: Keeseekoose First Nation 2015-2016 (error_openai_http)
-  PENDING: Keeseekoose First Nation 2016-2017 (error_openai_http)
-  PENDING: Keeseekoose First Nation 2017-2018 (error_openai_http)
-  PENDING: Keeseekoose First Nation 2018-2019 (error_openai_http)
-  PENDING: Keeseekoose First Nation 2022-2023 (error_openai_http)
-  PENDING: Kinistin Saulteaux Nation 2013-2014 (error_openai_http)
-  PENDING: Kinistin Saulteaux Nation 2014-2015 (error_openai_http)
-  PENDING: Kinistin Saulteaux Nation 2015-2016 (error_openai_http)
-  PENDING: Kinistin Saulteaux Nation 2023-2024 (error_openai_http)
-  PENDING: Little Black Bear First Nation 2013-2014 (error_openai_http)
-  PENDING: Little Black Bear First Nation 2014-2015 (error_openai_http)
-  PENDING: Little Black Bear First Nation 2015-2016 (error_openai_http)
-  PENDING: Little Black Bear First Nation 2016-2017 (error_openai_http)
-  PENDING: Little Black Bear First Nation 2017-2018 (error_openai_http)
-  PENDING: Little Black Bear First Nation 2018-2019 (error_openai_http)
-  PENDING: Little Black Bear First Nation 2019-2020 (error_openai_http)
-  PENDING: Little Black Bear First Nation 2020-2021 (error_openai_http)
-  PENDING: Little Black Bear First Nation 2021-2022 (error_openai_http)
-  PENDING: Canoe Lake Cree First Nation 2013-2014 (error_openai_http)
-  PENDING: Canoe Lake Cree First Nation 2014-2015 (error_openai_http)
-  PENDING: Canoe Lake Cree First Nation 2015-2016 (error_openai_http)
+  PENDING: Carry the Kettle Nakoda Nation 2013-2014 (pending_openai_opt_in)
+  PENDING: Carry the Kettle Nakoda Nation 2014-2015 (pending_openai_opt_in)
+  PENDING: Carry the Kettle Nakoda Nation 2020-2021 (pending_openai_opt_in)
+  PENDING: Carry the Kettle Nakoda Nation 2022-2023 (pending_manual_review)
+  PENDING: Cote First Nation 2013-2014 (pending_openai_opt_in)
+  PENDING: Cote First Nation 2020-2021 (pending_openai_opt_in)
+  PENDING: George Gordon First Nation 2013-2014 (pending_openai_opt_in)
+  PENDING: George Gordon First Nation 2014-2015 (pending_openai_opt_in)
+  PENDING: George Gordon First Nation 2015-2016 (pending_openai_opt_in)
+  PENDING: Kahkewistahaw First Nation 2014-2015 (pending_openai_opt_in)
+  PENDING: Kahkewistahaw First Nation 2015-2016 (pending_openai_opt_in)
+  PENDING: Kahkewistahaw First Nation 2017-2018 (pending_openai_opt_in)
+  PENDING: Keeseekoose First Nation 2013-2014 (pending_openai_opt_in)
+  PENDING: Keeseekoose First Nation 2017-2018 (pending_openai_opt_in)
+  PENDING: Kinistin Saulteaux Nation 2023-2024 (pending_openai_opt_in)
+  PENDING: Little Black Bear First Nation 2013-2014 (pending_openai_opt_in)
+  PENDING: Lucky Man Cree Nation 2013-2014 (pending_openai_opt_in)
+  PENDING: Lucky Man Cree Nation 2014-2015 (pending_openai_opt_in)
+  PENDING: Lucky Man Cree Nation 2016-2017 (pending_manual_review)
+  PENDING: Lucky Man Cree Nation 2020-2021 (pending_manual_review)
+  PENDING: Lucky Man Cree Nation 2021-2022 (pending_manual_review)
+  PENDING: Makwa Sahgaiehcan First Nation 2013-2014 (pending_openai_opt_in)
+  PENDING: Makwa Sahgaiehcan First Nation 2014-2015 (pending_openai_opt_in)
+  PENDING: Makwa Sahgaiehcan First Nation 2015-2016 (pending_openai_opt_in)
+  PENDING: Makwa Sahgaiehcan First Nation 2016-2017 (pending_openai_opt_in)
+  PENDING: Makwa Sahgaiehcan First Nation 2017-2018 (pending_openai_opt_in)
+  PENDING: Makwa Sahgaiehcan First Nation 2022-2023 (pending_manual_review)
+  PENDING: Mistawasis Nehiyawak 2013-2014 (pending_openai_opt_in)
+  PENDING: Mistawasis Nehiyawak 2014-2015 (pending_openai_opt_in)
+  PENDING: Mistawasis Nehiyawak 2015-2016 (pending_openai_opt_in)
+  PENDING: Mistawasis Nehiyawak 2018-2019 (pending_openai_opt_in)
+  PENDING: Mistawasis Nehiyawak 2020-2021 (pending_openai_opt_in)
+  PENDING: Mistawasis Nehiyawak 2021-2022 (pending_openai_opt_in)
+  PENDING: Muskoday First Nation 2015-2016 (pending_manual_review)
+  PENDING: Muskoday First Nation 2018-2019 (pending_openai_opt_in)
+  PENDING: Muskoday First Nation 2019-2020 (pending_openai_opt_in)
+  PENDING: Muskoday First Nation 2020-2021 (pending_manual_review)
+  PENDING: Pasqua First Nation 2013-2014 (pending_openai_opt_in)
+  PENDING: Pasqua First Nation 2016-2017 (pending_manual_review)
+  PENDING: Pasqua First Nation 2022-2023 (pending_openai_opt_in)
