@@ -7,6 +7,7 @@ from tools.news_discovery import (
     PILOT_BAND_IDS,
     canonical_url,
     candidate_review_reason,
+    classify_project_signal,
     communities_for_targeted_search,
     community_name_match,
     discover_gdelt_articles,
@@ -15,6 +16,7 @@ from tools.news_discovery import (
     extract_html_candidates,
     is_supported_update,
     merge_articles,
+    merge_facebook_project_signals,
     parse_date_text,
     prune_invalid_generated_articles,
 )
@@ -109,6 +111,15 @@ class NewsDiscoveryTests(unittest.TestCase):
         )
         self.assertTrue(
             all(item["discoveryQueries"] for item in registry["communities"])
+        )
+        self.assertTrue(
+            all(item["facebookMonitoring"] for item in registry["communities"])
+        )
+        self.assertTrue(
+            all(
+                any("facebook.com/groups" in query for query in item["discoveryQueries"])
+                for item in registry["communities"]
+            )
         )
 
     def test_date_and_url_normalization(self):
@@ -212,6 +223,105 @@ class NewsDiscoveryTests(unittest.TestCase):
         self.assertEqual("Bearer secret-token", headers["Authorization"])
         self.assertFalse(respect_robots)
         self.assertEqual(1, len(rows))
+
+    def test_meta_pages_are_paginated_and_paging_tokens_are_removed(self):
+        class FakeFetcher:
+            requests = []
+
+            def get(self, url, headers=None, respect_robots=True):
+                self.requests.append((url, headers, respect_robots))
+                if len(self.requests) == 1:
+                    payload = {
+                        "data": [{
+                            "message": "Construction is underway on a new 12-home housing project.",
+                            "created_time": "2026-07-28T13:45:00Z",
+                            "permalink_url": "https://www.facebook.com/example/posts/1",
+                        }],
+                        "paging": {
+                            "next": "https://graph.facebook.com/v23.0/example/posts?after=cursor&access_token=must-not-leak"
+                        },
+                    }
+                else:
+                    payload = {
+                        "data": [{
+                            "message": "The community completed construction of its water treatment plant.",
+                            "created_time": "2026-07-27T13:45:00Z",
+                            "permalink_url": "https://www.facebook.com/example/posts/2",
+                        }]
+                    }
+                return json.dumps(payload).encode(), url, "application/json"
+
+        source = {
+            "type": "Facebook",
+            "name": "Cowessess First Nation",
+            "pageHandle": "cowessessfn",
+            "entityKind": "Page",
+            "official": True,
+        }
+        fetcher = FakeFetcher()
+        rows = discover_meta_posts(
+            fetcher, self.community, source, "secret-token", since_date="2026-01-01"
+        )
+        self.assertEqual(2, len(rows))
+        self.assertEqual(2, len(fetcher.requests))
+        self.assertNotIn("must-not-leak", fetcher.requests[1][0])
+        self.assertTrue(all(item.get("projectSignal") for item in rows))
+
+    def test_groups_are_never_fetched_by_the_ordinary_meta_adapter(self):
+        class RefusingFetcher:
+            def get(self, *args, **kwargs):
+                raise AssertionError("Group source must not be fetched")
+
+        source = {
+            "type": "Facebook",
+            "name": "Community Group",
+            "metaPageId": "123",
+            "entityKind": "Group",
+            "official": False,
+        }
+        self.assertEqual(
+            [],
+            discover_meta_posts(
+                RefusingFetcher(), self.community, source, "secret-token"
+            ),
+        )
+
+    def test_project_classifier_requires_both_asset_and_delivery_language(self):
+        signal = classify_project_signal(
+            "Construction is underway on a new 12-home housing development."
+        )
+        self.assertEqual("Housing", signal["category"])
+        self.assertGreaterEqual(signal["confidence"], 0.78)
+        self.assertIsNone(classify_project_signal("Housing applications are available."))
+
+    def test_official_facebook_projects_merge_only_into_unverified_feed(self):
+        candidate = {
+            "id": "post-1",
+            "bandId": 361,
+            "communityName": "Cowessess First Nation",
+            "sourceType": "Facebook",
+            "sourceName": "Cowessess First Nation",
+            "title": "New housing construction announced (community post)",
+            "summary": "The Nation announced construction of new homes.",
+            "publishedAt": "2026-07-28",
+            "url": "https://www.facebook.com/example/posts/1",
+            "facebookSource": {"entityKind": "Page", "official": True},
+            "projectSignal": {
+                "category": "Housing",
+                "confidence": 0.9,
+                "locationScope": "Unspecified",
+            },
+        }
+        payload, added = merge_facebook_project_signals(
+            {"schemaVersion": 1, "unverifiedProjects": []}, [candidate]
+        )
+        self.assertEqual(1, len(added))
+        self.assertEqual(1, len(payload["unverifiedProjects"]))
+        self.assertNotIn("status", added[0])
+        self.assertEqual(
+            "Authorized official First Nation Facebook Page post",
+            added[0]["signalType"],
+        )
 
     def test_future_event_date_is_not_kept_as_publication_date(self):
         retained, removed = prune_invalid_generated_articles(

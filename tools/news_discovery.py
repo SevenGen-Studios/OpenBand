@@ -31,6 +31,7 @@ REGISTRY_PATH = ROOT / "news-sources.json"
 CACHE_PATH = ROOT / "news-discovery-cache.json"
 REVIEW_PATH = ROOT / "news-review-queue.json"
 REPORT_PATH = ROOT / "news-coverage-report.json"
+PROJECTS_PATH = ROOT / "projects-data.json"
 
 USER_AGENT = "OpenBandNews/1.0 (+https://openband.ca/news/)"
 SOURCE_TYPES = [
@@ -96,6 +97,26 @@ SUPPORTED_PATTERNS = re.compile(
     r"culture|language|justice|public works|development)\b",
     re.I,
 )
+PROJECT_ACTION_PATTERNS = re.compile(
+    r"\b(announce|announced|approval|approved|award|awarded|build|building|built|"
+    r"complete|completed|completion|construct|construction|develop|development|"
+    r"expand|expansion|fund|funded|funding|groundbreak|open|opened|opening|plan|"
+    r"planned|proposal|proposed|repair|renovate|renovation|replace|replacement|"
+    r"retrofit|tender|upgrade|upgrades|work underway)\b",
+    re.I,
+)
+PROJECT_CATEGORY_RULES = [
+    ("Housing", r"\b(housing|homes?|residential|subdivision|apartment|duplex|units?)\b"),
+    ("Water & Wastewater", r"\b(water|wastewater|sewer|sewage|lagoon|pumphouse|pump station)\b"),
+    ("Roads & Bridges", r"\b(road|roads|bridge|bridges|culvert|drainage|pathway|trail)\b"),
+    ("Education Facility", r"\b(school|daycare|head start|education facility|classroom)\b"),
+    ("Health Centre", r"\b(health centre|health center|clinic|hospital|wellness centre|wellness center)\b"),
+    ("Emergency Infrastructure", r"\b(fire hall|firehall|emergency operations|safe home|safe house)\b"),
+    ("Broadband Infrastructure", r"\b(broadband|high.speed internet|fibre|fiber optic|cell tower|network tower)\b"),
+    ("Renewable Energy", r"\b(solar|wind farm|renewable energy|battery storage|microgrid)\b"),
+    ("Community Building", r"\b(community (?:centre|center|building|hall)|band office|recreation centre|arena)\b"),
+    ("Waste Infrastructure", r"\b(landfill|solid waste|transfer station|recycling facility)\b"),
+]
 DATE_PATTERNS = [
     re.compile(
         r"\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|"
@@ -251,6 +272,49 @@ def classify_category(value):
         if re.search(pattern, text):
             return category
     return "Other"
+
+
+def classify_project_signal(value):
+    """Return a conservative infrastructure-project classification or None."""
+    text = clean_text(value)
+    normalized = normalized_text(text)
+    categories = [
+        category
+        for category, pattern in PROJECT_CATEGORY_RULES
+        if re.search(pattern, normalized, re.I)
+    ]
+    if not categories or not PROJECT_ACTION_PATTERNS.search(normalized):
+        return None
+
+    explicit_project = bool(
+        re.search(
+            r"\b(project|construction|development|infrastructure|capital project|"
+            r"new (?:homes?|school|facility|building|centre|center)|"
+            r"housing (?:build|program|repair|renovation))\b",
+            normalized,
+            re.I,
+        )
+    )
+    confidence = 0.9 if explicit_project else 0.78
+    if re.search(r"\b(apply|application|waitlist|maintenance request|service interruption)\b", normalized):
+        confidence -= 0.18
+
+    location_scope = "Unspecified"
+    if re.search(r"\burban reserve\b", normalized):
+        location_scope = "Urban Reserve"
+    elif re.search(r"\boff.reserve|off reserve\b", normalized):
+        location_scope = "Off Reserve"
+    elif re.search(r"\bon.reserve|on reserve\b", normalized):
+        location_scope = "On Reserve"
+    elif re.search(r"\bregional|multiple communities|member nations\b", normalized):
+        location_scope = "Regional"
+
+    return {
+        "category": categories[0],
+        "additionalCategories": categories[1:],
+        "confidence": round(max(0.0, min(confidence, 1.0)), 2),
+        "locationScope": location_scope,
+    }
 
 
 def source_confidence(source):
@@ -592,42 +656,121 @@ def extract_feed_candidates(xml_bytes, feed_url, community, source):
     return candidates
 
 
-def discover_meta_posts(fetcher, community, source, access_token):
+def load_meta_page_tokens(value=None):
+    """Load per-Page tokens from a secret JSON object without exposing them."""
+    raw = value if value is not None else os.getenv("META_PAGE_TOKENS_JSON", "")
+    if not raw:
+        return {}
+    try:
+        payload = json.loads(raw)
+    except json.JSONDecodeError as error:
+        raise ValueError("META_PAGE_TOKENS_JSON must be a JSON object") from error
+    if not isinstance(payload, dict):
+        raise ValueError("META_PAGE_TOKENS_JSON must be a JSON object")
+    return {
+        str(key): str(token)
+        for key, token in payload.items()
+        if clean_text(key) and clean_text(token)
+    }
+
+
+def meta_token_for_source(source, default_token, page_tokens=None):
+    page_tokens = page_tokens or {}
+    identifiers = [source.get("metaPageId"), source.get("pageHandle")]
+    for identifier in identifiers:
+        if identifier is not None and str(identifier) in page_tokens:
+            return page_tokens[str(identifier)]
+    return default_token
+
+
+def meta_source_kind(source):
+    return normalized_text(source.get("entityKind") or "page")
+
+
+def discover_meta_posts(
+    fetcher,
+    community,
+    source,
+    access_token,
+    *,
+    since_date=None,
+    max_pages=8,
+):
     page_id = source.get("metaPageId") or source.get("pageHandle")
-    if not access_token or not page_id:
+    if meta_source_kind(source) != "page" or not access_token or not page_id:
         return []
     version = os.getenv("META_API_VERSION", "v23.0")
-    fields = "message,created_time,permalink_url,full_picture"
-    query = urllib.parse.urlencode(
-        {"fields": fields, "limit": "25"}
-    )
+    fields = "message,story,created_time,permalink_url,full_picture"
+    parameters = {"fields": fields, "limit": "100"}
+    if since_date:
+        parameters["since"] = f"{since_date}T00:00:00Z"
+    query = urllib.parse.urlencode(parameters)
     url = f"https://graph.facebook.com/{version}/{page_id}/posts?{query}"
-    body, _, _ = fetcher.get(
-        url,
-        headers={"Authorization": f"Bearer {access_token}"},
-        respect_robots=False,
-    )
-    payload = json.loads(body.decode("utf-8"))
     candidates = []
-    for post in payload.get("data", []):
-        message = clean_text(post.get("message"))
-        if len(message) < 15 or not is_supported_update(message):
-            continue
-        published, _ = parse_date_text(post.get("created_time"))
-        if not published or not post.get("permalink_url"):
-            continue
-        first_sentence = re.split(r"(?<=[.!?])\s+", message, maxsplit=1)[0]
-        label = first_sentence[:110].rstrip(" ,.;:-")
-        candidates.append(
-            normalized_candidate(
+    seen_urls = set()
+    for _ in range(max(1, max_pages)):
+        body, _, _ = fetcher.get(
+            url,
+            headers={"Authorization": f"Bearer {access_token}"},
+            respect_robots=False,
+        )
+        payload = json.loads(body.decode("utf-8"))
+        if payload.get("error"):
+            error = payload["error"]
+            raise PermissionError(
+                f"Meta API error {error.get('code', 'unknown')}: "
+                f"{clean_text(error.get('message'))}"
+            )
+        for post in payload.get("data", []):
+            message = clean_text(post.get("message") or post.get("story"))
+            permalink = canonical_url(post.get("permalink_url"))
+            if (
+                len(message) < 15
+                or not permalink
+                or permalink in seen_urls
+                or not is_supported_update(message)
+            ):
+                continue
+            published, _ = parse_date_text(post.get("created_time"))
+            if not published or (since_date and published < since_date):
+                continue
+            first_sentence = re.split(r"(?<=[.!?])\s+", message, maxsplit=1)[0]
+            label = first_sentence[:110].rstrip(" ,.;:-")
+            item = normalized_candidate(
                 community,
                 source,
                 title=f"{label} (community post)",
                 summary=message[:420],
-                url=post["permalink_url"],
+                url=permalink,
                 published=published,
                 thumbnail=post.get("full_picture"),
             )
+            item["tags"].append("authorized-facebook-page")
+            item["facebookSource"] = {
+                "entityKind": "Page",
+                "official": bool(source.get("official")),
+                "pageId": str(page_id),
+            }
+            project_signal = classify_project_signal(message)
+            if project_signal:
+                item["projectSignal"] = project_signal
+                item["tags"].append("housing-infrastructure-project")
+            candidates.append(item)
+            seen_urls.add(permalink)
+
+        next_url = clean_text((payload.get("paging") or {}).get("next"))
+        if not next_url:
+            break
+        next_parts = urllib.parse.urlsplit(next_url)
+        if next_parts.scheme != "https" or next_parts.netloc != "graph.facebook.com":
+            raise ValueError("Meta paging URL was not on graph.facebook.com")
+        next_query = [
+            (key, value)
+            for key, value in urllib.parse.parse_qsl(next_parts.query, keep_blank_values=True)
+            if key.lower() != "access_token"
+        ]
+        url = urllib.parse.urlunsplit(
+            (next_parts.scheme, next_parts.netloc, next_parts.path, urllib.parse.urlencode(next_query), "")
         )
     return candidates
 
@@ -807,6 +950,62 @@ def merge_articles(existing, candidates):
     return merged, accepted
 
 
+def merge_facebook_project_signals(projects_payload, candidates):
+    """Add strong official-Page project signals to the unverified project feed."""
+    payload = dict(projects_payload or {})
+    existing = [dict(item) for item in payload.get("unverifiedProjects") or []]
+    known_urls = {
+        canonical_url(source.get("url"))
+        for item in existing
+        for source in item.get("sources") or []
+        if source.get("url")
+    }
+    added = []
+    for item in candidates:
+        signal = item.get("projectSignal") or {}
+        facebook_source = item.get("facebookSource") or {}
+        url = canonical_url(item.get("url"))
+        if (
+            item.get("sourceType") != "Facebook"
+            or not facebook_source.get("official")
+            or facebook_source.get("entityKind") != "Page"
+            or float(signal.get("confidence") or 0) < 0.78
+            or not url
+            or url in known_urls
+        ):
+            continue
+        digest = hashlib.sha1(url.encode("utf-8")).hexdigest()[:12]
+        location_scope = signal.get("locationScope") or "Unspecified"
+        record = {
+            "id": f"facebook-project-signal-{digest}",
+            "firstNationIds": [str(item.get("bandId"))],
+            "category": signal.get("category") or "Community Infrastructure",
+            "name": re.sub(r"\s*\(community post\)\s*$", "", item.get("title") or "Community project update"),
+            "discussionSummary": clean_text(item.get("summary"))[:420],
+            "signalType": "Authorized official First Nation Facebook Page post",
+            "whyUnverified": (
+                "The official community post is a credible project signal, but OpenBand "
+                "has not yet corroborated all delivery details with a second public source."
+            ),
+            "locationScope": location_scope,
+            "lastSeenAt": item.get("publishedAt"),
+            "sources": [
+                {
+                    "name": item.get("sourceName") or item.get("communityName"),
+                    "url": url,
+                    "publishedAt": item.get("publishedAt"),
+                }
+            ],
+        }
+        existing.append(record)
+        added.append(record)
+        known_urls.add(url)
+    payload["unverifiedProjects"] = existing
+    if added:
+        payload["generatedAt"] = utc_now().date().isoformat()
+    return payload, added
+
+
 def prune_invalid_generated_articles(articles, today):
     """Remove only machine-discovered rows with impossible future publication dates."""
     retained = []
@@ -846,6 +1045,8 @@ def build_coverage_report(
     before_count,
     accepted,
     invalid_existing_removed,
+    facebook_activity=None,
+    project_signals_added=None,
 ):
     today = utc_now().date()
     recent_cutoff = (today - timedelta(days=90)).isoformat()
@@ -891,6 +1092,11 @@ def build_coverage_report(
                 "failedSourceCount": failure_counts[str(community["bandId"])],
             }
         )
+    facebook_activity = dict(facebook_activity or {})
+    facebook_activity.setdefault("limitation", (
+        "Only authorized public Pages are fetched through Meta's ordinary API. "
+        "Groups, private content, login walls and access-restricted content are not fetched."
+    ))
     return {
         "schemaVersion": 1,
         "generated": iso_now(),
@@ -910,12 +1116,9 @@ def build_coverage_report(
         ],
         "facebook": {
             "authorizedApiConfigured": bool(os.getenv("META_ACCESS_TOKEN")),
-            "limitation": (
-                "Public Facebook pages are mapped, but posts are fetched only through "
-                "an authorized Meta API token. OpenBand never bypasses login walls, "
-                "CAPTCHAs, privacy controls, or platform restrictions."
-            ),
+            **facebook_activity,
         },
+        "facebookProjectSignalsAdded": len(project_signals_added or []),
         "communities": rows,
         "sourceFailures": failures,
     }
@@ -980,16 +1183,40 @@ def ensure_registry(data, news, registry):
                 "provinceTerritory": "SK",
                 "treaty": band.get("treaty"),
                 "sources": sources,
-                "discoveryQueries": current.get("discoveryQueries")
-                or build_discovery_queries(band["name"], current.get("aliases") or []),
+                "facebookMonitoring": {
+                    "pageStatus": (
+                        "registered"
+                        if any(
+                            source.get("type") == "Facebook"
+                            and meta_source_kind(source) == "page"
+                            for source in sources
+                        )
+                        else "source-research-needed"
+                    ),
+                    "groupStatus": "registry-only-no-ordinary-api-fetch",
+                    "policy": (
+                        "Authorized public Pages may be fetched through Meta's API; "
+                        "Groups and access-restricted content are never scraped."
+                    ),
+                },
+                "discoveryQueries": list(
+                    dict.fromkeys(
+                        list(current.get("discoveryQueries") or [])
+                        + build_discovery_queries(
+                            band["name"], current.get("aliases") or []
+                        )
+                    )
+                ),
             }
         )
     return {
         "schemaVersion": 1,
         "generated": registry.get("generated") or iso_now(),
         "notes": (
-            "Manually maintain verified community websites, public Facebook pages, "
-            "and local organizations here. The discovery job preserves these records."
+            "Maintain verified community websites, authorized public Facebook Pages, "
+            "and local organizations here. Facebook Groups may be catalogued for "
+            "transparency but are never fetched by the ordinary API scanner. The "
+            "discovery job preserves these records."
         ),
         "communities": rows,
     }
@@ -1004,6 +1231,8 @@ def build_discovery_queries(name, aliases):
                 f'"{value}" announcement Saskatchewan',
                 f'"{value}" community update',
                 f'site:facebook.com "{value}" announcement',
+                f'site:facebook.com "{value}" housing infrastructure project',
+                f'site:facebook.com/groups "{value}" housing infrastructure project',
                 f'"{value}" funding OR housing OR infrastructure',
             ]
         )
@@ -1064,6 +1293,7 @@ def run(args):
     review = []
     candidates = []
     access_token = os.getenv("META_ACCESS_TOKEN")
+    page_tokens = load_meta_page_tokens()
     today = utc_now().date()
     cutoff = (today - timedelta(days=args.lookback_days)).isoformat()
 
@@ -1082,6 +1312,33 @@ def run(args):
             if str(community["bandId"]) in requested
         ]
 
+    facebook_sources = [
+        source
+        for community in communities
+        for source in community.get("sources") or []
+        if source.get("adapter") == "facebook" or source.get("type") == "Facebook"
+    ]
+    facebook_activity = {
+        "authorizedApiConfigured": bool(access_token or page_tokens),
+        "registeredPageSourceCount": sum(
+            1 for source in facebook_sources if meta_source_kind(source) == "page"
+        ),
+        "registeredGroupSourceCount": sum(
+            1 for source in facebook_sources if meta_source_kind(source) == "group"
+        ),
+        "pagesScanned": 0,
+        "matchedPosts": 0,
+        "pagesAwaitingAuthorization": 0,
+        "groupsSkippedByPolicy": sum(
+            1 for source in facebook_sources if meta_source_kind(source) == "group"
+        ),
+        "limitation": (
+            "Only registered, authorized public Pages are fetched through Meta's ordinary "
+            "API. Public and private Groups are skipped because the ordinary API does not "
+            "provide compliant general-purpose group scanning."
+        ),
+    }
+
     for community in communities:
         for source in community.get("sources") or []:
             if not source_is_monitorable(source):
@@ -1089,9 +1346,25 @@ def run(args):
             adapter = source.get("adapter")
             try:
                 if adapter == "facebook":
-                    candidates.extend(
-                        discover_meta_posts(fetcher, community, source, access_token)
+                    if meta_source_kind(source) != "page":
+                        continue
+                    source_token = meta_token_for_source(
+                        source, access_token, page_tokens
                     )
+                    if not source_token:
+                        facebook_activity["pagesAwaitingAuthorization"] += 1
+                        continue
+                    found = discover_meta_posts(
+                        fetcher,
+                        community,
+                        source,
+                        source_token,
+                        since_date=cutoff,
+                        max_pages=args.max_meta_pages,
+                    )
+                    facebook_activity["pagesScanned"] += 1
+                    facebook_activity["matchedPosts"] += len(found)
+                    candidates.extend(found)
                     continue
                 for url in discovery_urls(source):
                     if not url:
@@ -1175,6 +1448,10 @@ def run(args):
         original_before, today
     )
     merged, accepted = merge_articles(before, acceptable)
+    projects_payload, project_signals_added = merge_facebook_project_signals(
+        load_json(PROJECTS_PATH, {"schemaVersion": 1, "unverifiedProjects": []}),
+        acceptable,
+    )
     for item in merged:
         url = canonical_url(item.get("url"))
         if url:
@@ -1200,6 +1477,8 @@ def run(args):
         len(original_before),
         accepted,
         invalid_existing_removed,
+        facebook_activity,
+        project_signals_added,
     )
     review_output = {
         "schemaVersion": 1,
@@ -1212,11 +1491,15 @@ def run(args):
         write_json(CACHE_PATH, cache)
         write_json(REVIEW_PATH, review_output)
         write_json(REPORT_PATH, report)
+        if project_signals_added:
+            write_json(PROJECTS_PATH, projects_payload)
     print(
         f"communities={len(communities)} candidates={len(candidates)} "
         f"accepted={len(accepted)} review={len(review)} failures={len(failures)} "
         f"articles={len(original_before)}->{len(merged)} "
         f"invalid_removed={len(invalid_existing_removed)}"
+        f" facebook_pages={facebook_activity['pagesScanned']}"
+        f" project_signals={len(project_signals_added)}"
     )
     return report
 
@@ -1231,6 +1514,7 @@ def parse_args():
     parser.add_argument("--timeout", type=int, default=25)
     parser.add_argument("--max-search-communities", type=int, default=15)
     parser.add_argument("--search-delay", type=float, default=6.0)
+    parser.add_argument("--max-meta-pages", type=int, default=8)
     parser.add_argument("--skip-search", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()
