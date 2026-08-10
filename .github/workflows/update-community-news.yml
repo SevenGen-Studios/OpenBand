@@ -12,7 +12,7 @@ on:
     branches: [main]
     paths:
       - tools/news_discovery.py
-      - tests/test_news_discovery.py
+      - tests/**
       - news-sources.json
       - .github/workflows/update-community-news.yml
   schedule:
