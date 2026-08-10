@@ -5,7 +5,6 @@ from __future__ import annotations
 import html
 import json
 import re
-import shutil
 import unicodedata
 from pathlib import Path
 from urllib.parse import quote
@@ -56,7 +55,42 @@ def set_meta(source: str, *, title: str, description: str, path: str, structured
     return source
 
 
-def profile_prerender(band: dict) -> str:
+def election_prerender(band: dict, records: list[dict]) -> str:
+    winners = [
+        record for record in records
+        if str(record.get("firstNationId")) == str(band["id"]) and record.get("elected") and record.get("electionDate")
+    ]
+    if not winners:
+        return '<section class="election-card election-card-empty"><div><h3>Elections &amp; Leadership</h3><p>Verified election results have not been indexed for this Nation yet.</p></div></section>'
+    latest_date = max(str(record["electionDate"]) for record in winners)
+    winners = [record for record in winners if str(record["electionDate"]) == latest_date]
+    source_url = winners[0].get("sourceUrl", "")
+    source_name = winners[0].get("sourceName", "Election results")
+    def list_for(position: str) -> str:
+        rows = [record for record in winners if record.get("position", "").lower() == position]
+        return "".join(
+            f'<li><strong>{html.escape(record["candidateName"])}</strong>'
+            f'<span>{html.escape(str(record["votesReceived"]))} votes</span></li>'
+            if record.get("votesReceived") is not None else f'<li><strong>{html.escape(record["candidateName"])}</strong></li>'
+            for record in rows
+        )
+    chief, councillors = list_for("chief"), list_for("councillor")
+    date_label = latest_date
+    parts = []
+    if chief:
+        parts.append(f"<div><h4>Chief</h4><ul>{chief}</ul></div>")
+    if councillors:
+        parts.append(f"<div><h4>Councillors</h4><ul>{councillors}</ul></div>")
+    return (
+        '<section class="election-card"><div class="election-heading"><div>'
+        f'<h3>Elections &amp; Leadership</h3><p>Latest election — {html.escape(date_label)}</p></div>'
+        f'<a href="{html.escape(source_url, quote=True)}" rel="noopener">{html.escape(source_name)} results</a></div>'
+        f'<div class="election-results">{"".join(parts)}</div>'
+        f'<div class="election-source"><strong>Source:</strong> <a href="{html.escape(source_url, quote=True)}" rel="noopener">{html.escape(source_name)}</a></div></section>'
+    )
+
+
+def profile_prerender(band: dict, election_records: list[dict]) -> str:
     filings = remuneration_filings(band)
     parsed = [filing for filing in filings if is_parsed(filing)]
     latest = filings[0].get("year") if filings else None
@@ -75,7 +109,7 @@ def profile_prerender(band: dict) -> str:
         f"<div><dt>Latest parsed remuneration</dt><dd>{html.escape(latest_parsed or 'Pending extraction')}</dd></div>"
         f"<div><dt>Parsed years</dt><dd>{len(parsed)}</dd></div>"
         f'<div><dt>Authoritative source</dt><dd><a href="{isc_url}">ISC filing profile</a></dd></div>'
-        "</dl></div>"
+        f"</dl></div>{election_prerender(band, election_records)}"
     )
 
 
@@ -115,15 +149,18 @@ def write_page(path: Path, content: str) -> None:
 def build() -> None:
     data = json.loads((ROOT / "data.json").read_text(encoding="utf-8"))
     news = json.loads((ROOT / "news-data.json").read_text(encoding="utf-8"))
+    elections = json.loads((ROOT / "elections-data.json").read_text(encoding="utf-8"))
     bands = sorted(data.get("bands", []), key=lambda item: item["name"])
     base = (ROOT / "index.html").read_text(encoding="utf-8")
     slugs = [slugify(band["name"]) for band in bands]
     if len(slugs) != len(set(slugs)):
         raise RuntimeError("Community slugs are not unique")
 
+    # Profile directories may be published through sync providers that disallow
+    # deleting the root directory. Rewriting each generated route is sufficient
+    # and keeps the build safe to run in those workspaces.
     profile_root = ROOT / "first-nations"
-    if profile_root.exists():
-        shutil.rmtree(profile_root)
+    profile_root.mkdir(parents=True, exist_ok=True)
 
     for band in bands:
         slug = slugify(band["name"])
@@ -144,10 +181,10 @@ def build() -> None:
         }
         page = set_meta(base, title=title, description=description, path=path, structured=structured)
         page = page.replace('<body data-page="home">', f'<body data-page="profile" data-band-id="{band["id"]}">', 1)
-        page = page.replace('<div id="profilePrerender" class="profile-prerender" hidden></div>', profile_prerender(band), 1)
+        page = page.replace('<div id="profilePrerender" class="profile-prerender" hidden></div>', profile_prerender(band, elections.get("records", [])), 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260804a" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260804a" defer></script>',
+            '<script src="/assets/openband.js?v=20260810a" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260810a" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)
