@@ -93,19 +93,26 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("revenue-year-body", javascript)
         self.assertIn("breakdowns.after(section)", javascript)
 
-    def test_election_prerender_is_available_only_when_sourced(self):
+    def test_election_prerender_is_available_for_every_nation(self):
         seeded = (ROOT / "first-nations" / "beardys-and-okemasis-cree-nation" / "index.html").read_text(encoding="utf-8")
-        unseeded = (ROOT / "first-nations" / "little-pine-first-nation" / "index.html").read_text(encoding="utf-8")
         self.assertIn("Elections &amp; Leadership", seeded)
         self.assertIn("Edwin Ananas", seeded)
-        self.assertNotIn("Elections &amp; Leadership", unseeded)
+        for band in self.data["bands"]:
+            page = ROOT / "first-nations" / slugify(band["name"]) / "index.html"
+            with self.subTest(band=band["name"]):
+                self.assertEqual(page.read_text(encoding="utf-8").count("Elections &amp; Leadership"), 1)
         self.assertIn("if(el('profilePrerender'))el('profilePrerender').hidden=true", (ROOT / "assets" / "openband.js").read_text(encoding="utf-8"))
 
     def test_election_records_are_complete_and_source_linked(self):
         elections = json.loads((ROOT / "elections-data.json").read_text(encoding="utf-8"))
         band_ids = {band["id"] for band in self.data["bands"]}
         required = {"firstNationId", "firstNation", "electionDate", "candidateName", "position", "votesReceived", "elected", "sourceUrl"}
-        self.assertGreaterEqual(len({record["firstNationId"] for record in elections["records"]}), 29)
+        self.assertEqual({record["firstNationId"] for record in elections["records"]}, band_ids)
+        record_keys = {
+            (record["firstNationId"], record["electionDate"], record["candidateName"], record["position"])
+            for record in elections["records"]
+        }
+        self.assertEqual(len(record_keys), len(elections["records"]))
         for record in elections["records"]:
             with self.subTest(record=record):
                 self.assertTrue(required.issubset(record))
@@ -113,11 +120,27 @@ class SiteRouteTests(unittest.TestCase):
                 self.assertIn(record["position"], {"Chief", "Councillor"})
                 self.assertIs(record["elected"], True)
                 self.assertRegex(record["electionDate"], r"^\d{4}-\d{2}-\d{2}$")
+                self.assertGreaterEqual(record["electionDate"], "2021-08-10")
                 self.assertTrue(record["candidateName"].strip())
                 self.assertTrue(record["sourceUrl"].startswith("https://"))
                 if record["votesReceived"] is not None:
                     self.assertIsInstance(record["votesReceived"], int)
                     self.assertGreater(record["votesReceived"], 0)
+
+        for band_id in band_ids:
+            latest_date = max(
+                record["electionDate"]
+                for record in elections["records"]
+                if record["firstNationId"] == band_id
+            )
+            latest = [
+                record
+                for record in elections["records"]
+                if record["firstNationId"] == band_id and record["electionDate"] == latest_date
+            ]
+            with self.subTest(band_id=band_id, election_date=latest_date):
+                self.assertIn("Chief", {record["position"] for record in latest})
+                self.assertIn("Councillor", {record["position"] for record in latest})
 
     def test_missing_vote_totals_are_not_rendered_as_zero(self):
         markup = (ROOT / "first-nations" / "muskoday-first-nation" / "index.html").read_text(encoding="utf-8")
