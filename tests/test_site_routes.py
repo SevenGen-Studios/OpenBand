@@ -101,6 +101,33 @@ class SiteRouteTests(unittest.TestCase):
         self.assertNotIn("Elections &amp; Leadership", unseeded)
         self.assertIn("if(el('profilePrerender'))el('profilePrerender').hidden=true", (ROOT / "assets" / "openband.js").read_text(encoding="utf-8"))
 
+    def test_election_records_are_complete_and_source_linked(self):
+        elections = json.loads((ROOT / "elections-data.json").read_text(encoding="utf-8"))
+        band_ids = {band["id"] for band in self.data["bands"]}
+        required = {"firstNationId", "firstNation", "electionDate", "candidateName", "position", "votesReceived", "elected", "sourceUrl"}
+        self.assertGreaterEqual(len({record["firstNationId"] for record in elections["records"]}), 29)
+        for record in elections["records"]:
+            with self.subTest(record=record):
+                self.assertTrue(required.issubset(record))
+                self.assertIn(record["firstNationId"], band_ids)
+                self.assertIn(record["position"], {"Chief", "Councillor"})
+                self.assertIs(record["elected"], True)
+                self.assertRegex(record["electionDate"], r"^\d{4}-\d{2}-\d{2}$")
+                self.assertTrue(record["candidateName"].strip())
+                self.assertTrue(record["sourceUrl"].startswith("https://"))
+                if record["votesReceived"] is not None:
+                    self.assertIsInstance(record["votesReceived"], int)
+                    self.assertGreater(record["votesReceived"], 0)
+
+    def test_missing_vote_totals_are_not_rendered_as_zero(self):
+        markup = (ROOT / "first-nations" / "muskoday-first-nation" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("Ronald Bear", markup)
+        self.assertIn("167 votes", markup)
+        self.assertIn("Elwin Bear", markup)
+        self.assertNotIn("0 votes", markup)
+        javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
+        self.assertIn("record.votesReceived!==null", javascript)
+
     def test_ga4_tag_is_present_on_every_public_page(self):
         pages = [ROOT / "index.html", ROOT / "browse" / "index.html", ROOT / "news" / "index.html"]
         pages.extend((ROOT / "first-nations").glob("*/index.html"))
