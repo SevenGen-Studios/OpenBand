@@ -4,183 +4,6 @@
   "notes": "Maintain verified community websites, authorized public Facebook Pages, and local organizations here. Facebook Groups may be catalogued for transparency but are never fetched by the ordinary API scanner. The discovery job preserves these records.",
   "communities": [
     {
-      "bandId": 366,
-      "communityName": "Cote First Nation",
-      "aliases": [],
-      "provinceTerritory": "SK",
-      "treaty": "Treaty 4",
-      "sources": [
-        {
-          "type": "Official First Nation Website",
-          "name": "Cote First Nation",
-          "url": "https://cotefirstnation.ca/",
-          "status": "verified",
-          "adapter": "html",
-          "monitor": true,
-          "official": true
-        },
-        {
-          "type": "Government Source",
-          "name": "Indigenous Services Canada FNFTA filings",
-          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=366&lang=eng",
-          "status": "baseline",
-          "adapter": "static",
-          "monitor": false,
-          "official": false
-        }
-      ],
-      "discoveryQueries": [
-        "\"Cote First Nation\" announcement Saskatchewan",
-        "\"Cote First Nation\" community update",
-        "site:facebook.com \"Cote First Nation\" announcement",
-        "\"Cote First Nation\" funding OR housing OR infrastructure"
-      ]
-    },
-    {
-      "bandId": 391,
-      "communityName": "George Gordon First Nation",
-      "aliases": [],
-      "provinceTerritory": "SK",
-      "treaty": "Treaty 4",
-      "sources": [
-        {
-          "type": "Government Source",
-          "name": "Indigenous Services Canada FNFTA filings",
-          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=391&lang=eng",
-          "status": "baseline",
-          "adapter": "static",
-          "monitor": false,
-          "official": false
-        }
-      ],
-      "discoveryQueries": [
-        "\"George Gordon First Nation\" announcement Saskatchewan",
-        "\"George Gordon First Nation\" community update",
-        "site:facebook.com \"George Gordon First Nation\" announcement",
-        "\"George Gordon First Nation\" funding OR housing OR infrastructure"
-      ]
-    },
-    {
-      "bandId": 362,
-      "communityName": "Kahkewistahaw First Nation",
-      "aliases": [],
-      "provinceTerritory": "SK",
-      "treaty": "Treaty 4",
-      "sources": [
-        {
-          "type": "Government Source",
-          "name": "Indigenous Services Canada FNFTA filings",
-          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=362&lang=eng",
-          "status": "baseline",
-          "adapter": "static",
-          "monitor": false,
-          "official": false
-        }
-      ],
-      "discoveryQueries": [
-        "\"Kahkewistahaw First Nation\" announcement Saskatchewan",
-        "\"Kahkewistahaw First Nation\" community update",
-        "site:facebook.com \"Kahkewistahaw First Nation\" announcement",
-        "\"Kahkewistahaw First Nation\" funding OR housing OR infrastructure"
-      ]
-    },
-    {
-      "bandId": 367,
-      "communityName": "Keeseekoose First Nation",
-      "aliases": [],
-      "provinceTerritory": "SK",
-      "treaty": "Treaty 4",
-      "sources": [
-        {
-          "type": "Government Source",
-          "name": "Indigenous Services Canada FNFTA filings",
-          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=367&lang=eng",
-          "status": "baseline",
-          "adapter": "static",
-          "monitor": false,
-          "official": false
-        }
-      ],
-      "discoveryQueries": [
-        "\"Keeseekoose First Nation\" announcement Saskatchewan",
-        "\"Keeseekoose First Nation\" community update",
-        "site:facebook.com \"Keeseekoose First Nation\" announcement",
-        "\"Keeseekoose First Nation\" funding OR housing OR infrastructure"
-      ]
-    },
-    {
-      "bandId": 377,
-      "communityName": "Kinistin Saulteaux Nation",
-      "aliases": [],
-      "provinceTerritory": "SK",
-      "treaty": "Treaty 4",
-      "sources": [
-        {
-          "type": "Government Source",
-          "name": "Indigenous Services Canada FNFTA filings",
-          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=377&lang=eng",
-          "status": "baseline",
-          "adapter": "static",
-          "monitor": false,
-          "official": false
-        }
-      ],
-      "discoveryQueries": [
-        "\"Kinistin Saulteaux Nation\" announcement Saskatchewan",
-        "\"Kinistin Saulteaux Nation\" community update",
-        "site:facebook.com \"Kinistin Saulteaux Nation\" announcement",
-        "\"Kinistin Saulteaux Nation\" funding OR housing OR infrastructure"
-      ]
-    },
-    {
-      "bandId": 379,
-      "communityName": "Little Black Bear First Nation",
-      "aliases": [],
-      "provinceTerritory": "SK",
-      "treaty": "Treaty 4",
-      "sources": [
-        {
-          "type": "Government Source",
-          "name": "Indigenous Services Canada FNFTA filings",
-          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=379&lang=eng",
-          "status": "baseline",
-          "adapter": "static",
-          "monitor": false,
-          "official": false
-        }
-      ],
-      "discoveryQueries": [
-        "\"Little Black Bear First Nation\" announcement Saskatchewan",
-        "\"Little Black Bear First Nation\" community update",
-        "site:facebook.com \"Little Black Bear First Nation\" announcement",
-        "\"Little Black Bear First Nation\" funding OR housing OR infrastructure"
-      ]
-    },
-    {
-      "bandId": 394,
-      "communityName": "Canoe Lake Cree First Nation",
-      "aliases": [],
-      "provinceTerritory": "SK",
-      "treaty": "Treaty 10",
-      "sources": [
-        {
-          "type": "Government Source",
-          "name": "Indigenous Services Canada FNFTA filings",
-          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=394&lang=eng",
-          "status": "baseline",
-          "adapter": "static",
-          "monitor": false,
-          "official": false
-        }
-      ],
-      "discoveryQueries": [
-        "\"Canoe Lake Cree First Nation\" announcement Saskatchewan",
-        "\"Canoe Lake Cree First Nation\" community update",
-        "site:facebook.com \"Canoe Lake Cree First Nation\" announcement",
-        "\"Canoe Lake Cree First Nation\" funding OR housing OR infrastructure"
-      ]
-    },
-    {
       "bandId": 378,
       "communityName": "Carry the Kettle Nakoda Nation",
       "aliases": [],
@@ -197,11 +20,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Carry the Kettle Nakoda Nation\" announcement Saskatchewan",
         "\"Carry the Kettle Nakoda Nation\" community update",
         "site:facebook.com \"Carry the Kettle Nakoda Nation\" announcement",
-        "\"Carry the Kettle Nakoda Nation\" funding OR housing OR infrastructure"
+        "\"Carry the Kettle Nakoda Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Carry the Kettle Nakoda Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Carry the Kettle Nakoda Nation\" housing infrastructure project"
       ]
     },
     {
@@ -270,11 +100,70 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "registered",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Cowessess First Nation\" announcement Saskatchewan",
         "\"Cowessess First Nation\" community update",
         "site:facebook.com \"Cowessess First Nation\" announcement",
-        "\"Cowessess First Nation\" funding OR housing OR infrastructure"
+        "\"Cowessess First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Cowessess First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Cowessess First Nation\" housing infrastructure project",
+        "\"Cowessess\" announcement Saskatchewan",
+        "\"Cowessess\" community update",
+        "site:facebook.com \"Cowessess\" announcement",
+        "site:facebook.com \"Cowessess\" housing infrastructure project",
+        "site:facebook.com/groups \"Cowessess\" housing infrastructure project",
+        "\"Cowessess\" funding OR housing OR infrastructure",
+        "\"CFN\" announcement Saskatchewan",
+        "\"CFN\" community update",
+        "site:facebook.com \"CFN\" announcement",
+        "site:facebook.com \"CFN\" housing infrastructure project",
+        "site:facebook.com/groups \"CFN\" housing infrastructure project",
+        "\"CFN\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 366,
+      "communityName": "Cote First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Cote First Nation",
+          "url": "https://cotefirstnation.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=366&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
+      "discoveryQueries": [
+        "\"Cote First Nation\" announcement Saskatchewan",
+        "\"Cote First Nation\" community update",
+        "site:facebook.com \"Cote First Nation\" announcement",
+        "\"Cote First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Cote First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Cote First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -294,11 +183,173 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Day Star First Nation\" announcement Saskatchewan",
         "\"Day Star First Nation\" community update",
         "site:facebook.com \"Day Star First Nation\" announcement",
-        "\"Day Star First Nation\" funding OR housing OR infrastructure"
+        "\"Day Star First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Day Star First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Day Star First Nation\" housing infrastructure project"
+      ]
+    },
+    {
+      "bandId": 391,
+      "communityName": "George Gordon First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=391&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
+      "discoveryQueries": [
+        "\"George Gordon First Nation\" announcement Saskatchewan",
+        "\"George Gordon First Nation\" community update",
+        "site:facebook.com \"George Gordon First Nation\" announcement",
+        "\"George Gordon First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"George Gordon First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"George Gordon First Nation\" housing infrastructure project"
+      ]
+    },
+    {
+      "bandId": 362,
+      "communityName": "Kahkewistahaw First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=362&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
+      "discoveryQueries": [
+        "\"Kahkewistahaw First Nation\" announcement Saskatchewan",
+        "\"Kahkewistahaw First Nation\" community update",
+        "site:facebook.com \"Kahkewistahaw First Nation\" announcement",
+        "\"Kahkewistahaw First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Kahkewistahaw First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Kahkewistahaw First Nation\" housing infrastructure project"
+      ]
+    },
+    {
+      "bandId": 367,
+      "communityName": "Keeseekoose First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=367&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
+      "discoveryQueries": [
+        "\"Keeseekoose First Nation\" announcement Saskatchewan",
+        "\"Keeseekoose First Nation\" community update",
+        "site:facebook.com \"Keeseekoose First Nation\" announcement",
+        "\"Keeseekoose First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Keeseekoose First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Keeseekoose First Nation\" housing infrastructure project"
+      ]
+    },
+    {
+      "bandId": 377,
+      "communityName": "Kinistin Saulteaux Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=377&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
+      "discoveryQueries": [
+        "\"Kinistin Saulteaux Nation\" announcement Saskatchewan",
+        "\"Kinistin Saulteaux Nation\" community update",
+        "site:facebook.com \"Kinistin Saulteaux Nation\" announcement",
+        "\"Kinistin Saulteaux Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Kinistin Saulteaux Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Kinistin Saulteaux Nation\" housing infrastructure project"
+      ]
+    },
+    {
+      "bandId": 379,
+      "communityName": "Little Black Bear First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=379&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
+      "discoveryQueries": [
+        "\"Little Black Bear First Nation\" announcement Saskatchewan",
+        "\"Little Black Bear First Nation\" community update",
+        "site:facebook.com \"Little Black Bear First Nation\" announcement",
+        "\"Little Black Bear First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Little Black Bear First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Little Black Bear First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -318,11 +369,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Lucky Man Cree Nation\" announcement Saskatchewan",
         "\"Lucky Man Cree Nation\" community update",
         "site:facebook.com \"Lucky Man Cree Nation\" announcement",
-        "\"Lucky Man Cree Nation\" funding OR housing OR infrastructure"
+        "\"Lucky Man Cree Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Lucky Man Cree Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Lucky Man Cree Nation\" housing infrastructure project"
       ]
     },
     {
@@ -342,11 +400,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Makwa Sahgaiehcan First Nation\" announcement Saskatchewan",
         "\"Makwa Sahgaiehcan First Nation\" community update",
         "site:facebook.com \"Makwa Sahgaiehcan First Nation\" announcement",
-        "\"Makwa Sahgaiehcan First Nation\" funding OR housing OR infrastructure"
+        "\"Makwa Sahgaiehcan First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Makwa Sahgaiehcan First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Makwa Sahgaiehcan First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -375,11 +440,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Mistawasis Nehiyawak\" announcement Saskatchewan",
         "\"Mistawasis Nehiyawak\" community update",
         "site:facebook.com \"Mistawasis Nehiyawak\" announcement",
-        "\"Mistawasis Nehiyawak\" funding OR housing OR infrastructure"
+        "\"Mistawasis Nehiyawak\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Mistawasis Nehiyawak\" housing infrastructure project",
+        "site:facebook.com/groups \"Mistawasis Nehiyawak\" housing infrastructure project"
       ]
     },
     {
@@ -531,11 +603,36 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "registered",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Muskoday First Nation\" announcement Saskatchewan",
         "\"Muskoday First Nation\" community update",
         "site:facebook.com \"Muskoday First Nation\" announcement",
-        "\"Muskoday First Nation\" funding OR housing OR infrastructure"
+        "\"Muskoday First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Muskoday First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Muskoday First Nation\" housing infrastructure project",
+        "\"Muskoday\" announcement Saskatchewan",
+        "\"Muskoday\" community update",
+        "site:facebook.com \"Muskoday\" announcement",
+        "site:facebook.com \"Muskoday\" housing infrastructure project",
+        "site:facebook.com/groups \"Muskoday\" housing infrastructure project",
+        "\"Muskoday\" funding OR housing OR infrastructure",
+        "\"John Smith First Nation\" announcement Saskatchewan",
+        "\"John Smith First Nation\" community update",
+        "site:facebook.com \"John Smith First Nation\" announcement",
+        "site:facebook.com \"John Smith First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"John Smith First Nation\" housing infrastructure project",
+        "\"John Smith First Nation\" funding OR housing OR infrastructure",
+        "\"Muscotayo\" announcement Saskatchewan",
+        "\"Muscotayo\" community update",
+        "site:facebook.com \"Muscotayo\" announcement",
+        "site:facebook.com \"Muscotayo\" housing infrastructure project",
+        "site:facebook.com/groups \"Muscotayo\" housing infrastructure project",
+        "\"Muscotayo\" funding OR housing OR infrastructure"
       ]
     },
     {
@@ -555,11 +652,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Ochapowace First Nation\" announcement Saskatchewan",
         "\"Ochapowace First Nation\" community update",
         "site:facebook.com \"Ochapowace First Nation\" announcement",
-        "\"Ochapowace First Nation\" funding OR housing OR infrastructure"
+        "\"Ochapowace First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Ochapowace First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Ochapowace First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -588,11 +692,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Onion Lake Cree Nation\" announcement Saskatchewan",
         "\"Onion Lake Cree Nation\" community update",
         "site:facebook.com \"Onion Lake Cree Nation\" announcement",
-        "\"Onion Lake Cree Nation\" funding OR housing OR infrastructure"
+        "\"Onion Lake Cree Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Onion Lake Cree Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Onion Lake Cree Nation\" housing infrastructure project"
       ]
     },
     {
@@ -612,11 +723,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Pasqua First Nation\" announcement Saskatchewan",
         "\"Pasqua First Nation\" community update",
         "site:facebook.com \"Pasqua First Nation\" announcement",
-        "\"Pasqua First Nation\" funding OR housing OR infrastructure"
+        "\"Pasqua First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Pasqua First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Pasqua First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -636,11 +754,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Peepeekisis Cree Nation\" announcement Saskatchewan",
         "\"Peepeekisis Cree Nation\" community update",
         "site:facebook.com \"Peepeekisis Cree Nation\" announcement",
-        "\"Peepeekisis Cree Nation\" funding OR housing OR infrastructure"
+        "\"Peepeekisis Cree Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Peepeekisis Cree Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Peepeekisis Cree Nation\" housing infrastructure project"
       ]
     },
     {
@@ -660,11 +785,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Pelican Lake First Nation\" announcement Saskatchewan",
         "\"Pelican Lake First Nation\" community update",
         "site:facebook.com \"Pelican Lake First Nation\" announcement",
-        "\"Pelican Lake First Nation\" funding OR housing OR infrastructure"
+        "\"Pelican Lake First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Pelican Lake First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Pelican Lake First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -684,11 +816,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Peter Ballantyne Cree Nation\" announcement Saskatchewan",
         "\"Peter Ballantyne Cree Nation\" community update",
         "site:facebook.com \"Peter Ballantyne Cree Nation\" announcement",
-        "\"Peter Ballantyne Cree Nation\" funding OR housing OR infrastructure"
+        "\"Peter Ballantyne Cree Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Peter Ballantyne Cree Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Peter Ballantyne Cree Nation\" housing infrastructure project"
       ]
     },
     {
@@ -708,11 +847,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Pheasant Rump Nakota Nation\" announcement Saskatchewan",
         "\"Pheasant Rump Nakota Nation\" community update",
         "site:facebook.com \"Pheasant Rump Nakota Nation\" announcement",
-        "\"Pheasant Rump Nakota Nation\" funding OR housing OR infrastructure"
+        "\"Pheasant Rump Nakota Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Pheasant Rump Nakota Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Pheasant Rump Nakota Nation\" housing infrastructure project"
       ]
     },
     {
@@ -732,11 +878,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Poundmaker Cree Nation\" announcement Saskatchewan",
         "\"Poundmaker Cree Nation\" community update",
         "site:facebook.com \"Poundmaker Cree Nation\" announcement",
-        "\"Poundmaker Cree Nation\" funding OR housing OR infrastructure"
+        "\"Poundmaker Cree Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Poundmaker Cree Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Poundmaker Cree Nation\" housing infrastructure project"
       ]
     },
     {
@@ -756,11 +909,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Red Earth Cree Nation\" announcement Saskatchewan",
         "\"Red Earth Cree Nation\" community update",
         "site:facebook.com \"Red Earth Cree Nation\" announcement",
-        "\"Red Earth Cree Nation\" funding OR housing OR infrastructure"
+        "\"Red Earth Cree Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Red Earth Cree Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Red Earth Cree Nation\" housing infrastructure project"
       ]
     },
     {
@@ -780,11 +940,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Red Pheasant Cree Nation\" announcement Saskatchewan",
         "\"Red Pheasant Cree Nation\" community update",
         "site:facebook.com \"Red Pheasant Cree Nation\" announcement",
-        "\"Red Pheasant Cree Nation\" funding OR housing OR infrastructure"
+        "\"Red Pheasant Cree Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Red Pheasant Cree Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Red Pheasant Cree Nation\" housing infrastructure project"
       ]
     },
     {
@@ -804,11 +971,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Sakimay First Nations\" announcement Saskatchewan",
         "\"Sakimay First Nations\" community update",
         "site:facebook.com \"Sakimay First Nations\" announcement",
-        "\"Sakimay First Nations\" funding OR housing OR infrastructure"
+        "\"Sakimay First Nations\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Sakimay First Nations\" housing infrastructure project",
+        "site:facebook.com/groups \"Sakimay First Nations\" housing infrastructure project"
       ]
     },
     {
@@ -828,11 +1002,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Shoal Lake Cree Nation\" announcement Saskatchewan",
         "\"Shoal Lake Cree Nation\" community update",
         "site:facebook.com \"Shoal Lake Cree Nation\" announcement",
-        "\"Shoal Lake Cree Nation\" funding OR housing OR infrastructure"
+        "\"Shoal Lake Cree Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Shoal Lake Cree Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Shoal Lake Cree Nation\" housing infrastructure project"
       ]
     },
     {
@@ -852,11 +1033,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Sweetgrass First Nation\" announcement Saskatchewan",
         "\"Sweetgrass First Nation\" community update",
         "site:facebook.com \"Sweetgrass First Nation\" announcement",
-        "\"Sweetgrass First Nation\" funding OR housing OR infrastructure"
+        "\"Sweetgrass First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Sweetgrass First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Sweetgrass First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -876,11 +1064,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"The Key First Nation\" announcement Saskatchewan",
         "\"The Key First Nation\" community update",
         "site:facebook.com \"The Key First Nation\" announcement",
-        "\"The Key First Nation\" funding OR housing OR infrastructure"
+        "\"The Key First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"The Key First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"The Key First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -900,11 +1095,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Thunderchild First Nation\" announcement Saskatchewan",
         "\"Thunderchild First Nation\" community update",
         "site:facebook.com \"Thunderchild First Nation\" announcement",
-        "\"Thunderchild First Nation\" funding OR housing OR infrastructure"
+        "\"Thunderchild First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Thunderchild First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Thunderchild First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -924,11 +1126,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Wahpeton Dakota Nation\" announcement Saskatchewan",
         "\"Wahpeton Dakota Nation\" community update",
         "site:facebook.com \"Wahpeton Dakota Nation\" announcement",
-        "\"Wahpeton Dakota Nation\" funding OR housing OR infrastructure"
+        "\"Wahpeton Dakota Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Wahpeton Dakota Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Wahpeton Dakota Nation\" housing infrastructure project"
       ]
     },
     {
@@ -948,11 +1157,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Waterhen Lake First Nation\" announcement Saskatchewan",
         "\"Waterhen Lake First Nation\" community update",
         "site:facebook.com \"Waterhen Lake First Nation\" announcement",
-        "\"Waterhen Lake First Nation\" funding OR housing OR infrastructure"
+        "\"Waterhen Lake First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Waterhen Lake First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Waterhen Lake First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -972,11 +1188,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"White Bear First Nations\" announcement Saskatchewan",
         "\"White Bear First Nations\" community update",
         "site:facebook.com \"White Bear First Nations\" announcement",
-        "\"White Bear First Nations\" funding OR housing OR infrastructure"
+        "\"White Bear First Nations\" funding OR housing OR infrastructure",
+        "site:facebook.com \"White Bear First Nations\" housing infrastructure project",
+        "site:facebook.com/groups \"White Bear First Nations\" housing infrastructure project"
       ]
     },
     {
@@ -1005,11 +1228,53 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Whitecap Dakota First Nation\" announcement Saskatchewan",
         "\"Whitecap Dakota First Nation\" community update",
         "site:facebook.com \"Whitecap Dakota First Nation\" announcement",
-        "\"Whitecap Dakota First Nation\" funding OR housing OR infrastructure"
+        "\"Whitecap Dakota First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Whitecap Dakota First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Whitecap Dakota First Nation\" housing infrastructure project"
+      ]
+    },
+    {
+      "bandId": 388,
+      "communityName": "Wood Mountain First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=388&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
+      "discoveryQueries": [
+        "\"Wood Mountain Lakota First Nation\" announcement Saskatchewan",
+        "\"Wood Mountain Lakota First Nation\" community update",
+        "site:facebook.com \"Wood Mountain Lakota First Nation\" announcement",
+        "\"Wood Mountain Lakota First Nation\" funding OR housing OR infrastructure",
+        "\"Wood Mountain First Nation\" announcement Saskatchewan",
+        "\"Wood Mountain First Nation\" community update",
+        "site:facebook.com \"Wood Mountain First Nation\" announcement",
+        "site:facebook.com \"Wood Mountain First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Wood Mountain First Nation\" housing infrastructure project",
+        "\"Wood Mountain First Nation\" funding OR housing OR infrastructure"
       ]
     },
     {
@@ -1029,11 +1294,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Yellow Quill First Nation\" announcement Saskatchewan",
         "\"Yellow Quill First Nation\" community update",
         "site:facebook.com \"Yellow Quill First Nation\" announcement",
-        "\"Yellow Quill First Nation\" funding OR housing OR infrastructure"
+        "\"Yellow Quill First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Yellow Quill First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Yellow Quill First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1092,11 +1364,36 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "registered",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Ahtahkakoop Cree Nation\" announcement Saskatchewan",
         "\"Ahtahkakoop Cree Nation\" community update",
         "site:facebook.com \"Ahtahkakoop Cree Nation\" announcement",
-        "\"Ahtahkakoop Cree Nation\" funding OR housing OR infrastructure"
+        "\"Ahtahkakoop Cree Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Ahtahkakoop Cree Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Ahtahkakoop Cree Nation\" housing infrastructure project",
+        "\"Ahtahkakoop\" announcement Saskatchewan",
+        "\"Ahtahkakoop\" community update",
+        "site:facebook.com \"Ahtahkakoop\" announcement",
+        "site:facebook.com \"Ahtahkakoop\" housing infrastructure project",
+        "site:facebook.com/groups \"Ahtahkakoop\" housing infrastructure project",
+        "\"Ahtahkakoop\" funding OR housing OR infrastructure",
+        "\"Sandy Lake Indian Band\" announcement Saskatchewan",
+        "\"Sandy Lake Indian Band\" community update",
+        "site:facebook.com \"Sandy Lake Indian Band\" announcement",
+        "site:facebook.com \"Sandy Lake Indian Band\" housing infrastructure project",
+        "site:facebook.com/groups \"Sandy Lake Indian Band\" housing infrastructure project",
+        "\"Sandy Lake Indian Band\" funding OR housing OR infrastructure",
+        "\"Star Blanket\" announcement Saskatchewan",
+        "\"Star Blanket\" community update",
+        "site:facebook.com \"Star Blanket\" announcement",
+        "site:facebook.com \"Star Blanket\" housing infrastructure project",
+        "site:facebook.com/groups \"Star Blanket\" housing infrastructure project",
+        "\"Star Blanket\" funding OR housing OR infrastructure"
       ]
     },
     {
@@ -1116,11 +1413,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Beardy's and Okemasis' Cree Nation\" announcement Saskatchewan",
         "\"Beardy's and Okemasis' Cree Nation\" community update",
         "site:facebook.com \"Beardy's and Okemasis' Cree Nation\" announcement",
-        "\"Beardy's and Okemasis' Cree Nation\" funding OR housing OR infrastructure"
+        "\"Beardy's and Okemasis' Cree Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Beardy's and Okemasis' Cree Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Beardy's and Okemasis' Cree Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1140,11 +1444,49 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Buffalo River Dene Nation\" announcement Saskatchewan",
         "\"Buffalo River Dene Nation\" community update",
         "site:facebook.com \"Buffalo River Dene Nation\" announcement",
-        "\"Buffalo River Dene Nation\" funding OR housing OR infrastructure"
+        "\"Buffalo River Dene Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Buffalo River Dene Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Buffalo River Dene Nation\" housing infrastructure project"
+      ]
+    },
+    {
+      "bandId": 394,
+      "communityName": "Canoe Lake Cree First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 10",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=394&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
+      "discoveryQueries": [
+        "\"Canoe Lake Cree First Nation\" announcement Saskatchewan",
+        "\"Canoe Lake Cree First Nation\" community update",
+        "site:facebook.com \"Canoe Lake Cree First Nation\" announcement",
+        "\"Canoe Lake Cree First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Canoe Lake Cree First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Canoe Lake Cree First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1164,11 +1506,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Clearwater River Dene Nation\" announcement Saskatchewan",
         "\"Clearwater River Dene Nation\" community update",
         "site:facebook.com \"Clearwater River Dene Nation\" announcement",
-        "\"Clearwater River Dene Nation\" funding OR housing OR infrastructure"
+        "\"Clearwater River Dene Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Clearwater River Dene Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Clearwater River Dene Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1188,11 +1537,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Cumberland House Cree Nation\" announcement Saskatchewan",
         "\"Cumberland House Cree Nation\" community update",
         "site:facebook.com \"Cumberland House Cree Nation\" announcement",
-        "\"Cumberland House Cree Nation\" funding OR housing OR infrastructure"
+        "\"Cumberland House Cree Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Cumberland House Cree Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Cumberland House Cree Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1212,11 +1568,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"English River Dene Nation\" announcement Saskatchewan",
         "\"English River Dene Nation\" community update",
         "site:facebook.com \"English River Dene Nation\" announcement",
-        "\"English River Dene Nation\" funding OR housing OR infrastructure"
+        "\"English River Dene Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"English River Dene Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"English River Dene Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1236,11 +1599,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Fishing Lake First Nation\" announcement Saskatchewan",
         "\"Fishing Lake First Nation\" community update",
         "site:facebook.com \"Fishing Lake First Nation\" announcement",
-        "\"Fishing Lake First Nation\" funding OR housing OR infrastructure"
+        "\"Fishing Lake First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Fishing Lake First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Fishing Lake First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1287,11 +1657,36 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Flying Dust First Nation\" announcement Saskatchewan",
         "\"Flying Dust First Nation\" community update",
         "site:facebook.com \"Flying Dust First Nation\" announcement",
-        "\"Flying Dust First Nation\" funding OR housing OR infrastructure"
+        "\"Flying Dust First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Flying Dust First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Flying Dust First Nation\" housing infrastructure project",
+        "\"Flying Dust\" announcement Saskatchewan",
+        "\"Flying Dust\" community update",
+        "site:facebook.com \"Flying Dust\" announcement",
+        "site:facebook.com \"Flying Dust\" housing infrastructure project",
+        "site:facebook.com/groups \"Flying Dust\" housing infrastructure project",
+        "\"Flying Dust\" funding OR housing OR infrastructure",
+        "\"FDFN\" announcement Saskatchewan",
+        "\"FDFN\" community update",
+        "site:facebook.com \"FDFN\" announcement",
+        "site:facebook.com \"FDFN\" housing infrastructure project",
+        "site:facebook.com/groups \"FDFN\" housing infrastructure project",
+        "\"FDFN\" funding OR housing OR infrastructure",
+        "\"kâ-ohpâwahkâstahk\" announcement Saskatchewan",
+        "\"kâ-ohpâwahkâstahk\" community update",
+        "site:facebook.com \"kâ-ohpâwahkâstahk\" announcement",
+        "site:facebook.com \"kâ-ohpâwahkâstahk\" housing infrastructure project",
+        "site:facebook.com/groups \"kâ-ohpâwahkâstahk\" housing infrastructure project",
+        "\"kâ-ohpâwahkâstahk\" funding OR housing OR infrastructure"
       ]
     },
     {
@@ -1326,11 +1721,42 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Hatchet Lake Denesuline\" announcement Saskatchewan",
         "\"Hatchet Lake Denesuline\" community update",
         "site:facebook.com \"Hatchet Lake Denesuline\" announcement",
-        "\"Hatchet Lake Denesuline\" funding OR housing OR infrastructure"
+        "\"Hatchet Lake Denesuline\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Hatchet Lake Denesuline\" housing infrastructure project",
+        "site:facebook.com/groups \"Hatchet Lake Denesuline\" housing infrastructure project",
+        "\"Hatchet Lake\" announcement Saskatchewan",
+        "\"Hatchet Lake\" community update",
+        "site:facebook.com \"Hatchet Lake\" announcement",
+        "site:facebook.com \"Hatchet Lake\" housing infrastructure project",
+        "site:facebook.com/groups \"Hatchet Lake\" housing infrastructure project",
+        "\"Hatchet Lake\" funding OR housing OR infrastructure",
+        "\"Hatchet Lake Denesuline Nation\" announcement Saskatchewan",
+        "\"Hatchet Lake Denesuline Nation\" community update",
+        "site:facebook.com \"Hatchet Lake Denesuline Nation\" announcement",
+        "site:facebook.com \"Hatchet Lake Denesuline Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Hatchet Lake Denesuline Nation\" housing infrastructure project",
+        "\"Hatchet Lake Denesuline Nation\" funding OR housing OR infrastructure",
+        "\"Wollaston Lake\" announcement Saskatchewan",
+        "\"Wollaston Lake\" community update",
+        "site:facebook.com \"Wollaston Lake\" announcement",
+        "site:facebook.com \"Wollaston Lake\" housing infrastructure project",
+        "site:facebook.com/groups \"Wollaston Lake\" housing infrastructure project",
+        "\"Wollaston Lake\" funding OR housing OR infrastructure",
+        "\"Lac La Hache\" announcement Saskatchewan",
+        "\"Lac La Hache\" community update",
+        "site:facebook.com \"Lac La Hache\" announcement",
+        "site:facebook.com \"Lac La Hache\" housing infrastructure project",
+        "site:facebook.com/groups \"Lac La Hache\" housing infrastructure project",
+        "\"Lac La Hache\" funding OR housing OR infrastructure"
       ]
     },
     {
@@ -1350,11 +1776,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Lac La Ronge Indian Band\" announcement Saskatchewan",
         "\"Lac La Ronge Indian Band\" community update",
         "site:facebook.com \"Lac La Ronge Indian Band\" announcement",
-        "\"Lac La Ronge Indian Band\" funding OR housing OR infrastructure"
+        "\"Lac La Ronge Indian Band\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Lac La Ronge Indian Band\" housing infrastructure project",
+        "site:facebook.com/groups \"Lac La Ronge Indian Band\" housing infrastructure project"
       ]
     },
     {
@@ -1374,11 +1807,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Little Pine First Nation\" announcement Saskatchewan",
         "\"Little Pine First Nation\" community update",
         "site:facebook.com \"Little Pine First Nation\" announcement",
-        "\"Little Pine First Nation\" funding OR housing OR infrastructure"
+        "\"Little Pine First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Little Pine First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Little Pine First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1398,11 +1838,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Ministikwan Lake Cree Nation\" announcement Saskatchewan",
         "\"Ministikwan Lake Cree Nation\" community update",
         "site:facebook.com \"Ministikwan Lake Cree Nation\" announcement",
-        "\"Ministikwan Lake Cree Nation\" funding OR housing OR infrastructure"
+        "\"Ministikwan Lake Cree Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Ministikwan Lake Cree Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Ministikwan Lake Cree Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1422,11 +1869,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Montreal Lake Cree Nation\" announcement Saskatchewan",
         "\"Montreal Lake Cree Nation\" community update",
         "site:facebook.com \"Montreal Lake Cree Nation\" announcement",
-        "\"Montreal Lake Cree Nation\" funding OR housing OR infrastructure"
+        "\"Montreal Lake Cree Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Montreal Lake Cree Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Montreal Lake Cree Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1446,11 +1900,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Moosomin First Nation\" announcement Saskatchewan",
         "\"Moosomin First Nation\" community update",
         "site:facebook.com \"Moosomin First Nation\" announcement",
-        "\"Moosomin First Nation\" funding OR housing OR infrastructure"
+        "\"Moosomin First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Moosomin First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Moosomin First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1470,11 +1931,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Mosquito, Grizzly Bear's Head, Lean Man\" announcement Saskatchewan",
         "\"Mosquito, Grizzly Bear's Head, Lean Man\" community update",
         "site:facebook.com \"Mosquito, Grizzly Bear's Head, Lean Man\" announcement",
-        "\"Mosquito, Grizzly Bear's Head, Lean Man\" funding OR housing OR infrastructure"
+        "\"Mosquito, Grizzly Bear's Head, Lean Man\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Mosquito, Grizzly Bear's Head, Lean Man\" housing infrastructure project",
+        "site:facebook.com/groups \"Mosquito, Grizzly Bear's Head, Lean Man\" housing infrastructure project"
       ]
     },
     {
@@ -1503,11 +1971,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Muscowpetung First Nation\" announcement Saskatchewan",
         "\"Muscowpetung First Nation\" community update",
         "site:facebook.com \"Muscowpetung First Nation\" announcement",
-        "\"Muscowpetung First Nation\" funding OR housing OR infrastructure"
+        "\"Muscowpetung First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Muscowpetung First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Muscowpetung First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1536,11 +2011,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Muskeg Lake Cree Nation\" announcement Saskatchewan",
         "\"Muskeg Lake Cree Nation\" community update",
         "site:facebook.com \"Muskeg Lake Cree Nation\" announcement",
-        "\"Muskeg Lake Cree Nation\" funding OR housing OR infrastructure"
+        "\"Muskeg Lake Cree Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Muskeg Lake Cree Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Muskeg Lake Cree Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1560,11 +2042,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Muskowekwan First Nation\" announcement Saskatchewan",
         "\"Muskowekwan First Nation\" community update",
         "site:facebook.com \"Muskowekwan First Nation\" announcement",
-        "\"Muskowekwan First Nation\" funding OR housing OR infrastructure"
+        "\"Muskowekwan First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Muskowekwan First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Muskowekwan First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1584,11 +2073,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Nekaneet Cree Nation\" announcement Saskatchewan",
         "\"Nekaneet Cree Nation\" community update",
         "site:facebook.com \"Nekaneet Cree Nation\" announcement",
-        "\"Nekaneet Cree Nation\" funding OR housing OR infrastructure"
+        "\"Nekaneet Cree Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Nekaneet Cree Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Nekaneet Cree Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1608,11 +2104,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Ocean Man First Nation\" announcement Saskatchewan",
         "\"Ocean Man First Nation\" community update",
         "site:facebook.com \"Ocean Man First Nation\" announcement",
-        "\"Ocean Man First Nation\" funding OR housing OR infrastructure"
+        "\"Ocean Man First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Ocean Man First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Ocean Man First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1632,11 +2135,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Okanese First Nation\" announcement Saskatchewan",
         "\"Okanese First Nation\" community update",
         "site:facebook.com \"Okanese First Nation\" announcement",
-        "\"Okanese First Nation\" funding OR housing OR infrastructure"
+        "\"Okanese First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Okanese First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Okanese First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1656,11 +2166,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"One Arrow First Nation\" announcement Saskatchewan",
         "\"One Arrow First Nation\" community update",
         "site:facebook.com \"One Arrow First Nation\" announcement",
-        "\"One Arrow First Nation\" funding OR housing OR infrastructure"
+        "\"One Arrow First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"One Arrow First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"One Arrow First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1680,11 +2197,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Piapot First Nation\" announcement Saskatchewan",
         "\"Piapot First Nation\" community update",
         "site:facebook.com \"Piapot First Nation\" announcement",
-        "\"Piapot First Nation\" funding OR housing OR infrastructure"
+        "\"Piapot First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Piapot First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Piapot First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1704,11 +2228,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Saulteaux First Nation\" announcement Saskatchewan",
         "\"Saulteaux First Nation\" community update",
         "site:facebook.com \"Saulteaux First Nation\" announcement",
-        "\"Saulteaux First Nation\" funding OR housing OR infrastructure"
+        "\"Saulteaux First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Saulteaux First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Saulteaux First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1728,11 +2259,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Standing Buffalo Dakota Nation\" announcement Saskatchewan",
         "\"Standing Buffalo Dakota Nation\" community update",
         "site:facebook.com \"Standing Buffalo Dakota Nation\" announcement",
-        "\"Standing Buffalo Dakota Nation\" funding OR housing OR infrastructure"
+        "\"Standing Buffalo Dakota Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Standing Buffalo Dakota Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Standing Buffalo Dakota Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1752,11 +2290,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Star Blanket Cree Nation\" announcement Saskatchewan",
         "\"Star Blanket Cree Nation\" community update",
         "site:facebook.com \"Star Blanket Cree Nation\" announcement",
-        "\"Star Blanket Cree Nation\" funding OR housing OR infrastructure"
+        "\"Star Blanket Cree Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Star Blanket Cree Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Star Blanket Cree Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1776,11 +2321,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Sturgeon Lake First Nation\" announcement Saskatchewan",
         "\"Sturgeon Lake First Nation\" community update",
         "site:facebook.com \"Sturgeon Lake First Nation\" announcement",
-        "\"Sturgeon Lake First Nation\" funding OR housing OR infrastructure"
+        "\"Sturgeon Lake First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Sturgeon Lake First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Sturgeon Lake First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1800,11 +2352,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Big River First Nation\" announcement Saskatchewan",
         "\"Big River First Nation\" community update",
         "site:facebook.com \"Big River First Nation\" announcement",
-        "\"Big River First Nation\" funding OR housing OR infrastructure"
+        "\"Big River First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Big River First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Big River First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1824,11 +2383,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Birch Narrows Dene Nation\" announcement Saskatchewan",
         "\"Birch Narrows Dene Nation\" community update",
         "site:facebook.com \"Birch Narrows Dene Nation\" announcement",
-        "\"Birch Narrows Dene Nation\" funding OR housing OR infrastructure"
+        "\"Birch Narrows Dene Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Birch Narrows Dene Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Birch Narrows Dene Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1848,11 +2414,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Black Lake Denesuline First Nation\" announcement Saskatchewan",
         "\"Black Lake Denesuline First Nation\" community update",
         "site:facebook.com \"Black Lake Denesuline First Nation\" announcement",
-        "\"Black Lake Denesuline First Nation\" funding OR housing OR infrastructure"
+        "\"Black Lake Denesuline First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Black Lake Denesuline First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Black Lake Denesuline First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1872,11 +2445,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Fond du Lac Denesuline First Nation\" announcement Saskatchewan",
         "\"Fond du Lac Denesuline First Nation\" community update",
         "site:facebook.com \"Fond du Lac Denesuline First Nation\" announcement",
-        "\"Fond du Lac Denesuline First Nation\" funding OR housing OR infrastructure"
+        "\"Fond du Lac Denesuline First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Fond du Lac Denesuline First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Fond du Lac Denesuline First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1896,11 +2476,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"James Smith Cree Nation\" announcement Saskatchewan",
         "\"James Smith Cree Nation\" community update",
         "site:facebook.com \"James Smith Cree Nation\" announcement",
-        "\"James Smith Cree Nation\" funding OR housing OR infrastructure"
+        "\"James Smith Cree Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"James Smith Cree Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"James Smith Cree Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1920,11 +2507,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Kawacatoose First Nation\" announcement Saskatchewan",
         "\"Kawacatoose First Nation\" community update",
         "site:facebook.com \"Kawacatoose First Nation\" announcement",
-        "\"Kawacatoose First Nation\" funding OR housing OR infrastructure"
+        "\"Kawacatoose First Nation\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Kawacatoose First Nation\" housing infrastructure project",
+        "site:facebook.com/groups \"Kawacatoose First Nation\" housing infrastructure project"
       ]
     },
     {
@@ -1944,35 +2538,18 @@
           "official": false
         }
       ],
+      "facebookMonitoring": {
+        "pageStatus": "source-research-needed",
+        "groupStatus": "registry-only-no-ordinary-api-fetch",
+        "policy": "Authorized public Pages may be fetched through Meta's API; Groups and access-restricted content are never scraped."
+      },
       "discoveryQueries": [
         "\"Cree Nation of Chitek Lake\" announcement Saskatchewan",
         "\"Cree Nation of Chitek Lake\" community update",
         "site:facebook.com \"Cree Nation of Chitek Lake\" announcement",
-        "\"Cree Nation of Chitek Lake\" funding OR housing OR infrastructure"
-      ]
-    },
-    {
-      "bandId": 388,
-      "communityName": "Wood Mountain Lakota First Nation",
-      "aliases": [],
-      "provinceTerritory": "SK",
-      "treaty": null,
-      "sources": [
-        {
-          "type": "Government Source",
-          "name": "Indigenous Services Canada FNFTA filings",
-          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=388&lang=eng",
-          "status": "baseline",
-          "adapter": "static",
-          "monitor": false,
-          "official": false
-        }
-      ],
-      "discoveryQueries": [
-        "\"Wood Mountain Lakota First Nation\" announcement Saskatchewan",
-        "\"Wood Mountain Lakota First Nation\" community update",
-        "site:facebook.com \"Wood Mountain Lakota First Nation\" announcement",
-        "\"Wood Mountain Lakota First Nation\" funding OR housing OR infrastructure"
+        "\"Cree Nation of Chitek Lake\" funding OR housing OR infrastructure",
+        "site:facebook.com \"Cree Nation of Chitek Lake\" housing infrastructure project",
+        "site:facebook.com/groups \"Cree Nation of Chitek Lake\" housing infrastructure project"
       ]
     }
   ]
