@@ -75,8 +75,8 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260810a"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260810a"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260810b"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260810b"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260805b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
@@ -115,6 +115,12 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("function renderDirectoryMap", javascript)
         self.assertIn("function loadMapData", javascript)
         self.assertIn("location.assign(profilePath(band.name))", javascript)
+        self.assertIn("maxBounds:SK_MAP_BOUNDS", javascript)
+        self.assertIn("maxZoom:10", javascript)
+        councils = {row["tribalCouncil"] for row in map_data["communities"]}
+        self.assertIn("South East Treaty 4 Tribal Council", councils)
+        self.assertIn("Battlefords Agency Tribal Chiefs (BATC)", councils)
+        self.assertIn("Battlefords Tribal Council (BTC)", councils)
 
     def test_election_prerender_is_available_for_every_nation(self):
         seeded = (ROOT / "first-nations" / "beardys-and-okemasis-cree-nation" / "index.html").read_text(encoding="utf-8")
