@@ -92,6 +92,15 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("revenue-source-browser", javascript)
         self.assertIn("revenue-year-body", javascript)
         self.assertIn("breakdowns.after(section)", javascript)
+        self.assertIn("function renderHousingProjectsSection", javascript)
+        self.assertIn("function toggleProjects", javascript)
+
+    def test_every_profile_has_projects_section(self):
+        for band in self.data["bands"]:
+            page = ROOT / "first-nations" / slugify(band["name"]) / "index.html"
+            with self.subTest(band=band["name"]):
+                markup = page.read_text(encoding="utf-8")
+                self.assertEqual(markup.count("Housing &amp; Infrastructure Projects"), 1)
 
     def test_browse_page_uses_official_interactive_map_data(self):
         markup = (ROOT / "browse" / "index.html").read_text(encoding="utf-8")

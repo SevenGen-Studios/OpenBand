@@ -23,6 +23,7 @@ The public website focuses on Saskatchewan FNFTA Chief and Council remuneration 
 - `tools/build_site.py` - generates profile pages, metadata, `sitemap.xml`, and `robots.txt`
 - `data.json` - generated filing and remuneration data used by the website
 - `map-data.json` - ISC-sourced community locations and tribal-council relationships
+- `projects-data.json` - source-linked housing and infrastructure projects shown on community profiles
 - `audit-results.txt` - latest coverage and parser-health report
 - `scraper.py` - restored core scraper
 - `run_scraper.py` - compatibility launcher with parser fallbacks
@@ -99,6 +100,10 @@ the static routes before publishing:
 python tools/build_site.py
 python -m unittest tests/test_site_routes.py -v
 ```
+
+Housing and infrastructure entries must keep their original source URL and
+publication or verification date in `projects-data.json`. Omit unverified
+costs, dates, capacities, and statuses instead of filling them with estimates.
 
 The scraper workflows and **Build static OpenBand routes** workflow run this
 step automatically for GitHub-hosted updates.
