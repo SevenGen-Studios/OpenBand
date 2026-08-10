@@ -93,6 +93,14 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("revenue-year-body", javascript)
         self.assertIn("breakdowns.after(section)", javascript)
 
+    def test_election_prerender_is_available_only_when_sourced(self):
+        seeded = (ROOT / "first-nations" / "beardys-and-okemasis-cree-nation" / "index.html").read_text(encoding="utf-8")
+        unseeded = (ROOT / "first-nations" / "little-pine-first-nation" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("Elections &amp; Leadership", seeded)
+        self.assertIn("Edwin Ananas", seeded)
+        self.assertNotIn("Elections &amp; Leadership", unseeded)
+        self.assertIn("if(el('profilePrerender'))el('profilePrerender').hidden=true", (ROOT / "assets" / "openband.js").read_text(encoding="utf-8"))
+
     def test_ga4_tag_is_present_on_every_public_page(self):
         pages = [ROOT / "index.html", ROOT / "browse" / "index.html", ROOT / "news" / "index.html"]
         pages.extend((ROOT / "first-nations").glob("*/index.html"))
