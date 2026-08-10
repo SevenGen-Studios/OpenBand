@@ -105,25 +105,6 @@ Housing and infrastructure entries must keep their original source URL and
 publication or verification date in `projects-data.json`. Omit unverified
 costs, dates, capacities, and statuses instead of filling them with estimates.
 
-## Authorized Facebook monitoring
-
-`tools/news_discovery.py` can monitor registered, authorized First Nation
-Facebook Pages through Meta's ordinary Graph API. It paginates Page posts,
-retains the original permalink and publication date, and adds supported updates
-to community news. Strong housing and infrastructure signals from an official
-Page are also added to the clearly labelled unverified project feed until a
-second public source corroborates the delivery details.
-
-Configure either `META_ACCESS_TOKEN` for an approved app-wide Page access path,
-or `META_PAGE_TOKENS_JSON` as a secret JSON object mapping Page IDs or handles to
-their authorized Page tokens. Tokens are sent only in the Authorization header
-and are never written to URLs or data files.
-
-The ordinary API scanner deliberately does not fetch Facebook Groups, private
-content, login-protected material, comments, member profiles, or access-restricted
-posts. Group URLs may be retained in the source registry for transparent manual
-research, but automated group scraping is prohibited by the pipeline.
-
 The scraper workflows and **Build static OpenBand routes** workflow run this
 step automatically for GitHub-hosted updates.
 

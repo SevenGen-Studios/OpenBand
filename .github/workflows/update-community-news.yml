@@ -8,13 +8,6 @@ on:
         required: true
         default: false
         type: boolean
-  push:
-    branches: [main]
-    paths:
-      - tools/news_discovery.py
-      - tests/**
-      - news-sources.json
-      - .github/workflows/update-community-news.yml
   schedule:
     - cron: "23 12 * * *"
 
@@ -51,7 +44,6 @@ jobs:
       - name: Discover community updates
         env:
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
-          META_PAGE_TOKENS_JSON: ${{ secrets.META_PAGE_TOKENS_JSON }}
         run: |
           ARGS=()
           if [ "${{ github.event.inputs.pilot_only || 'false' }}" = "true" ]; then
@@ -87,14 +79,6 @@ jobs:
               raise SystemExit("Refusing to commit: source registry coverage is incomplete")
           if any(not str(url or "").startswith("https://") for url in urls):
               raise SystemExit("Refusing to commit: a news item lacks an HTTPS source URL")
-
-          projects = json.loads(Path("projects-data.json").read_text(encoding="utf-8"))
-          for item in projects.get("unverifiedProjects", []):
-              if not item.get("sources"):
-                  raise SystemExit("Refusing to commit: an unverified project lacks a source")
-              for source in item["sources"]:
-                  if not str(source.get("url") or "").startswith("https://"):
-                      raise SystemExit("Refusing to commit: an unverified project source is not HTTPS")
           PY
 
       - name: Run full test suite
@@ -110,4 +94,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update Saskatchewan community news"
-          file_pattern: news-data.json news-sources.json news-discovery-cache.json news-review-queue.json news-coverage-report.json projects-data.json news first-nations sitemap.xml robots.txt
+          file_pattern: news-data.json news-sources.json news-discovery-cache.json news-review-queue.json news-coverage-report.json news first-nations sitemap.xml robots.txt
