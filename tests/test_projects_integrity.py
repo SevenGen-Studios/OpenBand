@@ -13,6 +13,7 @@ class ProjectsIntegrityTests(unittest.TestCase):
         cls.bands = json.loads((ROOT / "data.json").read_text(encoding="utf-8"))["bands"]
         cls.payload = json.loads((ROOT / "projects-data.json").read_text(encoding="utf-8"))
         cls.projects = cls.payload["projects"]
+        cls.unverified = cls.payload["unverifiedProjects"]
 
     def test_schema_and_project_ids(self):
         self.assertEqual(self.payload["schemaVersion"], 1)
@@ -69,6 +70,36 @@ class ProjectsIntegrityTests(unittest.TestCase):
     def test_project_coverage_expanded_after_all_community_audit(self):
         covered = {str(band_id) for project in self.projects for band_id in project["firstNationIds"]}
         self.assertGreaterEqual(len(covered), 35)
+
+    def test_unverified_candidates_are_source_linked_and_clearly_caveated(self):
+        band_ids = {str(band["id"]) for band in self.bands}
+        ids = [project["id"] for project in self.unverified]
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertGreaterEqual(len(self.unverified), 10)
+        forbidden_fields = {
+            "status", "statusAsOf", "estimatedCost", "funding", "startDate",
+            "completionDate", "expectedCompletionDate", "unitsCapacity",
+        }
+        for project in self.unverified:
+            with self.subTest(project=project["id"]):
+                self.assertTrue(project["name"].strip())
+                self.assertTrue(project["discussionSummary"].strip())
+                self.assertTrue(project["signalType"].strip())
+                self.assertTrue(project["whyUnverified"].strip())
+                self.assertRegex(project["lastSeenAt"], r"^\d{4}-\d{2}-\d{2}$")
+                self.assertTrue({str(value) for value in project["firstNationIds"]}.issubset(band_ids))
+                self.assertFalse(forbidden_fields.intersection(project))
+                self.assertTrue(project["sources"])
+                for source in project["sources"]:
+                    self.assertTrue(source["url"].startswith("https://"))
+                    self.assertRegex(source["publishedAt"], r"^\d{4}-\d{2}-\d{2}$")
+
+    def test_unverified_policy_excludes_unsafe_rumours(self):
+        policy = self.payload["unverifiedPolicy"]
+        self.assertEqual(policy["label"], "Unverified Projects & Community Discussion")
+        exclusions = " ".join(policy["exclusions"]).lower()
+        self.assertIn("anonymous", exclusions)
+        self.assertIn("private", exclusions)
 
 
 if __name__ == "__main__":

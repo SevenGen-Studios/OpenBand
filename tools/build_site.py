@@ -90,7 +90,7 @@ def election_prerender(band: dict, records: list[dict]) -> str:
     )
 
 
-def projects_prerender(band: dict, projects: list[dict]) -> str:
+def projects_prerender(band: dict, projects: list[dict], unverified_projects: list[dict]) -> str:
     priority = {"Under Construction": 0, "Planned": 1, "Completed": 2}
     rows = [
         project for project in projects
@@ -124,15 +124,48 @@ def projects_prerender(band: dict, projects: list[dict]) -> str:
         if cards else
         '<div class="projects-empty">No current or recently completed project has been added from a verifiable public source yet.</div>'
     )
+    unverified = [
+        project for project in unverified_projects
+        if str(band["id"]) in {str(value) for value in project.get("firstNationIds", [])}
+    ]
+    unverified.sort(key=lambda project: str(project.get("lastSeenAt") or ""), reverse=True)
+    unverified_cards = []
+    for project in unverified[:3]:
+        source = next((item for item in project.get("sources", []) if item.get("url")), None)
+        source_html = (
+            f'<a href="{html.escape(source["url"], quote=True)}" rel="noopener">'
+            f'{html.escape(source.get("name") or "Original public source")}</a>'
+            if source else ""
+        )
+        unverified_cards.append(
+            '<article class="unverified-project-row"><div class="project-row-top">'
+            f'<span class="project-category">{html.escape(project.get("category") or "Community Project")}</span>'
+            '<span class="unverified-label">Unverified</span></div>'
+            f'<h4>{html.escape(project["name"])}</h4><p>{html.escape(project.get("discussionSummary") or "")}</p>'
+            f'<p class="unverified-reason"><strong>Why unverified:</strong> {html.escape(project.get("whyUnverified") or "")}</p>'
+            f'<div class="project-sources"><strong>Public signal:</strong>{source_html}</div></article>'
+        )
+    unverified_content = (
+        f'<div class="unverified-project-list">{"".join(unverified_cards)}</div>'
+        if unverified_cards else
+        '<div class="unverified-empty">No source-linked unverified project discussion was indexed in the current public-source scan.</div>'
+    )
+    unverified_section = (
+        '<section class="unverified-projects"><div class="unverified-heading"><div>'
+        '<h3>Unverified Projects &amp; Community Discussion</h3>'
+        '<p>Source-linked proposals or discussion that are not confirmed projects.</p></div></div>'
+        '<div class="unverified-warning"><strong>Not confirmed:</strong> Inclusion here does not mean funding, approval, construction or delivery is secured.</div>'
+        f'{unverified_content}</section>'
+    )
     return (
         '<section class="profile-projects" aria-labelledby="projectsPrerenderHeading">'
         '<div class="section-head"><div><h3 id="projectsPrerenderHeading">Housing &amp; Infrastructure Projects</h3>'
         '<p>Current and recently completed projects found in verifiable public sources.</p></div></div>'
-        f'{content}</section>'
+        f'{content}{unverified_section}</section>'
     )
 
 
-def profile_prerender(band: dict, election_records: list[dict], projects: list[dict]) -> str:
+def profile_prerender(band: dict, election_records: list[dict], projects: list[dict], unverified_projects: list[dict]) -> str:
     filings = remuneration_filings(band)
     parsed = [filing for filing in filings if is_parsed(filing)]
     latest = filings[0].get("year") if filings else None
@@ -151,7 +184,7 @@ def profile_prerender(band: dict, election_records: list[dict], projects: list[d
         f"<div><dt>Latest parsed remuneration</dt><dd>{html.escape(latest_parsed or 'Pending extraction')}</dd></div>"
         f"<div><dt>Parsed years</dt><dd>{len(parsed)}</dd></div>"
         f'<div><dt>Authoritative source</dt><dd><a href="{isc_url}">ISC filing profile</a></dd></div>'
-        f"</dl>{election_prerender(band, election_records)}{projects_prerender(band, projects)}</div>"
+        f"</dl>{election_prerender(band, election_records)}{projects_prerender(band, projects, unverified_projects)}</div>"
     )
 
 
@@ -227,10 +260,10 @@ def build() -> None:
         }
         page = set_meta(base, title=title, description=description, path=path, structured=structured)
         page = page.replace('<body data-page="home">', f'<body data-page="profile" data-band-id="{band["id"]}">', 1)
-        page = page.replace('<div id="profilePrerender" class="profile-prerender" hidden></div>', profile_prerender(band, elections.get("records", []), projects.get("projects", [])), 1)
+        page = page.replace('<div id="profilePrerender" class="profile-prerender" hidden></div>', profile_prerender(band, elections.get("records", []), projects.get("projects", []), projects.get("unverifiedProjects", [])), 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260810e" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260810e" defer></script>',
+            '<script src="/assets/openband.js?v=20260810f" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260810f" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)

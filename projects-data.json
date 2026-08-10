@@ -13,6 +13,17 @@
     ],
     "limitations": "Public-source audit only. Private, deleted, access-restricted and unindexed posts are outside the review scope. A community may have active projects that are not yet described in a verifiable public source."
   },
+  "unverifiedPolicy": {
+    "label": "Unverified Projects & Community Discussion",
+    "description": "Source-linked proposals and public discussion that do not yet have enough evidence to be presented as confirmed projects.",
+    "lastReviewedAt": "2026-08-10",
+    "exclusions": [
+      "Anonymous or unattributed claims",
+      "Private, deleted or access-restricted posts",
+      "Claims about wrongdoing or named individuals",
+      "Any cost, date, funding, capacity or status not stated by the linked source"
+    ]
+  },
   "projects": [
     {
       "id": "rose-valley-wind",
@@ -509,6 +520,140 @@
       "unitsCapacity": "One 30-metre tower and approximately 85 km of underground and aerial fibre across the full multi-community project",
       "lastVerifiedAt": "2026-08-10",
       "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/89475?culture=en-CA", "publishedAt": "2025-05-27"}]
+    }
+  ],
+  "unverifiedProjects": [
+    {
+      "id": "one-arrow-subdivision-proposal",
+      "firstNationIds": ["373"],
+      "category": "Housing-Enabling Infrastructure",
+      "name": "One Arrow Subdivision Proposal",
+      "discussionSummary": "A federal assessment notice describes a proposed 54-lot subdivision with roads, utilities and drainage on approximately 15 hectares.",
+      "signalType": "Official proposal under assessment",
+      "whyUnverified": "The federal assessment remains in progress, and the reviewed public source does not confirm funding or that construction has begun.",
+      "lastSeenAt": "2026-06-10",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://www.iaac-aeic.gc.ca/050/evaluations/proj/90540", "publishedAt": "2026-06-10"}]
+    },
+    {
+      "id": "one-arrow-water-treatment-upgrades-proposal",
+      "firstNationIds": ["373"],
+      "category": "Water & Wastewater",
+      "name": "One Arrow Water Treatment Plant Upgrades Proposal",
+      "discussionSummary": "A federal assessment notice describes proposed mechanical, pumping and electrical upgrades, a gravity sewer main and truck-fill improvements at the existing water treatment plant.",
+      "signalType": "Official proposal under assessment",
+      "whyUnverified": "The federal assessment remains in progress, and the reviewed public source does not confirm funding or that construction has begun.",
+      "lastSeenAt": "2026-06-08",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://www.iaac-aeic.gc.ca/050/evaluations/proj/90526", "publishedAt": "2026-06-08"}]
+    },
+    {
+      "id": "red-pheasant-youth-centre-proposal",
+      "firstNationIds": ["346"],
+      "category": "Community Building",
+      "name": "Red Pheasant Youth Centre Proposal",
+      "discussionSummary": "A federal assessment notice describes a proposed two-storey youth centre and separate sweat lodge. Any schedule in the notice remains a proposal, not a confirmed delivery date.",
+      "signalType": "Official proposal under assessment",
+      "whyUnverified": "The assessment was still in progress at the latest registry update, so construction and delivery have not been independently confirmed.",
+      "lastSeenAt": "2026-07-10",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/90532?culture=en-CA", "publishedAt": "2026-07-10"}]
+    },
+    {
+      "id": "waterhen-lake-new-school-proposal",
+      "firstNationIds": ["402"],
+      "category": "Education Facility",
+      "name": "Waterhen Lake New School Proposal",
+      "discussionSummary": "A federal assessment notice describes a proposed replacement school site with recreation areas, parking, utilities and road access.",
+      "signalType": "Official proposal under assessment",
+      "whyUnverified": "The assessment remains in progress, and the reviewed source does not establish a construction start or completed funding package.",
+      "lastSeenAt": "2026-06-25",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/90487?culture=en-CA", "publishedAt": "2026-06-25"}]
+    },
+    {
+      "id": "little-pine-keyanow-wellness-centre-proposal",
+      "firstNationIds": ["340"],
+      "category": "Health & Wellness Facility",
+      "name": "Keyanow Wellness Centre Proposal",
+      "discussionSummary": "A federal assessment notice describes a proposed healing and wellness centre with crisis receiving, supportive services, Elder and spiritual spaces, and a children's healing lodge.",
+      "signalType": "Official proposal under assessment",
+      "whyUnverified": "The federal assessment remains in progress, and construction, funding and opening have not been confirmed in the reviewed source.",
+      "lastSeenAt": "2026-06-11",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/90545?culture=en-CA", "publishedAt": "2026-06-11"}]
+    },
+    {
+      "id": "big-river-drainage-phase-1b-proposal",
+      "firstNationIds": ["404"],
+      "category": "Roads & Drainage",
+      "name": "Drainage Re-establishment Phase 1B Proposal",
+      "discussionSummary": "A federal assessment notice describes proposed culvert replacements at eight locations together with road structure, ditching and drainage work.",
+      "signalType": "Official proposal under assessment",
+      "whyUnverified": "The assessment remains in progress, and the reviewed public source does not confirm a construction start.",
+      "lastSeenAt": "2026-02-09",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/90137?culture=en-CA", "publishedAt": "2026-02-09"}]
+    },
+    {
+      "id": "shoal-lake-subdivision-proposal",
+      "firstNationIds": ["357"],
+      "category": "Housing-Enabling Infrastructure",
+      "name": "Shoal Lake Subdivision Proposal",
+      "discussionSummary": "A federal assessment notice describes a proposed 41-lot residential subdivision with underground utilities, roads and drainage on approximately 20 hectares.",
+      "signalType": "Official proposal under assessment",
+      "whyUnverified": "The assessment remains in progress, and the reviewed public source does not confirm funding or that construction has begun.",
+      "lastSeenAt": "2026-02-05",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/90126?culture=en-CA", "publishedAt": "2026-02-05"}]
+    },
+    {
+      "id": "pelican-lake-subdivision-proposal",
+      "firstNationIds": ["405"],
+      "category": "Housing-Enabling Infrastructure",
+      "name": "Pelican Lake Subdivision Proposal",
+      "discussionSummary": "A federal registry document describes a proposed 30-lot subdivision with water, sewer, gas, power, telecommunications, roads, streetlights and walking paths.",
+      "signalType": "Public project proposal",
+      "whyUnverified": "The reviewed registry document describes the proposal but does not confirm its present funding or construction status.",
+      "lastSeenAt": "2025-05-08",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/document/161587", "publishedAt": "2025-05-08"}]
+    },
+    {
+      "id": "sturgeon-lake-child-family-service-centre-proposal",
+      "firstNationIds": ["360"],
+      "category": "Community Service Facility",
+      "name": "Child and Family Service Centre Proposal",
+      "discussionSummary": "A federal registry document describes a proposed child and family service centre on a five-acre site southeast of the band office.",
+      "signalType": "Public project proposal",
+      "whyUnverified": "The reviewed registry document does not confirm current funding, construction or delivery status.",
+      "lastSeenAt": "2025-10-22",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/document/163561?culture=en-CA", "publishedAt": "2025-10-22"}]
+    },
+    {
+      "id": "piapot-commercial-office-building-proposal",
+      "firstNationIds": ["385"],
+      "category": "Community Building",
+      "name": "Commercial Office Building Proposal",
+      "discussionSummary": "A federal registry notice describes a proposed commercial office building. Dates described by the notice are treated as a proposed schedule only.",
+      "signalType": "Assessed public proposal",
+      "whyUnverified": "The assessment is complete, but the reviewed source does not confirm that financing is finalized or construction has begun.",
+      "lastSeenAt": "2026-06-05",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://www.iaac-aeic.gc.ca/050/evaluations/proj/90439", "publishedAt": "2026-06-05"}]
+    },
+    {
+      "id": "the-key-firehall-proposal",
+      "firstNationIds": ["368"],
+      "category": "Emergency Infrastructure",
+      "name": "Two-Bay Fire Hall Proposal",
+      "discussionSummary": "A federal registry notice describes a proposed two-bay fire hall for The Key First Nation.",
+      "signalType": "Assessed public proposal",
+      "whyUnverified": "A federal determination is available, but the reviewed source does not confirm funding or that construction has begun.",
+      "lastSeenAt": "2026-03-04",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://www.iaac-aeic.gc.ca/050/evaluations/proj/90202", "publishedAt": "2026-03-04"}]
+    },
+    {
+      "id": "wahpeton-dakota-new-school-proposal",
+      "firstNationIds": ["358"],
+      "category": "Education Facility",
+      "name": "Wahpeton Dakota New School Proposal",
+      "discussionSummary": "A federal registry notice describes a proposed school designed for approximately 160 Pre-K to Grade 12 students, with recreation areas, parking and supporting infrastructure.",
+      "signalType": "Assessed public proposal",
+      "whyUnverified": "A federal determination is available, but the reviewed source does not confirm present funding or construction status.",
+      "lastSeenAt": "2025-09-02",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/89538?culture=en-CA", "publishedAt": "2025-09-02"}]
     }
   ]
 }
