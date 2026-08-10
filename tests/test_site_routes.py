@@ -75,8 +75,8 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260810d"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260810d"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260810e"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260810e"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260805b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
@@ -94,6 +94,8 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("breakdowns.after(section)", javascript)
         self.assertIn("function renderHousingProjectsSection", javascript)
         self.assertIn("function toggleProjects", javascript)
+        self.assertIn("['capital','Community Capital'],['projects','Housing & Infrastructure'],['sources','Source Documents']", javascript)
+        self.assertIn("else if(activeProfileTab==='projects')", javascript)
 
     def test_every_profile_has_projects_section(self):
         for band in self.data["bands"]:

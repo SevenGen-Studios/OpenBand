@@ -1,6 +1,18 @@
 {
   "schemaVersion": 1,
   "generatedAt": "2026-08-10",
+  "sourceAudit": {
+    "reviewedAt": "2026-08-10",
+    "communityCount": 69,
+    "registry": "news-sources.json",
+    "methods": [
+      "Official First Nation websites and public social accounts",
+      "Government of Canada, Indigenous Services Canada, CMHC, Canada Infrastructure Bank and Impact Assessment Registry",
+      "Government of Saskatchewan, tribal councils and Indigenous organizations",
+      "Public web and social-media search queries for every community"
+    ],
+    "limitations": "Public-source audit only. Private, deleted, access-restricted and unindexed posts are outside the review scope. A community may have active projects that are not yet described in a verifiable public source."
+  },
   "projects": [
     {
       "id": "rose-valley-wind",
@@ -379,6 +391,124 @@
       "unitsCapacity": "10 homes",
       "lastVerifiedAt": "2026-08-10",
       "sources": [{"name": "Canada Mortgage and Housing Corporation", "url": "https://www.cmhc-schl.gc.ca/media-newsroom/news-releases/2024/federal-government-invests-affordable-homes-saskatchewan", "publishedAt": "2024-08-02"}]
+    },
+    {
+      "id": "hatchet-lake-all-seasons-road",
+      "firstNationIds": ["352"],
+      "category": "Roads & Bridges",
+      "name": "Hatchet Lake All-Seasons Road",
+      "description": "An all-seasons road project intended to provide Hatchet Lake with safer, more reliable year-round access.",
+      "funding": ["Government of Canada: supported through an $89 million Budget 2024 envelope shared with the Berens River Bridge and Road Project"],
+      "lastVerifiedAt": "2026-08-10",
+      "sources": [{"name": "Government of Canada, Budget 2024 backgrounder", "url": "https://www.canada.ca/en/department-finance/news/2024/04/a-fair-future-for-indigenous-peoples.html", "publishedAt": "2024-04-16"}]
+    },
+    {
+      "id": "chief-moosomin-k-12-school",
+      "firstNationIds": ["342"],
+      "category": "Education Facility",
+      "name": "Chief Moosomin Kindergarten to Grade 12 School",
+      "description": "A new Kindergarten to Grade 12 school built on a site selected for land-based learning and future expansion.",
+      "status": "Completed",
+      "statusAsOf": "2025-03-31",
+      "funding": ["Indigenous Services Canada"],
+      "lastVerifiedAt": "2026-08-10",
+      "sources": [
+        {"name": "Housing, Infrastructure and Communities Canada, 2024-25 Departmental Results Report", "url": "https://housing-infrastructure.canada.ca/pub/drr-rrm/2025/2025-supp-hi-ih-eng.html", "publishedAt": "2025"},
+        {"name": "Indigenous Services Canada", "url": "https://www.canada.ca/en/indigenous-services-canada/news/2021/08/improvements-to-support-child-and-family-services-new-school-infrastructure-and-an-emergency-shelter-announced-for-saskatchewan-first-nations.html", "publishedAt": "2021-08-06"}
+      ]
+    },
+    {
+      "id": "kawacatoose-water-treatment-expansion",
+      "firstNationIds": ["393"],
+      "category": "Water & Wastewater",
+      "name": "Water Treatment Plant Upgrade and Expansion",
+      "description": "A proposed expansion with new filter tanks, wells, water and sanitary lines, reservoir space, upgraded pumping equipment, and a bottle-fill room sized for ten-year peak demand.",
+      "status": "Planned",
+      "statusAsOf": "2024-08-20",
+      "lastVerifiedAt": "2026-08-10",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/88665?culture=en-CA", "publishedAt": "2024-08-20"}]
+    },
+    {
+      "id": "george-gordon-wastewater-upgrades",
+      "firstNationIds": ["391"],
+      "category": "Water & Wastewater",
+      "name": "Wastewater Infrastructure Upgrades",
+      "description": "A proposed new two-cell lagoon, about one kilometre of access road and force main, followed by decommissioning of the existing lagoon.",
+      "status": "Planned",
+      "statusAsOf": "2024-12-04",
+      "unitsCapacity": "16,455 m³ storage cell; approximately 1 km of road and 1 km of force main",
+      "lastVerifiedAt": "2026-08-10",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/88915", "publishedAt": "2024-12-04"}]
+    },
+    {
+      "id": "fishing-lake-sewage-lagoon-expansion",
+      "firstNationIds": ["390"],
+      "category": "Water & Wastewater",
+      "name": "Sewage Lagoon Expansion",
+      "description": "A proposed two-cell lined lagoon intended to provide adequate sewage treatment, with the existing lagoon to be decommissioned after the new facility is completed.",
+      "status": "Planned",
+      "statusAsOf": "2024-03-18",
+      "unitsCapacity": "1.5-hectare primary cell; 50,000 m³ storage; 30+ year anticipated life",
+      "lastVerifiedAt": "2026-08-10",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/84170", "publishedAt": "2024-03-18"}]
+    },
+    {
+      "id": "standing-buffalo-youth-centre",
+      "firstNationIds": ["386"],
+      "category": "Community Building",
+      "name": "Youth Centre",
+      "description": "A planned two-storey youth centre with prevention-worker offices, cultural and recreation space, counselling and family-support programming, parking, an approach road, and utility services.",
+      "status": "Planned",
+      "statusAsOf": "2025-01-06",
+      "lastVerifiedAt": "2026-08-10",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/89075", "publishedAt": "2025-01-06"}]
+    },
+    {
+      "id": "kinistin-barrier-river-bridge",
+      "firstNationIds": ["377"],
+      "category": "Roads & Bridges",
+      "name": "Barrier River Bridge Replacement",
+      "description": "A proposed replacement of the existing timber bridge with a longer single-span concrete and steel bridge for two-way traffic, including a pedestrian walkway and road-profile improvements.",
+      "status": "Planned",
+      "statusAsOf": "2024-09-05",
+      "unitsCapacity": "18-metre single-span bridge; 75-year design life",
+      "lastVerifiedAt": "2026-08-10",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://www.iaac-aeic.gc.ca/050/evaluations/proj/88533", "publishedAt": "2024-09-05"}]
+    },
+    {
+      "id": "little-black-bear-water-treatment-plant",
+      "firstNationIds": ["379"],
+      "category": "Water & Wastewater",
+      "name": "Water Treatment Plant Upgrades",
+      "description": "A proposed new water treatment plant with underground water and sewer connections, potable-water truck and bottle-fill stations, upgraded systems, and communications links to community wells.",
+      "status": "Planned",
+      "statusAsOf": "2026-02-23",
+      "lastVerifiedAt": "2026-08-10",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/90169?culture=en-CA", "publishedAt": "2026-02-23"}]
+    },
+    {
+      "id": "peepeekisis-road-upgrades",
+      "firstNationIds": ["384"],
+      "category": "Roads & Bridges",
+      "name": "Community Road Upgrades",
+      "description": "A proposed reserve-wide road repair and upgrade program addressing safety, drainage, emergency access, surface failures, vegetation encroachment, and selected road decommissioning.",
+      "status": "Planned",
+      "statusAsOf": "2025-04-28",
+      "unitsCapacity": "Approximately 19 km of roads",
+      "lastVerifiedAt": "2026-08-10",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://www.iaac-aeic.gc.ca/050/evaluations/proj/89398", "publishedAt": "2025-04-28"}]
+    },
+    {
+      "id": "west-central-high-speed-internet",
+      "firstNationIds": ["348", "349", "355", "377", "353"],
+      "category": "Broadband Infrastructure",
+      "name": "West-Central High-Speed Internet Infrastructure",
+      "description": "A proposed SaskTel build combining a new fixed-wireless tower for Thunderchild with fibre connections to homes and businesses in Sweetgrass, Thunderchild, Southend, Kinistin, Stanley Mission, and Grandmother's Bay.",
+      "status": "Planned",
+      "statusAsOf": "2025-05-27",
+      "unitsCapacity": "One 30-metre tower and approximately 85 km of underground and aerial fibre across the full multi-community project",
+      "lastVerifiedAt": "2026-08-10",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/89475?culture=en-CA", "publishedAt": "2025-05-27"}]
     }
   ]
 }

@@ -20,6 +20,20 @@ class ProjectsIntegrityTests(unittest.TestCase):
         ids = [project["id"] for project in self.projects]
         self.assertEqual(len(ids), len(set(ids)))
 
+    def test_all_communities_are_in_the_public_source_audit(self):
+        audit = self.payload["sourceAudit"]
+        registry = json.loads((ROOT / audit["registry"]).read_text(encoding="utf-8"))
+        self.assertEqual(audit["communityCount"], len(self.bands))
+        self.assertEqual(len(registry["communities"]), len(self.bands))
+        self.assertEqual(
+            {str(row["bandId"]) for row in registry["communities"]},
+            {str(band["id"]) for band in self.bands},
+        )
+        for row in registry["communities"]:
+            self.assertTrue(row.get("discoveryQueries"))
+            self.assertTrue(any("facebook.com" in query for query in row["discoveryQueries"]))
+            self.assertTrue(any("housing OR infrastructure" in query for query in row["discoveryQueries"]))
+
     def test_projects_are_source_linked_to_known_nations(self):
         band_ids = {str(band["id"]) for band in self.bands}
         allowed_statuses = {"Planned", "Under Construction", "Completed"}
@@ -51,6 +65,10 @@ class ProjectsIntegrityTests(unittest.TestCase):
                 for key in ("estimatedCost", "startDate", "completionDate", "unitsCapacity"):
                     if key in project:
                         self.assertNotIn(str(project[key]).strip().lower(), forbidden)
+
+    def test_project_coverage_expanded_after_all_community_audit(self):
+        covered = {str(band_id) for project in self.projects for band_id in project["firstNationIds"]}
+        self.assertGreaterEqual(len(covered), 35)
 
 
 if __name__ == "__main__":
