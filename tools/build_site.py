@@ -262,8 +262,8 @@ def build() -> None:
         page = page.replace('<body data-page="home">', f'<body data-page="profile" data-band-id="{band["id"]}">', 1)
         page = page.replace('<div id="profilePrerender" class="profile-prerender" hidden></div>', profile_prerender(band, elections.get("records", []), projects.get("projects", []), projects.get("unverifiedProjects", [])), 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260810f" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260810f" defer></script>',
+            '<script src="/assets/openband.js?v=20260810g" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260810g" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)
