@@ -133,7 +133,7 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("scrollWheelZoom:true", javascript)
         self.assertIn("wheelPxPerZoomLevel:140", javascript)
         self.assertIn("radius:9", javascript)
-        self.assertIn("maxZoom:10", javascript)
+        self.assertIn("maxZoom:8", javascript)
         councils = {row["tribalCouncil"] for row in map_data["communities"]}
         self.assertIn("South East Treaty 4 Tribal Council", councils)
         self.assertIn("Battlefords Agency Tribal Chiefs (BATC)", councils)
