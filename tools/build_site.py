@@ -61,7 +61,7 @@ def election_prerender(band: dict, records: list[dict]) -> str:
         if str(record.get("firstNationId")) == str(band["id"]) and record.get("elected") and record.get("electionDate")
     ]
     if not winners:
-        return '<section class="election-card election-card-empty"><div><h3>Elections &amp; Leadership</h3><p>Verified election results have not been indexed for this Nation yet.</p></div></section>'
+        return ""
     latest_date = max(str(record["electionDate"]) for record in winners)
     winners = [record for record in winners if str(record["electionDate"]) == latest_date]
     source_url = winners[0].get("sourceUrl", "")
@@ -109,7 +109,7 @@ def profile_prerender(band: dict, election_records: list[dict]) -> str:
         f"<div><dt>Latest parsed remuneration</dt><dd>{html.escape(latest_parsed or 'Pending extraction')}</dd></div>"
         f"<div><dt>Parsed years</dt><dd>{len(parsed)}</dd></div>"
         f'<div><dt>Authoritative source</dt><dd><a href="{isc_url}">ISC filing profile</a></dd></div>'
-        f"</dl></div>{election_prerender(band, election_records)}"
+        f"</dl>{election_prerender(band, election_records)}</div>"
     )
 
 
