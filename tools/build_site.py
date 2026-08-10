@@ -119,7 +119,7 @@ def directory_prerender(bands: list[dict], map_communities: list[dict]) -> str:
         f'<a class="directory-community" href="/first-nations/{slugify(band["name"])}/">'
         f"<span><strong>{html.escape(band['name'])}</strong>"
         f"<small>{html.escape(band.get('treaty') or 'Treaty not listed')} · "
-        f"{html.escape(map_by_id.get(str(band.get('id')), {}).get('tribalCouncil') or 'No ISC tribal council affiliation listed')}</small></span></a>"
+        f"{html.escape(map_by_id.get(str(band.get('id')), {}).get('tribalCouncil') or 'No council affiliation listed in current sources')}</small></span></a>"
         for band in sorted(bands, key=lambda item: item["name"])
     )
     return f'<div id="directoryList" class="directory-list static-directory-list">{links}</div>'
@@ -186,8 +186,8 @@ def build() -> None:
         page = page.replace('<body data-page="home">', f'<body data-page="profile" data-band-id="{band["id"]}">', 1)
         page = page.replace('<div id="profilePrerender" class="profile-prerender" hidden></div>', profile_prerender(band, elections.get("records", [])), 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260810a" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260810a" defer></script>',
+            '<script src="/assets/openband.js?v=20260810b" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260810b" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)

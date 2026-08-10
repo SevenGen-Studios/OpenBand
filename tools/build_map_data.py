@@ -22,15 +22,27 @@ RELATION_URL = (
     "https://data.sac-isc.gc.ca/geomatics/rest/services/ATRIS_PRD/"
     "TRIBAL_COUNCILS_FIRST_NATIONS_E/MapServer/6/query"
 )
+FSIN_LISTING_URL = "https://www.fsin.ca/sask-fn-listings"
 
 COUNCIL_DISPLAY_NAMES = {
-    "BATTLEFORDS AGENCY TRIBAL CHIEFS INC": "Battlefords Agency Tribal Chiefs",
+    "BATTLEFORDS AGENCY TRIBAL CHIEFS INC": "Battlefords Agency Tribal Chiefs (BATC)",
     "FILE HILLS QU'APPELLE TRIBAL COUNCIL INC.": "File Hills Qu'Appelle Tribal Council",
     "MLTC PROGRAM SERVICES INC.": "Meadow Lake Tribal Council",
-    "NORTHWEST PROFESSIONAL SERVICES CORP.": "Battlefords Tribal Council",
+    "NORTHWEST PROFESSIONAL SERVICES CORP.": "Battlefords Tribal Council (BTC)",
     "PADC MANAGEMENT COMPANY LTD.": "Prince Albert Grand Council",
     "TOUCHWOOD AGENCY TRIBAL COUNCIL INC.": "Touchwood Agency Tribal Council",
     "YORKTON TRIBAL ADMINISTRATION INC.": "Yorkton Tribal Council",
+}
+
+# ISC's relationship layer omits some current Saskatchewan affiliations. FSIN's
+# public listings fill only those documented gaps and remain separate from the
+# original ISC relationship label.
+FSIN_COUNCIL_OVERRIDES = {
+    340: "Battlefords Tribal Council (BTC)",
+    363: "South East Treaty 4 Tribal Council",
+    365: "South East Treaty 4 Tribal Council",
+    404: "Agency Chiefs Tribal Council",
+    405: "Agency Chiefs Tribal Council",
 }
 
 
@@ -122,6 +134,7 @@ def build_map_data(bands: list[dict], locations: dict, relations: dict) -> dict:
             "tribalCouncil": council_display_name(council),
             "tribalCouncilSourceLabel": str(council).strip(),
             "tribalCouncilNumber": attributes.get("TRIBAL_COUNCIL_NUMBER"),
+            "tribalCouncilSourceUrl": RELATION_URL.rsplit("/query", 1)[0],
         }
 
     communities = []
@@ -133,6 +146,13 @@ def build_map_data(bands: list[dict], locations: dict, relations: dict) -> dict:
             missing_locations.append({"id": band_id, "name": band["name"]})
             continue
         relation = relation_by_id.get(band_id, {})
+        if band_id in FSIN_COUNCIL_OVERRIDES:
+            relation = {
+                "tribalCouncil": FSIN_COUNCIL_OVERRIDES[band_id],
+                "tribalCouncilSourceLabel": FSIN_COUNCIL_OVERRIDES[band_id],
+                "tribalCouncilNumber": None,
+                "tribalCouncilSourceUrl": FSIN_LISTING_URL,
+            }
         communities.append({
             "id": band_id,
             "name": band["name"],
@@ -142,6 +162,7 @@ def build_map_data(bands: list[dict], locations: dict, relations: dict) -> dict:
             "tribalCouncil": relation.get("tribalCouncil"),
             "tribalCouncilSourceLabel": relation.get("tribalCouncilSourceLabel"),
             "tribalCouncilNumber": relation.get("tribalCouncilNumber"),
+            "tribalCouncilSourceUrl": relation.get("tribalCouncilSourceUrl"),
         })
 
     return {
@@ -150,6 +171,7 @@ def build_map_data(bands: list[dict], locations: dict, relations: dict) -> dict:
         "sources": {
             "locations": LOCATION_URL.rsplit("/query", 1)[0],
             "tribalCouncilRelationships": RELATION_URL.rsplit("/query", 1)[0],
+            "supplementalTribalCouncilRelationships": FSIN_LISTING_URL,
         },
         "communityCount": len(communities),
         "missingLocations": missing_locations,
