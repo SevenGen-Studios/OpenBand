@@ -37,7 +37,7 @@ class MapDataTests(unittest.TestCase):
         } for band in bands]}
         result = build_map_data(bands, locations, {"features": []})
         rows = {row["id"]: row for row in result["communities"]}
-        self.assertEqual(rows[340]["tribalCouncil"], "Battlefords Tribal Council (BTC)")
+        self.assertEqual(rows[340]["tribalCouncil"], "Battlefords Agency Tribal Chiefs (BATC)")
         self.assertEqual(rows[363]["tribalCouncil"], "South East Treaty 4 Tribal Council")
         self.assertEqual(rows[365]["tribalCouncil"], "South East Treaty 4 Tribal Council")
         self.assertEqual(rows[363]["tribalCouncilSourceUrl"], "https://www.fsin.ca/sask-fn-listings")
@@ -57,7 +57,7 @@ TRIBAL_COUNCIL_NAME: Saskatoon Tribal Council
         self.assertEqual(council_display_name("MLTC PROGRAM SERVICES INC."), "Meadow Lake Tribal Council")
         self.assertEqual(council_display_name("PADC MANAGEMENT COMPANY LTD."), "Prince Albert Grand Council")
         self.assertEqual(council_display_name("BATTLEFORDS AGENCY TRIBAL CHIEFS INC"), "Battlefords Agency Tribal Chiefs (BATC)")
-        self.assertEqual(council_display_name("NORTHWEST PROFESSIONAL SERVICES CORP."), "Battlefords Tribal Council (BTC)")
+        self.assertEqual(council_display_name("NORTHWEST PROFESSIONAL SERVICES CORP."), "Battlefords Agency Tribal Chiefs (BATC)")
         self.assertIsNone(council_display_name(None))
 
 
