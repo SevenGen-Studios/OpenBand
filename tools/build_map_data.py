@@ -28,7 +28,7 @@ COUNCIL_DISPLAY_NAMES = {
     "BATTLEFORDS AGENCY TRIBAL CHIEFS INC": "Battlefords Agency Tribal Chiefs (BATC)",
     "FILE HILLS QU'APPELLE TRIBAL COUNCIL INC.": "File Hills Qu'Appelle Tribal Council",
     "MLTC PROGRAM SERVICES INC.": "Meadow Lake Tribal Council",
-    "NORTHWEST PROFESSIONAL SERVICES CORP.": "Battlefords Tribal Council (BTC)",
+    "NORTHWEST PROFESSIONAL SERVICES CORP.": "Battlefords Agency Tribal Chiefs (BATC)",
     "PADC MANAGEMENT COMPANY LTD.": "Prince Albert Grand Council",
     "TOUCHWOOD AGENCY TRIBAL COUNCIL INC.": "Touchwood Agency Tribal Council",
     "YORKTON TRIBAL ADMINISTRATION INC.": "Yorkton Tribal Council",
@@ -38,7 +38,7 @@ COUNCIL_DISPLAY_NAMES = {
 # public listings fill only those documented gaps and remain separate from the
 # original ISC relationship label.
 FSIN_COUNCIL_OVERRIDES = {
-    340: "Battlefords Tribal Council (BTC)",
+    340: "Battlefords Agency Tribal Chiefs (BATC)",
     363: "South East Treaty 4 Tribal Council",
     365: "South East Treaty 4 Tribal Council",
     404: "Agency Chiefs Tribal Council",

@@ -120,7 +120,7 @@ class SiteRouteTests(unittest.TestCase):
         councils = {row["tribalCouncil"] for row in map_data["communities"]}
         self.assertIn("South East Treaty 4 Tribal Council", councils)
         self.assertIn("Battlefords Agency Tribal Chiefs (BATC)", councils)
-        self.assertIn("Battlefords Tribal Council (BTC)", councils)
+        self.assertNotIn("Battlefords Tribal Council (BTC)", councils)
 
     def test_election_prerender_is_available_for_every_nation(self):
         seeded = (ROOT / "first-nations" / "beardys-and-okemasis-cree-nation" / "index.html").read_text(encoding="utf-8")
