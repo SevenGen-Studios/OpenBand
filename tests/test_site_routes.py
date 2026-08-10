@@ -41,7 +41,7 @@ class SiteRouteTests(unittest.TestCase):
             self.assertIn(f"<h1>{expected_heading}</h1>", markup)
 
     def test_indexable_routes_and_seo_files_exist(self):
-        for relative in ["browse/index.html", "news/index.html", "admin/index.html", "admin/analytics/index.html", "robots.txt", "sitemap.xml", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js"]:
+        for relative in ["browse/index.html", "news/index.html", "admin/index.html", "admin/analytics/index.html", "robots.txt", "sitemap.xml", "map-data.json", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js"]:
             self.assertTrue((ROOT / relative).is_file(), relative)
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
         self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 3)
@@ -92,6 +92,29 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("revenue-source-browser", javascript)
         self.assertIn("revenue-year-body", javascript)
         self.assertIn("breakdowns.after(section)", javascript)
+
+    def test_browse_page_uses_official_interactive_map_data(self):
+        markup = (ROOT / "browse" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('id="directoryMap"', markup)
+        self.assertIn('id="tribalCouncilFilter"', markup)
+        self.assertIn('data-map-mode="treaty"', markup)
+        self.assertIn('data-map-mode="tribalCouncil"', markup)
+        self.assertNotIn('id="azLinks"', markup)
+        self.assertIn('class="map-list-fallback"', markup)
+        map_data = json.loads((ROOT / "map-data.json").read_text(encoding="utf-8"))
+        self.assertEqual(map_data["communityCount"], len(self.data["bands"]))
+        self.assertFalse(map_data["missingLocations"])
+        mapped_ids = {str(row["id"]) for row in map_data["communities"]}
+        self.assertEqual(mapped_ids, {str(row["id"]) for row in self.data["bands"]})
+        for row in map_data["communities"]:
+            self.assertGreaterEqual(row["latitude"], 48.5)
+            self.assertLessEqual(row["latitude"], 60.5)
+            self.assertGreaterEqual(row["longitude"], -111.5)
+            self.assertLessEqual(row["longitude"], -100.5)
+        javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
+        self.assertIn("function renderDirectoryMap", javascript)
+        self.assertIn("function loadMapData", javascript)
+        self.assertIn("location.assign(profilePath(band.name))", javascript)
 
     def test_election_prerender_is_available_for_every_nation(self):
         seeded = (ROOT / "first-nations" / "beardys-and-okemasis-cree-nation" / "index.html").read_text(encoding="utf-8")

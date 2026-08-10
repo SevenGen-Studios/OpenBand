@@ -113,11 +113,13 @@ def profile_prerender(band: dict, election_records: list[dict]) -> str:
     )
 
 
-def directory_prerender(bands: list[dict]) -> str:
+def directory_prerender(bands: list[dict], map_communities: list[dict]) -> str:
+    map_by_id = {str(row.get("id")): row for row in map_communities}
     links = "".join(
         f'<a class="directory-community" href="/first-nations/{slugify(band["name"])}/">'
         f"<span><strong>{html.escape(band['name'])}</strong>"
-        f"<small>{html.escape(band.get('treaty') or 'Treaty not listed')}</small></span></a>"
+        f"<small>{html.escape(band.get('treaty') or 'Treaty not listed')} · "
+        f"{html.escape(map_by_id.get(str(band.get('id')), {}).get('tribalCouncil') or 'No ISC tribal council affiliation listed')}</small></span></a>"
         for band in sorted(bands, key=lambda item: item["name"])
     )
     return f'<div id="directoryList" class="directory-list static-directory-list">{links}</div>'
@@ -150,6 +152,7 @@ def build() -> None:
     data = json.loads((ROOT / "data.json").read_text(encoding="utf-8"))
     news = json.loads((ROOT / "news-data.json").read_text(encoding="utf-8"))
     elections = json.loads((ROOT / "elections-data.json").read_text(encoding="utf-8"))
+    map_data = json.loads((ROOT / "map-data.json").read_text(encoding="utf-8"))
     bands = sorted(data.get("bands", []), key=lambda item: item["name"])
     base = (ROOT / "index.html").read_text(encoding="utf-8")
     slugs = [slugify(band["name"]) for band in bands]
@@ -189,8 +192,8 @@ def build() -> None:
         )
         write_page(profile_root / slug / "index.html", page)
 
-    directory_title = "Browse Saskatchewan First Nations | OpenBand"
-    directory_description = "Browse Saskatchewan First Nations public financial record profiles by name, Treaty, filing status, and Community Capital availability."
+    directory_title = "Explore Saskatchewan First Nations | OpenBand"
+    directory_description = "Explore Saskatchewan First Nations on an interactive map organized by Treaty and tribal-council affiliation."
     directory = set_meta(
         base,
         title=directory_title,
@@ -204,7 +207,7 @@ def build() -> None:
             "numberOfItems": len(bands),
         },
     ).replace('<body data-page="home">', '<body data-page="directory">', 1)
-    directory = directory.replace('<div id="directoryList" class="directory-list"></div>', directory_prerender(bands), 1)
+    directory = directory.replace('<div id="directoryList" class="directory-list"></div>', directory_prerender(bands, map_data.get("communities", [])), 1)
     write_page(ROOT / "browse" / "index.html", directory)
 
     news_title = "Saskatchewan First Nations News | OpenBand"

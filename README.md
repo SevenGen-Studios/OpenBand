@@ -22,6 +22,7 @@ The public website focuses on Saskatchewan FNFTA Chief and Council remuneration 
 - `browse/index.html` / `news/index.html` - permanent Browse and News pages
 - `tools/build_site.py` - generates profile pages, metadata, `sitemap.xml`, and `robots.txt`
 - `data.json` - generated filing and remuneration data used by the website
+- `map-data.json` - ISC-sourced community locations and tribal-council relationships
 - `audit-results.txt` - latest coverage and parser-health report
 - `scraper.py` - restored core scraper
 - `run_scraper.py` - compatibility launcher with parser fallbacks
@@ -32,6 +33,20 @@ The public website focuses on Saskatchewan FNFTA Chief and Council remuneration 
 - `tools/audit_data.py` - checks coverage and pending parser work
 - `tools/capital_parser.py` - extracts validated audited-statement summaries into `capital-data.json`
 - `tools/member_count_scraper.py` - updates registered population counts from official ISC First Nation Profiles
+- `tools/build_map_data.py` - refreshes the interactive Browse map from official ISC map services
+
+## Browse map data
+
+The Browse map joins the tracked OpenBand bands to ISC community locations and
+tribal-council relationships by band number. Refresh the static map dataset with:
+
+```bash
+python tools/build_map_data.py
+```
+
+The map keeps ISC's original tribal-council label in the data alongside a short
+public display name. A missing relationship is shown neutrally as no ISC
+affiliation listed; OpenBand does not infer one.
 
 ## Community Capital data
 
