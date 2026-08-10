@@ -90,7 +90,49 @@ def election_prerender(band: dict, records: list[dict]) -> str:
     )
 
 
-def profile_prerender(band: dict, election_records: list[dict]) -> str:
+def projects_prerender(band: dict, projects: list[dict]) -> str:
+    priority = {"Under Construction": 0, "Planned": 1, "Completed": 2}
+    rows = [
+        project for project in projects
+        if str(band["id"]) in {str(value) for value in project.get("firstNationIds", [])}
+    ]
+    rows.sort(key=lambda project: str(project.get("name") or ""))
+    rows.sort(key=lambda project: str(project.get("statusAsOf") or ""), reverse=True)
+    rows.sort(key=lambda project: priority.get(project.get("status"), 3))
+    cards = []
+    for project in rows[:3]:
+        sources = "".join(
+            f'<a href="{html.escape(source["url"], quote=True)}" rel="noopener">'
+            f'{html.escape(source.get("name") or "Original source")}</a>'
+            for source in project.get("sources", []) if source.get("url")
+        )
+        status = project.get("status")
+        status_class = re.sub(r"[^a-z0-9]+", "-", str(status or "").lower()).strip("-")
+        status_html = (
+            f'<span class="project-status status-{status_class}">{html.escape(status)}</span>'
+            if status else ""
+        )
+        cards.append(
+            '<article class="project-row"><div class="project-row-top">'
+            f'<span class="project-category">{html.escape(project.get("category") or "Community Project")}</span>'
+            f'{status_html}</div><h4>{html.escape(project["name"])}</h4>'
+            f'<p>{html.escape(project.get("description") or "")}</p>'
+            f'<div class="project-sources"><strong>Source:</strong>{sources}</div></article>'
+        )
+    content = (
+        f'<div class="project-list">{"".join(cards)}</div>'
+        if cards else
+        '<div class="projects-empty">No current or recently completed project has been added from a verifiable public source yet.</div>'
+    )
+    return (
+        '<section class="profile-projects" aria-labelledby="projectsPrerenderHeading">'
+        '<div class="section-head"><div><h3 id="projectsPrerenderHeading">Housing &amp; Infrastructure Projects</h3>'
+        '<p>Current and recently completed projects found in verifiable public sources.</p></div></div>'
+        f'{content}</section>'
+    )
+
+
+def profile_prerender(band: dict, election_records: list[dict], projects: list[dict]) -> str:
     filings = remuneration_filings(band)
     parsed = [filing for filing in filings if is_parsed(filing)]
     latest = filings[0].get("year") if filings else None
@@ -109,7 +151,7 @@ def profile_prerender(band: dict, election_records: list[dict]) -> str:
         f"<div><dt>Latest parsed remuneration</dt><dd>{html.escape(latest_parsed or 'Pending extraction')}</dd></div>"
         f"<div><dt>Parsed years</dt><dd>{len(parsed)}</dd></div>"
         f'<div><dt>Authoritative source</dt><dd><a href="{isc_url}">ISC filing profile</a></dd></div>'
-        f"</dl>{election_prerender(band, election_records)}</div>"
+        f"</dl>{election_prerender(band, election_records)}{projects_prerender(band, projects)}</div>"
     )
 
 
@@ -150,6 +192,7 @@ def build() -> None:
     data = json.loads((ROOT / "data.json").read_text(encoding="utf-8"))
     news = json.loads((ROOT / "news-data.json").read_text(encoding="utf-8"))
     elections = json.loads((ROOT / "elections-data.json").read_text(encoding="utf-8"))
+    projects = json.loads((ROOT / "projects-data.json").read_text(encoding="utf-8"))
     bands = sorted(data.get("bands", []), key=lambda item: item["name"])
     base = (ROOT / "index.html").read_text(encoding="utf-8")
     slugs = [slugify(band["name"]) for band in bands]
@@ -181,10 +224,10 @@ def build() -> None:
         }
         page = set_meta(base, title=title, description=description, path=path, structured=structured)
         page = page.replace('<body data-page="home">', f'<body data-page="profile" data-band-id="{band["id"]}">', 1)
-        page = page.replace('<div id="profilePrerender" class="profile-prerender" hidden></div>', profile_prerender(band, elections.get("records", [])), 1)
+        page = page.replace('<div id="profilePrerender" class="profile-prerender" hidden></div>', profile_prerender(band, elections.get("records", []), projects.get("projects", [])), 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260810a" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260810a" defer></script>',
+            '<script src="/assets/openband.js?v=20260810b" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260810b" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)

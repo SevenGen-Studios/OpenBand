@@ -75,8 +75,8 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260810a"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260810a"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260810b"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260810b"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260805b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
@@ -92,6 +92,15 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("revenue-source-browser", javascript)
         self.assertIn("revenue-year-body", javascript)
         self.assertIn("breakdowns.after(section)", javascript)
+        self.assertIn("function renderHousingProjectsSection", javascript)
+        self.assertIn("function toggleProjects", javascript)
+
+    def test_every_profile_has_projects_section(self):
+        for band in self.data["bands"]:
+            page = ROOT / "first-nations" / slugify(band["name"]) / "index.html"
+            with self.subTest(band=band["name"]):
+                markup = page.read_text(encoding="utf-8")
+                self.assertEqual(markup.count("Housing &amp; Infrastructure Projects"), 1)
 
     def test_election_prerender_is_available_for_every_nation(self):
         seeded = (ROOT / "first-nations" / "beardys-and-okemasis-cree-nation" / "index.html").read_text(encoding="utf-8")
