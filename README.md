@@ -37,16 +37,18 @@ The public website focuses on Saskatchewan FNFTA Chief and Council remuneration 
 
 ## Browse map data
 
-The Browse map joins the tracked OpenBand bands to ISC community locations and
-tribal-council relationships by band number. Refresh the static map dataset with:
+The Browse map joins tracked OpenBand bands to ISC community locations and
+tribal-council relationships by band number. Documented gaps in ISC's council
+layer are supplemented from FSIN's Saskatchewan First Nations listings. Refresh
+the static map dataset with:
 
 ```bash
 python tools/build_map_data.py
 ```
 
-The map keeps ISC's original tribal-council label in the data alongside a short
-public display name. A missing relationship is shown neutrally as no ISC
-affiliation listed; OpenBand does not infer one.
+The map keeps original council labels and source URLs alongside short public
+display names. A missing relationship is shown neutrally; OpenBand does not
+infer an affiliation.
 
 ## Community Capital data
 
