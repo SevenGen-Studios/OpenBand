@@ -4,6 +4,101 @@
   "notes": "Manually maintain verified community websites, public Facebook pages, and local organizations here. The discovery job preserves these records.",
   "communities": [
     {
+      "bandId": 378,
+      "communityName": "Carry the Kettle Nakoda Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=378&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Carry the Kettle Nakoda Nation\" announcement Saskatchewan",
+        "\"Carry the Kettle Nakoda Nation\" community update",
+        "site:facebook.com \"Carry the Kettle Nakoda Nation\" announcement",
+        "\"Carry the Kettle Nakoda Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 361,
+      "communityName": "Cowessess First Nation",
+      "aliases": [
+        "Cowessess",
+        "CFN"
+      ],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Cowessess First Nation",
+          "url": "https://cowessessfn.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "discoveryUrls": [
+            "https://cowessessfn.com/",
+            "https://cowessessfn.com/news/"
+          ]
+        },
+        {
+          "type": "Facebook",
+          "name": "Cowessess First Nation",
+          "url": "https://www.facebook.com/cowessessfn",
+          "status": "verified",
+          "adapter": "facebook",
+          "pageHandle": "cowessessfn",
+          "monitor": true,
+          "official": true,
+          "associationConfidence": 1.0
+        },
+        {
+          "type": "Economic Development Organization",
+          "name": "Cowessess Economic Development",
+          "url": "https://cowessessfn.com/entities/cowessess-ventures/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "associationConfidence": 0.96
+        },
+        {
+          "type": "Community Website",
+          "name": "Cowessess Paradise Radio 98.1 FM",
+          "url": "https://cowessessfn.com/news/paradise-radio/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "associationConfidence": 0.96
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=361&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Cowessess First Nation\" announcement Saskatchewan",
+        "\"Cowessess First Nation\" community update",
+        "site:facebook.com \"Cowessess First Nation\" announcement",
+        "\"Cowessess First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
       "bandId": 366,
       "communityName": "Cote First Nation",
       "aliases": [],
@@ -34,6 +129,30 @@
         "\"Cote First Nation\" community update",
         "site:facebook.com \"Cote First Nation\" announcement",
         "\"Cote First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 389,
+      "communityName": "Day Star First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=389&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Day Star First Nation\" announcement Saskatchewan",
+        "\"Day Star First Nation\" community update",
+        "site:facebook.com \"Day Star First Nation\" announcement",
+        "\"Day Star First Nation\" funding OR housing OR infrastructure"
       ]
     },
     {
@@ -154,149 +273,6 @@
         "\"Little Black Bear First Nation\" community update",
         "site:facebook.com \"Little Black Bear First Nation\" announcement",
         "\"Little Black Bear First Nation\" funding OR housing OR infrastructure"
-      ]
-    },
-    {
-      "bandId": 394,
-      "communityName": "Canoe Lake Cree First Nation",
-      "aliases": [],
-      "provinceTerritory": "SK",
-      "treaty": "Treaty 10",
-      "sources": [
-        {
-          "type": "Government Source",
-          "name": "Indigenous Services Canada FNFTA filings",
-          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=394&lang=eng",
-          "status": "baseline",
-          "adapter": "static",
-          "monitor": false,
-          "official": false
-        }
-      ],
-      "discoveryQueries": [
-        "\"Canoe Lake Cree First Nation\" announcement Saskatchewan",
-        "\"Canoe Lake Cree First Nation\" community update",
-        "site:facebook.com \"Canoe Lake Cree First Nation\" announcement",
-        "\"Canoe Lake Cree First Nation\" funding OR housing OR infrastructure"
-      ]
-    },
-    {
-      "bandId": 378,
-      "communityName": "Carry the Kettle Nakoda Nation",
-      "aliases": [],
-      "provinceTerritory": "SK",
-      "treaty": "Treaty 4",
-      "sources": [
-        {
-          "type": "Government Source",
-          "name": "Indigenous Services Canada FNFTA filings",
-          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=378&lang=eng",
-          "status": "baseline",
-          "adapter": "static",
-          "monitor": false,
-          "official": false
-        }
-      ],
-      "discoveryQueries": [
-        "\"Carry the Kettle Nakoda Nation\" announcement Saskatchewan",
-        "\"Carry the Kettle Nakoda Nation\" community update",
-        "site:facebook.com \"Carry the Kettle Nakoda Nation\" announcement",
-        "\"Carry the Kettle Nakoda Nation\" funding OR housing OR infrastructure"
-      ]
-    },
-    {
-      "bandId": 361,
-      "communityName": "Cowessess First Nation",
-      "aliases": [
-        "Cowessess",
-        "CFN"
-      ],
-      "provinceTerritory": "SK",
-      "treaty": "Treaty 4",
-      "sources": [
-        {
-          "type": "Official First Nation Website",
-          "name": "Cowessess First Nation",
-          "url": "https://cowessessfn.com/",
-          "status": "verified",
-          "adapter": "html",
-          "monitor": true,
-          "official": true,
-          "discoveryUrls": [
-            "https://cowessessfn.com/",
-            "https://cowessessfn.com/news/"
-          ]
-        },
-        {
-          "type": "Facebook",
-          "name": "Cowessess First Nation",
-          "url": "https://www.facebook.com/cowessessfn",
-          "status": "verified",
-          "adapter": "facebook",
-          "pageHandle": "cowessessfn",
-          "monitor": true,
-          "official": true,
-          "associationConfidence": 1.0
-        },
-        {
-          "type": "Economic Development Organization",
-          "name": "Cowessess Economic Development",
-          "url": "https://cowessessfn.com/entities/cowessess-ventures/",
-          "status": "verified",
-          "adapter": "html",
-          "monitor": true,
-          "official": true,
-          "associationConfidence": 0.96
-        },
-        {
-          "type": "Community Website",
-          "name": "Cowessess Paradise Radio 98.1 FM",
-          "url": "https://cowessessfn.com/news/paradise-radio/",
-          "status": "verified",
-          "adapter": "html",
-          "monitor": true,
-          "official": true,
-          "associationConfidence": 0.96
-        },
-        {
-          "type": "Government Source",
-          "name": "Indigenous Services Canada FNFTA filings",
-          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=361&lang=eng",
-          "status": "baseline",
-          "adapter": "static",
-          "monitor": false,
-          "official": false
-        }
-      ],
-      "discoveryQueries": [
-        "\"Cowessess First Nation\" announcement Saskatchewan",
-        "\"Cowessess First Nation\" community update",
-        "site:facebook.com \"Cowessess First Nation\" announcement",
-        "\"Cowessess First Nation\" funding OR housing OR infrastructure"
-      ]
-    },
-    {
-      "bandId": 389,
-      "communityName": "Day Star First Nation",
-      "aliases": [],
-      "provinceTerritory": "SK",
-      "treaty": "Treaty 4",
-      "sources": [
-        {
-          "type": "Government Source",
-          "name": "Indigenous Services Canada FNFTA filings",
-          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=389&lang=eng",
-          "status": "baseline",
-          "adapter": "static",
-          "monitor": false,
-          "official": false
-        }
-      ],
-      "discoveryQueries": [
-        "\"Day Star First Nation\" announcement Saskatchewan",
-        "\"Day Star First Nation\" community update",
-        "site:facebook.com \"Day Star First Nation\" announcement",
-        "\"Day Star First Nation\" funding OR housing OR infrastructure"
       ]
     },
     {
@@ -997,6 +973,30 @@
       ]
     },
     {
+      "bandId": 388,
+      "communityName": "Wood Mountain First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=388&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Wood Mountain Lakota First Nation\" announcement Saskatchewan",
+        "\"Wood Mountain Lakota First Nation\" community update",
+        "site:facebook.com \"Wood Mountain Lakota First Nation\" announcement",
+        "\"Wood Mountain Lakota First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
       "bandId": 376,
       "communityName": "Yellow Quill First Nation",
       "aliases": [],
@@ -1127,6 +1127,30 @@
         "\"Buffalo River Dene Nation\" community update",
         "site:facebook.com \"Buffalo River Dene Nation\" announcement",
         "\"Buffalo River Dene Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 394,
+      "communityName": "Canoe Lake Cree First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 10",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=394&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Canoe Lake Cree First Nation\" announcement Saskatchewan",
+        "\"Canoe Lake Cree First Nation\" community update",
+        "site:facebook.com \"Canoe Lake Cree First Nation\" announcement",
+        "\"Canoe Lake Cree First Nation\" funding OR housing OR infrastructure"
       ]
     },
     {
@@ -1931,30 +1955,6 @@
         "\"Cree Nation of Chitek Lake\" community update",
         "site:facebook.com \"Cree Nation of Chitek Lake\" announcement",
         "\"Cree Nation of Chitek Lake\" funding OR housing OR infrastructure"
-      ]
-    },
-    {
-      "bandId": 388,
-      "communityName": "Wood Mountain Lakota First Nation",
-      "aliases": [],
-      "provinceTerritory": "SK",
-      "treaty": null,
-      "sources": [
-        {
-          "type": "Government Source",
-          "name": "Indigenous Services Canada FNFTA filings",
-          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=388&lang=eng",
-          "status": "baseline",
-          "adapter": "static",
-          "monitor": false,
-          "official": false
-        }
-      ],
-      "discoveryQueries": [
-        "\"Wood Mountain Lakota First Nation\" announcement Saskatchewan",
-        "\"Wood Mountain Lakota First Nation\" community update",
-        "site:facebook.com \"Wood Mountain Lakota First Nation\" announcement",
-        "\"Wood Mountain Lakota First Nation\" funding OR housing OR infrastructure"
       ]
     }
   ]
