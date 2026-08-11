@@ -9,13 +9,14 @@
       "Official First Nation websites and public social accounts",
       "Government of Canada, Indigenous Services Canada, CMHC, Canada Infrastructure Bank and Impact Assessment Registry",
       "Government of Saskatchewan, tribal councils and Indigenous organizations",
-      "Public web and social-media search queries for every community"
+      "Public web and social-media search queries for every community",
+      "Project announcements and completion evidence dated 2023 onward, plus older projects still publicly documented as active"
     ],
     "results": {
-      "verifiedProjectCount": 64,
-      "unverifiedSignalCount": 28,
-      "communitiesWithVerifiedProjects": 60,
-      "communitiesWithAnyProjectRecord": 66
+      "verifiedProjectCount": 81,
+      "unverifiedSignalCount": 34,
+      "communitiesWithVerifiedProjects": 66,
+      "communitiesWithAnyProjectRecord": 68
     },
     "limitations": "Public-source audit only. Private, deleted, access-restricted and unindexed posts are outside the review scope. A community may have active projects that are not yet described in a verifiable public source."
   },
@@ -31,6 +32,400 @@
     ]
   },
   "projects": [
+    {
+      "id": "bekevar-wind-facility",
+      "firstNationIds": ["361"],
+      "category": "Renewable Energy",
+      "name": "Bekevar Wind Facility",
+      "description": "A wind facility near Kipling jointly owned by Innagreen and Cowessess First Nation's Awasis Nehiyawewini Energy Development entity.",
+      "status": "Completed",
+      "statusAsOf": "2024-11-13",
+      "funding": [
+        "Canada Infrastructure Bank financing: $173 million",
+        "Government of Canada Smart Renewables and Electrification Pathways Program: $50 million"
+      ],
+      "completionDate": "2024-11-13",
+      "unitsCapacity": "200 MW; equivalent annual power for approximately 100,000 homes; 17% Cowessess ownership",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {
+          "name": "SaskPower",
+          "url": "https://www.saskpower.com/about-us/our-company/blog/2024/bekevar-wind-facility-now-online",
+          "publishedAt": "2024-11-13"
+        },
+        {
+          "name": "Government of Canada Budget 2024",
+          "url": "https://www.budget.canada.ca/2024/report-rapport/chap4-en.html",
+          "publishedAt": "2024-04-16"
+        }
+      ]
+    },
+    {
+      "id": "turning-sun-solar",
+      "firstNationIds": ["408"],
+      "category": "Renewable Energy",
+      "name": "Turning Sun Solar Project",
+      "description": "A utility-scale solar facility near Estevan co-owned by Ocean Man Nakoda Nation and connected to the SaskPower grid through a long-term power purchase agreement.",
+      "status": "Under Construction",
+      "statusAsOf": "2026-06-05",
+      "funding": ["Government of Canada Smart Renewables and Electrification Pathways Program: $15 million"],
+      "startDate": "2026-06-05",
+      "expectedCompletionDate": "2027",
+      "unitsCapacity": "100 MW; equivalent annual power for approximately 25,000 homes; 10% Ocean Man ownership",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {
+          "name": "Natural Resources Canada",
+          "url": "https://www.canada.ca/en/natural-resources-canada/news/2026/06/the-government-of-canada-invests-15-million-in-one-of-saskatchewans-largest-solar-projects.html",
+          "publishedAt": "2026-06-05"
+        },
+        {
+          "name": "SaskPower",
+          "url": "https://www.saskpower.com/about-us/media-information/news-releases/2026/construction-of-turning-sun-solar-underway",
+          "publishedAt": "2026-06-05"
+        }
+      ]
+    },
+    {
+      "id": "mino-giizis-solar",
+      "firstNationIds": ["364", "366", "377", "368"],
+      "category": "Renewable Energy",
+      "name": "Mino Giizis Solar Energy Facility",
+      "description": "A solar farm near Lajord co-owned equally by Neoen and the Anishinabek Power Alliance of Zagime Anishinabek, Cote, Kinistin Saulteaux and The Key First Nations.",
+      "status": "Planned",
+      "statusAsOf": "2026-01-14",
+      "expectedCompletionDate": "2028",
+      "unitsCapacity": "157 MWp / 100 MWac; expected annual output for approximately 30,000 homes; 50% First Nations ownership",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {
+          "name": "SaskPower",
+          "url": "https://www.saskpower.com/about-us/media-information/news-releases/2026/fnpa-selects-mino-giizis-solar-for-100-mw-project",
+          "publishedAt": "2026-01-14"
+        },
+        {
+          "name": "Neoen Canada",
+          "url": "https://canada.neoen.com/mino-giizis-solar/",
+          "checkedAt": "2026-08-11"
+        }
+      ]
+    },
+    {
+      "id": "la-plonge-solar-battery",
+      "firstNationIds": ["400"],
+      "category": "Renewable Energy",
+      "name": "La Plonge Solar and Battery Energy Storage System",
+      "description": "An English River First Nation-owned solar and battery system at La Plonge that will reinforce the remote distribution grid and reduce reliance on higher-emission generation.",
+      "status": "Under Construction",
+      "statusAsOf": "2025-03-14",
+      "funding": [
+        "Environment and Climate Change Canada Indigenous Leadership Fund: $3,879,458",
+        "Natural Resources Canada and Indigenous Services Canada: $1,313,852",
+        "PrairiesCan Saskatchewan Clean Energy Initiative: $23,800"
+      ],
+      "expectedCompletionDate": "2026",
+      "unitsCapacity": "750 kW DC solar and 1 MWh battery storage",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {
+          "name": "Des Nedhe Group",
+          "url": "https://desnedhe.com/app/uploads/2025/03/Aurora-New-Release-2025.03.pdf",
+          "publishedAt": "2025-03-14"
+        },
+        {
+          "name": "Impact Assessment Agency of Canada Registry",
+          "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/87438",
+          "publishedAt": "2024-04-25"
+        }
+      ]
+    },
+    {
+      "id": "whitecap-virtual-health-hub",
+      "firstNationIds": ["372"],
+      "category": "Health Centre",
+      "name": "Virtual Health Hub",
+      "description": "An Indigenous-led virtual-care command centre on Whitecap Dakota Nation land using telehealth, robotics and remote imaging to serve rural and northern communities.",
+      "status": "Under Construction",
+      "statusAsOf": "2026-02-09",
+      "startDate": "2025-07-22",
+      "expectedCompletionDate": "2027",
+      "unitsCapacity": "Initial support for 30 communities, scalable to 90 communities",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {
+          "name": "Virtual Health Hub",
+          "url": "https://virtualhealthhub.ca/2025/09/12/vhh-construction-announcement/",
+          "publishedAt": "2025-09-12"
+        },
+        {
+          "name": "Impact Assessment Agency of Canada Registry",
+          "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/88871?culture=en-CA",
+          "publishedAt": "2024-10-07"
+        }
+      ]
+    },
+    {
+      "id": "wahpeton-new-school",
+      "firstNationIds": ["358"],
+      "category": "Education Facility",
+      "name": "Wahpeton Dakota Nation New School",
+      "description": "A replacement Pre-K to Grade 12 school with two playgrounds, a basketball court, soccer field, maintenance building and new utility connections.",
+      "status": "Planned",
+      "statusAsOf": "2026-08-11",
+      "estimatedCost": "$30 million+ project value",
+      "funding": ["Indigenous Services Canada"],
+      "unitsCapacity": "Approximately 160 students; approximately 3,400 square metres over two storeys",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {
+          "name": "Impact Assessment Agency of Canada Registry",
+          "url": "https://www.iaac-aeic.gc.ca/050/evaluations/proj/89538",
+          "publishedAt": "2025-09-02"
+        },
+        {
+          "name": "Cuthbert Smith Group",
+          "url": "https://www.cuthbertsmith.com/pages/cHolden.html",
+          "checkedAt": "2026-08-11"
+        }
+      ]
+    },
+    {
+      "id": "nekaneet-fire-hall",
+      "firstNationIds": ["380"],
+      "category": "Emergency Infrastructure",
+      "name": "Nekaneet Cree Nation Fire Hall",
+      "description": "A replacement two-bay fire hall with wash facilities and connections to nearby water, power, gas and telecommunications services.",
+      "status": "Under Construction",
+      "statusAsOf": "2026-08-11",
+      "startDate": "2025",
+      "unitsCapacity": "Two apparatus bays; approximately 1,000-square-metre project footprint",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {
+          "name": "Impact Assessment Agency of Canada Registry",
+          "url": "https://ceaa-acee.gc.ca/050/evaluations/proj/89419",
+          "publishedAt": "2025-06-09"
+        },
+        {
+          "name": "Wallace Krueger Architects",
+          "url": "https://wkarch.ca/projects/",
+          "checkedAt": "2026-08-11"
+        }
+      ]
+    },
+    {
+      "id": "nekaneet-corcan-housing",
+      "firstNationIds": ["380"],
+      "category": "Housing",
+      "name": "CORCAN-Built Housing for Nekaneet Cree Nation",
+      "description": "Homes being built off-site through CORCAN construction programs at Alberta correctional institutions for delivery to Nekaneet Cree Nation.",
+      "status": "Under Construction",
+      "statusAsOf": "2025-03-14",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {
+          "name": "Correctional Service Canada",
+          "url": "https://www.canada.ca/en/correctional-service/lets-talk/read/2025/03-14-buildinghope.html",
+          "publishedAt": "2025-03-14"
+        }
+      ]
+    },
+    {
+      "id": "big-river-know-your-status-building",
+      "firstNationIds": ["404"],
+      "category": "Health Centre",
+      "name": "Know-Your-Status Building",
+      "description": "A new health-program building behind the Big River First Nation Health Centre supporting the community's Know-Your-Status services.",
+      "status": "Completed",
+      "statusAsOf": "2024",
+      "completionDate": "2024",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {
+          "name": "Big River First Nation",
+          "url": "https://www.bigriverfirstnation.ca/health/",
+          "checkedAt": "2026-08-11"
+        }
+      ]
+    },
+    {
+      "id": "sweetgrass-water-treatment-upgrades",
+      "firstNationIds": ["348"],
+      "category": "Water & Wastewater",
+      "name": "Water Treatment System Upgrade and Expansion",
+      "description": "Upgrades and an expansion to the public water treatment system that supported lifting the community's long-term drinking water advisory.",
+      "status": "Completed",
+      "statusAsOf": "2025-05-29",
+      "completionDate": "2025",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {
+          "name": "Indigenous Services Canada",
+          "url": "https://sac-isc.gc.ca/eng/1506514143353/1533317130660?wbdisable=true",
+          "checkedAt": "2026-08-11"
+        }
+      ]
+    },
+    {
+      "id": "english-river-water-treatment-upgrades",
+      "firstNationIds": ["400"],
+      "category": "Water & Wastewater",
+      "name": "La Plonge Water Treatment Plant Upgrades",
+      "description": "Upgrades to English River First Nation's La Plonge water treatment plant, followed by the lifting of the long-term drinking water advisory in November 2024.",
+      "status": "Completed",
+      "statusAsOf": "2024-11-07",
+      "completionDate": "2024-09",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {
+          "name": "Indigenous Services Canada Question Period Notes",
+          "url": "https://search.open.canada.ca/qpnotes/record/isc-sac%2CISC-2025-QP-00781",
+          "checkedAt": "2026-08-11"
+        }
+      ]
+    },
+    {
+      "id": "white-bear-cosette-solar",
+      "firstNationIds": ["365"],
+      "category": "Renewable Energy",
+      "name": "Cosette Solar Project",
+      "description": "A solar generation project near Estevan owned in partnership with White Bear First Nations and operating under a long-term SaskPower agreement.",
+      "status": "Completed",
+      "statusAsOf": "2023-12-21",
+      "funding": ["Government of Canada Smart Renewables and Electrification Pathways Program: over $2.7 million"],
+      "completionDate": "2023",
+      "unitsCapacity": "1.4 MW",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {
+          "name": "Compass Energy Consulting",
+          "url": "https://compassenergyconsulting.ca/compass-sk-pgpp-projects/",
+          "publishedAt": "2023-12-21"
+        },
+        {
+          "name": "Environment and Climate Change Canada",
+          "url": "https://www.canada.ca/en/environment-climate-change/news/2024/12/powering-canadas-future-federal-measures-helping-build-saskatchewans-21st-century-electricity-grid.html",
+          "publishedAt": "2024-12-05"
+        }
+      ]
+    },
+    {
+      "id": "white-bear-nm-solar",
+      "firstNationIds": ["365"],
+      "category": "Renewable Energy",
+      "name": "NM Solar Project",
+      "description": "A solar generation project near Lomond owned in partnership with White Bear First Nations and operating under a long-term SaskPower agreement.",
+      "status": "Completed",
+      "statusAsOf": "2023-12-21",
+      "funding": ["Government of Canada Smart Renewables and Electrification Pathways Program: nearly $2.7 million"],
+      "completionDate": "2023",
+      "unitsCapacity": "1 MW",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {
+          "name": "Compass Energy Consulting",
+          "url": "https://compassenergyconsulting.ca/compass-sk-pgpp-projects/",
+          "publishedAt": "2023-12-21"
+        },
+        {
+          "name": "Environment and Climate Change Canada",
+          "url": "https://www.canada.ca/en/environment-climate-change/news/2024/12/powering-canadas-future-federal-measures-helping-build-saskatchewans-21st-century-electricity-grid.html",
+          "publishedAt": "2024-12-05"
+        }
+      ]
+    },
+    {
+      "id": "mistawasis-kiyam-solar",
+      "firstNationIds": ["374"],
+      "category": "Renewable Energy",
+      "name": "Kiyam Solar Project",
+      "description": "A Mistawasis Nêhiyawak-partnered solar installation near Oungre delivering renewable power through a long-term SaskPower agreement.",
+      "status": "Completed",
+      "statusAsOf": "2025",
+      "funding": ["Government of Canada Smart Renewables and Electrification Pathways Program: $1,845,576"],
+      "completionDate": "2025",
+      "unitsCapacity": "1 MW AC / 1.3 MW DC",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {
+          "name": "Misty Ventures",
+          "url": "https://mistyventures.ca/misty-ventures-announces-kiyam-and-iskotew-solar-projects/",
+          "checkedAt": "2026-08-11"
+        },
+        {
+          "name": "Environment and Climate Change Canada",
+          "url": "https://www.canada.ca/en/environment-climate-change/news/2024/12/the-government-of-canada-announces-over-2567-million-in-funding-for-clean-electricity-projects-in-saskatchewan.html",
+          "publishedAt": "2024-12-05"
+        }
+      ]
+    },
+    {
+      "id": "mistawasis-iskotew-solar",
+      "firstNationIds": ["374"],
+      "category": "Renewable Energy",
+      "name": "Iskotew Solar Project",
+      "description": "A Mistawasis Nêhiyawak-partnered solar installation near Alsask delivering renewable power through a long-term SaskPower agreement.",
+      "status": "Completed",
+      "statusAsOf": "2025",
+      "funding": ["Government of Canada Smart Renewables and Electrification Pathways Program: $1,839,575"],
+      "completionDate": "2025",
+      "unitsCapacity": "1 MW AC / 1.3 MW DC",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {
+          "name": "Misty Ventures",
+          "url": "https://mistyventures.ca/misty-ventures-announces-kiyam-and-iskotew-solar-projects/",
+          "checkedAt": "2026-08-11"
+        },
+        {
+          "name": "Environment and Climate Change Canada",
+          "url": "https://www.canada.ca/en/environment-climate-change/news/2024/12/the-government-of-canada-announces-over-2567-million-in-funding-for-clean-electricity-projects-in-saskatchewan.html",
+          "publishedAt": "2024-12-05"
+        }
+      ]
+    },
+    {
+      "id": "ochapowace-pisim-solar-projects",
+      "firstNationIds": ["363"],
+      "category": "Renewable Energy",
+      "name": "Pisim Solar Projects",
+      "description": "Two Ochapowace Nation-partnered bifacial solar arrays near Weyburn operating under long-term SaskPower agreements.",
+      "status": "Completed",
+      "statusAsOf": "2023-12-21",
+      "funding": ["Natural Resources Canada: $4.3 million"],
+      "completionDate": "2023",
+      "unitsCapacity": "Two 1 MW arrays",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {
+          "name": "Compass Energy Consulting",
+          "url": "https://compassenergyconsulting.ca/compass-sk-pgpp-projects/",
+          "publishedAt": "2023-12-21"
+        },
+        {
+          "name": "Natural Resources Canada",
+          "url": "https://www.canada.ca/en/natural-resources-canada/news/2023/06/government-of-canada-supports-clean-energy-projects-in-saskatchewan-with-over-7-million-investment.html",
+          "publishedAt": "2023-06-28"
+        }
+      ]
+    },
+    {
+      "id": "saulteaux-rapid-housing-project",
+      "firstNationIds": ["347"],
+      "category": "Housing",
+      "name": "Rapid Housing Project",
+      "description": "An ongoing capital housing project identified in Saulteaux First Nation's audited financial statements, with project-restricted funds carried at March 31, 2025.",
+      "status": "Under Construction",
+      "statusAsOf": "2025-03-31",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {
+          "name": "Saulteaux First Nation Audited Consolidated Financial Statements",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=347&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=eng",
+          "publishedAt": "2025-10-09"
+        }
+      ]
+    },
     {
       "id": "rose-valley-wind",
       "firstNationIds": ["403", "398", "394", "401", "400", "395", "396", "397", "402", "374"],
@@ -961,6 +1356,108 @@
     }
   ],
   "unverifiedProjects": [
+    {
+      "id": "one-arrow-54-lot-subdivision-proposal",
+      "firstNationIds": ["373"],
+      "category": "Housing-Enabling Infrastructure",
+      "name": "One Arrow 54-Lot Subdivision Proposal",
+      "discussionSummary": "A federal assessment describes a proposed 54-lot subdivision with underground utilities, roads, ditching and lot grading.",
+      "signalType": "Active federal assessment",
+      "whyUnverified": "The public assessment does not confirm final financing, a construction contract or that physical subdivision work has started.",
+      "lastSeenAt": "2026-06-10",
+      "sources": [
+        {
+          "name": "Impact Assessment Agency of Canada Registry",
+          "url": "https://www.iaac-aeic.gc.ca/050/evaluations/proj/90540",
+          "publishedAt": "2026-06-10"
+        }
+      ]
+    },
+    {
+      "id": "nekaneet-youth-centre-proposal",
+      "firstNationIds": ["380"],
+      "category": "Community Building",
+      "name": "Nekaneet Cree Nation Youth Centre Proposal",
+      "discussionSummary": "A federal assessment describes a proposed youth centre beside the school for culturally grounded child, family, prevention and post-majority support programming.",
+      "signalType": "Active federal assessment",
+      "whyUnverified": "The assessment record does not yet confirm a construction award, physical start or completion schedule.",
+      "lastSeenAt": "2026-01-11",
+      "sources": [
+        {
+          "name": "Impact Assessment Agency of Canada Registry",
+          "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/90081",
+          "publishedAt": "2026-01-11"
+        }
+      ]
+    },
+    {
+      "id": "the-key-fire-hall-proposal",
+      "firstNationIds": ["368"],
+      "category": "Emergency Infrastructure",
+      "name": "The Key First Nation Fire Hall Proposal",
+      "discussionSummary": "A completed federal environmental review describes a proposed two-bay fire hall with a washdown slab, utility servicing and surrounding site work.",
+      "signalType": "Assessed public proposal",
+      "whyUnverified": "Environmental approval permits the project to proceed but does not confirm that a construction contract was awarded or work started.",
+      "lastSeenAt": "2026-03-04",
+      "sources": [
+        {
+          "name": "Impact Assessment Agency of Canada Registry",
+          "url": "https://www.iaac-aeic.gc.ca/050/evaluations/proj/90202",
+          "publishedAt": "2026-03-04"
+        }
+      ]
+    },
+    {
+      "id": "thunderchild-fire-hall-proposal",
+      "firstNationIds": ["349"],
+      "category": "Emergency Infrastructure",
+      "name": "Thunderchild First Nation Fire Hall Proposal",
+      "discussionSummary": "A completed federal environmental review describes a multi-bay fire hall, apparatus aprons, truck turnaround, parking and new utility connections.",
+      "signalType": "Assessed public proposal",
+      "whyUnverified": "The assessment determination does not confirm final financing, a construction award or a physical construction start.",
+      "lastSeenAt": "2026-05-28",
+      "sources": [
+        {
+          "name": "Impact Assessment Agency of Canada Registry",
+          "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/90407",
+          "publishedAt": "2026-05-28"
+        }
+      ]
+    },
+    {
+      "id": "thunderchild-80-lot-subdivision-proposal",
+      "firstNationIds": ["349"],
+      "category": "Housing-Enabling Infrastructure",
+      "name": "Thunderchild 80-Lot Subdivision Proposal",
+      "discussionSummary": "A federal review describes a proposed 80-lot subdivision with roads, water, sewer, power, natural gas, telecommunications, streetlights and pumping infrastructure.",
+      "signalType": "Assessed public proposal",
+      "whyUnverified": "The review establishes the proposal and design scope but does not verify current financing, contract award or a physical construction start.",
+      "lastSeenAt": "2025-06-10",
+      "sources": [
+        {
+          "name": "Impact Assessment Agency of Canada Registry",
+          "url": "https://iaac-aeic.gc.ca/050/evaluations/document/161893?culture=en-CA",
+          "publishedAt": "2025-06-10"
+        }
+      ]
+    },
+    {
+      "id": "southeast-first-nations-fibre-proposal",
+      "firstNationIds": ["365", "361", "363", "364", "362"],
+      "category": "Broadband Infrastructure",
+      "name": "Southeast First Nations Fibre Installation Proposal",
+      "discussionSummary": "A federal assessment describes approximately 282 kilometres of underground fibre intended to connect homes in White Bear, Cowessess, Ochapowace, Zagime Anishinabek and Kahkewistahaw First Nations.",
+      "signalType": "Assessed public proposal",
+      "whyUnverified": "The environmental determination does not confirm that the specific five-Nation build has a final construction schedule or has started.",
+      "lastSeenAt": "2025-01-06",
+      "sources": [
+        {
+          "name": "Impact Assessment Agency of Canada Registry",
+          "url": "https://www.iaac-aeic.gc.ca/050/evaluations/proj/89078",
+          "publishedAt": "2025-01-06"
+        }
+      ]
+    },
     {
       "id": "day-star-water-treatment-expansion-procurement",
       "firstNationIds": ["389"],
