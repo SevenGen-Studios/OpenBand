@@ -38,12 +38,15 @@ const EVENT_NAMES = new Set([
   "community_capital_view", "revenue_chart_viewed", "expense_chart_viewed",
   "asset_chart_viewed", "comparison_started", "comparison_completed",
   "news_article_opened", "news_article_shared", "outbound_link_clicked",
+  "jobs_tab_viewed", "job_search_performed", "job_filter_used",
+  "job_posting_opened", "job_application_clicked",
   "pdf_failed_to_load", "parser_error"
 ]);
 const PARAMETER_KEYS = new Set([
   "page_location", "page_title", "search_term", "result_count",
   "community_name", "province", "fiscal_year", "statement_type",
-  "community_count", "destination", "duration_seconds", "error_code"
+  "community_count", "destination", "duration_seconds", "error_code",
+  "filter", "value", "job_id"
 ]);
 const ID_PATTERN = /^[a-zA-Z0-9-]{8,80}$/;
 

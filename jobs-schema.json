@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openband.ca/jobs-schema.json",
+  "title": "OpenBand Jobs Dataset",
+  "type": "object",
+  "required": ["schemaVersion", "generated", "listings"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "generated": {"type": "string", "format": "date-time"},
+    "listings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "employer", "sourceUrl", "sourceName", "status", "lastChecked", "verifiedOfficialSource"],
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "employer": {"type": "string"},
+          "communityName": {"type": "string"},
+          "communityId": {"type": "string"},
+          "location": {"type": "string"},
+          "employmentType": {"type": "string"},
+          "category": {"type": "string"},
+          "postedDate": {"type": ["string", "null"], "format": "date"},
+          "closingDate": {"type": ["string", "null"], "format": "date"},
+          "salary": {"type": ["string", "null"]},
+          "applicationMethod": {"type": ["string", "null"]},
+          "applicationUrl": {"type": ["string", "null"], "format": "uri"},
+          "sourceUrl": {"type": "string", "format": "uri"},
+          "sourceName": {"type": "string"},
+          "description": {"type": "string"},
+          "qualifications": {"type": ["string", "null"]},
+          "workplaceType": {"type": ["string", "null"]},
+          "status": {"enum": ["Open", "Closing soon", "Closed", "Date unavailable", "Pending verification"]},
+          "lastChecked": {"type": "string", "format": "date"},
+          "extractionConfidence": {"enum": ["high", "medium", "low"]},
+          "verifiedOfficialSource": {"type": "boolean"},
+          "manualOverride": {"type": "boolean"}
+        }
+      }
+    },
+    "employmentPrograms": {"type": "array"}
+  }
+}

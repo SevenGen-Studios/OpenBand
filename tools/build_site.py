@@ -165,7 +165,68 @@ def projects_prerender(band: dict, projects: list[dict], unverified_projects: li
     )
 
 
-def profile_prerender(band: dict, election_records: list[dict], projects: list[dict], unverified_projects: list[dict]) -> str:
+def jobs_for_band(band: dict, listings: list[dict]) -> list[dict]:
+    public_statuses = {"Open", "Closing soon", "Date unavailable"}
+    rows = [
+        row for row in listings
+        if str(row.get("communityId")) == str(band["id"])
+        and row.get("status") in public_statuses
+        and row.get("verifiedOfficialSource")
+        and row.get("sourceUrl")
+    ]
+    return sorted(rows, key=lambda row: (str(row.get("postedDate") or row.get("lastChecked") or ""), row.get("title") or ""), reverse=True)
+
+
+def jobs_prerender(band: dict, listings: list[dict]) -> str:
+    rows = jobs_for_band(band, listings)
+    if not rows:
+        return (
+            '<section class="profile-jobs-prerender"><h3>Jobs &amp; Employment</h3>'
+            '<p>No current opportunities have been indexed from public sources.</p></section>'
+        )
+    items = "".join(
+        '<li>'
+        f'<a href="{html.escape(row["sourceUrl"], quote=True)}">{html.escape(row["title"])}</a>'
+        f'<span>{html.escape(row.get("employer") or "Employer")} · '
+        f'{html.escape(row.get("location") or "Location not published")}</span></li>'
+        for row in rows[:6]
+    )
+    return (
+        '<section class="profile-jobs-prerender"><h3>Jobs &amp; Employment</h3>'
+        f'<p>{len(rows)} source-linked opportunit{"y" if len(rows) == 1 else "ies"} currently indexed.</p>'
+        f'<ul>{items}</ul></section>'
+    )
+
+
+def job_posting_schema(band: dict, listings: list[dict]) -> list[dict]:
+    schemas = []
+    for row in jobs_for_band(band, listings):
+        if row.get("status") not in {"Open", "Closing soon"}:
+            continue
+        if not all(row.get(field) for field in ("title", "description", "employer", "postedDate", "location")):
+            continue
+        location = str(row["location"]).split(",", 1)[0].strip()
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "JobPosting",
+            "title": row["title"],
+            "description": row["description"],
+            "datePosted": row["postedDate"],
+            "employmentType": row.get("employmentType") or "OTHER",
+            "hiringOrganization": {"@type": "Organization", "name": row["employer"]},
+            "jobLocation": {
+                "@type": "Place",
+                "address": {"@type": "PostalAddress", "addressLocality": location, "addressRegion": "SK", "addressCountry": "CA"},
+            },
+            "url": row.get("applicationUrl") or row["sourceUrl"],
+        }
+        if row.get("closingDate"):
+            schema["validThrough"] = f'{row["closingDate"]}T23:59:59-06:00'
+        schemas.append(schema)
+    return schemas
+
+
+def profile_prerender(band: dict, election_records: list[dict], projects: list[dict], unverified_projects: list[dict], jobs: list[dict]) -> str:
     filings = remuneration_filings(band)
     parsed = [filing for filing in filings if is_parsed(filing)]
     latest = filings[0].get("year") if filings else None
@@ -184,7 +245,7 @@ def profile_prerender(band: dict, election_records: list[dict], projects: list[d
         f"<div><dt>Latest parsed remuneration</dt><dd>{html.escape(latest_parsed or 'Pending extraction')}</dd></div>"
         f"<div><dt>Parsed years</dt><dd>{len(parsed)}</dd></div>"
         f'<div><dt>Authoritative source</dt><dd><a href="{isc_url}">ISC filing profile</a></dd></div>'
-        f"</dl>{election_prerender(band, election_records)}{projects_prerender(band, projects, unverified_projects)}</div>"
+        f"</dl>{election_prerender(band, election_records)}{projects_prerender(band, projects, unverified_projects)}{jobs_prerender(band, jobs)}</div>"
     )
 
 
@@ -229,6 +290,7 @@ def build() -> None:
     elections = json.loads((ROOT / "elections-data.json").read_text(encoding="utf-8"))
     map_data = json.loads((ROOT / "map-data.json").read_text(encoding="utf-8"))
     projects = json.loads((ROOT / "projects-data.json").read_text(encoding="utf-8"))
+    jobs = json.loads((ROOT / "jobs-data.json").read_text(encoding="utf-8"))
     bands = sorted(data.get("bands", []), key=lambda item: item["name"])
     base = (ROOT / "index.html").read_text(encoding="utf-8")
     slugs = [slugify(band["name"]) for band in bands]
@@ -260,10 +322,13 @@ def build() -> None:
         }
         page = set_meta(base, title=title, description=description, path=path, structured=structured)
         page = page.replace('<body data-page="home">', f'<body data-page="profile" data-band-id="{band["id"]}">', 1)
-        page = page.replace('<div id="profilePrerender" class="profile-prerender" hidden></div>', profile_prerender(band, elections.get("records", []), projects.get("projects", []), projects.get("unverifiedProjects", [])), 1)
+        page = page.replace('<div id="profilePrerender" class="profile-prerender" hidden></div>', profile_prerender(band, elections.get("records", []), projects.get("projects", []), projects.get("unverifiedProjects", []), jobs.get("listings", [])), 1)
+        job_schemas = job_posting_schema(band, jobs.get("listings", []))
+        if job_schemas:
+            page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260810g" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260810g" defer></script>',
+            '<script src="/assets/openband.js?v=20260811a" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260811a" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)
