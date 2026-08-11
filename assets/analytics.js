@@ -34,6 +34,11 @@
     trackComparison(completed,communityIds=[]){enqueue(completed?"comparison_completed":"comparison_started",{community_count:communityIds.length})},
     trackNewsView(articleUrl,communityId=null){enqueue("news_article_opened",{destination:cleanDestination(articleUrl)},communityId)},
     trackNewsShare(articleUrl,communityId=null){enqueue("news_article_shared",{destination:cleanDestination(articleUrl)},communityId)},
+    trackJobsTab(communityId=null){once(`jobs:${communityId}`,()=>enqueue("jobs_tab_viewed",{},communityId))},
+    trackJobSearch(searchTerm,resultCount,communityId=null){enqueue("job_search_performed",{search_term:String(searchTerm||"").slice(0,100),result_count:Number(resultCount)||0},communityId)},
+    trackJobFilter(filter,value,communityId=null){enqueue("job_filter_used",{filter:String(filter||"").slice(0,40),value:String(value||"").slice(0,100)},communityId)},
+    trackJobOpen(jobId,destination,communityId=null){enqueue("job_posting_opened",{job_id:String(jobId||"").slice(0,100),destination:cleanDestination(destination)},communityId)},
+    trackJobApplication(jobId,destination,communityId=null){enqueue("job_application_clicked",{job_id:String(jobId||"").slice(0,100),destination:cleanDestination(destination)},communityId)},
     trackOutboundLink(destination){enqueue("outbound_link_clicked",{destination:cleanDestination(destination)})},
     trackError(errorType,details={}){enqueue(errorType,details)},
     flush
