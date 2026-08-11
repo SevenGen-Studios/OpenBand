@@ -18,6 +18,9 @@
           "employer": {"type": "string"},
           "communityName": {"type": "string"},
           "communityId": {"type": "string"},
+          "firstNationIds": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "scope": {"enum": ["community", "regional", "provincial"]},
+          "sourceId": {"type": "string"},
           "location": {"type": "string"},
           "employmentType": {"type": "string"},
           "category": {"type": "string"},
@@ -39,6 +42,20 @@
         }
       }
     },
-    "employmentPrograms": {"type": "array"}
+    "employmentPrograms": {"type": "array"},
+    "communityCoverage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["communityId", "communityName", "sources", "activeListings", "status"],
+        "properties": {
+          "communityId": {"type": "string"},
+          "communityName": {"type": "string"},
+          "sources": {"type": "array"},
+          "activeListings": {"type": "integer", "minimum": 0},
+          "status": {"enum": ["active_listings", "sources_checked_no_active_listing"]}
+        }
+      }
+    }
   }
 }
