@@ -42,6 +42,8 @@ class AnalyticsTests(unittest.TestCase):
             "statement_downloaded", "community_capital_view",
             "revenue_chart_viewed", "expense_chart_viewed",
             "comparison_completed", "news_article_opened",
+            "jobs_tab_viewed", "job_search_performed", "job_filter_used",
+            "job_posting_opened", "job_application_clicked",
             "outbound_link_clicked", "pdf_failed_to_load", "parser_error",
         ]:
             with self.subTest(event=event):
@@ -49,6 +51,8 @@ class AnalyticsTests(unittest.TestCase):
         self.assertIn("window.OpenBandAnalytics=service", self.client)
         self.assertIn("window.OpenBandAnalytics?.trackSearch", self.app)
         self.assertIn("window.OpenBandAnalytics?.trackCommunityView", self.app)
+        self.assertIn("window.OpenBandAnalytics?.trackJobsTab", self.app)
+        self.assertIn("window.OpenBandAnalytics?.trackJobApplication", self.app)
 
     def test_internal_schema_has_no_ip_or_personal_fields(self):
         lowered = self.schema.lower()
