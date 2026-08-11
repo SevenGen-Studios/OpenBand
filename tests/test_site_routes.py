@@ -41,7 +41,7 @@ class SiteRouteTests(unittest.TestCase):
             self.assertIn(f"<h1>{expected_heading}</h1>", markup)
 
     def test_indexable_routes_and_seo_files_exist(self):
-        for relative in ["browse/index.html", "news/index.html", "admin/index.html", "admin/analytics/index.html", "robots.txt", "sitemap.xml", "map-data.json", "jobs-data.json", "jobs-schema.json", "jobs-sources.json", "jobs-overrides.json", "jobs-coverage-report.json", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js"]:
+        for relative in ["browse/index.html", "news/index.html", "admin/index.html", "admin/analytics/index.html", "robots.txt", "sitemap.xml", "map-data.json", "contacts-data.json", "jobs-data.json", "jobs-schema.json", "jobs-sources.json", "jobs-overrides.json", "jobs-coverage-report.json", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js"]:
             self.assertTrue((ROOT / relative).is_file(), relative)
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
         self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 3)
@@ -75,9 +75,9 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260811b"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260811b"', profile)
-        self.assertIn('src="/assets/analytics.js?v=20260811b"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260811d"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260811d"', profile)
+        self.assertIn('src="/assets/analytics.js?v=20260811d"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
         self.assertIn("function restoreRoute", javascript)
@@ -105,6 +105,56 @@ class SiteRouteTests(unittest.TestCase):
         self.assertNotIn("function renderRecentJobs", javascript)
         self.assertNotIn("function jobsOverviewMarkup", javascript)
         self.assertIn("function loadJobsData", javascript)
+        self.assertIn("function loadContactsData", javascript)
+        self.assertIn("function contactCardMarkup", javascript)
+        self.assertIn("function updateHeaderContact", javascript)
+        self.assertIn("visible=activeProfileTab==='overview'", javascript)
+        self.assertIn("container.hidden=!visible", javascript)
+        self.assertIn("overviewCard.remove()", javascript)
+        self.assertIn("registered band members", javascript)
+        stylesheet = (ROOT / "assets" / "openband.css").read_text(encoding="utf-8")
+        self.assertIn(".profile-header-contact[hidden]{display:none}", stylesheet)
+
+    def test_band_office_contacts_are_complete_unique_and_source_linked(self):
+        contacts = json.loads((ROOT / "contacts-data.json").read_text(encoding="utf-8"))
+        band_ids = {band["id"] for band in self.data["bands"]}
+        records = contacts["contacts"]
+        self.assertEqual(contacts["recordCount"], len(records))
+        self.assertEqual(len(records), len(band_ids))
+        self.assertEqual({record["nation_id"] for record in records}, band_ids)
+        self.assertEqual(len({record["nation_id"] for record in records}), len(records))
+        required = {
+            "nation_id", "office_phone", "office_email", "website_url",
+            "mailing_address", "source_url", "field_sources", "last_verified",
+        }
+        for record in records:
+            with self.subTest(record=record["nation_name"]):
+                self.assertTrue(required.issubset(record))
+                self.assertRegex(record["office_phone"], r"^\(\d{3}\) \d{3}-\d{4}$")
+                self.assertTrue(record["mailing_address"])
+                self.assertTrue(record["source_url"].startswith("https://"))
+                self.assertRegex(record["last_verified"], r"^\d{4}-\d{2}-\d{2}$")
+                if record["office_email"]:
+                    self.assertEqual(record["office_email"], record["office_email"].lower())
+                    self.assertIn("@", record["office_email"])
+                    self.assertTrue(record["field_sources"]["office_email"].startswith("http"))
+                if record["website_url"]:
+                    self.assertTrue(record["website_url"].startswith("http"))
+        self.assertNotIn("info@fhqtc.com", {record["office_email"] for record in records})
+
+    def test_every_profile_has_a_compact_band_office_card(self):
+        for band in self.data["bands"]:
+            page = ROOT / "first-nations" / slugify(band["name"]) / "index.html"
+            with self.subTest(band=band["name"]):
+                markup = page.read_text(encoding="utf-8")
+                self.assertEqual(markup.count('<section class="band-office-card">'), 1)
+                self.assertIn("Band Office", markup)
+                self.assertIn("Contact source", markup)
+                self.assertIn("tel:", markup)
+        missing_email = (ROOT / "first-nations" / "ahtahkakoop-cree-nation" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("Not publicly available.", missing_email)
+        with_email = (ROOT / "first-nations" / "pasqua-first-nation" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('href="mailto:reception@pasquafn.ca"', with_email)
 
     def test_every_profile_has_projects_section(self):
         for band in self.data["bands"]:

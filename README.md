@@ -23,6 +23,7 @@ The public website focuses on Saskatchewan FNFTA Chief and Council remuneration 
 - `tools/build_site.py` - generates profile pages, metadata, `sitemap.xml`, and `robots.txt`
 - `data.json` - generated filing and remuneration data used by the website
 - `map-data.json` - ISC-sourced community locations and tribal-council relationships
+- `contacts-data.json` - source-linked Band Office phone, email, website, and mailing-address records
 - `projects-data.json` - source-linked housing and infrastructure projects shown on community profiles
 - `audit-results.txt` - latest coverage and parser-health report
 - `scraper.py` - restored core scraper
@@ -34,6 +35,7 @@ The public website focuses on Saskatchewan FNFTA Chief and Council remuneration 
 - `tools/audit_data.py` - checks coverage and pending parser work
 - `tools/capital_parser.py` - extracts validated audited-statement summaries into `capital-data.json`
 - `tools/member_count_scraper.py` - updates registered population counts from official ISC First Nation Profiles
+- `tools/contact_scraper.py` - refreshes Band Office contacts from ISC and verified official community sites
 - `tools/build_map_data.py` - refreshes the interactive Browse map from official ISC map services
 
 ## Browse map data
@@ -104,6 +106,15 @@ python -m unittest tests/test_site_routes.py -v
 Housing and infrastructure entries must keep their original source URL and
 publication or verification date in `projects-data.json`. Omit unverified
 costs, dates, capacities, and statuses instead of filling them with estimates.
+
+Band Office contacts use the ISC First Nation profile as the baseline source.
+Only clearly generic office mailboxes from official community sites are
+collected automatically; reviewed exceptions and current official-site URLs
+live in `manual_overrides/contacts.json`. Refresh the dataset with:
+
+```bash
+python tools/contact_scraper.py
+```
 
 The scraper workflows and **Build static OpenBand routes** workflow run this
 step automatically for GitHub-hosted updates.

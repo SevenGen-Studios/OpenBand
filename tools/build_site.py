@@ -7,7 +7,7 @@ import json
 import re
 import unicodedata
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, urlparse
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -201,6 +201,60 @@ def jobs_prerender(band: dict, listings: list[dict]) -> str:
     )
 
 
+def phone_href(value: str | None) -> str:
+    digits = re.sub(r"\D", "", value or "")
+    if len(digits) == 10:
+        return f"+1{digits}"
+    return digits
+
+
+def website_label(value: str | None) -> str:
+    if not value:
+        return ""
+    return re.sub(r"^www\.", "", urlparse(value).netloc, flags=re.I) or value
+
+
+def contact_prerender(contact: dict | None) -> str:
+    contact = contact or {}
+    phone = contact.get("office_phone")
+    email = contact.get("office_email")
+    website = contact.get("website_url")
+    address = contact.get("mailing_address")
+    source = contact.get("source_url")
+    verified = contact.get("last_verified")
+    phone_markup = (
+        f'<a href="tel:{html.escape(phone_href(phone), quote=True)}">{html.escape(phone)}</a>'
+        if phone else "Not publicly available."
+    )
+    email_markup = (
+        f'<a href="mailto:{html.escape(email, quote=True)}">{html.escape(email)}</a>'
+        if email else '<span class="contact-unavailable">Not publicly available.</span>'
+    )
+    website_markup = (
+        f'<a href="{html.escape(website, quote=True)}" target="_blank" rel="noopener">'
+        f'{html.escape(website_label(website))}</a>'
+        if website else '<span class="contact-unavailable">Not publicly available.</span>'
+    )
+    address_markup = html.escape(address) if address else "Not publicly available."
+    source_markup = (
+        f'<a href="{html.escape(source, quote=True)}" target="_blank" rel="noopener">Contact source</a>'
+        if source else ""
+    )
+    verified_markup = f"Verified {html.escape(verified)}" if verified else ""
+    separator = " &middot; " if source_markup and verified_markup else ""
+    return (
+        '<section class="band-office-card"><div class="band-office-heading">'
+        '<h3>Band Office</h3><span>Public contact information</span></div>'
+        '<dl class="band-office-grid">'
+        f'<div><dt>Phone</dt><dd>{phone_markup}</dd></div>'
+        f'<div><dt>Email</dt><dd>{email_markup}</dd></div>'
+        f'<div><dt>Website</dt><dd>{website_markup}</dd></div>'
+        f'<div><dt>Mailing address</dt><dd><address>{address_markup}</address></dd></div>'
+        '</dl><div class="band-office-source">'
+        f'{source_markup}{separator}{verified_markup}</div></section>'
+    )
+
+
 def job_posting_schema(band: dict, listings: list[dict]) -> list[dict]:
     schemas = []
     for row in jobs_for_band(band, listings):
@@ -229,7 +283,7 @@ def job_posting_schema(band: dict, listings: list[dict]) -> list[dict]:
     return schemas
 
 
-def profile_prerender(band: dict, election_records: list[dict], projects: list[dict], unverified_projects: list[dict], jobs: list[dict]) -> str:
+def profile_prerender(band: dict, contact: dict | None, election_records: list[dict], projects: list[dict], unverified_projects: list[dict], jobs: list[dict]) -> str:
     filings = remuneration_filings(band)
     parsed = [filing for filing in filings if is_parsed(filing)]
     latest = filings[0].get("year") if filings else None
@@ -248,7 +302,7 @@ def profile_prerender(band: dict, election_records: list[dict], projects: list[d
         f"<div><dt>Latest parsed remuneration</dt><dd>{html.escape(latest_parsed or 'Pending extraction')}</dd></div>"
         f"<div><dt>Parsed years</dt><dd>{len(parsed)}</dd></div>"
         f'<div><dt>Authoritative source</dt><dd><a href="{isc_url}">ISC filing profile</a></dd></div>'
-        f"</dl>{election_prerender(band, election_records)}{projects_prerender(band, projects, unverified_projects)}{jobs_prerender(band, jobs)}</div>"
+        f"</dl>{contact_prerender(contact)}{election_prerender(band, election_records)}{projects_prerender(band, projects, unverified_projects)}{jobs_prerender(band, jobs)}</div>"
     )
 
 
@@ -294,6 +348,8 @@ def build() -> None:
     map_data = json.loads((ROOT / "map-data.json").read_text(encoding="utf-8"))
     projects = json.loads((ROOT / "projects-data.json").read_text(encoding="utf-8"))
     jobs = json.loads((ROOT / "jobs-data.json").read_text(encoding="utf-8"))
+    contacts = json.loads((ROOT / "contacts-data.json").read_text(encoding="utf-8"))
+    contacts_by_id = {str(row["nation_id"]): row for row in contacts.get("contacts", [])}
     bands = sorted(data.get("bands", []), key=lambda item: item["name"])
     base = (ROOT / "index.html").read_text(encoding="utf-8")
     slugs = [slugify(band["name"]) for band in bands]
@@ -325,13 +381,13 @@ def build() -> None:
         }
         page = set_meta(base, title=title, description=description, path=path, structured=structured)
         page = page.replace('<body data-page="home">', f'<body data-page="profile" data-band-id="{band["id"]}">', 1)
-        page = page.replace('<div id="profilePrerender" class="profile-prerender" hidden></div>', profile_prerender(band, elections.get("records", []), projects.get("projects", []), projects.get("unverifiedProjects", []), jobs.get("listings", [])), 1)
+        page = page.replace('<div id="profilePrerender" class="profile-prerender" hidden></div>', profile_prerender(band, contacts_by_id.get(str(band["id"])), elections.get("records", []), projects.get("projects", []), projects.get("unverifiedProjects", []), jobs.get("listings", [])), 1)
         job_schemas = job_posting_schema(band, jobs.get("listings", []))
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260811b" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260811b" defer></script>',
+            '<script src="/assets/openband.js?v=20260811d" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260811d" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)
