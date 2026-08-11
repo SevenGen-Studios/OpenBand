@@ -75,9 +75,9 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260811b"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260811b"', profile)
-        self.assertIn('src="/assets/analytics.js?v=20260811b"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260811c"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260811c"', profile)
+        self.assertIn('src="/assets/analytics.js?v=20260811c"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
         self.assertIn("function restoreRoute", javascript)
@@ -104,6 +104,8 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("function renderJobsPanel", javascript)
         self.assertNotIn("function renderRecentJobs", javascript)
         self.assertNotIn("function jobsOverviewMarkup", javascript)
+        self.assertNotIn("Public Records Overview", javascript)
+        self.assertNotIn("overview-grid-compact", javascript)
         self.assertIn("function loadJobsData", javascript)
 
     def test_every_profile_has_projects_section(self):
