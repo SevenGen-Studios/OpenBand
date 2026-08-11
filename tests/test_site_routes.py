@@ -142,19 +142,13 @@ class SiteRouteTests(unittest.TestCase):
                     self.assertTrue(record["website_url"].startswith("http"))
         self.assertNotIn("info@fhqtc.com", {record["office_email"] for record in records})
 
-    def test_every_profile_has_a_compact_band_office_card(self):
+    def test_band_office_contacts_are_not_prerendered_outside_overview(self):
         for band in self.data["bands"]:
             page = ROOT / "first-nations" / slugify(band["name"]) / "index.html"
             with self.subTest(band=band["name"]):
                 markup = page.read_text(encoding="utf-8")
-                self.assertEqual(markup.count('<section class="band-office-card">'), 1)
-                self.assertIn("Band Office", markup)
-                self.assertIn("Contact source", markup)
-                self.assertIn("tel:", markup)
-        missing_email = (ROOT / "first-nations" / "ahtahkakoop-cree-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn("Not publicly available.", missing_email)
-        with_email = (ROOT / "first-nations" / "pasqua-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="mailto:reception@pasquafn.ca"', with_email)
+                self.assertNotIn('<section class="band-office-card">', markup)
+                self.assertNotIn("Band Office contact information", markup)
 
     def test_every_profile_has_projects_section(self):
         for band in self.data["bands"]:
