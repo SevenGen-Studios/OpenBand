@@ -75,9 +75,9 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260811a"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260811a"', profile)
-        self.assertIn('src="/assets/analytics.js?v=20260811a"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260811b"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260811b"', profile)
+        self.assertIn('src="/assets/analytics.js?v=20260811b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
         self.assertIn("function restoreRoute", javascript)
@@ -101,7 +101,9 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("else if(activeProfileTab==='projects')", javascript)
         self.assertIn("else if(activeProfileTab==='jobs')", javascript)
         self.assertIn("function renderJobsPanel", javascript)
-        self.assertIn("function renderRecentJobs", javascript)
+        self.assertIn("function renderJobsPanel", javascript)
+        self.assertNotIn("function renderRecentJobs", javascript)
+        self.assertNotIn("function jobsOverviewMarkup", javascript)
         self.assertIn("function loadJobsData", javascript)
 
     def test_every_profile_has_projects_section(self):
@@ -122,7 +124,7 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("Jobs &amp; Employment", profile)
         self.assertIn("Maintenance Worker (Casual)", profile)
         self.assertNotIn('id="openbandJobPostingData"', profile)
-        self.assertIn('id="recentJobsSection"', (ROOT / "index.html").read_text(encoding="utf-8"))
+        self.assertNotIn('id="recentJobsSection"', (ROOT / "index.html").read_text(encoding="utf-8"))
 
     def test_browse_page_uses_official_interactive_map_data(self):
         markup = (ROOT / "browse" / "index.html").read_text(encoding="utf-8")
