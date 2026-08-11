@@ -41,7 +41,7 @@ class SiteRouteTests(unittest.TestCase):
             self.assertIn(f"<h1>{expected_heading}</h1>", markup)
 
     def test_indexable_routes_and_seo_files_exist(self):
-        for relative in ["browse/index.html", "news/index.html", "admin/index.html", "admin/analytics/index.html", "robots.txt", "sitemap.xml", "map-data.json", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js"]:
+        for relative in ["browse/index.html", "news/index.html", "admin/index.html", "admin/analytics/index.html", "robots.txt", "sitemap.xml", "map-data.json", "jobs-data.json", "jobs-schema.json", "jobs-sources.json", "jobs-overrides.json", "jobs-coverage-report.json", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js"]:
             self.assertTrue((ROOT / relative).is_file(), relative)
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
         self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 3)
@@ -75,9 +75,9 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260810g"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260810g"', profile)
-        self.assertIn('src="/assets/analytics.js?v=20260805b"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260811a"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260811a"', profile)
+        self.assertIn('src="/assets/analytics.js?v=20260811a"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
         self.assertIn("function restoreRoute", javascript)
@@ -97,8 +97,12 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("breakdowns.after(section)", javascript)
         self.assertIn("function renderHousingProjectsSection", javascript)
         self.assertIn("function toggleProjects", javascript)
-        self.assertIn("['capital','Community Capital'],['projects','Housing & Infrastructure'],['sources','Source Documents']", javascript)
+        self.assertIn("['projects','Housing & Infrastructure','Projects'],['jobs','Jobs & Employment','Jobs'],['sources','Source Documents','Sources']", javascript)
         self.assertIn("else if(activeProfileTab==='projects')", javascript)
+        self.assertIn("else if(activeProfileTab==='jobs')", javascript)
+        self.assertIn("function renderJobsPanel", javascript)
+        self.assertIn("function renderRecentJobs", javascript)
+        self.assertIn("function loadJobsData", javascript)
 
     def test_every_profile_has_projects_section(self):
         for band in self.data["bands"]:
@@ -106,6 +110,19 @@ class SiteRouteTests(unittest.TestCase):
             with self.subTest(band=band["name"]):
                 markup = page.read_text(encoding="utf-8")
                 self.assertEqual(markup.count("Housing &amp; Infrastructure Projects"), 1)
+
+    def test_jobs_data_and_profile_routes_are_source_linked(self):
+        jobs = json.loads((ROOT / "jobs-data.json").read_text(encoding="utf-8"))
+        self.assertEqual(jobs["listingCount"], len(jobs["listings"]))
+        self.assertGreater(jobs["activeCount"], 0)
+        for row in jobs["listings"]:
+            self.assertTrue(row["sourceUrl"].startswith("https://"))
+            self.assertTrue(row["verifiedOfficialSource"])
+        profile = (ROOT / "first-nations" / "lac-la-ronge-indian-band" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("Jobs &amp; Employment", profile)
+        self.assertIn("Maintenance Worker (Casual)", profile)
+        self.assertNotIn('id="openbandJobPostingData"', profile)
+        self.assertIn('id="recentJobsSection"', (ROOT / "index.html").read_text(encoding="utf-8"))
 
     def test_browse_page_uses_official_interactive_map_data(self):
         markup = (ROOT / "browse" / "index.html").read_text(encoding="utf-8")
@@ -133,7 +150,7 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("scrollWheelZoom:true", javascript)
         self.assertIn("wheelPxPerZoomLevel:140", javascript)
         self.assertIn("radius:9", javascript)
-        self.assertIn("maxZoom:10", javascript)
+        self.assertIn("maxZoom:8", javascript)
         councils = {row["tribalCouncil"] for row in map_data["communities"]}
         self.assertIn("South East Treaty 4 Tribal Council", councils)
         self.assertIn("Battlefords Agency Tribal Chiefs (BATC)", councils)
