@@ -169,7 +169,10 @@ def jobs_for_band(band: dict, listings: list[dict]) -> list[dict]:
     public_statuses = {"Open", "Closing soon", "Date unavailable"}
     rows = [
         row for row in listings
-        if str(row.get("communityId")) == str(band["id"])
+        if (
+            str(row.get("communityId")) == str(band["id"])
+            or str(band["id"]) in {str(value) for value in row.get("firstNationIds", [])}
+        )
         and row.get("status") in public_statuses
         and row.get("verifiedOfficialSource")
         and row.get("sourceUrl")
