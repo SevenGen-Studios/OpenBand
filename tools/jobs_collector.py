@@ -179,6 +179,8 @@ def fetch_source(source: dict) -> tuple[list[dict], list[str], str]:
         href = urllib.parse.urljoin(source["url"], anchor["href"])
         if len(title) < 5 or len(title) > 140 or not JOB_WORDS.search(title):
             continue
+        if not href.startswith(("https://", "http://")):
+            continue
         if href in seen or href.rstrip("/") == source["url"].rstrip("/"):
             continue
         seen.add(href)
