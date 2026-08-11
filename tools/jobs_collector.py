@@ -85,12 +85,20 @@ def stable_id(record: dict) -> str:
 
 
 def normalize_listing(raw: dict, today: date) -> dict:
+    first_nation_ids = []
+    for value in raw.get("firstNationIds", []):
+        normalized = clean_text(value)
+        if normalized and normalized not in first_nation_ids:
+            first_nation_ids.append(normalized)
     record = {
         "id": clean_text(raw.get("id")),
         "title": clean_text(raw.get("title")),
         "employer": clean_text(raw.get("employer")),
         "communityName": clean_text(raw.get("communityName")),
         "communityId": clean_text(raw.get("communityId")),
+        "firstNationIds": first_nation_ids,
+        "scope": clean_text(raw.get("scope")) or ("regional" if first_nation_ids else "community"),
+        "sourceId": clean_text(raw.get("sourceId")),
         "location": clean_text(raw.get("location")),
         "employmentType": clean_text(raw.get("employmentType")),
         "category": clean_text(raw.get("category")) or "Other",
@@ -151,7 +159,7 @@ class AnchorCollector(HTMLParser):
             self.current = None
 
 
-def fetch_source(source: dict) -> tuple[list[dict], list[str]]:
+def fetch_source(source: dict) -> tuple[list[dict], list[str], str]:
     warnings = []
     request = urllib.request.Request(
         source["url"],
@@ -161,7 +169,7 @@ def fetch_source(source: dict) -> tuple[list[dict], list[str]]:
         with urllib.request.urlopen(request, timeout=25) as response:
             markup = response.read().decode("utf-8", errors="replace")
     except Exception as exc:  # network failures belong in the report, not public data
-        return [], [f"{source['id']}: fetch failed: {exc}"]
+        return [], [f"{source['id']}: fetch failed: {exc}"], ""
     parser = AnchorCollector()
     parser.feed(markup)
     candidates = []
@@ -182,6 +190,9 @@ def fetch_source(source: dict) -> tuple[list[dict], list[str]]:
                 "employer": source["name"],
                 "communityId": community_ids[0] if len(community_ids) == 1 else "",
                 "communityName": community_names[0] if len(community_names) == 1 else "",
+                "firstNationIds": community_ids if len(community_ids) > 1 and source.get("associationMode") != "source_only" else [],
+                "scope": "regional" if len(community_ids) > 1 else "community",
+                "sourceId": source["id"],
                 "sourceUrl": href,
                 "sourceName": source["name"],
                 "description": "Candidate opportunity discovered on an official employment source. Details require verification.",
@@ -195,7 +206,33 @@ def fetch_source(source: dict) -> tuple[list[dict], list[str]]:
         candidates.append(candidate)
     if not candidates:
         warnings.append(f"{source['id']}: no candidate job links detected")
-    return candidates, warnings
+    return candidates, warnings, clean_text(re.sub(r"<[^>]+>", " ", markup))
+
+
+def source_coverage(source: dict, tracked_ids: set[str]) -> set[str]:
+    if source.get("coversAllTrackedCommunities"):
+        return set(tracked_ids)
+    return {clean_text(value) for value in source.get("communityIds", []) if clean_text(value) in tracked_ids}
+
+
+def listing_is_confirmed_on_source(record: dict, source_texts: dict[str, str]) -> bool:
+    source_id = clean_text(record.get("sourceId"))
+    page_text = source_texts.get(source_id, "")
+    title = clean_text(record.get("title"))
+    if not page_text or not title:
+        return False
+    normalized_page = slug(page_text)
+    normalized_title = slug(re.sub(r"\b(job|employment)\s+opportunit(?:y|ies)\b", "", title, flags=re.I))
+    return bool(normalized_title and normalized_title in normalized_page)
+
+
+def expand_verified_batches(overrides: dict) -> list[dict]:
+    rows = list(overrides.get("manualListings", []))
+    for batch in overrides.get("verifiedBatches", []):
+        common = {key: value for key, value in batch.items() if key != "jobs"}
+        for job in batch.get("jobs", []):
+            rows.append({**common, **job, "manualOverride": True})
+    return rows
 
 
 def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]:
@@ -204,11 +241,14 @@ def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]
     previous = read_json(root / "jobs-data.json", {"listings": []})
     warnings = []
     candidates = []
+    source_texts = {}
     if not offline:
         for source in source_data.get("sources", []):
-            found, source_warnings = fetch_source(source)
+            found, source_warnings, source_text = fetch_source(source)
             candidates.extend(found)
             warnings.extend(source_warnings)
+            if source_text:
+                source_texts[source["id"]] = source_text
     else:
         candidates.extend(row for row in previous.get("listings", []) if not row.get("manualOverride"))
 
@@ -216,7 +256,13 @@ def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]
     duplicate_count = 0
     suppressed = {str(value) for value in overrides.get("suppressIds", [])}
     corrections = overrides.get("corrections", {})
-    for raw in candidates + overrides.get("manualListings", []):
+    manual_rows = []
+    for raw in expand_verified_batches(overrides):
+        refreshed = dict(raw)
+        if not offline and listing_is_confirmed_on_source(refreshed, source_texts):
+            refreshed["lastChecked"] = today.isoformat()
+        manual_rows.append(refreshed)
+    for raw in candidates + manual_rows:
         patched = {**raw, **corrections.get(str(raw.get("id", "")), {})}
         record = normalize_listing(patched, today)
         if record["id"] in suppressed:
@@ -237,16 +283,43 @@ def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]
     listings = sorted(by_id.values(), key=lambda row: (row.get("postedDate") or row.get("lastChecked") or "", row["title"]), reverse=True)
     active = [row for row in listings if row["status"] in ACTIVE_STATUSES]
     public = [row for row in listings if row["status"] in PUBLIC_STATUSES]
+    public_community_ids = set()
+    for row in public:
+        if row.get("communityId"):
+            public_community_ids.add(str(row["communityId"]))
+        public_community_ids.update(str(value) for value in row.get("firstNationIds", []) if value)
     data = {
         "schemaVersion": 1,
         "generated": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "listingCount": len(listings),
         "activeCount": len(active),
-        "communityCount": len({row["communityId"] for row in public if row.get("communityId")}),
+        "communityCount": len(public_community_ids),
         "listings": listings,
         "employmentPrograms": overrides.get("employmentPrograms", []),
         "warnings": warnings,
     }
+    map_data = read_json(root / "map-data.json", {"communities": []})
+    tracked = {str(row.get("id")): row for row in map_data.get("communities", []) if row.get("id") is not None}
+    coverage_sources = {community_id: [] for community_id in tracked}
+    for source in source_data.get("sources", []):
+        for community_id in source_coverage(source, set(tracked)):
+            coverage_sources[community_id].append({"id": source["id"], "name": source["name"], "url": source["url"]})
+    data["communityCoverage"] = [
+        {
+            "communityId": community_id,
+            "communityName": tracked[community_id].get("name"),
+            "sources": coverage_sources[community_id],
+            "activeListings": len([
+                row for row in public
+                if str(row.get("communityId")) == community_id or community_id in row.get("firstNationIds", [])
+            ]),
+            "status": "active_listings" if any(
+                str(row.get("communityId")) == community_id or community_id in row.get("firstNationIds", [])
+                for row in public
+            ) else "sources_checked_no_active_listing",
+        }
+        for community_id in sorted(tracked, key=lambda value: tracked[value].get("name", ""))
+    ]
     report = {
         "generated": data["generated"],
         "sourcesConfigured": len(source_data.get("sources", [])),
@@ -256,6 +329,8 @@ def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]
         "pendingVerification": len([row for row in listings if row["status"] == "Pending verification"]),
         "expiredOrClosed": len([row for row in listings if row["status"] == "Closed"]),
         "duplicatesSuppressed": duplicate_count,
+        "trackedCommunities": len(tracked),
+        "communitiesWithSourceCoverage": len([value for value in coverage_sources.values() if value]),
         "warnings": warnings,
     }
     return data, report
