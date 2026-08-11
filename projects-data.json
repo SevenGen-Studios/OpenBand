@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-10",
+  "generatedAt": "2026-08-11",
   "sourceAudit": {
-    "reviewedAt": "2026-08-10",
+    "reviewedAt": "2026-08-11",
     "communityCount": 69,
     "registry": "news-sources.json",
     "methods": [
@@ -12,17 +12,17 @@
       "Public web and social-media search queries for every community"
     ],
     "results": {
-      "verifiedProjectCount": 50,
-      "unverifiedSignalCount": 24,
-      "communitiesWithVerifiedProjects": 50,
-      "communitiesWithAnyProjectRecord": 57
+      "verifiedProjectCount": 64,
+      "unverifiedSignalCount": 28,
+      "communitiesWithVerifiedProjects": 60,
+      "communitiesWithAnyProjectRecord": 66
     },
     "limitations": "Public-source audit only. Private, deleted, access-restricted and unindexed posts are outside the review scope. A community may have active projects that are not yet described in a verifiable public source."
   },
   "unverifiedPolicy": {
     "label": "Unverified Projects & Community Discussion",
     "description": "Source-linked proposals and public discussion that do not yet have enough evidence to be presented as confirmed projects.",
-    "lastReviewedAt": "2026-08-10",
+    "lastReviewedAt": "2026-08-11",
     "exclusions": [
       "Anonymous or unattributed claims",
       "Private, deleted or access-restricted posts",
@@ -753,9 +753,258 @@
       "unitsCapacity": "Community trail development plan",
       "lastVerifiedAt": "2026-08-10",
       "sources": [{"name": "Housing, Infrastructure and Communities Canada", "url": "https://www.canada.ca/en/housing-infrastructure-communities/news/2026/07/backgrounder-federal-government-invests-in-active-transportation-in-indigenous-communities-across-saskatchewan.html", "publishedAt": "2026-07-10"}]
+    },
+    {
+      "id": "zagime-new-k8-school",
+      "firstNationIds": ["364"],
+      "category": "Education Facility",
+      "name": "Zagime Anishinabek New K-8 School",
+      "description": "A new Kindergarten to Grade 8 school with a gymnasium, kitchen, library and resource centre, cultural and multipurpose spaces, a lab, outdoor land-based learning areas, daycare and Head Start programming.",
+      "status": "Under Construction",
+      "statusAsOf": "2026-06-19",
+      "funding": ["Indigenous Services Canada: more than $35.9 million", "Zagime Anishinabek: $3.4 million for the on-site daycare"],
+      "startDate": "2026-06-19",
+      "expectedCompletionDate": "2027",
+      "unitsCapacity": "Kindergarten to Grade 8 school with on-site daycare and Head Start program",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [{"name": "Indigenous Services Canada", "url": "https://www.newswire.ca/news-releases/zagime-anishinabek-celebrates-the-groundbreaking-of-a-new-k-8-school-880701762.html", "publishedAt": "2026-06-19"}]
+    },
+    {
+      "id": "pheasant-rump-cultural-centre",
+      "firstNationIds": ["409"],
+      "category": "Community Building",
+      "name": "Pheasant Rump Indigenous Cultural Centre",
+      "description": "A cultural centre with a rooftop patio and arbour providing an accessible gathering space for Nakota traditional knowledge, language, culture, health and healing activities.",
+      "status": "Under Construction",
+      "statusAsOf": "2025-03-31",
+      "estimatedCost": "$4 million construction budget",
+      "funding": ["Government of Canada: $3,350,499", "Government of Saskatchewan: $1,116,833"],
+      "unitsCapacity": "7,800 square feet",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {"name": "Housing, Infrastructure and Communities Canada", "url": "https://www.canada.ca/en/housing-infrastructure-communities/news/2023/12/backgrounder-nine-infrastructure-projects-announced-in-saskatchewan-to-strengthen-and-support-communities.html", "publishedAt": "2023-12-06"},
+        {"name": "Pheasant Rump Nakota First Nation audited financial statements", "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=409&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=eng", "checkedAt": "2026-08-11"}
+      ]
+    },
+    {
+      "id": "pheasant-rump-community-transit-system",
+      "firstNationIds": ["409"],
+      "category": "Transportation Infrastructure",
+      "name": "Pheasant Rump Community Transit System",
+      "description": "A community-led public transit system involving six vehicles and construction of a conventional garage to support service between the Nation and regional centres.",
+      "status": "Planned",
+      "statusAsOf": "2024-04-24",
+      "funding": ["Rural Transit Solutions Fund: $1,252,800", "Pheasant Rump Nakota First Nation: $17,400"],
+      "unitsCapacity": "Six vehicles and one supporting garage",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [{"name": "Housing, Infrastructure and Communities Canada", "url": "https://www.canada.ca/en/housing-infrastructure-communities/news/2024/04/backgrounder--federal-government-invests-in-public-transit-projects-across-rural-saskatchewan.html", "publishedAt": "2024-04-24"}]
+    },
+    {
+      "id": "pheasant-rump-flood-mapping",
+      "firstNationIds": ["409"],
+      "category": "Infrastructure Planning",
+      "name": "Pheasant Rump Flood Mapping Study",
+      "description": "A multi-year flood and high-groundwater study producing engineering flood maps and a water management plan to guide infrastructure, emergency planning and climate adaptation.",
+      "status": "Planned",
+      "statusAsOf": "2026-08-11",
+      "funding": ["Crown-Indigenous Relations and Northern Affairs Canada: $551,896"],
+      "startDate": "2024",
+      "expectedCompletionDate": "2027",
+      "unitsCapacity": "Community flood maps and water management plan",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [{"name": "Crown-Indigenous Relations and Northern Affairs Canada", "url": "https://www.cirnac-rcaanc.gc.ca/eng/1698771955468/1698771985864", "checkedAt": "2026-08-11"}]
+    },
+    {
+      "id": "muskoday-water-treatment-plant",
+      "firstNationIds": ["371"],
+      "category": "Water & Wastewater",
+      "name": "Muskoday Water Treatment Plant",
+      "description": "A new water treatment plant using biofilters and reverse osmosis, together with new wells and groundwater pumping infrastructure, enabling the Nation to treat and manage its own water supply.",
+      "status": "Completed",
+      "statusAsOf": "2024-08-15",
+      "estimatedCost": "$8.6 million",
+      "funding": ["Indigenous Services Canada: $8.6 million"],
+      "completionDate": "2024-08-15",
+      "unitsCapacity": "All homes on reserve and major community buildings",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [{"name": "Indigenous Services Canada", "url": "https://www.canada.ca/en/indigenous-services-canada/news/2024/08/muskoday-first-nation-celebrates-opening-of-new-water-treatment-plant.html", "publishedAt": "2024-08-15"}]
+    },
+    {
+      "id": "red-pheasant-operations-maintenance-shop",
+      "firstNationIds": ["346"],
+      "category": "Community Infrastructure",
+      "name": "Red Pheasant Operations and Maintenance Shop",
+      "description": "A new operations facility supporting community road maintenance, sanitation, water treatment operations, equipment management and expansion of the Nation's maintenance workforce.",
+      "status": "Completed",
+      "statusAsOf": "2026-05-11",
+      "completionDate": "2026-05-11",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [{"name": "First Nations Capital and Infrastructure Agency of Saskatchewan", "url": "https://www.fncias.ca/fncias-attends-red-pheasant-cree-nation-maintenance-shop-grand-opening/", "publishedAt": "2026-05-12"}]
+    },
+    {
+      "id": "little-pine-water-treatment-upgrade",
+      "firstNationIds": ["340"],
+      "category": "Water & Wastewater",
+      "name": "Little Pine Water Treatment Plant Upgrade",
+      "description": "A completed treatment-plant upgrade that has placed infrastructure capable of producing clean drinking water into service while operator training and operational support continue.",
+      "status": "Completed",
+      "statusAsOf": "2026-05-07",
+      "funding": ["Indigenous Services Canada"],
+      "unitsCapacity": "Public water system serving 250 homes and 10 community buildings",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [{"name": "Indigenous Services Canada", "url": "https://sac-isc.gc.ca/eng/1614627652113/1614627691652", "checkedAt": "2026-08-11"}]
+    },
+    {
+      "id": "beardys-water-treatment-plant-upgrades",
+      "firstNationIds": ["369"],
+      "category": "Water & Wastewater",
+      "name": "Beardy's and Okemasis Water Treatment Plant Upgrades",
+      "description": "Ongoing upgrades to the Nation's water treatment infrastructure reported as an active capital project in its audited financial statements.",
+      "status": "Under Construction",
+      "statusAsOf": "2025-03-31",
+      "estimatedCost": "$16,878,895 project budget",
+      "funding": ["Indigenous Services Canada"],
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [{"name": "Beardy's and Okemasis Cree Nation audited financial statements", "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=369&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=eng", "checkedAt": "2026-08-11"}]
+    },
+    {
+      "id": "beardys-sewage-lagoon-upgrades",
+      "firstNationIds": ["369"],
+      "category": "Water & Wastewater",
+      "name": "Beardy's and Okemasis Sewage Lagoon and Pumping Station Upgrades",
+      "description": "A new two-cell lagoon, sewage pumping infrastructure, electrical building, force-main replacement and access-road work designed to meet community wastewater needs through 2040.",
+      "status": "Under Construction",
+      "statusAsOf": "2025-03-31",
+      "estimatedCost": "$12,312,844 project budget",
+      "funding": ["Indigenous Services Canada"],
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {"name": "Impact Assessment Agency of Canada Registry", "url": "https://www.iaac-aeic.gc.ca/050/evaluations/proj/83638", "publishedAt": "2023-02-01"},
+        {"name": "Beardy's and Okemasis Cree Nation audited financial statements", "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=369&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=eng", "checkedAt": "2026-08-11"}
+      ]
+    },
+    {
+      "id": "lucky-man-second-net-zero-home",
+      "firstNationIds": ["341"],
+      "category": "Housing",
+      "name": "Lucky Man Second Net-Zero Home",
+      "description": "A ready-to-move net-zero home being built off site with high-efficiency systems and on-site renewable-energy generation before placement on completed piles in the community.",
+      "status": "Under Construction",
+      "statusAsOf": "2025-12",
+      "funding": ["Indigenous Services Canada Immediate Needs"],
+      "startDate": "2025-10",
+      "expectedCompletionDate": "2026",
+      "unitsCapacity": "One net-zero home",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [{"name": "Lucky Man Cree Nation Community Newsletter", "url": "https://luckymancree.com/wp-content/uploads/2025/12/LMCN-Newsletter-Winter-2025.pdf", "publishedAt": "2025-12"}]
+    },
+    {
+      "id": "lucky-man-access-road-residential-lots",
+      "firstNationIds": ["341"],
+      "category": "Housing-Enabling Infrastructure",
+      "name": "Lucky Man Access Road and Residential Lots",
+      "description": "A new community access and future safety road with two residential cul-de-sacs, parking and cultural-centre pathways, including grading, culvert and landscape work.",
+      "status": "Planned",
+      "statusAsOf": "2026-04-28",
+      "startDate": "2026",
+      "unitsCapacity": "2.1 km access road and 10 residential lots",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [
+        {"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/90326?culture=en-CA", "publishedAt": "2026-04-28"},
+        {"name": "Lucky Man Cree Nation Community Newsletter", "url": "https://luckymancree.com/wp-content/uploads/2025/12/LMCN-Newsletter-Winter-2025.pdf", "publishedAt": "2025-12"}
+      ]
+    },
+    {
+      "id": "carry-the-kettle-hydroponic-farm",
+      "firstNationIds": ["378"],
+      "category": "Community Infrastructure",
+      "name": "Carry the Kettle Hydroponic Farm",
+      "description": "Purchase and installation of a hydroponic farm to expand local food production, food security and food sovereignty.",
+      "status": "Planned",
+      "statusAsOf": "2026-01-16",
+      "funding": ["Agriculture and Agri-Food Canada Local Food Infrastructure Fund: $100,000"],
+      "startDate": "2026-01-16",
+      "expectedCompletionDate": "2027-09-30",
+      "unitsCapacity": "One hydroponic farm",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [{"name": "Government of Canada Grants and Contributions", "url": "https://search.open.canada.ca/grants/record/aafc-aac%2C235-2025-2026-Q4-00375%2Ccurrent", "checkedAt": "2026-08-11"}]
+    },
+    {
+      "id": "day-star-drought-risk-assessment",
+      "firstNationIds": ["389"],
+      "category": "Infrastructure Planning",
+      "name": "Day Star Drought Risk Assessment",
+      "description": "A drought-risk and adaptation-planning project using a meteorological station, mapping, Drone LiDAR, hydrological modelling and soil-moisture monitoring to guide water, infrastructure and food-security decisions.",
+      "status": "Planned",
+      "statusAsOf": "2026-08-11",
+      "funding": ["Crown-Indigenous Relations and Northern Affairs Canada: $371,200"],
+      "startDate": "2025",
+      "expectedCompletionDate": "2028",
+      "unitsCapacity": "Community drought assessment and adaptation plan",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [{"name": "Crown-Indigenous Relations and Northern Affairs Canada", "url": "https://www.rcaanc-cirnac.gc.ca/eng/1698771955468/1698771985864", "checkedAt": "2026-08-11"}]
+    },
+    {
+      "id": "muskeg-lake-modular-food-security-hub",
+      "firstNationIds": ["375"],
+      "category": "Community Building",
+      "name": "Muskeg Lake Modular Food Security Facility and Education Hub",
+      "description": "A modular food-security and education hub supported by cold-storage and processing equipment, gardening equipment, fruit trees and bushes.",
+      "status": "Planned",
+      "statusAsOf": "2025-04-01",
+      "funding": ["Agriculture and Agri-Food Canada Local Food Infrastructure Fund: $412,407"],
+      "startDate": "2025-04-01",
+      "expectedCompletionDate": "2027-03-31",
+      "unitsCapacity": "Modular facility with cold-storage and processing equipment",
+      "lastVerifiedAt": "2026-08-11",
+      "sources": [{"name": "Government of Canada Grants and Contributions", "url": "https://search.open.canada.ca/grants/record/aafc-aac%2C235-2025-2026-Q2-00160%2Ccurrent", "checkedAt": "2026-08-11"}]
     }
   ],
   "unverifiedProjects": [
+    {
+      "id": "day-star-water-treatment-expansion-procurement",
+      "firstNationIds": ["389"],
+      "category": "Water & Wastewater",
+      "name": "Day Star Water Treatment Plant Expansion",
+      "discussionSummary": "A public prequalification invited contractors for two groundwater wells, a raw-water supply system and expansion of the community water treatment plant.",
+      "signalType": "Public procurement notice",
+      "whyUnverified": "The procurement notice does not confirm contract award, current construction or commissioning status, final cost or completion date.",
+      "lastSeenAt": "2023-10-31",
+      "sources": [{"name": "Bids and Tenders", "url": "https://ae-sk.bidsandtenders.ca/Module/Tenders/en/Tender/Detail/b71d56df-3680-4e4e-9081-748d7f7686c0", "publishedAt": "2023-10-31"}]
+    },
+    {
+      "id": "poundmaker-lagoon-upgrades-proposal",
+      "firstNationIds": ["345"],
+      "category": "Water & Wastewater",
+      "name": "Poundmaker Lagoon Upgrades Proposal",
+      "discussionSummary": "A completed federal environmental assessment describes a proposed treatment and storage-cell expansion, access road, raw-water-main relocation and decommissioning of the existing lagoon.",
+      "signalType": "Assessed public proposal",
+      "whyUnverified": "The environmental determination does not confirm finalized financing, a construction start or current delivery status.",
+      "lastSeenAt": "2025-02-25",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/89180?culture=en-CA", "publishedAt": "2025-02-25"}]
+    },
+    {
+      "id": "mosquito-core-area-subdivision-proposal",
+      "firstNationIds": ["343"],
+      "category": "Housing-Enabling Infrastructure",
+      "name": "Mosquito Core Area Subdivision Proposal",
+      "discussionSummary": "A federal determination confirms environmental review of a proposed core-area subdivision authorized by the Nation and supported by project drawings.",
+      "signalType": "Assessed public proposal",
+      "whyUnverified": "The reviewed determination does not confirm financing, the number of housing lots or that subdivision construction has begun.",
+      "lastSeenAt": "2024-07-17",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/document/158223", "publishedAt": "2024-07-17"}]
+    },
+    {
+      "id": "zagime-new-subdivision-proposal",
+      "firstNationIds": ["364"],
+      "category": "Housing-Enabling Infrastructure",
+      "name": "Zagime Anishinabek New Subdivision Proposal",
+      "discussionSummary": "A completed federal assessment describes a proposed housing subdivision with water and sewer mains, hydrants, service connections, natural gas, power, streetlights, roads, culverts, erosion control and prepared lots.",
+      "signalType": "Assessed public proposal",
+      "whyUnverified": "The environmental determination does not confirm current financing, a construction start or the final number of lots.",
+      "lastSeenAt": "2025-03-21",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://aeic-iaac.gc.ca/050/evaluations/proj/89293", "publishedAt": "2025-03-21"}]
+    },
     {
       "id": "one-arrow-subdivision-proposal",
       "firstNationIds": ["373"],
@@ -817,10 +1066,10 @@
       "category": "Roads & Drainage",
       "name": "Drainage Re-establishment Phase 1B Proposal",
       "discussionSummary": "A federal assessment notice describes proposed culvert replacements at eight locations together with road structure, ditching and drainage work.",
-      "signalType": "Official proposal under assessment",
-      "whyUnverified": "The assessment remains in progress, and the reviewed public source does not confirm a construction start.",
-      "lastSeenAt": "2026-02-09",
-      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/90137?culture=en-CA", "publishedAt": "2026-02-09"}]
+      "signalType": "Assessed public proposal",
+      "whyUnverified": "The environmental determination is complete, but the reviewed public source does not confirm financing or a construction start.",
+      "lastSeenAt": "2026-05-28",
+      "sources": [{"name": "Impact Assessment Agency of Canada Registry", "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/90137?culture=en-CA", "publishedAt": "2026-05-28"}]
     },
     {
       "id": "shoal-lake-subdivision-proposal",
