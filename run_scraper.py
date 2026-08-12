@@ -461,6 +461,27 @@ def _assign_text_money_values(amounts, header_hint=""):
     amounts = [amount for amount in amounts if amount is not None]
     hint = _clean_cell(header_hint).lower()
 
+    # Some schedules report honouraria, two separate "other remuneration"
+    # columns, travel, and expenses. PDF text extraction flattens those five
+    # headings, so preserve the travel/expense columns and combine only the
+    # two remuneration columns into Other Payments.
+    if (
+        re.search(r"\bhonou?raria\b", hint)
+        and "travel" in hint
+        and "expense" in hint
+        and len(re.findall(r"\bother\b", hint)) >= 2
+        and len(re.findall(r"\bremuneration\b", hint)) >= 2
+        and len(amounts) >= 5
+    ):
+        return {
+            "remuneration": amounts[0],
+            "travel": amounts[2],
+            "expenses": amounts[3],
+            "creditCard": None,
+            "otherPayments": amounts[1] + amounts[4],
+            "total": sum(amounts[:5]),
+        }
+
     # Salary | Other Remuneration | Subtotal | Expenses | Total
     if (
         "salary" in hint
@@ -654,6 +675,15 @@ def _looks_like_person_name(value):
 
 def _parse_text_line(line, allow_inferred_councillor=False, header_context=""):
     line = " ".join(str(line or "").replace("$", " $ ").split())
+    # pdfplumber can split the leading digit from a comma-grouped amount
+    # (for example "$ 9 0,000" for "$90,000"). Restrict the repair to a
+    # currency-prefixed value so ordinary adjacent numeric columns are not
+    # merged accidentally.
+    line = re.sub(
+        r"(\$\s*)(\d)\s+(\d{1,2}(?:,\d{3})+(?:\.\d+)?)",
+        lambda match: f"{match.group(1)}{match.group(2)}{match.group(3)}",
+        line,
+    )
     if not line:
         return None
 

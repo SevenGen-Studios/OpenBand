@@ -96,7 +96,8 @@ def apply_record(data, record):
         target_filing["manual_override"] = True
         target_filing["override_source"] = record.get("source") or "manual_overrides"
         warnings = []
-        for warning in target_filing.get("warnings", []):
+        existing_warnings = [] if record.get("replaceWarnings") else target_filing.get("warnings", [])
+        for warning in existing_warnings:
             if warning:
                 warnings.append(warning)
         note = f"Manual override applied from {record.get('source') or 'manual_overrides'}"
@@ -112,14 +113,19 @@ def apply_record(data, record):
 
 def main():
     data_path = Path(sys.argv[1] if len(sys.argv) > 1 else "data.json")
-    override_dir = Path(sys.argv[2] if len(sys.argv) > 2 else "manual_overrides")
+    override_path = Path(sys.argv[2] if len(sys.argv) > 2 else "manual_overrides")
     data = json.loads(data_path.read_text(encoding="utf-8"))
 
     applied = 0
-    if override_dir.exists():
-        for path in sorted(override_dir.glob("*.json")):
-            for record in iter_override_records(path):
-                applied += apply_record(data, record)
+    if override_path.is_file():
+        paths = [override_path]
+    elif override_path.exists():
+        paths = sorted(override_path.glob("*.json"))
+    else:
+        paths = []
+    for path in paths:
+        for record in iter_override_records(path):
+            applied += apply_record(data, record)
 
     data_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"manual overrides applied: {applied}")

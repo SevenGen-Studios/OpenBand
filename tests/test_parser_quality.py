@@ -161,6 +161,27 @@ class ParserQualityTests(unittest.TestCase):
         self.assertEqual(person["otherPayments"], 18533)
         self.assertEqual(person["total"], 121948)
 
+    def test_text_row_repairs_split_currency_and_combines_other_remuneration(self):
+        header = (
+            "Piapot First Nation Piapot Piapot Cree Land First Nation Other "
+            "First Nation First Nation Other Name Months Honoraria Remuneration "
+            "Travel Expenses Remuneration"
+        )
+        person = run_scraper._parse_text_line(
+            "Chief Fox, Mark 12 $ 9 0,000 125,350 36,000 6,118 7,750",
+            allow_inferred_councillor=True,
+            header_context=header,
+        )
+
+        self.assertEqual(person["name"], "Fox, Mark")
+        self.assertEqual(person["role"], "Chief")
+        self.assertEqual(person["months"], 12)
+        self.assertEqual(person["remuneration"], 90000)
+        self.assertEqual(person["travel"], 36000)
+        self.assertEqual(person["expenses"], 6118)
+        self.assertEqual(person["otherPayments"], 133100)
+        self.assertEqual(person["total"], 265218)
+
     def test_sanitizer_rebuilds_stale_canonical_fields_after_total_echo_repair(self):
         person = {
             "name": "Shawn Spencer",

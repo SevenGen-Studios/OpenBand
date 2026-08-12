@@ -8,9 +8,30 @@ from unittest import mock
 from tools import capital_parser
 from tools import capital_detail_enricher
 from tools import audit_capital_data
+from tools import apply_capital_overrides
 
 
 class CapitalParserTests(unittest.TestCase):
+    def test_one_arrow_manual_capital_overrides_reconcile(self):
+        override_path = (
+            Path(__file__).resolve().parents[1]
+            / "capital_overrides"
+            / "one_arrow_2021_2024.json"
+        )
+        payload = json.loads(override_path.read_text(encoding="utf-8"))
+        capital_data = {"bands": {}}
+
+        applied = apply_capital_overrides.apply_override(capital_data, payload)
+
+        self.assertEqual(applied, 3)
+        years = capital_data["bands"]["373"]["years"]
+        self.assertEqual(years["2021-2022"]["annualSurplusDeficit"], 2560063)
+        self.assertEqual(years["2022-2023"]["annualSurplusDeficit"], 35905)
+        self.assertEqual(years["2023-2024"]["annualSurplusDeficit"], 3603523)
+        self.assertTrue(years["2021-2022"]["publishable"])
+        self.assertTrue(years["2022-2023"]["publishable"])
+        self.assertTrue(years["2023-2024"]["publishable"])
+
     def test_openai_quota_error_stops_repeated_fallback_calls(self):
         quota_error = urllib.error.HTTPError(
             "https://api.openai.com/v1/responses",
