@@ -59,6 +59,14 @@ class JobsPipelineTests(unittest.TestCase):
         """
         self.assertEqual(title_from_document(text), "Maintenance Assistant")
 
+    def test_ocr_does_not_publish_generic_job_summary_heading(self):
+        self.assertEqual(title_from_document("JOB OPPORTUNITY\nJob Summary\nOpen until filled"), "")
+
+    def test_job_title_deadline_suffixes_normalize_for_deduplication(self):
+        first = {"title": "Sports & Recreation Coordinator (Apply by August 14)", "employer": "Piapot First Nation", "communityId": "385"}
+        second = {"title": "Sports and Recreation Coordinator", "employer": "Piapot First Nation", "communityId": "385"}
+        self.assertEqual(listing_key(first), listing_key(second))
+
     def test_isc_listed_community_websites_join_source_registry(self):
         sources = configured_sources(ROOT)
         website_sources = [row for row in sources if row.get("sourceType") == "isc_listed_first_nation_website"]
