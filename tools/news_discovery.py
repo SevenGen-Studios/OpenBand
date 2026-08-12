@@ -105,9 +105,9 @@ GENERIC_PAGE_PATTERNS = re.compile(
     re.I,
 )
 EMPLOYMENT_PATTERNS = re.compile(
-    r"\b(employment opportunity|job posting|job opportunity|careers?|is hiring|"
-    r"positions? available|apply for (?:the )?position|open until filled|"
-    r"part[- ]time contract\s*\(?(?:apply|deadline)|\*\s*closed\s*\*)\b",
+    r"(?:\b(?:employment opportunity|job posting|job opportunity|careers?|is hiring|"
+    r"positions? available|apply for (?:the )?position|open until filled)\b|"
+    r"\bpart[- ]time contract\s*\(?(?:apply|deadline)|\*\s*closed\s*\*)",
     re.I,
 )
 UPDATE_PAGE_PATTERNS = re.compile(
@@ -783,11 +783,38 @@ def generic_news_title(title):
     )
 
 
+def generic_news_item(item):
+    if generic_news_title(item.get("title")):
+        return True
+    title = normalized_text(item.get("title"))
+    if title in {"community", "newsletter"}:
+        return True
+    identities = [item.get("communityName")] + list(item.get("communityAliases") or [])
+    normalized_identities = {normalized_text(value) for value in identities if value}
+    shortened = {
+        re.sub(
+            r"\b(?:first nation|cree nation|dakota nation|nakoda nation|"
+            r"saulteaux nation|indian band)\b",
+            "",
+            value,
+        ).strip()
+        for value in normalized_identities
+    }
+    identities_all = {value for value in normalized_identities | shortened if value}
+    return title in identities_all or any(
+        title == f"newsletter {identity}" for identity in identities_all
+    )
+
+
 def non_article_url(url):
     parts = urllib.parse.urlsplit(canonical_url(url))
     path = parts.path.rstrip("/") or "/"
     return path == "/" or bool(
-        re.search(r"/(?:category|tag|author|page)/|/events/category/", path, re.I)
+        re.search(
+            r"/(?:category|tag|author|page)/|/events/category/|/event-location/",
+            path,
+            re.I,
+        )
     )
 
 
@@ -1132,7 +1159,7 @@ def prune_invalid_generated_articles(articles, today):
             reason = "Employment posting belongs in Jobs & Employment, not News"
         elif item.get("discoveredAt") and (
             GENERIC_PAGE_PATTERNS.search(item.get("title") or "")
-            or generic_news_title(item.get("title"))
+            or generic_news_item(item)
         ):
             reason = "Generic navigation or evergreen page was previously stored as news"
         elif (
@@ -1178,7 +1205,7 @@ def candidate_review_reason(item, today, confidence_threshold):
         return "Title does not clearly describe a supported community update"
     if employment_item(item.get("title"), item.get("url")):
         return "Employment posting belongs in Jobs & Employment"
-    if generic_news_title(item.get("title")):
+    if generic_news_item(item):
         return "Title identifies navigation, a directory, or an evergreen section"
     if (
         item.get("sourceType") in OFFICIAL_SOURCE_TYPES
