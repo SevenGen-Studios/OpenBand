@@ -69,8 +69,8 @@ class JobsPipelineTests(unittest.TestCase):
         self.assertEqual(listing_key(first), listing_key(second))
 
     def test_discovery_key_ignores_employer_wording_for_same_source(self):
-        first = {"title": "Accounts Payable & Payroll Clerk - Deadline to apply August 21, 2026", "employer": "Piapot First Nation Careers", "sourceId": "piapot-careers", "communityId": "385"}
-        second = {"title": "Accounts Payable and Payroll Clerk", "employer": "Piapot First Nation", "sourceId": "piapot-careers", "communityId": "385"}
+        first = {"title": "Accounts Payable & Payroll Clerk - Deadline to apply August 21, 2026", "employer": "Piapot First Nation Careers", "sourceId": "piapot-careers", "sourceUrl": "https://piapotnation.com/accounts-payable-payroll-clerk-august-2026/", "communityId": "385"}
+        second = {"title": "Accounts Payable and Payroll Clerk", "employer": "Piapot First Nation", "sourceId": "community-site-385", "sourceUrl": "https://www.piapotnation.com/careers/", "communityId": "385"}
         self.assertEqual(discovery_key(first), discovery_key(second))
 
     def test_isc_listed_community_websites_join_source_registry(self):
