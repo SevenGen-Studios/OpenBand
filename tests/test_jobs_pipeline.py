@@ -7,6 +7,7 @@ from pathlib import Path
 from tools.jobs_collector import (
     collect,
     configured_sources,
+    discovery_key,
     effective_status,
     expand_verified_batches,
     extract_labeled_date,
@@ -66,6 +67,11 @@ class JobsPipelineTests(unittest.TestCase):
         first = {"title": "Sports & Recreation Coordinator (Apply by August 14)", "employer": "Piapot First Nation", "communityId": "385"}
         second = {"title": "Sports and Recreation Coordinator", "employer": "Piapot First Nation", "communityId": "385"}
         self.assertEqual(listing_key(first), listing_key(second))
+
+    def test_discovery_key_ignores_employer_wording_for_same_source(self):
+        first = {"title": "Accounts Payable & Payroll Clerk - Deadline to apply August 21, 2026", "employer": "Piapot First Nation Careers", "sourceId": "piapot-careers", "communityId": "385"}
+        second = {"title": "Accounts Payable and Payroll Clerk", "employer": "Piapot First Nation", "sourceId": "piapot-careers", "communityId": "385"}
+        self.assertEqual(discovery_key(first), discovery_key(second))
 
     def test_isc_listed_community_websites_join_source_registry(self):
         sources = configured_sources(ROOT)
