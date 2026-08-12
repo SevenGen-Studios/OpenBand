@@ -251,7 +251,7 @@ def configured_sources(root: Path) -> list[dict]:
 def fetch_markup(url: str) -> tuple[str, str | None]:
     request = urllib.request.Request(url, headers={"User-Agent": "OpenBandJobs/1.1 (+https://openband.ca)"})
     try:
-        with urllib.request.urlopen(request, timeout=12) as response:
+        with urllib.request.urlopen(request, timeout=8) as response:
             content_type = response.headers.get_content_type()
             if content_type not in {"text/html", "application/xhtml+xml"}:
                 return "", f"non-HTML source ({content_type})"
@@ -263,7 +263,7 @@ def fetch_markup(url: str) -> tuple[str, str | None]:
 def fetch_binary(url: str) -> tuple[bytes, str, str | None]:
     request = urllib.request.Request(url, headers={"User-Agent": "OpenBandJobs/1.1 (+https://openband.ca)"})
     try:
-        with urllib.request.urlopen(request, timeout=15) as response:
+        with urllib.request.urlopen(request, timeout=10) as response:
             content = response.read(15 * 1024 * 1024 + 1)
             if len(content) > 15 * 1024 * 1024:
                 return b"", "", "document exceeds 15 MB limit"
@@ -297,10 +297,10 @@ def extract_document_text(url: str) -> tuple[str, str, str | None]:
             if not shutil.which("pdftoppm") or not shutil.which("tesseract"):
                 return "", "ocr_unavailable", "PDF has no usable text and OCR tools are unavailable"
             prefix = Path(directory) / "page"
-            run_text_command(["pdftoppm", "-f", "1", "-l", "3", "-jpeg", "-r", "180", str(pdf_path), str(prefix)], timeout=90)
+            run_text_command(["pdftoppm", "-f", "1", "-l", "2", "-jpeg", "-r", "180", str(pdf_path), str(prefix)], timeout=45)
             pages = []
             for image_path in sorted(Path(directory).glob("page-*.jpg")):
-                pages.append(run_text_command(["tesseract", str(image_path), "stdout", "--psm", "6"], timeout=60))
+                pages.append(run_text_command(["tesseract", str(image_path), "stdout", "--psm", "6"], timeout=30))
             text = "\n".join(pages)
             return text, "pdf_ocr", None if clean_text(text) else "OCR returned no text"
     if content_type.startswith("image/") or suffix in MEDIA_SUFFIXES:
@@ -309,7 +309,7 @@ def extract_document_text(url: str) -> tuple[str, str, str | None]:
         with tempfile.TemporaryDirectory() as directory:
             image_path = Path(directory) / f"posting{suffix if suffix in MEDIA_SUFFIXES else '.img'}"
             image_path.write_bytes(payload)
-            text = run_text_command(["tesseract", str(image_path), "stdout", "--psm", "6"], timeout=60)
+            text = run_text_command(["tesseract", str(image_path), "stdout", "--psm", "6"], timeout=30)
             return text, "image_ocr", None if clean_text(text) else "OCR returned no text"
     return "", "unsupported_media", f"unsupported content type {content_type or 'unknown'}"
 
@@ -469,7 +469,7 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
     review_items = []
     seen = set()
     media_urls = []
-    detail_budget = 12
+    detail_budget = 4
     for page_url, page_markup, employment_context in pages:
         parser = AnchorCollector()
         parser.feed(page_markup)
@@ -527,7 +527,7 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
                 if employment_context or JOB_WORDS.search(hint):
                     if src not in media_urls:
                         media_urls.append(src)
-    for media_url in media_urls[:8]:
+    for media_url in media_urls[:3]:
         candidate, review = document_candidate(media_url, source, today)
         review_items.append(review)
         if candidate:
