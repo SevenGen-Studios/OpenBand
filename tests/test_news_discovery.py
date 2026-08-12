@@ -12,9 +12,11 @@ from tools.news_discovery import (
     community_name_match,
     discover_gdelt_articles,
     discover_meta_posts,
+    employment_item,
     ensure_registry,
     extract_html_candidates,
     is_supported_update,
+    generic_news_title,
     merge_articles,
     parse_date_text,
     prune_invalid_generated_articles,
@@ -79,6 +81,20 @@ class NewsDiscoveryTests(unittest.TestCase):
         self.assertFalse(
             is_supported_update("Employment Opportunity - Housing Coordinator")
         )
+        self.assertTrue(
+            employment_item(
+                "Community Power Representative - Part-Time Contract (Apply July 31)",
+                "https://example.com/careers-community-power-representative",
+            )
+        )
+        self.assertFalse(
+            employment_item(
+                "High School Teacher creates new student opportunities",
+                "https://example.com/news/teacher-profile",
+            )
+        )
+        self.assertTrue(generic_news_title("Upcoming Events - Muskoday First Nation"))
+        self.assertTrue(generic_news_title("Piapot First Nation Official Website"))
 
     def test_article_metadata_uses_explicit_publication_date(self):
         markup = """

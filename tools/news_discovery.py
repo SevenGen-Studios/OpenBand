@@ -91,6 +91,12 @@ GENERIC_LINK_TEXT = {
     "view all events",
     "news and updates",
     "sign up today",
+    "education",
+    "health",
+    "housing",
+    "news and events",
+    "upcoming events",
+    "next posts",
 }
 GENERIC_PAGE_PATTERNS = re.compile(
     r"\b(web design|webflow cloneable|cookie policy|privacy policy|terms of use|"
@@ -100,7 +106,8 @@ GENERIC_PAGE_PATTERNS = re.compile(
 )
 EMPLOYMENT_PATTERNS = re.compile(
     r"\b(employment opportunity|job posting|job opportunity|careers?|is hiring|"
-    r"positions? available|apply for (?:the )?position)\b",
+    r"positions? available|apply for (?:the )?position|open until filled|"
+    r"part[- ]time contract\s*\(?(?:apply|deadline)|\*\s*closed\s*\*)\b",
     re.I,
 )
 UPDATE_PAGE_PATTERNS = re.compile(
@@ -761,6 +768,37 @@ def is_supported_update(title, context=""):
     return bool(SUPPORTED_PATTERNS.search(text))
 
 
+def generic_news_title(title):
+    text = clean_text(title)
+    normalized = normalized_text(text)
+    if len(text) < 8 or normalized in GENERIC_LINK_TEXT:
+        return True
+    return bool(
+        re.match(
+            r"^(?:(?:news and events|upcoming events|events calendar)(?:\s+.*)?|"
+            r"next posts?|.* official website)$",
+            normalized,
+            re.I,
+        )
+    )
+
+
+def non_article_url(url):
+    parts = urllib.parse.urlsplit(canonical_url(url))
+    path = parts.path.rstrip("/") or "/"
+    return path == "/" or bool(
+        re.search(r"/(?:category|tag|author|page)/|/events/category/", path, re.I)
+    )
+
+
+def employment_item(title, url=""):
+    path = urllib.parse.urlsplit(str(url or "")).path
+    return bool(
+        EMPLOYMENT_PATTERNS.search(title or "")
+        or re.search(r"/(?:jobs?|careers?|employment)(?:[-/]|$)", path, re.I)
+    )
+
+
 def extract_html_candidates(html, page_url, community, source):
     parser = CommunityHTMLParser()
     parser.feed(html)
@@ -1088,13 +1126,22 @@ def prune_invalid_generated_articles(articles, today):
         reason = None
         if item.get("discoveredAt") and str(item.get("publishedAt") or "") > today_text:
             reason = "Future event date was previously stored as publication date"
-        elif item.get("discoveredAt") and EMPLOYMENT_PATTERNS.search(item.get("title") or ""):
+        elif item.get("discoveredAt") and employment_item(
+            item.get("title"), item.get("url")
+        ):
             reason = "Employment posting belongs in Jobs & Employment, not News"
         elif item.get("discoveredAt") and (
             GENERIC_PAGE_PATTERNS.search(item.get("title") or "")
-            or normalized_text(item.get("title")) in GENERIC_LINK_TEXT
+            or generic_news_title(item.get("title"))
         ):
             reason = "Generic navigation or evergreen page was previously stored as news"
+        elif (
+            item.get("discoveredAt")
+            and item.get("sourceType") in OFFICIAL_SOURCE_TYPES
+            and item.get("url")
+            and non_article_url(item.get("url"))
+        ):
+            reason = "Homepage or archive URL was previously stored as an article"
         elif item.get("discoveredAt") and "scontent-" in str(item.get("url") or ""):
             reason = "Temporary Facebook image URL was stored instead of an original post"
         elif (
@@ -1129,8 +1176,15 @@ def candidate_review_reason(item, today, confidence_threshold):
         item.get("title"), item.get("summary")
     ):
         return "Title does not clearly describe a supported community update"
-    if EMPLOYMENT_PATTERNS.search(item.get("title") or ""):
+    if employment_item(item.get("title"), item.get("url")):
         return "Employment posting belongs in Jobs & Employment"
+    if generic_news_title(item.get("title")):
+        return "Title identifies navigation, a directory, or an evergreen section"
+    if (
+        item.get("sourceType") in OFFICIAL_SOURCE_TYPES
+        and non_article_url(item.get("url"))
+    ):
+        return "Source URL is a homepage or archive rather than a dated article"
     if item.get("dateSource") in {"unstructured-listing", "structured-listing"} and not item.get("detailVerified"):
         return "Publication date could not be verified on the detail page"
     if "scontent-" in str(item.get("url") or ""):
