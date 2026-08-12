@@ -491,7 +491,7 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
             seen.add(href)
             community_ids = [str(value) for value in source.get("communityIds", [])]
             community_names = source.get("communityNames", [])
-            inspect = bool(source.get("inspectDetails") or employment_context) and detail_budget > 0
+            inspect = bool(source.get("inspectDetails") or source.get("discoverEmploymentPages")) and detail_budget > 0
             detail, detail_warnings = inspect_candidate_page(href, today) if inspect else ({}, [])
             if inspect:
                 detail_budget -= 1
