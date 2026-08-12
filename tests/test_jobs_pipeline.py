@@ -4,7 +4,14 @@ import unittest
 from datetime import date
 from pathlib import Path
 
-from tools.jobs_collector import collect, effective_status, expand_verified_batches, listing_key, normalize_listing
+from tools.jobs_collector import (
+    collect,
+    effective_status,
+    expand_verified_batches,
+    extract_labeled_date,
+    listing_key,
+    normalize_listing,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,6 +31,22 @@ class JobsPipelineTests(unittest.TestCase):
             date(2026, 8, 11),
         )
         self.assertEqual(status, "Pending verification")
+
+    def test_closing_date_variations_are_normalized(self):
+        self.assertEqual(
+            extract_labeled_date("Application deadline: August 21, 2026", ("deadline",)),
+            "2026-08-21",
+        )
+        self.assertEqual(
+            extract_labeled_date("Applications close 2026-08-17", ("applications close",)),
+            "2026-08-17",
+        )
+
+    def test_generic_job_navigation_is_not_a_public_listing(self):
+        from tools.jobs_collector import GENERIC_LINK_TITLES
+
+        self.assertIsNotNone(GENERIC_LINK_TITLES.match("Job Opportunities"))
+        self.assertIsNone(GENERIC_LINK_TITLES.match("Community Health Nurse"))
 
     def test_missing_money_is_not_converted_to_zero(self):
         record = normalize_listing(

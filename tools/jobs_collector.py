@@ -28,6 +28,21 @@ JOB_WORDS = re.compile(
     r"counsellor|educator|peacekeeper|support)\b",
     re.IGNORECASE,
 )
+GENERIC_LINK_TITLES = re.compile(
+    r"^(jobs?|careers?|employment(?: opportunities)?|job opportunities|view jobs?|apply(?: now)?)$",
+    re.IGNORECASE,
+)
+CLOSED_WORDS = re.compile(
+    r"\b(position filled|posting closed|applications? closed|no longer accepting|competition closed)\b",
+    re.IGNORECASE,
+)
+OPEN_UNTIL_FILLED = re.compile(r"\b(open until filled|until (?:a suitable candidate is )?filled)\b", re.IGNORECASE)
+MONTHS = {
+    name.lower(): number
+    for number, name in enumerate(
+        ("", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+    )
+}
 
 
 def read_json(path: Path, default):
@@ -159,17 +174,71 @@ class AnchorCollector(HTMLParser):
             self.current = None
 
 
-def fetch_source(source: dict) -> tuple[list[dict], list[str], str]:
-    warnings = []
-    request = urllib.request.Request(
-        source["url"],
-        headers={"User-Agent": "OpenBandJobs/1.0 (+https://openband.ca)"},
-    )
+def fetch_markup(url: str) -> tuple[str, str | None]:
+    request = urllib.request.Request(url, headers={"User-Agent": "OpenBandJobs/1.1 (+https://openband.ca)"})
     try:
-        with urllib.request.urlopen(request, timeout=25) as response:
-            markup = response.read().decode("utf-8", errors="replace")
-    except Exception as exc:  # network failures belong in the report, not public data
-        return [], [f"{source['id']}: fetch failed: {exc}"], ""
+        with urllib.request.urlopen(request, timeout=12) as response:
+            content_type = response.headers.get_content_type()
+            if content_type not in {"text/html", "application/xhtml+xml"}:
+                return "", f"non-HTML source ({content_type})"
+            return response.read().decode("utf-8", errors="replace"), None
+    except Exception as exc:
+        return "", str(exc)
+
+
+def page_text(markup: str) -> str:
+    return clean_text(re.sub(r"<[^>]+>", " ", markup))
+
+
+def extract_labeled_date(text: str, labels: tuple[str, ...]) -> str | None:
+    label_pattern = "|".join(re.escape(label) for label in labels)
+    patterns = (
+        rf"(?:{label_pattern})\s*(?:date)?\s*[:\-]?\s*([A-Z][a-z]+)\s+(\d{{1,2}})(?:st|nd|rd|th)?,?\s+(20\d{{2}})",
+        rf"(?:{label_pattern})\s*(?:date)?\s*[:\-]?\s*(20\d{{2}})[-/](\d{{1,2}})[-/](\d{{1,2}})",
+    )
+    for index, pattern in enumerate(patterns):
+        match = re.search(pattern, text, re.IGNORECASE)
+        if not match:
+            continue
+        try:
+            if index == 0:
+                month, day, year = match.groups()
+                return date(int(year), MONTHS[month.lower()], int(day)).isoformat()
+            year, month, day = match.groups()
+            return date(int(year), int(month), int(day)).isoformat()
+        except (KeyError, ValueError):
+            continue
+    return None
+
+
+def inspect_candidate_page(url: str, today: date) -> tuple[dict, list[str]]:
+    markup, error = fetch_markup(url)
+    if error:
+        return {}, [f"detail fetch failed: {error}"]
+    text = page_text(markup)
+    closing = extract_labeled_date(text, ("closing", "deadline", "apply by", "applications close"))
+    posted = extract_labeled_date(text, ("posted", "posting date", "published"))
+    status = "Pending verification"
+    if CLOSED_WORDS.search(text):
+        status = "Closed"
+    elif closing:
+        status = effective_status({"closingDate": closing, "lastChecked": today.isoformat()}, today)
+    elif OPEN_UNTIL_FILLED.search(text):
+        status = "Date unavailable"
+    return {
+        "closingDate": closing,
+        "postedDate": posted,
+        "status": status,
+        "detailText": text,
+    }, []
+
+
+def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], list[str], str]:
+    today = today or date.today()
+    warnings = []
+    markup, error = fetch_markup(source["url"])
+    if error:
+        return [], [f"{source['id']}: fetch failed: {error}"], ""
     parser = AnchorCollector()
     parser.feed(markup)
     candidates = []
@@ -179,6 +248,8 @@ def fetch_source(source: dict) -> tuple[list[dict], list[str], str]:
         href = urllib.parse.urljoin(source["url"], anchor["href"])
         if len(title) < 5 or len(title) > 140 or not JOB_WORDS.search(title):
             continue
+        if GENERIC_LINK_TITLES.match(title):
+            continue
         if not href.startswith(("https://", "http://")):
             continue
         if href in seen or href.rstrip("/") == source["url"].rstrip("/"):
@@ -186,6 +257,11 @@ def fetch_source(source: dict) -> tuple[list[dict], list[str], str]:
         seen.add(href)
         community_ids = [str(value) for value in source.get("communityIds", [])]
         community_names = source.get("communityNames", [])
+        detail, detail_warnings = inspect_candidate_page(href, today) if source.get("inspectDetails", False) else ({}, [])
+        warnings.extend(f"{source['id']}: {warning}" for warning in detail_warnings)
+        detected_status = detail.get("status", "Pending verification")
+        if detected_status == "Pending verification" and source.get("autoPublish"):
+            detected_status = "Date unavailable"
         candidate = normalize_listing(
             {
                 "title": title,
@@ -198,17 +274,19 @@ def fetch_source(source: dict) -> tuple[list[dict], list[str], str]:
                 "sourceUrl": href,
                 "sourceName": source["name"],
                 "description": "Candidate opportunity discovered on an official employment source. Details require verification.",
-                "status": "Date unavailable" if source.get("autoPublish") else "Pending verification",
-                "lastChecked": date.today().isoformat(),
-                "extractionConfidence": "medium" if source.get("autoPublish") else "low",
+                "postedDate": detail.get("postedDate"),
+                "closingDate": detail.get("closingDate"),
+                "status": detected_status,
+                "lastChecked": today.isoformat(),
+                "extractionConfidence": "high" if detected_status in PUBLIC_STATUSES | {"Closed"} else "low",
                 "verifiedOfficialSource": bool(source.get("verifiedOfficialSource")),
             },
-            date.today(),
+            today,
         )
         candidates.append(candidate)
     if not candidates:
         warnings.append(f"{source['id']}: no candidate job links detected")
-    return candidates, warnings, clean_text(re.sub(r"<[^>]+>", " ", markup))
+    return candidates, warnings, page_text(markup)
 
 
 def source_coverage(source: dict, tracked_ids: set[str]) -> set[str]:
@@ -246,7 +324,7 @@ def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]
     source_texts = {}
     if not offline:
         for source in source_data.get("sources", []):
-            found, source_warnings, source_text = fetch_source(source)
+            found, source_warnings, source_text = fetch_source(source, today)
             candidates.extend(found)
             warnings.extend(source_warnings)
             if source_text:
