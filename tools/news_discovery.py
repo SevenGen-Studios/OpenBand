@@ -10,6 +10,9 @@ import html as html_module
 import json
 import os
 import re
+import shutil
+import subprocess
+import tempfile
 import time
 import unicodedata
 import urllib.error
@@ -18,6 +21,7 @@ import urllib.request
 import urllib.robotparser
 import xml.etree.ElementTree as ET
 from collections import Counter
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta, timezone
 from difflib import SequenceMatcher
 from html.parser import HTMLParser
@@ -31,6 +35,7 @@ REGISTRY_PATH = ROOT / "news-sources.json"
 CACHE_PATH = ROOT / "news-discovery-cache.json"
 REVIEW_PATH = ROOT / "news-review-queue.json"
 REPORT_PATH = ROOT / "news-coverage-report.json"
+CONTACTS_PATH = ROOT / "contacts-data.json"
 
 USER_AGENT = "OpenBandNews/1.0 (+https://openband.ca/news/)"
 SOURCE_TYPES = [
@@ -79,7 +84,35 @@ GENERIC_LINK_TEXT = {
     "download",
     "previous",
     "next",
+    "register",
+    "view larger",
+    "view all news",
+    "view all posts",
+    "view all events",
+    "news and updates",
+    "sign up today",
 }
+GENERIC_PAGE_PATTERNS = re.compile(
+    r"\b(web design|webflow cloneable|cookie policy|privacy policy|terms of use|"
+    r"member portal|view all|listen live|subscription messaging|cdn-cgi|"
+    r"leadership|departments|contact us|about us)\b",
+    re.I,
+)
+EMPLOYMENT_PATTERNS = re.compile(
+    r"\b(employment opportunity|job posting|job opportunity|careers?|is hiring|"
+    r"positions? available|apply for (?:the )?position)\b",
+    re.I,
+)
+UPDATE_PAGE_PATTERNS = re.compile(
+    r"\b(news|updates?|announcements?|notices?|media|press|events?|newsletter|"
+    r"community calendar|bulletin)\b",
+    re.I,
+)
+MEDIA_SUFFIXES = {".pdf", ".png", ".jpg", ".jpeg", ".webp", ".tif", ".tiff"}
+NON_NEWS_MEDIA = re.compile(
+    r"\b(logo|icon|favicon|banner|header|footer|avatar|sponsor|seal|crest)\b",
+    re.I,
+)
 EXCLUDED_PATTERNS = re.compile(
     r"\b(happy birthday|birthday wishes|good morning|good night|meme|"
     r"like and share|tag (?:a|your) friend|contest|giveaway|winner|"
@@ -89,7 +122,7 @@ EXCLUDED_PATTERNS = re.compile(
 SUPPORTED_PATTERNS = re.compile(
     r"\b(announcement|notice|update|funding|grant|construction|infrastructure|"
     r"housing|meeting|annual general meeting|agm|election|governance|council|"
-    r"employment|job|career|training|business|economic|health|safety|school|"
+    r"training|business|economic|health|safety|school|"
     r"education|land|resource|environment|event|powwow|emergency|evacuation|"
     r"program|service|partnership|agreement|newsletter|year in review|agenda|"
     r"claim|settlement|water|treatment plant|application|community|recreation|"
@@ -352,6 +385,9 @@ def normalized_candidate(
     published,
     date_precision="day",
     thumbnail=None,
+    date_source=None,
+    extraction_method="html",
+    source_page=None,
 ):
     source_type = source.get("type") or "Community Website"
     item = {
@@ -372,7 +408,11 @@ def normalized_candidate(
         "bandId": community["bandId"],
         "discoveredAt": iso_now(),
         "communityConfidence": round(source_confidence(source), 2),
+        "dateSource": date_source or "source-metadata",
+        "extractionMethod": extraction_method,
     }
+    if source_page:
+        item["sourcePage"] = canonical_url(source_page)
     if thumbnail and str(thumbnail).startswith("http"):
         item["thumbnail"] = canonical_url(thumbnail)
     return item
@@ -392,6 +432,7 @@ class CommunityHTMLParser(HTMLParser):
         self.anchors = []
         self.active_anchor = None
         self.default_image = None
+        self.images = []
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
@@ -416,8 +457,14 @@ class CommunityHTMLParser(HTMLParser):
             self.blocks.append(node)
         if tag == "meta" and attrs.get("property") == "og:image":
             self.default_image = attrs.get("content")
-        elif tag == "img" and attrs.get("src") and self.blocks:
-            self.blocks[-1]["image"] = attrs["src"]
+        elif tag == "img" and (attrs.get("src") or attrs.get("data-src")):
+            image = {
+                "src": attrs.get("src") or attrs.get("data-src"),
+                "alt": clean_text(attrs.get("alt")),
+            }
+            self.images.append(image)
+            if self.blocks:
+                self.blocks[-1]["image"] = image["src"]
         elif tag == "time" and attrs.get("datetime"):
             self.parts.append(attrs["datetime"])
         elif tag == "a" and attrs.get("href"):
@@ -473,6 +520,7 @@ class CommunityHTMLParser(HTMLParser):
             end = anchor["end"] if anchor["end"] is not None else start
             title = clean_text(" ".join(self.parts[start:end]))
             context = anchor["context"]
+            structured = context is not None
             if context is None:
                 context = clean_text(
                     " ".join(self.parts[max(0, start - 8) : min(len(self.parts), end + 18)])
@@ -483,14 +531,232 @@ class CommunityHTMLParser(HTMLParser):
                     "title": title,
                     "context": context,
                     "image": anchor.get("image") or self.default_image,
+                    "structured": structured,
                 }
             )
         return rows
 
 
+class ArticleMetadataParser(HTMLParser):
+    """Extract article identity and explicit publication metadata from a detail page."""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.meta = {}
+        self.times = []
+        self.title_parts = []
+        self.h1_parts = []
+        self.body_parts = []
+        self.json_ld_parts = []
+        self._capture = None
+        self.canonical = ""
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == "meta":
+            key = (attrs.get("property") or attrs.get("name") or "").lower()
+            if key and attrs.get("content"):
+                self.meta[key] = attrs["content"]
+        elif tag == "link" and "canonical" in str(attrs.get("rel", "")).lower():
+            self.canonical = attrs.get("href", "")
+        elif tag == "time" and attrs.get("datetime"):
+            self.times.append(attrs["datetime"])
+        elif tag in {"title", "h1", "p"}:
+            self._capture = tag
+        elif tag == "script" and attrs.get("type", "").lower() == "application/ld+json":
+            self._capture = "jsonld"
+
+    def handle_data(self, data):
+        value = clean_text(data)
+        if not value:
+            return
+        if self._capture == "title":
+            self.title_parts.append(value)
+        elif self._capture == "h1":
+            self.h1_parts.append(value)
+        elif self._capture == "p":
+            self.body_parts.append(value)
+        elif self._capture == "jsonld":
+            self.json_ld_parts.append(data)
+
+    def handle_endtag(self, tag):
+        if self._capture == tag or (tag == "script" and self._capture == "jsonld"):
+            self._capture = None
+
+    def json_ld_records(self):
+        records = []
+        for raw in self.json_ld_parts:
+            try:
+                value = json.loads(raw)
+            except (TypeError, json.JSONDecodeError):
+                continue
+            values = value if isinstance(value, list) else [value]
+            for item in values:
+                if not isinstance(item, dict):
+                    continue
+                graph = item.get("@graph")
+                if isinstance(graph, list):
+                    records.extend(row for row in graph if isinstance(row, dict))
+                records.append(item)
+        return records
+
+
+def article_page_metadata(markup, page_url):
+    parser = ArticleMetadataParser()
+    parser.feed(markup)
+    records = parser.json_ld_records()
+    title = clean_text(
+        parser.meta.get("og:title")
+        or next((row.get("headline") for row in records if row.get("headline")), "")
+        or " ".join(parser.h1_parts)
+        or " ".join(parser.title_parts)
+    )
+    summary = clean_text(
+        parser.meta.get("og:description")
+        or parser.meta.get("description")
+        or next((row.get("description") for row in records if row.get("description")), "")
+        or " ".join(parser.body_parts[:3])
+    )
+    date_sources = [
+        (parser.meta.get("article:published_time"), "article:published_time"),
+        (parser.meta.get("date"), "meta:date"),
+    ]
+    date_sources.extend(
+        (row.get("datePublished"), "json-ld:datePublished")
+        for row in records
+        if row.get("datePublished")
+    )
+    date_sources.extend((value, "time:datetime") for value in parser.times)
+    for raw_date, source in date_sources:
+        published, precision = parse_date_text(raw_date)
+        if published:
+            return {
+                "title": title,
+                "summary": summary,
+                "published": published,
+                "datePrecision": precision,
+                "dateSource": source,
+                "canonical": canonical_url(urllib.parse.urljoin(page_url, parser.canonical or page_url)),
+                "thumbnail": parser.meta.get("og:image"),
+            }
+    visible = clean_text(" ".join(parser.body_parts[:6]))
+    labeled = re.search(
+        r"\b(?:published|posted|issued|release date)\s*(?:on)?\s*[:\-]?\s*"
+        r"([^|]{0,50}20\d{2})",
+        visible,
+        re.I,
+    )
+    if labeled:
+        published, precision = parse_date_text(labeled.group(1))
+        if published:
+            return {
+                "title": title,
+                "summary": summary,
+                "published": published,
+                "datePrecision": precision,
+                "dateSource": "visible-published-label",
+                "canonical": canonical_url(urllib.parse.urljoin(page_url, parser.canonical or page_url)),
+                "thumbnail": parser.meta.get("og:image"),
+            }
+    return {
+        "title": title,
+        "summary": summary,
+        "published": None,
+        "datePrecision": None,
+        "dateSource": None,
+        "canonical": canonical_url(urllib.parse.urljoin(page_url, parser.canonical or page_url)),
+        "thumbnail": parser.meta.get("og:image"),
+    }
+
+
+def run_text_command(command, timeout=45):
+    try:
+        result = subprocess.run(
+            command, capture_output=True, text=True, timeout=timeout, check=False
+        )
+        return result.stdout if result.returncode == 0 else ""
+    except (OSError, subprocess.TimeoutExpired):
+        return ""
+
+
+def extract_document_text(fetcher, url):
+    """Use embedded PDF text first, then free local OCR for scanned documents."""
+    body, final_url, content_type = fetcher.get(url)
+    if len(body) > 15 * 1024 * 1024:
+        return "", "document_too_large", final_url
+    suffix = Path(urllib.parse.urlsplit(final_url).path).suffix.lower()
+    with tempfile.TemporaryDirectory() as directory:
+        if content_type == "application/pdf" or suffix == ".pdf":
+            path = Path(directory) / "notice.pdf"
+            path.write_bytes(body)
+            if shutil.which("pdftotext"):
+                text = run_text_command(["pdftotext", "-layout", str(path), "-"])
+                if len(clean_text(text)) >= 80:
+                    return text, "pdf_text", final_url
+            if not shutil.which("pdftoppm") or not shutil.which("tesseract"):
+                return "", "ocr_unavailable", final_url
+            prefix = Path(directory) / "page"
+            run_text_command(
+                ["pdftoppm", "-f", "1", "-l", "2", "-jpeg", "-r", "180", str(path), str(prefix)],
+                timeout=45,
+            )
+            pages = [
+                run_text_command(["tesseract", str(image), "stdout", "--psm", "6"], timeout=30)
+                for image in sorted(Path(directory).glob("page-*.jpg"))
+            ]
+            return "\n".join(pages), "pdf_ocr", final_url
+        if content_type.startswith("image/") or suffix in MEDIA_SUFFIXES:
+            if not shutil.which("tesseract"):
+                return "", "ocr_unavailable", final_url
+            path = Path(directory) / f"notice{suffix if suffix in MEDIA_SUFFIXES else '.img'}"
+            path.write_bytes(body)
+            return (
+                run_text_command(["tesseract", str(path), "stdout", "--psm", "6"], timeout=30),
+                "image_ocr",
+                final_url,
+            )
+    return "", "unsupported_media", final_url
+
+
+def document_title(text):
+    candidates = []
+    for raw in str(text or "").splitlines()[:80]:
+        line = clean_text(raw).strip("-|:•")
+        if not 10 <= len(line) <= 150:
+            continue
+        if GENERIC_PAGE_PATTERNS.search(line) or EMPLOYMENT_PATTERNS.search(line):
+            continue
+        if is_supported_update(line):
+            candidates.append((1 if len(line) < 100 else 0, -len(line), line))
+    return sorted(candidates, reverse=True)[0][2] if candidates else ""
+
+
+def document_publication_date(text):
+    labeled = re.search(
+        r"\b(?:published|posted|issued|news release|release date)\s*(?:on)?\s*[:\-]?\s*"
+        r"([^\n|]{0,60}20\d{2})",
+        str(text or ""),
+        re.I,
+    )
+    if labeled:
+        published, precision = parse_date_text(labeled.group(1))
+        if published:
+            return published, precision, "document-published-label"
+    heading = clean_text(" ".join(str(text or "").splitlines()[:12]))
+    if re.search(r"\bnewsletter\b", heading, re.I):
+        published, precision = parse_date_text(heading)
+        if published:
+            return published, precision, "newsletter-heading"
+    return None, None, None
+
+
 def is_supported_update(title, context=""):
     text = clean_text(f"{title} {context}")
-    if EXCLUDED_PATTERNS.search(text):
+    if (
+        EXCLUDED_PATTERNS.search(text)
+        or GENERIC_PAGE_PATTERNS.search(title)
+        or EMPLOYMENT_PATTERNS.search(text)
+    ):
         return False
     return bool(SUPPORTED_PATTERNS.search(text))
 
@@ -536,6 +802,12 @@ def extract_html_candidates(html, page_url, community, source):
                 published=published,
                 date_precision=precision,
                 thumbnail=thumbnail,
+                date_source=(
+                    "structured-listing"
+                    if anchor.get("structured")
+                    else "unstructured-listing"
+                ),
+                source_page=page_url,
             )
         )
         seen.add(url)
@@ -808,19 +1080,37 @@ def merge_articles(existing, candidates):
 
 
 def prune_invalid_generated_articles(articles, today):
-    """Remove only machine-discovered rows with impossible future publication dates."""
+    """Remove machine rows that cannot meet the current publication safeguards."""
     retained = []
     removed = []
     today_text = today.isoformat()
     for item in articles:
+        reason = None
         if item.get("discoveredAt") and str(item.get("publishedAt") or "") > today_text:
+            reason = "Future event date was previously stored as publication date"
+        elif item.get("discoveredAt") and EMPLOYMENT_PATTERNS.search(item.get("title") or ""):
+            reason = "Employment posting belongs in Jobs & Employment, not News"
+        elif item.get("discoveredAt") and (
+            GENERIC_PAGE_PATTERNS.search(item.get("title") or "")
+            or normalized_text(item.get("title")) in GENERIC_LINK_TEXT
+        ):
+            reason = "Generic navigation or evergreen page was previously stored as news"
+        elif item.get("discoveredAt") and "scontent-" in str(item.get("url") or ""):
+            reason = "Temporary Facebook image URL was stored instead of an original post"
+        elif (
+            item.get("discoveredAt")
+            and item.get("sourceType") in OFFICIAL_SOURCE_TYPES
+            and not item.get("dateSource")
+        ):
+            reason = "Legacy machine-discovered item lacks verifiable publication-date provenance"
+        if reason:
             removed.append(
                 {
                     "bandId": item.get("bandId"),
                     "communityName": item.get("communityName"),
                     "title": item.get("title"),
                     "url": item.get("url"),
-                    "reason": "Future event date was previously stored as publication date",
+                    "reason": reason,
                 }
             )
             continue
@@ -835,6 +1125,16 @@ def candidate_review_reason(item, today, confidence_threshold):
         return "Original source URL is not HTTPS"
     if item.get("communityConfidence", 0) < confidence_threshold:
         return "Community association confidence below threshold"
+    if not clean_text(item.get("title")) or not is_supported_update(
+        item.get("title"), item.get("summary")
+    ):
+        return "Title does not clearly describe a supported community update"
+    if EMPLOYMENT_PATTERNS.search(item.get("title") or ""):
+        return "Employment posting belongs in Jobs & Employment"
+    if item.get("dateSource") in {"unstructured-listing", "structured-listing"} and not item.get("detailVerified"):
+        return "Publication date could not be verified on the detail page"
+    if "scontent-" in str(item.get("url") or ""):
+        return "Temporary Facebook image URL is not an original durable source"
     return None
 
 
@@ -846,10 +1146,12 @@ def build_coverage_report(
     before_count,
     accepted,
     invalid_existing_removed,
+    source_runs=None,
 ):
     today = utc_now().date()
     recent_cutoff = (today - timedelta(days=90)).isoformat()
-    review_counts = Counter(str(item.get("bandId")) for item in review)
+    action_review = [item for item in review if item.get("status") != "extracted"]
+    review_counts = Counter(str(item.get("bandId")) for item in action_review)
     failure_counts = Counter(str(item.get("bandId")) for item in failures)
     rows = []
     for community in registry.get("communities", []):
@@ -898,7 +1200,13 @@ def build_coverage_report(
         "articlesAfter": len(articles),
         "newAccepted": len(accepted),
         "invalidExistingRemoved": invalid_existing_removed,
-        "manualReviewCount": len(review),
+        "manualReviewCount": len(action_review),
+        "mediaDocumentsChecked": sum(
+            1 for item in review if item.get("extractionMethod")
+        ),
+        "mediaDocumentsExtracted": sum(
+            1 for item in review if item.get("status") == "extracted"
+        ),
         "sourceFailureCount": len(failures),
         "communitiesTracked": len(rows),
         "communitiesWithResults": sum(1 for row in rows if row["resultCount"]),
@@ -918,6 +1226,7 @@ def build_coverage_report(
         },
         "communities": rows,
         "sourceFailures": failures,
+        "sourceRuns": source_runs or [],
     }
 
 
@@ -930,6 +1239,11 @@ def ensure_registry(data, news, registry):
         for item in registry.get("communities", [])
         if item.get("bandId") is not None
     }
+    contacts = {
+        str(item.get("nation_id")): item
+        for item in load_json(CONTACTS_PATH, {"contacts": []}).get("contacts", [])
+        if item.get("nation_id") is not None
+    }
     rows = []
     for band in data.get("bands", []):
         band_id = str(band["id"])
@@ -937,6 +1251,24 @@ def ensure_registry(data, news, registry):
         old = existing_sources.get(band_id, {})
         sources = list(current.get("sources") or [])
         known_urls = {canonical_url(source.get("url")) for source in sources}
+        contact = contacts.get(band_id, {})
+        contact_url = canonical_url(contact.get("website_url"))
+        if contact_url.startswith("http://"):
+            contact_url = "https://" + contact_url.removeprefix("http://")
+        if contact_url.startswith("https://") and contact_url not in known_urls:
+            sources.append(
+                {
+                    "type": "Official First Nation Website",
+                    "name": f"{band['name']} official website",
+                    "url": contact_url,
+                    "status": "verified",
+                    "adapter": "html",
+                    "monitor": True,
+                    "official": True,
+                    "sourceOrigin": "ISC First Nation profile",
+                }
+            )
+            known_urls.add(contact_url)
         for source in old.get("sources") or []:
             url = canonical_url(source.get("url"))
             if not url or url in known_urls:
@@ -1050,6 +1382,316 @@ def discovery_urls(source):
     )
 
 
+def same_host(left, right):
+    return (
+        urllib.parse.urlsplit(left).netloc.lower().removeprefix("www.")
+        == urllib.parse.urlsplit(right).netloc.lower().removeprefix("www.")
+    )
+
+
+def discovered_update_pages(markup, page_url):
+    parser = CommunityHTMLParser()
+    parser.feed(markup)
+    pages = []
+    for anchor in parser.results():
+        url = canonical_url(urllib.parse.urljoin(page_url, anchor.get("href")))
+        hint = clean_text(f"{anchor.get('title')} {urllib.parse.urlsplit(url).path}")
+        suffix = Path(urllib.parse.urlsplit(url).path).suffix.lower()
+        if (
+            url.startswith("https://")
+            and same_host(page_url, url)
+            and suffix not in MEDIA_SUFFIXES
+            and UPDATE_PAGE_PATTERNS.search(hint)
+            and url.rstrip("/") != page_url.rstrip("/")
+            and url not in pages
+        ):
+            pages.append(url)
+    return pages[:4]
+
+
+def discovered_media(markup, page_url):
+    parser = CommunityHTMLParser()
+    parser.feed(markup)
+    rows = []
+    for anchor in parser.results():
+        url = canonical_url(urllib.parse.urljoin(page_url, anchor.get("href")))
+        suffix = Path(urllib.parse.urlsplit(url).path).suffix.lower()
+        hint = clean_text(f"{anchor.get('title')} {anchor.get('context')} {url}")
+        if suffix not in MEDIA_SUFFIXES or NON_NEWS_MEDIA.search(hint):
+            continue
+        published, precision = parse_date_text(anchor.get("context"))
+        rows.append(
+            {
+                "url": url,
+                "label": clean_text(anchor.get("title")),
+                "context": clean_text(anchor.get("context")),
+                "published": published,
+                "datePrecision": precision,
+                "sourcePage": page_url,
+            }
+        )
+    for image in parser.images:
+        url = canonical_url(urllib.parse.urljoin(page_url, image.get("src")))
+        hint = clean_text(f"{image.get('alt')} {url}")
+        if (
+            Path(urllib.parse.urlsplit(url).path).suffix.lower() in MEDIA_SUFFIXES
+            and not NON_NEWS_MEDIA.search(hint)
+            and is_supported_update(hint)
+        ):
+            rows.append(
+                {
+                    "url": url,
+                    "label": clean_text(image.get("alt")),
+                    "context": "",
+                    "published": None,
+                    "datePrecision": None,
+                    "sourcePage": page_url,
+                }
+            )
+    return list({row["url"]: row for row in rows if row["url"].startswith("https://")}.values())[:3]
+
+
+def enrich_html_candidate(fetcher, item):
+    try:
+        body, final_url, content_type = fetcher.get(item["url"])
+    except Exception as error:
+        return item, f"detail fetch failed: {type(error).__name__}: {error}"
+    if "html" not in content_type:
+        return item, "detail URL did not return HTML"
+    metadata = article_page_metadata(body.decode("utf-8", errors="replace"), final_url)
+    detail_title = clean_text(metadata.get("title"))
+    if detail_title and titles_match(detail_title, item.get("title")):
+        item["title"] = detail_title[:180]
+    elif detail_title and normalized_text(item.get("title")) in normalized_text(detail_title):
+        item["title"] = detail_title[:180]
+    if metadata.get("summary") and len(metadata["summary"]) >= 35:
+        item["summary"] = metadata["summary"][:420]
+    if metadata.get("published"):
+        item["publishedAt"] = metadata["published"]
+        item["datePrecision"] = metadata.get("datePrecision") or "day"
+        item["dateSource"] = metadata.get("dateSource")
+        item["detailVerified"] = True
+    elif item.get("dateSource") == "structured-listing":
+        item["detailVerified"] = bool(
+            detail_title and titles_match(detail_title, item.get("title"))
+        )
+    if metadata.get("canonical"):
+        item["url"] = metadata["canonical"]
+    if metadata.get("thumbnail"):
+        item["thumbnail"] = canonical_url(
+            urllib.parse.urljoin(final_url, metadata["thumbnail"])
+        )
+    return item, None
+
+
+def detail_candidates_from_page(
+    fetcher, markup, page_url, community, source, seen_urls, budget=10
+):
+    """Recover dated articles when an index omits dates but detail metadata is explicit."""
+    parser = CommunityHTMLParser()
+    parser.feed(markup)
+    candidates = []
+    review = []
+    consumed = 0
+    for anchor in parser.results():
+        if budget <= 0:
+            break
+        title = clean_text(anchor.get("title"))
+        url = canonical_url(urllib.parse.urljoin(page_url, anchor.get("href")))
+        suffix = Path(urllib.parse.urlsplit(url).path).suffix.lower()
+        if (
+            url in seen_urls
+            or not url.startswith("https://")
+            or not same_host(page_url, url)
+            or suffix in MEDIA_SUFFIXES
+            or not 8 <= len(title) <= 180
+            or normalized_text(title) in GENERIC_LINK_TEXT
+            or not is_supported_update(title, anchor.get("context"))
+        ):
+            continue
+        budget -= 1
+        consumed += 1
+        try:
+            body, final_url, content_type = fetcher.get(url)
+            if "html" not in content_type:
+                continue
+            metadata = article_page_metadata(
+                body.decode("utf-8", errors="replace"), final_url
+            )
+        except Exception as error:
+            review.append({
+                "bandId": community["bandId"],
+                "communityName": community["communityName"],
+                "sourceName": source.get("name"),
+                "url": url,
+                "status": "detail_unverified",
+                "reason": f"detail fetch failed: {type(error).__name__}: {error}",
+            })
+            continue
+        detail_title = clean_text(metadata.get("title")) or title
+        if not metadata.get("published") or not is_supported_update(
+            detail_title, metadata.get("summary")
+        ):
+            continue
+        item = normalized_candidate(
+            community,
+            source,
+            title=detail_title[:180],
+            summary=item_summary(
+                detail_title,
+                metadata.get("summary"),
+                source.get("name", "The source"),
+            ),
+            url=metadata.get("canonical") or final_url,
+            published=metadata["published"],
+            date_precision=metadata.get("datePrecision") or "day",
+            thumbnail=(
+                urllib.parse.urljoin(final_url, metadata.get("thumbnail"))
+                if metadata.get("thumbnail")
+                else None
+            ),
+            date_source=metadata.get("dateSource"),
+            extraction_method="article-metadata",
+            source_page=page_url,
+        )
+        item["detailVerified"] = True
+        candidates.append(item)
+        seen_urls.add(url)
+    return candidates, review, consumed
+
+
+def media_candidate(fetcher, community, source, media):
+    try:
+        text, method, final_url = extract_document_text(fetcher, media["url"])
+    except Exception as error:
+        return None, {
+            "bandId": community["bandId"],
+            "communityName": community["communityName"],
+            "url": media["url"],
+            "status": "document_unavailable",
+            "reason": f"{type(error).__name__}: {error}",
+        }
+    title = document_title(text) or clean_text(media.get("label"))
+    published, precision, date_source = document_publication_date(text)
+    if not published and media.get("published"):
+        published = media["published"]
+        precision = media.get("datePrecision") or "day"
+        date_source = "structured-listing"
+    review = {
+        "bandId": community["bandId"],
+        "communityName": community["communityName"],
+        "sourceName": source.get("name"),
+        "url": final_url or media["url"],
+        "extractionMethod": method,
+        "detectedTitle": title or None,
+        "detectedDate": published,
+    }
+    if not title or not published or not is_supported_update(title, text[:800]):
+        review["status"] = "manual_review"
+        review["reason"] = "Document lacks a clear news title, publication date, or relevant update context"
+        return None, review
+    item = normalized_candidate(
+        community,
+        source,
+        title=title,
+        summary=item_summary(title, clean_text(text)[:900], source.get("name", "The source")),
+        url=final_url or media["url"],
+        published=published,
+        date_precision=precision,
+        date_source=date_source,
+        extraction_method=method,
+        source_page=media.get("sourcePage"),
+    )
+    item["detailVerified"] = date_source != "structured-listing"
+    review["status"] = "extracted"
+    review["reason"] = "Source-backed media text extracted"
+    return item, review
+
+
+def scan_source(community, source, args, access_token):
+    fetcher = Fetcher(delay=args.delay, timeout=args.timeout)
+    candidates = []
+    review = []
+    failures = []
+    checked_urls = []
+    adapter = source.get("adapter")
+    try:
+        if adapter == "facebook":
+            if not access_token:
+                return [], [{
+                    "bandId": community["bandId"],
+                    "communityName": community["communityName"],
+                    "sourceName": source.get("name"),
+                    "url": source.get("url"),
+                    "status": "authorized_api_required",
+                    "reason": "Facebook posts require an authorized Meta API token",
+                }], [], [source.get("url")]
+            rows = discover_meta_posts(fetcher, community, source, access_token)
+            return rows, review, failures, [source.get("url")]
+        pages = []
+        for url in discovery_urls(source):
+            if not url:
+                continue
+            body, final_url, content_type = fetcher.get(url)
+            checked_urls.append(final_url)
+            if adapter == "rss" or "xml" in content_type:
+                candidates.extend(extract_feed_candidates(body, final_url, community, source))
+                continue
+            if "html" not in content_type:
+                continue
+            markup = body.decode("utf-8", errors="replace")
+            pages.append((final_url, markup))
+            for update_url in discovered_update_pages(markup, final_url):
+                try:
+                    update_body, update_final, update_type = fetcher.get(update_url)
+                    checked_urls.append(update_final)
+                    if "html" in update_type:
+                        pages.append((update_final, update_body.decode("utf-8", errors="replace")))
+                except Exception as error:
+                    failures.append({"url": update_url, "reason": f"update page: {type(error).__name__}: {error}"})
+        media = []
+        seen_candidate_urls = {candidate["url"] for candidate in candidates}
+        detail_budget = 12
+        for page_url, markup in pages:
+            candidates.extend(extract_html_candidates(markup, page_url, community, source))
+            media.extend(discovered_media(markup, page_url))
+            recovered, detail_review, consumed = detail_candidates_from_page(
+                fetcher,
+                markup,
+                page_url,
+                community,
+                source,
+                seen_candidate_urls,
+                detail_budget,
+            )
+            detail_budget = max(0, detail_budget - consumed)
+            candidates.extend(recovered)
+            review.extend(detail_review)
+            seen_candidate_urls.update(candidate["url"] for candidate in candidates)
+        enriched = []
+        for item in list({candidate["url"]: candidate for candidate in candidates}.values())[:16]:
+            detailed, warning = enrich_html_candidate(fetcher, item)
+            if warning:
+                review.append({
+                    "bandId": community["bandId"],
+                    "communityName": community["communityName"],
+                    "sourceName": source.get("name"),
+                    "url": item.get("url"),
+                    "status": "detail_unverified",
+                    "reason": warning,
+                })
+            enriched.append(detailed)
+        candidates = enriched
+        for media_item in list({item["url"]: item for item in media}.values())[:3]:
+            item, document_review = media_candidate(fetcher, community, source, media_item)
+            review.append(document_review)
+            if item:
+                candidates.append(item)
+    except Exception as error:
+        failures.append({"url": source.get("url"), "reason": f"{type(error).__name__}: {error}"})
+    return candidates, review, failures, checked_urls
+
+
 def run(args):
     data = load_json(DATA_PATH, {"bands": []})
     news = load_json(NEWS_PATH, {"schemaVersion": 1, "articles": []})
@@ -1063,6 +1705,7 @@ def run(args):
     failures = []
     review = []
     candidates = []
+    source_runs = []
     access_token = os.getenv("META_ACCESS_TOKEN")
     today = utc_now().date()
     cutoff = (today - timedelta(days=args.lookback_days)).isoformat()
@@ -1082,46 +1725,45 @@ def run(args):
             if str(community["bandId"]) in requested
         ]
 
-    for community in communities:
-        for source in community.get("sources") or []:
-            if not source_is_monitorable(source):
-                continue
-            adapter = source.get("adapter")
-            try:
-                if adapter == "facebook":
-                    candidates.extend(
-                        discover_meta_posts(fetcher, community, source, access_token)
-                    )
-                    continue
-                for url in discovery_urls(source):
-                    if not url:
-                        continue
-                    body, final_url, content_type = fetcher.get(url)
-                    if adapter == "rss" or "xml" in content_type:
-                        found = extract_feed_candidates(
-                            body, final_url, community, source
-                        )
-                    elif "html" in content_type:
-                        found = extract_html_candidates(
-                            body.decode("utf-8", errors="replace"),
-                            final_url,
-                            community,
-                            source,
-                        )
-                    else:
-                        found = []
-                    candidates.extend(found)
-            except Exception as error:
-                failures.append(
-                    {
-                        "bandId": community["bandId"],
-                        "communityName": community["communityName"],
-                        "sourceName": source.get("name"),
-                        "sourceType": source.get("type"),
-                        "url": source.get("url"),
-                        "reason": f"{type(error).__name__}: {error}",
-                    }
-                )
+    scan_inputs = [
+        (community, source)
+        for community in communities
+        for source in community.get("sources") or []
+        if source_is_monitorable(source)
+    ]
+    with ThreadPoolExecutor(max_workers=max(1, args.workers)) as executor:
+        scan_results = executor.map(
+            lambda row: scan_source(row[0], row[1], args, access_token),
+            scan_inputs,
+        )
+    for (community, source), result in zip(scan_inputs, scan_results):
+        found, source_review, source_failures, checked_urls = result
+        candidates.extend(found)
+        review.extend(source_review)
+        for failure in source_failures:
+            failures.append(
+                {
+                    "bandId": community["bandId"],
+                    "communityName": community["communityName"],
+                    "sourceName": source.get("name"),
+                    "sourceType": source.get("type"),
+                    "url": failure.get("url") or source.get("url"),
+                    "reason": failure.get("reason"),
+                }
+            )
+        source_runs.append(
+            {
+                "bandId": community["bandId"],
+                "communityName": community["communityName"],
+                "sourceName": source.get("name"),
+                "sourceType": source.get("type"),
+                "url": source.get("url"),
+                "pagesChecked": len(checked_urls),
+                "candidatesFound": len(found),
+                "reviewItems": len(source_review),
+                "status": "checked" if checked_urls else "unavailable",
+            }
+        )
 
     if not args.skip_search:
         search_communities, next_cursor = communities_for_targeted_search(
@@ -1200,11 +1842,17 @@ def run(args):
         len(original_before),
         accepted,
         invalid_existing_removed,
+        source_runs,
     )
     review_output = {
         "schemaVersion": 1,
         "generated": iso_now(),
         "items": review,
+        "summary": {
+            "manualReview": sum(1 for item in review if item.get("status") != "extracted"),
+            "mediaExtracted": sum(1 for item in review if item.get("status") == "extracted"),
+            "sourceFailures": len(failures),
+        },
     }
     if not args.dry_run:
         write_json(REGISTRY_PATH, registry)
@@ -1232,6 +1880,7 @@ def parse_args():
     parser.add_argument("--max-search-communities", type=int, default=15)
     parser.add_argument("--search-delay", type=float, default=6.0)
     parser.add_argument("--skip-search", action="store_true")
+    parser.add_argument("--workers", type=int, default=6)
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()
 
