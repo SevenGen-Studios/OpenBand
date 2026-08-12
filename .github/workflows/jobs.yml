@@ -39,4 +39,13 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add jobs-data.json jobs-coverage-report.json jobs-review-queue.json jobs-source-registry.json
           git commit -m "Update community employment records"
-          git push
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          echo "Unable to publish employment data after three attempts" >&2
+          exit 1
