@@ -75,9 +75,9 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260812a"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260812a"', profile)
-        self.assertIn('src="/assets/analytics.js?v=20260812a"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260812b"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260812b"', profile)
+        self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
         self.assertIn("function restoreRoute", javascript)
@@ -114,6 +114,7 @@ class SiteRouteTests(unittest.TestCase):
         self.assertNotIn("Mailing address", contact_markup)
         self.assertNotIn("website_url", contact_markup)
         self.assertNotIn("mailing_address", contact_markup)
+        self.assertIn("email?contactValue('Email'", contact_markup)
         self.assertIn("function updateHeaderContact", javascript)
         self.assertIn("visible=activeProfileTab==='overview'", javascript)
         self.assertIn("container.hidden=!visible", javascript)
