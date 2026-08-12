@@ -33,15 +33,15 @@ def nation_logo_markup(band: dict, size: str = "small", *, eager: bool = False) 
     name = str(band.get("name") or "First Nation")
     verified = bool(band.get("logo_verified") and band.get("logo_url"))
     label = f"{name} official logo" if verified else f"{name} logo unverified; OpenBand placeholder"
-    image = ""
+    content = f'<span class="fn-logo-initials" aria-hidden="true">{html.escape(nation_initials(name))}</span>'
     if verified:
         loading = "eager" if eager else "lazy"
         priority = ' fetchpriority="high"' if eager else ""
-        image = f'<img src="{html.escape(str(band["logo_url"]), quote=True)}" alt="" loading="{loading}" decoding="async"{priority}>'
+        content = f'<img src="{html.escape(str(band["logo_url"]), quote=True)}" alt="" loading="{loading}" decoding="async"{priority}>'
     state = "" if verified else " fn-logo-unverified"
     return (
         f'<span class="fn-logo fn-logo-{html.escape(size)}{state}" role="img" aria-label="{html.escape(label, quote=True)}">'
-        f'<span class="fn-logo-initials" aria-hidden="true">{html.escape(nation_initials(name))}</span>{image}</span>'
+        f'{content}</span>'
     )
 
 
@@ -355,8 +355,8 @@ def build() -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260812c" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260812c" defer></script>',
+            '<script src="/assets/openband.js?v=20260812d" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260812d" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)

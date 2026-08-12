@@ -36,6 +36,7 @@ MAX_EDGE = 512
 # Sites located during the 2026-08-12 web verification pass.  Entries here are
 # official Nation sites unless the source kind explicitly says otherwise.
 DISCOVERED_SITES = {
+    "404": ("https://www.bigriverfirstnation.ca/", "Official First Nation website"),
     "369": ("https://bocn.ca/", "Official First Nation website"),
     "403": ("http://birchnarrowsdenenation.ca/", "Official First Nation website"),
     "378": ("https://cegakin.org/", "Official First Nation website"),
@@ -48,6 +49,9 @@ DISCOVERED_SITES = {
     "346": ("https://redpheasantcreenation.ca/", "Official First Nation website"),
     "356": ("https://www.redearthcreenation.ca/", "Official First Nation website"),
     "357": ("https://www.slcn.ca/", "Official First Nation website"),
+    "362": ("https://fnpa.ca/project/kahkewistahaw-first-nation/", "First Nations Power Authority partner profile"),
+    "405": ("https://www.fncias.ca/about-us/our-member-nations-tribal-councils/", "First Nations Capital and Infrastructure Agency member profile"),
+    "387": ("https://www.fncias.ca/about-us/our-member-nations-tribal-councils/", "First Nations Capital and Infrastructure Agency member profile"),
     "360": ("https://slfn.ca/", "Official First Nation website"),
     "358": ("https://wdn358.ca/", "Official First Nation website"),
     "402": ("https://www.waterhen.net/", "Official First Nation website"),
@@ -58,6 +62,18 @@ DISCOVERED_SITES = {
 # urllib or whose logo is not labelled in the raw HTML.  Both the page and the
 # exact asset URL are retained so the attribution remains auditable.
 MANUAL_ASSETS = {
+    "404": ("https://www.bigriverfirstnation.ca/", "https://www.bigriverfirstnation.ca/wp-content/uploads/2023/01/Picture1.png"),
+    "340": ("https://littlepine.ca/", "https://littlepine.ca/wp-content/uploads/2019/11/75640635_403497117261065_6849500598258106368_n-1.png"),
+    "381": ("https://muscowpetung.com/", "https://muscowpetung.com/storage/2023/01/Muscowpetung-80-Color.pdf-2-scaled.png"),
+    "375": ("https://muskeglake.com/", "https://muskeglake.com/wp-content/uploads/2026/02/MLCN-Logo-605x377.jpg"),
+    "382": ("https://www.okanesefirstnation.ca/", "https://static.wixstatic.com/media/82de0a_85fe50d3d31642f68ad5c04fcdcca965~mv2.png"),
+    "385": ("https://piapotnation.com/", "https://piapotnation.com/wp-content/uploads/2021/11/cropped-cropped-PFN-Logo-Final-e1637802772994.png"),
+    "345": ("https://poundmakercn.ca/", "https://poundmakercn.ca/images/logo.png"),
+    "353": ("https://llrib.com/", "https://llrib.com/wp-content/uploads/2021/10/cropped-cropped-llrib-website-icon_02.png"),
+    "362": ("https://fnpa.ca/project/kahkewistahaw-first-nation/", "https://i0.wp.com/fnpa.ca/wp-content/uploads/2024/12/kahkewistahan_logo_500.jpg?w=500&ssl=1"),
+    "405": ("https://www.fncias.ca/about-us/our-member-nations-tribal-councils/", "https://www.fncias.ca/wp-content/uploads/2024/08/Pelican_Lake-logo.jpg"),
+    "386": ("https://www.standingbuffalodakotanation.com/", "https://static.wixstatic.com/media/07d501_fa7dc0b999f548fdb90aa147b20bbdc5~mv2.png/v1/fill/w_236,h_264,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Standing-Buffalo-Logo--253x300.png"),
+    "387": ("https://www.fncias.ca/about-us/our-member-nations-tribal-councils/", "https://www.fncias.ca/wp-content/uploads/2024/08/star-blanket-first-nation-logo.png"),
     "406": ("https://www.ahtahkakoop.ca/", "https://www.ahtahkakoop.ca/uploads/1/4/5/9/145936684/ahtahkakoop-icon_2.png"),
     "398": ("https://www.brdn.ca/", "https://www.brdn.ca/wp-content/uploads/2022/07/buffalo-river-logo-clr.svg"),
     "361": ("https://cowessessfn.com/", "https://cowessessfn.com/wp-content/uploads/2022/05/Cowessess-FN-Logo.png"),
@@ -74,10 +90,9 @@ MANUAL_ASSETS = {
 # Visually reviewed false positives.  These are intentionally kept unverified:
 # the automatic candidate was another organization's mark, a flag, or a photo.
 REJECTED_AUTOMATIC_IDS = {
-    "353": "The selected asset was a health authority mark, not the Nation logo.",
     "397": "The selected asset was the Meadow Lake Tribal Council logo, not the Nation logo.",
-    "385": "The selected asset was a flag treatment, which is not accepted as a logo.",
-    "345": "The selected asset was a portrait, not an official logo or crest.",
+    "385": "The official-site header treatment is a flag, which is not accepted as a logo.",
+    "345": "The official-site image is a portrait, not a logo or crest.",
 }
 
 INLINE_SVG_CLASSES = {
@@ -411,7 +426,26 @@ def main() -> int:
         "logos": records,
     }
     REGISTRY_PATH.write_text(json.dumps(registry, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    (ROOT / "first-nation-logo-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    report_by_id = {str(row["nation_id"]): row for row in report}
+    full_report = []
+    for record in records:
+        band_id = str(record["nation_id"])
+        detail = report_by_id.get(band_id)
+        if detail:
+            full_report.append(detail)
+            continue
+        summary = {
+            "nation_id": record["nation_id"],
+            "nation_name": record["nation_name"],
+            "status": record["logo_status"],
+            "source": record.get("logo_source"),
+        }
+        if record.get("logo_verified"):
+            summary["asset"] = record.get("logo_asset_source")
+        else:
+            summary["reason"] = record.get("verification_note")
+        full_report.append(summary)
+    (ROOT / "first-nation-logo-report.json").write_text(json.dumps(full_report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     by_id = {str(row["nation_id"]): row for row in records}
     for band in data.get("bands", []):
         logo = by_id.get(str(band["id"]))

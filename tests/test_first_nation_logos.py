@@ -14,6 +14,7 @@ class FirstNationLogoTests(unittest.TestCase):
     def setUpClass(cls):
         cls.data = json.loads((ROOT / "data.json").read_text(encoding="utf-8"))
         cls.registry = json.loads((ROOT / "first-nation-logos.json").read_text(encoding="utf-8"))
+        cls.report = json.loads((ROOT / "first-nation-logo-report.json").read_text(encoding="utf-8"))
         cls.logos = {str(row["nation_id"]): row for row in cls.registry["logos"]}
 
     def test_every_database_nation_has_a_logo_record(self):
@@ -24,6 +25,7 @@ class FirstNationLogoTests(unittest.TestCase):
             self.registry["recordCount"],
             self.registry["verifiedCount"] + self.registry["unverifiedCount"],
         )
+        self.assertEqual(self.registry["recordCount"], len(self.report))
 
     def test_logo_metadata_is_synced_to_main_data(self):
         for band in self.data["bands"]:
@@ -48,7 +50,7 @@ class FirstNationLogoTests(unittest.TestCase):
             self.assertLess(asset.stat().st_size, 512_000, f"Logo is not web-sized: {asset}")
 
     def test_visually_rejected_false_positives_stay_unverified(self):
-        for band_id in ("353", "397", "385", "345"):
+        for band_id in ("397", "385", "345"):
             self.assertFalse(self.logos[band_id]["logo_verified"])
 
     def test_generated_profiles_render_logo_or_placeholder(self):
@@ -60,6 +62,8 @@ class FirstNationLogoTests(unittest.TestCase):
             if logo["logo_verified"]:
                 self.assertIn(logo["logo_url"], page)
                 self.assertIn(html.escape(f"{band['name']} official logo", quote=True), page)
+                title_markup = page.split("profile-prerender-title", 1)[1].split("</div>", 1)[0]
+                self.assertNotIn("fn-logo-initials", title_markup)
             else:
                 self.assertIn("fn-logo-unverified", page)
                 self.assertIn("logo unverified; OpenBand placeholder", page)
