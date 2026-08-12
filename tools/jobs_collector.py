@@ -11,6 +11,9 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import shutil
+import subprocess
+import tempfile
 import re
 import urllib.parse
 import urllib.request
@@ -37,6 +40,9 @@ CLOSED_WORDS = re.compile(
     re.IGNORECASE,
 )
 OPEN_UNTIL_FILLED = re.compile(r"\b(open until filled|until (?:a suitable candidate is )?filled)\b", re.IGNORECASE)
+EMPLOYMENT_PAGE_WORDS = re.compile(r"\b(job|jobs|career|careers|employment|opportunities|work with us)\b", re.IGNORECASE)
+MEDIA_SUFFIXES = {".pdf", ".png", ".jpg", ".jpeg", ".webp", ".tif", ".tiff"}
+NON_JOB_MEDIA = re.compile(r"\b(logo|icon|favicon|banner|header|footer|avatar|sponsor)\b", re.IGNORECASE)
 MONTHS = {
     name.lower(): number
     for number, name in enumerate(
@@ -157,10 +163,23 @@ class AnchorCollector(HTMLParser):
         super().__init__()
         self.current = None
         self.anchors = []
+        self.images = []
 
     def handle_starttag(self, tag, attrs):
+        attributes = dict(attrs)
         if tag.lower() == "a":
-            self.current = {"href": dict(attrs).get("href", ""), "text": []}
+            self.current = {"href": attributes.get("href", ""), "text": [], "images": []}
+        elif tag.lower() == "img":
+            image = {
+                "src": attributes.get("src") or attributes.get("data-src") or attributes.get("data-lazy-src") or "",
+                "alt": attributes.get("alt", ""),
+                "width": attributes.get("width"),
+                "height": attributes.get("height"),
+            }
+            if image["src"]:
+                self.images.append(image)
+                if self.current is not None:
+                    self.current["images"].append(image)
 
     def handle_data(self, data):
         if self.current is not None:
@@ -170,8 +189,62 @@ class AnchorCollector(HTMLParser):
         if tag.lower() == "a" and self.current is not None:
             text = clean_text(" ".join(self.current["text"]))
             if text and self.current["href"]:
-                self.anchors.append({"href": self.current["href"], "text": text})
+                self.anchors.append({"href": self.current["href"], "text": text, "images": self.current["images"]})
+            elif self.current["href"] and self.current["images"]:
+                alt = clean_text(" ".join(image.get("alt", "") for image in self.current["images"]))
+                self.anchors.append({"href": self.current["href"], "text": alt, "images": self.current["images"]})
             self.current = None
+
+
+def configured_sources(root: Path) -> list[dict]:
+    """Merge curated boards with ISC-listed community sites and verified Facebook pages."""
+    curated = read_json(root / "jobs-sources.json", {"sources": []}).get("sources", [])
+    sources = list(curated)
+    known_pairs = {(str(cid), source["url"].rstrip("/")) for source in sources for cid in source.get("communityIds", [])}
+    contacts = read_json(root / "contacts-data.json", {"contacts": []}).get("contacts", [])
+    for contact in contacts:
+        url = clean_text(contact.get("website_url"))
+        if url.startswith("http://"):
+            url = "https://" + url.removeprefix("http://")
+        community_id = str(contact.get("nation_id") or "")
+        if not url or (community_id, url.rstrip("/")) in known_pairs:
+            continue
+        sources.append({
+            "id": f"community-site-{community_id}",
+            "name": f"{contact.get('nation_name')} official website",
+            "url": url,
+            "sourceType": "isc_listed_first_nation_website",
+            "communityIds": [community_id],
+            "communityNames": [contact.get("nation_name")],
+            "verifiedOfficialSource": True,
+            "autoPublish": False,
+            "discoverEmploymentPages": True,
+            "scanMedia": True,
+        })
+        known_pairs.add((community_id, url.rstrip("/")))
+    news = read_json(root / "news-data.json", {"communitySources": []})
+    for community in news.get("communitySources", []):
+        community_id = str(community.get("bandId") or "")
+        for source in community.get("sources", []):
+            url = clean_text(source.get("url"))
+            if source.get("status") != "verified" or "facebook.com" not in url.lower():
+                continue
+            if (community_id, url.rstrip("/")) in known_pairs:
+                continue
+            sources.append({
+                "id": f"community-facebook-{community_id}-{len(sources)}",
+                "name": f"{community.get('communityName')} official Facebook page",
+                "url": url,
+                "sourceType": "verified_official_facebook",
+                "communityIds": [community_id],
+                "communityNames": [community.get("communityName")],
+                "verifiedOfficialSource": True,
+                "autoPublish": False,
+                "discoverEmploymentPages": False,
+                "scanMedia": True,
+            })
+            known_pairs.add((community_id, url.rstrip("/")))
+    return sources
 
 
 def fetch_markup(url: str) -> tuple[str, str | None]:
@@ -184,6 +257,127 @@ def fetch_markup(url: str) -> tuple[str, str | None]:
             return response.read().decode("utf-8", errors="replace"), None
     except Exception as exc:
         return "", str(exc)
+
+
+def fetch_binary(url: str) -> tuple[bytes, str, str | None]:
+    request = urllib.request.Request(url, headers={"User-Agent": "OpenBandJobs/1.1 (+https://openband.ca)"})
+    try:
+        with urllib.request.urlopen(request, timeout=15) as response:
+            content = response.read(15 * 1024 * 1024 + 1)
+            if len(content) > 15 * 1024 * 1024:
+                return b"", "", "document exceeds 15 MB limit"
+            return content, response.headers.get_content_type(), None
+    except Exception as exc:
+        return b"", "", str(exc)
+
+
+def run_text_command(command: list[str], timeout: int = 45) -> str:
+    try:
+        result = subprocess.run(command, capture_output=True, text=True, timeout=timeout, check=False)
+        return result.stdout if result.returncode == 0 else ""
+    except (OSError, subprocess.TimeoutExpired):
+        return ""
+
+
+def extract_document_text(url: str) -> tuple[str, str, str | None]:
+    """Use embedded PDF text first, then free local OCR as a fallback."""
+    payload, content_type, error = fetch_binary(url)
+    if error:
+        return "", "fetch_failed", error
+    suffix = Path(urllib.parse.urlsplit(url).path).suffix.lower()
+    if content_type == "application/pdf" or suffix == ".pdf":
+        with tempfile.TemporaryDirectory() as directory:
+            pdf_path = Path(directory) / "posting.pdf"
+            pdf_path.write_bytes(payload)
+            if shutil.which("pdftotext"):
+                text = run_text_command(["pdftotext", "-layout", str(pdf_path), "-"])
+                if len(clean_text(text)) >= 80:
+                    return text, "pdf_text", None
+            if not shutil.which("pdftoppm") or not shutil.which("tesseract"):
+                return "", "ocr_unavailable", "PDF has no usable text and OCR tools are unavailable"
+            prefix = Path(directory) / "page"
+            run_text_command(["pdftoppm", "-f", "1", "-l", "3", "-jpeg", "-r", "180", str(pdf_path), str(prefix)], timeout=90)
+            pages = []
+            for image_path in sorted(Path(directory).glob("page-*.jpg")):
+                pages.append(run_text_command(["tesseract", str(image_path), "stdout", "--psm", "6"], timeout=60))
+            text = "\n".join(pages)
+            return text, "pdf_ocr", None if clean_text(text) else "OCR returned no text"
+    if content_type.startswith("image/") or suffix in MEDIA_SUFFIXES:
+        if not shutil.which("tesseract"):
+            return "", "ocr_unavailable", "Tesseract is unavailable"
+        with tempfile.TemporaryDirectory() as directory:
+            image_path = Path(directory) / f"posting{suffix if suffix in MEDIA_SUFFIXES else '.img'}"
+            image_path.write_bytes(payload)
+            text = run_text_command(["tesseract", str(image_path), "stdout", "--psm", "6"], timeout=60)
+            return text, "image_ocr", None if clean_text(text) else "OCR returned no text"
+    return "", "unsupported_media", f"unsupported content type {content_type or 'unknown'}"
+
+
+def title_from_document(text: str) -> str:
+    generic = re.compile(r"^(job|employment|career)\s+(posting|opportunity|notice)s?$", re.IGNORECASE)
+    candidates = []
+    for raw_line in text.splitlines()[:80]:
+        line = clean_text(raw_line).strip("-|:•")
+        if not 6 <= len(line) <= 130 or generic.match(line):
+            continue
+        if re.search(r"\b(closing|deadline|salary|applications?|qualifications?|responsibilities)\b", line, re.I):
+            continue
+        if JOB_WORDS.search(line):
+            score = 2 if re.search(r"\b(manager|director|coordinator|teacher|nurse|worker|clerk|officer|assistant|operator)\b", line, re.I) else 1
+            candidates.append((score, -len(line), line))
+    if not candidates:
+        return ""
+    title = sorted(candidates, reverse=True)[0][2]
+    return clean_text(re.sub(r"^(?:job|employment)\s+(?:posting|opportunity)\s*[:\-]?\s*", "", title, flags=re.I))
+
+
+def document_candidate(url: str, source: dict, today: date) -> tuple[dict | None, dict]:
+    text, method, error = extract_document_text(url)
+    title = title_from_document(text)
+    closing = extract_labeled_date(text, ("closing", "deadline", "apply by", "applications close")) if text else None
+    posted = extract_labeled_date(text, ("posted", "posting date", "published")) if text else None
+    status = "Pending verification"
+    if text and CLOSED_WORDS.search(text):
+        status = "Closed"
+    elif closing:
+        status = effective_status({"closingDate": closing, "lastChecked": today.isoformat()}, today)
+    elif text and OPEN_UNTIL_FILLED.search(text):
+        status = "Date unavailable"
+    community_ids = [str(value) for value in source.get("communityIds", [])]
+    community_names = source.get("communityNames", [])
+    review = {
+        "sourceId": source["id"],
+        "sourceName": source["name"],
+        "sourceUrl": url,
+        "communityIds": community_ids,
+        "communityNames": community_names,
+        "candidateTitle": title or None,
+        "extractionMethod": method,
+        "status": status,
+        "reason": error or ("No reliable job title detected" if not title else "Closing status requires verification"),
+        "textSnippet": clean_text(text)[:700] or None,
+    }
+    if not title:
+        return None, review
+    candidate = normalize_listing({
+        "title": title,
+        "employer": source["name"],
+        "communityId": community_ids[0] if len(community_ids) == 1 else "",
+        "communityName": community_names[0] if len(community_names) == 1 else "",
+        "firstNationIds": community_ids if len(community_ids) > 1 and source.get("associationMode") != "source_only" else [],
+        "scope": "regional" if len(community_ids) > 1 else "community",
+        "sourceId": source["id"],
+        "sourceUrl": url,
+        "sourceName": source["name"],
+        "description": "Opportunity extracted from an official image or PDF posting. Review the original source for complete details.",
+        "postedDate": posted,
+        "closingDate": closing,
+        "status": status,
+        "lastChecked": today.isoformat(),
+        "extractionConfidence": "high" if status in PUBLIC_STATUSES | {"Closed"} else "medium",
+        "verifiedOfficialSource": bool(source.get("verifiedOfficialSource")),
+    }, today)
+    return candidate, review
 
 
 def page_text(markup: str) -> str:
@@ -233,37 +427,78 @@ def inspect_candidate_page(url: str, today: date) -> tuple[dict, list[str]]:
     }, []
 
 
-def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], list[str], str]:
+def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], list[str], str, list[dict]]:
     today = today or date.today()
     warnings = []
     markup, error = fetch_markup(source["url"])
     if error:
-        return [], [f"{source['id']}: fetch failed: {error}"], ""
-    parser = AnchorCollector()
-    parser.feed(markup)
+        review = [{
+            "sourceId": source["id"],
+            "sourceName": source["name"],
+            "sourceUrl": source["url"],
+            "communityIds": [str(value) for value in source.get("communityIds", [])],
+            "communityNames": source.get("communityNames", []),
+            "status": "source_unavailable",
+            "reason": error,
+        }]
+        return [], [f"{source['id']}: fetch failed: {error}"], "", review
+    root_parser = AnchorCollector()
+    root_parser.feed(markup)
+    pages = [(source["url"], markup, bool(source.get("parser") == "job_link_index"))]
+    if source.get("discoverEmploymentPages"):
+        host = urllib.parse.urlsplit(source["url"]).netloc.lower().removeprefix("www.")
+        discovered = []
+        for anchor in root_parser.anchors:
+            href = urllib.parse.urljoin(source["url"], anchor["href"])
+            target_host = urllib.parse.urlsplit(href).netloc.lower().removeprefix("www.")
+            label = f"{anchor.get('text', '')} {urllib.parse.urlsplit(href).path}"
+            if target_host != host or not EMPLOYMENT_PAGE_WORDS.search(label):
+                continue
+            if Path(urllib.parse.urlsplit(href).path).suffix.lower() in MEDIA_SUFFIXES:
+                continue
+            if href.rstrip("/") != source["url"].rstrip("/") and href not in discovered:
+                discovered.append(href)
+        for page_url in discovered[:4]:
+            page_markup, page_error = fetch_markup(page_url)
+            if page_error:
+                warnings.append(f"{source['id']}: employment page fetch failed: {page_error}")
+                continue
+            pages.append((page_url, page_markup, True))
     candidates = []
+    review_items = []
     seen = set()
-    for anchor in parser.anchors:
-        title = clean_text(anchor["text"])
-        href = urllib.parse.urljoin(source["url"], anchor["href"])
-        if len(title) < 5 or len(title) > 140 or not JOB_WORDS.search(title):
-            continue
-        if GENERIC_LINK_TITLES.match(title):
-            continue
-        if not href.startswith(("https://", "http://")):
-            continue
-        if href in seen or href.rstrip("/") == source["url"].rstrip("/"):
-            continue
-        seen.add(href)
-        community_ids = [str(value) for value in source.get("communityIds", [])]
-        community_names = source.get("communityNames", [])
-        detail, detail_warnings = inspect_candidate_page(href, today) if source.get("inspectDetails", False) else ({}, [])
-        warnings.extend(f"{source['id']}: {warning}" for warning in detail_warnings)
-        detected_status = detail.get("status", "Pending verification")
-        if detected_status == "Pending verification" and source.get("autoPublish"):
-            detected_status = "Date unavailable"
-        candidate = normalize_listing(
-            {
+    media_urls = []
+    detail_budget = 12
+    for page_url, page_markup, employment_context in pages:
+        parser = AnchorCollector()
+        parser.feed(page_markup)
+        for anchor in parser.anchors:
+            title = clean_text(anchor["text"])
+            href = urllib.parse.urljoin(page_url, anchor["href"])
+            suffix = Path(urllib.parse.urlsplit(href).path).suffix.lower()
+            media_hint = f"{title} {href}"
+            if suffix in MEDIA_SUFFIXES and (employment_context or JOB_WORDS.search(media_hint)):
+                if href not in media_urls:
+                    media_urls.append(href)
+                continue
+            if len(title) < 5 or len(title) > 140 or not JOB_WORDS.search(title):
+                continue
+            if GENERIC_LINK_TITLES.match(title) or not href.startswith(("https://", "http://")):
+                continue
+            if href in seen or href.rstrip("/") in {page_url.rstrip("/"), source["url"].rstrip("/")}:
+                continue
+            seen.add(href)
+            community_ids = [str(value) for value in source.get("communityIds", [])]
+            community_names = source.get("communityNames", [])
+            inspect = bool(source.get("inspectDetails") or employment_context) and detail_budget > 0
+            detail, detail_warnings = inspect_candidate_page(href, today) if inspect else ({}, [])
+            if inspect:
+                detail_budget -= 1
+            warnings.extend(f"{source['id']}: {warning}" for warning in detail_warnings)
+            detected_status = detail.get("status", "Pending verification")
+            if detected_status == "Pending verification" and source.get("autoPublish"):
+                detected_status = "Date unavailable"
+            candidate = normalize_listing({
                 "title": title,
                 "employer": source["name"],
                 "communityId": community_ids[0] if len(community_ids) == 1 else "",
@@ -280,13 +515,25 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
                 "lastChecked": today.isoformat(),
                 "extractionConfidence": "high" if detected_status in PUBLIC_STATUSES | {"Closed"} else "low",
                 "verifiedOfficialSource": bool(source.get("verifiedOfficialSource")),
-            },
-            today,
-        )
-        candidates.append(candidate)
+            }, today)
+            candidates.append(candidate)
+        if source.get("scanMedia"):
+            for image in parser.images:
+                src = urllib.parse.urljoin(page_url, image.get("src", ""))
+                hint = f"{image.get('alt', '')} {src}"
+                if not src.startswith(("https://", "http://")) or NON_JOB_MEDIA.search(hint):
+                    continue
+                if employment_context or JOB_WORDS.search(hint):
+                    if src not in media_urls:
+                        media_urls.append(src)
+    for media_url in media_urls[:8]:
+        candidate, review = document_candidate(media_url, source, today)
+        review_items.append(review)
+        if candidate:
+            candidates.append(candidate)
     if not candidates:
         warnings.append(f"{source['id']}: no candidate job links detected")
-    return candidates, warnings, page_text(markup)
+    return candidates, warnings, page_text(markup), review_items
 
 
 def source_coverage(source: dict, tracked_ids: set[str]) -> set[str]:
@@ -316,17 +563,31 @@ def expand_verified_batches(overrides: dict) -> list[dict]:
 
 
 def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]:
-    source_data = read_json(root / "jobs-sources.json", {"sources": []})
+    sources = configured_sources(root)
     overrides = read_json(root / "jobs-overrides.json", {})
     previous = read_json(root / "jobs-data.json", {"listings": []})
     warnings = []
     candidates = []
     source_texts = {}
+    review_items = []
+    source_runs = []
     if not offline:
-        for source in source_data.get("sources", []):
-            found, source_warnings, source_text = fetch_source(source, today)
+        for source in sources:
+            found, source_warnings, source_text, source_review = fetch_source(source, today)
             candidates.extend(found)
             warnings.extend(source_warnings)
+            review_items.extend(source_review)
+            source_runs.append({
+                "sourceId": source["id"],
+                "sourceName": source["name"],
+                "url": source["url"],
+                "sourceType": source.get("sourceType"),
+                "communityIds": [str(value) for value in source.get("communityIds", [])],
+                "candidatesFound": len(found),
+                "reviewItems": len(source_review),
+                "status": "checked" if source_text else "unavailable",
+                "warnings": source_warnings,
+            })
             if source_text:
                 source_texts[source["id"]] = source_text
     else:
@@ -381,9 +642,15 @@ def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]
     map_data = read_json(root / "map-data.json", {"communities": []})
     tracked = {str(row.get("id")): row for row in map_data.get("communities", []) if row.get("id") is not None}
     coverage_sources = {community_id: [] for community_id in tracked}
-    for source in source_data.get("sources", []):
+    for source in sources:
         for community_id in source_coverage(source, set(tracked)):
-            coverage_sources[community_id].append({"id": source["id"], "name": source["name"], "url": source["url"]})
+            coverage_sources[community_id].append({
+                "id": source["id"],
+                "name": source["name"],
+                "url": source["url"],
+                "sourceType": source.get("sourceType"),
+                "direct": len(source.get("communityIds", [])) == 1,
+            })
     data["communityCoverage"] = [
         {
             "communityId": community_id,
@@ -402,8 +669,8 @@ def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]
     ]
     report = {
         "generated": data["generated"],
-        "sourcesConfigured": len(source_data.get("sources", [])),
-        "sourcesChecked": 0 if offline else len(source_data.get("sources", [])),
+        "sourcesConfigured": len(sources),
+        "sourcesChecked": 0 if offline else len(sources),
         "verifiedActiveListings": len([row for row in active if row.get("verifiedOfficialSource")]),
         "communitiesWithListings": data["communityCount"],
         "pendingVerification": len([row for row in listings if row["status"] == "Pending verification"]),
@@ -411,7 +678,41 @@ def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]
         "duplicatesSuppressed": duplicate_count,
         "trackedCommunities": len(tracked),
         "communitiesWithSourceCoverage": len([value for value in coverage_sources.values() if value]),
+        "communitiesWithDirectSources": len([
+            value for value in coverage_sources.values() if any(source.get("direct") for source in value)
+        ]),
+        "mediaDocumentsReviewed": len(review_items),
         "warnings": warnings,
+    }
+    pending_rows = [row for row in listings if row["status"] == "Pending verification"]
+    report["_reviewQueue"] = {
+        "schemaVersion": 1,
+        "generated": data["generated"],
+        "summary": {
+            "pendingCandidates": len(pending_rows),
+            "mediaDocuments": len(review_items),
+            "sourceWarnings": len(warnings),
+        },
+        "pendingCandidates": pending_rows,
+        "documentReviews": review_items,
+        "sourceWarnings": warnings,
+    }
+    report["_sourceRegistry"] = {
+        "schemaVersion": 1,
+        "generated": data["generated"],
+        "trackedCommunityCount": len(tracked),
+        "configuredSourceCount": len(sources),
+        "communities": [
+            {
+                "communityId": community_id,
+                "communityName": tracked[community_id].get("name"),
+                "directSources": [source for source in coverage_sources[community_id] if source.get("direct")],
+                "regionalSources": [source for source in coverage_sources[community_id] if not source.get("direct")],
+                "status": "direct_source_configured" if any(source.get("direct") for source in coverage_sources[community_id]) else "regional_sources_only",
+            }
+            for community_id in sorted(tracked, key=lambda value: tracked[value].get("name", ""))
+        ],
+        "sourceRuns": source_runs,
     }
     return data, report
 
@@ -429,8 +730,12 @@ def main() -> None:
     parser.add_argument("--today", type=date.fromisoformat, default=date.today())
     args = parser.parse_args()
     data, report = collect(args.root, args.today, args.offline)
+    review_queue = report.pop("_reviewQueue")
+    source_registry = report.pop("_sourceRegistry")
     write_json(args.root / "jobs-data.json", data)
     write_json(args.root / "jobs-coverage-report.json", report)
+    write_json(args.root / "jobs-review-queue.json", review_queue)
+    write_json(args.root / "jobs-source-registry.json", source_registry)
     print(
         f"Jobs: {report['verifiedActiveListings']} verified active, "
         f"{report['pendingVerification']} pending, {report['expiredOrClosed']} closed"

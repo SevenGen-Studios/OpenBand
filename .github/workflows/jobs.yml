@@ -15,24 +15,28 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install free document extraction tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends poppler-utils tesseract-ocr
       - name: Collect and validate public opportunities
         run: python tools/jobs_collector.py
       - name: Test employment pipeline
         run: python -m unittest tests.test_jobs_pipeline -v
       - name: Commit verified data and review report
         run: |
-          if git diff --quiet -- jobs-data.json jobs-coverage-report.json; then
+          if git diff --quiet -- jobs-data.json jobs-coverage-report.json jobs-review-queue.json jobs-source-registry.json; then
             echo "No employment data changes"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add jobs-data.json jobs-coverage-report.json
+          git add jobs-data.json jobs-coverage-report.json jobs-review-queue.json jobs-source-registry.json
           git commit -m "Update community employment records"
           git push
