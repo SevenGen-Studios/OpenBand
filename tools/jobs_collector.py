@@ -17,6 +17,7 @@ import tempfile
 import re
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta, timezone
 from html.parser import HTMLParser
 from pathlib import Path
@@ -572,8 +573,10 @@ def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]
     review_items = []
     source_runs = []
     if not offline:
-        for source in sources:
-            found, source_warnings, source_text, source_review = fetch_source(source, today)
+        with ThreadPoolExecutor(max_workers=6) as executor:
+            scan_results = executor.map(lambda source: fetch_source(source, today), sources)
+        for source, result in zip(sources, scan_results):
+            found, source_warnings, source_text, source_review = result
             candidates.extend(found)
             warnings.extend(source_warnings)
             review_items.extend(source_review)
