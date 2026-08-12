@@ -36,7 +36,10 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils tesseract-ocr
+          pip install -r requirements.txt
 
       - name: Run news pipeline tests
         run: python -m unittest tests/test_news_integrity.py tests/test_news_discovery.py -v
@@ -91,7 +94,19 @@ jobs:
         run: rm -f news-data.before.json
 
       - name: Commit community news updates
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Update Saskatchewan community news"
-          file_pattern: news-data.json news-sources.json news-discovery-cache.json news-review-queue.json news-coverage-report.json news first-nations sitemap.xml robots.txt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add news-data.json news-sources.json news-discovery-cache.json news-review-queue.json news-coverage-report.json news first-nations sitemap.xml robots.txt
+          if git diff --cached --quiet; then
+            echo "No news changes to commit"
+            exit 0
+          fi
+          git commit -m "Update Saskatchewan community news"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            echo "Push attempt $attempt failed; retrying after concurrent data writer"
+            git rebase --abort || true
+            sleep $((attempt * 5))
+          done
+          exit 1

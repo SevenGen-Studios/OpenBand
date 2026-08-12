@@ -5,6 +5,7 @@ from pathlib import Path
 
 from tools.news_discovery import (
     PILOT_BAND_IDS,
+    article_page_metadata,
     canonical_url,
     candidate_review_reason,
     communities_for_targeted_search,
@@ -75,6 +76,34 @@ class NewsDiscoveryTests(unittest.TestCase):
             ),
         )
         self.assertFalse(is_supported_update("Like and share this contest"))
+        self.assertFalse(
+            is_supported_update("Employment Opportunity - Housing Coordinator")
+        )
+
+    def test_article_metadata_uses_explicit_publication_date(self):
+        markup = """
+        <html><head>
+          <meta property="og:title" content="Community water project update">
+          <meta property="article:published_time" content="2026-08-02T09:00:00-06:00">
+          <meta property="og:description" content="The Nation published a project update.">
+          <link rel="canonical" href="/news/water-project">
+        </head><body><h1>Community water project update</h1></body></html>
+        """
+        metadata = article_page_metadata(markup, "https://example.com/news/water-project")
+        self.assertEqual("2026-08-02", metadata["published"])
+        self.assertEqual("article:published_time", metadata["dateSource"])
+        self.assertEqual(
+            "https://example.com/news/water-project", metadata["canonical"]
+        )
+
+    def test_article_metadata_does_not_treat_any_visible_date_as_published(self):
+        markup = """
+        <html><head><title>Housing services</title></head>
+        <body><h1>Housing services</h1><p>Applications close September 4, 2026.</p></body>
+        </html>
+        """
+        metadata = article_page_metadata(markup, "https://example.com/housing")
+        self.assertIsNone(metadata["published"])
 
     def test_deduplicates_cross_posted_story_and_prefers_official_source(self):
         news_item = {
@@ -238,6 +267,34 @@ class NewsDiscoveryTests(unittest.TestCase):
             [item["title"] for item in retained],
         )
         self.assertEqual(["Future community meeting"], [item["title"] for item in removed])
+
+    def test_prunes_legacy_evergreen_and_jobs_rows_from_news(self):
+        retained, removed = prune_invalid_generated_articles(
+            [
+                {
+                    "title": "Employment Opportunity - Housing Coordinator",
+                    "publishedAt": "2026-07-20",
+                    "discoveredAt": "2026-07-20T00:00:00Z",
+                    "sourceType": "Official First Nation Website",
+                },
+                {
+                    "title": "Housing services",
+                    "publishedAt": "2026-07-20",
+                    "discoveredAt": "2026-07-20T00:00:00Z",
+                    "sourceType": "Official First Nation Website",
+                },
+                {
+                    "title": "Verified infrastructure announcement",
+                    "publishedAt": "2026-07-20",
+                    "discoveredAt": "2026-07-20T00:00:00Z",
+                    "sourceType": "Official First Nation Website",
+                    "dateSource": "article:published_time",
+                },
+            ],
+            date(2026, 8, 1),
+        )
+        self.assertEqual(["Verified infrastructure announcement"], [item["title"] for item in retained])
+        self.assertEqual(2, len(removed))
 
     def test_non_https_candidate_is_sent_to_review(self):
         reason = candidate_review_reason(
