@@ -114,7 +114,9 @@ def discovery_key(record: dict) -> str:
     associations = sorted(
         {clean_text(record.get("communityId"))} | {clean_text(value) for value in record.get("firstNationIds", [])}
     )
-    return "|".join([slug(title), slug(record.get("sourceId") or ""), ",".join(value for value in associations if value)])
+    host = urllib.parse.urlsplit(clean_text(record.get("sourceUrl"))).netloc.lower().removeprefix("www.")
+    source_identity = host or slug(record.get("sourceId") or "")
+    return "|".join([slug(title), source_identity, ",".join(value for value in associations if value)])
 
 
 def stable_id(record: dict) -> str:
