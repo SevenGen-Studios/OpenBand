@@ -66818,10 +66818,10 @@
               "travel": 36000,
               "expenses": 6118,
               "creditCard": null,
-              "otherPayments": 133100,
-              "total": 265218,
+              "otherPayments": null,
+              "total": 132118,
               "travelExpenses": 42118.0,
-              "other": 133100.0
+              "other": 0.0
             },
             {
               "name": "Crowe, Crystal",
@@ -66904,9 +66904,10 @@
           ],
           "parse_status": "manual_from_official_pdf",
           "warnings": [
-            "Manual override applied from Government of Canada First Nation Profiles: https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=385&FY=2023-2024&DOC=Schedule%20of%20Remuneration%20and%20Expenses&lang=eng"
+            "Manual override applied from Government of Canada First Nation Profiles: https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=385&FY=2023-2024&DOC=Schedule%20of%20Remuneration%20and%20Expenses&lang=eng",
+            "Sanitized parsed rows: removed 0, fixed totals 0"
           ],
-          "parse_confidence": "manual_reviewed",
+          "parse_confidence": "high",
           "manual_review_required": false,
           "manual_override": true,
           "override_source": "Government of Canada First Nation Profiles: https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=385&FY=2023-2024&DOC=Schedule%20of%20Remuneration%20and%20Expenses&lang=eng"
