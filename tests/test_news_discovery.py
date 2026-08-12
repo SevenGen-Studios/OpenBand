@@ -17,6 +17,7 @@ from tools.news_discovery import (
     extract_html_candidates,
     is_supported_update,
     generic_news_title,
+    generic_news_item,
     merge_articles,
     parse_date_text,
     prune_invalid_generated_articles,
@@ -95,6 +96,20 @@ class NewsDiscoveryTests(unittest.TestCase):
         )
         self.assertTrue(generic_news_title("Upcoming Events - Muskoday First Nation"))
         self.assertTrue(generic_news_title("Piapot First Nation Official Website"))
+        self.assertTrue(
+            generic_news_item(
+                {
+                    "title": "Onion Lake",
+                    "communityName": "Onion Lake Cree Nation",
+                }
+            )
+        )
+        self.assertTrue(
+            employment_item(
+                "Family Shelter Group Program Coordinator *CLOSED*",
+                "https://example.com/group-program-coordinator",
+            )
+        )
 
     def test_article_metadata_uses_explicit_publication_date(self):
         markup = """
