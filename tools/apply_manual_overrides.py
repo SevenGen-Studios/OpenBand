@@ -78,6 +78,25 @@ def apply_record(data, record):
         return 0
 
     applied = 0
+    for year, status_values in (record.get("filingStatuses") or {}).items():
+        target_filing = None
+        for filing in target_band.get("filings", []):
+            if filing.get("year") == year and is_remuneration(filing):
+                target_filing = filing
+                break
+        if target_filing is None:
+            continue
+        target_filing["people"] = []
+        target_filing["parse_status"] = status_values["parse_status"]
+        target_filing["parse_confidence"] = status_values.get("parse_confidence", "high")
+        target_filing["manual_review_required"] = status_values.get(
+            "manual_review_required", False
+        )
+        target_filing["warnings"] = status_values.get("warnings", [])
+        target_filing["manual_override"] = True
+        target_filing["override_source"] = record.get("source") or "manual_overrides"
+        applied += 1
+
     for year, rows in (record.get("filings") or {}).items():
         target_filing = None
         for filing in target_band.get("filings", []):

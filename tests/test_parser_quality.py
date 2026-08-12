@@ -182,6 +182,70 @@ class ParserQualityTests(unittest.TestCase):
         self.assertEqual(person["otherPayments"], 133100)
         self.assertEqual(person["total"], 265218)
 
+    def test_text_row_accepts_decimal_months_and_repairs_split_expense(self):
+        person = run_scraper._parse_text_line(
+            "Beryl Whitecap Councillor 11.5 45,550 7 9,924 125,474",
+            allow_inferred_councillor=True,
+            header_context="Name Position Number of Months Remuneration Expenses Total",
+        )
+
+        self.assertEqual(person["months"], 11.5)
+        self.assertEqual(person["remuneration"], 45550)
+        self.assertEqual(person["travel"], 79924)
+        self.assertEqual(person["total"], 125474)
+
+    def test_text_row_uses_reported_dual_subtotals(self):
+        person = run_scraper._parse_text_line(
+            "Terran Keewatin Councillor 12 9 2,319 5 ,000 351 $ 97,670 1 9,411 1,560 $ 20,971",
+            allow_inferred_councillor=True,
+            header_context=(
+                "Remuneration Expenses Name Designation Months Salary TFSA "
+                "Benefits Total Travel Telephone Total"
+            ),
+        )
+
+        self.assertEqual(person["remuneration"], 97670)
+        self.assertEqual(person["travel"], 20971)
+        self.assertEqual(person["total"], 118641)
+
+    def test_text_row_maps_contract_billings_to_other_payments(self):
+        person = run_scraper._parse_text_line(
+            "Amanda Ernest Chief (Councillor for 6.5 mo.) 5.5 72,501 204,959 -",
+            allow_inferred_councillor=True,
+            header_context="Number of Months Remuneration Expenses Contract",
+        )
+
+        self.assertEqual(person["name"], "Amanda Ernest")
+        self.assertEqual(person["role"], "Chief")
+        self.assertEqual(person["months"], 5.5)
+        self.assertEqual(person["remuneration"], 72501)
+        self.assertEqual(person["travel"], 204959)
+        self.assertIsNone(person["otherPayments"])
+        self.assertEqual(person["total"], 277460)
+
+        surname = run_scraper._parse_text_line(
+            "Dale Chief Councillor 12 60,200 167,082 -",
+            allow_inferred_councillor=True,
+            header_context="Number of Months Remuneration Expenses Contract",
+        )
+        self.assertEqual(surname["name"], "Dale Chief")
+        self.assertEqual(surname["role"], "Councillor")
+
+    def test_text_pages_use_standalone_chief_section_role(self):
+        people = run_scraper._extract_people_from_text_pages(
+            [
+                """Schedule of Remuneration and Expenses - Chief and Councillors
+Name Months Honoraria Other Remuneration Travel Expenses Other Remuneration
+Chief
+Fox, Mark 12 $ 90,000 185,430 36,000 12,501 4,000
+Councillors
+Crowe, Crystal 12 $ 77,723 170,720 18,000 39,686 14,953"""
+            ]
+        )
+
+        self.assertEqual(people[0]["role"], "Chief")
+        self.assertEqual(people[1]["role"], "Councillor")
+
     def test_sanitizer_rebuilds_stale_canonical_fields_after_total_echo_repair(self):
         person = {
             "name": "Shawn Spencer",
