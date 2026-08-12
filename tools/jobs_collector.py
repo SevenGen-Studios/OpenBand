@@ -33,7 +33,7 @@ JOB_WORDS = re.compile(
     re.IGNORECASE,
 )
 GENERIC_LINK_TITLES = re.compile(
-    r"^(jobs?|careers?|employment(?: opportunities)?|job opportunities|view jobs?|apply(?: now)?)$",
+    r"^(jobs?|careers?|employment(?: opportunities)?|job opportunities|view jobs?|apply(?: now)?|job summary|position summary)$",
     re.IGNORECASE,
 )
 CLOSED_WORDS = re.compile(
@@ -67,6 +67,14 @@ def slug(value: str) -> str:
     return re.sub(r"^-+|-+$", "", re.sub(r"[^a-z0-9]+", "-", clean_text(value).lower()))
 
 
+def clean_job_title(value: str) -> str:
+    title = clean_text(value)
+    title = re.sub(r"^.*?\bis hiring!?\s*(?:position)?\s*[:\-]\s*", "", title, flags=re.I)
+    title = re.sub(r"\s*[\-(–—]\s*(?:apply by|deadline to apply|open until filled)\b.*$", "", title, flags=re.I)
+    title = re.sub(r"\s*\((?:apply by|deadline|open until filled)\b.*\)\s*$", "", title, flags=re.I)
+    return clean_text(title.strip(" -–—:()"))
+
+
 def parse_date(value):
     if not value:
         return None
@@ -96,7 +104,8 @@ def effective_status(record: dict, today: date) -> str:
 
 
 def listing_key(record: dict) -> str:
-    parts = [record.get("title"), record.get("employer"), record.get("communityId"), record.get("location")]
+    title = re.sub(r"\b(and|the)\b", " ", clean_job_title(record.get("title") or ""), flags=re.I)
+    parts = [title, record.get("employer"), record.get("communityId"), record.get("location")]
     return "|".join(slug(str(value or "")) for value in parts)
 
 
@@ -114,7 +123,7 @@ def normalize_listing(raw: dict, today: date) -> dict:
             first_nation_ids.append(normalized)
     record = {
         "id": clean_text(raw.get("id")),
-        "title": clean_text(raw.get("title")),
+        "title": clean_job_title(raw.get("title")),
         "employer": clean_text(raw.get("employer")),
         "communityName": clean_text(raw.get("communityName")),
         "communityId": clean_text(raw.get("communityId")),
@@ -319,7 +328,7 @@ def title_from_document(text: str) -> str:
     candidates = []
     for raw_line in text.splitlines()[:80]:
         line = clean_text(raw_line).strip("-|:•")
-        if not 6 <= len(line) <= 130 or generic.match(line):
+        if not 6 <= len(line) <= 130 or generic.match(line) or GENERIC_LINK_TITLES.match(line):
             continue
         if re.search(r"\b(closing|deadline|salary|applications?|qualifications?|responsibilities)\b", line, re.I):
             continue
