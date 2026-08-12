@@ -6,11 +6,13 @@ from pathlib import Path
 
 from tools.jobs_collector import (
     collect,
+    configured_sources,
     effective_status,
     expand_verified_batches,
     extract_labeled_date,
     listing_key,
     normalize_listing,
+    title_from_document,
 )
 
 
@@ -47,6 +49,22 @@ class JobsPipelineTests(unittest.TestCase):
 
         self.assertIsNotNone(GENERIC_LINK_TITLES.match("Job Opportunities"))
         self.assertIsNone(GENERIC_LINK_TITLES.match("Community Health Nurse"))
+
+    def test_ocr_text_prefers_specific_position_title(self):
+        text = """JOB OPPORTUNITY
+        Maintenance Assistant
+        Housing Department
+        Applications close August 17, 2026
+        Qualifications and responsibilities follow.
+        """
+        self.assertEqual(title_from_document(text), "Maintenance Assistant")
+
+    def test_isc_listed_community_websites_join_source_registry(self):
+        sources = configured_sources(ROOT)
+        website_sources = [row for row in sources if row.get("sourceType") == "isc_listed_first_nation_website"]
+        self.assertGreaterEqual(len(website_sources), 40)
+        self.assertTrue(all(row["verifiedOfficialSource"] for row in website_sources))
+        self.assertTrue(all(row["url"].startswith("https://") for row in website_sources))
 
     def test_missing_money_is_not_converted_to_zero(self):
         record = normalize_listing(
