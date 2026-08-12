@@ -22,6 +22,29 @@ def slugify(value: str) -> str:
     return re.sub(r"^-+|-+$", "", re.sub(r"[^a-z0-9]+", "-", value))
 
 
+def nation_initials(name: str) -> str:
+    ignored = {"first", "nation", "nations", "cree", "dene", "denesuline", "indian", "band"}
+    words = re.findall(r"[A-Za-z0-9]+", name or "")
+    chosen = [word for word in words if word.lower() not in ignored] or words
+    return "".join(word[0] for word in chosen[:2]).upper() or "FN"
+
+
+def nation_logo_markup(band: dict, size: str = "small", *, eager: bool = False) -> str:
+    name = str(band.get("name") or "First Nation")
+    verified = bool(band.get("logo_verified") and band.get("logo_url"))
+    label = f"{name} official logo" if verified else f"{name} logo unverified; OpenBand placeholder"
+    image = ""
+    if verified:
+        loading = "eager" if eager else "lazy"
+        priority = ' fetchpriority="high"' if eager else ""
+        image = f'<img src="{html.escape(str(band["logo_url"]), quote=True)}" alt="" loading="{loading}" decoding="async"{priority}>'
+    state = "" if verified else " fn-logo-unverified"
+    return (
+        f'<span class="fn-logo fn-logo-{html.escape(size)}{state}" role="img" aria-label="{html.escape(label, quote=True)}">'
+        f'<span class="fn-logo-initials" aria-hidden="true">{html.escape(nation_initials(name))}</span>{image}</span>'
+    )
+
+
 def remuneration_filings(band: dict) -> list[dict]:
     rows = [
         filing
@@ -240,7 +263,7 @@ def profile_prerender(band: dict, election_records: list[dict], projects: list[d
     )
     return (
         f'<div id="profilePrerender" class="profile-prerender">'
-        f"<h1>{html.escape(band['name'])} Financial Records</h1>"
+        f'<div class="profile-prerender-title"><h1>{html.escape(band["name"])} Financial Records</h1>{nation_logo_markup(band, "profile", eager=True)}</div>'
         "<p>Public FNFTA filing availability, parsed Chief and Council remuneration, "
         "audited financial statements, and original Indigenous Services Canada source documents.</p>"
         "<dl>"
@@ -256,9 +279,9 @@ def directory_prerender(bands: list[dict], map_communities: list[dict]) -> str:
     map_by_id = {str(row.get("id")): row for row in map_communities}
     links = "".join(
         f'<a class="directory-community" href="/first-nations/{slugify(band["name"])}/">'
-        f"<span><strong>{html.escape(band['name'])}</strong>"
+        f'<span class="directory-community-main">{nation_logo_markup(band, "medium")}<span><strong>{html.escape(band["name"])}</strong>'
         f"<small>{html.escape(band.get('treaty') or 'Treaty not listed')} · "
-        f"{html.escape(map_by_id.get(str(band.get('id')), {}).get('tribalCouncil') or 'No council affiliation listed in current sources')}</small></span></a>"
+        f"{html.escape(map_by_id.get(str(band.get('id')), {}).get('tribalCouncil') or 'No council affiliation listed in current sources')}</small></span></span></a>"
         for band in sorted(bands, key=lambda item: item["name"])
     )
     return f'<div id="directoryList" class="directory-list static-directory-list">{links}</div>'
@@ -323,6 +346,8 @@ def build() -> None:
             "isPartOf": {"@type": "WebSite", "name": "OpenBand", "url": f"{ORIGIN}/"},
             "about": {"@type": "Organization", "name": band["name"]},
         }
+        if band.get("logo_verified") and band.get("logo_url"):
+            structured["about"]["logo"] = f'{ORIGIN}{band["logo_url"]}'
         page = set_meta(base, title=title, description=description, path=path, structured=structured)
         page = page.replace('<body data-page="home">', f'<body data-page="profile" data-band-id="{band["id"]}">', 1)
         page = page.replace('<div id="profilePrerender" class="profile-prerender" hidden></div>', profile_prerender(band, elections.get("records", []), projects.get("projects", []), projects.get("unverifiedProjects", []), jobs.get("listings", [])), 1)
@@ -330,8 +355,8 @@ def build() -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260812b" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260812b" defer></script>',
+            '<script src="/assets/openband.js?v=20260812c" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260812c" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)

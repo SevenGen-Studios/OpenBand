@@ -24,6 +24,8 @@ The public website focuses on Saskatchewan FNFTA Chief and Council remuneration 
 - `data.json` - generated filing and remuneration data used by the website
 - `map-data.json` - ISC-sourced community locations and tribal-council relationships
 - `contacts-data.json` - source-linked Band Office phone, email, website, and mailing-address records
+- `first-nation-logos.json` - verified local logo paths, original source URLs, and review status for every tracked Nation
+- `public/first-nation-logos/` - optimized SVG/WebP logo assets served locally by OpenBand
 - `projects-data.json` - source-linked housing and infrastructure projects shown on community profiles
 - `audit-results.txt` - latest coverage and parser-health report
 - `scraper.py` - restored core scraper
@@ -36,6 +38,7 @@ The public website focuses on Saskatchewan FNFTA Chief and Council remuneration 
 - `tools/capital_parser.py` - extracts validated audited-statement summaries into `capital-data.json`
 - `tools/member_count_scraper.py` - updates registered population counts from official ISC First Nation Profiles
 - `tools/contact_scraper.py` - refreshes Band Office contacts from ISC and verified official community sites
+- `tools/collect_first_nation_logos.py` - verifies, downloads, and optimizes official Nation logo assets
 - `tools/build_map_data.py` - refreshes the interactive Browse map from official ISC map services
 
 ## Browse map data
@@ -118,6 +121,31 @@ python tools/contact_scraper.py
 
 The scraper workflows and **Build static OpenBand routes** workflow run this
 step automatically for GitHub-hosted updates.
+
+## First Nation logos
+
+Every Nation in `data.json` has a corresponding entry in
+`first-nation-logos.json`. A verified record stores the local asset path, the
+official page used to attribute it, the original asset URL, a verification
+date, dimensions, byte size, and SHA-256 digest. If the mark cannot be
+confidently tied to that specific Nation, its status stays `logo_unverified`
+and the website renders the standard OpenBand initials placeholder.
+
+Run the collector and regenerate the static routes with:
+
+```bash
+python tools/collect_first_nation_logos.py
+python tools/build_site.py
+python -m unittest tests/test_first_nation_logos.py -v
+```
+
+The collector accepts marks from official Nation sites, plus explicitly
+identified Tribal Council sources when necessary. Generic photos, flags,
+third-party marks, and unverified recreations are rejected. Raster assets are
+converted to compact WebP files with a maximum edge of 512 pixels; safe,
+compact SVG originals are retained. `tools/merge_previous_data.py` preserves
+the curated logo fields when an incremental ISC scraper run rebuilds
+`data.json`.
 
 ## Analytics
 

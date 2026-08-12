@@ -11,6 +11,13 @@ import sys
 from pathlib import Path
 
 DEFAULT_STATUSES = {"", "not_applicable", None}
+LOGO_FIELDS = (
+    "logo_url",
+    "logo_source",
+    "logo_asset_source",
+    "logo_verified",
+    "logo_status",
+)
 
 
 def band_key(band):
@@ -42,6 +49,12 @@ def merge_warnings(previous_filing, current_filing, note):
 
 
 def merge_band(previous_band, current_band):
+    # Logo verification is curated separately from the ISC filings scraper.
+    # Preserve it whenever a fresh scraper run rebuilds a band record.
+    for field in LOGO_FIELDS:
+        if field in previous_band:
+            current_band[field] = previous_band[field]
+
     previous_filings = {filing_key(filing): filing for filing in previous_band.get("filings", [])}
     restored_people = 0
     restored_statuses = 0
