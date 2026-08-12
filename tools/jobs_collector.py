@@ -72,7 +72,7 @@ def clean_job_title(value: str) -> str:
     title = re.sub(r"^.*?\bis hiring!?\s*(?:position)?\s*[:\-]\s*", "", title, flags=re.I)
     title = re.sub(r"\s*[\-(–—]\s*(?:apply by|deadline to apply|open until filled)\b.*$", "", title, flags=re.I)
     title = re.sub(r"\s*\((?:apply by|deadline|open until filled)\b.*\)\s*$", "", title, flags=re.I)
-    return clean_text(title.strip(" -–—:()"))
+    return clean_text(title.strip(" -–—:"))
 
 
 def parse_date(value):
@@ -107,6 +107,14 @@ def listing_key(record: dict) -> str:
     title = re.sub(r"\b(and|the)\b", " ", clean_job_title(record.get("title") or ""), flags=re.I)
     parts = [title, record.get("employer"), record.get("communityId"), record.get("location")]
     return "|".join(slug(str(value or "")) for value in parts)
+
+
+def discovery_key(record: dict) -> str:
+    title = re.sub(r"\b(and|the)\b", " ", clean_job_title(record.get("title") or ""), flags=re.I)
+    associations = sorted(
+        {clean_text(record.get("communityId"))} | {clean_text(value) for value in record.get("firstNationIds", [])}
+    )
+    return "|".join([slug(title), slug(record.get("sourceId") or ""), ",".join(value for value in associations if value)])
 
 
 def stable_id(record: dict) -> str:
@@ -606,6 +614,7 @@ def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]
         candidates.extend(row for row in previous.get("listings", []) if not row.get("manualOverride"))
 
     by_id = {}
+    by_discovery = {}
     duplicate_count = 0
     suppressed = {str(value) for value in overrides.get("suppressIds", [])}
     corrections = overrides.get("corrections", {})
@@ -625,13 +634,20 @@ def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]
             record["status"] = "Pending verification"
             record["warnings"] = issues
         key = listing_key(record)
-        existing = by_id.get(key)
+        source_key = discovery_key(record)
+        existing_key = by_discovery.get(source_key)
+        existing = by_id.get(key) or (by_id.get(existing_key) if existing_key else None)
         if existing:
             duplicate_count += 1
             if record.get("manualOverride") or not existing.get("manualOverride") and record.get("extractionConfidence") == "high":
+                old_key = listing_key(existing)
+                if old_key != key:
+                    by_id.pop(old_key, None)
                 by_id[key] = record
+                by_discovery[source_key] = key
         else:
             by_id[key] = record
+            by_discovery[source_key] = key
 
     listings = sorted(by_id.values(), key=lambda row: (row.get("postedDate") or row.get("lastChecked") or "", row["title"]), reverse=True)
     active = [row for row in listings if row["status"] in ACTIVE_STATUSES]
