@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-12T09:56:12Z",
+  "generated": "2026-08-12T14:37:23Z",
   "trackedCommunityCount": 69,
   "configuredSourceCount": 92,
   "communities": [
@@ -2211,12 +2211,10 @@
         "372",
         "376"
       ],
-      "candidatesFound": 0,
+      "candidatesFound": 3,
       "reviewItems": 0,
       "status": "checked",
-      "warnings": [
-        "stc-employment: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "pagc-jobs",
@@ -2265,12 +2263,10 @@
       "communityIds": [
         "355"
       ],
-      "candidatesFound": 0,
+      "candidatesFound": 3,
       "reviewItems": 0,
       "status": "checked",
-      "warnings": [
-        "pbcn-job-postings: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "montreal-lake-updates",
@@ -2280,12 +2276,10 @@
       "communityIds": [
         "354"
       ],
-      "candidatesFound": 0,
+      "candidatesFound": 3,
       "reviewItems": 0,
       "status": "checked",
-      "warnings": [
-        "montreal-lake-updates: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "fhqtc-careers",
@@ -2305,12 +2299,10 @@
         "387",
         "388"
       ],
-      "candidatesFound": 0,
+      "candidatesFound": 2,
       "reviewItems": 0,
       "status": "checked",
-      "warnings": [
-        "fhqtc-careers: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "ytc-careers",
@@ -2356,7 +2348,7 @@
       "communityIds": [
         "349"
       ],
-      "candidatesFound": 4,
+      "candidatesFound": 3,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2382,12 +2374,10 @@
       "communityIds": [
         "344"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "onion-lake-community-updates: fetch failed: <urlopen error timed out>"
-      ]
+      "candidatesFound": 1,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "onion-lake-job-board",
@@ -2410,12 +2400,10 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "cowessess-careers: fetch failed: <urlopen error timed out>"
-      ]
+      "candidatesFound": 4,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "ahtahkakoop-official-jobs",
@@ -2438,12 +2426,10 @@
       "communityIds": [
         "404"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 0,
+      "candidatesFound": 2,
+      "reviewItems": 1,
       "status": "checked",
-      "warnings": [
-        "big-river-official: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "birch-narrows-careers",
@@ -2484,10 +2470,10 @@
         "390"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
-      "status": "checked",
+      "reviewItems": 1,
+      "status": "unavailable",
       "warnings": [
-        "fishing-lake-official: no candidate job links detected"
+        "fishing-lake-official: fetch failed: HTTP Error 429: Too Many Requests"
       ]
     },
     {
@@ -2558,7 +2544,7 @@
       "reviewItems": 1,
       "status": "unavailable",
       "warnings": [
-        "muscowpetung-jobs: fetch failed: <urlopen error timed out>"
+        "muscowpetung-jobs: fetch failed: HTTP Error 404: Not Found"
       ]
     },
     {
@@ -2585,10 +2571,10 @@
         "408"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
-      "status": "checked",
+      "reviewItems": 1,
+      "status": "unavailable",
       "warnings": [
-        "ocean-man-official: no candidate job links detected"
+        "ocean-man-official: fetch failed: HTTP Error 429: Too Many Requests"
       ]
     },
     {
@@ -2600,10 +2586,10 @@
         "382"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
-      "status": "checked",
+      "reviewItems": 1,
+      "status": "unavailable",
       "warnings": [
-        "okanese-employment: no candidate job links detected"
+        "okanese-employment: fetch failed: HTTP Error 429: Too Many Requests"
       ]
     },
     {
@@ -2614,12 +2600,10 @@
       "communityIds": [
         "383"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 0,
+      "candidatesFound": 7,
+      "reviewItems": 3,
       "status": "checked",
-      "warnings": [
-        "pasqua-updates: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "peepeekisis-employment",
@@ -2644,12 +2628,10 @@
       "communityIds": [
         "385"
       ],
-      "candidatesFound": 0,
+      "candidatesFound": 4,
       "reviewItems": 0,
       "status": "checked",
-      "warnings": [
-        "piapot-careers: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "red-earth-jobs",
@@ -2704,7 +2686,7 @@
       "reviewItems": 1,
       "status": "unavailable",
       "warnings": [
-        "sakimay-official: fetch failed: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)>"
+        "sakimay-official: fetch failed: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.sakimay.ca'. (_ssl.c:1010)>"
       ]
     },
     {
@@ -2803,10 +2785,12 @@
       "communityIds": [
         "394"
       ],
-      "candidatesFound": 1,
-      "reviewItems": 2,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-394: fetch failed: HTTP Error 429: Too Many Requests"
+      ]
     },
     {
       "sourceId": "community-site-366",
@@ -2829,12 +2813,10 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "community-site-361: fetch failed: <urlopen error timed out>"
-      ]
+      "candidatesFound": 5,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "community-site-350",
@@ -2903,7 +2885,7 @@
         "351"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
+      "reviewItems": 3,
       "status": "checked",
       "warnings": [
         "community-site-351: no candidate job links detected"
@@ -3030,7 +3012,7 @@
         "374"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
+      "reviewItems": 1,
       "status": "checked",
       "warnings": [
         "community-site-374: no candidate job links detected"
@@ -3044,12 +3026,10 @@
       "communityIds": [
         "354"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 0,
+      "candidatesFound": 8,
+      "reviewItems": 2,
       "status": "checked",
-      "warnings": [
-        "community-site-354: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-342",
@@ -3086,10 +3066,10 @@
         "381"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 0,
+      "status": "checked",
       "warnings": [
-        "community-site-381: fetch failed: <urlopen error timed out>"
+        "community-site-381: no candidate job links detected"
       ]
     },
     {
@@ -3101,10 +3081,10 @@
         "375"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 3,
+      "status": "checked",
       "warnings": [
-        "community-site-375: fetch failed: <urlopen error timed out>"
+        "community-site-375: no candidate job links detected"
       ]
     },
     {
@@ -3115,12 +3095,10 @@
       "communityIds": [
         "371"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 0,
+      "candidatesFound": 7,
+      "reviewItems": 3,
       "status": "checked",
-      "warnings": [
-        "community-site-371: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-380",
@@ -3158,12 +3136,10 @@
       "communityIds": [
         "344"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "community-site-344: fetch failed: <urlopen error timed out>"
-      ]
+      "candidatesFound": 1,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "community-site-383",
@@ -3173,12 +3149,10 @@
       "communityIds": [
         "383"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 0,
+      "candidatesFound": 5,
+      "reviewItems": 3,
       "status": "checked",
-      "warnings": [
-        "community-site-383: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-384",
@@ -3203,12 +3177,10 @@
       "communityIds": [
         "355"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 0,
+      "candidatesFound": 3,
+      "reviewItems": 2,
       "status": "checked",
-      "warnings": [
-        "community-site-355: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-385",
@@ -3218,12 +3190,10 @@
       "communityIds": [
         "385"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 0,
+      "candidatesFound": 9,
+      "reviewItems": 3,
       "status": "checked",
-      "warnings": [
-        "community-site-385: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-345",
@@ -3292,10 +3262,10 @@
         "368"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 0,
+      "status": "checked",
       "warnings": [
-        "community-site-368: fetch failed: <urlopen error timed out>"
+        "community-site-368: no candidate job links detected"
       ]
     },
     {
