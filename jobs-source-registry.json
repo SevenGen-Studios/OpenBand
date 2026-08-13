@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-12T14:37:23Z",
+  "generated": "2026-08-13T14:38:12Z",
   "trackedCommunityCount": 69,
   "configuredSourceCount": 92,
   "communities": [
@@ -2135,10 +2135,12 @@
       "communityIds": [
         "353"
       ],
-      "candidatesFound": 37,
-      "reviewItems": 0,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "llrib-official-jobs: fetch failed: The read operation timed out"
+      ]
     },
     {
       "sourceId": "kitsaki-careers",
@@ -2263,7 +2265,7 @@
       "communityIds": [
         "355"
       ],
-      "candidatesFound": 3,
+      "candidatesFound": 2,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2470,10 +2472,10 @@
         "390"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 0,
+      "status": "checked",
       "warnings": [
-        "fishing-lake-official: fetch failed: HTTP Error 429: Too Many Requests"
+        "fishing-lake-official: no candidate job links detected"
       ]
     },
     {
@@ -2484,7 +2486,7 @@
       "communityIds": [
         "391"
       ],
-      "candidatesFound": 4,
+      "candidatesFound": 5,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2571,10 +2573,10 @@
         "408"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 0,
+      "status": "checked",
       "warnings": [
-        "ocean-man-official: fetch failed: HTTP Error 429: Too Many Requests"
+        "ocean-man-official: no candidate job links detected"
       ]
     },
     {
@@ -2586,10 +2588,10 @@
         "382"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 0,
+      "status": "checked",
       "warnings": [
-        "okanese-employment: fetch failed: HTTP Error 429: Too Many Requests"
+        "okanese-employment: no candidate job links detected"
       ]
     },
     {
@@ -2785,12 +2787,10 @@
       "communityIds": [
         "394"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "community-site-394: fetch failed: HTTP Error 429: Too Many Requests"
-      ]
+      "candidatesFound": 1,
+      "reviewItems": 2,
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "community-site-366",
@@ -2899,8 +2899,8 @@
       "communityIds": [
         "391"
       ],
-      "candidatesFound": 5,
-      "reviewItems": 2,
+      "candidatesFound": 6,
+      "reviewItems": 3,
       "status": "checked",
       "warnings": []
     },
@@ -2957,10 +2957,12 @@
       "communityIds": [
         "377"
       ],
-      "candidatesFound": 3,
-      "reviewItems": 0,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-377: fetch failed: <urlopen error timed out>"
+      ]
     },
     {
       "sourceId": "community-site-353",
@@ -2998,10 +3000,12 @@
       "communityIds": [
         "341"
       ],
-      "candidatesFound": 3,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-341: fetch failed: <urlopen error timed out>"
+      ]
     },
     {
       "sourceId": "community-site-374",
@@ -3095,7 +3099,7 @@
       "communityIds": [
         "371"
       ],
-      "candidatesFound": 7,
+      "candidatesFound": 8,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3137,7 +3141,7 @@
         "344"
       ],
       "candidatesFound": 1,
-      "reviewItems": 3,
+      "reviewItems": 2,
       "status": "checked",
       "warnings": []
     },
@@ -3149,7 +3153,7 @@
       "communityIds": [
         "383"
       ],
-      "candidatesFound": 5,
+      "candidatesFound": 8,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3177,7 +3181,7 @@
       "communityIds": [
         "355"
       ],
-      "candidatesFound": 3,
+      "candidatesFound": 2,
       "reviewItems": 2,
       "status": "checked",
       "warnings": []
