@@ -75,8 +75,8 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260812d"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260812d"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260813a"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260813a"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
@@ -205,6 +205,13 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("wheelPxPerZoomLevel:140", javascript)
         self.assertIn("radius:9", javascript)
         self.assertIn("maxZoom:8", javascript)
+        self.assertIn("RESERVE_LAND_URL", javascript)
+        self.assertIn("CPC_CODE%3D%27SK%27", javascript)
+        self.assertIn("function renderReserveLandLayer", javascript)
+        self.assertIn("color:'#b91c1c'", javascript)
+        self.assertIn("fillColor:'#ef4444'", javascript)
+        self.assertIn("First Nation / reserve lands", javascript)
+        self.assertIn("ISC Reserve Land boundaries", markup)
         councils = {row["tribalCouncil"] for row in map_data["communities"]}
         self.assertIn("South East Treaty 4 Tribal Council", councils)
         self.assertIn("Battlefords Agency Tribal Chiefs (BATC)", councils)

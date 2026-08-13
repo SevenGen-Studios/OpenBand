@@ -355,14 +355,14 @@ def build() -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260812d" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260812d" defer></script>',
+            '<script src="/assets/openband.js?v=20260813a" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260813a" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)
 
     directory_title = "Explore Saskatchewan First Nations | OpenBand"
-    directory_description = "Explore Saskatchewan First Nations on an interactive map organized by Treaty and tribal-council affiliation."
+    directory_description = "Explore Saskatchewan First Nations on an interactive map with red First Nation and reserve land boundaries, organized by Treaty and tribal-council affiliation."
     directory = set_meta(
         base,
         title=directory_title,
