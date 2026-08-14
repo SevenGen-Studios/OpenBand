@@ -93,7 +93,25 @@ jobs:
         run: rm -f events-data.before.json
 
       - name: Commit community event updates
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Update Saskatchewan community events"
-          file_pattern: events-data.json events-sources.json events-review-queue.json events-coverage-report.json first-nations sitemap.xml robots.txt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add events-data.json events-sources.json events-review-queue.json events-coverage-report.json
+          if git diff --cached --quiet; then
+            echo "No community event data changes to commit"
+            exit 0
+          fi
+          git commit -m "Update Saskatchewan community events"
+          # Static pages are rebuilt for verification, but event cards load from the JSON data.
+          # Clean generated files so a concurrent unrelated site commit can be rebased safely.
+          git reset --hard HEAD
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 5))
+          done
+          echo "Failed to publish community event data after 3 attempts" >&2
+          exit 1
