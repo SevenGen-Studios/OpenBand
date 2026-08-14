@@ -731,6 +731,14 @@ def merge_events(existing: list[dict], candidates: list[dict], today: date | Non
                     old.get("startDate") == start
                     and event_identity_title(old.get("title")) == identity
                 )
+                or (
+                    old.get("startDate") == start
+                    and old.get("category") == item.get("category")
+                    and "shared-index" in {
+                        old.get("extractionMethod"),
+                        item.get("extractionMethod"),
+                    }
+                )
             )
         ), None)
         if duplicate:
@@ -780,7 +788,7 @@ def is_publishable_event(item: dict) -> bool:
         return True
     if method == "meta-api":
         return is_event_text(title, description) and bool(event_dates(description))
-    if method.startswith("ocr") or method in {"pdftotext", "html", "html-page"}:
+    if method.startswith("ocr") or method in {"pdftotext", "html", "html-page", "shared-index"}:
         expected_start, _ = choose_event_date(title, description)
         if not expected_start or expected_start != str(item.get("startDate") or ""):
             return False
