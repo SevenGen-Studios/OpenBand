@@ -305,19 +305,36 @@ def news_prerender(articles: list[dict]) -> str:
     return f'<div class="news-grid" id="newsGrid">{"".join(cards)}</div>'
 
 
-def enterprise_prerender(band: dict, enterprise: dict) -> str:
+def enterprise_prerender(band: dict, enterprise: dict, map_communities: list[dict]) -> str:
     profile = next(
         (row for row in enterprise.get("nationProfiles", []) if str(row.get("bandId")) == str(band.get("id"))),
         None,
     )
-    organization = None
-    if profile:
-        organization = next(
-            (row for row in enterprise.get("organizations", []) if row.get("id") == profile.get("primaryOrganizationId")),
-            None,
-        )
+    organizations_by_id = {row["id"]: row for row in enterprise.get("organizations", [])}
+    primary = organizations_by_id.get(profile.get("primaryOrganizationId")) if profile else None
+    community = next(
+        (row for row in map_communities if str(row.get("id")) == str(band.get("id"))),
+        {},
+    )
+    council_mapping = next(
+        (
+            row for row in enterprise.get("tribalCouncilOrganizations", [])
+            if row.get("tribalCouncil") == community.get("tribalCouncil")
+        ),
+        None,
+    )
+    collective = [
+        organizations_by_id[organization_id]
+        for organization_id in (council_mapping or {}).get("organizationIds", [])
+        if organization_id in organizations_by_id
+    ]
+    organizations = []
+    for organization in [primary, *collective]:
+        if organization and organization["id"] not in {row["id"] for row in organizations}:
+            organizations.append(organization)
+
     back = f"/first-nations/{slugify(band['name'])}/"
-    if not profile or not organization:
+    if not organizations:
         return (
             '<section id="enterprisePage" class="enterprise-page static-enterprise-page">'
             '<div class="enterprise-page-head">'
@@ -330,17 +347,43 @@ def enterprise_prerender(band: dict, enterprise: dict) -> str:
             '<p>Missing information is not treated as zero or as evidence that no enterprise activity exists.</p>'
             '</section></section>'
         )
+
+    organization = primary or organizations[0]
+    relationship = next(
+        (
+            row for row in enterprise.get("organizationRelationships", [])
+            if row.get("parentId") == f'band-{band["id"]}' and row.get("childId") == organization["id"]
+        ),
+        None,
+    )
+    relationship_label = (
+        (relationship or {}).get("relationshipType")
+        or (council_mapping or {}).get("relationshipType")
+        or "Publicly reported relationship"
+    )
     interests = [
         row for row in enterprise.get("ownershipInterests", [])
-        if row.get("ownerId") == profile.get("primaryOrganizationId")
+        if profile and row.get("ownerId") == profile.get("primaryOrganizationId")
     ]
     industries = "".join(
-        f'<span>{html.escape(value)}</span>' for value in profile.get("industries", [])[:4]
+        f'<span>{html.escape(value)}</span>' for value in (profile or {}).get("industries", [])[:4]
     )
     website = organization.get("website")
     website_link = (
         f'<a class="small-btn" href="{html.escape(website, quote=True)}" target="_blank" rel="noopener">Official website</a>'
         if website else ""
+    )
+    related_cards = "".join(
+        '<article class="enterprise-affiliation-card"><div>'
+        f'<span>{"Collective organization" if row.get("scope") == "Tribal council" else "Nation organization"}</span>'
+        f'<strong>{html.escape(row["name"])}</strong>'
+        f'<small>{html.escape(row.get("organizationType") or "")}</small></div>'
+        + (
+            f'<a href="{html.escape(row["website"], quote=True)}" target="_blank" rel="noopener">Official website</a>'
+            if row.get("website") else ""
+        )
+        + '</article>'
+        for row in organizations
     )
     return (
         '<section id="enterprisePage" class="enterprise-page static-enterprise-page">'
@@ -354,10 +397,13 @@ def enterprise_prerender(band: dict, enterprise: dict) -> str:
         f'<h2>{html.escape(organization["name"])}</h2>'
         f'<p>{html.escape(organization.get("description") or "")}</p>'
         f'<p>{len(interests)} known businesses and investments. '
-        f'Last verified {html.escape(profile.get("lastVerified") or "not stated")}.</p>'
-        f'</div><div>{website_link}</div></section></section>'
+        f'Relationship: {html.escape(relationship_label)}.</p>'
+        f'</div><div>{website_link}</div></section>'
+        '<section class="enterprise-section"><div class="section-head"><div>'
+        '<h2>Economic Organizations</h2>'
+        '<p>Nation-specific and tribal-council organizations are kept distinct.</p>'
+        f'</div></div><div class="enterprise-affiliation-list">{related_cards}</div></section></section>'
     )
-
 
 def write_page(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -410,8 +456,8 @@ def build() -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260814e" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260814e" defer></script>',
+            '<script src="/assets/openband.js?v=20260814f" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260814f" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)
@@ -445,12 +491,12 @@ def build() -> None:
         )
         enterprise_page = enterprise_page.replace(
             '<section id="enterprisePage" class="enterprise-page" aria-live="polite"></section>',
-            enterprise_prerender(band, enterprise),
+            enterprise_prerender(band, enterprise, map_data.get("communities", [])),
             1,
         )
         enterprise_page = enterprise_page.replace(
-            '<script src="/assets/openband.js?v=20260814e" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"enterprise","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260814e" defer></script>',
+            '<script src="/assets/openband.js?v=20260814f" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"enterprise","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260814f" defer></script>',
             1,
         )
         write_page(profile_root / slug / "community-enterprise" / "index.html", enterprise_page)
