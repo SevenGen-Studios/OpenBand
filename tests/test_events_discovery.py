@@ -104,12 +104,39 @@ class EventExtractionTests(unittest.TestCase):
         item = {
             "id": "one", "bandId": 378, "title": "Annual Powwow",
             "startDate": "2026-08-21", "sourceUrl": "https://example.org/powwow",
-            "confidence": 0.9,
+            "description": "Event date: August 21, 2026", "confidence": 0.9,
+            "extractionMethod": "html",
         }
         duplicate = {**item, "id": "two", "confidence": 0.95}
         rows = merge_events([item], [duplicate], date(2026, 8, 13))
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["confidence"], 0.95)
+
+    def test_merge_rejects_archive_and_job_false_positives(self):
+        archive = {
+            "id": "archive", "bandId": 378, "title": "Older Posts",
+            "startDate": "2026-08-21", "sourceUrl": "https://example.org/category/events",
+            "description": "Powwow August 21, 2026", "confidence": 0.9,
+            "extractionMethod": "html",
+        }
+        job = {
+            "id": "job", "bandId": 378, "title": "Job Opportunity - SaskPower",
+            "startDate": "2026-08-21", "sourceUrl": "https://example.org/job",
+            "description": "Community job posting closes August 21, 2026", "confidence": 0.9,
+            "extractionMethod": "html",
+        }
+        self.assertEqual(merge_events([], [archive, job], date(2026, 8, 13)), [])
+
+    def test_scripts_and_styles_do_not_create_events(self):
+        html = """
+        <html><head><title>About the Nation</title><style>.event { color: red; }</style>
+        <script>var today = 'August 13, 2026'; var powwow = true;</script></head>
+        <body><p>Community history and contact information.</p></body></html>
+        """
+        events, _, _ = extract_html_events(
+            html, "https://example.org/about", COMMUNITY, SOURCE, date(2026, 8, 13)
+        )
+        self.assertEqual(events, [])
 
 
 class EventCategoryTests(unittest.TestCase):
