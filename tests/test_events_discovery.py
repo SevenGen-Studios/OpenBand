@@ -7,6 +7,8 @@ from tools.events_discovery import (
     event_dates,
     event_status,
     extract_html_events,
+    extract_shared_index_events,
+    match_shared_community,
     is_publishable_event,
     merge_events,
 )
@@ -30,6 +32,12 @@ class EventDateTests(unittest.TestCase):
         self.assertEqual(
             event_dates("Annual Powwow August 21-23, 2026", date(2026, 8, 13)),
             [("2026-08-21", "2026-08-23")],
+        )
+
+    def test_explicit_date_range_with_repeated_month(self):
+        self.assertEqual(
+            event_dates("Powwow August 7 - August 9, 2026", date(2026, 8, 13)),
+            [("2026-08-07", "2026-08-09")],
         )
 
     def test_yearless_flyer_uses_nearest_viable_year(self):
@@ -76,6 +84,66 @@ class EventDateTests(unittest.TestCase):
 
 
 class EventExtractionTests(unittest.TestCase):
+    def test_shared_index_assigns_only_explicitly_named_community(self):
+        waterhen = {
+            "bandId": 402,
+            "communityName": "Waterhen Lake First Nation",
+            "aliases": [],
+        }
+        html = """
+        <ul><li><a href="/waterhen-powwow">
+          Waterhen Lake First Nation Traditional Pow Wow 2026
+        </a><span>August 7 - August 9, 2026</span></li></ul>
+        """
+        rows = extract_shared_index_events(
+            html,
+            "https://events.example.org/calendar",
+            [COMMUNITY, waterhen],
+            {"name": "Regional calendar", "type": "Regional Event Index"},
+            date(2026, 8, 13),
+        )
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["bandId"], 402)
+        self.assertEqual(rows[0]["startDate"], "2026-08-07")
+        self.assertEqual(rows[0]["endDate"], "2026-08-09")
+
+    def test_shared_index_rejects_event_without_community_name(self):
+        html = """
+        <article><a href="/summer-powwow">Annual Summer Powwow 2026</a>
+        <p>August 21-23, 2026</p></article>
+        """
+        rows = extract_shared_index_events(
+            html,
+            "https://events.example.org/calendar",
+            [COMMUNITY],
+            {"name": "Regional calendar", "type": "Regional Event Index"},
+            date(2026, 8, 13),
+        )
+        self.assertEqual(rows, [])
+
+    def test_shared_community_match_rejects_ambiguity(self):
+        other = {
+            "bandId": 999,
+            "communityName": "Other First Nation",
+            "aliases": ["CTK"],
+        }
+        self.assertIsNone(match_shared_community(
+            [COMMUNITY, other], "CTK community powwow August 21, 2026"
+        ))
+
+    def test_shared_community_match_supports_public_name_variant(self):
+        ocean_man = {
+            "bandId": 408,
+            "communityName": "Ocean Man First Nation",
+            "aliases": [],
+        }
+        self.assertEqual(
+            match_shared_community(
+                [ocean_man], "Oceanman Nakoda Nation Powwow August 4-6, 2026"
+            )["bandId"],
+            408,
+        )
+
     def test_json_ld_event_is_extracted(self):
         html = """
         <html><head><script type="application/ld+json">
