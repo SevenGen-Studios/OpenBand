@@ -146,7 +146,7 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260814c"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260814d"', profile)
         self.assertIn('src="/assets/openband.js?v=20260814e"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
@@ -196,7 +196,8 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("square kilometers of reserve land", javascript)
         self.assertIn("function reserveLandAreaLabel", javascript)
         stylesheet = (ROOT / "assets" / "openband.css").read_text(encoding="utf-8")
-        self.assertIn(".map-legend-mobile{display:none}", stylesheet)
+        self.assertIn(".map-legend-desktop{display:none}", stylesheet)
+        self.assertIn(".map-legend-mobile{display:block", stylesheet)
         self.assertIn(".map-legend-menu", stylesheet)
         self.assertIn(".profile-header-contact[hidden]{display:none}", stylesheet)
 
