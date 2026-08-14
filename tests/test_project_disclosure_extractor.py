@@ -38,6 +38,26 @@ class ProjectDisclosureExtractorTests(unittest.TestCase):
         self.assertEqual(len(rows), 1)
         self.assertNotIn("fundingReceived", rows[0]["amounts"])
 
+    def test_trivial_label_variants_do_not_create_duplicate_projects(self):
+        pages = [
+            "Restricted cash\nCapital project - Low Pressure Water 195,756 0\n"
+            "Capital project - Water Treatment Plant Evaluation and Upgrade 248 0",
+            "Deferred revenue\nWWaater Treatment Plant Evaluation and Upgrade - ISC Capital Project 99,662 0 99,662 0",
+            "Recent capital projects include low pressure water project and Know Your Status project.\n"
+            "Restricted cash\nCapital project - Know Your Status 198,564 0",
+        ]
+        rows = parse_project_disclosures(
+            pages,
+            band_id="404",
+            band_name="Big River First Nation",
+            fiscal_year="2024-2025",
+            source_url="https://example.test/audit.pdf",
+        )
+        names = [row["name"] for row in rows]
+        self.assertEqual(names.count("Low Pressure Water"), 1)
+        self.assertEqual(names.count("Water Treatment Plant Evaluation and Upgrade"), 1)
+        self.assertEqual(names.count("Know Your Status"), 1)
+
     def test_extracts_restricted_cash_and_deferred_revenue_without_inferring_status(self):
         pages = [
             """Notes to the Consolidated Financial Statements
