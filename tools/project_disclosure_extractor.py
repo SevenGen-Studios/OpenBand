@@ -18,9 +18,6 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date
 from pathlib import Path
 
-import pdfplumber
-
-
 ROOT = Path(__file__).resolve().parents[1]
 MONEY = r"(?:\(?[\d,]+\)?|-)"
 USER_AGENT = "OpenBand/2.0 (https://openband.ca; public-records research)"
@@ -222,6 +219,8 @@ def fetch_pdf(url: str, retries: int = 3) -> bytes:
 
 def extract_one(task: dict) -> dict:
     try:
+        import pdfplumber
+
         data = fetch_pdf(task["sourceUrl"])
         with pdfplumber.open(io.BytesIO(data)) as pdf:
             pages = [page.extract_text(x_tolerance=2, y_tolerance=3) or "" for page in pdf.pages]
