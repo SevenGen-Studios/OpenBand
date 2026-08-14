@@ -134,7 +134,7 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_public_pages_share_dynamic_copyright_footer(self):
         pages = [ROOT / "index.html", ROOT / "browse" / "index.html", ROOT / "news" / "index.html"]
-        pages.extend((ROOT / "first-nations").glob("*/index.html"))
+        pages.extend((ROOT / "first-nations").glob("**/index.html"))
         self.assertGreater(len(pages), 3)
         for page in pages:
             with self.subTest(page=page):
@@ -146,7 +146,7 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260814a"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260814c"', profile)
         self.assertIn('src="/assets/openband.js?v=20260814b"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
