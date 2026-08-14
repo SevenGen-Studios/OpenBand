@@ -1,6 +1,12 @@
 import unittest
 
-from tools.build_map_data import build_map_data, council_display_name, parse_relation_text
+from tools.build_map_data import (
+    build_map_data,
+    council_display_name,
+    parse_relation_text,
+    reserve_feature_area_hectares,
+    reserve_land_totals,
+)
 
 
 class MapDataTests(unittest.TestCase):
@@ -59,6 +65,23 @@ TRIBAL_COUNCIL_NAME: Saskatoon Tribal Council
         self.assertEqual(council_display_name("BATTLEFORDS AGENCY TRIBAL CHIEFS INC"), "Battlefords Agency Tribal Chiefs (BATC)")
         self.assertEqual(council_display_name("NORTHWEST PROFESSIONAL SERVICES CORP."), "Battlefords Agency Tribal Chiefs (BATC)")
         self.assertIsNone(council_display_name(None))
+
+    def test_projected_reserve_geometry_converts_square_metres_to_hectares(self):
+        feature = {"geometry": {"rings": [[[0, 0], [100, 0], [100, 100], [0, 100], [0, 0]]]}}
+        self.assertEqual(reserve_feature_area_hectares(feature), 1)
+
+    def test_reserve_totals_attribute_shared_land_to_each_named_nation(self):
+        bands = [
+            {"id": 378, "name": "Carry the Kettle Nakoda Nation"},
+            {"id": 366, "name": "Cote First Nation"},
+        ]
+        reserve_lands = {"features": [{
+            "attributes": {"FIRST_NATIONS": "Carry The Kettle, Cote First Nation 366"},
+            "geometry": {"rings": [[[0, 0], [200, 0], [200, 100], [0, 100], [0, 0]]]},
+        }]}
+        totals = reserve_land_totals(bands, reserve_lands)
+        self.assertEqual(totals[378], {"hectares": 2, "parcelCount": 1})
+        self.assertEqual(totals[366], {"hectares": 2, "parcelCount": 1})
 
 
 if __name__ == "__main__":

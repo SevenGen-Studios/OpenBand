@@ -50,6 +50,16 @@ class SiteRouteTests(unittest.TestCase):
         self.assertNotIn("/admin/", sitemap)
         self.assertIn("Disallow: /admin/", (ROOT / "robots.txt").read_text(encoding="utf-8"))
 
+    def test_every_mapped_first_nation_has_reserve_hectares(self):
+        map_data = json.loads((ROOT / "map-data.json").read_text(encoding="utf-8"))
+        communities = map_data["communities"]
+        self.assertEqual({row["id"] for row in communities}, {band["id"] for band in self.data["bands"]})
+        for row in communities:
+            with self.subTest(community=row["name"]):
+                self.assertGreater(row["reserveHectares"], 0)
+                self.assertGreater(row["reserveParcelCount"], 0)
+                self.assertIn("data.sac-isc.gc.ca", row["reserveLandSourceUrl"])
+
     def test_admin_portal_links_operational_services_without_credentials(self):
         portal = (ROOT / "admin" / "index.html").read_text(encoding="utf-8")
         self.assertIn('content="noindex,nofollow,noarchive"', portal)
@@ -75,8 +85,8 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260813c"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260813c"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260813d"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260813d"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
@@ -120,6 +130,8 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("container.hidden=!visible", javascript)
         self.assertIn("overviewCard.remove()", javascript)
         self.assertIn("registered band members", javascript)
+        self.assertIn("hectares of reserve land", javascript)
+        self.assertIn("function reserveHectaresLabel", javascript)
         stylesheet = (ROOT / "assets" / "openband.css").read_text(encoding="utf-8")
         self.assertIn(".profile-header-contact[hidden]{display:none}", stylesheet)
 
@@ -213,6 +225,8 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("function reserveLandFeaturesAtCommunityDots", javascript)
         self.assertIn("renderReserveLandLayer(rows)", javascript)
         self.assertIn("dataset.reserveParcelCount", javascript)
+        self.assertIn("marker.on('mouseover focus'", javascript)
+        self.assertIn("marker.on('mouseout blur'", javascript)
         self.assertIn("color:'#c76666'", javascript)
         self.assertIn("fillColor:'#e88f8f'", javascript)
         self.assertNotIn("First Nation / reserve lands", javascript)
