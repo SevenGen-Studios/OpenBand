@@ -40,11 +40,71 @@ class SiteRouteTests(unittest.TestCase):
             expected_heading = html.escape(f"{band['name']} Financial Records")
             self.assertIn(f"<h1>{expected_heading}</h1>", markup)
 
+    def test_every_band_has_a_static_enterprise_profile(self):
+        for band in self.data["bands"]:
+            slug = slugify(band["name"])
+            page = ROOT / "first-nations" / slug / "community-enterprise" / "index.html"
+            self.assertTrue(page.is_file(), band["name"])
+            markup = page.read_text(encoding="utf-8")
+            expected_title = html.escape(f"{band['name']} Community Enterprise | OpenBand")
+            self.assertIn(f"<title>{expected_title}</title>", markup)
+            self.assertIn(f"{ORIGIN}/first-nations/{slug}/community-enterprise/", markup)
+            self.assertIn(f'data-band-id="{band["id"]}"', markup)
+            self.assertIn(html.escape(band["name"]), markup)
+
+    def test_enterprise_data_is_normalized_and_source_first(self):
+        enterprise = json.loads((ROOT / "community-enterprise.json").read_text(encoding="utf-8"))
+        collections = [
+            "organizations",
+            "organizationRelationships",
+            "businesses",
+            "ownershipInterests",
+            "projects",
+            "economicImpactMetrics",
+            "businessOpportunities",
+            "sources",
+        ]
+        for key in collections:
+            self.assertIn(key, enterprise)
+            ids = [row["id"] for row in enterprise[key]]
+            self.assertEqual(len(ids), len(set(ids)), key)
+
+        organization_ids = {row["id"] for row in enterprise["organizations"]}
+        business_ids = {row["id"] for row in enterprise["businesses"]}
+        source_ids = {row["id"] for row in enterprise["sources"]}
+        for profile in enterprise["nationProfiles"]:
+            self.assertIn(profile["primaryOrganizationId"], organization_ids)
+            self.assertIn(str(profile["bandId"]), {str(row["id"]) for row in self.data["bands"]})
+        for interest in enterprise["ownershipInterests"]:
+            self.assertIn(interest["ownerId"], organization_ids)
+            self.assertIn(interest["businessId"], business_ids)
+            self.assertTrue(set(interest["sourceIds"]).issubset(source_ids))
+        for source in enterprise["sources"]:
+            self.assertTrue(source["url"].startswith("https://"))
+
+        nrt_interests = [
+            row for row in enterprise["ownershipInterests"]
+            if row["businessId"] == "biz-nrt"
+        ]
+        self.assertGreaterEqual(len(nrt_interests), 3)
+        self.assertTrue(any(row["ownershipPercentage"] is None for row in nrt_interests))
+
+    def test_enterprise_ui_is_lazy_accessible_and_mobile_safe(self):
+        script = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
+        styles = (ROOT / "assets" / "openband.css").read_text(encoding="utf-8")
+        self.assertIn("loadEnterpriseData", script)
+        self.assertIn("community-enterprise.json", script)
+        self.assertIn("aria-expanded", script)
+        self.assertIn("aria-controls", script)
+        self.assertIn("enterprisePath", script)
+        self.assertIn("@media(max-width:700px)", styles)
+        self.assertIn(".enterprise-record-grid", styles)
+
     def test_indexable_routes_and_seo_files_exist(self):
-        for relative in ["browse/index.html", "news/index.html", "admin/index.html", "admin/analytics/index.html", "robots.txt", "sitemap.xml", "map-data.json", "contacts-data.json", "jobs-data.json", "jobs-schema.json", "jobs-sources.json", "jobs-overrides.json", "jobs-coverage-report.json", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js"]:
+        for relative in ["browse/index.html", "news/index.html", "admin/index.html", "admin/analytics/index.html", "robots.txt", "sitemap.xml", "map-data.json", "contacts-data.json", "jobs-data.json", "jobs-schema.json", "jobs-sources.json", "jobs-overrides.json", "jobs-coverage-report.json", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js", "community-enterprise.json"]:
             self.assertTrue((ROOT / relative).is_file(), relative)
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
-        self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 3)
+        self.assertEqual(sitemap.count("<url>"), (len(self.data["bands"]) * 2) + 3)
         self.assertIn(f"{ORIGIN}/browse/", sitemap)
         self.assertIn(f"{ORIGIN}/news/", sitemap)
         self.assertNotIn("/admin/", sitemap)
@@ -74,7 +134,7 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_public_pages_share_dynamic_copyright_footer(self):
         pages = [ROOT / "index.html", ROOT / "browse" / "index.html", ROOT / "news" / "index.html"]
-        pages.extend((ROOT / "first-nations").glob("*/index.html"))
+        pages.extend((ROOT / "first-nations").glob("**/index.html"))
         self.assertGreater(len(pages), 3)
         for page in pages:
             with self.subTest(page=page):
