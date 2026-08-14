@@ -61,6 +61,51 @@ REPORT_PATH = ROOT / "events-coverage-report.json"
 
 EVENT_WINDOW_PAST_DAYS = 30
 EVENT_WINDOW_FUTURE_DAYS = 400
+SHARED_EVENT_INDEXES = [
+    {
+        "name": "Meadow Lake Tribal Council regional events",
+        "type": "Tribal Council Tourism",
+        "url": "https://meadowlakeregion.ca/events",
+        "official": True,
+        "associationConfidence": 0.96,
+    },
+    {
+        "name": "Saskatchewan Pow Wow Calendar",
+        "type": "Regional Event Index",
+        "url": "https://calendar.powwows.com/events/categories/pow-wows-in-saskatchewan/",
+        "discoveryUrls": [
+            "https://calendar.powwows.com/events/categories/pow-wows-in-saskatchewan/?pno=2",
+        ],
+        "associationConfidence": 0.9,
+    },
+    {
+        "name": "Windspeaker Powwow Calendar",
+        "type": "Indigenous Media Event Index",
+        "url": "https://support.windspeaker.com/powwows",
+        "associationConfidence": 0.9,
+    },
+    {
+        "name": "Office of the Treaty Commissioner events",
+        "type": "Treaty Organization",
+        "url": "https://otc.ca/events/list/",
+        "associationConfidence": 0.94,
+    },
+]
+SHARED_COMMUNITY_ALIASES = {
+    344: ["Onion Lake First Nations"],
+    353: ["Lac La Ronge First Nation", "LLRIB"],
+    363: ["Ochapowace Nation"],
+    364: ["Zagime Anishinabek", "Sakimay First Nation"],
+    365: ["White Bear First Nation"],
+    369: ["Beardy's & Okemasis Cree Nation", "Beardy's and Okemasis Cree Nation"],
+    376: ["Yellow Quill Cree Nation"],
+    378: ["Carry the Kettle First Nation", "Ceg-A-Kin Nakoda Nation"],
+    380: ["Nekaneet First Nation"],
+    392: ["Muskowekwan Cree Nation"],
+    397: ["Ministikwan Cree Nation"],
+    408: ["Oceanman Nakoda Nation", "Ocean Man Nakoda Nation"],
+    409: ["Pheasant Rump Nakota First Nation"],
+}
 EVENT_WORDS = re.compile(
     r"\b(pow[ -]?wow|wacipi|round dance|treaty day|feast|gathering|ceremony|"
     r"celebration|community (?:meeting|event|clean[ -]?up)|annual general meeting|agm|"
@@ -87,7 +132,7 @@ MONTH_RE = re.compile(
     r"\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|"
     r"Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|"
     r"Nov(?:ember)?|Dec(?:ember)?)\s+(\d{1,2})(?:st|nd|rd|th)?"
-    r"(?:\s*(?:-|–|to)\s*(\d{1,2})(?:st|nd|rd|th)?)?(?:,?\s*(20\d{2}))?\b",
+    r"(?:\s*(?:-|–|to)\s*(?:\\1\s+)?(\d{1,2})(?:st|nd|rd|th)?)?(?:,?\s*(20\d{2}))?\b",
     re.I,
 )
 TIME_RE = re.compile(
@@ -478,6 +523,81 @@ def extract_html_events(html: str, page_url: str, community: dict, source: dict,
     return events, list(dict.fromkeys(follow)), list(dict.fromkeys(media))
 
 
+def match_shared_community(communities: list[dict], value: str) -> dict | None:
+    """Return one explicitly named community; ambiguous matches are rejected."""
+    haystack = f" {normalized_text(value)} "
+    matches = []
+    for community in communities:
+        names = [
+            community.get("communityName"),
+            *(community.get("aliases") or []),
+            *SHARED_COMMUNITY_ALIASES.get(int(community.get("bandId") or 0), []),
+        ]
+        if any(
+            len(term := normalized_text(name)) >= 8 and f" {term} " in haystack
+            for name in names if name
+        ):
+            matches.append(community)
+    return matches[0] if len(matches) == 1 else None
+
+
+def extract_shared_index_events(
+    html: str,
+    page_url: str,
+    communities: list[dict],
+    source: dict,
+    today: date | None = None,
+) -> list[dict]:
+    """Extract events only when a shared index explicitly names one community."""
+    parser = EventPageParser()
+    parser.feed(html)
+    events = []
+    seen = set()
+
+    for script in parser.json_scripts:
+        try:
+            payload = json.loads(script)
+        except json.JSONDecodeError:
+            continue
+        for item in jsonld_objects(payload):
+            types = item.get("@type") or []
+            types = [types] if isinstance(types, str) else types
+            if not any(str(value).lower() == "event" for value in types):
+                continue
+            title = clean_text(item.get("name"))
+            context = clean_text(f"{item.get('description', '')} {item.get('startDate', '')}")
+            community = match_shared_community(communities, f"{title} {context}")
+            start, _ = parse_date_text(item.get("startDate"))
+            end, _ = parse_date_text(item.get("endDate"))
+            url = canonical_url(urllib.parse.urljoin(page_url, item.get("url") or page_url))
+            if not community or not start or not is_event_text(title, context) or url in seen:
+                continue
+            events.append(normalized_event(
+                community, source, title=title, context=context, url=url,
+                start=start, end=end, image=item.get("image"), method="json-ld",
+            ))
+            seen.add(url)
+
+    for row in parser.anchor_rows():
+        title = clean_text(row["title"])
+        context = clean_text(row["context"])
+        community = match_shared_community(communities, title) or match_shared_community(
+            communities, f"{title} {context}"
+        )
+        if not community or not is_event_text(title, context):
+            continue
+        start, end = choose_event_date(title, context, today)
+        url = canonical_url(urllib.parse.urljoin(page_url, row["href"]))
+        if not start or not url.startswith("http") or url in seen:
+            continue
+        events.append(normalized_event(
+            community, source, title=title, context=context, url=url,
+            start=start, end=end, method="shared-index",
+        ))
+        seen.add(url)
+    return events
+
+
 def extract_media_text(body: bytes, content_type: str, suffix: str) -> tuple[str, str]:
     with tempfile.TemporaryDirectory() as directory:
         source = Path(directory) / f"source{suffix}"
@@ -697,6 +817,39 @@ def run(args):
                 run_row["status"] = "failed"
                 run_row["error"] = clean_text(error)[:300]
             runs.append(run_row)
+
+    for source in SHARED_EVENT_INDEXES:
+        run_row = {
+            "bandId": None,
+            "communityName": "Saskatchewan shared indexes",
+            "sourceName": source["name"],
+            "sourceUrl": source["url"],
+            "sourceType": source["type"],
+            "status": "ok",
+            "eventsFound": 0,
+            "pagesChecked": 0,
+            "mediaChecked": 0,
+        }
+        found = []
+        try:
+            for url in [source["url"], *(source.get("discoveryUrls") or [])]:
+                body, final_url, content_type = fetcher.get(url)
+                run_row["pagesChecked"] += 1
+                if "html" not in content_type:
+                    continue
+                found.extend(extract_shared_index_events(
+                    body.decode("utf-8", errors="replace"),
+                    final_url,
+                    communities,
+                    source,
+                    today,
+                ))
+            run_row["eventsFound"] = len(found)
+            candidates.extend(found)
+        except Exception as error:
+            run_row["status"] = "failed"
+            run_row["error"] = clean_text(error)[:300]
+        runs.append(run_row)
 
     merged = merge_events(current.get("events", []), candidates, today)
     frontend_sources = [
