@@ -29,7 +29,7 @@
 </script>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/openband.css?v=20260814b">
+<link rel="stylesheet" href="/assets/openband.css?v=20260814c">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"OpenBand","url":"https://openband.ca/","description":"Saskatchewan First Nations public financial records organized from Indigenous Services Canada FNFTA filings.","potentialAction":{"@type":"SearchAction","target":"https://openband.ca/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
 </head>
 <body data-page="home">
@@ -49,8 +49,8 @@
   </div>
   <div class="map-controls">
     <div class="directory-search"><label for="directorySearch">Find a community</label><input id="directorySearch" type="search" placeholder="Search community names"></div>
-    <div><label for="treatyFilter">Treaty</label><select id="treatyFilter"><option value="">All treaties</option></select></div>
-    <div><label for="tribalCouncilFilter">Tribal council</label><select id="tribalCouncilFilter"><option value="">All affiliations</option></select></div>
+    <select id="treatyFilter" aria-label="Treaty filter" hidden><option value="">All treaties</option></select>
+    <select id="tribalCouncilFilter" aria-label="Tribal council filter" hidden><option value="">All affiliations</option></select>
     <button id="clearDirectoryFilters" class="small-btn" type="button">Clear</button>
   </div>
   <div class="map-toolbar">

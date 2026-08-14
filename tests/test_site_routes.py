@@ -146,7 +146,7 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260814b"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260814c"', profile)
         self.assertIn('src="/assets/openband.js?v=20260814e"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
@@ -259,6 +259,10 @@ class SiteRouteTests(unittest.TestCase):
         markup = (ROOT / "browse" / "index.html").read_text(encoding="utf-8")
         self.assertIn('id="directoryMap"', markup)
         self.assertIn('id="tribalCouncilFilter"', markup)
+        self.assertNotIn('<label for="treatyFilter">', markup)
+        self.assertNotIn('<label for="tribalCouncilFilter">', markup)
+        self.assertIn('id="treatyFilter" aria-label="Treaty filter" hidden', markup)
+        self.assertIn('id="tribalCouncilFilter" aria-label="Tribal council filter" hidden', markup)
         self.assertIn('data-map-mode="treaty"', markup)
         self.assertIn('data-map-mode="tribalCouncil"', markup)
         self.assertNotIn('id="azLinks"', markup)
