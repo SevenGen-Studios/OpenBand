@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-13T14:01:33Z",
+  "generated": "2026-08-14T13:54:53Z",
   "items": [
     {
       "bandId": 361,
@@ -55,12 +55,45 @@
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
     },
     {
+      "bandId": 362,
+      "communityName": "Kahkewistahaw First Nation",
+      "sourceName": "Kahkewistahaw First Nation official website",
+      "url": "https://www.kfn72.com/wp-content/uploads/2026/08/Off-Reserve-School-Supplies-Request-Form.pdf",
+      "extractionMethod": "pdf_text",
+      "detectedTitle": "Fax: 306-696-2397 Attn: school supplies",
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 362,
+      "communityName": "Kahkewistahaw First Nation",
+      "sourceName": "Kahkewistahaw First Nation official website",
+      "url": "https://www.kfn72.com/wp-content/uploads/2026/08/school-supplies-poster-791x1024.png",
+      "extractionMethod": "image_ocr",
+      "detectedTitle": "FROM THE SCHOOL",
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
       "bandId": 367,
       "communityName": "Keeseekoose First Nation",
       "sourceName": "Keeseekoose First Nation official website",
       "url": "https://www.keeseekoosefn.com/news",
       "status": "detail_unverified",
       "reason": "detail fetch failed: URLError: <urlopen error [Errno -2] Name or service not known>"
+    },
+    {
+      "bandId": 377,
+      "communityName": "Kinistin Saulteaux Nation",
+      "sourceName": "Kinistin Saulteaux Nation official website",
+      "url": "https://www.kinistin.sk.ca/wp-content/uploads/2022/12/Agricultural-Benefits-CLaim-Announcement.jpg",
+      "extractionMethod": "image_ocr",
+      "detectedTitle": ", ‘ANNOUNCEMENT",
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
     },
     {
       "bandId": 374,
@@ -309,7 +342,7 @@
       "bandId": 348,
       "communityName": "Sweetgrass First Nation",
       "sourceName": "Sweetgrass First Nation official website",
-      "url": "https://sweetgrassfirstnation.ca/images/uploads/gallery/large/img_349.jpg",
+      "url": "https://sweetgrassfirstnation.ca/images/uploads/gallery/large/img_708.jpg",
       "extractionMethod": "image_ocr",
       "detectedTitle": null,
       "detectedDate": null,
@@ -320,7 +353,7 @@
       "bandId": 348,
       "communityName": "Sweetgrass First Nation",
       "sourceName": "Sweetgrass First Nation official website",
-      "url": "https://sweetgrassfirstnation.ca/images/uploads/gallery/medium/img_853.jpg",
+      "url": "https://sweetgrassfirstnation.ca/images/uploads/gallery/large/img_567.jpg",
       "extractionMethod": "image_ocr",
       "detectedTitle": null,
       "detectedDate": null,
@@ -331,7 +364,7 @@
       "bandId": 348,
       "communityName": "Sweetgrass First Nation",
       "sourceName": "Sweetgrass First Nation official website",
-      "url": "https://sweetgrassfirstnation.ca/images/uploads/gallery/large/img_406.jpg",
+      "url": "https://sweetgrassfirstnation.ca/images/uploads/gallery/large/img_103.jpg",
       "extractionMethod": "image_ocr",
       "detectedTitle": null,
       "detectedDate": null,
@@ -543,51 +576,50 @@
     {
       "bandId": 406,
       "communityName": "Ahtahkakoop Cree Nation",
-      "sourceName": "Ahtahkakoop Community News Archive",
-      "url": "https://www.ahtahkakoop.ca/treatylandentitlement.html",
+      "sourceName": "Ahtahkakoop Cree Nation official website",
+      "url": "https://www.ahtahkakoop.ca/",
       "status": "detail_unverified",
-      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://www.ahtahkakoop.ca/treatylandentitlement.html"
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 406,
       "communityName": "Ahtahkakoop Cree Nation",
-      "sourceName": "Ahtahkakoop Community News Archive",
-      "url": "https://www.ahtahkakoop.ca/1/feed",
+      "sourceName": "Ahtahkakoop Cree Nation official website",
+      "url": "https://www.ahtahkakoop.ca/housing--cmhc.html",
       "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 406,
       "communityName": "Ahtahkakoop Cree Nation",
-      "sourceName": "Ahtahkakoop Community News Archive",
-      "url": "https://www.ahtahkakoop.ca/uploads/1/4/5/9/145936684/ahtahkakoop_annual_report__2024-25__edit_2_1.pdf",
-      "extractionMethod": "document_too_large",
-      "detectedTitle": "here",
-      "detectedDate": null,
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+      "sourceName": "Ahtahkakoop Cree Nation official website",
+      "url": "https://www.ahtahkakoop.ca/post-secondary-education.html",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 406,
       "communityName": "Ahtahkakoop Cree Nation",
-      "sourceName": "Ahtahkakoop Community News Archive",
-      "url": "https://www.ahtahkakoop.ca/uploads/1/4/5/9/145936684/ar_finished_complete_november_2024.pdf",
-      "extractionMethod": "pdf_text",
-      "detectedTitle": "Education 7-8",
-      "detectedDate": null,
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+      "sourceName": "Ahtahkakoop Cree Nation official website",
+      "url": "https://www.ahtahkakoop.ca/public-works.html",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 406,
       "communityName": "Ahtahkakoop Cree Nation",
-      "sourceName": "Ahtahkakoop Community News Archive",
-      "url": "https://www.ahtahkakoop.ca/uploads/1/4/5/9/145936684/tle-membership-update-march-2024_orig.png",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": "Picture",
-      "detectedDate": null,
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+      "sourceName": "Ahtahkakoop Cree Nation official website",
+      "url": "https://www.ahtahkakoop.ca/sports-culture--recreation.html",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 406,
+      "communityName": "Ahtahkakoop Cree Nation",
+      "sourceName": "Ahtahkakoop Cree Nation official website",
+      "url": "https://www.ahtahkakoop.ca/social-development-employment--training.html",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 406,
@@ -600,32 +632,16 @@
     {
       "bandId": 406,
       "communityName": "Ahtahkakoop Cree Nation",
-      "sourceName": "Ahtahkakoop Cree Nation official website",
-      "url": "https://www.ahtahkakoop.ca/1/feed",
-      "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
-    },
-    {
-      "bandId": 406,
-      "communityName": "Ahtahkakoop Cree Nation",
-      "sourceName": "Ahtahkakoop Cree Nation official website",
       "url": "https://www.ahtahkakoop.ca/uploads/1/4/5/9/145936684/imgp5642web_orig.jpeg",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": null,
-      "detectedDate": null,
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+      "status": "document_unavailable",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 406,
       "communityName": "Ahtahkakoop Cree Nation",
-      "sourceName": "Ahtahkakoop Cree Nation official website",
       "url": "https://www.ahtahkakoop.ca/uploads/1/4/5/9/145936684/imgp5393web_orig.jpeg",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": null,
-      "detectedDate": null,
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+      "status": "document_unavailable",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 406,
@@ -666,6 +682,30 @@
       "bandId": 395,
       "communityName": "Flying Dust First Nation",
       "sourceName": "Flying Dust First Nation",
+      "url": "https://www.flyingdust.net/chief--council.html",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 395,
+      "communityName": "Flying Dust First Nation",
+      "sourceName": "Flying Dust First Nation",
+      "url": "https://www.flyingdust.net/comprehensive-community-planning.html",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 395,
+      "communityName": "Flying Dust First Nation",
+      "sourceName": "Flying Dust First Nation",
+      "url": "https://www.flyingdust.net/membership--community.html",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 395,
+      "communityName": "Flying Dust First Nation",
+      "sourceName": "Flying Dust First Nation",
       "url": "https://www.flyingdust.net/cdn-cgi/l/email-protection",
       "status": "detail_unverified",
       "reason": "detail fetch failed: HTTPError: HTTP Error 404: Not Found"
@@ -674,9 +714,33 @@
       "bandId": 395,
       "communityName": "Flying Dust First Nation",
       "sourceName": "Flying Dust First Nation",
+      "url": "https://www.flyingdust.net/chief--council.html",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 395,
+      "communityName": "Flying Dust First Nation",
+      "sourceName": "Flying Dust First Nation",
+      "url": "https://www.flyingdust.net/membership--community.html",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 395,
+      "communityName": "Flying Dust First Nation",
+      "sourceName": "Flying Dust First Nation",
+      "url": "https://www.flyingdust.net/chief--council.html",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 395,
+      "communityName": "Flying Dust First Nation",
+      "sourceName": "Flying Dust First Nation",
       "url": "https://www.flyingdust.net/uploads/1/4/5/8/145877777/flying_dust_elders_advisory_group_plan_2026-2030.pdf",
       "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 395,
@@ -700,7 +764,7 @@
       "sourceName": "Flying Dust First Nation",
       "url": "https://www.flyingdust.net/uploads/1/4/5/8/145877777/may_2025.pdf",
       "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 395,
@@ -954,7 +1018,7 @@
       "bandId": 347,
       "communityName": "Saulteaux First Nation",
       "sourceName": "Saulteaux First Nation official website",
-      "url": "https://www.saulteauxfn.ca/uploaded_images/gallery/img_212_42.jpg",
+      "url": "https://www.saulteauxfn.ca/uploaded_images/gallery/img_212_37.jpg",
       "extractionMethod": "image_ocr",
       "detectedTitle": null,
       "detectedDate": "2023-03-27",
@@ -965,7 +1029,7 @@
       "bandId": 347,
       "communityName": "Saulteaux First Nation",
       "sourceName": "Saulteaux First Nation official website",
-      "url": "https://www.saulteauxfn.ca/uploaded_images/gallery/img_212_36.jpg",
+      "url": "https://www.saulteauxfn.ca/uploaded_images/gallery/img_212_42.jpg",
       "extractionMethod": "image_ocr",
       "detectedTitle": null,
       "detectedDate": "2023-03-27",
@@ -1179,7 +1243,7 @@
         "source-backed"
       ],
       "bandId": 391,
-      "discoveredAt": "2026-08-13T13:53:28Z",
+      "discoveredAt": "2026-08-14T13:49:16Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1207,7 +1271,7 @@
         "source-backed"
       ],
       "bandId": 367,
-      "discoveredAt": "2026-08-13T13:53:37Z",
+      "discoveredAt": "2026-08-14T13:49:09Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1235,7 +1299,7 @@
         "source-backed"
       ],
       "bandId": 367,
-      "discoveredAt": "2026-08-13T13:53:37Z",
+      "discoveredAt": "2026-08-14T13:49:09Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1244,6 +1308,59 @@
       "reviewReason": "Date appears to be a future event date, not a publication date"
     },
     {
+      "id": "lucky-man-cree-nation-2026-08-01-d47e7abe91",
+      "storyKey": "341-2026-08-01-skip-to-content",
+      "title": "Skip to content",
+      "communityName": "Lucky Man Cree Nation",
+      "communityAliases": [],
+      "provinceTerritory": "SK",
+      "category": "Other",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Lucky Man Cree Nation official website",
+      "publishedAt": "2026-08-01",
+      "datePrecision": "month",
+      "url": "https://luckymancree.com/1176-2",
+      "summary": ":root{--ast-post-nav-space:0;--ast-container-default-xlg-padding:3em;--ast-container-default-lg-padding:3em;--ast-container-default-slg-padding:2em;--ast-container-default-md-padding:3em;--ast-container-default-sm-padding:3em;--ast-container-default-xs-padding:2.4em;--ast-container-default-xxs-padding:1.8em;--ast-code-block-background:#EEEEEE;--ast-comment-inputs-background:#FAFAFA;--ast-normal-container-width:1200px.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 341,
+      "discoveredAt": "2026-08-14T13:49:23Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://luckymancree.com/1176-2",
+      "reviewReason": "Title does not clearly describe a supported community update"
+    },
+    {
+      "id": "lucky-man-cree-nation-2026-07-26-0b8ec28225",
+      "storyKey": "341-2026-07-26-print-view",
+      "title": "- Calendar: Print View",
+      "communityName": "Lucky Man Cree Nation",
+      "communityAliases": [],
+      "provinceTerritory": "SK",
+      "category": "Community Events",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Lucky Man Cree Nation official website",
+      "publishedAt": "2026-07-26",
+      "datePrecision": "day",
+      "url": "https://luckymancree.com/?cid=mc-print-view&dy=1&href=https%3A%2F%2Fluckymancree.com%2F1176-2%2F&month=8&time=month&yr=2026",
+      "summary": "Calendar Of Events Events in August 2026 View as Grid View as List Month Week Day Month January February March April May June July August September October November December Year 2023 2024 2025 2026 Previous Today Sun Sunday Mon Monday Tue Tuesday Wed Wednesday Thu Thursday Fri Friday Sat Saturday 26 July 26, 2026 27 July 27, 2026 28 July 28, 2026 29 July 29, 2026 30 July 30, 2026 31 July 31, 2026 1 August 1, 2026 2.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 341,
+      "discoveredAt": "2026-08-14T13:49:23Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://luckymancree.com/1176-2",
+      "detailVerified": true,
+      "reviewReason": "Title does not clearly describe a supported community update"
+    },
+    {
       "id": "mistawasis-nehiyawak-2025-05-31-3072d1ca25",
       "storyKey": "374-2025-05-31-accessed-here",
       "title": "accessed here",
@@ -1262,7 +1379,7 @@
         "source-backed"
       ],
       "bandId": 374,
-      "discoveredAt": "2026-08-13T13:54:21Z",
+      "discoveredAt": "2026-08-14T13:49:33Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1289,7 +1406,7 @@
         "source-backed"
       ],
       "bandId": 374,
-      "discoveredAt": "2026-08-13T13:54:21Z",
+      "discoveredAt": "2026-08-14T13:49:33Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1317,7 +1434,7 @@
         "source-backed"
       ],
       "bandId": 374,
-      "discoveredAt": "2026-08-13T13:54:21Z",
+      "discoveredAt": "2026-08-14T13:49:33Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1345,7 +1462,7 @@
         "source-backed"
       ],
       "bandId": 374,
-      "discoveredAt": "2026-08-13T13:54:21Z",
+      "discoveredAt": "2026-08-14T13:49:33Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1372,7 +1489,7 @@
         "source-backed"
       ],
       "bandId": 374,
-      "discoveredAt": "2026-08-13T13:54:22Z",
+      "discoveredAt": "2026-08-14T13:49:37Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1399,7 +1516,7 @@
         "source-backed"
       ],
       "bandId": 374,
-      "discoveredAt": "2026-08-13T13:54:22Z",
+      "discoveredAt": "2026-08-14T13:49:37Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1427,7 +1544,7 @@
         "source-backed"
       ],
       "bandId": 374,
-      "discoveredAt": "2026-08-13T13:54:22Z",
+      "discoveredAt": "2026-08-14T13:49:37Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1455,7 +1572,7 @@
         "source-backed"
       ],
       "bandId": 374,
-      "discoveredAt": "2026-08-13T13:54:22Z",
+      "discoveredAt": "2026-08-14T13:49:37Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1486,7 +1603,7 @@
         "source-backed"
       ],
       "bandId": 371,
-      "discoveredAt": "2026-08-13T13:54:59Z",
+      "discoveredAt": "2026-08-14T13:50:23Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1516,7 +1633,7 @@
         "source-backed"
       ],
       "bandId": 371,
-      "discoveredAt": "2026-08-13T13:54:59Z",
+      "discoveredAt": "2026-08-14T13:50:23Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1546,7 +1663,7 @@
         "source-backed"
       ],
       "bandId": 371,
-      "discoveredAt": "2026-08-13T13:54:59Z",
+      "discoveredAt": "2026-08-14T13:50:23Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1554,8 +1671,8 @@
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "muskoday-first-nation-2026-08-13-c336de9696",
-      "storyKey": "371-2026-08-13-mfn-community-meeting",
+      "id": "muskoday-first-nation-2026-08-14-0cf7d10823",
+      "storyKey": "371-2026-08-14-mfn-community-meeting",
       "title": "MFN Community Meeting",
       "communityName": "Muskoday First Nation",
       "communityAliases": [
@@ -1567,7 +1684,7 @@
       "category": "Community Events",
       "sourceType": "Official First Nation Website",
       "sourceName": "Muskoday First Nation",
-      "publishedAt": "2026-08-13",
+      "publishedAt": "2026-08-14",
       "datePrecision": "day",
       "url": "https://muskodayfn.ca/events/category/mfn-community-meeting",
       "summary": "25-05-08 Govt Canada Presentation Supper will be provided. 25-03-13 Community Info Mtg Poster All Band members invited to attend. Stew & Bannok provided. 25-02-13 MFN Community Info Session",
@@ -1576,7 +1693,7 @@
         "source-backed"
       ],
       "bandId": 371,
-      "discoveredAt": "2026-08-13T13:54:36Z",
+      "discoveredAt": "2026-08-14T13:50:00Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "article-metadata",
@@ -1607,7 +1724,7 @@
         "source-backed"
       ],
       "bandId": 371,
-      "discoveredAt": "2026-08-13T13:55:08Z",
+      "discoveredAt": "2026-08-14T13:50:25Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1637,7 +1754,7 @@
         "source-backed"
       ],
       "bandId": 371,
-      "discoveredAt": "2026-08-13T13:55:08Z",
+      "discoveredAt": "2026-08-14T13:50:25Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1667,7 +1784,7 @@
         "source-backed"
       ],
       "bandId": 371,
-      "discoveredAt": "2026-08-13T13:55:08Z",
+      "discoveredAt": "2026-08-14T13:50:25Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1675,8 +1792,8 @@
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "muskoday-first-nation-2026-08-13-3eb4682f68",
-      "storyKey": "371-2026-08-13-upcoming-events-muskoday-first-nation",
+      "id": "muskoday-first-nation-2026-08-14-70ee67fb20",
+      "storyKey": "371-2026-08-14-upcoming-events-muskoday-first-nation",
       "title": "Upcoming Events – Muskoday First Nation",
       "communityName": "Muskoday First Nation",
       "communityAliases": [
@@ -1688,7 +1805,7 @@
       "category": "Community Events",
       "sourceType": "Official First Nation Website",
       "sourceName": "Muskoday First Nation official website",
-      "publishedAt": "2026-08-13",
+      "publishedAt": "2026-08-14",
       "datePrecision": "day",
       "url": "https://www.muskodayfn.ca/",
       "summary": "25-05-08 Govt Canada Presentation Supper will be provided. 25-03-13 Community Info Mtg Poster All Band members invited to attend. Stew & Bannok provided. 25-02-13 MFN Community Info Session",
@@ -1697,7 +1814,7 @@
         "source-backed"
       ],
       "bandId": 371,
-      "discoveredAt": "2026-08-13T13:54:39Z",
+      "discoveredAt": "2026-08-14T13:49:56Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "article-metadata",
@@ -1706,8 +1823,8 @@
       "reviewReason": "Title identifies navigation, a directory, or an evergreen section"
     },
     {
-      "id": "muskoday-first-nation-2026-08-13-c336de9696",
-      "storyKey": "371-2026-08-13-mfn-community-meeting",
+      "id": "muskoday-first-nation-2026-08-14-0cf7d10823",
+      "storyKey": "371-2026-08-14-mfn-community-meeting",
       "title": "MFN Community Meeting",
       "communityName": "Muskoday First Nation",
       "communityAliases": [
@@ -1719,7 +1836,7 @@
       "category": "Community Events",
       "sourceType": "Official First Nation Website",
       "sourceName": "Muskoday First Nation official website",
-      "publishedAt": "2026-08-13",
+      "publishedAt": "2026-08-14",
       "datePrecision": "day",
       "url": "https://muskodayfn.ca/events/category/mfn-community-meeting",
       "summary": "25-05-08 Govt Canada Presentation Supper will be provided. 25-03-13 Community Info Mtg Poster All Band members invited to attend. Stew & Bannok provided. 25-02-13 MFN Community Info Session",
@@ -1728,7 +1845,7 @@
         "source-backed"
       ],
       "bandId": 371,
-      "discoveredAt": "2026-08-13T13:54:45Z",
+      "discoveredAt": "2026-08-14T13:50:02Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "article-metadata",
@@ -1755,7 +1872,7 @@
         "source-backed"
       ],
       "bandId": 383,
-      "discoveredAt": "2026-08-13T13:55:14Z",
+      "discoveredAt": "2026-08-14T13:50:14Z",
       "communityConfidence": 0.98,
       "dateSource": "meta:date",
       "extractionMethod": "article-metadata",
@@ -1782,7 +1899,7 @@
         "source-backed"
       ],
       "bandId": 383,
-      "discoveredAt": "2026-08-13T13:55:21Z",
+      "discoveredAt": "2026-08-14T13:50:21Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1808,7 +1925,7 @@
         "source-backed"
       ],
       "bandId": 383,
-      "discoveredAt": "2026-08-13T13:55:21Z",
+      "discoveredAt": "2026-08-14T13:50:21Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1834,7 +1951,7 @@
         "source-backed"
       ],
       "bandId": 383,
-      "discoveredAt": "2026-08-13T13:55:21Z",
+      "discoveredAt": "2026-08-14T13:50:21Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1860,7 +1977,7 @@
         "source-backed"
       ],
       "bandId": 383,
-      "discoveredAt": "2026-08-13T13:55:21Z",
+      "discoveredAt": "2026-08-14T13:50:21Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1886,7 +2003,7 @@
         "source-backed"
       ],
       "bandId": 348,
-      "discoveredAt": "2026-08-13T13:55:41Z",
+      "discoveredAt": "2026-08-14T13:50:16Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "html",
@@ -1914,7 +2031,7 @@
         "source-backed"
       ],
       "bandId": 348,
-      "discoveredAt": "2026-08-13T13:55:41Z",
+      "discoveredAt": "2026-08-14T13:50:16Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "html",
@@ -1942,7 +2059,7 @@
         "source-backed"
       ],
       "bandId": 348,
-      "discoveredAt": "2026-08-13T13:55:41Z",
+      "discoveredAt": "2026-08-14T13:50:16Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "html",
@@ -1970,7 +2087,7 @@
         "source-backed"
       ],
       "bandId": 348,
-      "discoveredAt": "2026-08-13T13:55:41Z",
+      "discoveredAt": "2026-08-14T13:50:16Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1998,7 +2115,7 @@
         "source-backed"
       ],
       "bandId": 348,
-      "discoveredAt": "2026-08-13T13:55:48Z",
+      "discoveredAt": "2026-08-14T13:50:23Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2025,7 +2142,7 @@
         "source-backed"
       ],
       "bandId": 348,
-      "discoveredAt": "2026-08-13T13:55:48Z",
+      "discoveredAt": "2026-08-14T13:50:23Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2052,7 +2169,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-08-13T13:55:43Z",
+      "discoveredAt": "2026-08-14T13:50:24Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2078,7 +2195,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-08-13T13:55:43Z",
+      "discoveredAt": "2026-08-14T13:50:24Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2104,7 +2221,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-08-13T13:55:43Z",
+      "discoveredAt": "2026-08-14T13:50:24Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2130,7 +2247,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-08-13T13:55:43Z",
+      "discoveredAt": "2026-08-14T13:50:24Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2156,7 +2273,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-08-13T13:55:43Z",
+      "discoveredAt": "2026-08-14T13:50:24Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2182,7 +2299,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-08-13T13:55:50Z",
+      "discoveredAt": "2026-08-14T13:50:30Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2208,7 +2325,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-08-13T13:55:50Z",
+      "discoveredAt": "2026-08-14T13:50:30Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2234,7 +2351,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-08-13T13:55:54Z",
+      "discoveredAt": "2026-08-14T13:50:35Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_text",
@@ -2261,7 +2378,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-08-13T13:55:55Z",
+      "discoveredAt": "2026-08-14T13:50:35Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_text",
@@ -2288,7 +2405,7 @@
         "source-backed"
       ],
       "bandId": 365,
-      "discoveredAt": "2026-08-13T13:55:45Z",
+      "discoveredAt": "2026-08-14T13:50:24Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "html",
@@ -2315,7 +2432,7 @@
         "source-backed"
       ],
       "bandId": 372,
-      "discoveredAt": "2026-08-13T13:55:47Z",
+      "discoveredAt": "2026-08-14T13:50:42Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2342,7 +2459,7 @@
         "source-backed"
       ],
       "bandId": 372,
-      "discoveredAt": "2026-08-13T13:55:47Z",
+      "discoveredAt": "2026-08-14T13:50:42Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2369,7 +2486,7 @@
         "source-backed"
       ],
       "bandId": 372,
-      "discoveredAt": "2026-08-13T13:55:54Z",
+      "discoveredAt": "2026-08-14T13:50:48Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2396,7 +2513,7 @@
         "source-backed"
       ],
       "bandId": 372,
-      "discoveredAt": "2026-08-13T13:55:54Z",
+      "discoveredAt": "2026-08-14T13:50:48Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2423,7 +2540,7 @@
         "source-backed"
       ],
       "bandId": 388,
-      "discoveredAt": "2026-08-13T13:55:58Z",
+      "discoveredAt": "2026-08-14T13:50:42Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "article-metadata",
@@ -2451,7 +2568,7 @@
         "source-backed"
       ],
       "bandId": 388,
-      "discoveredAt": "2026-08-13T13:56:05Z",
+      "discoveredAt": "2026-08-14T13:50:47Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "html",
@@ -2478,7 +2595,7 @@
         "source-backed"
       ],
       "bandId": 388,
-      "discoveredAt": "2026-08-13T13:56:05Z",
+      "discoveredAt": "2026-08-14T13:50:47Z",
       "communityConfidence": 0.98,
       "dateSource": "json-ld:datePublished",
       "extractionMethod": "html",
@@ -2510,7 +2627,7 @@
         "source-backed"
       ],
       "bandId": 406,
-      "discoveredAt": "2026-08-13T13:56:07Z",
+      "discoveredAt": "2026-08-14T13:50:45Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2540,7 +2657,7 @@
         "source-backed"
       ],
       "bandId": 406,
-      "discoveredAt": "2026-08-13T13:56:01Z",
+      "discoveredAt": "2026-08-14T13:50:40Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2548,130 +2665,6 @@
       "thumbnail": "https://cdn.prod.website-files.com/672cf6ef1ff8f9535b2f23c0/6838df0ff6ae6ca23ec7b1b6_nominations%20date1.png",
       "detailVerified": false,
       "reviewReason": "Title does not clearly describe a supported community update"
-    },
-    {
-      "id": "ahtahkakoop-cree-nation-2026-07-01-372238d0cf",
-      "storyKey": "406-2026-07-01-february-2023",
-      "title": "February 2023",
-      "communityName": "Ahtahkakoop Cree Nation",
-      "communityAliases": [
-        "Ahtahkakoop",
-        "Sandy Lake Indian Band",
-        "Star Blanket"
-      ],
-      "provinceTerritory": "SK",
-      "category": "Culture & Language",
-      "sourceType": "Community Website",
-      "sourceName": "Ahtahkakoop Community News Archive",
-      "publishedAt": "2026-07-01",
-      "datePrecision": "month",
-      "url": "https://www.ahtahkakoop.ca/news/archives/02-2023",
-      "summary": "July 2026 June 2026 November 2024 October 2024 March 2024 December 2023 October 2023 June 2023 February 2023 December 2021 Categories All RSS Feed Home Members History > Elder's Teachings > James Isbister Burton Ahenakew Henry, Clifford & Russel Marg & Shiela Jeffery, Eliza, & Cora Irene Hyman Barry Ahenakew Event Calendar.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 406,
-      "discoveredAt": "2026-08-13T13:56:17Z",
-      "communityConfidence": 0.94,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://www.ahtahkakoop.ca/news/1st-annual-honoring-our-youth-gala",
-      "thumbnail": "http://www.ahtahkakoop.ca/uploads/1/4/5/9/145936684/application-deadlines_orig.jpg",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "ahtahkakoop-cree-nation-2026-06-01-c0a9376628",
-      "storyKey": "406-2026-06-01-december-2021",
-      "title": "December 2021",
-      "communityName": "Ahtahkakoop Cree Nation",
-      "communityAliases": [
-        "Ahtahkakoop",
-        "Sandy Lake Indian Band",
-        "Star Blanket"
-      ],
-      "provinceTerritory": "SK",
-      "category": "Employment",
-      "sourceType": "Community Website",
-      "sourceName": "Ahtahkakoop Community News Archive",
-      "publishedAt": "2026-06-01",
-      "datePrecision": "month",
-      "url": "https://www.ahtahkakoop.ca/news/archives/12-2021",
-      "summary": "Official Newsletter of the Ahtahkakoop Cree Nation",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 406,
-      "discoveredAt": "2026-08-13T13:56:17Z",
-      "communityConfidence": 0.94,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://www.ahtahkakoop.ca/news/1st-annual-honoring-our-youth-gala",
-      "thumbnail": "http://cdn2.editmysite.com/images/site/footer/og-image-placeholder-blank.png",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "ahtahkakoop-cree-nation-2026-07-01-372238d0cf",
-      "storyKey": "406-2026-07-01-february-2023",
-      "title": "February 2023",
-      "communityName": "Ahtahkakoop Cree Nation",
-      "communityAliases": [
-        "Ahtahkakoop",
-        "Sandy Lake Indian Band",
-        "Star Blanket"
-      ],
-      "provinceTerritory": "SK",
-      "category": "Culture & Language",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Ahtahkakoop Cree Nation official website",
-      "publishedAt": "2026-07-01",
-      "datePrecision": "month",
-      "url": "https://www.ahtahkakoop.ca/news/archives/02-2023",
-      "summary": "July 2026 June 2026 November 2024 October 2024 March 2024 December 2023 October 2023 June 2023 February 2023 December 2021 Categories All RSS Feed Home Members History > Elder's Teachings > James Isbister Burton Ahenakew Henry, Clifford & Russel Marg & Shiela Jeffery, Eliza, & Cora Irene Hyman Barry Ahenakew Event Calendar.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 406,
-      "discoveredAt": "2026-08-13T13:56:17Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://www.ahtahkakoop.ca/news",
-      "thumbnail": "http://www.ahtahkakoop.ca/uploads/1/4/5/9/145936684/application-deadlines_orig.jpg",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "ahtahkakoop-cree-nation-2026-06-01-c0a9376628",
-      "storyKey": "406-2026-06-01-december-2021",
-      "title": "December 2021",
-      "communityName": "Ahtahkakoop Cree Nation",
-      "communityAliases": [
-        "Ahtahkakoop",
-        "Sandy Lake Indian Band",
-        "Star Blanket"
-      ],
-      "provinceTerritory": "SK",
-      "category": "Employment",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Ahtahkakoop Cree Nation official website",
-      "publishedAt": "2026-06-01",
-      "datePrecision": "month",
-      "url": "https://www.ahtahkakoop.ca/news/archives/12-2021",
-      "summary": "Official Newsletter of the Ahtahkakoop Cree Nation",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 406,
-      "discoveredAt": "2026-08-13T13:56:17Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://www.ahtahkakoop.ca/news",
-      "thumbnail": "http://cdn2.editmysite.com/images/site/footer/og-image-placeholder-blank.png",
-      "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
       "id": "flying-dust-first-nation-2026-06-01-807bf90c42",
@@ -2696,7 +2689,7 @@
         "source-backed"
       ],
       "bandId": 395,
-      "discoveredAt": "2026-08-13T13:56:37Z",
+      "discoveredAt": "2026-08-14T13:50:58Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2727,7 +2720,7 @@
         "source-backed"
       ],
       "bandId": 395,
-      "discoveredAt": "2026-08-13T13:56:37Z",
+      "discoveredAt": "2026-08-14T13:50:58Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2758,7 +2751,7 @@
         "source-backed"
       ],
       "bandId": 395,
-      "discoveredAt": "2026-08-13T13:56:41Z",
+      "discoveredAt": "2026-08-14T13:51:01Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2789,7 +2782,7 @@
         "source-backed"
       ],
       "bandId": 395,
-      "discoveredAt": "2026-08-13T13:56:41Z",
+      "discoveredAt": "2026-08-14T13:51:01Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2820,7 +2813,7 @@
         "source-backed"
       ],
       "bandId": 395,
-      "discoveredAt": "2026-08-13T13:56:41Z",
+      "discoveredAt": "2026-08-14T13:51:01Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2851,7 +2844,7 @@
         "source-backed"
       ],
       "bandId": 395,
-      "discoveredAt": "2026-08-13T13:56:53Z",
+      "discoveredAt": "2026-08-14T13:51:11Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "document_too_large",
@@ -2860,8 +2853,8 @@
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "lac-la-ronge-indian-band-2026-08-13-010fc89daf",
-      "storyKey": "353-2026-08-13-lac-la-ronge-indian-band",
+      "id": "lac-la-ronge-indian-band-2026-08-14-d240cbe9e0",
+      "storyKey": "353-2026-08-14-lac-la-ronge-indian-band",
       "title": "Lac La Ronge Indian Band",
       "communityName": "Lac La Ronge Indian Band",
       "communityAliases": [],
@@ -2869,7 +2862,7 @@
       "category": "Treaties",
       "sourceType": "Official First Nation Website",
       "sourceName": "Lac La Ronge Indian Band official website",
-      "publishedAt": "2026-08-13",
+      "publishedAt": "2026-08-14",
       "datePrecision": "day",
       "url": "https://llrib.com/",
       "summary": "Located in north-central Saskatchewan, the Lac La Ronge Indian Band is the largest First Nation in Saskatchewan, and one of the 10 largest in Canada, with a population of 11843, as of March 1st, 2023. Our reserve lands extend from rich farmlands in central Saskatchewan, all the way north through the boreal forest to the mighty Churchill River and beyond. Our central administration office is located in La Ronge, 241 k",
@@ -2878,7 +2871,7 @@
         "source-backed"
       ],
       "bandId": 353,
-      "discoveredAt": "2026-08-13T13:57:03Z",
+      "discoveredAt": "2026-08-14T13:51:19Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2905,7 +2898,7 @@
         "source-backed"
       ],
       "bandId": 353,
-      "discoveredAt": "2026-08-13T13:57:02Z",
+      "discoveredAt": "2026-08-14T13:51:19Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "html",
@@ -2933,7 +2926,7 @@
         "source-backed"
       ],
       "bandId": 353,
-      "discoveredAt": "2026-08-13T13:57:02Z",
+      "discoveredAt": "2026-08-14T13:51:19Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "html",
@@ -2961,7 +2954,7 @@
         "source-backed"
       ],
       "bandId": 353,
-      "discoveredAt": "2026-08-13T13:57:02Z",
+      "discoveredAt": "2026-08-14T13:51:19Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "html",
@@ -2989,7 +2982,7 @@
         "source-backed"
       ],
       "bandId": 353,
-      "discoveredAt": "2026-08-13T13:56:43Z",
+      "discoveredAt": "2026-08-14T13:51:03Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "html",
@@ -3008,16 +3001,16 @@
       "category": "Elections",
       "sourceType": "Official First Nation Website",
       "sourceName": "Lac La Ronge Indian Band official website",
-      "publishedAt": "2026-08-06",
+      "publishedAt": "2026-08-12",
       "datePrecision": "day",
       "url": "https://jrmccsportsrec.com/",
-      "summary": "JRMCC is where we host a wide variety of community sports and events Any LLRIB youth from the Tri-Community or Urban interested in competing in the FSIN Youth Golf Championships",
+      "summary": "JRMCC is where we host a wide variety of community sports and events 4 vs 4 Youth Beach ball tournament tomorrow! Format depending on entries.",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 353,
-      "discoveredAt": "2026-08-13T13:57:03Z",
+      "discoveredAt": "2026-08-14T13:51:19Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "html",
@@ -3045,7 +3038,7 @@
         "source-backed"
       ],
       "bandId": 354,
-      "discoveredAt": "2026-08-13T13:57:35Z",
+      "discoveredAt": "2026-08-14T13:51:34Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3073,7 +3066,7 @@
         "source-backed"
       ],
       "bandId": 354,
-      "discoveredAt": "2026-08-13T13:57:35Z",
+      "discoveredAt": "2026-08-14T13:51:34Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3100,7 +3093,7 @@
         "source-backed"
       ],
       "bandId": 343,
-      "discoveredAt": "2026-08-13T13:57:04Z",
+      "discoveredAt": "2026-08-14T13:51:11Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3127,7 +3120,7 @@
         "source-backed"
       ],
       "bandId": 385,
-      "discoveredAt": "2026-08-13T13:58:01Z",
+      "discoveredAt": "2026-08-14T13:51:41Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "html",
@@ -3155,7 +3148,7 @@
         "source-backed"
       ],
       "bandId": 385,
-      "discoveredAt": "2026-08-13T13:58:01Z",
+      "discoveredAt": "2026-08-14T13:51:41Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "html",
@@ -3183,7 +3176,7 @@
         "source-backed"
       ],
       "bandId": 385,
-      "discoveredAt": "2026-08-13T13:58:05Z",
+      "discoveredAt": "2026-08-14T13:51:44Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "article-metadata",
@@ -3211,7 +3204,7 @@
         "source-backed"
       ],
       "bandId": 385,
-      "discoveredAt": "2026-08-13T13:58:58Z",
+      "discoveredAt": "2026-08-14T13:52:36Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "article-metadata",
@@ -3239,7 +3232,7 @@
         "source-backed"
       ],
       "bandId": 385,
-      "discoveredAt": "2026-08-13T14:00:15Z",
+      "discoveredAt": "2026-08-14T13:53:55Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_text",
@@ -3266,7 +3259,7 @@
         "source-backed"
       ],
       "bandId": 385,
-      "discoveredAt": "2026-08-13T14:00:15Z",
+      "discoveredAt": "2026-08-14T13:53:55Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_text",
@@ -3293,7 +3286,7 @@
         "source-backed"
       ],
       "bandId": 386,
-      "discoveredAt": "2026-08-13T13:58:09Z",
+      "discoveredAt": "2026-08-14T13:51:28Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3320,7 +3313,7 @@
         "source-backed"
       ],
       "bandId": 386,
-      "discoveredAt": "2026-08-13T13:58:09Z",
+      "discoveredAt": "2026-08-14T13:51:28Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3347,7 +3340,7 @@
         "source-backed"
       ],
       "bandId": 386,
-      "discoveredAt": "2026-08-13T13:58:09Z",
+      "discoveredAt": "2026-08-14T13:51:28Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3374,7 +3367,7 @@
         "source-backed"
       ],
       "bandId": 386,
-      "discoveredAt": "2026-08-13T13:58:09Z",
+      "discoveredAt": "2026-08-14T13:51:28Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3401,7 +3394,7 @@
         "source-backed"
       ],
       "bandId": 386,
-      "discoveredAt": "2026-08-13T13:58:09Z",
+      "discoveredAt": "2026-08-14T13:51:28Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3428,7 +3421,7 @@
         "source-backed"
       ],
       "bandId": 393,
-      "discoveredAt": "2026-08-13T13:58:21Z",
+      "discoveredAt": "2026-08-14T13:51:37Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "html",
@@ -3456,7 +3449,7 @@
         "source-backed"
       ],
       "bandId": 393,
-      "discoveredAt": "2026-08-13T13:58:20Z",
+      "discoveredAt": "2026-08-14T13:51:37Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "article-metadata",
@@ -3484,7 +3477,7 @@
         "source-backed"
       ],
       "bandId": 393,
-      "discoveredAt": "2026-08-13T13:58:20Z",
+      "discoveredAt": "2026-08-14T13:51:36Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "article-metadata",
@@ -3495,8 +3488,8 @@
     }
   ],
   "summary": {
-    "manualReview": 201,
+    "manualReview": 208,
     "mediaExtracted": 8,
-    "sourceFailures": 35
+    "sourceFailures": 25
   }
 }
