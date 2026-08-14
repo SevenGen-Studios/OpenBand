@@ -76,6 +76,17 @@ class EventDateTests(unittest.TestCase):
             ("2026-09-12", None),
         )
 
+    def test_title_date_does_not_borrow_another_cards_date(self):
+        self.assertEqual(
+            choose_event_date(
+                "Flying Dust First Nation Treaty Days June 19-21, 2026",
+                "Flying Dust First Nation Treaty Days June 19-21, 2026 "
+                "Waterhen Pow Wow August 7-9, 2026",
+                date(2026, 8, 13),
+            ),
+            (None, None),
+        )
+
     def test_statuses(self):
         today = date(2026, 8, 13)
         self.assertEqual(event_status("2026-08-13", None, today), "Ongoing")
@@ -255,6 +266,31 @@ class EventExtractionTests(unittest.TestCase):
             "confidence": 0.9, "extractionMethod": "html",
         }
         self.assertFalse(is_publishable_event(form))
+
+    def test_merge_deduplicates_shared_calendar_title_variants(self):
+        base = {
+            "bandId": 402,
+            "startDate": "2026-08-21",
+            "description": "Event date: August 21, 2026",
+            "confidence": 0.9,
+            "extractionMethod": "shared-index",
+        }
+        first = {
+            **base,
+            "id": "one",
+            "title": "Waterhen Lake First Nation Traditional Pow Wow 2026",
+            "sourceUrl": "https://calendar.example.org/waterhen-powwow",
+        }
+        second = {
+            **base,
+            "id": "two",
+            "title": "Waterhen Lake First Nation Annual Pow Wow 2026",
+            "sourceUrl": "https://tourism.example.org/waterhen-powwow",
+            "confidence": 0.95,
+        }
+        rows = merge_events([], [first, second], date(2026, 8, 13))
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["confidence"], 0.95)
 
     def test_merge_rejects_archive_and_job_false_positives(self):
         archive = {
