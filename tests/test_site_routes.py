@@ -147,7 +147,7 @@ class SiteRouteTests(unittest.TestCase):
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="/assets/openband.css?v=20260814b"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260814d"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260814e"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
