@@ -74,12 +74,14 @@ def canonical_project_name(value: str) -> str:
     aliases = {
         "sewage lagoon": "Sewage Pumping Station and Lagoon",
         "sewage pumping station": "Sewage Pumping Station and Lagoon",
+        "wwaater treatment plant evaluation and upgrade": "Water Treatment Plant Evaluation and Upgrade",
     }
     return aliases.get(cleaned.lower(), cleaned)
 
 
 def disclosure_key(name: str) -> str:
     value = canonical_project_name(name).lower()
+    value = re.sub(r"\s+project$", "", value)
     replacements = {"elementary school": "elementary school repairs"}
     return slugify(replacements.get(value, value))
 
