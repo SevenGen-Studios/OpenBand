@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "generated": "2026-08-14",
-  "methodology": "Manually verified public-source records. Unknown values remain null; affiliated entities are not assumed to be wholly owned.",
+  "methodology": "Manually verified public-source records. Nation-specific organizations and tribal-council affiliations are distinct; affiliation is not treated as direct ownership. Unknown values remain null.",
   "nationProfiles": [
     {
       "bandId": 355,
@@ -56,6 +56,68 @@
       ],
       "lastVerified": "2026-08-14",
       "verificationStatus": "Verified"
+    },
+    {
+      "bandId": 362,
+      "primaryOrganizationId": "org-kemc",
+      "featuredBusinessIds": [],
+      "featuredProjectIds": [],
+      "industries": [
+        "Development",
+        "Investment",
+        "Property"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    },
+    {
+      "bandId": 402,
+      "primaryOrganizationId": "org-waterhen-development",
+      "featuredBusinessIds": [],
+      "featuredProjectIds": [],
+      "industries": [
+        "Development",
+        "Investment",
+        "Employment"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    },
+    {
+      "bandId": 385,
+      "primaryOrganizationId": "org-piapot-development",
+      "featuredBusinessIds": [],
+      "featuredProjectIds": [],
+      "industries": [
+        "Retail & fuel",
+        "Development"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "bandId": 370,
+      "primaryOrganizationId": "org-fcdc",
+      "featuredBusinessIds": [],
+      "featuredProjectIds": [],
+      "industries": [
+        "Natural resources",
+        "Development"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "bandId": 365,
+      "primaryOrganizationId": "org-whitebear-development",
+      "featuredBusinessIds": [],
+      "featuredProjectIds": [],
+      "industries": [
+        "Development",
+        "Community investment"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Publicly reported"
     }
   ],
   "organizations": [
@@ -109,6 +171,227 @@
       ],
       "lastVerified": "2026-08-14",
       "verificationStatus": "Verified"
+    },
+    {
+      "id": "org-fhq-developments",
+      "name": "FHQ Developments",
+      "legalName": "FHQ Developments Ltd.",
+      "organizationType": "Tribal council economic development corporation",
+      "scope": "Tribal council",
+      "description": "Investment and economic development corporation formed by the eleven member First Nations of File Hills Qu'Appelle Tribal Council and FHQTC.",
+      "yearEstablished": 2010,
+      "website": "https://fhqdev.com/",
+      "headquarters": "Regina, Saskatchewan",
+      "mandate": "Develop profitable ventures, economic opportunities, employment and livelihoods for its limited partners and citizens.",
+      "sourceIds": [
+        "src-fhq-who-we-are"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "org-mltcii",
+      "name": "Meadow Lake Tribal Council Industrial Investments",
+      "legalName": "Meadow Lake Tribal Council Industrial Investments",
+      "organizationType": "Tribal council economic development corporation",
+      "scope": "Tribal council",
+      "description": "Indigenous-owned economic development corporation created by the nine Meadow Lake Tribal Council First Nations.",
+      "yearEstablished": 2012,
+      "website": "https://www.mltc.net/",
+      "headquarters": "Meadow Lake, Saskatchewan",
+      "mandate": "Pursue economic development in forestry, renewable energy, oil and gas, agriculture and hospitality for member Nations.",
+      "sourceIds": [
+        "src-mltcii-award"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "org-stci",
+      "name": "STC Industrial Group",
+      "legalName": "STC Industrial Group",
+      "organizationType": "Tribal council business group",
+      "scope": "Tribal council",
+      "description": "First Nations-owned group of industrial businesses co-owned through the seven Saskatoon Tribal Council member Nations.",
+      "yearEstablished": 2017,
+      "website": "https://sktc.sk.ca/economic-development/",
+      "headquarters": "Saskatoon, Saskatchewan",
+      "mandate": "Create industrial business and career opportunities for STC communities.",
+      "sourceIds": [
+        "src-stci-update"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "org-pafnbd",
+      "name": "Prince Albert First Nations Business Development Limited Partnership",
+      "legalName": "Prince Albert First Nations Business Development Limited Partnership",
+      "organizationType": "Grand council economic development arm",
+      "scope": "Tribal council",
+      "description": "Economic development arm of Prince Albert Grand Council, historically known as PADC.",
+      "yearEstablished": null,
+      "website": "https://pagc.sk.ca/",
+      "headquarters": "Prince Albert, Saskatchewan",
+      "mandate": "Develop corporate ventures and employment opportunities connected to PAGC member First Nations.",
+      "sourceIds": [
+        "src-pagc-about"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "org-first-alliance",
+      "name": "First Alliance Companies",
+      "legalName": "First Alliance Companies",
+      "organizationType": "Tribal council-affiliated business organization",
+      "scope": "Tribal council",
+      "description": "Business organization presented by Battlefords Agency Tribal Chiefs as an entity focused on Indigenous economic partnerships.",
+      "yearEstablished": null,
+      "website": "https://www.batc.ca/entities/first_alliance_companies.html",
+      "headquarters": "North Battleford, Saskatchewan",
+      "mandate": "Build partnerships for Indigenous economic success.",
+      "sourceIds": [
+        "src-batc-first-alliance"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "id": "org-tatc-development",
+      "name": "TATC Development Corporation",
+      "legalName": "Touchwood Agency Tribal Council Development Corporation",
+      "organizationType": "Tribal council development corporation",
+      "scope": "Tribal council",
+      "description": "Development corporation named by the Touchwood Agency Tribal Council Economic Development service as a collaborating TATC organization.",
+      "yearEstablished": null,
+      "website": "https://touchwoodagency.ca/",
+      "headquarters": "Punnichy, Saskatchewan",
+      "mandate": "Support economic development work connected to Touchwood Agency Tribal Council member Nations.",
+      "sourceIds": [
+        "src-tatc-economic"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "id": "org-ytc-economic",
+      "name": "Yorkton Tribal Council Economic Development",
+      "legalName": "Yorkton Tribal Council Economic Development",
+      "organizationType": "Tribal council economic development program",
+      "scope": "Tribal council",
+      "description": "Yorkton Tribal Council service area for economic development. The public source does not identify a separate investment corporation.",
+      "yearEstablished": null,
+      "website": "https://yorktontribalcouncil.com/economic-development/",
+      "headquarters": "Yorkton, Saskatchewan",
+      "mandate": "Support economic development and future business ventures for YTC member Nations.",
+      "sourceIds": [
+        "src-ytc-economic"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "id": "org-actc-economic",
+      "name": "Agency Chiefs Tribal Council Economic Development",
+      "legalName": "Agency Chiefs Tribal Council Inc.",
+      "organizationType": "Tribal council economic development program",
+      "scope": "Tribal council",
+      "description": "Economic development activity documented through a Government of Canada agriculture and food-systems project. No separate EDC was identified in the source.",
+      "yearEstablished": null,
+      "website": null,
+      "headquarters": "Spiritwood, Saskatchewan",
+      "mandate": "Coordinate economic ventures and capacity building for ACTC member Nations.",
+      "sourceIds": [
+        "src-actc-agriculture"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "id": "org-kemc",
+      "name": "Kahkewistahaw Economic Management Corporation",
+      "legalName": "Kahkewistahaw Economic Management Corporation",
+      "organizationType": "Economic development corporation",
+      "scope": "First Nation",
+      "description": "Wholly owned economic development corporation of Kahkewistahaw First Nation.",
+      "yearEstablished": null,
+      "website": "https://kemcdevelopments.com/",
+      "headquarters": "Yorkton, Saskatchewan",
+      "mandate": "Develop opportunities and a diversified portfolio on behalf of Kahkewistahaw First Nation.",
+      "sourceIds": [
+        "src-kemc-home"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "org-waterhen-development",
+      "name": "Waterhen Lake First Nation Development LP",
+      "legalName": "Waterhen Lake First Nation Development LP",
+      "organizationType": "Economic development limited partnership",
+      "scope": "First Nation",
+      "description": "Business arm created to develop, direct and oversee Waterhen Lake First Nation business interests, investments and opportunities.",
+      "yearEstablished": 1988,
+      "website": "https://waterhendevelopment.ca/",
+      "headquarters": "Waterhen Lake, Saskatchewan",
+      "mandate": "Generate own-source revenue and employment through economic development projects.",
+      "sourceIds": [
+        "src-waterhen-about"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "org-piapot-development",
+      "name": "Piapot Development Corporation",
+      "legalName": "Piapot Development Corporation",
+      "organizationType": "Economic development corporation",
+      "scope": "First Nation",
+      "description": "Development corporation referenced by Piapot First Nation's official economic development page.",
+      "yearEstablished": null,
+      "website": "https://piapotnation.com/economic-development/",
+      "headquarters": "Piapot First Nation, Saskatchewan",
+      "mandate": "Support disciplined and sustainable economic growth for Piapot First Nation.",
+      "sourceIds": [
+        "src-piapot-economic"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "id": "org-fcdc",
+      "name": "Fort a la Corne Development Corporation",
+      "legalName": "Fort a la Corne Development Corporation",
+      "organizationType": "Economic development corporation",
+      "scope": "First Nation",
+      "description": "Development corporation established for the benefit of the James Smith Cree Nation communities.",
+      "yearEstablished": null,
+      "website": null,
+      "headquarters": "Saskatchewan",
+      "mandate": "Promote and carry out commercial enterprise and facilitate business, service and employment opportunities.",
+      "sourceIds": [
+        "src-jscn-fcdc"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "id": "org-whitebear-development",
+      "name": "White Bear Nations Development LP",
+      "legalName": "White Bear Nations Development LP",
+      "organizationType": "Economic and community development organization",
+      "scope": "First Nation",
+      "description": "Organization publicly listed as representing White Bear First Nations economic and community development interests.",
+      "yearEstablished": null,
+      "website": null,
+      "headquarters": "Carlyle, Saskatchewan",
+      "mandate": "Represent White Bear First Nations economic and community development interests.",
+      "sourceIds": [
+        "src-whitebear-development"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Publicly reported"
     }
   ],
   "organizationRelationships": [
@@ -155,6 +438,81 @@
       "sourceIds": [
         "src-desnedhe-brochure",
         "src-desnedhe-compliance"
+      ],
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "id": "rel-kfn-kemc",
+      "parentType": "firstNation",
+      "parentId": "band-362",
+      "childType": "organization",
+      "childId": "org-kemc",
+      "relationshipType": "owns",
+      "ownershipPercentage": 100,
+      "effectiveDate": null,
+      "endDate": null,
+      "sourceIds": [
+        "src-kemc-home"
+      ],
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "rel-waterhen-development",
+      "parentType": "firstNation",
+      "parentId": "band-402",
+      "childType": "organization",
+      "childId": "org-waterhen-development",
+      "relationshipType": "economic development arm",
+      "ownershipPercentage": null,
+      "effectiveDate": null,
+      "endDate": null,
+      "sourceIds": [
+        "src-waterhen-about"
+      ],
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "rel-piapot-development",
+      "parentType": "firstNation",
+      "parentId": "band-385",
+      "childType": "organization",
+      "childId": "org-piapot-development",
+      "relationshipType": "economic development arm",
+      "ownershipPercentage": null,
+      "effectiveDate": null,
+      "endDate": null,
+      "sourceIds": [
+        "src-piapot-economic"
+      ],
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "id": "rel-jscn-fcdc",
+      "parentType": "firstNation",
+      "parentId": "band-370",
+      "childType": "organization",
+      "childId": "org-fcdc",
+      "relationshipType": "development corporation for the James Smith Cree Nation communities",
+      "ownershipPercentage": null,
+      "effectiveDate": null,
+      "endDate": null,
+      "sourceIds": [
+        "src-jscn-fcdc"
+      ],
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "id": "rel-whitebear-development",
+      "parentType": "firstNation",
+      "parentId": "band-365",
+      "childType": "organization",
+      "childId": "org-whitebear-development",
+      "relationshipType": "represents economic and community development interests",
+      "ownershipPercentage": null,
+      "effectiveDate": null,
+      "endDate": null,
+      "sourceIds": [
+        "src-whitebear-development"
       ],
       "verificationStatus": "Publicly reported"
     }
@@ -569,6 +927,874 @@
       "url": "https://desnedhe.com/app/uploads/2024/07/Des-Nedhe-Bill-S-211-Compliance-Report-2024.pdf",
       "publicationDate": "2024",
       "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-fhq-who-we-are",
+      "title": "Who We Are",
+      "publisher": "FHQ Developments",
+      "url": "https://fhqdev.com/fhq-developments/about-us/who-we-are/",
+      "publicationDate": null,
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-mltcii-award",
+      "title": "MLTC Industrial Investments receives 2023 AEDC Award",
+      "publisher": "Meadow Lake Tribal Council",
+      "url": "https://www.mltc.net/meadow-lake-tribal-council-industrial-investments-receives-2023-aboriginal-economic-development-corporation-award/",
+      "publicationDate": "2023-04-17",
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-stci-update",
+      "title": "STCI Economic Development update",
+      "publisher": "Saskatoon Tribal Council",
+      "url": "https://sktc.sk.ca/stci-economic-development-update/",
+      "publicationDate": "2022-09-01",
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-pagc-about",
+      "title": "About Us",
+      "publisher": "Prince Albert Grand Council",
+      "url": "https://pagc.sk.ca/about-us/",
+      "publicationDate": null,
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-batc-first-alliance",
+      "title": "First Alliance Companies",
+      "publisher": "Battlefords Agency Tribal Chiefs",
+      "url": "https://www.batc.ca/entities/first_alliance_companies.html",
+      "publicationDate": null,
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-tatc-economic",
+      "title": "Touchwood Agency Tribal Council Economic Development",
+      "publisher": "Saskatchewan 211",
+      "url": "https://sk.211.ca/services/79141262/touchwood-agency-tribal-council-economic-development/",
+      "publicationDate": null,
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-ytc-economic",
+      "title": "Economic Development",
+      "publisher": "Yorkton Tribal Council",
+      "url": "https://yorktontribalcouncil.com/economic-development/",
+      "publicationDate": null,
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-actc-agriculture",
+      "title": "Indigenous Agriculture and Food Systems Initiative agreement",
+      "publisher": "Government of Canada",
+      "url": "https://search.open.canada.ca/grants/record/aafc-aac%2C235-2021-2022-Q4-00178%2Ccurrent",
+      "publicationDate": "2022",
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-kemc-home",
+      "title": "Kahkewistahaw Economic Management Corporation",
+      "publisher": "Kahkewistahaw Economic Management Corporation",
+      "url": "https://kemcdevelopments.com/",
+      "publicationDate": null,
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-waterhen-about",
+      "title": "About Us",
+      "publisher": "Waterhen Lake First Nation Development LP",
+      "url": "https://waterhendevelopment.ca/about-us",
+      "publicationDate": null,
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-piapot-economic",
+      "title": "Economic Development",
+      "publisher": "Piapot First Nation",
+      "url": "https://piapotnation.com/economic-development/",
+      "publicationDate": null,
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-jscn-fcdc",
+      "title": "First Nations Diamond Exploration Liaison Office funding announcement",
+      "publisher": "Government of Saskatchewan",
+      "url": "https://www.saskatchewan.ca/government/news-and-media/2007/july/25/canadas-new-government-and-the-saskatchewan-government-fund--first-nations-diamond-exploration-liaison-office",
+      "publicationDate": "2007-07-25",
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-whitebear-development",
+      "title": "White Bear Nations Development LP",
+      "publisher": "Estevan Chamber of Commerce",
+      "url": "https://www.estevanchamber.ca/list/member/white-bear-nations-development-lp-599",
+      "publicationDate": null,
+      "lastVerified": "2026-08-14"
+    }
+  ],
+  "tribalCouncilOrganizations": [
+    {
+      "tribalCouncil": "File Hills Qu'Appelle Tribal Council",
+      "organizationIds": [
+        "org-fhq-developments"
+      ],
+      "relationshipType": "collective economic development organization",
+      "sourceIds": [
+        "src-fhq-who-we-are"
+      ],
+      "verificationStatus": "Verified"
+    },
+    {
+      "tribalCouncil": "Meadow Lake Tribal Council",
+      "organizationIds": [
+        "org-mltcii"
+      ],
+      "relationshipType": "collective economic development organization",
+      "sourceIds": [
+        "src-mltcii-award"
+      ],
+      "verificationStatus": "Verified"
+    },
+    {
+      "tribalCouncil": "Saskatoon Tribal Council",
+      "organizationIds": [
+        "org-stci"
+      ],
+      "relationshipType": "co-owned tribal council business group",
+      "sourceIds": [
+        "src-stci-update"
+      ],
+      "verificationStatus": "Verified"
+    },
+    {
+      "tribalCouncil": "Prince Albert Grand Council",
+      "organizationIds": [
+        "org-pafnbd"
+      ],
+      "relationshipType": "grand council economic development arm",
+      "sourceIds": [
+        "src-pagc-about"
+      ],
+      "verificationStatus": "Verified"
+    },
+    {
+      "tribalCouncil": "Battlefords Agency Tribal Chiefs (BATC)",
+      "organizationIds": [
+        "org-first-alliance"
+      ],
+      "relationshipType": "tribal council-affiliated business organization",
+      "sourceIds": [
+        "src-batc-first-alliance"
+      ],
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "tribalCouncil": "Touchwood Agency Tribal Council",
+      "organizationIds": [
+        "org-tatc-development"
+      ],
+      "relationshipType": "tribal council development corporation",
+      "sourceIds": [
+        "src-tatc-economic"
+      ],
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "tribalCouncil": "Yorkton Tribal Council",
+      "organizationIds": [
+        "org-ytc-economic"
+      ],
+      "relationshipType": "tribal council economic development program",
+      "sourceIds": [
+        "src-ytc-economic"
+      ],
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "tribalCouncil": "Agency Chiefs Tribal Council",
+      "organizationIds": [
+        "org-actc-economic"
+      ],
+      "relationshipType": "tribal council economic development program",
+      "sourceIds": [
+        "src-actc-agriculture"
+      ],
+      "verificationStatus": "Publicly reported"
+    }
+  ],
+  "coverage": [
+    {
+      "bandId": 406,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Battlefords Agency Tribal Chiefs (BATC)",
+      "collectiveOrganizationIds": [
+        "org-first-alliance"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 369,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": null,
+      "collectiveOrganizationIds": [],
+      "lastChecked": "2026-08-14",
+      "note": "No source-verified Nation-specific or tribal-council economic organization has been indexed yet."
+    },
+    {
+      "bandId": 404,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Agency Chiefs Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-actc-economic"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 403,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Meadow Lake Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-mltcii"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 359,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Prince Albert Grand Council",
+      "collectiveOrganizationIds": [
+        "org-pafnbd"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 398,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Meadow Lake Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-mltcii"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 394,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Meadow Lake Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-mltcii"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 378,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "File Hills Qu'Appelle Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-fhq-developments"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 401,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Meadow Lake Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-mltcii"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 366,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Yorkton Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-ytc-economic"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 361,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": null,
+      "collectiveOrganizationIds": [],
+      "lastChecked": "2026-08-14",
+      "note": "No source-verified Nation-specific or tribal-council economic organization has been indexed yet."
+    },
+    {
+      "bandId": 407,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": null,
+      "collectiveOrganizationIds": [],
+      "lastChecked": "2026-08-14",
+      "note": "No source-verified Nation-specific or tribal-council economic organization has been indexed yet."
+    },
+    {
+      "bandId": 350,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Prince Albert Grand Council",
+      "collectiveOrganizationIds": [
+        "org-pafnbd"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 389,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Touchwood Agency Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-tatc-development"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 400,
+      "directOrganizationStatus": "verified",
+      "tribalCouncil": "Meadow Lake Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-mltcii"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A Nation-specific organization is indexed."
+    },
+    {
+      "bandId": 390,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": null,
+      "collectiveOrganizationIds": [],
+      "lastChecked": "2026-08-14",
+      "note": "No source-verified Nation-specific or tribal-council economic organization has been indexed yet."
+    },
+    {
+      "bandId": 395,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Meadow Lake Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-mltcii"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 351,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Prince Albert Grand Council",
+      "collectiveOrganizationIds": [
+        "org-pafnbd"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 391,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Touchwood Agency Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-tatc-development"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 352,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Prince Albert Grand Council",
+      "collectiveOrganizationIds": [
+        "org-pafnbd"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 370,
+      "directOrganizationStatus": "verified",
+      "tribalCouncil": "Prince Albert Grand Council",
+      "collectiveOrganizationIds": [
+        "org-pafnbd"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A Nation-specific organization is indexed."
+    },
+    {
+      "bandId": 362,
+      "directOrganizationStatus": "verified",
+      "tribalCouncil": "Yorkton Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-ytc-economic"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A Nation-specific organization is indexed."
+    },
+    {
+      "bandId": 393,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Touchwood Agency Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-tatc-development"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 367,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Yorkton Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-ytc-economic"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 377,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Saskatoon Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-stci"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 353,
+      "directOrganizationStatus": "verified",
+      "tribalCouncil": "Prince Albert Grand Council",
+      "collectiveOrganizationIds": [
+        "org-pafnbd"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A Nation-specific organization is indexed."
+    },
+    {
+      "bandId": 379,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "File Hills Qu'Appelle Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-fhq-developments"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 340,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Battlefords Agency Tribal Chiefs (BATC)",
+      "collectiveOrganizationIds": [
+        "org-first-alliance"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 341,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Battlefords Agency Tribal Chiefs (BATC)",
+      "collectiveOrganizationIds": [
+        "org-first-alliance"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 396,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Meadow Lake Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-mltcii"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 397,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Meadow Lake Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-mltcii"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 374,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Saskatoon Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-stci"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 354,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Prince Albert Grand Council",
+      "collectiveOrganizationIds": [
+        "org-pafnbd"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 342,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Battlefords Agency Tribal Chiefs (BATC)",
+      "collectiveOrganizationIds": [
+        "org-first-alliance"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 343,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Battlefords Agency Tribal Chiefs (BATC)",
+      "collectiveOrganizationIds": [
+        "org-first-alliance"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 381,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "File Hills Qu'Appelle Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-fhq-developments"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 375,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Saskatoon Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-stci"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 371,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Saskatoon Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-stci"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 392,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Touchwood Agency Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-tatc-development"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 380,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "File Hills Qu'Appelle Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-fhq-developments"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 408,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Yorkton Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-ytc-economic"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 363,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "South East Treaty 4 Tribal Council",
+      "collectiveOrganizationIds": [],
+      "lastChecked": "2026-08-14",
+      "note": "No source-verified Nation-specific or tribal-council economic organization has been indexed yet."
+    },
+    {
+      "bandId": 382,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "File Hills Qu'Appelle Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-fhq-developments"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 373,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Saskatoon Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-stci"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 344,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": null,
+      "collectiveOrganizationIds": [],
+      "lastChecked": "2026-08-14",
+      "note": "No source-verified Nation-specific or tribal-council economic organization has been indexed yet."
+    },
+    {
+      "bandId": 383,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "File Hills Qu'Appelle Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-fhq-developments"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 384,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "File Hills Qu'Appelle Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-fhq-developments"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 405,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Agency Chiefs Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-actc-economic"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 355,
+      "directOrganizationStatus": "verified",
+      "tribalCouncil": "Prince Albert Grand Council",
+      "collectiveOrganizationIds": [
+        "org-pafnbd"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A Nation-specific organization is indexed."
+    },
+    {
+      "bandId": 409,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": null,
+      "collectiveOrganizationIds": [],
+      "lastChecked": "2026-08-14",
+      "note": "No source-verified Nation-specific or tribal-council economic organization has been indexed yet."
+    },
+    {
+      "bandId": 385,
+      "directOrganizationStatus": "verified",
+      "tribalCouncil": "File Hills Qu'Appelle Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-fhq-developments"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A Nation-specific organization is indexed."
+    },
+    {
+      "bandId": 345,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Battlefords Agency Tribal Chiefs (BATC)",
+      "collectiveOrganizationIds": [
+        "org-first-alliance"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 356,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Prince Albert Grand Council",
+      "collectiveOrganizationIds": [
+        "org-pafnbd"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 346,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Battlefords Agency Tribal Chiefs (BATC)",
+      "collectiveOrganizationIds": [
+        "org-first-alliance"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 364,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Yorkton Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-ytc-economic"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 347,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Battlefords Agency Tribal Chiefs (BATC)",
+      "collectiveOrganizationIds": [
+        "org-first-alliance"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 357,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Prince Albert Grand Council",
+      "collectiveOrganizationIds": [
+        "org-pafnbd"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 386,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "File Hills Qu'Appelle Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-fhq-developments"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 387,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "File Hills Qu'Appelle Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-fhq-developments"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 360,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Prince Albert Grand Council",
+      "collectiveOrganizationIds": [
+        "org-pafnbd"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 348,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Battlefords Agency Tribal Chiefs (BATC)",
+      "collectiveOrganizationIds": [
+        "org-first-alliance"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 368,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Yorkton Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-ytc-economic"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 349,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": null,
+      "collectiveOrganizationIds": [],
+      "lastChecked": "2026-08-14",
+      "note": "No source-verified Nation-specific or tribal-council economic organization has been indexed yet."
+    },
+    {
+      "bandId": 358,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Prince Albert Grand Council",
+      "collectiveOrganizationIds": [
+        "org-pafnbd"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 402,
+      "directOrganizationStatus": "verified",
+      "tribalCouncil": "Meadow Lake Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-mltcii"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A Nation-specific organization is indexed."
+    },
+    {
+      "bandId": 365,
+      "directOrganizationStatus": "verified",
+      "tribalCouncil": "South East Treaty 4 Tribal Council",
+      "collectiveOrganizationIds": [],
+      "lastChecked": "2026-08-14",
+      "note": "A Nation-specific organization is indexed."
+    },
+    {
+      "bandId": 372,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Saskatoon Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-stci"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 388,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "File Hills Qu'Appelle Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-fhq-developments"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
+    },
+    {
+      "bandId": 376,
+      "directOrganizationStatus": "not yet verified",
+      "tribalCouncil": "Saskatoon Tribal Council",
+      "collectiveOrganizationIds": [
+        "org-stci"
+      ],
+      "lastChecked": "2026-08-14",
+      "note": "A source-linked collective economic organization or program is indexed through the verified tribal-council relationship."
     }
   ]
 }
