@@ -47,6 +47,26 @@ class EventDateTests(unittest.TestCase):
             ("2026-09-12", None),
         )
 
+    def test_explicit_year_beats_yearless_calendar_heading(self):
+        self.assertEqual(
+            choose_event_date(
+                "Sep 10 Wellness clinic Wednesday, September 10, 2025",
+                "Sep 10 Wellness clinic Wednesday, September 10, 2025",
+                date(2026, 8, 13),
+            ),
+            (None, None),
+        )
+
+    def test_first_event_date_beats_later_agenda_date(self):
+        self.assertEqual(
+            choose_event_date(
+                "Sep 12 Annual General Meeting Saturday, September 12, 2026",
+                "Agenda will be posted after August 18, 2026.",
+                date(2026, 8, 13),
+            ),
+            ("2026-09-12", None),
+        )
+
     def test_statuses(self):
         today = date(2026, 8, 13)
         self.assertEqual(event_status("2026-08-13", None, today), "Ongoing")
@@ -111,6 +131,21 @@ class EventExtractionTests(unittest.TestCase):
         rows = merge_events([item], [duplicate], date(2026, 8, 13))
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["confidence"], 0.95)
+
+    def test_merge_deduplicates_one_source_url_across_dates(self):
+        first = {
+            "id": "one", "bandId": 378, "title": "Annual Powwow August 21, 2026",
+            "startDate": "2026-08-21", "sourceUrl": "https://example.org/powwow",
+            "description": "Event date: August 21, 2026", "confidence": 0.9,
+            "extractionMethod": "html",
+        }
+        duplicate = {
+            **first, "id": "two", "startDate": "2026-08-23",
+            "title": "Annual Powwow August 21-23, 2026", "endDate": "2026-08-23",
+        }
+        rows = merge_events([], [first, duplicate], date(2026, 8, 13))
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["endDate"], "2026-08-23")
 
     def test_merge_rejects_archive_and_job_false_positives(self):
         archive = {
