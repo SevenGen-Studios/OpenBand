@@ -268,10 +268,10 @@ def choose_event_date(title: str, context: str, today: date | None = None):
 
     title_explicit = explicit_event_dates(title)
     context_explicit = explicit_event_dates(context)
-    explicit = title_explicit or context_explicit
-    if explicit:
-        selected = first_viable(title_explicit) or first_viable(context_explicit)
-        return selected or (None, None)
+    if title_explicit:
+        return first_viable(title_explicit) or (None, None)
+    if context_explicit:
+        return first_viable(context_explicit) or (None, None)
 
     selected = first_viable(event_dates(title, today)) or first_viable(event_dates(context, today))
     return selected or (None, None)
@@ -541,6 +541,30 @@ def match_shared_community(communities: list[dict], value: str) -> dict | None:
     return matches[0] if len(matches) == 1 else None
 
 
+def concise_shared_event_title(title: str, community: dict) -> str:
+    """Trim shared-calendar card boilerplate while preserving the source event name."""
+    value = clean_text(title)
+    names = [
+        community.get("communityName"),
+        *(community.get("aliases") or []),
+        *SHARED_COMMUNITY_ALIASES.get(int(community.get("bandId") or 0), []),
+    ]
+    positions = []
+    for name in names:
+        if not name:
+            continue
+        match = re.search(re.escape(clean_text(name)), value, re.I)
+        if match:
+            positions.append(match.start())
+    if positions:
+        value = value[min(positions):]
+    value = re.split(r"\bEvent Details\b", value, maxsplit=1, flags=re.I)[0]
+    year_match = re.search(r"^(.+?\b20\d{2}\b)", value)
+    if year_match and EVENT_WORDS.search(year_match.group(1)):
+        value = year_match.group(1)
+    return clean_text(value)[:150]
+
+
 def extract_shared_index_events(
     html: str,
     page_url: str,
@@ -591,8 +615,8 @@ def extract_shared_index_events(
         if not start or not url.startswith("http") or url in seen:
             continue
         events.append(normalized_event(
-            community, source, title=title, context=context, url=url,
-            start=start, end=end, method="shared-index",
+            community, source, title=concise_shared_event_title(title, community),
+            context=context, url=url, start=start, end=end, method="shared-index",
         ))
         seen.add(url)
     return events
@@ -673,6 +697,18 @@ def source_registry(data: dict, news: dict, events_registry: dict) -> dict:
     }
 
 
+def event_identity_title(value: str) -> str:
+    """Normalize harmless calendar wording so duplicate public listings collapse."""
+    title = normalized_text(value)
+    title = re.sub(
+        r"\b(?:\d+(?:st|nd|rd|th)|annual|traditional|competition|competitive)\b",
+        " ",
+        title,
+    )
+    title = re.sub(r"\b20\d{2}\b", " ", title)
+    return clean_text(title)
+
+
 def merge_events(existing: list[dict], candidates: list[dict], today: date | None = None):
     today = today or utc_today()
     minimum = (today - timedelta(days=EVENT_WINDOW_PAST_DAYS)).isoformat()
@@ -684,7 +720,8 @@ def merge_events(existing: list[dict], candidates: list[dict], today: date | Non
         url = canonical_url(item.get("sourceUrl"))
         if not (minimum <= start <= maximum and url.startswith("https://") and is_publishable_event(item)):
             continue
-        key = f"{item.get('bandId')}|{start}|{normalized_text(item.get('title'))}"
+        identity = event_identity_title(item.get("title"))
+        key = f"{item.get('bandId')}|{start}|{identity}"
         duplicate = next((
             old_key for old_key, old in by_key.items()
             if old.get("bandId") == item.get("bandId")
@@ -692,7 +729,7 @@ def merge_events(existing: list[dict], candidates: list[dict], today: date | Non
                 old.get("sourceUrl") == url
                 or (
                     old.get("startDate") == start
-                    and normalized_text(old.get("title")) == normalized_text(item.get("title"))
+                    and event_identity_title(old.get("title")) == identity
                 )
             )
         ), None)
