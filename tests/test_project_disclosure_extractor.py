@@ -7,6 +7,37 @@ SOURCE = "https://example.test/big-river-2025.pdf"
 
 
 class ProjectDisclosureExtractorTests(unittest.TestCase):
+    def test_known_source_label_variants_merge_without_losing_evidence(self):
+        pages = [
+            "Restricted cash\nCapital project - Sewage Lagoon 1,246,169 900,000",
+            "Deferred revenue\nSewage Pumping Station - ISC Capital Project 100,000 2,630,000 4,399,687 888,859",
+        ]
+        rows = parse_project_disclosures(
+            pages,
+            band_id="404",
+            band_name="Big River First Nation",
+            fiscal_year="2024-2025",
+            source_url="https://example.test/audit.pdf",
+        )
+        row = next(item for item in rows if item["name"] == "Sewage Pumping Station and Lagoon")
+        self.assertEqual(row["amounts"]["fundingReceived"], 2_630_000)
+        self.assertEqual(row["amounts"]["restrictedCash"], 1_246_169)
+        self.assertEqual(len(row["sourceReferences"]), 2)
+
+    def test_negative_accounting_adjustments_are_not_published_as_project_amounts(self):
+        pages = [
+            "Deferred revenue\nBooster Station Upgrade - ISC Capital Project 0 (94,052) 0 0",
+        ]
+        rows = parse_project_disclosures(
+            pages,
+            band_id="376",
+            band_name="Pheasant Rump Nakota Nation",
+            fiscal_year="2020-2021",
+            source_url="https://example.test/audit.pdf",
+        )
+        self.assertEqual(len(rows), 1)
+        self.assertNotIn("fundingReceived", rows[0]["amounts"])
+
     def test_extracts_restricted_cash_and_deferred_revenue_without_inferring_status(self):
         pages = [
             """Notes to the Consolidated Financial Statements

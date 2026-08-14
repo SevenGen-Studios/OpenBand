@@ -40,16 +40,17 @@ class SiteRouteTests(unittest.TestCase):
             expected_heading = html.escape(f"{band['name']} Financial Records")
             self.assertIn(f"<h1>{expected_heading}</h1>", markup)
 
-    def test_every_band_has_a_static_enterprise_profile(self):
+    def test_legacy_enterprise_routes_redirect_to_community_capital(self):
         for band in self.data["bands"]:
             slug = slugify(band["name"])
             page = ROOT / "first-nations" / slug / "community-enterprise" / "index.html"
             self.assertTrue(page.is_file(), band["name"])
             markup = page.read_text(encoding="utf-8")
-            expected_title = html.escape(f"{band['name']} Community Enterprise | OpenBand")
+            expected_title = html.escape(f"{band['name']} Community Capital | OpenBand")
             self.assertIn(f"<title>{expected_title}</title>", markup)
-            self.assertIn(f"{ORIGIN}/first-nations/{slug}/community-enterprise/", markup)
-            self.assertIn(f'data-band-id="{band["id"]}"', markup)
+            self.assertIn('name="robots" content="noindex,follow"', markup)
+            self.assertIn(f'{ORIGIN}/first-nations/{slug}/?tab=capital', markup)
+            self.assertIn(f'location.replace("/first-nations/{slug}/?tab=capital")', markup)
             self.assertIn(html.escape(band["name"]), markup)
 
     def test_enterprise_data_is_normalized_and_source_first(self):
@@ -102,29 +103,22 @@ class SiteRouteTests(unittest.TestCase):
         self.assertGreaterEqual(len(nrt_interests), 3)
         self.assertTrue(any(row["ownershipPercentage"] is None for row in nrt_interests))
 
-    def test_enterprise_ui_is_lazy_accessible_and_mobile_safe(self):
+    def test_enterprise_ui_is_retired_without_loading_its_dataset(self):
         script = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
-        styles = (ROOT / "assets" / "openband.css").read_text(encoding="utf-8")
-        self.assertIn("loadEnterpriseData", script)
-        self.assertIn("community-enterprise.json", script)
-        self.assertIn("aria-expanded", script)
-        self.assertIn("aria-controls", script)
-        self.assertIn("enterprisePath", script)
-        self.assertIn("enterpriseAffiliations", script)
-        self.assertIn("insertAdjacentHTML('afterbegin'", script)
-        self.assertIn('aria-expanded="false"', script)
-        self.assertIn("loadJobsData(),loadMapData()", script)
-        self.assertIn("@media(max-width:700px)", styles)
-        self.assertIn(".enterprise-record-grid", styles)
-        self.assertIn(".enterprise-affiliation-list", styles)
+        profile_loader = script[script.index("async function ensureProfileData"):script.index("async function loadData")]
+        capital_wrapper = script[script.index("const renderCommunityCapitalBeforeEnterprise"):script.index("function enterprisePortfolioCard")]
+        self.assertNotIn("loadEnterpriseData()", profile_loader)
+        self.assertNotIn("appendEnterprisePreview", capital_wrapper)
+        self.assertIn("route.page==='enterprise'?'capital':route.tab", script)
 
     def test_indexable_routes_and_seo_files_exist(self):
         for relative in ["browse/index.html", "news/index.html", "admin/index.html", "admin/analytics/index.html", "robots.txt", "sitemap.xml", "map-data.json", "contacts-data.json", "jobs-data.json", "jobs-schema.json", "jobs-sources.json", "jobs-overrides.json", "jobs-coverage-report.json", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js", "community-enterprise.json"]:
             self.assertTrue((ROOT / relative).is_file(), relative)
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
-        self.assertEqual(sitemap.count("<url>"), (len(self.data["bands"]) * 2) + 3)
+        self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 3)
         self.assertIn(f"{ORIGIN}/browse/", sitemap)
         self.assertIn(f"{ORIGIN}/news/", sitemap)
+        self.assertNotIn("/community-enterprise/", sitemap)
         self.assertNotIn("/admin/", sitemap)
         self.assertIn("Disallow: /admin/", (ROOT / "robots.txt").read_text(encoding="utf-8"))
 
@@ -165,7 +159,7 @@ class SiteRouteTests(unittest.TestCase):
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="/assets/openband.css?v=20260814f"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260814g"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260814h"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
@@ -190,7 +184,6 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("function financialProjectDisclosuresForBand", javascript)
         self.assertIn("Projects Named in Audited Statements", javascript)
         self.assertIn("Financial disclosure only", javascript)
-        self.assertIn("Reported Financial Activity", javascript)
         self.assertIn("else if(activeProfileTab==='projects')", javascript)
         self.assertIn("else if(activeProfileTab==='jobs')", javascript)
         self.assertIn("function renderJobsPanel", javascript)

@@ -458,6 +458,24 @@ def write_page(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8")
 
 
+def legacy_enterprise_redirect(band: dict) -> str:
+    target = f"/first-nations/{slugify(band['name'])}/?tab=capital"
+    title = f"{band['name']} Community Capital | OpenBand"
+    return (
+        '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+        '<meta name="robots" content="noindex,follow">'
+        f'<title>{html.escape(title)}</title>'
+        f'<link rel="canonical" href="{ORIGIN}{target}">'
+        f'<meta http-equiv="refresh" content="0; url={html.escape(target, quote=True)}">'
+        f'<script>location.replace({json.dumps(target)});</script></head><body>'
+        f'<p>Community enterprise is now included within the main public-records profile. '
+        f'<a href="{html.escape(target, quote=True)}">Continue to {html.escape(band["name"])}</a>.</p>'
+        '<footer>&copy; <span data-current-year>2026</span> OpenBand. All rights reserved.</footer>'
+        '<script>document.querySelector("[data-current-year]").textContent=new Date().getFullYear();</script>'
+        '</body></html>'
+    )
+
+
 def build() -> None:
     data = json.loads((ROOT / "data.json").read_text(encoding="utf-8"))
     news = json.loads((ROOT / "news-data.json").read_text(encoding="utf-8"))
@@ -465,7 +483,6 @@ def build() -> None:
     map_data = json.loads((ROOT / "map-data.json").read_text(encoding="utf-8"))
     projects = json.loads((ROOT / "projects-data.json").read_text(encoding="utf-8"))
     jobs = json.loads((ROOT / "jobs-data.json").read_text(encoding="utf-8"))
-    enterprise = json.loads((ROOT / "community-enterprise.json").read_text(encoding="utf-8"))
     bands = sorted(data.get("bands", []), key=lambda item: item["name"])
     base = (ROOT / "index.html").read_text(encoding="utf-8")
     slugs = [slugify(band["name"]) for band in bands]
@@ -515,50 +532,16 @@ def build() -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260814g" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260814g" defer></script>',
+            '<script src="/assets/openband.js?v=20260814h" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260814h" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)
 
-        enterprise_path = f"/first-nations/{slug}/community-enterprise/"
-        enterprise_title = f"{band['name']} Community Enterprise | OpenBand"
-        enterprise_description = (
-            f"Review publicly reported economic development organizations, ownership interests, "
-            f"businesses and projects connected to {band['name']}."
+        write_page(
+            profile_root / slug / "community-enterprise" / "index.html",
+            legacy_enterprise_redirect(band),
         )
-        enterprise_structured = {
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            "name": enterprise_title,
-            "url": f"{ORIGIN}{enterprise_path}",
-            "description": enterprise_description,
-            "isPartOf": {"@type": "WebSite", "name": "OpenBand", "url": f"{ORIGIN}/"},
-            "about": {"@type": "Organization", "name": band["name"]},
-        }
-        enterprise_page = set_meta(
-            base,
-            title=enterprise_title,
-            description=enterprise_description,
-            path=enterprise_path,
-            structured=enterprise_structured,
-        )
-        enterprise_page = enterprise_page.replace(
-            '<body data-page="home">',
-            f'<body data-page="enterprise" data-band-id="{band["id"]}">',
-            1,
-        )
-        enterprise_page = enterprise_page.replace(
-            '<section id="enterprisePage" class="enterprise-page" aria-live="polite"></section>',
-            enterprise_prerender(band, enterprise, map_data.get("communities", [])),
-            1,
-        )
-        enterprise_page = enterprise_page.replace(
-            '<script src="/assets/openband.js?v=20260814g" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"enterprise","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260814g" defer></script>',
-            1,
-        )
-        write_page(profile_root / slug / "community-enterprise" / "index.html", enterprise_page)
 
     directory_title = "Explore Saskatchewan First Nations | OpenBand"
     directory_description = "Explore Saskatchewan First Nations on an interactive map with red First Nation and reserve land boundaries, organized by Treaty and tribal-council affiliation."
@@ -597,7 +580,7 @@ def build() -> None:
     write_page(ROOT / "news" / "index.html", news_page)
 
     lastmod = str(data.get("generated") or "")[:10]
-    paths = ["/", "/browse/", "/news/"] + [f"/first-nations/{slug}/" for slug in slugs] + [f"/first-nations/{slug}/community-enterprise/" for slug in slugs]
+    paths = ["/", "/browse/", "/news/"] + [f"/first-nations/{slug}/" for slug in slugs]
     urls = "".join(
         f"<url><loc>{ORIGIN}{path}</loc>{f'<lastmod>{lastmod}</lastmod>' if lastmod else ''}</url>"
         for path in paths
@@ -612,7 +595,7 @@ def build() -> None:
         f"User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: {ORIGIN}/sitemap.xml\n", encoding="utf-8"
     )
     (ROOT / ".nojekyll").touch()
-    print(f"Generated {len(bands)} profile and Community Enterprise pages, browse, news, robots.txt, and sitemap.xml")
+    print(f"Generated {len(bands)} profile pages, legacy redirects, browse, news, robots.txt, and sitemap.xml")
 
 
 if __name__ == "__main__":

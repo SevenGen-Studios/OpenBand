@@ -68,12 +68,19 @@ def clean_project_name(value: str) -> str:
     return re.sub(r"\s+", " ", value).strip(" .:-")
 
 
-def disclosure_key(name: str) -> str:
-    value = clean_project_name(name).lower()
-    replacements = {
-        "sewage lagoon": "sewage pumping station",
-        "elementary school": "elementary school repairs",
+def canonical_project_name(value: str) -> str:
+    """Combine source-label variants only when they name the same known project."""
+    cleaned = clean_project_name(value)
+    aliases = {
+        "sewage lagoon": "Sewage Pumping Station and Lagoon",
+        "sewage pumping station": "Sewage Pumping Station and Lagoon",
     }
+    return aliases.get(cleaned.lower(), cleaned)
+
+
+def disclosure_key(name: str) -> str:
+    value = canonical_project_name(name).lower()
+    replacements = {"elementary school": "elementary school repairs"}
     return slugify(replacements.get(value, value))
 
 
@@ -88,7 +95,7 @@ def source_record(url: str, band_name: str, fiscal_year: str, checked_at: str) -
 def add_disclosure(records: dict[str, dict], *, band_id: str, band_name: str,
                    fiscal_year: str, source_url: str, page: int, table: str,
                    name: str, amounts: dict[str, int] | None = None) -> None:
-    name = clean_project_name(name)
+    name = canonical_project_name(name)
     if not name or name.lower() in {"capital project", "capital projects"}:
         return
     key = disclosure_key(name)
@@ -104,7 +111,9 @@ def add_disclosure(records: dict[str, dict], *, band_id: str, band_name: str,
         "sources": [source_record(source_url, band_name, fiscal_year, date.today().isoformat())],
     })
     for amount_type, amount in (amounts or {}).items():
-        if amount is not None:
+        # Parenthesized values in deferred-revenue schedules are accounting
+        # adjustments, not a negative amount spent on or received by a project.
+        if amount is not None and amount >= 0:
             record["amounts"][amount_type] = amount
     reference = {"pdfPage": page, "table": table}
     if reference not in record["sourceReferences"]:
