@@ -269,6 +269,7 @@ def build_map_data(
             community.update({
                 "reserveHectares": round(float(land.get("hectares", 0)), 1),
                 "reserveParcelCount": int(land.get("parcelCount", 0)),
+                "reserveOwnerNames": RESERVE_OWNER_ALIASES.get(band_id, []),
                 "reserveLandSourceUrl": RESERVE_LAND_URL.rsplit("/query", 1)[0],
             })
         communities.append(community)
