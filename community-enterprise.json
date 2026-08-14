@@ -1,0 +1,574 @@
+{
+  "schemaVersion": 1,
+  "generated": "2026-08-14",
+  "methodology": "Manually verified public-source records. Unknown values remain null; affiliated entities are not assumed to be wholly owned.",
+  "nationProfiles": [
+    {
+      "bandId": 355,
+      "primaryOrganizationId": "org-pbgoc",
+      "featuredBusinessIds": [
+        "biz-a2ski",
+        "biz-pbcn-fuel",
+        "biz-5buds"
+      ],
+      "featuredProjectIds": [],
+      "industries": [
+        "Construction",
+        "Retail & fuel",
+        "Property",
+        "Services"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    },
+    {
+      "bandId": 353,
+      "primaryOrganizationId": "org-kitsaki",
+      "featuredBusinessIds": [
+        "biz-nrt",
+        "biz-cannorth",
+        "biz-kitsaki-procon"
+      ],
+      "featuredProjectIds": [],
+      "industries": [
+        "Transportation",
+        "Mining",
+        "Environment",
+        "Technology"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    },
+    {
+      "bandId": 400,
+      "primaryOrganizationId": "org-des-nedhe",
+      "featuredBusinessIds": [
+        "biz-tron",
+        "biz-morsky",
+        "biz-athabasca-catering"
+      ],
+      "featuredProjectIds": [],
+      "industries": [
+        "Construction",
+        "Mining services",
+        "Retail",
+        "Property"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    }
+  ],
+  "organizations": [
+    {
+      "id": "org-pbgoc",
+      "name": "Peter Ballantyne Group of Companies",
+      "legalName": "Peter Ballantyne Group of Companies",
+      "organizationType": "Economic development corporation",
+      "description": "For-profit business development entity that manages Peter Ballantyne Cree Nation-wide corporate business investments.",
+      "yearEstablished": null,
+      "website": "https://pbgoc.com/",
+      "headquarters": "Prince Albert, Saskatchewan",
+      "mandate": "Hold and manage PBCN-owned corporate business investments and pursue new investment opportunities.",
+      "sourceIds": [
+        "src-pbgoc-ownership",
+        "src-pbgoc-investments"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "org-kitsaki",
+      "name": "Kitsaki Management Limited Partnership",
+      "legalName": "Kitsaki Management Limited Partnership",
+      "organizationType": "Economic development organization",
+      "description": "Manages the economic development activities of Lac La Ronge Indian Band and a diversified investment portfolio.",
+      "yearEstablished": 1981,
+      "website": "https://kitsaki.com/",
+      "headquarters": "Saskatchewan",
+      "mandate": "Build and invest in businesses that benefit Lac La Ronge Indian Band and provide employment, training and contracting opportunities.",
+      "sourceIds": [
+        "src-kitsaki-about",
+        "src-kitsaki-companies"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "org-des-nedhe",
+      "name": "Des Nedhe Group",
+      "legalName": "Des Nedhe Development",
+      "organizationType": "Economic development organization",
+      "description": "English River First Nation economic development organization with businesses in industrial services, retail, property and professional services.",
+      "yearEstablished": 1991,
+      "website": "https://desnedhe.com/",
+      "headquarters": "Saskatoon, Saskatchewan",
+      "mandate": "Grow sustainable employment and business opportunities for English River First Nation members.",
+      "sourceIds": [
+        "src-desnedhe-brochure",
+        "src-desnedhe-compliance"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    }
+  ],
+  "organizationRelationships": [
+    {
+      "id": "rel-pbcn-pbgoc",
+      "parentType": "firstNation",
+      "parentId": "band-355",
+      "childType": "organization",
+      "childId": "org-pbgoc",
+      "relationshipType": "owns",
+      "ownershipPercentage": 100,
+      "effectiveDate": null,
+      "endDate": null,
+      "sourceIds": [
+        "src-pbgoc-ownership"
+      ],
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "rel-llrib-kitsaki",
+      "parentType": "firstNation",
+      "parentId": "band-353",
+      "childType": "organization",
+      "childId": "org-kitsaki",
+      "relationshipType": "economic development arm",
+      "ownershipPercentage": null,
+      "effectiveDate": "1981",
+      "endDate": null,
+      "sourceIds": [
+        "src-kitsaki-about"
+      ],
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "id": "rel-erfn-desnedhe",
+      "parentType": "firstNation",
+      "parentId": "band-400",
+      "childType": "organization",
+      "childId": "org-des-nedhe",
+      "relationshipType": "owns",
+      "ownershipPercentage": null,
+      "effectiveDate": "1991",
+      "endDate": null,
+      "sourceIds": [
+        "src-desnedhe-brochure",
+        "src-desnedhe-compliance"
+      ],
+      "verificationStatus": "Publicly reported"
+    }
+  ],
+  "businesses": [
+    {
+      "id": "biz-a2ski",
+      "name": "A2SKI Industrial",
+      "organizationType": "Operating company",
+      "industry": "Construction",
+      "description": "General contractor operated by Peter Ballantyne Group of Companies.",
+      "operatingStatus": "Operating",
+      "location": "Canada",
+      "website": "https://a2ski.ca/",
+      "parentOrganizationId": "org-pbgoc",
+      "partnerOrganizationIds": [],
+      "sourceIds": [
+        "src-pbgoc-investments",
+        "src-a2ski"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "biz-pbcn-fuel",
+      "name": "PBCN PA Fuel & Convenience",
+      "organizationType": "Operating company",
+      "industry": "Retail & fuel",
+      "description": "Fuel and convenience operations listed in the PBGOC investment portfolio.",
+      "operatingStatus": "Operating",
+      "location": "Prince Albert, Saskatchewan",
+      "website": "https://pbgoc.com/investments/",
+      "parentOrganizationId": "org-pbgoc",
+      "partnerOrganizationIds": [],
+      "sourceIds": [
+        "src-pbgoc-investments"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "biz-5buds",
+      "name": "5Buds Cannabis",
+      "organizationType": "Investment",
+      "industry": "Retail",
+      "description": "Cannabis retail investment listed by PBGOC.",
+      "operatingStatus": "Operating",
+      "location": "Saskatchewan",
+      "website": "https://pbgoc.com/investments/",
+      "parentOrganizationId": "org-pbgoc",
+      "partnerOrganizationIds": [],
+      "sourceIds": [
+        "src-pbgoc-investments"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "biz-nrt",
+      "name": "Northern Resource Trucking",
+      "organizationType": "Shared investment",
+      "industry": "Transportation",
+      "description": "Logistics provider serving Saskatchewan's mining industry and other Canadian markets.",
+      "operatingStatus": "Operating",
+      "location": "Saskatchewan, Manitoba and Northwestern Ontario",
+      "website": "https://www.nrtlp.com/",
+      "parentOrganizationId": null,
+      "partnerOrganizationIds": [
+        "org-kitsaki",
+        "org-pbgoc",
+        "org-des-nedhe"
+      ],
+      "sourceIds": [
+        "src-kitsaki-nrt",
+        "src-pbgoc-investments",
+        "src-desnedhe-brochure"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "biz-cannorth",
+      "name": "CanNorth Environmental Services",
+      "organizationType": "Portfolio company",
+      "industry": "Environment",
+      "description": "Environmental consulting, monitoring and compliance services.",
+      "operatingStatus": "Operating",
+      "location": "Saskatchewan",
+      "website": "https://kitsaki.com/group-of-companies/",
+      "parentOrganizationId": "org-kitsaki",
+      "partnerOrganizationIds": [],
+      "sourceIds": [
+        "src-kitsaki-companies"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "id": "biz-kitsaki-procon",
+      "name": "Kitsaki Procon",
+      "organizationType": "Joint venture",
+      "industry": "Mining",
+      "description": "Underground mining and contracting joint venture.",
+      "operatingStatus": "Operating",
+      "location": "Canada and international markets",
+      "website": "https://kitsaki.com/companies/kitsaki-procon/",
+      "parentOrganizationId": "org-kitsaki",
+      "partnerOrganizationIds": [],
+      "sourceIds": [
+        "src-kitsaki-procon"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "id": "biz-tron",
+      "name": "Tron Construction and Mining",
+      "organizationType": "Operating company",
+      "industry": "Construction",
+      "description": "Industrial construction and mining services business in the Des Nedhe portfolio.",
+      "operatingStatus": "Operating",
+      "location": "Canada",
+      "website": "https://desnedhe.com/",
+      "parentOrganizationId": "org-des-nedhe",
+      "partnerOrganizationIds": [],
+      "sourceIds": [
+        "src-desnedhe-brochure"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "id": "biz-morsky",
+      "name": "Morsky Industrial Services",
+      "organizationType": "Investment",
+      "industry": "Industrial services",
+      "description": "Heavy civil and site services business serving mining and potash operations.",
+      "operatingStatus": "Operating",
+      "location": "Saskatchewan",
+      "website": "https://desnedhe.com/",
+      "parentOrganizationId": "org-des-nedhe",
+      "partnerOrganizationIds": [],
+      "sourceIds": [
+        "src-desnedhe-brochure"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "biz-athabasca-catering",
+      "name": "Athabasca Catering",
+      "organizationType": "Investment",
+      "industry": "Catering & facilities",
+      "description": "Remote-site food, housekeeping and janitorial services provider.",
+      "operatingStatus": "Operating",
+      "location": "Northern Saskatchewan",
+      "website": "https://desnedhe.com/",
+      "parentOrganizationId": null,
+      "partnerOrganizationIds": [
+        "org-des-nedhe",
+        "org-kitsaki"
+      ],
+      "sourceIds": [
+        "src-desnedhe-brochure",
+        "src-kitsaki-about"
+      ],
+      "lastVerified": "2026-08-14",
+      "verificationStatus": "Verified"
+    }
+  ],
+  "ownershipInterests": [
+    {
+      "id": "own-pbgoc-a2ski",
+      "ownerId": "org-pbgoc",
+      "businessId": "biz-a2ski",
+      "ownershipPercentage": 100,
+      "ownershipType": "Wholly owned",
+      "sourceIds": [
+        "src-pbgoc-investments"
+      ],
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "own-pbgoc-fuel",
+      "ownerId": "org-pbgoc",
+      "businessId": "biz-pbcn-fuel",
+      "ownershipPercentage": 100,
+      "ownershipType": "Wholly owned",
+      "sourceIds": [
+        "src-pbgoc-investments"
+      ],
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "own-pbgoc-5buds",
+      "ownerId": "org-pbgoc",
+      "businessId": "biz-5buds",
+      "ownershipPercentage": 37.5,
+      "ownershipType": "Partial ownership",
+      "sourceIds": [
+        "src-pbgoc-investments"
+      ],
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "own-pbgoc-nrt",
+      "ownerId": "org-pbgoc",
+      "businessId": "biz-nrt",
+      "ownershipPercentage": 3,
+      "ownershipType": "Partial ownership",
+      "sourceIds": [
+        "src-pbgoc-investments"
+      ],
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "own-kitsaki-nrt",
+      "ownerId": "org-kitsaki",
+      "businessId": "biz-nrt",
+      "ownershipPercentage": 30,
+      "ownershipType": "Partial ownership",
+      "sourceIds": [
+        "src-kitsaki-nrt",
+        "src-kitsaki-impact"
+      ],
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "own-kitsaki-cannorth",
+      "ownerId": "org-kitsaki",
+      "businessId": "biz-cannorth",
+      "ownershipPercentage": null,
+      "ownershipType": "Portfolio relationship; percentage not disclosed on source page",
+      "sourceIds": [
+        "src-kitsaki-companies"
+      ],
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "id": "own-kitsaki-procon",
+      "ownerId": "org-kitsaki",
+      "businessId": "biz-kitsaki-procon",
+      "ownershipPercentage": null,
+      "ownershipType": "Joint venture; percentage not disclosed on source page",
+      "sourceIds": [
+        "src-kitsaki-procon"
+      ],
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "id": "own-desnedhe-tron",
+      "ownerId": "org-des-nedhe",
+      "businessId": "biz-tron",
+      "ownershipPercentage": null,
+      "ownershipType": "Portfolio relationship; percentage not disclosed in current brochure",
+      "sourceIds": [
+        "src-desnedhe-brochure"
+      ],
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "id": "own-desnedhe-morsky",
+      "ownerId": "org-des-nedhe",
+      "businessId": "biz-morsky",
+      "ownershipPercentage": 51,
+      "ownershipType": "Majority ownership",
+      "sourceIds": [
+        "src-desnedhe-brochure"
+      ],
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "own-desnedhe-athabasca",
+      "ownerId": "org-des-nedhe",
+      "businessId": "biz-athabasca-catering",
+      "ownershipPercentage": 10,
+      "ownershipType": "Partial ownership",
+      "sourceIds": [
+        "src-desnedhe-brochure"
+      ],
+      "verificationStatus": "Verified"
+    },
+    {
+      "id": "own-desnedhe-nrt",
+      "ownerId": "org-des-nedhe",
+      "businessId": "biz-nrt",
+      "ownershipPercentage": null,
+      "ownershipType": "Shared ownership; percentage not disclosed in source",
+      "sourceIds": [
+        "src-desnedhe-brochure"
+      ],
+      "verificationStatus": "Publicly reported"
+    }
+  ],
+  "projects": [],
+  "economicImpactMetrics": [
+    {
+      "id": "metric-kitsaki-employees-2026",
+      "entityId": "org-kitsaki",
+      "metricType": "Total employees",
+      "value": 1800,
+      "qualifier": "more than",
+      "unit": "employees",
+      "reportingPeriod": "Current website statement checked 2026-08-14",
+      "valueType": "reported",
+      "sourceIds": [
+        "src-kitsaki-home"
+      ],
+      "verificationStatus": "Publicly reported"
+    },
+    {
+      "id": "metric-nrt-employees-2025",
+      "entityId": "biz-nrt",
+      "metricType": "Total employees",
+      "value": 237,
+      "qualifier": null,
+      "unit": "employees",
+      "reportingPeriod": "2025",
+      "valueType": "reported",
+      "sourceIds": [
+        "src-kitsaki-impact"
+      ],
+      "verificationStatus": "Verified"
+    }
+  ],
+  "businessOpportunities": [],
+  "sources": [
+    {
+      "id": "src-pbgoc-ownership",
+      "title": "Ownership",
+      "publisher": "Peter Ballantyne Group of Companies",
+      "url": "https://pbgoc.com/about-us/ownership/",
+      "publicationDate": null,
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-pbgoc-investments",
+      "title": "Investments",
+      "publisher": "Peter Ballantyne Group of Companies",
+      "url": "https://pbgoc.com/investments/",
+      "publicationDate": null,
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-a2ski",
+      "title": "Who We Are",
+      "publisher": "A2SKI Industrial",
+      "url": "https://a2ski.ca/",
+      "publicationDate": null,
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-kitsaki-home",
+      "title": "Kitsaki Management Limited Partnership",
+      "publisher": "Kitsaki Management Limited Partnership",
+      "url": "https://kitsaki.com/",
+      "publicationDate": null,
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-kitsaki-about",
+      "title": "About",
+      "publisher": "Kitsaki Management Limited Partnership",
+      "url": "https://kitsaki.com/about/",
+      "publicationDate": null,
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-kitsaki-companies",
+      "title": "Group of Companies",
+      "publisher": "Kitsaki Management Limited Partnership",
+      "url": "https://kitsaki.com/group-of-companies/",
+      "publicationDate": null,
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-kitsaki-nrt",
+      "title": "Northern Resource Trucking",
+      "publisher": "Kitsaki Management Limited Partnership",
+      "url": "https://kitsaki.com/companies/northern-resource-trucking-nrt/",
+      "publicationDate": null,
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-kitsaki-procon",
+      "title": "Kitsaki Procon",
+      "publisher": "Kitsaki Management Limited Partnership",
+      "url": "https://kitsaki.com/companies/kitsaki-procon/",
+      "publicationDate": null,
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-kitsaki-impact",
+      "title": "2025 Annual Impact Report",
+      "publisher": "Kitsaki Management Limited Partnership",
+      "url": "https://kitsaki.com/wp-content/uploads/2026/01/2025-Kitsaki-Annual-Impact-Report-2025-WEB-PAGES-3.pdf",
+      "publicationDate": "2026-01",
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-desnedhe-brochure",
+      "title": "Pathfinders corporate brochure",
+      "publisher": "Des Nedhe Group",
+      "url": "https://desnedhe.com/app/uploads/2024/03/Des-Nedhe-Brochure-2025.03.pdf",
+      "publicationDate": "2025-03",
+      "lastVerified": "2026-08-14"
+    },
+    {
+      "id": "src-desnedhe-compliance",
+      "title": "Fighting Against Forced Labour and Child Labour in Supply Chains Act report",
+      "publisher": "Des Nedhe Group",
+      "url": "https://desnedhe.com/app/uploads/2024/07/Des-Nedhe-Bill-S-211-Compliance-Report-2024.pdf",
+      "publicationDate": "2024",
+      "lastVerified": "2026-08-14"
+    }
+  ]
+}
