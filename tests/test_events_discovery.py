@@ -168,6 +168,26 @@ class EventExtractionTests(unittest.TestCase):
         }
         self.assertFalse(is_publishable_event(wrong))
 
+    def test_stored_media_date_must_match_source_url_year(self):
+        stale = {
+            "id": "stale-media", "bandId": 378, "title": "Community canoe races",
+            "startDate": "2027-08-10",
+            "sourceUrl": "https://example.org/uploads/2025/07/event-poster.png",
+            "description": "Community canoe races August 10", "confidence": 0.9,
+            "extractionMethod": "ocr-image",
+        }
+        self.assertFalse(is_publishable_event(stale))
+
+    def test_distribution_form_is_not_an_event(self):
+        form = {
+            "id": "form", "bandId": 378,
+            "title": "Treaty Day Per Capita Distribution Form 2026 - August 13th",
+            "startDate": "2026-08-13", "sourceUrl": "https://example.org/form-2026.docx",
+            "description": "Treaty Day Per Capita Distribution Form 2026 - August 13th",
+            "confidence": 0.9, "extractionMethod": "html",
+        }
+        self.assertFalse(is_publishable_event(form))
+
     def test_merge_rejects_archive_and_job_false_positives(self):
         archive = {
             "id": "archive", "bandId": 378, "title": "Older Posts",

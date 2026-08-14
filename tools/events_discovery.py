@@ -71,7 +71,7 @@ EVENT_WORDS = re.compile(
     re.I,
 )
 NON_EVENT_WORDS = re.compile(
-    r"\b(job posting|job opportunity|employment opportunity|opportunities|office closures?|requests? for proposals?|rpf|rfp|tender|"
+    r"\b(job posting|job opportunity|employment opportunity|opportunities|office closures?|distribution form|application form|requests? for proposals?|rpf|rfp|tender|"
     r"financial statements?|audit|remuneration|happy birthday|contest winner)\b",
     re.I,
 )
@@ -189,6 +189,22 @@ def explicit_event_dates(value: str) -> list[tuple[str, str | None]]:
         if key not in seen:
             seen.add(key)
             rows.append(key)
+    year_before_month = re.compile(
+        r"\b(20\d{2})\s*(?:[-–—,:]|\s)\s*"
+        r"(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|"
+        r"Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|"
+        r"Nov(?:ember)?|Dec(?:ember)?)\s+(\d{1,2})(?:st|nd|rd|th)?\b",
+        re.I,
+    )
+    for match in year_before_month.finditer(text):
+        year, month_name, day = match.groups()
+        try:
+            parsed = date(int(year), MONTHS[month_name[:3].lower()], int(day)).isoformat()
+        except ValueError:
+            continue
+        if (parsed, None) not in seen:
+            seen.add((parsed, None))
+            rows.append((parsed, None))
     for token in re.findall(r"\b20\d{2}[-/]\d{1,2}[-/]\d{1,2}\b", text):
         parsed, _ = parse_date_text(token)
         if parsed and (parsed, None) not in seen:
@@ -582,6 +598,10 @@ def is_publishable_event(item: dict) -> bool:
     normalized_title = normalized_text(title)
     path = urllib.parse.urlsplit(url).path.lower().rstrip("/")
     query = urllib.parse.urlsplit(url).query.lower()
+    source_years = set(re.findall(r"(?<!\d)(20\d{2})(?!\d)", urllib.parse.unquote(url)))
+    start_year = str(item.get("startDate") or "")[:4]
+    if source_years and start_year not in source_years:
+        return False
     if not title or len(title) < 6 or len(title) > 165:
         return False
     if normalized_title in GENERIC_TITLES or normalized_title in {
