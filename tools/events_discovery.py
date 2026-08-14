@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Discover source-backed Saskatchewan First Nation community events.
 
-Only events that pass the public publish gate are written to the site dataset.
+Only events that pass the public publish gate are written to the permanent site dataset.
 """
 
 from __future__ import annotations
