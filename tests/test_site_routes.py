@@ -129,6 +129,8 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("function updateHeaderContact", javascript)
         self.assertIn("visible=activeProfileTab==='overview'", javascript)
         self.assertIn("container.hidden=!visible", javascript)
+        self.assertIn("function setHeaderSource", javascript)
+        self.assertIn("link.style.display=url===profileUrl?'none':''", javascript)
         self.assertIn("overviewCard.remove()", javascript)
         self.assertIn("registered band members", javascript)
         self.assertIn("square kilometers of reserve land", javascript)
