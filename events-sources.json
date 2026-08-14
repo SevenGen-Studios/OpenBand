@@ -1,6 +1,2391 @@
 {
   "schemaVersion": 1,
-  "generated": null,
+  "generated": "2026-08-14T01:04:56Z",
   "notes": "Event discovery sources are derived from the verified News registry. Add event-specific calendars here when found.",
-  "communities": []
+  "communities": [
+    {
+      "bandId": 378,
+      "communityName": "Carry the Kettle Nakoda Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=378&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Carry the Kettle Nakoda Nation\" announcement Saskatchewan",
+        "\"Carry the Kettle Nakoda Nation\" community update",
+        "site:facebook.com \"Carry the Kettle Nakoda Nation\" announcement",
+        "\"Carry the Kettle Nakoda Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 361,
+      "communityName": "Cowessess First Nation",
+      "aliases": [
+        "Cowessess",
+        "CFN"
+      ],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Cowessess First Nation",
+          "url": "https://cowessessfn.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "discoveryUrls": [
+            "https://cowessessfn.com/",
+            "https://cowessessfn.com/news/"
+          ]
+        },
+        {
+          "type": "Facebook",
+          "name": "Cowessess First Nation",
+          "url": "https://www.facebook.com/cowessessfn",
+          "status": "verified",
+          "adapter": "facebook",
+          "pageHandle": "cowessessfn",
+          "monitor": true,
+          "official": true,
+          "associationConfidence": 1.0
+        },
+        {
+          "type": "Economic Development Organization",
+          "name": "Cowessess Economic Development",
+          "url": "https://cowessessfn.com/entities/cowessess-ventures/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "associationConfidence": 0.96
+        },
+        {
+          "type": "Community Website",
+          "name": "Cowessess Paradise Radio 98.1 FM",
+          "url": "https://cowessessfn.com/news/paradise-radio/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "associationConfidence": 0.96
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=361&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Cowessess First Nation\" announcement Saskatchewan",
+        "\"Cowessess First Nation\" community update",
+        "site:facebook.com \"Cowessess First Nation\" announcement",
+        "\"Cowessess First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 366,
+      "communityName": "Cote First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Cote First Nation",
+          "url": "https://cotefirstnation.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=366&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Cote First Nation\" announcement Saskatchewan",
+        "\"Cote First Nation\" community update",
+        "site:facebook.com \"Cote First Nation\" announcement",
+        "\"Cote First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 389,
+      "communityName": "Day Star First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=389&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Day Star First Nation official website",
+          "url": "https://www.daystarfirstnation.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Day Star First Nation\" announcement Saskatchewan",
+        "\"Day Star First Nation\" community update",
+        "site:facebook.com \"Day Star First Nation\" announcement",
+        "\"Day Star First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 391,
+      "communityName": "George Gordon First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=391&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "George Gordon First Nation official website",
+          "url": "https://ggfn.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"George Gordon First Nation\" announcement Saskatchewan",
+        "\"George Gordon First Nation\" community update",
+        "site:facebook.com \"George Gordon First Nation\" announcement",
+        "\"George Gordon First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 362,
+      "communityName": "Kahkewistahaw First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=362&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Kahkewistahaw First Nation official website",
+          "url": "https://www.kfn72.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Kahkewistahaw First Nation\" announcement Saskatchewan",
+        "\"Kahkewistahaw First Nation\" community update",
+        "site:facebook.com \"Kahkewistahaw First Nation\" announcement",
+        "\"Kahkewistahaw First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 367,
+      "communityName": "Keeseekoose First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=367&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Keeseekoose First Nation official website",
+          "url": "https://www.keeseekoose.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Keeseekoose First Nation\" announcement Saskatchewan",
+        "\"Keeseekoose First Nation\" community update",
+        "site:facebook.com \"Keeseekoose First Nation\" announcement",
+        "\"Keeseekoose First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 377,
+      "communityName": "Kinistin Saulteaux Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=377&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Kinistin Saulteaux Nation official website",
+          "url": "https://www.kinistin.sk.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Kinistin Saulteaux Nation\" announcement Saskatchewan",
+        "\"Kinistin Saulteaux Nation\" community update",
+        "site:facebook.com \"Kinistin Saulteaux Nation\" announcement",
+        "\"Kinistin Saulteaux Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 379,
+      "communityName": "Little Black Bear First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=379&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Little Black Bear First Nation\" announcement Saskatchewan",
+        "\"Little Black Bear First Nation\" community update",
+        "site:facebook.com \"Little Black Bear First Nation\" announcement",
+        "\"Little Black Bear First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 341,
+      "communityName": "Lucky Man Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=341&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Lucky Man Cree Nation official website",
+          "url": "https://luckymancree.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Lucky Man Cree Nation\" announcement Saskatchewan",
+        "\"Lucky Man Cree Nation\" community update",
+        "site:facebook.com \"Lucky Man Cree Nation\" announcement",
+        "\"Lucky Man Cree Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 396,
+      "communityName": "Makwa Sahgaiehcan First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=396&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Makwa Sahgaiehcan First Nation\" announcement Saskatchewan",
+        "\"Makwa Sahgaiehcan First Nation\" community update",
+        "site:facebook.com \"Makwa Sahgaiehcan First Nation\" announcement",
+        "\"Makwa Sahgaiehcan First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 374,
+      "communityName": "Mistawasis Nehiyawak",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Mistawasis Nehiyawak",
+          "url": "https://mistawasis.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=374&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Mistawasis Nehiyawak official website",
+          "url": "https://www.mistawasis.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Mistawasis Nehiyawak\" announcement Saskatchewan",
+        "\"Mistawasis Nehiyawak\" community update",
+        "site:facebook.com \"Mistawasis Nehiyawak\" announcement",
+        "\"Mistawasis Nehiyawak\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 371,
+      "communityName": "Muskoday First Nation",
+      "aliases": [
+        "Muskoday",
+        "John Smith First Nation",
+        "Muscotayo"
+      ],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Muskoday First Nation",
+          "url": "https://muskodayfn.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "discoveryUrls": [
+            "https://muskodayfn.ca/",
+            "https://muskodayfn.ca/news-posts/"
+          ]
+        },
+        {
+          "type": "School or Health Organization",
+          "name": "Muskoday First Nation Community School",
+          "url": "https://www.mfncs.org/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "associationConfidence": 0.96,
+          "discoveryUrls": [
+            "https://www.mfncs.org/",
+            "https://www.mfncs.org/newsletters"
+          ]
+        },
+        {
+          "type": "Facebook",
+          "name": "Muskoday Community Health Centre",
+          "url": "https://www.facebook.com/MCHCFacebook",
+          "status": "verified",
+          "adapter": "facebook",
+          "pageHandle": "MCHCFacebook",
+          "monitor": true,
+          "official": true,
+          "associationConfidence": 0.96
+        },
+        {
+          "type": "Facebook",
+          "name": "Muskoday Fire Department",
+          "url": "https://www.facebook.com/MuskodayFireDepartment",
+          "status": "verified",
+          "adapter": "facebook",
+          "pageHandle": "MuskodayFireDepartment",
+          "monitor": true,
+          "official": true,
+          "associationConfidence": 0.96
+        },
+        {
+          "type": "Facebook",
+          "name": "Muskoday Economic Development",
+          "url": "https://www.facebook.com/profile.php?id=100063922874799",
+          "status": "verified",
+          "adapter": "facebook",
+          "metaPageId": "100063922874799",
+          "monitor": true,
+          "official": true,
+          "associationConfidence": 0.96
+        },
+        {
+          "type": "Facebook",
+          "name": "Changing Directions Muskoday First Nation",
+          "url": "https://www.facebook.com/changingdirectionsmfn2017",
+          "status": "verified",
+          "adapter": "facebook",
+          "pageHandle": "changingdirectionsmfn2017",
+          "monitor": true,
+          "official": true,
+          "associationConfidence": 0.96
+        },
+        {
+          "type": "Facebook",
+          "name": "Muskoday First Nation Community School",
+          "url": "https://www.facebook.com/MFNCS",
+          "status": "verified",
+          "adapter": "facebook",
+          "pageHandle": "MFNCS",
+          "monitor": true,
+          "official": true,
+          "associationConfidence": 0.96
+        },
+        {
+          "type": "Facebook",
+          "name": "Muskoday Elders Club",
+          "url": "https://www.facebook.com/MuskodayEldersClub",
+          "status": "verified",
+          "adapter": "facebook",
+          "pageHandle": "MuskodayEldersClub",
+          "monitor": true,
+          "official": true,
+          "associationConfidence": 0.94
+        },
+        {
+          "type": "Facebook",
+          "name": "Muskoday Gardening",
+          "url": "https://www.facebook.com/MuskodayGardening",
+          "status": "verified",
+          "adapter": "facebook",
+          "pageHandle": "MuskodayGardening",
+          "monitor": true,
+          "official": true,
+          "associationConfidence": 0.94
+        },
+        {
+          "type": "Tribal Council",
+          "name": "Saskatoon Tribal Council - Muskoday First Nation",
+          "url": "https://sktc.sk.ca/member-first-nations-2/muskoday-first-nation/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": false,
+          "official": true,
+          "associationConfidence": 0.94
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=371&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Muskoday First Nation official website",
+          "url": "https://www.muskodayfn.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Muskoday First Nation\" announcement Saskatchewan",
+        "\"Muskoday First Nation\" community update",
+        "site:facebook.com \"Muskoday First Nation\" announcement",
+        "\"Muskoday First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 363,
+      "communityName": "Ochapowace First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=363&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Ochapowace First Nation official website",
+          "url": "https://ochapowace.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Ochapowace First Nation\" announcement Saskatchewan",
+        "\"Ochapowace First Nation\" community update",
+        "site:facebook.com \"Ochapowace First Nation\" announcement",
+        "\"Ochapowace First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 344,
+      "communityName": "Onion Lake Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Onion Lake Cree Nation",
+          "url": "https://onionlake.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=344&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Onion Lake Cree Nation official website",
+          "url": "https://www.onionlake.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Onion Lake Cree Nation\" announcement Saskatchewan",
+        "\"Onion Lake Cree Nation\" community update",
+        "site:facebook.com \"Onion Lake Cree Nation\" announcement",
+        "\"Onion Lake Cree Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 383,
+      "communityName": "Pasqua First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=383&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Pasqua First Nation official website",
+          "url": "https://www.pasquafn.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Pasqua First Nation\" announcement Saskatchewan",
+        "\"Pasqua First Nation\" community update",
+        "site:facebook.com \"Pasqua First Nation\" announcement",
+        "\"Pasqua First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 384,
+      "communityName": "Peepeekisis Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=384&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Peepeekisis Cree Nation official website",
+          "url": "https://peepeekisis.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Peepeekisis Cree Nation\" announcement Saskatchewan",
+        "\"Peepeekisis Cree Nation\" community update",
+        "site:facebook.com \"Peepeekisis Cree Nation\" announcement",
+        "\"Peepeekisis Cree Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 405,
+      "communityName": "Pelican Lake First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=405&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Pelican Lake First Nation\" announcement Saskatchewan",
+        "\"Pelican Lake First Nation\" community update",
+        "site:facebook.com \"Pelican Lake First Nation\" announcement",
+        "\"Pelican Lake First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 355,
+      "communityName": "Peter Ballantyne Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=355&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Peter Ballantyne Cree Nation official website",
+          "url": "https://pbcn.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Peter Ballantyne Cree Nation\" announcement Saskatchewan",
+        "\"Peter Ballantyne Cree Nation\" community update",
+        "site:facebook.com \"Peter Ballantyne Cree Nation\" announcement",
+        "\"Peter Ballantyne Cree Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 409,
+      "communityName": "Pheasant Rump Nakota Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=409&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Pheasant Rump Nakota Nation\" announcement Saskatchewan",
+        "\"Pheasant Rump Nakota Nation\" community update",
+        "site:facebook.com \"Pheasant Rump Nakota Nation\" announcement",
+        "\"Pheasant Rump Nakota Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 345,
+      "communityName": "Poundmaker Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=345&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Poundmaker Cree Nation official website",
+          "url": "https://poundmakercn.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Poundmaker Cree Nation\" announcement Saskatchewan",
+        "\"Poundmaker Cree Nation\" community update",
+        "site:facebook.com \"Poundmaker Cree Nation\" announcement",
+        "\"Poundmaker Cree Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 356,
+      "communityName": "Red Earth Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=356&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Red Earth Cree Nation\" announcement Saskatchewan",
+        "\"Red Earth Cree Nation\" community update",
+        "site:facebook.com \"Red Earth Cree Nation\" announcement",
+        "\"Red Earth Cree Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 346,
+      "communityName": "Red Pheasant Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=346&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Red Pheasant Cree Nation\" announcement Saskatchewan",
+        "\"Red Pheasant Cree Nation\" community update",
+        "site:facebook.com \"Red Pheasant Cree Nation\" announcement",
+        "\"Red Pheasant Cree Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 364,
+      "communityName": "Sakimay First Nations",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=364&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Sakimay First Nations official website",
+          "url": "https://zagime.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Sakimay First Nations\" announcement Saskatchewan",
+        "\"Sakimay First Nations\" community update",
+        "site:facebook.com \"Sakimay First Nations\" announcement",
+        "\"Sakimay First Nations\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 357,
+      "communityName": "Shoal Lake Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=357&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Shoal Lake Cree Nation\" announcement Saskatchewan",
+        "\"Shoal Lake Cree Nation\" community update",
+        "site:facebook.com \"Shoal Lake Cree Nation\" announcement",
+        "\"Shoal Lake Cree Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 348,
+      "communityName": "Sweetgrass First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=348&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Sweetgrass First Nation official website",
+          "url": "https://sweetgrassfirstnation.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Sweetgrass First Nation\" announcement Saskatchewan",
+        "\"Sweetgrass First Nation\" community update",
+        "site:facebook.com \"Sweetgrass First Nation\" announcement",
+        "\"Sweetgrass First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 368,
+      "communityName": "The Key First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=368&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "The Key First Nation official website",
+          "url": "https://www.keyband.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"The Key First Nation\" announcement Saskatchewan",
+        "\"The Key First Nation\" community update",
+        "site:facebook.com \"The Key First Nation\" announcement",
+        "\"The Key First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 349,
+      "communityName": "Thunderchild First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=349&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Thunderchild First Nation official website",
+          "url": "https://www.thunderchild.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Thunderchild First Nation\" announcement Saskatchewan",
+        "\"Thunderchild First Nation\" community update",
+        "site:facebook.com \"Thunderchild First Nation\" announcement",
+        "\"Thunderchild First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 358,
+      "communityName": "Wahpeton Dakota Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=358&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Wahpeton Dakota Nation\" announcement Saskatchewan",
+        "\"Wahpeton Dakota Nation\" community update",
+        "site:facebook.com \"Wahpeton Dakota Nation\" announcement",
+        "\"Wahpeton Dakota Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 402,
+      "communityName": "Waterhen Lake First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=402&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Waterhen Lake First Nation\" announcement Saskatchewan",
+        "\"Waterhen Lake First Nation\" community update",
+        "site:facebook.com \"Waterhen Lake First Nation\" announcement",
+        "\"Waterhen Lake First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 365,
+      "communityName": "White Bear First Nations",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=365&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "White Bear First Nations official website",
+          "url": "https://whitebearfirstnation.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"White Bear First Nations\" announcement Saskatchewan",
+        "\"White Bear First Nations\" community update",
+        "site:facebook.com \"White Bear First Nations\" announcement",
+        "\"White Bear First Nations\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 372,
+      "communityName": "Whitecap Dakota First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Whitecap Dakota First Nation",
+          "url": "https://www.whitecapdakota.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=372&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Whitecap Dakota First Nation\" announcement Saskatchewan",
+        "\"Whitecap Dakota First Nation\" community update",
+        "site:facebook.com \"Whitecap Dakota First Nation\" announcement",
+        "\"Whitecap Dakota First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 388,
+      "communityName": "Wood Mountain First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=388&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Wood Mountain First Nation official website",
+          "url": "https://www.woodmountainlakotafn.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Wood Mountain Lakota First Nation\" announcement Saskatchewan",
+        "\"Wood Mountain Lakota First Nation\" community update",
+        "site:facebook.com \"Wood Mountain Lakota First Nation\" announcement",
+        "\"Wood Mountain Lakota First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 376,
+      "communityName": "Yellow Quill First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=376&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Yellow Quill First Nation\" announcement Saskatchewan",
+        "\"Yellow Quill First Nation\" community update",
+        "site:facebook.com \"Yellow Quill First Nation\" announcement",
+        "\"Yellow Quill First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 406,
+      "communityName": "Ahtahkakoop Cree Nation",
+      "aliases": [
+        "Ahtahkakoop",
+        "Sandy Lake Indian Band",
+        "Star Blanket"
+      ],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Ahtahkakoop Cree Nation",
+          "url": "https://www.ahtahkakoop.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "discoveryUrls": [
+            "https://www.ahtahkakoop.com/"
+          ]
+        },
+        {
+          "type": "Facebook",
+          "name": "Ahtahkakoop Cree Nation",
+          "url": "https://www.facebook.com/ahtahkakoopcreenation/",
+          "status": "verified",
+          "adapter": "facebook",
+          "pageHandle": "ahtahkakoopcreenation",
+          "monitor": true,
+          "official": true,
+          "associationConfidence": 1.0
+        },
+        {
+          "type": "Community Website",
+          "name": "Ahtahkakoop Community News Archive",
+          "url": "https://www.ahtahkakoop.ca/news/category/all",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "associationConfidence": 0.94
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=406&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Ahtahkakoop Cree Nation official website",
+          "url": "https://www.ahtahkakoop.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Ahtahkakoop Cree Nation\" announcement Saskatchewan",
+        "\"Ahtahkakoop Cree Nation\" community update",
+        "site:facebook.com \"Ahtahkakoop Cree Nation\" announcement",
+        "\"Ahtahkakoop Cree Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 369,
+      "communityName": "Beardy's and Okemasis' Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=369&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Beardy's and Okemasis' Cree Nation\" announcement Saskatchewan",
+        "\"Beardy's and Okemasis' Cree Nation\" community update",
+        "site:facebook.com \"Beardy's and Okemasis' Cree Nation\" announcement",
+        "\"Beardy's and Okemasis' Cree Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 398,
+      "communityName": "Buffalo River Dene Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 10",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=398&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Buffalo River Dene Nation official website",
+          "url": "https://www.brdn.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Buffalo River Dene Nation\" announcement Saskatchewan",
+        "\"Buffalo River Dene Nation\" community update",
+        "site:facebook.com \"Buffalo River Dene Nation\" announcement",
+        "\"Buffalo River Dene Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 394,
+      "communityName": "Canoe Lake Cree First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 10",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=394&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Canoe Lake Cree First Nation official website",
+          "url": "https://www.canoelakefirstnation.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Canoe Lake Cree First Nation\" announcement Saskatchewan",
+        "\"Canoe Lake Cree First Nation\" community update",
+        "site:facebook.com \"Canoe Lake Cree First Nation\" announcement",
+        "\"Canoe Lake Cree First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 401,
+      "communityName": "Clearwater River Dene Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 10",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=401&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Clearwater River Dene Nation\" announcement Saskatchewan",
+        "\"Clearwater River Dene Nation\" community update",
+        "site:facebook.com \"Clearwater River Dene Nation\" announcement",
+        "\"Clearwater River Dene Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 350,
+      "communityName": "Cumberland House Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=350&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Cumberland House Cree Nation official website",
+          "url": "https://www.chcn.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Cumberland House Cree Nation\" announcement Saskatchewan",
+        "\"Cumberland House Cree Nation\" community update",
+        "site:facebook.com \"Cumberland House Cree Nation\" announcement",
+        "\"Cumberland House Cree Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 400,
+      "communityName": "English River Dene Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 10",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=400&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "English River Dene Nation official website",
+          "url": "https://erfn.net/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"English River Dene Nation\" announcement Saskatchewan",
+        "\"English River Dene Nation\" community update",
+        "site:facebook.com \"English River Dene Nation\" announcement",
+        "\"English River Dene Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 390,
+      "communityName": "Fishing Lake First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=390&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Fishing Lake First Nation official website",
+          "url": "https://www.fishinglakefirstnation.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Fishing Lake First Nation\" announcement Saskatchewan",
+        "\"Fishing Lake First Nation\" community update",
+        "site:facebook.com \"Fishing Lake First Nation\" announcement",
+        "\"Fishing Lake First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 395,
+      "communityName": "Flying Dust First Nation",
+      "aliases": [
+        "Flying Dust",
+        "FDFN",
+        "kâ-ohpâwahkâstahk"
+      ],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Flying Dust First Nation",
+          "url": "https://www.flyingdust.net/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "discoveryUrls": [
+            "https://www.flyingdust.net/",
+            "https://www.flyingdust.net/newsletters.html"
+          ]
+        },
+        {
+          "type": "Tribal Council",
+          "name": "Meadow Lake Tribal Council",
+          "url": "https://mltc.net/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": false,
+          "official": true,
+          "associationConfidence": 0.84
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=395&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Flying Dust First Nation\" announcement Saskatchewan",
+        "\"Flying Dust First Nation\" community update",
+        "site:facebook.com \"Flying Dust First Nation\" announcement",
+        "\"Flying Dust First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 352,
+      "communityName": "Hatchet Lake Denesuline",
+      "aliases": [
+        "Hatchet Lake",
+        "Hatchet Lake Denesuline Nation",
+        "Wollaston Lake",
+        "Lac La Hache"
+      ],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 10",
+      "sources": [
+        {
+          "type": "Tribal Council",
+          "name": "Prince Albert Grand Council - Hatchet Lake Denesuline First Nation",
+          "url": "https://pagc.sk.ca/hatchet-lake-denesuline-first-nation/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": false,
+          "official": true,
+          "associationConfidence": 0.94
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=352&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Hatchet Lake Denesuline\" announcement Saskatchewan",
+        "\"Hatchet Lake Denesuline\" community update",
+        "site:facebook.com \"Hatchet Lake Denesuline\" announcement",
+        "\"Hatchet Lake Denesuline\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 353,
+      "communityName": "Lac La Ronge Indian Band",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=353&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Lac La Ronge Indian Band official website",
+          "url": "https://llrib.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Lac La Ronge Indian Band\" announcement Saskatchewan",
+        "\"Lac La Ronge Indian Band\" community update",
+        "site:facebook.com \"Lac La Ronge Indian Band\" announcement",
+        "\"Lac La Ronge Indian Band\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 340,
+      "communityName": "Little Pine First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=340&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Little Pine First Nation official website",
+          "url": "https://littlepine.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Little Pine First Nation\" announcement Saskatchewan",
+        "\"Little Pine First Nation\" community update",
+        "site:facebook.com \"Little Pine First Nation\" announcement",
+        "\"Little Pine First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 397,
+      "communityName": "Ministikwan Lake Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=397&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Ministikwan Lake Cree Nation\" announcement Saskatchewan",
+        "\"Ministikwan Lake Cree Nation\" community update",
+        "site:facebook.com \"Ministikwan Lake Cree Nation\" announcement",
+        "\"Ministikwan Lake Cree Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 354,
+      "communityName": "Montreal Lake Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=354&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Montreal Lake Cree Nation official website",
+          "url": "https://www.mlcn.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Montreal Lake Cree Nation\" announcement Saskatchewan",
+        "\"Montreal Lake Cree Nation\" community update",
+        "site:facebook.com \"Montreal Lake Cree Nation\" announcement",
+        "\"Montreal Lake Cree Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 342,
+      "communityName": "Moosomin First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=342&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Moosomin First Nation official website",
+          "url": "https://www.moosomin.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Moosomin First Nation\" announcement Saskatchewan",
+        "\"Moosomin First Nation\" community update",
+        "site:facebook.com \"Moosomin First Nation\" announcement",
+        "\"Moosomin First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 343,
+      "communityName": "Mosquito, Grizzly Bear's Head, Lean Man",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=343&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Mosquito, Grizzly Bear's Head, Lean Man official website",
+          "url": "https://mosquitofn.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Mosquito, Grizzly Bear's Head, Lean Man\" announcement Saskatchewan",
+        "\"Mosquito, Grizzly Bear's Head, Lean Man\" community update",
+        "site:facebook.com \"Mosquito, Grizzly Bear's Head, Lean Man\" announcement",
+        "\"Mosquito, Grizzly Bear's Head, Lean Man\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 381,
+      "communityName": "Muscowpetung First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Muscowpetung First Nation",
+          "url": "https://muscowpetung.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=381&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Muscowpetung First Nation official website",
+          "url": "https://www.muscowpetung.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Muscowpetung First Nation\" announcement Saskatchewan",
+        "\"Muscowpetung First Nation\" community update",
+        "site:facebook.com \"Muscowpetung First Nation\" announcement",
+        "\"Muscowpetung First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 375,
+      "communityName": "Muskeg Lake Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Muskeg Lake Cree Nation",
+          "url": "https://muskeglake.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=375&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Muskeg Lake Cree Nation official website",
+          "url": "https://www.muskeglake.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Muskeg Lake Cree Nation\" announcement Saskatchewan",
+        "\"Muskeg Lake Cree Nation\" community update",
+        "site:facebook.com \"Muskeg Lake Cree Nation\" announcement",
+        "\"Muskeg Lake Cree Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 392,
+      "communityName": "Muskowekwan First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=392&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Muskowekwan First Nation official website",
+          "url": "https://www.muskowekwan.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Muskowekwan First Nation\" announcement Saskatchewan",
+        "\"Muskowekwan First Nation\" community update",
+        "site:facebook.com \"Muskowekwan First Nation\" announcement",
+        "\"Muskowekwan First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 380,
+      "communityName": "Nekaneet Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=380&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Nekaneet Cree Nation official website",
+          "url": "https://nekaneet.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Nekaneet Cree Nation\" announcement Saskatchewan",
+        "\"Nekaneet Cree Nation\" community update",
+        "site:facebook.com \"Nekaneet Cree Nation\" announcement",
+        "\"Nekaneet Cree Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 408,
+      "communityName": "Ocean Man First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=408&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Ocean Man First Nation\" announcement Saskatchewan",
+        "\"Ocean Man First Nation\" community update",
+        "site:facebook.com \"Ocean Man First Nation\" announcement",
+        "\"Ocean Man First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 382,
+      "communityName": "Okanese First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=382&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Okanese First Nation\" announcement Saskatchewan",
+        "\"Okanese First Nation\" community update",
+        "site:facebook.com \"Okanese First Nation\" announcement",
+        "\"Okanese First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 373,
+      "communityName": "One Arrow First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=373&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"One Arrow First Nation\" announcement Saskatchewan",
+        "\"One Arrow First Nation\" community update",
+        "site:facebook.com \"One Arrow First Nation\" announcement",
+        "\"One Arrow First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 385,
+      "communityName": "Piapot First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=385&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Piapot First Nation official website",
+          "url": "https://piapotnation.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Piapot First Nation\" announcement Saskatchewan",
+        "\"Piapot First Nation\" community update",
+        "site:facebook.com \"Piapot First Nation\" announcement",
+        "\"Piapot First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 347,
+      "communityName": "Saulteaux First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=347&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Saulteaux First Nation official website",
+          "url": "https://www.saulteauxfn.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Saulteaux First Nation\" announcement Saskatchewan",
+        "\"Saulteaux First Nation\" community update",
+        "site:facebook.com \"Saulteaux First Nation\" announcement",
+        "\"Saulteaux First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 386,
+      "communityName": "Standing Buffalo Dakota Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=386&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Standing Buffalo Dakota Nation official website",
+          "url": "https://www.standingbuffalodakotanation.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Standing Buffalo Dakota Nation\" announcement Saskatchewan",
+        "\"Standing Buffalo Dakota Nation\" community update",
+        "site:facebook.com \"Standing Buffalo Dakota Nation\" announcement",
+        "\"Standing Buffalo Dakota Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 387,
+      "communityName": "Star Blanket Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=387&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Star Blanket Cree Nation\" announcement Saskatchewan",
+        "\"Star Blanket Cree Nation\" community update",
+        "site:facebook.com \"Star Blanket Cree Nation\" announcement",
+        "\"Star Blanket Cree Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 360,
+      "communityName": "Sturgeon Lake First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=360&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Sturgeon Lake First Nation\" announcement Saskatchewan",
+        "\"Sturgeon Lake First Nation\" community update",
+        "site:facebook.com \"Sturgeon Lake First Nation\" announcement",
+        "\"Sturgeon Lake First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 404,
+      "communityName": "Big River First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=404&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Big River First Nation official website",
+          "url": "https://www.brfn.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Big River First Nation\" announcement Saskatchewan",
+        "\"Big River First Nation\" community update",
+        "site:facebook.com \"Big River First Nation\" announcement",
+        "\"Big River First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 403,
+      "communityName": "Birch Narrows Dene Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 10",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=403&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Birch Narrows Dene Nation\" announcement Saskatchewan",
+        "\"Birch Narrows Dene Nation\" community update",
+        "site:facebook.com \"Birch Narrows Dene Nation\" announcement",
+        "\"Birch Narrows Dene Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 359,
+      "communityName": "Black Lake Denesuline First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 8",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=359&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Black Lake Denesuline First Nation official website",
+          "url": "https://blacklakefirstnation.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Black Lake Denesuline First Nation\" announcement Saskatchewan",
+        "\"Black Lake Denesuline First Nation\" community update",
+        "site:facebook.com \"Black Lake Denesuline First Nation\" announcement",
+        "\"Black Lake Denesuline First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 351,
+      "communityName": "Fond du Lac Denesuline First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 8",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=351&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Fond du Lac Denesuline First Nation official website",
+          "url": "https://www.fonddulac.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Fond du Lac Denesuline First Nation\" announcement Saskatchewan",
+        "\"Fond du Lac Denesuline First Nation\" community update",
+        "site:facebook.com \"Fond du Lac Denesuline First Nation\" announcement",
+        "\"Fond du Lac Denesuline First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 370,
+      "communityName": "James Smith Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=370&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "James Smith Cree Nation official website",
+          "url": "https://www.jamessmithcreenation.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"James Smith Cree Nation\" announcement Saskatchewan",
+        "\"James Smith Cree Nation\" community update",
+        "site:facebook.com \"James Smith Cree Nation\" announcement",
+        "\"James Smith Cree Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 393,
+      "communityName": "Kawacatoose First Nation",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=393&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Kawacatoose First Nation official website",
+          "url": "https://kawacatoosefirstnation.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
+        }
+      ],
+      "discoveryQueries": [
+        "\"Kawacatoose First Nation\" announcement Saskatchewan",
+        "\"Kawacatoose First Nation\" community update",
+        "site:facebook.com \"Kawacatoose First Nation\" announcement",
+        "\"Kawacatoose First Nation\" funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 407,
+      "communityName": "Cree Nation of Chitek Lake",
+      "aliases": [],
+      "provinceTerritory": "SK",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=407&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": false
+        }
+      ],
+      "discoveryQueries": [
+        "\"Cree Nation of Chitek Lake\" announcement Saskatchewan",
+        "\"Cree Nation of Chitek Lake\" community update",
+        "site:facebook.com \"Cree Nation of Chitek Lake\" announcement",
+        "\"Cree Nation of Chitek Lake\" funding OR housing OR infrastructure"
+      ]
+    }
+  ]
 }
