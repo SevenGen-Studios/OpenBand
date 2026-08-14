@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-14T05:53:29Z",
-  "before": 21,
+  "generated": "2026-08-14T06:03:19Z",
+  "before": 37,
   "after": 37,
-  "newCandidates": 278,
+  "newCandidates": 274,
   "sourceRuns": [
     {
       "bandId": 361,
@@ -110,11 +110,10 @@
       "sourceName": "Kinistin Saulteaux Nation official website",
       "sourceUrl": "https://www.kinistin.sk.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
+      "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "error": "<urlopen error timed out>"
+      "pagesChecked": 3,
+      "mediaChecked": 1
     },
     {
       "bandId": 341,
@@ -750,7 +749,7 @@
       "sourceUrl": "https://meadowlakeregion.ca/events",
       "sourceType": "Tribal Council Tourism",
       "status": "ok",
-      "eventsFound": 7,
+      "eventsFound": 3,
       "pagesChecked": 1,
       "mediaChecked": 0
     },
@@ -791,7 +790,7 @@
   "reviewCount": 9,
   "statusCounts": {
     "authorized_api_required": 9,
-    "failed": 12,
-    "ok": 49
+    "failed": 11,
+    "ok": 50
   }
 }
