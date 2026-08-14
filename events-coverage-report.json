@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-14T02:50:00Z",
-  "before": 44,
-  "after": 38,
+  "generated": "2026-08-14T03:45:10Z",
+  "before": 38,
+  "after": 24,
   "newCandidates": 255,
   "sourceRuns": [
     {
@@ -110,11 +110,10 @@
       "sourceName": "Kinistin Saulteaux Nation official website",
       "sourceUrl": "https://www.kinistin.sk.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
+      "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "error": "<urlopen error timed out>"
+      "pagesChecked": 3,
+      "mediaChecked": 1
     },
     {
       "bandId": 341,
@@ -747,7 +746,7 @@
   "reviewCount": 9,
   "statusCounts": {
     "authorized_api_required": 9,
-    "failed": 12,
-    "ok": 45
+    "failed": 11,
+    "ok": 46
   }
 }
