@@ -292,6 +292,23 @@ class EventExtractionTests(unittest.TestCase):
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["confidence"], 0.95)
 
+    def test_merge_rejects_stored_shared_event_with_borrowed_date(self):
+        stale = {
+            "id": "stale-shared",
+            "bandId": 379,
+            "title": "Flying Dust First Nation Treaty Days June 19-21, 2026",
+            "startDate": "2026-08-07",
+            "sourceUrl": "https://calendar.example.org/flying-dust-treaty-days",
+            "description": (
+                "Flying Dust First Nation Treaty Days June 19-21, 2026 "
+                "Waterhen Pow Wow August 7-9, 2026"
+            ),
+            "category": "Treaty Days",
+            "confidence": 0.9,
+            "extractionMethod": "shared-index",
+        }
+        self.assertEqual(merge_events([stale], [], date(2026, 8, 13)), [])
+
     def test_merge_rejects_archive_and_job_false_positives(self):
         archive = {
             "id": "archive", "bandId": 378, "title": "Older Posts",
