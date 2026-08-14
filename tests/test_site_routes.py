@@ -82,6 +82,19 @@ class SiteRouteTests(unittest.TestCase):
         for source in enterprise["sources"]:
             self.assertTrue(source["url"].startswith("https://"))
 
+        mappings = enterprise["tribalCouncilOrganizations"]
+        self.assertGreaterEqual(len(mappings), 8)
+        self.assertEqual(len({row["tribalCouncil"] for row in mappings}), len(mappings))
+        for mapping in mappings:
+            self.assertTrue(set(mapping["organizationIds"]).issubset(organization_ids))
+            self.assertTrue(set(mapping["sourceIds"]).issubset(source_ids))
+            self.assertIsNone(mapping.get("ownershipPercentage"))
+
+        coverage = enterprise["coverage"]
+        band_ids = {str(row["id"]) for row in self.data["bands"]}
+        self.assertEqual({str(row["bandId"]) for row in coverage}, band_ids)
+        self.assertTrue(all("directOrganizationStatus" in row for row in coverage))
+
         nrt_interests = [
             row for row in enterprise["ownershipInterests"]
             if row["businessId"] == "biz-nrt"
@@ -97,8 +110,13 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("aria-expanded", script)
         self.assertIn("aria-controls", script)
         self.assertIn("enterprisePath", script)
+        self.assertIn("enterpriseAffiliations", script)
+        self.assertIn("insertAdjacentHTML('afterbegin'", script)
+        self.assertIn('aria-expanded="false"', script)
+        self.assertIn("loadJobsData(),loadMapData()", script)
         self.assertIn("@media(max-width:700px)", styles)
         self.assertIn(".enterprise-record-grid", styles)
+        self.assertIn(".enterprise-affiliation-list", styles)
 
     def test_indexable_routes_and_seo_files_exist(self):
         for relative in ["browse/index.html", "news/index.html", "admin/index.html", "admin/analytics/index.html", "robots.txt", "sitemap.xml", "map-data.json", "contacts-data.json", "jobs-data.json", "jobs-schema.json", "jobs-sources.json", "jobs-overrides.json", "jobs-coverage-report.json", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js", "community-enterprise.json"]:
@@ -146,7 +164,7 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260814c"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260814d"', profile)
         self.assertIn('src="/assets/openband.js?v=20260814e"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
