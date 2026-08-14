@@ -113,7 +113,12 @@ def election_prerender(band: dict, records: list[dict]) -> str:
     )
 
 
-def projects_prerender(band: dict, projects: list[dict], unverified_projects: list[dict]) -> str:
+def projects_prerender(
+    band: dict,
+    projects: list[dict],
+    financial_disclosures: list[dict],
+    unverified_projects: list[dict],
+) -> str:
     priority = {"Under Construction": 0, "Planned": 1, "Completed": 2}
     rows = [
         project for project in projects
@@ -146,6 +151,40 @@ def projects_prerender(band: dict, projects: list[dict], unverified_projects: li
         f'<div class="project-list">{"".join(cards)}</div>'
         if cards else
         '<div class="projects-empty">No current or recently completed project has been added from a verifiable public source yet.</div>'
+    )
+    disclosures = [
+        project for project in financial_disclosures
+        if str(band["id"]) in {str(value) for value in project.get("firstNationIds", [])}
+    ]
+    disclosures.sort(key=lambda project: (str(project.get("fiscalYear") or ""), project.get("name") or ""), reverse=True)
+    disclosure_cards = []
+    for project in disclosures[:4]:
+        source = next((item for item in project.get("sources", []) if item.get("url")), None)
+        references = " · ".join(
+            f'PDF page {reference.get("pdfPage")} · {reference.get("table")}'
+            for reference in project.get("sourceReferences", [])
+        )
+        source_html = (
+            f'<a href="{html.escape(source["url"], quote=True)}" rel="noopener">'
+            f'{html.escape(references or source.get("name") or "Audited statement")}</a>'
+            if source else ""
+        )
+        disclosure_cards.append(
+            '<article class="project-row audited-project-row"><div class="project-row-top">'
+            f'<span class="project-category">{html.escape(project.get("category") or "Community Project")}</span>'
+            '<span class="audited-disclosure-label">Audited disclosure</span></div>'
+            f'<h4>{html.escape(project["name"])}</h4><p>{html.escape(project.get("description") or "")}</p>'
+            '<p class="project-disclosure-note">Financial disclosure only. OpenBand does not infer construction status, total project cost, approval, or completion.</p>'
+            f'<div class="project-sources"><strong>{html.escape(project.get("fiscalYear") or "Audited year")}:</strong>{source_html}</div></article>'
+        )
+    disclosure_section = (
+        '<section class="financial-projects"><div class="unverified-heading"><div>'
+        '<h3>Projects Named in Audited Statements</h3>'
+        '<p>Project names and financial amounts explicitly reported in audited notes or schedules.</p></div>'
+        f'<span class="project-count">{len(disclosures)} disclosures</span></div>'
+        '<div class="audited-project-warning"><strong>Evidence level:</strong> These records confirm a financial-statement disclosure, not current construction status.</div>'
+        f'<div class="project-list">{"".join(disclosure_cards)}</div></section>'
+        if disclosures else ""
     )
     unverified = [
         project for project in unverified_projects
@@ -182,9 +221,9 @@ def projects_prerender(band: dict, projects: list[dict], unverified_projects: li
     )
     return (
         '<section class="profile-projects" aria-labelledby="projectsPrerenderHeading">'
-        '<div class="section-head"><div><h3 id="projectsPrerenderHeading">Housing &amp; Infrastructure Projects</h3>'
-        '<p>Current and recently completed projects found in verifiable public sources.</p></div></div>'
-        f'{content}{unverified_section}</section>'
+        '<div class="section-head"><div><h3 id="projectsPrerenderHeading">Community Projects</h3>'
+        '<p>Housing, infrastructure, facilities, environmental work and other developments found in public sources and audited statements.</p></div></div>'
+        f'{content}{disclosure_section}{unverified_section}</section>'
     )
 
 
@@ -252,7 +291,14 @@ def job_posting_schema(band: dict, listings: list[dict]) -> list[dict]:
     return schemas
 
 
-def profile_prerender(band: dict, election_records: list[dict], projects: list[dict], unverified_projects: list[dict], jobs: list[dict]) -> str:
+def profile_prerender(
+    band: dict,
+    election_records: list[dict],
+    projects: list[dict],
+    financial_disclosures: list[dict],
+    unverified_projects: list[dict],
+    jobs: list[dict],
+) -> str:
     filings = remuneration_filings(band)
     parsed = [filing for filing in filings if is_parsed(filing)]
     latest = filings[0].get("year") if filings else None
@@ -271,7 +317,9 @@ def profile_prerender(band: dict, election_records: list[dict], projects: list[d
         f"<div><dt>Latest parsed remuneration</dt><dd>{html.escape(latest_parsed or 'Pending extraction')}</dd></div>"
         f"<div><dt>Parsed years</dt><dd>{len(parsed)}</dd></div>"
         f'<div><dt>Authoritative source</dt><dd><a href="{isc_url}">ISC filing profile</a></dd></div>'
-        f"</dl>{election_prerender(band, election_records)}{projects_prerender(band, projects, unverified_projects)}{jobs_prerender(band, jobs)}</div>"
+        f"</dl>{election_prerender(band, election_records)}"
+        f"{projects_prerender(band, projects, financial_disclosures, unverified_projects)}"
+        f"{jobs_prerender(band, jobs)}</div>"
     )
 
 
@@ -451,13 +499,24 @@ def build() -> None:
             structured["about"]["logo"] = f'{ORIGIN}{band["logo_url"]}'
         page = set_meta(base, title=title, description=description, path=path, structured=structured)
         page = page.replace('<body data-page="home">', f'<body data-page="profile" data-band-id="{band["id"]}">', 1)
-        page = page.replace('<div id="profilePrerender" class="profile-prerender" hidden></div>', profile_prerender(band, elections.get("records", []), projects.get("projects", []), projects.get("unverifiedProjects", []), jobs.get("listings", [])), 1)
+        page = page.replace(
+            '<div id="profilePrerender" class="profile-prerender" hidden></div>',
+            profile_prerender(
+                band,
+                elections.get("records", []),
+                projects.get("projects", []),
+                projects.get("financialDisclosures", []),
+                projects.get("unverifiedProjects", []),
+                jobs.get("listings", []),
+            ),
+            1,
+        )
         job_schemas = job_posting_schema(band, jobs.get("listings", []))
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260814f" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260814f" defer></script>',
+            '<script src="/assets/openband.js?v=20260814g" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260814g" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)
@@ -495,8 +554,8 @@ def build() -> None:
             1,
         )
         enterprise_page = enterprise_page.replace(
-            '<script src="/assets/openband.js?v=20260814f" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"enterprise","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260814f" defer></script>',
+            '<script src="/assets/openband.js?v=20260814g" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"enterprise","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260814g" defer></script>',
             1,
         )
         write_page(profile_root / slug / "community-enterprise" / "index.html", enterprise_page)

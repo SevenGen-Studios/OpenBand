@@ -164,8 +164,8 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260814e"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260814f"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260814f"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260814g"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
@@ -186,7 +186,11 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("breakdowns.after(section)", javascript)
         self.assertIn("function renderHousingProjectsSection", javascript)
         self.assertIn("function toggleProjects", javascript)
-        self.assertIn("['projects','Housing & Infrastructure','Projects'],['jobs','Jobs & Employment','Jobs'],['sources','Source Documents','Sources']", javascript)
+        self.assertIn("label.textContent='Community Projects'", javascript)
+        self.assertIn("function financialProjectDisclosuresForBand", javascript)
+        self.assertIn("Projects Named in Audited Statements", javascript)
+        self.assertIn("Financial disclosure only", javascript)
+        self.assertIn("Reported Financial Activity", javascript)
         self.assertIn("else if(activeProfileTab==='projects')", javascript)
         self.assertIn("else if(activeProfileTab==='jobs')", javascript)
         self.assertIn("function renderJobsPanel", javascript)
@@ -259,7 +263,7 @@ class SiteRouteTests(unittest.TestCase):
             page = ROOT / "first-nations" / slugify(band["name"]) / "index.html"
             with self.subTest(band=band["name"]):
                 markup = page.read_text(encoding="utf-8")
-                self.assertEqual(markup.count("Housing &amp; Infrastructure Projects"), 1)
+                self.assertEqual(markup.count("Community Projects"), 1)
 
     def test_jobs_data_and_profile_routes_are_source_linked(self):
         jobs = json.loads((ROOT / "jobs-data.json").read_text(encoding="utf-8"))

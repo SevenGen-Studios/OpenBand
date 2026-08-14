@@ -13,6 +13,7 @@ class ProjectsIntegrityTests(unittest.TestCase):
         cls.bands = json.loads((ROOT / "data.json").read_text(encoding="utf-8"))["bands"]
         cls.payload = json.loads((ROOT / "projects-data.json").read_text(encoding="utf-8"))
         cls.projects = cls.payload["projects"]
+        cls.disclosures = cls.payload.get("financialDisclosures", [])
         cls.unverified = cls.payload["unverifiedProjects"]
 
     def test_schema_and_project_ids(self):
@@ -70,6 +71,43 @@ class ProjectsIntegrityTests(unittest.TestCase):
     def test_project_coverage_expanded_after_all_community_audit(self):
         covered = {str(band_id) for project in self.projects for band_id in project["firstNationIds"]}
         self.assertGreaterEqual(len(covered), 35)
+
+    def test_audited_project_disclosures_are_source_linked_and_do_not_infer_status(self):
+        band_ids = {str(band["id"]) for band in self.bands}
+        ids = [row["id"] for row in self.disclosures]
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertGreaterEqual(len(self.disclosures), 13)
+        allowed_amounts = {
+            "fundingReceived", "revenueRecognized", "deferredRevenueOpening",
+            "deferredRevenueClosing", "restrictedCash",
+        }
+        for row in self.disclosures:
+            with self.subTest(disclosure=row["id"]):
+                self.assertTrue(row["name"].strip())
+                self.assertRegex(row["fiscalYear"], r"^\d{4}-\d{4}$")
+                self.assertTrue({str(value) for value in row["firstNationIds"]}.issubset(band_ids))
+                self.assertNotIn("status", row)
+                self.assertNotIn("estimatedCost", row)
+                self.assertTrue(row.get("sourceReferences"))
+                self.assertTrue(row.get("sources"))
+                for source in row["sources"]:
+                    self.assertTrue(source["url"].startswith("https://"))
+                self.assertTrue(set(row.get("amounts", {})).issubset(allowed_amounts))
+                for value in row.get("amounts", {}).values():
+                    self.assertIsInstance(value, (int, float))
+                    self.assertGreaterEqual(value, 0)
+
+    def test_big_river_audited_project_regression(self):
+        rows = {
+            row["name"]: row
+            for row in self.disclosures
+            if str(row["firstNationIds"][0]) == "404" and row["fiscalYear"] == "2024-2025"
+        }
+        self.assertIn("2020 Housing Renovations", rows)
+        self.assertEqual(rows["Drainage Project"]["amounts"]["fundingReceived"], 1_500_000)
+        self.assertEqual(rows["Sewage Pumping Station and Lagoon"]["amounts"]["fundingReceived"], 2_630_000)
+        self.assertEqual(rows["Community Connectivity"]["amounts"]["deferredRevenueClosing"], 150_000)
+        self.assertNotIn("status", rows["New School Project"])
 
     def test_unverified_candidates_are_source_linked_and_clearly_caveated(self):
         band_ids = {str(band["id"]) for band in self.bands}

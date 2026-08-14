@@ -1,0 +1,63 @@
+name: Update audited project disclosures
+
+on:
+  workflow_dispatch:
+    inputs:
+      all_years:
+        description: Scan every parsed audited year instead of each community's latest year
+        required: false
+        type: boolean
+        default: false
+  schedule:
+    - cron: "35 9 * * 2"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-audited-project-disclosures
+  cancel-in-progress: false
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Extract source-linked project disclosures
+        shell: bash
+        run: |
+          args=()
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.all_years }}" == "true" ]]; then
+            args+=(--all-years)
+          fi
+          python tools/project_disclosure_extractor.py "${args[@]}"
+
+      - name: Validate project data and rebuild static routes
+        run: |
+          python -m unittest tests.test_project_disclosure_extractor tests.test_projects_integrity tests.test_site_routes
+          python tools/build_site.py
+
+      - name: Commit refreshed records
+        shell: bash
+        run: |
+          if git diff --quiet -- projects-data.json project-disclosure-report.json first-nations sitemap.xml; then
+            echo "No project disclosure changes"
+            exit 0
+          fi
+          git config user.name "openband-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add projects-data.json project-disclosure-report.json first-nations sitemap.xml
+          git commit -m "Update audited project disclosures"
+          git pull --rebase origin main
+          git push origin HEAD:main
