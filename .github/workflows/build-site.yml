@@ -16,6 +16,19 @@ on:
       - tests/**
       - tools/build_analytics_config.py
       - .github/workflows/build-site.yml
+  pull_request:
+    paths:
+      - index.html
+      - admin/**
+      - assets/**
+      - data.json
+      - community-enterprise.json
+      - news-data.json
+      - projects-data.json
+      - tools/build_site.py
+      - tests/**
+      - tools/build_analytics_config.py
+      - .github/workflows/build-site.yml
 
 permissions:
   contents: write
@@ -50,6 +63,7 @@ jobs:
         run: python -m unittest discover -s tests -v
 
       - name: Commit generated routes
+        if: github.event_name != 'pull_request'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Build permanent OpenBand profile routes"
