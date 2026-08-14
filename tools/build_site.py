@@ -305,6 +305,61 @@ def news_prerender(articles: list[dict]) -> str:
     return f'<div class="news-grid" id="newsGrid">{"".join(cards)}</div>'
 
 
+
+def enterprise_prerender(band: dict, enterprise: dict) -> str:
+    profile = next(
+        (row for row in enterprise.get("nationProfiles", []) if str(row.get("bandId")) == str(band.get("id"))),
+        None,
+    )
+    organization = None
+    if profile:
+        organization = next(
+            (row for row in enterprise.get("organizations", []) if row.get("id") == profile.get("primaryOrganizationId")),
+            None,
+        )
+    back = f"/first-nations/{slugify(band['name'])}/"
+    if not profile or not organization:
+        return (
+            '<section id="enterprisePage" class="enterprise-page static-enterprise-page">'
+            '<div class="enterprise-page-head">'
+            f'<a href="{back}">Back to {html.escape(band["name"])}</a>'
+            '<span class="enterprise-kicker">Community Enterprise</span>'
+            f'<h1>{html.escape(band["name"])}</h1>'
+            '<p>Publicly reported organizations, ownership interests, businesses and projects connected to this First Nation.</p>'
+            '</div><section class="enterprise-section enterprise-empty-state">'
+            '<h2>Enterprise data not yet verified</h2>'
+            '<p>Missing information is not treated as zero or as evidence that no enterprise activity exists.</p>'
+            '</section></section>'
+        )
+    interests = [
+        row for row in enterprise.get("ownershipInterests", [])
+        if row.get("ownerId") == profile.get("primaryOrganizationId")
+    ]
+    industries = "".join(
+        f'<span>{html.escape(value)}</span>' for value in profile.get("industries", [])[:4]
+    )
+    website = organization.get("website")
+    website_link = (
+        f'<a class="small-btn" href="{html.escape(website, quote=True)}" target="_blank" rel="noopener">Official website</a>'
+        if website else ""
+    )
+    return (
+        '<section id="enterprisePage" class="enterprise-page static-enterprise-page">'
+        '<div class="enterprise-page-head">'
+        f'<a href="{back}">Back to {html.escape(band["name"])}</a>'
+        '<span class="enterprise-kicker">Community Enterprise</span>'
+        f'<h1>{html.escape(band["name"])}</h1>'
+        '<p>Publicly reported organizations, ownership interests, businesses and projects connected to this First Nation.</p>'
+        f'<div class="enterprise-tags">{industries}</div>'
+        '</div><section class="enterprise-section enterprise-hero-summary"><div>'
+        f'<h2>{html.escape(organization["name"])}</h2>'
+        f'<p>{html.escape(organization.get("description") or "")}</p>'
+        f'<p>{len(interests)} known businesses and investments. '
+        f'Last verified {html.escape(profile.get("lastVerified") or "not stated")}.</p>'
+        f'</div><div>{website_link}</div></section></section>'
+    )
+
+
 def write_page(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
@@ -317,6 +372,7 @@ def build() -> None:
     map_data = json.loads((ROOT / "map-data.json").read_text(encoding="utf-8"))
     projects = json.loads((ROOT / "projects-data.json").read_text(encoding="utf-8"))
     jobs = json.loads((ROOT / "jobs-data.json").read_text(encoding="utf-8"))
+    enterprise = json.loads((ROOT / "community-enterprise.json").read_text(encoding="utf-8"))
     bands = sorted(data.get("bands", []), key=lambda item: item["name"])
     base = (ROOT / "index.html").read_text(encoding="utf-8")
     slugs = [slugify(band["name"]) for band in bands]
@@ -355,11 +411,50 @@ def build() -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260814b" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260814b" defer></script>',
+            '<script src="/assets/openband.js?v=20260814c" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260814c" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)
+
+        enterprise_path = f"/first-nations/{slug}/community-enterprise/"
+        enterprise_title = f"{band['name']} Community Enterprise | OpenBand"
+        enterprise_description = (
+            f"Review publicly reported economic development organizations, ownership interests, "
+            f"businesses and projects connected to {band['name']}."
+        )
+        enterprise_structured = {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": enterprise_title,
+            "url": f"{ORIGIN}{enterprise_path}",
+            "description": enterprise_description,
+            "isPartOf": {"@type": "WebSite", "name": "OpenBand", "url": f"{ORIGIN}/"},
+            "about": {"@type": "Organization", "name": band["name"]},
+        }
+        enterprise_page = set_meta(
+            base,
+            title=enterprise_title,
+            description=enterprise_description,
+            path=enterprise_path,
+            structured=enterprise_structured,
+        )
+        enterprise_page = enterprise_page.replace(
+            '<body data-page="home">',
+            f'<body data-page="enterprise" data-band-id="{band["id"]}">',
+            1,
+        )
+        enterprise_page = enterprise_page.replace(
+            '<section id="enterprisePage" class="enterprise-page" aria-live="polite"></section>',
+            enterprise_prerender(band, enterprise),
+            1,
+        )
+        enterprise_page = enterprise_page.replace(
+            '<script src="/assets/openband.js?v=20260814c" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"enterprise","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260814c" defer></script>',
+            1,
+        )
+        write_page(profile_root / slug / "community-enterprise" / "index.html", enterprise_page)
 
     directory_title = "Explore Saskatchewan First Nations | OpenBand"
     directory_description = "Explore Saskatchewan First Nations on an interactive map with red First Nation and reserve land boundaries, organized by Treaty and tribal-council affiliation."
@@ -398,7 +493,7 @@ def build() -> None:
     write_page(ROOT / "news" / "index.html", news_page)
 
     lastmod = str(data.get("generated") or "")[:10]
-    paths = ["/", "/browse/", "/news/"] + [f"/first-nations/{slug}/" for slug in slugs]
+    paths = ["/", "/browse/", "/news/"] + [f"/first-nations/{slug}/" for slug in slugs] + [f"/first-nations/{slug}/community-enterprise/" for slug in slugs]
     urls = "".join(
         f"<url><loc>{ORIGIN}{path}</loc>{f'<lastmod>{lastmod}</lastmod>' if lastmod else ''}</url>"
         for path in paths
@@ -413,7 +508,7 @@ def build() -> None:
         f"User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: {ORIGIN}/sitemap.xml\n", encoding="utf-8"
     )
     (ROOT / ".nojekyll").touch()
-    print(f"Generated {len(bands)} profile pages, browse, news, robots.txt, and sitemap.xml")
+    print(f"Generated {len(bands)} profile and Community Enterprise pages, browse, news, robots.txt, and sitemap.xml")
 
 
 if __name__ == "__main__":
