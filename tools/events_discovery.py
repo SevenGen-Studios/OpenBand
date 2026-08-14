@@ -601,12 +601,16 @@ def is_publishable_event(item: dict) -> bool:
         return False
     if method == "json-ld":
         return True
-    if method.startswith("ocr") or method == "pdftotext":
-        return is_event_text(title, description)
     if method == "meta-api":
         return is_event_text(title, description) and bool(event_dates(description))
-    if method in {"html", "html-page"} and not explicit_event_dates(f"{title} {description}"):
-        return False
+    if method.startswith("ocr") or method in {"pdftotext", "html", "html-page"}:
+        expected_start, _ = choose_event_date(title, description)
+        if not expected_start or expected_start != str(item.get("startDate") or ""):
+            return False
+        if method.startswith("ocr") or method == "pdftotext":
+            return is_event_text(title, description)
+        if not explicit_event_dates(f"{title} {description}"):
+            return False
     explicit_date = bool(re.search(r"\b(?:event date|date|when|starts?|runs?|join us)\s*[:\-]?\s*", description, re.I))
     title_has_event = bool(EVENT_WORDS.search(title))
     return title_has_event and (explicit_date or bool(event_dates(title)))

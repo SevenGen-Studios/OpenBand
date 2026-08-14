@@ -7,6 +7,7 @@ from tools.events_discovery import (
     event_dates,
     event_status,
     extract_html_events,
+    is_publishable_event,
     merge_events,
 )
 
@@ -146,6 +147,26 @@ class EventExtractionTests(unittest.TestCase):
         rows = merge_events([], [first, duplicate], date(2026, 8, 13))
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["endDate"], "2026-08-23")
+
+    def test_stored_html_date_must_match_source_year(self):
+        stale = {
+            "id": "stale", "bandId": 378,
+            "title": "Sep 10 Wellness clinic Wednesday, September 10, 2025",
+            "startDate": "2026-09-10", "sourceUrl": "https://example.org/clinic",
+            "description": "Sep 10 Wellness clinic Wednesday, September 10, 2025",
+            "confidence": 0.9, "extractionMethod": "html",
+        }
+        self.assertFalse(is_publishable_event(stale))
+
+    def test_stored_html_date_must_match_first_event_date(self):
+        wrong = {
+            "id": "wrong", "bandId": 378,
+            "title": "Sep 12 Annual General Meeting Saturday, September 12, 2026",
+            "startDate": "2026-08-18", "sourceUrl": "https://example.org/agm",
+            "description": "Agenda will be posted after August 18, 2026.",
+            "confidence": 0.9, "extractionMethod": "html",
+        }
+        self.assertFalse(is_publishable_event(wrong))
 
     def test_merge_rejects_archive_and_job_false_positives(self):
         archive = {
