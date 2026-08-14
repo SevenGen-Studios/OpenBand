@@ -62,13 +62,13 @@ EVENT_WORDS = re.compile(
     r"\b(pow[ -]?wow|wacipi|round dance|treaty day|feast|gathering|ceremony|"
     r"celebration|community (?:meeting|event|clean[ -]?up)|annual general meeting|agm|"
     r"open house|workshop|training|conference|forum|fair|clinic|screening|"
-    r"tournament|rodeo|bingo|fundraiser|market|festival|parade|camp|youth day|"
+    r"tournament|relay race|races|rodeo|bingo|fundraiser|market|festival|parade|camp|youth day|"
     r"family day|language class|culture camp|land-based|sports day|information session|"
-    r"registration|deadline|election day|vote|meeting|event)\b",
+    r"election day|vote|meeting|event)\b",
     re.I,
 )
 NON_EVENT_WORDS = re.compile(
-    r"\b(job posting|employment opportunity|request for proposals?|tender|"
+    r"\b(job posting|job opportunity|employment opportunity|opportunities|request for proposals?|rpf|rfp|tender|"
     r"financial statements?|audit|remuneration|happy birthday|contest winner)\b",
     re.I,
 )
@@ -274,6 +274,7 @@ class EventPageParser(HTMLParser):
         self.json_scripts = []
         self.in_json = False
         self.json_parts = []
+        self.ignored_depth = 0
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
@@ -286,6 +287,8 @@ class EventPageParser(HTMLParser):
         if tag == "script" and "ld+json" in attrs.get("type", "").lower():
             self.in_json = True
             self.json_parts = []
+        elif tag in {"script", "style", "svg", "noscript"}:
+            self.ignored_depth += 1
         if tag == "a" and attrs.get("href"):
             self.active_anchor = {"href": attrs["href"], "start": len(self.parts), "end": None, "context": None, "image": None}
             self.anchors.append(self.active_anchor)
@@ -305,6 +308,8 @@ class EventPageParser(HTMLParser):
         if self.in_json:
             self.json_parts.append(data)
             return
+        if self.ignored_depth:
+            return
         value = clean_text(data)
         if value:
             self.parts.append(value)
@@ -317,6 +322,8 @@ class EventPageParser(HTMLParser):
         if tag == "script" and self.in_json:
             self.json_scripts.append("".join(self.json_parts))
             self.in_json = False
+        elif tag in {"script", "style", "svg", "noscript"} and self.ignored_depth:
+            self.ignored_depth -= 1
         if tag == "a" and self.active_anchor:
             self.active_anchor["end"] = len(self.parts)
             self.active_anchor = None
@@ -501,7 +508,7 @@ def merge_events(existing: list[dict], candidates: list[dict], today: date | Non
     for item in [*existing, *candidates]:
         start = str(item.get("startDate") or "")
         url = canonical_url(item.get("sourceUrl"))
-        if not (minimum <= start <= maximum and url.startswith("https://")):
+        if not (minimum <= start <= maximum and url.startswith("https://") and is_publishable_event(item)):
             continue
         key = f"{item.get('bandId')}|{start}|{normalized_text(item.get('title'))}"
         duplicate = next((old_key for old_key, old in by_key.items() if old.get("bandId") == item.get("bandId") and old.get("startDate") == start and (old.get("sourceUrl") == url or normalized_text(old.get("title")) == normalized_text(item.get("title")))), None)
@@ -513,6 +520,43 @@ def merge_events(existing: list[dict], candidates: list[dict], today: date | Non
     rows = list(by_key.values())
     rows.sort(key=lambda item: (item.get("startDate", ""), item.get("title", "")))
     return rows
+
+
+def is_publishable_event(item: dict) -> bool:
+    """Reject directory pages, code noise, and dates without event context."""
+    title = clean_text(item.get("title"))
+    description = clean_text(item.get("description"))
+    url = canonical_url(item.get("sourceUrl"))
+    method = str(item.get("extractionMethod") or "")
+    normalized_title = normalized_text(title)
+    path = urllib.parse.urlsplit(url).path.lower().rstrip("/")
+    query = urllib.parse.urlsplit(url).query.lower()
+    if not title or len(title) < 6 or len(title) > 165:
+        return False
+    if normalized_title in GENERIC_TITLES or normalized_title in {
+        "communities", "information", "older posts", "apply now", "job postings",
+        "news posts", "whats new", "about", "events calendar", "community calendar",
+    }:
+        return False
+    if NON_EVENT_WORDS.search(f"{title} {description}"):
+        return False
+    if any(token in f"{title} {description}" for token in ("{ --", "grid-template", "googleanalytics", "monsterinsights", "function(", "var mi_")):
+        return False
+    if re.search(r"/(?:category|tag|author|page|about|news-posts|whats-new)(?:/|$)", path):
+        return False
+    if any(key in query for key in ("category=", "offset=", "page=")):
+        return False
+    if path.endswith(("/events", "/calendar", "/events.html", "/announcements")) and method == "html-page":
+        return False
+    if method == "json-ld":
+        return True
+    if method.startswith("ocr") or method == "pdftotext":
+        return is_event_text(title, description)
+    if method == "meta-api":
+        return is_event_text(title, description) and bool(event_dates(description))
+    explicit_date = bool(re.search(r"\b(?:event date|date|when|starts?|runs?|join us)\s*[:\-]?\s*", description, re.I))
+    title_has_event = bool(EVENT_WORDS.search(title))
+    return title_has_event and (explicit_date or bool(event_dates(title)))
 
 
 def run(args):
