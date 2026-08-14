@@ -141,7 +141,7 @@ class EventExtractionTests(unittest.TestCase):
             "extractionMethod": "html",
         }
         duplicate = {
-            **first, "id": "two", "startDate": "2026-08-23",
+            **first, "id": "two",
             "title": "Annual Powwow August 21-23, 2026", "endDate": "2026-08-23",
         }
         rows = merge_events([], [first, duplicate], date(2026, 8, 13))

@@ -574,7 +574,7 @@ def merge_events(existing: list[dict], candidates: list[dict], today: date | Non
 
 
 def is_publishable_event(item: dict) -> bool:
-    """Reject directory pages, code noise, and dates without event context."""
+    """Reject directory pages, code noise, stale dates, and dates without event context."""
     title = clean_text(item.get("title"))
     description = clean_text(item.get("description"))
     url = canonical_url(item.get("sourceUrl"))
