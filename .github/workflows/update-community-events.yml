@@ -73,7 +73,9 @@ jobs:
 
           if len(registry.get("communities", [])) != band_count:
               raise SystemExit("Event source registry does not cover every tracked community")
-          removed = max(0, len(before.get("events", [])) - len(events))\n          print(f"quality pruning removed {removed} previously indexed candidates")\n          for event in events:
+          removed = max(0, len(before.get("events", [])) - len(events))
+          print(f"quality pruning removed {removed} previously indexed candidates")
+          for event in events:
               missing = required - set(event)
               if missing:
                   raise SystemExit(f"Event missing required fields: {event.get('id')} {sorted(missing)}")
