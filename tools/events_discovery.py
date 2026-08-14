@@ -71,7 +71,7 @@ EVENT_WORDS = re.compile(
     re.I,
 )
 NON_EVENT_WORDS = re.compile(
-    r"\b(job posting|job opportunity|employment opportunity|opportunities|request for proposals?|rpf|rfp|tender|"
+    r"\b(job posting|job opportunity|employment opportunity|opportunities|office closures?|requests? for proposals?|rpf|rfp|tender|"
     r"financial statements?|audit|remuneration|happy birthday|contest winner)\b",
     re.I,
 )
@@ -167,18 +167,53 @@ def event_dates(value: str, today: date | None = None) -> list[tuple[str, str | 
     return rows
 
 
+def explicit_event_dates(value: str) -> list[tuple[str, str | None]]:
+    """Return source dates that state a year, excluding publication timestamps."""
+    text = clean_text(value)
+    rows = []
+    seen = set()
+    for match in MONTH_RE.finditer(text):
+        month_name, start_day, end_day, year = match.groups()
+        if not year:
+            continue
+        prefix = text[max(0, match.start() - 24):match.start()]
+        if re.search(r"\b(?:posted|published|updated)\s*(?:on)?\s*$", prefix, re.I):
+            continue
+        month = MONTHS[month_name[:3].lower()]
+        try:
+            start = date(int(year), month, int(start_day))
+            end = date(start.year, month, int(end_day)) if end_day else None
+        except ValueError:
+            continue
+        key = (start.isoformat(), end.isoformat() if end else None)
+        if key not in seen:
+            seen.add(key)
+            rows.append(key)
+    for token in re.findall(r"\b20\d{2}[-/]\d{1,2}[-/]\d{1,2}\b", text):
+        parsed, _ = parse_date_text(token)
+        if parsed and (parsed, None) not in seen:
+            seen.add((parsed, None))
+            rows.append((parsed, None))
+    return rows
+
+
 def choose_event_date(title: str, context: str, today: date | None = None):
     today = today or utc_today()
     minimum = today - timedelta(days=EVENT_WINDOW_PAST_DAYS)
     maximum = today + timedelta(days=EVENT_WINDOW_FUTURE_DAYS)
-    title_dates = event_dates(title, today)
-    context_dates = event_dates(context, today)
-    viable = [row for row in title_dates + context_dates if minimum <= date.fromisoformat(row[0]) <= maximum]
-    if not viable:
-        return None, None
-    upcoming = [row for row in viable if date.fromisoformat(row[0]) >= today]
-    selected = min(upcoming or viable, key=lambda row: abs((date.fromisoformat(row[0]) - today).days))
-    return selected
+
+    def first_viable(rows):
+        return next((row for row in rows if minimum <= date.fromisoformat(row[0]) <= maximum), None)
+
+    title_explicit = explicit_event_dates(title)
+    context_explicit = explicit_event_dates(context)
+    explicit = title_explicit or context_explicit
+    if explicit:
+        selected = first_viable(title_explicit) or first_viable(context_explicit)
+        return selected or (None, None)
+
+    selected = first_viable(event_dates(title, today)) or first_viable(event_dates(context, today))
+    return selected or (None, None)
 
 
 def event_status(start: str, end: str | None, today: date | None = None) -> str:
@@ -514,9 +549,22 @@ def merge_events(existing: list[dict], candidates: list[dict], today: date | Non
         if not (minimum <= start <= maximum and url.startswith("https://") and is_publishable_event(item)):
             continue
         key = f"{item.get('bandId')}|{start}|{normalized_text(item.get('title'))}"
-        duplicate = next((old_key for old_key, old in by_key.items() if old.get("bandId") == item.get("bandId") and old.get("startDate") == start and (old.get("sourceUrl") == url or normalized_text(old.get("title")) == normalized_text(item.get("title")))), None)
+        duplicate = next((
+            old_key for old_key, old in by_key.items()
+            if old.get("bandId") == item.get("bandId")
+            and (
+                old.get("sourceUrl") == url
+                or (
+                    old.get("startDate") == start
+                    and normalized_text(old.get("title")) == normalized_text(item.get("title"))
+                )
+            )
+        ), None)
         if duplicate:
-            if float(item.get("confidence") or 0) > float(by_key[duplicate].get("confidence") or 0):
+            old = by_key[duplicate]
+            item_quality = (bool(item.get("endDate")), float(item.get("confidence") or 0))
+            old_quality = (bool(old.get("endDate")), float(old.get("confidence") or 0))
+            if item_quality > old_quality:
                 by_key[duplicate] = item
         else:
             by_key[key] = item
@@ -557,6 +605,8 @@ def is_publishable_event(item: dict) -> bool:
         return is_event_text(title, description)
     if method == "meta-api":
         return is_event_text(title, description) and bool(event_dates(description))
+    if method in {"html", "html-page"} and not explicit_event_dates(f"{title} {description}"):
+        return False
     explicit_date = bool(re.search(r"\b(?:event date|date|when|starts?|runs?|join us)\s*[:\-]?\s*", description, re.I))
     title_has_event = bool(EVENT_WORDS.search(title))
     return title_has_event and (explicit_date or bool(event_dates(title)))
