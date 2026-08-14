@@ -2,7 +2,7 @@
   "generatedAt": "2026-08-14",
   "mode": "all-years",
   "documentsAttempted": 685,
-  "recordsExtracted": 90,
+  "recordsExtracted": 87,
   "results": [
     {
       "bandId": "406",
@@ -220,99 +220,6 @@
       "status": "extracted",
       "records": [
         {
-          "id": "404-2017-2018-aboriginal-headstart",
-          "firstNationIds": [
-            "404"
-          ],
-          "fiscalYear": "2017-2018",
-          "category": "Community Infrastructure",
-          "name": "Aboriginal Headstart",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 476201
-          },
-          "sourceReferences": [
-            {
-              "pdfPage": 13,
-              "table": "Restricted cash"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Big River First Nation 2017-2018 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2017-2018&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "404-2017-2018-solid-waste-transfer",
-          "firstNationIds": [
-            "404"
-          ],
-          "fiscalYear": "2017-2018",
-          "category": "Community Infrastructure",
-          "name": "Solid Waste Transfer",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 1079548,
-            "deferredRevenueOpening": 133938,
-            "fundingReceived": 1036000,
-            "revenueRecognized": 90390,
-            "deferredRevenueClosing": 1079548
-          },
-          "sourceReferences": [
-            {
-              "pdfPage": 13,
-              "table": "Restricted cash"
-            },
-            {
-              "pdfPage": 15,
-              "table": "Deferred revenue"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Big River First Nation 2017-2018 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2017-2018&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "404-2017-2018-teacherage-project",
-          "firstNationIds": [
-            "404"
-          ],
-          "fiscalYear": "2017-2018",
-          "category": "Community Infrastructure",
-          "name": "Teacherage Project",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 1399840,
-            "fundingReceived": 1400000,
-            "revenueRecognized": 160,
-            "deferredRevenueClosing": 1399840
-          },
-          "sourceReferences": [
-            {
-              "pdfPage": 13,
-              "table": "Restricted cash"
-            },
-            {
-              "pdfPage": 15,
-              "table": "Deferred revenue"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Big River First Nation 2017-2018 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2017-2018&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
           "id": "404-2017-2018-wtp-evaluation-and-upgrade",
           "firstNationIds": [
             "404"
@@ -347,20 +254,53 @@
           ]
         },
         {
-          "id": "404-2017-2018-new-school-project",
+          "id": "404-2017-2018-teacherage",
           "firstNationIds": [
             "404"
           ],
           "fiscalYear": "2017-2018",
-          "category": "Education",
-          "name": "New School Project",
+          "category": "Community Infrastructure",
+          "name": "Teacherage Project",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 1944724,
-            "deferredRevenueOpening": 44199,
-            "fundingReceived": 1920000,
-            "revenueRecognized": 44489,
-            "deferredRevenueClosing": 1919710
+            "restrictedCash": 1399840,
+            "fundingReceived": 1400000,
+            "revenueRecognized": 160,
+            "deferredRevenueClosing": 1399840
+          },
+          "sourceReferences": [
+            {
+              "pdfPage": 13,
+              "table": "Restricted cash"
+            },
+            {
+              "pdfPage": 15,
+              "table": "Deferred revenue"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Big River First Nation 2017-2018 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2017-2018&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
+        },
+        {
+          "id": "404-2017-2018-solid-waste-transfer",
+          "firstNationIds": [
+            "404"
+          ],
+          "fiscalYear": "2017-2018",
+          "category": "Community Infrastructure",
+          "name": "Solid Waste Transfer",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {
+            "restrictedCash": 1079548,
+            "deferredRevenueOpening": 133938,
+            "fundingReceived": 1036000,
+            "revenueRecognized": 90390,
+            "deferredRevenueClosing": 1079548
           },
           "sourceReferences": [
             {
@@ -415,19 +355,29 @@
           ]
         },
         {
-          "id": "404-2017-2018-high-school-roof-repairs",
+          "id": "404-2017-2018-new-school",
           "firstNationIds": [
             "404"
           ],
           "fiscalYear": "2017-2018",
           "category": "Education",
-          "name": "high school roof repairs",
+          "name": "New School Project",
           "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {},
+          "amounts": {
+            "restrictedCash": 1944724,
+            "deferredRevenueOpening": 44199,
+            "fundingReceived": 1920000,
+            "revenueRecognized": 44489,
+            "deferredRevenueClosing": 1919710
+          },
           "sourceReferences": [
             {
-              "pdfPage": 19,
-              "table": "Segment disclosure"
+              "pdfPage": 13,
+              "table": "Restricted cash"
+            },
+            {
+              "pdfPage": 15,
+              "table": "Deferred revenue"
             }
           ],
           "sources": [
@@ -439,20 +389,18 @@
           ]
         },
         {
-          "id": "404-2017-2018-gasification-project",
+          "id": "404-2017-2018-low-pressure-water",
           "firstNationIds": [
             "404"
           ],
           "fiscalYear": "2017-2018",
-          "category": "Energy",
-          "name": "Gasification Project",
+          "category": "Water & Wastewater",
+          "name": "Low Pressure Water",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 4501723,
-            "deferredRevenueOpening": 661825,
-            "fundingReceived": 5888000,
-            "revenueRecognized": 2048102,
-            "deferredRevenueClosing": 4501723
+            "restrictedCash": 5492,
+            "deferredRevenueOpening": 5492,
+            "deferredRevenueClosing": 5492
           },
           "sourceReferences": [
             {
@@ -497,18 +445,44 @@
           ]
         },
         {
-          "id": "404-2017-2018-low-pressure-water",
+          "id": "404-2017-2018-high-school-roof-repairs",
           "firstNationIds": [
             "404"
           ],
           "fiscalYear": "2017-2018",
-          "category": "Water & Wastewater",
-          "name": "Low Pressure Water",
+          "category": "Education",
+          "name": "high school roof repairs",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {},
+          "sourceReferences": [
+            {
+              "pdfPage": 19,
+              "table": "Segment disclosure"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Big River First Nation 2017-2018 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2017-2018&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
+        },
+        {
+          "id": "404-2017-2018-gasification",
+          "firstNationIds": [
+            "404"
+          ],
+          "fiscalYear": "2017-2018",
+          "category": "Energy",
+          "name": "Gasification Project",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 5492,
-            "deferredRevenueOpening": 5492,
-            "deferredRevenueClosing": 5492
+            "restrictedCash": 4501723,
+            "deferredRevenueOpening": 661825,
+            "fundingReceived": 5888000,
+            "revenueRecognized": 2048102,
+            "deferredRevenueClosing": 4501723
           },
           "sourceReferences": [
             {
@@ -518,6 +492,32 @@
             {
               "pdfPage": 15,
               "table": "Deferred revenue"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Big River First Nation 2017-2018 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2017-2018&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
+        },
+        {
+          "id": "404-2017-2018-aboriginal-headstart",
+          "firstNationIds": [
+            "404"
+          ],
+          "fiscalYear": "2017-2018",
+          "category": "Community Infrastructure",
+          "name": "Aboriginal Headstart",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {
+            "restrictedCash": 476201
+          },
+          "sourceReferences": [
+            {
+              "pdfPage": 13,
+              "table": "Restricted cash"
             }
           ],
           "sources": [
@@ -546,18 +546,76 @@
       "status": "extracted",
       "records": [
         {
-          "id": "404-2024-2025-arena-project",
+          "id": "404-2024-2025-water-treatment-plant-evaluation-and-upgrade",
           "firstNationIds": [
             "404"
           ],
           "fiscalYear": "2024-2025",
-          "category": "Community Facilities",
-          "name": "Arena Project",
+          "category": "Community Infrastructure",
+          "name": "Water Treatment Plant Evaluation and Upgrade",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 12861,
-            "deferredRevenueOpening": 524524,
-            "revenueRecognized": 524524
+            "deferredRevenueOpening": 99662,
+            "revenueRecognized": 99662,
+            "restrictedCash": 248
+          },
+          "sourceReferences": [
+            {
+              "pdfPage": 15,
+              "table": "Deferred revenue"
+            },
+            {
+              "pdfPage": 14,
+              "table": "Restricted cash"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Big River First Nation 2024-2025 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
+        },
+        {
+          "id": "404-2024-2025-sewage-pumping-station-revitalization",
+          "firstNationIds": [
+            "404"
+          ],
+          "fiscalYear": "2024-2025",
+          "category": "Water & Wastewater",
+          "name": "sewage pumping station revitalization",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {},
+          "sourceReferences": [
+            {
+              "pdfPage": 20,
+              "table": "Segment disclosure"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Big River First Nation 2024-2025 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
+        },
+        {
+          "id": "404-2024-2025-sewage-pumping-station-and-lagoon",
+          "firstNationIds": [
+            "404"
+          ],
+          "fiscalYear": "2024-2025",
+          "category": "Water & Wastewater",
+          "name": "Sewage Pumping Station and Lagoon",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {
+            "restrictedCash": 1246169,
+            "deferredRevenueOpening": 2658546,
+            "fundingReceived": 2630000,
+            "revenueRecognized": 4399687,
+            "deferredRevenueClosing": 888859
           },
           "sourceReferences": [
             {
@@ -578,22 +636,32 @@
           ]
         },
         {
-          "id": "404-2024-2025-wwaater-treatment-plant-evaluation-and-upgrade",
+          "id": "404-2024-2025-new-school",
           "firstNationIds": [
             "404"
           ],
           "fiscalYear": "2024-2025",
-          "category": "Community Infrastructure",
-          "name": "WWaater Treatment Plant Evaluation and Upgrade",
+          "category": "Education",
+          "name": "New School Project",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "deferredRevenueOpening": 99662,
-            "revenueRecognized": 99662
+            "restrictedCash": 310147,
+            "deferredRevenueOpening": 1748486,
+            "revenueRecognized": 936964,
+            "deferredRevenueClosing": 811522
           },
           "sourceReferences": [
             {
+              "pdfPage": 14,
+              "table": "Restricted cash"
+            },
+            {
               "pdfPage": 15,
               "table": "Deferred revenue"
+            },
+            {
+              "pdfPage": 20,
+              "table": "Segment disclosure"
             }
           ],
           "sources": [
@@ -605,22 +673,117 @@
           ]
         },
         {
-          "id": "404-2024-2025-community-connectivity",
+          "id": "404-2024-2025-low-pressure-water",
           "firstNationIds": [
             "404"
           ],
           "fiscalYear": "2024-2025",
-          "category": "Connectivity",
-          "name": "Community Connectivity",
+          "category": "Water & Wastewater",
+          "name": "Low Pressure Water",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "fundingReceived": 150000,
-            "deferredRevenueClosing": 150000
+            "restrictedCash": 195756,
+            "deferredRevenueOpening": 195848,
+            "deferredRevenueClosing": 195848
           },
           "sourceReferences": [
             {
+              "pdfPage": 14,
+              "table": "Restricted cash"
+            },
+            {
               "pdfPage": 15,
               "table": "Deferred revenue"
+            },
+            {
+              "pdfPage": 20,
+              "table": "Segment disclosure"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Big River First Nation 2024-2025 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
+        },
+        {
+          "id": "404-2024-2025-know-your-status",
+          "firstNationIds": [
+            "404"
+          ],
+          "fiscalYear": "2024-2025",
+          "category": "Health Centre",
+          "name": "Know Your Status",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {
+            "restrictedCash": 198564,
+            "deferredRevenueOpening": 57249,
+            "revenueRecognized": 57249
+          },
+          "sourceReferences": [
+            {
+              "pdfPage": 14,
+              "table": "Restricted cash"
+            },
+            {
+              "pdfPage": 15,
+              "table": "Deferred revenue"
+            },
+            {
+              "pdfPage": 20,
+              "table": "Segment disclosure"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Big River First Nation 2024-2025 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
+        },
+        {
+          "id": "404-2024-2025-jet-lagoon",
+          "firstNationIds": [
+            "404"
+          ],
+          "fiscalYear": "2024-2025",
+          "category": "Water & Wastewater",
+          "name": "Jet Lagoon",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {
+            "restrictedCash": 4311416
+          },
+          "sourceReferences": [
+            {
+              "pdfPage": 14,
+              "table": "Restricted cash"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Big River First Nation 2024-2025 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
+        },
+        {
+          "id": "404-2024-2025-gasification",
+          "firstNationIds": [
+            "404"
+          ],
+          "fiscalYear": "2024-2025",
+          "category": "Energy",
+          "name": "Gasification Project",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {},
+          "sourceReferences": [
+            {
+              "pdfPage": 14,
+              "table": "Restricted cash"
             }
           ],
           "sources": [
@@ -668,25 +831,21 @@
           ]
         },
         {
-          "id": "404-2024-2025-new-school-project",
+          "id": "404-2024-2025-drainage",
           "firstNationIds": [
             "404"
           ],
           "fiscalYear": "2024-2025",
-          "category": "Education",
-          "name": "New School Project",
+          "category": "Roads & Drainage",
+          "name": "Drainage Project",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 310147,
-            "deferredRevenueOpening": 1748486,
-            "revenueRecognized": 936964,
-            "deferredRevenueClosing": 811522
+            "deferredRevenueOpening": 3229188,
+            "fundingReceived": 1500000,
+            "revenueRecognized": 1656418,
+            "deferredRevenueClosing": 3072770
           },
           "sourceReferences": [
-            {
-              "pdfPage": 14,
-              "table": "Restricted cash"
-            },
             {
               "pdfPage": 15,
               "table": "Deferred revenue"
@@ -694,30 +853,6 @@
             {
               "pdfPage": 20,
               "table": "Segment disclosure"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Big River First Nation 2024-2025 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "404-2024-2025-gasification-project",
-          "firstNationIds": [
-            "404"
-          ],
-          "fiscalYear": "2024-2025",
-          "category": "Energy",
-          "name": "Gasification Project",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {},
-          "sourceReferences": [
-            {
-              "pdfPage": 14,
-              "table": "Restricted cash"
             }
           ],
           "sources": [
@@ -762,24 +897,19 @@
           ]
         },
         {
-          "id": "404-2024-2025-know-your-status",
+          "id": "404-2024-2025-community-connectivity",
           "firstNationIds": [
             "404"
           ],
           "fiscalYear": "2024-2025",
-          "category": "Health Centre",
-          "name": "Know Your Status",
+          "category": "Connectivity",
+          "name": "Community Connectivity",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 198564,
-            "deferredRevenueOpening": 57249,
-            "revenueRecognized": 57249
+            "fundingReceived": 150000,
+            "deferredRevenueClosing": 150000
           },
           "sourceReferences": [
-            {
-              "pdfPage": 14,
-              "table": "Restricted cash"
-            },
             {
               "pdfPage": 15,
               "table": "Deferred revenue"
@@ -794,19 +924,27 @@
           ]
         },
         {
-          "id": "404-2024-2025-know-your-status-project",
+          "id": "404-2024-2025-arena",
           "firstNationIds": [
             "404"
           ],
           "fiscalYear": "2024-2025",
-          "category": "Health Centre",
-          "name": "Know Your Status project",
+          "category": "Community Facilities",
+          "name": "Arena Project",
           "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {},
+          "amounts": {
+            "restrictedCash": 12861,
+            "deferredRevenueOpening": 524524,
+            "revenueRecognized": 524524
+          },
           "sourceReferences": [
             {
-              "pdfPage": 20,
-              "table": "Segment disclosure"
+              "pdfPage": 14,
+              "table": "Restricted cash"
+            },
+            {
+              "pdfPage": 15,
+              "table": "Deferred revenue"
             }
           ],
           "sources": [
@@ -831,205 +969,6 @@
             {
               "pdfPage": 14,
               "table": "Restricted cash"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Big River First Nation 2024-2025 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "404-2024-2025-drainage-project",
-          "firstNationIds": [
-            "404"
-          ],
-          "fiscalYear": "2024-2025",
-          "category": "Roads & Drainage",
-          "name": "Drainage Project",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "deferredRevenueOpening": 3229188,
-            "fundingReceived": 1500000,
-            "revenueRecognized": 1656418,
-            "deferredRevenueClosing": 3072770
-          },
-          "sourceReferences": [
-            {
-              "pdfPage": 15,
-              "table": "Deferred revenue"
-            },
-            {
-              "pdfPage": 20,
-              "table": "Segment disclosure"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Big River First Nation 2024-2025 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "404-2024-2025-jet-lagoon",
-          "firstNationIds": [
-            "404"
-          ],
-          "fiscalYear": "2024-2025",
-          "category": "Water & Wastewater",
-          "name": "Jet Lagoon",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 4311416
-          },
-          "sourceReferences": [
-            {
-              "pdfPage": 14,
-              "table": "Restricted cash"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Big River First Nation 2024-2025 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "404-2024-2025-low-pressure-water",
-          "firstNationIds": [
-            "404"
-          ],
-          "fiscalYear": "2024-2025",
-          "category": "Water & Wastewater",
-          "name": "Low Pressure Water",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 195756,
-            "deferredRevenueOpening": 195848,
-            "deferredRevenueClosing": 195848
-          },
-          "sourceReferences": [
-            {
-              "pdfPage": 14,
-              "table": "Restricted cash"
-            },
-            {
-              "pdfPage": 15,
-              "table": "Deferred revenue"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Big River First Nation 2024-2025 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "404-2024-2025-sewage-pumping-station-and-lagoon",
-          "firstNationIds": [
-            "404"
-          ],
-          "fiscalYear": "2024-2025",
-          "category": "Water & Wastewater",
-          "name": "Sewage Pumping Station and Lagoon",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 1246169,
-            "deferredRevenueOpening": 2658546,
-            "fundingReceived": 2630000,
-            "revenueRecognized": 4399687,
-            "deferredRevenueClosing": 888859
-          },
-          "sourceReferences": [
-            {
-              "pdfPage": 14,
-              "table": "Restricted cash"
-            },
-            {
-              "pdfPage": 15,
-              "table": "Deferred revenue"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Big River First Nation 2024-2025 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "404-2024-2025-water-treatment-plant-evaluation-and-upgrade",
-          "firstNationIds": [
-            "404"
-          ],
-          "fiscalYear": "2024-2025",
-          "category": "Water & Wastewater",
-          "name": "Water Treatment Plant Evaluation and Upgrade",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 248
-          },
-          "sourceReferences": [
-            {
-              "pdfPage": 14,
-              "table": "Restricted cash"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Big River First Nation 2024-2025 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "404-2024-2025-low-pressure-water-project",
-          "firstNationIds": [
-            "404"
-          ],
-          "fiscalYear": "2024-2025",
-          "category": "Water & Wastewater",
-          "name": "low pressure water project",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {},
-          "sourceReferences": [
-            {
-              "pdfPage": 20,
-              "table": "Segment disclosure"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Big River First Nation 2024-2025 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=404&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "404-2024-2025-sewage-pumping-station-revitalization",
-          "firstNationIds": [
-            "404"
-          ],
-          "fiscalYear": "2024-2025",
-          "category": "Water & Wastewater",
-          "name": "sewage pumping station revitalization",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {},
-          "sourceReferences": [
-            {
-              "pdfPage": 20,
-              "table": "Segment disclosure"
             }
           ],
           "sources": [
@@ -1218,6 +1157,30 @@
       "status": "extracted",
       "records": [
         {
+          "id": "359-2022-2023-water-treatment-plant",
+          "firstNationIds": [
+            "359"
+          ],
+          "fiscalYear": "2022-2023",
+          "category": "Water & Wastewater",
+          "name": "water treatment plant",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {},
+          "sourceReferences": [
+            {
+              "pdfPage": 16,
+              "table": "Restricted cash"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Black Lake Denesuline First Nation 2022-2023 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=359&FY=2022-2023&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
+        },
+        {
           "id": "359-2022-2023-subdivision",
           "firstNationIds": [
             "359"
@@ -1228,6 +1191,32 @@
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
             "restrictedCash": 284072
+          },
+          "sourceReferences": [
+            {
+              "pdfPage": 16,
+              "table": "Restricted cash"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Black Lake Denesuline First Nation 2022-2023 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=359&FY=2022-2023&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
+        },
+        {
+          "id": "359-2022-2023-sewage-pumping-station-sps",
+          "firstNationIds": [
+            "359"
+          ],
+          "fiscalYear": "2022-2023",
+          "category": "Water & Wastewater",
+          "name": "sewage pumping station (SPS)",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {
+            "restrictedCash": 2470787
           },
           "sourceReferences": [
             {
@@ -1294,56 +1283,6 @@
               "checkedAt": "2026-08-14"
             }
           ]
-        },
-        {
-          "id": "359-2022-2023-sewage-pumping-station-sps",
-          "firstNationIds": [
-            "359"
-          ],
-          "fiscalYear": "2022-2023",
-          "category": "Water & Wastewater",
-          "name": "sewage pumping station (SPS)",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 2470787
-          },
-          "sourceReferences": [
-            {
-              "pdfPage": 16,
-              "table": "Restricted cash"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Black Lake Denesuline First Nation 2022-2023 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=359&FY=2022-2023&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "359-2022-2023-water-treatment-plant",
-          "firstNationIds": [
-            "359"
-          ],
-          "fiscalYear": "2022-2023",
-          "category": "Water & Wastewater",
-          "name": "water treatment plant",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {},
-          "sourceReferences": [
-            {
-              "pdfPage": 16,
-              "table": "Restricted cash"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Black Lake Denesuline First Nation 2022-2023 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=359&FY=2022-2023&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
         }
       ]
     },
@@ -1355,16 +1294,16 @@
       "status": "extracted",
       "records": [
         {
-          "id": "359-2023-2024-aboriginal-headstart-ahsor-building",
+          "id": "359-2023-2024-subdivision",
           "firstNationIds": [
             "359"
           ],
           "fiscalYear": "2023-2024",
           "category": "Community Infrastructure",
-          "name": "aboriginal headstart (AHSOR) building",
+          "name": "subdivision",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 407286
+            "restrictedCash": 418993
           },
           "sourceReferences": [
             {
@@ -1407,16 +1346,16 @@
           ]
         },
         {
-          "id": "359-2023-2024-subdivision",
+          "id": "359-2023-2024-sewage-pumping-station-sps",
           "firstNationIds": [
             "359"
           ],
           "fiscalYear": "2023-2024",
-          "category": "Community Infrastructure",
-          "name": "subdivision",
+          "category": "Water & Wastewater",
+          "name": "sewage pumping station (SPS)",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 418993
+            "restrictedCash": 100604
           },
           "sourceReferences": [
             {
@@ -1485,16 +1424,16 @@
           ]
         },
         {
-          "id": "359-2023-2024-sewage-pumping-station-sps",
+          "id": "359-2023-2024-aboriginal-headstart-ahsor-building",
           "firstNationIds": [
             "359"
           ],
           "fiscalYear": "2023-2024",
-          "category": "Water & Wastewater",
-          "name": "sewage pumping station (SPS)",
+          "category": "Community Infrastructure",
+          "name": "aboriginal headstart (AHSOR) building",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 100604
+            "restrictedCash": 407286
           },
           "sourceReferences": [
             {
@@ -1520,16 +1459,16 @@
       "status": "extracted",
       "records": [
         {
-          "id": "359-2024-2025-aboriginal-headstart-ahsor-building",
+          "id": "359-2024-2025-subdivision",
           "firstNationIds": [
             "359"
           ],
           "fiscalYear": "2024-2025",
           "category": "Community Infrastructure",
-          "name": "aboriginal headstart (AHSOR) building",
+          "name": "subdivision",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 623058
+            "restrictedCash": 437290
           },
           "sourceReferences": [
             {
@@ -1572,16 +1511,16 @@
           ]
         },
         {
-          "id": "359-2024-2025-subdivision",
+          "id": "359-2024-2025-sewage-pumping-station-sps",
           "firstNationIds": [
             "359"
           ],
           "fiscalYear": "2024-2025",
-          "category": "Community Infrastructure",
-          "name": "subdivision",
+          "category": "Water & Wastewater",
+          "name": "sewage pumping station (SPS)",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 437290
+            "restrictedCash": 39588
           },
           "sourceReferences": [
             {
@@ -1650,16 +1589,16 @@
           ]
         },
         {
-          "id": "359-2024-2025-sewage-pumping-station-sps",
+          "id": "359-2024-2025-aboriginal-headstart-ahsor-building",
           "firstNationIds": [
             "359"
           ],
           "fiscalYear": "2024-2025",
-          "category": "Water & Wastewater",
-          "name": "sewage pumping station (SPS)",
+          "category": "Community Infrastructure",
+          "name": "aboriginal headstart (AHSOR) building",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 39588
+            "restrictedCash": 623058
           },
           "sourceReferences": [
             {
@@ -4397,32 +4336,6 @@
       "status": "extracted",
       "records": [
         {
-          "id": "381-2022-2023-back-up-well",
-          "firstNationIds": [
-            "381"
-          ],
-          "fiscalYear": "2022-2023",
-          "category": "Community Infrastructure",
-          "name": "back-up well",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 364643
-          },
-          "sourceReferences": [
-            {
-              "pdfPage": 16,
-              "table": "Restricted cash"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Muscowpetung First Nation 2022-2023 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=381&FY=2022-2023&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
           "id": "381-2022-2023-solid-waste-transfer-station",
           "firstNationIds": [
             "381"
@@ -4499,6 +4412,32 @@
               "checkedAt": "2026-08-14"
             }
           ]
+        },
+        {
+          "id": "381-2022-2023-back-up-well",
+          "firstNationIds": [
+            "381"
+          ],
+          "fiscalYear": "2022-2023",
+          "category": "Community Infrastructure",
+          "name": "back-up well",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {
+            "restrictedCash": 364643
+          },
+          "sourceReferences": [
+            {
+              "pdfPage": 16,
+              "table": "Restricted cash"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Muscowpetung First Nation 2022-2023 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=381&FY=2022-2023&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
         }
       ]
     },
@@ -4510,68 +4449,16 @@
       "status": "extracted",
       "records": [
         {
-          "id": "381-2023-2024-back-up-well",
+          "id": "381-2023-2024-wastewater",
           "firstNationIds": [
             "381"
           ],
           "fiscalYear": "2023-2024",
-          "category": "Community Infrastructure",
-          "name": "back-up well",
+          "category": "Water & Wastewater",
+          "name": "wastewater project",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 231493
-          },
-          "sourceReferences": [
-            {
-              "pdfPage": 16,
-              "table": "Restricted cash"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Muscowpetung First Nation 2023-2024 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=381&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "381-2023-2024-headstart",
-          "firstNationIds": [
-            "381"
-          ],
-          "fiscalYear": "2023-2024",
-          "category": "Community Infrastructure",
-          "name": "headstart",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 930402
-          },
-          "sourceReferences": [
-            {
-              "pdfPage": 16,
-              "table": "Restricted cash"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Muscowpetung First Nation 2023-2024 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=381&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "381-2023-2024-powwow-arbour-project",
-          "firstNationIds": [
-            "381"
-          ],
-          "fiscalYear": "2023-2024",
-          "category": "Community Infrastructure",
-          "name": "powwow arbour project",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 2999846
+            "restrictedCash": 84987
           },
           "sourceReferences": [
             {
@@ -4666,16 +4553,68 @@
           ]
         },
         {
-          "id": "381-2023-2024-wastewater-project",
+          "id": "381-2023-2024-powwow-arbour",
           "firstNationIds": [
             "381"
           ],
           "fiscalYear": "2023-2024",
-          "category": "Water & Wastewater",
-          "name": "wastewater project",
+          "category": "Community Infrastructure",
+          "name": "powwow arbour project",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 84987
+            "restrictedCash": 2999846
+          },
+          "sourceReferences": [
+            {
+              "pdfPage": 16,
+              "table": "Restricted cash"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Muscowpetung First Nation 2023-2024 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=381&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
+        },
+        {
+          "id": "381-2023-2024-headstart",
+          "firstNationIds": [
+            "381"
+          ],
+          "fiscalYear": "2023-2024",
+          "category": "Community Infrastructure",
+          "name": "headstart",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {
+            "restrictedCash": 930402
+          },
+          "sourceReferences": [
+            {
+              "pdfPage": 16,
+              "table": "Restricted cash"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Muscowpetung First Nation 2023-2024 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=381&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
+        },
+        {
+          "id": "381-2023-2024-back-up-well",
+          "firstNationIds": [
+            "381"
+          ],
+          "fiscalYear": "2023-2024",
+          "category": "Community Infrastructure",
+          "name": "back-up well",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {
+            "restrictedCash": 231493
           },
           "sourceReferences": [
             {
@@ -6269,15 +6208,17 @@
       "status": "extracted",
       "records": [
         {
-          "id": "386-2023-2024-back-up-generator",
+          "id": "386-2023-2024-youth-centre",
           "firstNationIds": [
             "386"
           ],
           "fiscalYear": "2023-2024",
           "category": "Community Infrastructure",
-          "name": "back-up generator",
+          "name": "youth centre",
           "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {},
+          "amounts": {
+            "restrictedCash": 15417
+          },
           "sourceReferences": [
             {
               "pdfPage": 18,
@@ -6293,16 +6234,16 @@
           ]
         },
         {
-          "id": "386-2023-2024-daycare-and-headstart",
+          "id": "386-2023-2024-water-treatment-plant",
           "firstNationIds": [
             "386"
           ],
           "fiscalYear": "2023-2024",
-          "category": "Community Infrastructure",
-          "name": "daycare and headstart",
+          "category": "Water & Wastewater",
+          "name": "water treatment plant",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 946510
+            "restrictedCash": 4976911
           },
           "sourceReferences": [
             {
@@ -6329,32 +6270,6 @@
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
             "restrictedCash": 45085
-          },
-          "sourceReferences": [
-            {
-              "pdfPage": 18,
-              "table": "Restricted cash"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Standing Buffalo Dakota Nation 2023-2024 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=386&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "386-2023-2024-youth-centre",
-          "firstNationIds": [
-            "386"
-          ],
-          "fiscalYear": "2023-2024",
-          "category": "Community Infrastructure",
-          "name": "youth centre",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 15417
           },
           "sourceReferences": [
             {
@@ -6449,17 +6364,41 @@
           ]
         },
         {
-          "id": "386-2023-2024-water-treatment-plant",
+          "id": "386-2023-2024-daycare-and-headstart",
           "firstNationIds": [
             "386"
           ],
           "fiscalYear": "2023-2024",
-          "category": "Water & Wastewater",
-          "name": "water treatment plant",
+          "category": "Community Infrastructure",
+          "name": "daycare and headstart",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 4976911
+            "restrictedCash": 946510
           },
+          "sourceReferences": [
+            {
+              "pdfPage": 18,
+              "table": "Restricted cash"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Standing Buffalo Dakota Nation 2023-2024 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=386&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
+        },
+        {
+          "id": "386-2023-2024-back-up-generator",
+          "firstNationIds": [
+            "386"
+          ],
+          "fiscalYear": "2023-2024",
+          "category": "Community Infrastructure",
+          "name": "back-up generator",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {},
           "sourceReferences": [
             {
               "pdfPage": 18,
@@ -6484,16 +6423,42 @@
       "status": "extracted",
       "records": [
         {
-          "id": "386-2024-2025-daycare-and-headstart",
+          "id": "386-2024-2025-youth-centre",
           "firstNationIds": [
             "386"
           ],
           "fiscalYear": "2024-2025",
           "category": "Community Infrastructure",
-          "name": "daycare and headstart",
+          "name": "youth centre",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 4761747
+            "restrictedCash": 9073
+          },
+          "sourceReferences": [
+            {
+              "pdfPage": 16,
+              "table": "Restricted cash"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Standing Buffalo Dakota Nation 2024-2025 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=386&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
+        },
+        {
+          "id": "386-2024-2025-water-treatment-plant",
+          "firstNationIds": [
+            "386"
+          ],
+          "fiscalYear": "2024-2025",
+          "category": "Water & Wastewater",
+          "name": "water treatment plant",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {
+            "restrictedCash": 4967816
           },
           "sourceReferences": [
             {
@@ -6520,32 +6485,6 @@
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
             "restrictedCash": 34766
-          },
-          "sourceReferences": [
-            {
-              "pdfPage": 16,
-              "table": "Restricted cash"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Standing Buffalo Dakota Nation 2024-2025 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=386&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "386-2024-2025-youth-centre",
-          "firstNationIds": [
-            "386"
-          ],
-          "fiscalYear": "2024-2025",
-          "category": "Community Infrastructure",
-          "name": "youth centre",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 9073
           },
           "sourceReferences": [
             {
@@ -6638,16 +6577,16 @@
           ]
         },
         {
-          "id": "386-2024-2025-water-treatment-plant",
+          "id": "386-2024-2025-daycare-and-headstart",
           "firstNationIds": [
             "386"
           ],
           "fiscalYear": "2024-2025",
-          "category": "Water & Wastewater",
-          "name": "water treatment plant",
+          "category": "Community Infrastructure",
+          "name": "daycare and headstart",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 4967816
+            "restrictedCash": 4761747
           },
           "sourceReferences": [
             {
@@ -7489,15 +7428,17 @@
       "status": "extracted",
       "records": [
         {
-          "id": "376-2020-2021-booster-station-upgrade",
+          "id": "376-2020-2021-school-upgrade",
           "firstNationIds": [
             "376"
           ],
           "fiscalYear": "2020-2021",
-          "category": "Community Infrastructure",
-          "name": "booster station upgrade",
+          "category": "Education",
+          "name": "school upgrade project",
           "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {},
+          "amounts": {
+            "restrictedCash": 95983
+          },
           "sourceReferences": [
             {
               "pdfPage": 15,
@@ -7513,17 +7454,15 @@
           ]
         },
         {
-          "id": "376-2020-2021-school-upgrade-project",
+          "id": "376-2020-2021-booster-station-upgrade",
           "firstNationIds": [
             "376"
           ],
           "fiscalYear": "2020-2021",
-          "category": "Education",
-          "name": "school upgrade project",
+          "category": "Community Infrastructure",
+          "name": "booster station upgrade",
           "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 95983
-          },
+          "amounts": {},
           "sourceReferences": [
             {
               "pdfPage": 15,
@@ -7548,33 +7487,7 @@
       "status": "extracted",
       "records": [
         {
-          "id": "376-2021-2022-booster-station-upgrade",
-          "firstNationIds": [
-            "376"
-          ],
-          "fiscalYear": "2021-2022",
-          "category": "Community Infrastructure",
-          "name": "booster station upgrade",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 107498
-          },
-          "sourceReferences": [
-            {
-              "pdfPage": 16,
-              "table": "Restricted cash"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Yellow Quill First Nation 2021-2022 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=376&FY=2021-2022&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "376-2021-2022-sub-division-stage-2-project",
+          "id": "376-2021-2022-sub-division-stage-2",
           "firstNationIds": [
             "376"
           ],
@@ -7600,7 +7513,7 @@
           ]
         },
         {
-          "id": "376-2021-2022-school-upgrade-project",
+          "id": "376-2021-2022-school-upgrade",
           "firstNationIds": [
             "376"
           ],
@@ -7610,6 +7523,32 @@
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
             "restrictedCash": 471460
+          },
+          "sourceReferences": [
+            {
+              "pdfPage": 16,
+              "table": "Restricted cash"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Yellow Quill First Nation 2021-2022 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=376&FY=2021-2022&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
+        },
+        {
+          "id": "376-2021-2022-booster-station-upgrade",
+          "firstNationIds": [
+            "376"
+          ],
+          "fiscalYear": "2021-2022",
+          "category": "Community Infrastructure",
+          "name": "booster station upgrade",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {
+            "restrictedCash": 107498
           },
           "sourceReferences": [
             {
@@ -7635,15 +7574,17 @@
       "status": "extracted",
       "records": [
         {
-          "id": "376-2022-2023-booster-station-upgrade",
+          "id": "376-2022-2023-water-treatment-plant-upgrade",
           "firstNationIds": [
             "376"
           ],
           "fiscalYear": "2022-2023",
-          "category": "Community Infrastructure",
-          "name": "booster station upgrade",
+          "category": "Water & Wastewater",
+          "name": "water treatment plant upgrade",
           "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {},
+          "amounts": {
+            "restrictedCash": 231393
+          },
           "sourceReferences": [
             {
               "pdfPage": 17,
@@ -7659,7 +7600,7 @@
           ]
         },
         {
-          "id": "376-2022-2023-sub-division-stage-2-project",
+          "id": "376-2022-2023-sub-division-stage-2",
           "firstNationIds": [
             "376"
           ],
@@ -7685,7 +7626,7 @@
           ]
         },
         {
-          "id": "376-2022-2023-school-upgrade-project",
+          "id": "376-2022-2023-school-upgrade",
           "firstNationIds": [
             "376"
           ],
@@ -7737,17 +7678,15 @@
           ]
         },
         {
-          "id": "376-2022-2023-water-treatment-plant-upgrade",
+          "id": "376-2022-2023-booster-station-upgrade",
           "firstNationIds": [
             "376"
           ],
           "fiscalYear": "2022-2023",
-          "category": "Water & Wastewater",
-          "name": "water treatment plant upgrade",
+          "category": "Community Infrastructure",
+          "name": "booster station upgrade",
           "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 231393
-          },
+          "amounts": {},
           "sourceReferences": [
             {
               "pdfPage": 17,
@@ -7772,42 +7711,16 @@
       "status": "extracted",
       "records": [
         {
-          "id": "376-2023-2024-solid-waste-feasibility-study",
+          "id": "376-2023-2024-water-treatment-plant-upgrade",
           "firstNationIds": [
             "376"
           ],
           "fiscalYear": "2023-2024",
-          "category": "Community Infrastructure",
-          "name": "solid waste feasibility study",
+          "category": "Water & Wastewater",
+          "name": "water treatment plant upgrade",
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
-            "restrictedCash": 9356
-          },
-          "sourceReferences": [
-            {
-              "pdfPage": 17,
-              "table": "Restricted cash"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Yellow Quill First Nation 2023-2024 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=376&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "376-2023-2024-sub-division-stage-2-project",
-          "firstNationIds": [
-            "376"
-          ],
-          "fiscalYear": "2023-2024",
-          "category": "Community Infrastructure",
-          "name": "sub division stage 2 project",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 942638
+            "restrictedCash": 119783
           },
           "sourceReferences": [
             {
@@ -7850,7 +7763,59 @@
           ]
         },
         {
-          "id": "376-2023-2024-school-upgrade-project",
+          "id": "376-2023-2024-sub-division-stage-2",
+          "firstNationIds": [
+            "376"
+          ],
+          "fiscalYear": "2023-2024",
+          "category": "Community Infrastructure",
+          "name": "sub division stage 2 project",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {
+            "restrictedCash": 942638
+          },
+          "sourceReferences": [
+            {
+              "pdfPage": 17,
+              "table": "Restricted cash"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Yellow Quill First Nation 2023-2024 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=376&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
+        },
+        {
+          "id": "376-2023-2024-solid-waste-feasibility-study",
+          "firstNationIds": [
+            "376"
+          ],
+          "fiscalYear": "2023-2024",
+          "category": "Community Infrastructure",
+          "name": "solid waste feasibility study",
+          "description": "Named as a capital project in the audited financial statement.",
+          "amounts": {
+            "restrictedCash": 9356
+          },
+          "sourceReferences": [
+            {
+              "pdfPage": 17,
+              "table": "Restricted cash"
+            }
+          ],
+          "sources": [
+            {
+              "name": "Yellow Quill First Nation 2023-2024 audited financial statement",
+              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=376&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng",
+              "checkedAt": "2026-08-14"
+            }
+          ]
+        },
+        {
+          "id": "376-2023-2024-school-upgrade",
           "firstNationIds": [
             "376"
           ],
@@ -7886,32 +7851,6 @@
           "description": "Named as a capital project in the audited financial statement.",
           "amounts": {
             "restrictedCash": 528750
-          },
-          "sourceReferences": [
-            {
-              "pdfPage": 17,
-              "table": "Restricted cash"
-            }
-          ],
-          "sources": [
-            {
-              "name": "Yellow Quill First Nation 2023-2024 audited financial statement",
-              "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=376&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng",
-              "checkedAt": "2026-08-14"
-            }
-          ]
-        },
-        {
-          "id": "376-2023-2024-water-treatment-plant-upgrade",
-          "firstNationIds": [
-            "376"
-          ],
-          "fiscalYear": "2023-2024",
-          "category": "Water & Wastewater",
-          "name": "water treatment plant upgrade",
-          "description": "Named as a capital project in the audited financial statement.",
-          "amounts": {
-            "restrictedCash": 119783
           },
           "sourceReferences": [
             {
