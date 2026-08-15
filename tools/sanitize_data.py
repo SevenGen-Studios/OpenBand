@@ -209,7 +209,7 @@ def repair_shifted_payment_columns(person):
         changed = True
 
     base_without_other = remuneration + travel + expenses + credit_card
-    if other and base_without_other and nearly_equal(other, base_without_other):
+    if other and base_without_other and amounts_match_as_echo(other, base_without_other):
         person["otherPayments"] = None
         changed = True
 
@@ -256,6 +256,13 @@ def nearly_equal(left, right):
     return abs(left - right) <= max(2, abs(right) * 0.02)
 
 
+def amounts_match_as_echo(left, right):
+    """Match duplicated extracted totals without collapsing nearby real amounts."""
+    if not left or not right:
+        return False
+    return abs(left - right) <= max(2, abs(right) * 0.001)
+
+
 def has_component_echo(person):
     remuneration = person.get("remuneration") or 0
     expenses = person.get("expenses") or 0
@@ -279,7 +286,7 @@ def has_total_echo(person):
     base = remuneration + travel + expenses + credit_card
     if base <= 0 or other <= 0 or total <= 0:
         return False
-    return abs(other - base) <= max(2, base * 0.02) and abs(total - (base + other)) <= max(2, total * 0.02)
+    return amounts_match_as_echo(other, base) and nearly_equal(total, base + other)
 
 
 def suspicious_filing_reasons(people):

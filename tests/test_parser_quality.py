@@ -268,6 +268,27 @@ Crowe, Crystal 12 $ 77,723 170,720 18,000 39,686 14,953"""
         self.assertEqual(cleaned["other"], 0)
         self.assertEqual(cleaned["total"], 139862)
 
+    def test_sanitizer_preserves_piapot_chief_other_remuneration(self):
+        person = {
+            "name": "Fox, Mark",
+            "role": "Chief",
+            "months": 12,
+            "remuneration": 90000,
+            "travel": 36000,
+            "expenses": 6118,
+            "creditCard": None,
+            "otherPayments": 133100,
+            "total": 265218,
+        }
+
+        cleaned, status = sanitize_data.sanitize_person(person)
+
+        self.assertEqual(status, "ok")
+        self.assertEqual(cleaned["otherPayments"], 133100)
+        self.assertEqual(cleaned["other"], 133100)
+        self.assertEqual(cleaned["travelExpenses"], 42118)
+        self.assertEqual(cleaned["total"], 265218)
+
 
 if __name__ == "__main__":
     unittest.main()
