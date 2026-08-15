@@ -1,29 +1,28 @@
-generated: 2026-08-09T22:53:57Z
+generated: 2026-08-12T08:55:14.526499Z
 bands: 69
 error_count: 0
 bands with parsed remuneration: 68
-parsed remuneration filings: 529
-posted remuneration filings still pending: 195
+parsed remuneration filings: 553
+posted remuneration filings still pending: 171
 
 pending by fiscal year:
   2025-2026: 6 pending, 0 parsed
-  2024-2025: 2 pending, 37 parsed
-  2023-2024: 3 pending, 45 parsed
-  2022-2023: 10 pending, 45 parsed
-  2021-2022: 5 pending, 52 parsed
-  2020-2021: 14 pending, 46 parsed
-  2019-2020: 10 pending, 53 parsed
-  2018-2019: 14 pending, 50 parsed
+  2024-2025: 1 pending, 38 parsed
+  2021-2022: 4 pending, 53 parsed
+  2020-2021: 12 pending, 48 parsed
+  2019-2020: 8 pending, 55 parsed
+  2018-2019: 13 pending, 51 parsed
   2017-2018: 11 pending, 55 parsed
-  2016-2017: 18 pending, 48 parsed
+  2016-2017: 15 pending, 51 parsed
   2015-2016: 19 pending, 48 parsed
   2014-2015: 33 pending, 34 parsed
-  2013-2014: 50 pending, 16 parsed
+  2013-2014: 49 pending, 17 parsed
 
 pending by parse status:
-  pending_openai_opt_in: 163
-  pending_manual_review: 26
+  pending_openai_opt_in: 150
+  pending_manual_review: 14
   not_required: 6
+  not_applicable_wrong_document: 1
 
 expected SK names missing: 0
 
@@ -31,7 +30,6 @@ first pending examples:
   PENDING: Carry the Kettle Nakoda Nation 2013-2014 (pending_openai_opt_in)
   PENDING: Carry the Kettle Nakoda Nation 2014-2015 (pending_openai_opt_in)
   PENDING: Carry the Kettle Nakoda Nation 2020-2021 (pending_openai_opt_in)
-  PENDING: Carry the Kettle Nakoda Nation 2022-2023 (pending_manual_review)
   PENDING: Cote First Nation 2013-2014 (pending_openai_opt_in)
   PENDING: Cote First Nation 2020-2021 (pending_openai_opt_in)
   PENDING: George Gordon First Nation 2013-2014 (pending_openai_opt_in)
@@ -42,7 +40,6 @@ first pending examples:
   PENDING: Kahkewistahaw First Nation 2017-2018 (pending_openai_opt_in)
   PENDING: Keeseekoose First Nation 2013-2014 (pending_openai_opt_in)
   PENDING: Keeseekoose First Nation 2017-2018 (pending_openai_opt_in)
-  PENDING: Kinistin Saulteaux Nation 2023-2024 (pending_openai_opt_in)
   PENDING: Little Black Bear First Nation 2013-2014 (pending_openai_opt_in)
   PENDING: Lucky Man Cree Nation 2013-2014 (pending_openai_opt_in)
   PENDING: Lucky Man Cree Nation 2014-2015 (pending_openai_opt_in)
@@ -54,7 +51,6 @@ first pending examples:
   PENDING: Makwa Sahgaiehcan First Nation 2015-2016 (pending_openai_opt_in)
   PENDING: Makwa Sahgaiehcan First Nation 2016-2017 (pending_openai_opt_in)
   PENDING: Makwa Sahgaiehcan First Nation 2017-2018 (pending_openai_opt_in)
-  PENDING: Makwa Sahgaiehcan First Nation 2022-2023 (pending_manual_review)
   PENDING: Mistawasis Nehiyawak 2013-2014 (pending_openai_opt_in)
   PENDING: Mistawasis Nehiyawak 2014-2015 (pending_openai_opt_in)
   PENDING: Mistawasis Nehiyawak 2015-2016 (pending_openai_opt_in)
@@ -66,5 +62,8 @@ first pending examples:
   PENDING: Muskoday First Nation 2019-2020 (pending_openai_opt_in)
   PENDING: Muskoday First Nation 2020-2021 (pending_manual_review)
   PENDING: Pasqua First Nation 2013-2014 (pending_openai_opt_in)
-  PENDING: Pasqua First Nation 2016-2017 (pending_manual_review)
-  PENDING: Pasqua First Nation 2022-2023 (pending_openai_opt_in)
+  PENDING: Peepeekisis Cree Nation 2013-2014 (pending_openai_opt_in)
+  PENDING: Peepeekisis Cree Nation 2014-2015 (pending_openai_opt_in)
+  PENDING: Poundmaker Cree Nation 2013-2014 (pending_openai_opt_in)
+  PENDING: Poundmaker Cree Nation 2014-2015 (pending_openai_opt_in)
+  PENDING: Red Earth Cree Nation 2013-2014 (pending_manual_review)
