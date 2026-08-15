@@ -395,6 +395,22 @@ class SiteRouteTests(unittest.TestCase):
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("record.votesReceived!==null", javascript)
 
+    def test_james_smith_election_excludes_other_constituent_nations(self):
+        elections = json.loads((ROOT / "elections-data.json").read_text(encoding="utf-8"))
+        records = [record for record in elections["records"] if record["firstNationId"] == 370]
+
+        self.assertEqual({record["electionDate"] for record in records}, {"2024-03-28"})
+        self.assertEqual(
+            {(record["candidateName"], record["position"]) for record in records},
+            {
+                ("Kirby Constant", "Chief"),
+                ("Alvin Moostoos", "Councillor"),
+                ("Justin Burns", "Councillor"),
+                ("Gerald McKay", "Councillor"),
+                ("Tanya Moostoos", "Councillor"),
+            },
+        )
+
     def test_ga4_tag_is_present_on_every_public_page(self):
         pages = [ROOT / "index.html", ROOT / "browse" / "index.html", ROOT / "news" / "index.html"]
         pages.extend((ROOT / "first-nations").glob("*/index.html"))
