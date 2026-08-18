@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-17T13:56:58Z",
+  "generated": "2026-08-18T14:00:52Z",
   "trackedCommunityCount": 69,
   "configuredSourceCount": 92,
   "communities": [
@@ -2192,7 +2192,7 @@
         "347",
         "348"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 3,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2348,7 +2348,7 @@
       "communityIds": [
         "349"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 3,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2374,10 +2374,12 @@
       "communityIds": [
         "344"
       ],
-      "candidatesFound": 1,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "unavailable",
+      "warnings": [
+        "onion-lake-community-updates: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "onion-lake-job-board",
@@ -2400,10 +2402,12 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 4,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "unavailable",
+      "warnings": [
+        "cowessess-careers: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "ahtahkakoop-official-jobs",
@@ -2428,10 +2432,12 @@
       "communityIds": [
         "404"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 0,
       "reviewItems": 1,
-      "status": "checked",
-      "warnings": []
+      "status": "unavailable",
+      "warnings": [
+        "big-river-official: fetch failed: HTTP Error 500: Internal Server Error"
+      ]
     },
     {
       "sourceId": "birch-narrows-careers",
@@ -2526,10 +2532,10 @@
         "367"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
-      "status": "checked",
+      "reviewItems": 1,
+      "status": "unavailable",
       "warnings": [
-        "keeseekoose-jobs: no candidate job links detected"
+        "keeseekoose-jobs: fetch failed: HTTP Error 404: Not Found"
       ]
     },
     {
@@ -2541,10 +2547,10 @@
         "381"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
+      "reviewItems": 0,
       "status": "unavailable",
       "warnings": [
-        "muscowpetung-jobs: fetch failed: HTTP Error 404: Not Found"
+        "muscowpetung-jobs: no candidate job links detected"
       ]
     },
     {
@@ -2586,10 +2592,10 @@
         "382"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 0,
+      "status": "checked",
       "warnings": [
-        "okanese-employment: fetch failed: HTTP Error 429: Too Many Requests"
+        "okanese-employment: no candidate job links detected"
       ]
     },
     {
@@ -2743,10 +2749,10 @@
         "404"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
-      "status": "checked",
+      "reviewItems": 1,
+      "status": "unavailable",
       "warnings": [
-        "community-site-404: no candidate job links detected"
+        "community-site-404: fetch failed: HTTP Error 500: Internal Server Error"
       ]
     },
     {
@@ -2815,10 +2821,12 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 5,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-361: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "community-site-350",
@@ -2873,11 +2881,12 @@
       "communityIds": [
         "395"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "candidatesFound": 1,
+      "reviewItems": 0,
+      "status": "checked",
       "warnings": [
-        "community-site-395: fetch failed: HTTP Error 429: Too Many Requests"
+        "community-site-395: employment page fetch failed: HTTP Error 429: Too Many Requests",
+        "community-site-395: detail fetch failed: HTTP Error 429: Too Many Requests"
       ]
     },
     {
@@ -2931,7 +2940,7 @@
       "communityIds": [
         "362"
       ],
-      "candidatesFound": 11,
+      "candidatesFound": 6,
       "reviewItems": 2,
       "status": "checked",
       "warnings": []
@@ -2959,10 +2968,12 @@
       "communityIds": [
         "377"
       ],
-      "candidatesFound": 3,
-      "reviewItems": 0,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-377: fetch failed: <urlopen error timed out>"
+      ]
     },
     {
       "sourceId": "community-site-353",
@@ -3069,7 +3080,7 @@
       ],
       "candidatesFound": 0,
       "reviewItems": 0,
-      "status": "checked",
+      "status": "unavailable",
       "warnings": [
         "community-site-381: no candidate job links detected"
       ]
@@ -3083,8 +3094,8 @@
         "375"
       ],
       "candidatesFound": 0,
-      "reviewItems": 3,
-      "status": "checked",
+      "reviewItems": 0,
+      "status": "unavailable",
       "warnings": [
         "community-site-375: no candidate job links detected"
       ]
@@ -3138,10 +3149,12 @@
       "communityIds": [
         "344"
       ],
-      "candidatesFound": 1,
-      "reviewItems": 2,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-344: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "community-site-383",
@@ -3151,7 +3164,7 @@
       "communityIds": [
         "383"
       ],
-      "candidatesFound": 8,
+      "candidatesFound": 5,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3265,7 +3278,7 @@
       ],
       "candidatesFound": 0,
       "reviewItems": 0,
-      "status": "checked",
+      "status": "unavailable",
       "warnings": [
         "community-site-368: no candidate job links detected"
       ]
@@ -3278,7 +3291,7 @@
       "communityIds": [
         "349"
       ],
-      "candidatesFound": 4,
+      "candidatesFound": 3,
       "reviewItems": 3,
       "status": "checked",
       "warnings": [
