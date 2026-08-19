@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-18T14:23:16Z",
-  "before": 32,
-  "after": 33,
-  "newCandidates": 226,
+  "generated": "2026-08-19T14:22:43Z",
+  "before": 33,
+  "after": 36,
+  "newCandidates": 283,
   "sourceRuns": [
     {
       "bandId": 361,
@@ -66,10 +66,11 @@
       "sourceName": "Day Star First Nation official website",
       "sourceUrl": "https://www.daystarfirstnation.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
+      "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 2,
-      "mediaChecked": 0
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 391,
@@ -279,7 +280,7 @@
       "sourceUrl": "https://onionlake.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 52,
+      "eventsFound": 72,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -290,7 +291,7 @@
       "sourceUrl": "https://www.onionlake.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 52,
+      "eventsFound": 92,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -323,7 +324,7 @@
       "sourceUrl": "https://pbcn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 6,
+      "eventsFound": 8,
       "pagesChecked": 6,
       "mediaChecked": 0
     },
@@ -445,10 +446,11 @@
       "sourceName": "Ahtahkakoop Community News Archive",
       "sourceUrl": "https://www.ahtahkakoop.ca/news/category/all",
       "sourceType": "Community Website",
-      "status": "ok",
+      "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 4,
-      "mediaChecked": 3
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 406,
@@ -456,10 +458,11 @@
       "sourceName": "Ahtahkakoop Cree Nation official website",
       "sourceUrl": "https://www.ahtahkakoop.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
+      "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 4,
-      "mediaChecked": 3
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 398,
@@ -525,10 +528,11 @@
       "sourceName": "Flying Dust First Nation",
       "sourceUrl": "https://www.flyingdust.net/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 2,
-      "pagesChecked": 6,
-      "mediaChecked": 1
+      "status": "failed",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 353,
@@ -592,7 +596,7 @@
       "sourceUrl": "https://muscowpetung.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 1,
+      "eventsFound": 2,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -761,7 +765,7 @@
       "sourceUrl": "https://calendar.powwows.com/events/categories/pow-wows-in-saskatchewan/",
       "sourceType": "Regional Event Index",
       "status": "ok",
-      "eventsFound": 14,
+      "eventsFound": 10,
       "pagesChecked": 2,
       "mediaChecked": 0
     },
@@ -788,10 +792,10 @@
       "mediaChecked": 0
     }
   ],
-  "reviewCount": 11,
+  "reviewCount": 17,
   "statusCounts": {
     "authorized_api_required": 9,
-    "failed": 12,
-    "ok": 49
+    "failed": 16,
+    "ok": 45
   }
 }
