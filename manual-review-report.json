@@ -22,20 +22,6 @@
       ]
     },
     {
-      "bandId": 407,
-      "band": "Cree Nation of Chitek Lake",
-      "year": "2014-2015",
-      "reason": "implausibly small remuneration values appear in money columns",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=407&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "No clear Chief and Council remuneration table found",
-        "Parsed via free local OCR fallback",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Quarantined parsed rows: implausibly small remuneration values appear in money columns",
-        "Sanitized parsed rows: removed 7, fixed totals 1"
-      ]
-    },
-    {
       "bandId": 341,
       "band": "Lucky Man Cree Nation",
       "year": "2016-2017",
@@ -219,6 +205,20 @@
         "Parsed via free local OCR fallback",
         "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
         "Sanitized parsed rows: removed 6, fixed totals 0"
+      ]
+    },
+    {
+      "bandId": 407,
+      "band": "Witchekan Lake First Nation",
+      "year": "2014-2015",
+      "reason": "implausibly small remuneration values appear in money columns",
+      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=407&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "No clear Chief and Council remuneration table found",
+        "Parsed via free local OCR fallback",
+        "Row 1: total does not equal remuneration + travel/expenses + other",
+        "Quarantined parsed rows: implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 7, fixed totals 1"
       ]
     }
   ]
