@@ -14,6 +14,9 @@ import tempfile
 from pathlib import Path
 
 
+_RAPID_OCR = None
+
+
 def _binary(env_name, default):
     configured = os.getenv(env_name, "").strip()
     return configured or shutil.which(default)
@@ -25,14 +28,34 @@ def availability():
     tesseract = _binary("OPENBAND_TESSERACT_BIN", "tesseract")
     if not pdftoppm:
         missing.append("pdftoppm")
+    rapidocr = False
     if not tesseract:
-        missing.append("tesseract")
+        try:
+            from rapidocr_onnxruntime import RapidOCR  # noqa: F401
+
+            rapidocr = True
+        except ImportError:
+            missing.append("tesseract or rapidocr_onnxruntime")
     return {
         "available": not missing,
         "pdftoppm": pdftoppm,
         "tesseract": tesseract,
+        "rapidocr": rapidocr,
         "missing": missing,
     }
+
+
+def _rapidocr_text(image):
+    """Return reading-order text from RapidOCR when Tesseract is unavailable."""
+    global _RAPID_OCR
+    if _RAPID_OCR is None:
+        from rapidocr_onnxruntime import RapidOCR
+
+        _RAPID_OCR = RapidOCR()
+    result, _ = _RAPID_OCR(str(image))
+    if not result:
+        return ""
+    return "\n".join(str(item[1]) for item in result if len(item) > 1 and item[1])
 
 
 def ocr_pdf_bytes(pdf_bytes, max_pages=None, dpi=None, timeout=None):
@@ -85,21 +108,24 @@ def ocr_pdf_bytes(pdf_bytes, max_pages=None, dpi=None, timeout=None):
 
             pages = []
             for image in images:
-                recognized = subprocess.run(
-                    [tools["tesseract"], str(image), "stdout", "--psm", "6"],
-                    capture_output=True,
-                    text=True,
-                    timeout=timeout,
-                    check=False,
-                )
-                if recognized.returncode != 0:
-                    detail = (recognized.stderr or "unknown Tesseract error").strip()
-                    return {
-                        "status": "error_ocr_recognition",
-                        "warnings": [f"Local OCR recognition failed: {detail[:500]}"],
-                        "pages": pages,
-                    }
-                pages.append(recognized.stdout or "")
+                if tools["tesseract"]:
+                    recognized = subprocess.run(
+                        [tools["tesseract"], str(image), "stdout", "--psm", "6"],
+                        capture_output=True,
+                        text=True,
+                        timeout=timeout,
+                        check=False,
+                    )
+                    if recognized.returncode != 0:
+                        detail = (recognized.stderr or "unknown Tesseract error").strip()
+                        return {
+                            "status": "error_ocr_recognition",
+                            "warnings": [f"Local OCR recognition failed: {detail[:500]}"],
+                            "pages": pages,
+                        }
+                    pages.append(recognized.stdout or "")
+                else:
+                    pages.append(_rapidocr_text(image))
 
             if not any(page.strip() for page in pages):
                 return {

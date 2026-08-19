@@ -20,7 +20,7 @@ EXPECTED_SK_BANDS = [
     "Carry the Kettle Nakoda Nation",
     "Clearwater River Dene Nation",
     "Cowessess First Nation",
-    "Cree Nation of Chitek Lake",
+    "Witchekan Lake First Nation",
     "Cumberland House Cree Nation",
     "Day Star First Nation",
     "English River First Nation",

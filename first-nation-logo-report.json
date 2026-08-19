@@ -23,9 +23,16 @@
   {
     "nation_id": 403,
     "nation_name": "Birch Narrows Dene Nation",
-    "status": "logo_unverified",
-    "source": "http://birchnarrowsdenenation.ca/",
-    "reason": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    "status": "verified",
+    "source": "https://www.mltc.net/nations/bndn/",
+    "asset": "https://mltc.net/wp-content/uploads/2019/12/BNDN.jpg",
+    "attempts": [
+      {
+        "url": "https://mltc.net/wp-content/uploads/2019/12/BNDN.jpg",
+        "selected": true,
+        "review": "browser-verified official-site header"
+      }
+    ]
   },
   {
     "nation_id": 359,
@@ -58,9 +65,16 @@
   {
     "nation_id": 401,
     "nation_name": "Clearwater River Dene Nation",
-    "status": "logo_unverified",
+    "status": "verified",
     "source": "https://www.crdn.co/",
-    "reason": "no attributable logo/crest asset passed validation"
+    "asset": "https://www.crdn.co/images/avion_logo.png",
+    "attempts": [
+      {
+        "url": "https://www.crdn.co/images/avion_logo.png",
+        "selected": true,
+        "review": "browser-verified official-site header"
+      }
+    ]
   },
   {
     "nation_id": 366,
@@ -75,13 +89,6 @@
     "status": "verified",
     "source": "https://cowessessfn.com/",
     "asset": "https://cowessessfn.com/wp-content/uploads/2022/05/Cowessess-FN-Logo.png"
-  },
-  {
-    "nation_id": 407,
-    "nation_name": "Cree Nation of Chitek Lake",
-    "status": "logo_unverified",
-    "source": null,
-    "reason": "No official logo source could be confidently verified."
   },
   {
     "nation_id": 350,
@@ -135,16 +142,23 @@
   {
     "nation_id": 352,
     "nation_name": "Hatchet Lake Denesuline",
-    "status": "logo_unverified",
-    "source": null,
-    "reason": "No official logo source could be confidently verified."
+    "status": "verified",
+    "source": "https://www.adeask.ca/apps/pages/index.jsp?uREC_ID=1097930&type=d&pREC_ID=1371397",
+    "asset": "https://www.adeask.ca/pics/school_logo.png"
   },
   {
     "nation_id": 370,
     "nation_name": "James Smith Cree Nation",
-    "status": "logo_unverified",
-    "source": "https://www.jamessmithcreenation.com/",
-    "reason": "<urlopen error timed out>"
+    "status": "verified",
+    "source": "https://apps.apple.com/ca/app/james-smith-cree-nation/id6747688434",
+    "asset": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/08/8f/a4/088fa499-5f7b-6a5c-1183-6e16033192c2/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/1200x630wa.png",
+    "attempts": [
+      {
+        "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/08/8f/a4/088fa499-5f7b-6a5c-1183-6e16033192c2/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/1200x630wa.png",
+        "selected": true,
+        "review": "browser-verified official-site header"
+      }
+    ]
   },
   {
     "nation_id": 362,
@@ -184,9 +198,9 @@
   {
     "nation_id": 379,
     "nation_name": "Little Black Bear First Nation",
-    "status": "logo_unverified",
-    "source": null,
-    "reason": "No official logo source could be confidently verified."
+    "status": "verified",
+    "source": "https://littleblackbear.ca/",
+    "asset": "https://littleblackbear.ca/wp-content/uploads/2019/08/LBB400Logo-300x252.png"
   },
   {
     "nation_id": 340,
@@ -268,9 +282,16 @@
   {
     "nation_id": 392,
     "nation_name": "Muskowekwan First Nation",
-    "status": "logo_unverified",
-    "source": "https://www.muskowekwan.com/",
-    "reason": "HTTP Error 404: Not Found"
+    "status": "verified",
+    "source": "https://www.muskowekwan.com/meetings",
+    "asset": "https://images.squarespace-cdn.com/content/v1/618860b2011ecd51f00b8fda/5cefa80a-7314-4c10-b41a-c270e0fc907a/New%2BMuskow%2BLogo.png",
+    "attempts": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/618860b2011ecd51f00b8fda/5cefa80a-7314-4c10-b41a-c270e0fc907a/New%2BMuskow%2BLogo.png",
+        "selected": true,
+        "review": "browser-verified official-site header"
+      }
+    ]
   },
   {
     "nation_id": 380,
@@ -345,23 +366,23 @@
   {
     "nation_id": 409,
     "nation_name": "Pheasant Rump Nakota Nation",
-    "status": "logo_unverified",
-    "source": null,
-    "reason": "No official logo source could be confidently verified."
+    "status": "verified",
+    "source": "https://fnpa.ca/project/pheasant-rump-nakota-first-nation/",
+    "asset": "https://fnpa.ca/wp-content/uploads/2021/12/FNPA-Nav-Logo-1.png"
   },
   {
     "nation_id": 385,
     "nation_name": "Piapot First Nation",
-    "status": "logo_unverified",
+    "status": "verified",
     "source": "https://piapotnation.com/",
-    "reason": "The official-site header treatment is a flag, which is not accepted as a logo."
+    "asset": "https://piapotnation.com/wp-content/uploads/2021/11/cropped-cropped-PFN-Logo-Final-e1637802772994.png"
   },
   {
     "nation_id": 345,
     "nation_name": "Poundmaker Cree Nation",
-    "status": "logo_unverified",
+    "status": "verified",
     "source": "https://poundmakercn.ca/",
-    "reason": "The official-site image is a portrait, not a logo or crest."
+    "asset": "https://poundmakercn.ca/images/logo.png"
   },
   {
     "nation_id": 356,
@@ -444,8 +465,8 @@
     "nation_id": 358,
     "nation_name": "Wahpeton Dakota Nation",
     "status": "logo_unverified",
-    "source": "https://wdn358.ca/",
-    "reason": "HTTP Error 404: Not Found"
+    "source": "https://pagc.sk.ca/wahpeton-dakota-nation/",
+    "reason": "no attributable logo/crest asset passed validation"
   },
   {
     "nation_id": 402,
@@ -457,9 +478,16 @@
   {
     "nation_id": 365,
     "nation_name": "White Bear First Nations",
-    "status": "logo_unverified",
-    "source": "https://whitebearfirstnation.com/",
-    "reason": "no attributable logo/crest asset passed validation"
+    "status": "verified",
+    "source": "https://fnpa.ca/project/white-bear-first-nations/",
+    "asset": "https://i0.wp.com/fnpa.ca/wp-content/uploads/2024/10/whitebear_500.jpg?fit=500%2C500&ssl=1",
+    "attempts": [
+      {
+        "url": "https://i0.wp.com/fnpa.ca/wp-content/uploads/2024/10/whitebear_500.jpg?fit=500%2C500&ssl=1",
+        "selected": true,
+        "review": "browser-verified official-site header"
+      }
+    ]
   },
   {
     "nation_id": 372,
@@ -467,6 +495,13 @@
     "status": "verified",
     "source": "https://www.whitecapdakota.com/",
     "asset": "https://www.whitecapdakota.com/media/ueeb0zfv/whitecap-logo.svg"
+  },
+  {
+    "nation_id": 407,
+    "nation_name": "Witchekan Lake First Nation",
+    "status": "verified",
+    "source": "https://witchekanlake.ca/",
+    "asset": "https://witchekanlake.ca/_next/image?url=https%3A%2F%2Finternaltooling.s3.amazonaws.com%2Flogos%2F69dd5621ab52bba0f7f056ea%2Flogo_public_url.png%3FAWSAccessKeyId%3DAKIAYEZHQDSGVNV2EH7P%26Signature%3DzZfc0rqggnWCQwIHmae2j0QeaAA%253D%26Expires%3D1818688642&w=256&q=75"
   },
   {
     "nation_id": 388,

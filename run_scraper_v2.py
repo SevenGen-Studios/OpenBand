@@ -8,7 +8,7 @@ import run_scraper
 
 # ISC First Nation Profile band numbers used by FNFTA filing pages.
 EXTRA_BANDS = [
-    {"id": 407, "name": "Cree Nation of Chitek Lake", "province": "SK", "treaty": "Treaty 6"},
+    {"id": 407, "name": "Witchekan Lake First Nation", "province": "SK", "treaty": "Treaty 6"},
     {"id": 408, "name": "Ocean Man First Nation", "province": "SK", "treaty": "Treaty 4"},
 ]
 

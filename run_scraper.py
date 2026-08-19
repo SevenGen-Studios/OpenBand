@@ -847,10 +847,78 @@ def _extract_people_from_text(pdf_bytes):
     return _extract_people_from_text_pages(pages)
 
 
+def _vertical_ocr_amount(line):
+    """Parse a standalone OCR amount, treating a final 3-digit group as thousands."""
+    value = _clean_cell(line).replace("$", "").replace(" ", "")
+    if not value or not re.fullmatch(r"\(?-?\d[\d,.]*\)?", value):
+        return None
+    if re.fullmatch(r"\(?-?\d{1,3}[.]\d{3}\)?", value):
+        value = value.replace(".", ",")
+    return _parse_amount(value)
+
+
+def _extract_people_from_vertical_ocr_page(text):
+    """Recover tables whose OCR emits every visible cell on its own line."""
+    if not re.search(
+        r"chief\s+and\s+council|chief\s+and\s+councillors|remuneration\s+and\s+expenses",
+        text,
+        re.I,
+    ):
+        return []
+    lines = [_clean_cell(line) for line in text.splitlines() if _clean_cell(line)]
+    role_indexes = [index for index, line in enumerate(lines) if _ROLE_ONLY_RE.match(line)]
+    if not role_indexes:
+        return []
+
+    first_role = role_indexes[0]
+    header_context = " ".join(lines[max(0, first_role - 12) : first_role])
+    if not re.search(r"\bmonths?\b", header_context, re.I) or not re.search(
+        r"\b(remuneration|salary|honou?raria|wages?)\b", header_context, re.I
+    ):
+        return []
+
+    people = []
+    for offset, role_index in enumerate(role_indexes):
+        if role_index == 0:
+            continue
+        name = _strip_role_words(lines[role_index - 1])
+        if not _looks_like_person_name(name):
+            continue
+        role_word = _ROLE_ONLY_RE.match(lines[role_index]).group(1).lower()
+        role = "Chief" if role_word == "chief" else "Councillor"
+        end = role_indexes[offset + 1] - 1 if offset + 1 < len(role_indexes) else len(lines)
+        values = []
+        for line in lines[role_index + 1 : end]:
+            if values and _TOTAL_ROW_RE.search(line):
+                break
+            amount = _vertical_ocr_amount(line)
+            if amount is not None:
+                values.append(amount)
+            elif values and _looks_like_person_name(line):
+                break
+        if len(values) < 3:
+            continue
+        months = values[0] if 0 < values[0] <= 24 else None
+        amounts = values[1:] if months is not None else values
+        if len(amounts) < 2:
+            continue
+        people.append({
+            "name": name,
+            "role": role,
+            "months": months,
+            **_assign_text_money_values(amounts, header_context),
+        })
+    return _dedupe_people(people)
+
+
 def _extract_people_from_text_pages(pages):
     """Parse extracted or OCR-produced page text through the same row parser."""
     people = []
     for text in pages:
+        vertical_people = _extract_people_from_vertical_ocr_page(text)
+        if vertical_people:
+            people.extend(vertical_people)
+            continue
         page_is_schedule = bool(
             re.search(
                 r"chief\s+and\s+council|chief\s+and\s+councillors|remuneration\s+and\s+expenses",

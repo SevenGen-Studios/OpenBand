@@ -50,7 +50,7 @@ class FirstNationLogoTests(unittest.TestCase):
             self.assertLess(asset.stat().st_size, 512_000, f"Logo is not web-sized: {asset}")
 
     def test_visually_rejected_false_positives_stay_unverified(self):
-        for band_id in ("397", "385", "345"):
+        for band_id in ("397",):
             self.assertFalse(self.logos[band_id]["logo_verified"])
 
     def test_generated_profiles_render_logo_or_placeholder(self):

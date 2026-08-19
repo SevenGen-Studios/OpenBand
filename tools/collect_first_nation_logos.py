@@ -1,8 +1,8 @@
 """Collect, verify, and optimize First Nation logos from official websites.
 
-The collector deliberately accepts only logo-like assets published on an
-official Nation website (or an explicitly recorded Tribal Council page).  It
-never promotes generic page photography, flags, or search-engine thumbnails.
+The collector deliberately accepts only logo-like assets published by an
+official Nation or an explicitly recorded authoritative partner.  It never
+promotes generic page photography, flags, or search-engine thumbnails.
 Every database Nation receives a record in ``first-nation-logos.json``; a
 record stays unverified when no suitably attributable mark can be found.
 """
@@ -38,7 +38,7 @@ MAX_EDGE = 512
 DISCOVERED_SITES = {
     "404": ("https://www.bigriverfirstnation.ca/", "Official First Nation website"),
     "369": ("https://bocn.ca/", "Official First Nation website"),
-    "403": ("http://birchnarrowsdenenation.ca/", "Official First Nation website"),
+    "403": ("https://www.mltc.net/nations/bndn/", "Official Tribal Council website"),
     "378": ("https://cegakin.org/", "Official First Nation website"),
     "401": ("https://www.crdn.co/", "Official First Nation website"),
     "396": ("https://www.msfn.co/", "Official First Nation website"),
@@ -53,9 +53,18 @@ DISCOVERED_SITES = {
     "405": ("https://www.fncias.ca/about-us/our-member-nations-tribal-councils/", "First Nations Capital and Infrastructure Agency member profile"),
     "387": ("https://www.fncias.ca/about-us/our-member-nations-tribal-councils/", "First Nations Capital and Infrastructure Agency member profile"),
     "360": ("https://slfn.ca/", "Official First Nation website"),
-    "358": ("https://wdn358.ca/", "Official First Nation website"),
+    "358": ("https://pagc.sk.ca/wahpeton-dakota-nation/", "Official Tribal Council website"),
     "402": ("https://www.waterhen.net/", "Official First Nation website"),
     "376": ("https://yqfn.ca/yellow-quill-first-nation/", "Official First Nation website"),
+    "345": ("https://poundmakercn.ca/", "Official First Nation website"),
+    "352": ("https://www.adeask.ca/apps/pages/index.jsp?pREC_ID=1371397&type=d&uREC_ID=1097930", "Official Athabasca Denesuline Education Authority profile"),
+    "365": ("https://fnpa.ca/project/white-bear-first-nations/", "First Nations Power Authority partner profile"),
+    "370": ("https://apps.apple.com/ca/app/james-smith-cree-nation/id6747688434", "Official Nation communications app listing"),
+    "379": ("https://littleblackbear.ca/", "Official First Nation website"),
+    "385": ("https://piapotnation.com/", "Official First Nation website"),
+    "392": ("https://www.muskowekwan.com/meetings", "Official First Nation website"),
+    "407": ("https://witchekanlake.ca/", "Official First Nation website"),
+    "409": ("https://fnpa.ca/project/pheasant-rump-nakota-first-nation/", "First Nations Power Authority partner profile"),
 }
 
 # Browser-verified header marks for sites whose anti-bot configuration blocks
@@ -85,14 +94,17 @@ MANUAL_ASSETS = {
     "360": ("https://slfn.ca/", "https://slfn.ca/wp-content/uploads/2023/02/Sturgeon-Lake-First-Nation.png"),
     "368": ("https://keyband.com/", "https://keyband.com/wp-content/uploads/2018/10/key-first-nation-logo.png"),
     "388": ("https://www.woodmountainlakotafn.ca/", "https://images.squarespace-cdn.com/content/v1/681a3f1e1023425e48148ac3/a62f6b32-2797-437f-b5b8-55a3c6653716/Untitled+design-Photoroom.png?format=1500w"),
+    "365": ("https://fnpa.ca/project/white-bear-first-nations/", "https://i0.wp.com/fnpa.ca/wp-content/uploads/2024/10/whitebear_500.jpg?fit=500%2C500&ssl=1"),
+    "370": ("https://apps.apple.com/ca/app/james-smith-cree-nation/id6747688434", "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/08/8f/a4/088fa499-5f7b-6a5c-1183-6e16033192c2/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/1200x630wa.png"),
+    "392": ("https://www.muskowekwan.com/meetings", "https://images.squarespace-cdn.com/content/v1/618860b2011ecd51f00b8fda/5cefa80a-7314-4c10-b41a-c270e0fc907a/New%2BMuskow%2BLogo.png"),
+    "401": ("https://www.crdn.co/", "https://www.crdn.co/images/avion_logo.png"),
+    "403": ("https://www.mltc.net/nations/bndn/", "https://mltc.net/wp-content/uploads/2019/12/BNDN.jpg"),
 }
 
 # Visually reviewed false positives.  These are intentionally kept unverified:
 # the automatic candidate was another organization's mark, a flag, or a photo.
 REJECTED_AUTOMATIC_IDS = {
     "397": "The selected asset was the Meadow Lake Tribal Council logo, not the Nation logo.",
-    "385": "The official-site header treatment is a flag, which is not accepted as a logo.",
-    "345": "The official-site image is a portrait, not a logo or crest.",
 }
 
 INLINE_SVG_CLASSES = {
@@ -422,7 +434,7 @@ def main() -> int:
         "recordCount": len(records),
         "verifiedCount": sum(bool(row["logo_verified"]) for row in records),
         "unverifiedCount": sum(not row["logo_verified"] for row in records),
-        "methodology": "Official Nation sites first; Tribal Council sources only when explicitly identified. Generic photos, flags, and unverified recreations are rejected.",
+        "methodology": "Official Nation sites first; authoritative partner sources only when explicitly identified. Generic photos, flags, and unverified recreations are rejected.",
         "logos": records,
     }
     REGISTRY_PATH.write_text(json.dumps(registry, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

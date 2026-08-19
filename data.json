@@ -13405,11 +13405,11 @@
       ],
       "status": "ok",
       "scraped": "2026-08-09T22:43:06Z",
-      "logo_url": null,
-      "logo_source": null,
-      "logo_asset_source": null,
-      "logo_verified": false,
-      "logo_status": "logo_unverified"
+      "logo_url": "/public/first-nation-logos/little-black-bear-first-nation.webp",
+      "logo_source": "https://littleblackbear.ca/",
+      "logo_asset_source": "https://littleblackbear.ca/wp-content/uploads/2019/08/LBB400Logo-300x252.png",
+      "logo_verified": true,
+      "logo_status": "verified"
     },
     {
       "id": 341,
@@ -15588,79 +15588,79 @@
           "posted": true,
           "people": [
             {
-              "name": "Watson, Daryl",
+              "name": "WATSON, DARYL",
               "role": "Chief",
-              "months": 12,
-              "remuneration": 70711,
-              "travel": 26098,
+              "months": 12.0,
+              "remuneration": 70711.0,
+              "travel": 26098.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": 21514,
+              "otherPayments": 21514.0,
               "total": 118323,
               "travelExpenses": 26098.0,
               "other": 21514.0
             },
             {
-              "name": "Badger, William",
+              "name": "BADGER, WILLIAM",
               "role": "Councillor",
-              "months": 12,
-              "remuneration": 48504,
-              "travel": 17378,
+              "months": 12.0,
+              "remuneration": 48504.0,
+              "travel": 17378.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": 9765,
+              "otherPayments": 9765.0,
               "total": 75647,
               "travelExpenses": 17378.0,
               "other": 9765.0
             },
             {
-              "name": "Daniels, Robin",
+              "name": "DANIELS, ROBIN",
               "role": "Councillor",
-              "months": 12,
-              "remuneration": 47531,
-              "travel": 16371,
+              "months": 12.0,
+              "remuneration": 47531.0,
+              "travel": 16371.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": 12734,
+              "otherPayments": 12734.0,
               "total": 76636,
               "travelExpenses": 16371.0,
               "other": 12734.0
             },
             {
-              "name": "Johnston, Steven",
+              "name": "JOHNSTON, STEVEN",
               "role": "Councillor",
-              "months": 12,
-              "remuneration": 49262,
-              "travel": 22891,
-              "expenses": 15816,
+              "months": 12.0,
+              "remuneration": 49262.0,
+              "travel": 22891.0,
+              "expenses": 15816.0,
               "creditCard": null,
-              "otherPayments": 8847,
+              "otherPayments": 8847.0,
               "total": 96816,
               "travelExpenses": 38707.0,
               "other": 8847.0
             },
             {
-              "name": "Johnstone, Norma A",
+              "name": "JOHNSTONE, NORMA A.",
               "role": "Councillor",
-              "months": 12,
-              "remuneration": 47531,
-              "travel": 15409,
+              "months": 12.0,
+              "remuneration": 47531.0,
+              "travel": 15409.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": 9486,
+              "otherPayments": 9486.0,
               "total": 72426,
               "travelExpenses": 15409.0,
               "other": 9486.0
             },
             {
-              "name": "Watson, Melvin",
+              "name": "WATSON, MELVIN",
               "role": "Councillor",
-              "months": 12,
-              "remuneration": 48504,
-              "travel": 25928,
+              "months": 12.0,
+              "remuneration": 48504.0,
+              "travel": 25928.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": 9437,
+              "otherPayments": 9437.0,
               "total": 83869,
               "travelExpenses": 25928.0,
               "other": 9437.0
@@ -15670,11 +15670,21 @@
           "warnings": [
             "No clear Chief and Council remuneration table found",
             "Parsed from PDF text fallback",
-            "Sanitized parsed rows: removed 0, fixed totals 0",
-            "Preserved parsed rows from previous data.json snapshot"
+            "Reparsed from the official ISC filing in the requested repair batch"
           ],
           "parse_confidence": "high",
-          "manual_review_required": false
+          "manual_review_required": false,
+          "parse_stages": [
+            {
+              "stage": "local",
+              "status": "ok_pdf_text",
+              "warnings": [
+                "No clear Chief and Council remuneration table found",
+                "Parsed from PDF text fallback"
+              ]
+            }
+          ],
+          "reparsed": "2026-08-19T14:21:51.539333Z"
         },
         {
           "year": "2018-2019",
@@ -24332,11 +24342,11 @@
       ],
       "status": "ok",
       "scraped": "2026-08-09T22:44:43Z",
-      "logo_url": null,
-      "logo_source": null,
-      "logo_asset_source": null,
-      "logo_verified": false,
-      "logo_status": "logo_unverified"
+      "logo_url": "/public/first-nation-logos/pheasant-rump-nakota-nation.webp",
+      "logo_source": "https://fnpa.ca/project/pheasant-rump-nakota-first-nation/",
+      "logo_asset_source": "https://fnpa.ca/wp-content/uploads/2021/12/FNPA-Nav-Logo-1.png",
+      "logo_verified": true,
+      "logo_status": "verified"
     },
     {
       "id": 345,
@@ -25558,11 +25568,11 @@
       ],
       "status": "ok",
       "scraped": "2026-08-12T08:55:14.526499Z",
-      "logo_url": null,
+      "logo_url": "/public/first-nation-logos/poundmaker-cree-nation.webp",
       "logo_source": "https://poundmakercn.ca/",
-      "logo_asset_source": null,
-      "logo_verified": false,
-      "logo_status": "logo_unverified"
+      "logo_asset_source": "https://poundmakercn.ca/images/logo.png",
+      "logo_verified": true,
+      "logo_status": "verified"
     },
     {
       "id": 356,
@@ -26321,26 +26331,26 @@
           "people": [
             {
               "name": "Fabian Head",
-              "role": "Chief",
+              "role": "Councillor",
               "months": 11,
               "remuneration": 85750,
               "travel": 12000,
               "expenses": 65068,
-              "creditCard": null,
-              "otherPayments": null,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 162818,
               "travelExpenses": 77068.0,
               "other": 0.0
             },
             {
               "name": "Zachary Whitecap",
-              "role": "Councillor",
+              "role": "Chief",
               "months": 12,
               "remuneration": 75250,
               "travel": 27000,
               "expenses": 49020,
-              "creditCard": null,
-              "otherPayments": null,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 151270,
               "travelExpenses": 76020.0,
               "other": 0.0
@@ -26351,9 +26361,9 @@
               "months": 12,
               "remuneration": 74250,
               "travel": 9000,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 83250,
               "travelExpenses": 9000.0,
               "other": 0.0
@@ -26365,8 +26375,8 @@
               "remuneration": 74250,
               "travel": 9000,
               "expenses": 73209,
-              "creditCard": null,
-              "otherPayments": null,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 156459,
               "travelExpenses": 82209.0,
               "other": 0.0
@@ -26378,8 +26388,8 @@
               "remuneration": 74250,
               "travel": 36000,
               "expenses": 55639,
-              "creditCard": null,
-              "otherPayments": null,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 165889,
               "travelExpenses": 91639.0,
               "other": 0.0
@@ -26390,9 +26400,9 @@
               "months": 6,
               "remuneration": 38500,
               "travel": 13159,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 51659,
               "travelExpenses": 13159.0,
               "other": 0.0
@@ -26404,22 +26414,25 @@
               "remuneration": 4125,
               "travel": 5,
               "expenses": 541,
-              "creditCard": null,
-              "otherPayments": null,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 4671,
               "travelExpenses": 546.0,
               "other": 0.0
             }
           ],
-          "parse_status": "ok_pdf_text",
+          "parse_status": "manual_from_official_pdf",
           "warnings": [
             "Parsed from PDF text fallback",
             "Sanitized parsed rows: removed 0, fixed totals 1",
             "Preserved parsed rows from previous data.json snapshot",
-            "Sanitized parsed rows: removed 0, fixed totals 0"
+            "Sanitized parsed rows: removed 0, fixed totals 0",
+            "Manual override applied from Manual review of the linked official ISC Schedule of Remuneration and Expenses filings"
           ],
-          "parse_confidence": "high",
-          "manual_review_required": false
+          "parse_confidence": "manual_reviewed",
+          "manual_review_required": false,
+          "manual_override": true,
+          "override_source": "Manual review of the linked official ISC Schedule of Remuneration and Expenses filings"
         },
         {
           "year": "2023-2024",
@@ -26441,93 +26454,96 @@
           "posted": true,
           "people": [
             {
-              "name": "Zachary Whitecap ( )",
-              "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 91000.0,
-              "travel": 70950.0,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "name": "Zachary Whitecap",
+              "role": "Chief",
+              "months": 12,
+              "remuneration": 91000,
+              "travel": 70950,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 161950,
               "travelExpenses": 70950.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Barry Mckay",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 78000.0,
-              "travel": 91238.0,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "months": 12,
+              "remuneration": 78000,
+              "travel": 91238,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 169238,
               "travelExpenses": 91238.0,
-              "other": 0
+              "other": 0.0
             },
             {
-              "name": "Calehan Head (Vice )",
+              "name": "Calehan Head (Vice Chief)",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 78000.0,
-              "travel": 88116.0,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "months": 12,
+              "remuneration": 78000,
+              "travel": 88116,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 166116,
               "travelExpenses": 88116.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Charlie Mckay",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 78000.0,
-              "travel": 71735.0,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "months": 12,
+              "remuneration": 78000,
+              "travel": 71735,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 149735,
               "travelExpenses": 71735.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Cyril C Head",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 78000.0,
-              "travel": 73593.0,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "months": 12,
+              "remuneration": 78000,
+              "travel": 73593,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 151593,
               "travelExpenses": 73593.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Wilbert Head",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 78000.0,
-              "travel": 57734.0,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "months": 12,
+              "remuneration": 78000,
+              "travel": 57734,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 135734,
               "travelExpenses": 57734.0,
-              "other": 0
+              "other": 0.0
             }
           ],
-          "parse_status": "ok_pdf_text",
+          "parse_status": "manual_from_official_pdf",
           "warnings": [
             "No clear Chief and Council remuneration table found",
             "Parsed from PDF text fallback",
             "No Chief row detected",
-            "Preserved parsed rows from previous data.json snapshot"
+            "Preserved parsed rows from previous data.json snapshot",
+            "Manual override applied from Manual review of the linked official ISC Schedule of Remuneration and Expenses filings"
           ],
-          "parse_confidence": "medium",
-          "manual_review_required": false
+          "parse_confidence": "manual_reviewed",
+          "manual_review_required": false,
+          "manual_override": true,
+          "override_source": "Manual review of the linked official ISC Schedule of Remuneration and Expenses filings"
         },
         {
           "year": "2024-2025",
@@ -27977,11 +27993,142 @@
           "date": "2026-07-20",
           "href": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=346&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "not_required",
+          "people": [
+            {
+              "name": "Cody Benson",
+              "role": "Chief",
+              "months": 12.0,
+              "remuneration": 64626.0,
+              "travel": null,
+              "expenses": 40589.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 105215,
+              "travelExpenses": 40589.0,
+              "other": 0.0
+            },
+            {
+              "name": "Shawn Wuttunee",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 32000.0,
+              "travel": null,
+              "expenses": 41789.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 73789,
+              "travelExpenses": 41789.0,
+              "other": 0.0
+            },
+            {
+              "name": "Leroy Nicotine",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 32000.0,
+              "travel": null,
+              "expenses": 41458.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 73458,
+              "travelExpenses": 41458.0,
+              "other": 0.0
+            },
+            {
+              "name": "Mandy Cuthand",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 32000.0,
+              "travel": null,
+              "expenses": 41259.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 73259,
+              "travelExpenses": 41259.0,
+              "other": 0.0
+            },
+            {
+              "name": "Dana Falcon",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 32000.0,
+              "travel": null,
+              "expenses": 41257.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 73257,
+              "travelExpenses": 41257.0,
+              "other": 0.0
+            },
+            {
+              "name": "Sam Wuttunee",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 32000.0,
+              "travel": null,
+              "expenses": 40989.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 72989,
+              "travelExpenses": 40989.0,
+              "other": 0.0
+            },
+            {
+              "name": "Shawn Nicotine",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 32000.0,
+              "travel": null,
+              "expenses": 40888.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 72888,
+              "travelExpenses": 40888.0,
+              "other": 0.0
+            },
+            {
+              "name": "Henry Gardipy",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 32000.0,
+              "travel": null,
+              "expenses": 40879.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 72879,
+              "travelExpenses": 40879.0,
+              "other": 0.0
+            },
+            {
+              "name": "Lux Benson",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 32000.0,
+              "travel": null,
+              "expenses": 40543.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 72543,
+              "travelExpenses": 40543.0,
+              "other": 0.0
+            }
+          ],
+          "parse_status": "ok_pdf_keyword_table",
           "warnings": [
-            "Preserved pending parse status from previous data.json snapshot"
-          ]
+            "Parsed from keyword-aware PDF table extraction",
+            "Reparsed from the official ISC filing in the requested repair batch"
+          ],
+          "parse_confidence": "high",
+          "manual_review_required": false,
+          "parse_stages": [
+            {
+              "stage": "local",
+              "status": "ok_pdf_keyword_table",
+              "warnings": [
+                "Parsed from keyword-aware PDF table extraction"
+              ]
+            }
+          ],
+          "reparsed": "2026-08-19T14:21:51.025237Z"
         }
       ],
       "status": "ok",
@@ -31817,11 +31964,116 @@
           "date": "2026-07-29",
           "href": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=348&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "not_required",
+          "people": [
+            {
+              "name": "Lorie Whitecalf",
+              "role": "Chief",
+              "months": 12.0,
+              "remuneration": 70500.0,
+              "travel": null,
+              "expenses": 18454.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 88954,
+              "travelExpenses": 18454.0,
+              "other": 0.0
+            },
+            {
+              "name": "Isaac Thomas",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 55500.0,
+              "travel": null,
+              "expenses": 19370.0,
+              "creditCard": null,
+              "otherPayments": 2000.0,
+              "total": 76870,
+              "travelExpenses": 19370.0,
+              "other": 2000.0
+            },
+            {
+              "name": "Trina Albert",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 55500.0,
+              "travel": null,
+              "expenses": 22635.0,
+              "creditCard": null,
+              "otherPayments": 1108.0,
+              "total": 79243,
+              "travelExpenses": 22635.0,
+              "other": 1108.0
+            },
+            {
+              "name": "Donovan Arcand",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 55500.0,
+              "travel": null,
+              "expenses": 22393.0,
+              "creditCard": null,
+              "otherPayments": 1500.0,
+              "total": 79393,
+              "travelExpenses": 22393.0,
+              "other": 1500.0
+            },
+            {
+              "name": "Hazen Paskimin",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 55500.0,
+              "travel": null,
+              "expenses": 18926.0,
+              "creditCard": null,
+              "otherPayments": 401.0,
+              "total": 74827,
+              "travelExpenses": 18926.0,
+              "other": 401.0
+            },
+            {
+              "name": "Kelsey Pooyak",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 55500.0,
+              "travel": null,
+              "expenses": 19381.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 74881,
+              "travelExpenses": 19381.0,
+              "other": 0.0
+            },
+            {
+              "name": "Lamarr Oksasikewiyin",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 55500.0,
+              "travel": null,
+              "expenses": 19862.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 75362,
+              "travelExpenses": 19862.0,
+              "other": 0.0
+            }
+          ],
+          "parse_status": "ok_pdf_keyword_table",
           "warnings": [
-            "Preserved pending parse status from previous data.json snapshot"
-          ]
+            "Parsed from keyword-aware PDF table extraction",
+            "Reparsed from the official ISC filing in the requested repair batch"
+          ],
+          "parse_confidence": "high",
+          "manual_review_required": false,
+          "parse_stages": [
+            {
+              "stage": "local",
+              "status": "ok_pdf_keyword_table",
+              "warnings": [
+                "Parsed from keyword-aware PDF table extraction"
+              ]
+            }
+          ],
+          "reparsed": "2026-08-19T14:21:51.025237Z"
         }
       ],
       "status": "ok",
@@ -34471,7 +34723,7 @@
       "status": "ok",
       "scraped": "2026-08-09T22:45:43Z",
       "logo_url": null,
-      "logo_source": "https://wdn358.ca/",
+      "logo_source": "https://pagc.sk.ca/wahpeton-dakota-nation/",
       "logo_asset_source": null,
       "logo_verified": false,
       "logo_status": "logo_unverified"
@@ -37955,11 +38207,11 @@
       ],
       "status": "ok",
       "scraped": "2026-08-09T22:46:00Z",
-      "logo_url": null,
-      "logo_source": "https://whitebearfirstnation.com/",
-      "logo_asset_source": null,
-      "logo_verified": false,
-      "logo_status": "logo_unverified"
+      "logo_url": "/public/first-nation-logos/white-bear-first-nations.webp",
+      "logo_source": "https://fnpa.ca/project/white-bear-first-nations/",
+      "logo_asset_source": "https://i0.wp.com/fnpa.ca/wp-content/uploads/2024/10/whitebear_500.jpg?fit=500%2C500&ssl=1",
+      "logo_verified": true,
+      "logo_status": "verified"
     },
     {
       "id": 372,
@@ -38813,17 +39065,94 @@
           "date": "2017-07-26",
           "href": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=388&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "pending_openai_opt_in",
+          "people": [
+            {
+              "name": "LeCaine, Ellen",
+              "role": "Chief",
+              "months": 12.0,
+              "remuneration": 38550.0,
+              "travel": 9035.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 47585,
+              "travelExpenses": 9035.0,
+              "other": 0.0
+            },
+            {
+              "name": "Lethbridge, Loretta",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 16850.0,
+              "travel": 4563.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 21413,
+              "travelExpenses": 4563.0,
+              "other": 0.0
+            },
+            {
+              "name": "Lethbridge, Stanley",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 17050.0,
+              "travel": 6516.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 23566,
+              "travelExpenses": 6516.0,
+              "other": 0.0
+            },
+            {
+              "name": "Ogle, David",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 15050.0,
+              "travel": 3182.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 18232,
+              "travelExpenses": 3182.0,
+              "other": 0.0
+            },
+            {
+              "name": "Ogle, Travis",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 18757.0,
+              "travel": 4758.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 23515,
+              "travelExpenses": 4758.0,
+              "other": 0.0
+            }
+          ],
+          "parse_status": "ok_ocr",
           "warnings": [
             "No clear Chief and Council remuneration table found",
             "Parsed via free local OCR fallback",
-            "Totals do not reconcile for many rows",
-            "Row 3: total does not equal remuneration + travel/expenses + other",
-            "Row 4: total does not equal remuneration + travel/expenses + other",
-            "OCR output failed validation",
-            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted",
-            "Preserved pending parse status from previous data.json snapshot"
+            "Reparsed from the official ISC filing in the requested repair batch"
+          ],
+          "parse_confidence": "high",
+          "manual_review_required": false,
+          "parse_stages": [
+            {
+              "stage": "local",
+              "status": "no_reliable_rows",
+              "warnings": [
+                "No clear Chief and Council remuneration table found"
+              ]
+            },
+            {
+              "stage": "ocr",
+              "status": "ok_ocr",
+              "warnings": []
+            }
           ]
         },
         {
@@ -39103,10 +39432,21 @@
           "warnings": [
             "No clear Chief and Council remuneration table found",
             "Parsed from PDF text fallback",
-            "Preserved parsed rows from previous data.json snapshot"
+            "Reparsed from the official ISC filing in the requested repair batch"
           ],
           "parse_confidence": "high",
-          "manual_review_required": false
+          "manual_review_required": false,
+          "parse_stages": [
+            {
+              "stage": "local",
+              "status": "ok_pdf_text",
+              "warnings": [
+                "No clear Chief and Council remuneration table found",
+                "Parsed from PDF text fallback"
+              ]
+            }
+          ],
+          "reparsed": "2026-08-19T14:21:51.468284Z"
         },
         {
           "year": "2020-2021",
@@ -39635,11 +39975,92 @@
           "date": "2026-07-11",
           "href": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=388&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "not_required",
+          "people": [
+            {
+              "name": "LeCaine, Ellen",
+              "role": "Chief",
+              "months": 12.0,
+              "remuneration": 54600.0,
+              "travel": 7950.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": 20040.0,
+              "total": 82590,
+              "travelExpenses": 7950.0,
+              "other": 20040.0
+            },
+            {
+              "name": "Craig, Angeline",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 26000.0,
+              "travel": 8000.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": 12164.0,
+              "total": 46164,
+              "travelExpenses": 8000.0,
+              "other": 12164.0
+            },
+            {
+              "name": "LeCaine, Eric",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 26000.0,
+              "travel": 7500.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": 14913.0,
+              "total": 48413,
+              "travelExpenses": 7500.0,
+              "other": 14913.0
+            },
+            {
+              "name": "Ogle, Colten ",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 26000.0,
+              "travel": 57796.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": 17513.0,
+              "total": 101309,
+              "travelExpenses": 57796.0,
+              "other": 17513.0
+            },
+            {
+              "name": "Ogle, Travis",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 26000.0,
+              "travel": 6320.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": 16995.0,
+              "total": 49315,
+              "travelExpenses": 6320.0,
+              "other": 16995.0
+            }
+          ],
+          "parse_status": "ok_pdf_text",
           "warnings": [
-            "Preserved pending parse status from previous data.json snapshot"
-          ]
+            "No clear Chief and Council remuneration table found",
+            "Parsed from PDF text fallback",
+            "Reparsed from the official ISC filing in the requested repair batch"
+          ],
+          "parse_confidence": "high",
+          "manual_review_required": false,
+          "parse_stages": [
+            {
+              "stage": "local",
+              "status": "ok_pdf_text",
+              "warnings": [
+                "No clear Chief and Council remuneration table found",
+                "Parsed from PDF text fallback"
+              ]
+            }
+          ],
+          "reparsed": "2026-08-19T14:21:51.025237Z"
         }
       ],
       "status": "ok",
@@ -43825,11 +44246,118 @@
           "date": "2026-07-28",
           "href": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=369&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "not_required",
+          "people": [
+            {
+              "name": "Edwin Ananas",
+              "role": "Chief",
+              "months": 12.0,
+              "remuneration": 74380.0,
+              "travel": 1300.0,
+              "expenses": 51067.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 126747,
+              "travelExpenses": 52367.0,
+              "other": 0.0
+            },
+            {
+              "name": "Howard Cameron",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 58997.0,
+              "travel": 1750.0,
+              "expenses": 32964.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 93711,
+              "travelExpenses": 34714.0,
+              "other": 0.0
+            },
+            {
+              "name": "Christopher Gamble",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 58997.0,
+              "travel": 2700.0,
+              "expenses": 33896.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 95593,
+              "travelExpenses": 36596.0,
+              "other": 0.0
+            },
+            {
+              "name": "Nicole Gamble",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 58997.0,
+              "travel": 500.0,
+              "expenses": 29625.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 89122,
+              "travelExpenses": 30125.0,
+              "other": 0.0
+            },
+            {
+              "name": "Melanie Gardypie",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 58997.0,
+              "travel": 200.0,
+              "expenses": 32358.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 91555,
+              "travelExpenses": 32558.0,
+              "other": 0.0
+            },
+            {
+              "name": "Sheryl Okemaysim",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 61984.0,
+              "travel": 1600.0,
+              "expenses": 33991.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 97575,
+              "travelExpenses": 35591.0,
+              "other": 0.0
+            },
+            {
+              "name": "Warren Seeseequasis",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 61984.0,
+              "travel": 500.0,
+              "expenses": 21941.0,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 84425,
+              "travelExpenses": 22441.0,
+              "other": 0.0
+            }
+          ],
+          "parse_status": "ok_pdf_text",
           "warnings": [
-            "Preserved pending parse status from previous data.json snapshot"
-          ]
+            "No clear Chief and Council remuneration table found",
+            "Parsed from PDF text fallback",
+            "Reparsed from the official ISC filing in the requested repair batch"
+          ],
+          "parse_confidence": "high",
+          "manual_review_required": false,
+          "parse_stages": [
+            {
+              "stage": "local",
+              "status": "ok_pdf_text",
+              "warnings": [
+                "No clear Chief and Council remuneration table found",
+                "Parsed from PDF text fallback"
+              ]
+            }
+          ],
+          "reparsed": "2026-08-19T14:21:51.468284Z"
         }
       ],
       "status": "ok",
@@ -46919,11 +47447,11 @@
       ],
       "status": "ok",
       "scraped": "2026-08-09T22:48:03Z",
-      "logo_url": null,
+      "logo_url": "/public/first-nation-logos/clearwater-river-dene-nation.webp",
       "logo_source": "https://www.crdn.co/",
-      "logo_asset_source": null,
-      "logo_verified": false,
-      "logo_status": "logo_unverified"
+      "logo_asset_source": "https://www.crdn.co/images/avion_logo.png",
+      "logo_verified": true,
+      "logo_status": "verified"
     },
     {
       "id": 350,
@@ -53510,11 +54038,11 @@
       ],
       "status": "ok",
       "scraped": "2026-08-09T22:49:05Z",
-      "logo_url": null,
-      "logo_source": null,
-      "logo_asset_source": null,
-      "logo_verified": false,
-      "logo_status": "logo_unverified"
+      "logo_url": "/public/first-nation-logos/hatchet-lake-denesuline.webp",
+      "logo_source": "https://www.adeask.ca/apps/pages/index.jsp?uREC_ID=1097930&type=d&pREC_ID=1371397",
+      "logo_asset_source": "https://www.adeask.ca/pics/school_logo.png",
+      "logo_verified": true,
+      "logo_status": "verified"
     },
     {
       "id": 353,
@@ -61519,27 +62047,14 @@
           "posted": true,
           "people": [
             {
-              "name": "Toll Free",
-              "role": "Councillor",
-              "months": null,
-              "remuneration": 800,
-              "travel": 775,
-              "expenses": 332,
-              "creditCard": 8,
-              "otherPayments": null,
-              "total": 1915,
-              "travelExpenses": 1115.0,
-              "other": 0.0
-            },
-            {
               "name": "A. Cappo",
               "role": "Chief",
               "months": 12,
               "remuneration": 93000,
               "travel": 39904,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 132904,
               "travelExpenses": 39904.0,
               "other": 0.0
@@ -61550,22 +62065,22 @@
               "months": 12,
               "remuneration": 62000,
               "travel": 49980,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 111980,
               "travelExpenses": 49980.0,
               "other": 0.0
             },
             {
-              "name": "A. Toto Councillcw",
+              "name": "A. Toto",
               "role": "Councillor",
               "months": 12,
               "remuneration": 67030,
               "travel": 37306,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 104336,
               "travelExpenses": 37306.0,
               "other": 0.0
@@ -61576,9 +62091,9 @@
               "months": 12,
               "remuneration": 63165,
               "travel": 39831,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 102996,
               "travelExpenses": 39831.0,
               "other": 0.0
@@ -61589,9 +62104,9 @@
               "months": 12,
               "remuneration": 61500,
               "travel": 33323,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 94823,
               "travelExpenses": 33323.0,
               "other": 0.0
@@ -61602,23 +62117,26 @@
               "months": 12,
               "remuneration": 57500,
               "travel": 20894,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 78394,
               "travelExpenses": 20894.0,
               "other": 0.0
             }
           ],
-          "parse_status": "ok_pdf_text",
+          "parse_status": "manual_from_official_pdf",
           "warnings": [
             "Parsed from PDF text fallback",
             "Sanitized parsed rows: removed 0, fixed totals 1",
             "Preserved parsed rows from previous data.json snapshot",
-            "Sanitized parsed rows: removed 0, fixed totals 0"
+            "Sanitized parsed rows: removed 0, fixed totals 0",
+            "Manual override applied from Manual review of the linked official ISC Schedule of Remuneration and Expenses filings"
           ],
-          "parse_confidence": "high",
-          "manual_review_required": false
+          "parse_confidence": "manual_reviewed",
+          "manual_review_required": false,
+          "manual_override": true,
+          "override_source": "Manual review of the linked official ISC Schedule of Remuneration and Expenses filings"
         },
         {
           "year": "2020-2021",
@@ -62515,81 +63033,116 @@
           "posted": true,
           "people": [
             {
-              "name": "Paul Ledoux",
-              "role": "Councillor",
-              "months": 12,
-              "remuneration": 52000,
-              "travel": 6070,
+              "name": "Kelly J Wolfe",
+              "role": "Chief",
+              "months": 12.0,
+              "remuneration": 87075.0,
+              "travel": 25784.0,
               "expenses": null,
-              "creditCard": 25731,
+              "creditCard": null,
               "otherPayments": null,
-              "total": 83801,
-              "travelExpenses": 31801.0,
+              "total": 112859,
+              "travelExpenses": 25784.0,
               "other": 0.0
             },
             {
-              "name": "Cliff Tawpisin Sr",
+              "name": "Harry J Lafond",
               "role": "Councillor",
-              "months": 12,
-              "remuneration": 52000,
-              "travel": 567,
+              "months": 12.0,
+              "remuneration": 55622.0,
+              "travel": 13276.0,
               "expenses": null,
-              "creditCard": 27476,
+              "creditCard": null,
               "otherPayments": null,
-              "total": 80043,
-              "travelExpenses": 28043.0,
+              "total": 68898,
+              "travelExpenses": 13276.0,
+              "other": 0.0
+            },
+            {
+              "name": "Paul Ledoux",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 58070.0,
+              "travel": 27291.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 85361,
+              "travelExpenses": 27291.0,
+              "other": 0.0
+            },
+            {
+              "name": "Cliff Tawpisin Sr.",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 52567.0,
+              "travel": 28450.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 81017,
+              "travelExpenses": 28450.0,
               "other": 0.0
             },
             {
               "name": "Tina Arcand",
               "role": "Councillor",
-              "months": 12,
-              "remuneration": 52000,
-              "travel": 3540,
+              "months": 12.0,
+              "remuneration": 55540.0,
+              "travel": 15547.0,
               "expenses": null,
-              "creditCard": 13987,
+              "creditCard": null,
               "otherPayments": null,
-              "total": 69527,
-              "travelExpenses": 17527.0,
+              "total": 71087,
+              "travelExpenses": 15547.0,
               "other": 0.0
             },
             {
               "name": "Curtis Lafond",
               "role": "Councillor",
-              "months": 12,
-              "remuneration": 52000,
-              "travel": 3686,
+              "months": 12.0,
+              "remuneration": 55686.0,
+              "travel": 13649.0,
               "expenses": null,
-              "creditCard": 12089,
+              "creditCard": null,
               "otherPayments": null,
-              "total": 67775,
-              "travelExpenses": 15775.0,
+              "total": 69335,
+              "travelExpenses": 13649.0,
               "other": 0.0
             },
             {
               "name": "Terran Keewatin",
               "role": "Councillor",
-              "months": 12,
-              "remuneration": 52000,
-              "travel": 3461,
+              "months": 12.0,
+              "remuneration": 55461.0,
+              "travel": 6238.0,
               "expenses": null,
-              "creditCard": 4678,
+              "creditCard": null,
               "otherPayments": null,
-              "total": 60139,
-              "travelExpenses": 8139.0,
+              "total": 61699,
+              "travelExpenses": 6238.0,
               "other": 0.0
             }
           ],
           "parse_status": "ok_pdf_text",
           "warnings": [
+            "No clear Chief and Council remuneration table found",
             "Parsed from PDF text fallback",
-            "Sanitized parsed rows: removed 0, fixed totals 5",
-            "Preserved parsed rows from previous data.json snapshot",
-            "Sanitized parsed rows: removed 0, fixed totals 0",
-            "No Chief row detected"
+            "Reparsed from the official ISC filing in the requested repair batch"
           ],
-          "parse_confidence": "medium",
-          "manual_review_required": false
+          "parse_confidence": "high",
+          "manual_review_required": false,
+          "parse_stages": [
+            {
+              "stage": "local",
+              "status": "ok_pdf_text",
+              "warnings": [
+                "No clear Chief and Council remuneration table found",
+                "Parsed from PDF text fallback"
+              ]
+            }
+          ],
+          "reparsed": "2026-08-19T14:21:51.468284Z"
         },
         {
           "year": "2020-2021",
@@ -65004,11 +65557,11 @@
       ],
       "status": "ok",
       "scraped": "2026-08-09T22:51:08Z",
-      "logo_url": null,
-      "logo_source": "https://www.muskowekwan.com/",
-      "logo_asset_source": null,
-      "logo_verified": false,
-      "logo_status": "logo_unverified"
+      "logo_url": "/public/first-nation-logos/muskowekwan-first-nation.webp",
+      "logo_source": "https://www.muskowekwan.com/meetings",
+      "logo_asset_source": "https://images.squarespace-cdn.com/content/v1/618860b2011ecd51f00b8fda/5cefa80a-7314-4c10-b41a-c270e0fc907a/New%2BMuskow%2BLogo.png",
+      "logo_verified": true,
+      "logo_status": "verified"
     },
     {
       "id": 380,
@@ -70407,11 +70960,11 @@
       ],
       "status": "ok",
       "scraped": "2026-08-12T08:55:14.526499Z",
-      "logo_url": null,
+      "logo_url": "/public/first-nation-logos/piapot-first-nation.webp",
       "logo_source": "https://piapotnation.com/",
-      "logo_asset_source": null,
-      "logo_verified": false,
-      "logo_status": "logo_unverified"
+      "logo_asset_source": "https://piapotnation.com/wp-content/uploads/2021/11/cropped-cropped-PFN-Logo-Final-e1637802772994.png",
+      "logo_verified": true,
+      "logo_status": "verified"
     },
     {
       "id": 347,
@@ -73431,65 +73984,88 @@
             {
               "name": "Michael G. Starr",
               "role": "Chief",
-              "months": 12,
-              "remuneration": 56353,
-              "travel": 4633,
-              "expenses": 3700,
+              "months": 12.0,
+              "remuneration": 56353.0,
+              "travel": 4633.0,
+              "expenses": 3700.0,
               "creditCard": null,
-              "otherPayments": null,
-              "total": 64686,
+              "otherPayments": 6405.0,
+              "total": 71091,
               "travelExpenses": 8333.0,
-              "other": 0.0
+              "other": 6405.0
             },
             {
               "name": "James Starblanket",
               "role": "Councillor",
-              "months": 12,
-              "remuneration": 37251,
-              "travel": 1670,
-              "expenses": 3700,
+              "months": 12.0,
+              "remuneration": 37251.0,
+              "travel": 1670.0,
+              "expenses": 3700.0,
               "creditCard": null,
-              "otherPayments": null,
-              "total": 42621,
+              "otherPayments": 5087.0,
+              "total": 47708,
               "travelExpenses": 5370.0,
-              "other": 0.0
+              "other": 5087.0
             },
             {
               "name": "Joanne Starr",
               "role": "Councillor",
-              "months": 12,
-              "remuneration": 37251,
-              "travel": 2140,
-              "expenses": 4065,
+              "months": 12.0,
+              "remuneration": 37251.0,
+              "travel": 2140.0,
+              "expenses": 4065.0,
               "creditCard": null,
-              "otherPayments": null,
-              "total": 43456,
+              "otherPayments": 20711.0,
+              "total": 64167,
               "travelExpenses": 6205.0,
-              "other": 0.0
+              "other": 20711.0
+            },
+            {
+              "name": "Norman (Edgar) Starr",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 37251.0,
+              "travel": 1050.0,
+              "expenses": 1355.0,
+              "creditCard": null,
+              "otherPayments": 6011.0,
+              "total": 45667,
+              "travelExpenses": 2405.0,
+              "other": 6011.0
             },
             {
               "name": "Catherine Stonechild",
               "role": "Councillor",
-              "months": 12,
-              "remuneration": 37751,
-              "travel": 5726,
-              "expenses": 1200,
+              "months": 12.0,
+              "remuneration": 37751.0,
+              "travel": 5726.0,
+              "expenses": 1200.0,
               "creditCard": null,
-              "otherPayments": null,
-              "total": 44677,
+              "otherPayments": 8473.0,
+              "total": 53150,
               "travelExpenses": 6926.0,
-              "other": 0.0
+              "other": 8473.0
             }
           ],
           "parse_status": "ok_pdf_text",
           "warnings": [
+            "No clear Chief and Council remuneration table found",
             "Parsed from PDF text fallback",
-            "Sanitized parsed rows: removed 1, fixed totals 4",
-            "Sanitized parsed rows: removed 0, fixed totals 0",
-            "Preserved parsed rows from previous data.json snapshot"
+            "Reparsed from the official ISC filing in the requested repair batch"
           ],
           "parse_confidence": "high",
-          "manual_review_required": false
+          "manual_review_required": false,
+          "parse_stages": [
+            {
+              "stage": "local",
+              "status": "ok_pdf_text",
+              "warnings": [
+                "No clear Chief and Council remuneration table found",
+                "Parsed from PDF text fallback"
+              ]
+            }
+          ],
+          "reparsed": "2026-08-19T14:21:51.468284Z"
         },
         {
           "year": "2016-2017",
@@ -78651,11 +79227,11 @@
       ],
       "status": "ok",
       "scraped": "2026-08-09T22:53:06Z",
-      "logo_url": null,
-      "logo_source": "http://birchnarrowsdenenation.ca/",
-      "logo_asset_source": null,
-      "logo_verified": false,
-      "logo_status": "logo_unverified"
+      "logo_url": "/public/first-nation-logos/birch-narrows-dene-nation.webp",
+      "logo_source": "https://www.mltc.net/nations/bndn/",
+      "logo_asset_source": "https://mltc.net/wp-content/uploads/2019/12/BNDN.jpg",
+      "logo_verified": true,
+      "logo_status": "verified"
     },
     {
       "id": 359,
@@ -84722,11 +85298,11 @@
       ],
       "status": "ok",
       "scraped": "2026-08-09T22:53:33Z",
-      "logo_url": null,
-      "logo_source": "https://www.jamessmithcreenation.com/",
-      "logo_asset_source": null,
-      "logo_verified": false,
-      "logo_status": "logo_unverified"
+      "logo_url": "/public/first-nation-logos/james-smith-cree-nation.webp",
+      "logo_source": "https://apps.apple.com/ca/app/james-smith-cree-nation/id6747688434",
+      "logo_asset_source": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/08/8f/a4/088fa499-5f7b-6a5c-1183-6e16033192c2/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/1200x630wa.png",
+      "logo_verified": true,
+      "logo_status": "verified"
     },
     {
       "id": 393,
@@ -86671,7 +87247,7 @@
     },
     {
       "id": 407,
-      "name": "Cree Nation of Chitek Lake",
+      "name": "Witchekan Lake First Nation",
       "province": "SK",
       "treaty": "Treaty 6",
       "filings": [
@@ -87629,11 +88205,11 @@
       ],
       "status": "ok",
       "scraped": "2026-08-09T22:53:56Z",
-      "logo_url": null,
-      "logo_source": null,
-      "logo_asset_source": null,
-      "logo_verified": false,
-      "logo_status": "logo_unverified"
+      "logo_url": "/public/first-nation-logos/witchekan-lake-first-nation.webp",
+      "logo_source": "https://witchekanlake.ca/",
+      "logo_asset_source": "https://witchekanlake.ca/_next/image?url=https%3A%2F%2Finternaltooling.s3.amazonaws.com%2Flogos%2F69dd5621ab52bba0f7f056ea%2Flogo_public_url.png%3FAWSAccessKeyId%3DAKIAYEZHQDSGVNV2EH7P%26Signature%3DzZfc0rqggnWCQwIHmae2j0QeaAA%253D%26Expires%3D1818688642&w=256&q=75",
+      "logo_verified": true,
+      "logo_status": "verified"
     }
   ]
 }

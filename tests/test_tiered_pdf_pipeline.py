@@ -2,6 +2,7 @@ import json
 import os
 import tempfile
 import unittest
+from pathlib import Path
 from unittest import mock
 
 import run_scraper
@@ -16,8 +17,45 @@ Jane Bear Chief 12 80,000 10,000 5,000 95,000
 John Bear Councillor 12 40,000 2,000 1,000 43,000
 """
 
+VERTICAL_OCR_SCHEDULE = """Schedule of Remuneration and Expenses
+Chief and Councillors
+Name
+Position
+Number of Months
+Remuneration
+Expenses
+Total
+Bear, Jane
+Chief
+12
+$
+80,000
+$
+10,000
+$
+90,000
+Bear, John
+Councillor
+12
+40.000
+2,000
+42,000
+Total:
+120,000
+12,000
+132,000
+"""
+
 
 class TieredPdfPipelineTests(unittest.TestCase):
+    def test_vertical_ocr_cells_are_reassembled_into_official_rows(self):
+        people = run_scraper._extract_people_from_text_pages([VERTICAL_OCR_SCHEDULE])
+
+        self.assertEqual([person["name"] for person in people], ["Bear, Jane", "Bear, John"])
+        self.assertEqual(people[0]["role"], "Chief")
+        self.assertEqual(people[1]["remuneration"], 40000)
+        self.assertEqual(people[1]["total"], 42000)
+
     def test_ocr_success_stops_before_openai(self):
         with mock.patch.object(run_scraper.scraper, "fetch_url", return_value=b"pdf"), mock.patch.object(
             run_scraper.scraper, "pdfplumber", None
@@ -174,10 +212,10 @@ class TieredPdfPipelineTests(unittest.TestCase):
                 }
             ]
         }
-        with tempfile.NamedTemporaryFile("w", suffix=".json", encoding="utf-8") as handle:
-            json.dump(data, handle)
-            handle.flush()
-            indexed = scraper.successful_filing_index(handle.name)
+        with tempfile.TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "data.json"
+            path.write_text(json.dumps(data), encoding="utf-8")
+            indexed = scraper.successful_filing_index(path)
 
         self.assertIn(("123", "2024-2025", "schedule of remuneration"), indexed)
         self.assertNotIn(("123", "2023-2024", "schedule of remuneration"), indexed)
