@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-19T14:01:42Z",
+  "generated": "2026-08-20T14:04:08Z",
   "trackedCommunityCount": 69,
   "configuredSourceCount": 92,
   "communities": [
@@ -337,21 +337,6 @@
         }
       ],
       "status": "direct_source_configured"
-    },
-    {
-      "communityId": "407",
-      "communityName": "Witchekan Lake First Nation",
-      "directSources": [],
-      "regionalSources": [
-        {
-          "id": "fsin-employment",
-          "name": "FSIN Employment Opportunities",
-          "url": "https://www.fsin.ca/employment-opportunities",
-          "sourceType": "provincial_first_nations_organization",
-          "direct": false
-        }
-      ],
-      "status": "regional_sources_only"
     },
     {
       "communityId": "350",
@@ -2056,6 +2041,21 @@
       "status": "direct_source_configured"
     },
     {
+      "communityId": "407",
+      "communityName": "Witchekan Lake First Nation",
+      "directSources": [],
+      "regionalSources": [
+        {
+          "id": "fsin-employment",
+          "name": "FSIN Employment Opportunities",
+          "url": "https://www.fsin.ca/employment-opportunities",
+          "sourceType": "provincial_first_nations_organization",
+          "direct": false
+        }
+      ],
+      "status": "regional_sources_only"
+    },
+    {
       "communityId": "388",
       "communityName": "Wood Mountain First Nation",
       "directSources": [
@@ -2387,7 +2387,7 @@
       "communityIds": [
         "344"
       ],
-      "candidatesFound": 7,
+      "candidatesFound": 8,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2428,12 +2428,10 @@
       "communityIds": [
         "404"
       ],
-      "candidatesFound": 0,
+      "candidatesFound": 2,
       "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "big-river-official: fetch failed: The read operation timed out"
-      ]
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "birch-narrows-careers",
@@ -2748,7 +2746,7 @@
       "reviewItems": 1,
       "status": "unavailable",
       "warnings": [
-        "community-site-404: fetch failed: HTTP Error 500: Internal Server Error"
+        "community-site-404: fetch failed: The read operation timed out"
       ]
     },
     {
@@ -3141,7 +3139,7 @@
         "344"
       ],
       "candidatesFound": 1,
-      "reviewItems": 0,
+      "reviewItems": 3,
       "status": "checked",
       "warnings": []
     },
