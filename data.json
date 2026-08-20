@@ -24373,15 +24373,105 @@
           "date": "2015-03-09",
           "href": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=345&FY=2013-2014&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "pending_openai_opt_in",
-          "warnings": [
-            "No clear Chief and Council remuneration table found",
-            "Local OCR text contained no reliable official rows",
-            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          "people": [
+            {
+              "name": "Duane Antoine",
+              "role": "Chief",
+              "months": 12,
+              "remuneration": 51000,
+              "travel": 24410,
+              "expenses": 1358,
+              "creditCard": 0,
+              "otherPayments": 0,
+              "total": 76768,
+              "travelExpenses": 25768.0,
+              "other": 0.0
+            },
+            {
+              "name": "Teddy Antoine",
+              "role": "Councillor",
+              "months": 5,
+              "remuneration": 16925,
+              "travel": 6982,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
+              "total": 23907,
+              "travelExpenses": 6982.0,
+              "other": 0.0
+            },
+            {
+              "name": "Vernon Antoine",
+              "role": "Councillor",
+              "months": 8,
+              "remuneration": 31675,
+              "travel": 11547,
+              "expenses": 11053,
+              "creditCard": 0,
+              "otherPayments": 0,
+              "total": 54275,
+              "travelExpenses": 22600.0,
+              "other": 0.0
+            },
+            {
+              "name": "Colin Favel",
+              "role": "Councillor",
+              "months": 7,
+              "remuneration": 18375,
+              "travel": 9468,
+              "expenses": 38625,
+              "creditCard": 0,
+              "otherPayments": 0,
+              "total": 66468,
+              "travelExpenses": 48093.0,
+              "other": 0.0
+            },
+            {
+              "name": "Paul Favel",
+              "role": "Councillor",
+              "months": 7,
+              "remuneration": 14000,
+              "travel": 2703,
+              "expenses": 1376,
+              "creditCard": 0,
+              "otherPayments": 0,
+              "total": 18079,
+              "travelExpenses": 4079.0,
+              "other": 0.0
+            },
+            {
+              "name": "Darwin Kasokeo",
+              "role": "Councillor",
+              "months": 5,
+              "remuneration": 15925,
+              "travel": 8440,
+              "expenses": 4887,
+              "creditCard": 0,
+              "otherPayments": 0,
+              "total": 29252,
+              "travelExpenses": 13327.0,
+              "other": 0.0
+            },
+            {
+              "name": "Colby Tootoosis",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 44625,
+              "travel": 14581,
+              "expenses": 874,
+              "creditCard": 0,
+              "otherPayments": 0,
+              "total": 60080,
+              "travelExpenses": 15455.0,
+              "other": 0.0
+            }
           ],
-          "parse_confidence": "low",
-          "manual_review_required": true,
+          "parse_status": "manual_from_official_pdf",
+          "warnings": [
+            "Manual override applied from Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
+          ],
+          "parse_confidence": "manual_reviewed",
+          "manual_review_required": false,
           "parse_stages": [
             {
               "stage": "local",
@@ -24404,7 +24494,9 @@
                 "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
               ]
             }
-          ]
+          ],
+          "manual_override": true,
+          "override_source": "Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
         },
         {
           "year": "2014-2015",
@@ -24424,15 +24516,66 @@
           "date": "2015-10-14",
           "href": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=345&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "pending_openai_opt_in",
-          "warnings": [
-            "No clear Chief and Council remuneration table found",
-            "Local OCR text contained no reliable official rows",
-            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          "people": [
+            {
+              "name": "Duane Antoine",
+              "role": "Chief",
+              "months": 12,
+              "remuneration": 52200,
+              "travel": 32098,
+              "expenses": 8475,
+              "creditCard": 0,
+              "otherPayments": 0,
+              "total": 92773,
+              "travelExpenses": 40573.0,
+              "other": 0.0
+            },
+            {
+              "name": "Teddy Antoine",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 44625,
+              "travel": 27735,
+              "expenses": 3910,
+              "creditCard": 0,
+              "otherPayments": 0,
+              "total": 76270,
+              "travelExpenses": 31645.0,
+              "other": 0.0
+            },
+            {
+              "name": "Darwin Kasokeo",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 45675,
+              "travel": 27311,
+              "expenses": 13900,
+              "creditCard": 0,
+              "otherPayments": 0,
+              "total": 86886,
+              "travelExpenses": 41211.0,
+              "other": 0.0
+            },
+            {
+              "name": "Colby Tootoosis",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 43050,
+              "travel": 14266,
+              "expenses": 2400,
+              "creditCard": 0,
+              "otherPayments": 0,
+              "total": 59716,
+              "travelExpenses": 16666.0,
+              "other": 0.0
+            }
           ],
-          "parse_confidence": "low",
-          "manual_review_required": true,
+          "parse_status": "manual_from_official_pdf",
+          "warnings": [
+            "Manual override applied from Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
+          ],
+          "parse_confidence": "manual_reviewed",
+          "manual_review_required": false,
           "parse_stages": [
             {
               "stage": "local",
@@ -24455,7 +24598,9 @@
                 "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
               ]
             }
-          ]
+          ],
+          "manual_override": true,
+          "override_source": "Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
         },
         {
           "year": "2015-2016",
@@ -24482,12 +24627,12 @@
               "months": 12,
               "remuneration": 53800,
               "travel": 29352,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 21360,
+              "expenses": 21360,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 104512,
-              "travelExpenses": 29352.0,
-              "other": 21360.0
+              "travelExpenses": 50712.0,
+              "other": 0.0
             },
             {
               "name": "Teddy Antoine Jr",
@@ -24495,12 +24640,12 @@
               "months": 12,
               "remuneration": 47075,
               "travel": 29330,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 9167,
+              "expenses": 9167,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 85572,
-              "travelExpenses": 29330.0,
-              "other": 9167.0
+              "travelExpenses": 38497.0,
+              "other": 0.0
             },
             {
               "name": "Darwin Kasokeo",
@@ -24508,12 +24653,12 @@
               "months": 12,
               "remuneration": 47075,
               "travel": 15650,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 2400,
+              "expenses": 2400,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 65125,
-              "travelExpenses": 15650.0,
-              "other": 2400.0
+              "travelExpenses": 18050.0,
+              "other": 0.0
             },
             {
               "name": "Colby Tootoosis",
@@ -24521,9 +24666,9 @@
               "months": 12,
               "remuneration": 40774,
               "travel": 5386,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 46160,
               "travelExpenses": 5386.0,
               "other": 0.0
@@ -24534,23 +24679,22 @@
               "months": 6,
               "remuneration": 22575,
               "travel": 11672,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 8658,
+              "expenses": 8658,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 42905,
-              "travelExpenses": 11672.0,
-              "other": 8658.0
+              "travelExpenses": 20330.0,
+              "other": 0.0
             }
           ],
-          "parse_status": "ok_pdf_text",
+          "parse_status": "manual_from_official_pdf",
           "warnings": [
-            "Parsed from PDF text fallback",
-            "Sanitized parsed rows: removed 1, fixed totals 0",
-            "Sanitized parsed rows: removed 0, fixed totals 0",
-            "Preserved parsed rows from previous data.json snapshot"
+            "Manual override applied from Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
           ],
-          "parse_confidence": "high",
-          "manual_review_required": false
+          "parse_confidence": "manual_reviewed",
+          "manual_review_required": false,
+          "manual_override": true,
+          "override_source": "Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
         },
         {
           "year": "2016-2017",
@@ -24577,9 +24721,9 @@
               "months": 12,
               "remuneration": 52200,
               "travel": 29154,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 81354,
               "travelExpenses": 29154.0,
               "other": 0.0
@@ -24590,12 +24734,12 @@
               "months": 12,
               "remuneration": 45675,
               "travel": 15722,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 3012,
+              "expenses": 3012,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 64409,
-              "travelExpenses": 15722.0,
-              "other": 3012.0
+              "travelExpenses": 18734.0,
+              "other": 0.0
             },
             {
               "name": "Brandon Favel",
@@ -24603,9 +24747,9 @@
               "months": 10.5,
               "remuneration": 40250,
               "travel": 29786,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 70036,
               "travelExpenses": 29786.0,
               "other": 0.0
@@ -24616,12 +24760,12 @@
               "months": 10.5,
               "remuneration": 40250,
               "travel": 21135,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 2000,
+              "expenses": 2000,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 63385,
-              "travelExpenses": 21135.0,
-              "other": 2000.0
+              "travelExpenses": 23135.0,
+              "other": 0.0
             },
             {
               "name": "Isobelle Weenie",
@@ -24629,38 +24773,38 @@
               "months": 10.5,
               "remuneration": 40250,
               "travel": 18863,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 2000,
+              "expenses": 2000,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 61113,
-              "travelExpenses": 18863.0,
-              "other": 2000.0
+              "travelExpenses": 20863.0,
+              "other": 0.0
             },
             {
               "name": "Teddy Antoine Jr",
               "role": "Councillor",
               "months": 1.5,
               "remuneration": 5425,
-              "travel": 4375,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 1261,
+              "travel": 1261,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 4375,
               "total": 11061,
-              "travelExpenses": 4375.0,
-              "other": 1261.0
+              "travelExpenses": 1261.0,
+              "other": 4375.0
             },
             {
               "name": "Trevor Tootoosis",
               "role": "Councillor",
               "months": 1.5,
               "remuneration": 5425,
-              "travel": 1094,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 4323,
+              "travel": 4323,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 1094,
               "total": 10842,
-              "travelExpenses": 1094.0,
-              "other": 4323.0
+              "travelExpenses": 4323.0,
+              "other": 1094.0
             },
             {
               "name": "Colby Tootoosis",
@@ -24668,20 +24812,19 @@
               "months": 1.5,
               "remuneration": 5425,
               "travel": 525,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 5950,
               "travelExpenses": 525.0,
               "other": 0.0
             }
           ],
-          "parse_status": "ok_pdf_text_reparse",
+          "parse_status": "manual_from_official_pdf",
           "warnings": [
-            "Recovered from downloaded PDF with corrected local text parser",
-            "Sanitized parsed rows: removed 0, fixed totals 0"
+            "Manual override applied from Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
           ],
-          "parse_confidence": "high",
+          "parse_confidence": "manual_reviewed",
           "manual_review_required": false,
           "parse_stages": [
             {
@@ -24689,7 +24832,9 @@
               "status": "ok_pdf_text_reparse"
             }
           ],
-          "reparsed": "2026-08-12T08:55:14.526499Z"
+          "reparsed": "2026-08-12T08:55:14.526499Z",
+          "manual_override": true,
+          "override_source": "Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
         },
         {
           "year": "2017-2018",
@@ -24716,11 +24861,11 @@
               "months": 12,
               "remuneration": 85000,
               "travel": 18084,
-              "expenses": 4095,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 107179,
-              "travelExpenses": 22179.0,
+              "expenses": 16255,
+              "creditCard": 0,
+              "otherPayments": 0,
+              "total": 119339,
+              "travelExpenses": 34339.0,
               "other": 0.0
             },
             {
@@ -24728,13 +24873,13 @@
               "role": "Councillor",
               "months": 12,
               "remuneration": 45500,
-              "travel": 4956,
-              "expenses": 16160,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 66616,
-              "travelExpenses": 21116.0,
-              "other": 0.0
+              "travel": 16160,
+              "expenses": 4550,
+              "creditCard": 0,
+              "otherPayments": 4956,
+              "total": 71166,
+              "travelExpenses": 20710.0,
+              "other": 4956.0
             },
             {
               "name": "Darwin Kasokeo",
@@ -24742,12 +24887,12 @@
               "months": 12,
               "remuneration": 45675,
               "travel": 12646,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 2550,
+              "expenses": 2550,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 60871,
-              "travelExpenses": 12646.0,
-              "other": 2550.0
+              "travelExpenses": 15196.0,
+              "other": 0.0
             },
             {
               "name": "Milton Tootoosis",
@@ -24755,12 +24900,12 @@
               "months": 12,
               "remuneration": 45500,
               "travel": 15751,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 16857,
+              "expenses": 16857,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 78108,
-              "travelExpenses": 15751.0,
-              "other": 16857.0
+              "travelExpenses": 32608.0,
+              "other": 0.0
             },
             {
               "name": "Brandon Favel",
@@ -24768,23 +24913,22 @@
               "months": 12,
               "remuneration": 45325,
               "travel": 15150,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 300,
+              "expenses": 300,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 60775,
-              "travelExpenses": 15150.0,
-              "other": 300.0
+              "travelExpenses": 15450.0,
+              "other": 0.0
             }
           ],
-          "parse_status": "ok_pdf_text",
+          "parse_status": "manual_from_official_pdf",
           "warnings": [
-            "Parsed from PDF text fallback",
-            "Sanitized parsed rows: removed 1, fixed totals 2",
-            "Preserved parsed rows from previous data.json snapshot",
-            "Sanitized parsed rows: removed 0, fixed totals 0"
+            "Manual override applied from Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
           ],
-          "parse_confidence": "high",
-          "manual_review_required": false
+          "parse_confidence": "manual_reviewed",
+          "manual_review_required": false,
+          "manual_override": true,
+          "override_source": "Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
         },
         {
           "year": "2018-2019",
@@ -24811,12 +24955,12 @@
               "months": 12,
               "remuneration": 85000,
               "travel": 30316,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 805,
+              "expenses": 805,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 116121,
-              "travelExpenses": 30316.0,
-              "other": 805.0
+              "travelExpenses": 31121.0,
+              "other": 0.0
             },
             {
               "name": "Isobelle Weenie",
@@ -24824,12 +24968,12 @@
               "months": 12,
               "remuneration": 45500,
               "travel": 17817,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 3650,
+              "expenses": 3650,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 66967,
-              "travelExpenses": 17817.0,
-              "other": 3650.0
+              "travelExpenses": 21467.0,
+              "other": 0.0
             },
             {
               "name": "Darwin Kasokeo",
@@ -24837,12 +24981,12 @@
               "months": 12,
               "remuneration": 45500,
               "travel": 12697,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 2650,
+              "expenses": 2650,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 60847,
-              "travelExpenses": 12697.0,
-              "other": 2650.0
+              "travelExpenses": 15347.0,
+              "other": 0.0
             },
             {
               "name": "Milton Tootoosis",
@@ -24850,12 +24994,12 @@
               "months": 12,
               "remuneration": 45500,
               "travel": 25574,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 2650,
+              "expenses": 2650,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 73724,
-              "travelExpenses": 25574.0,
-              "other": 2650.0
+              "travelExpenses": 28224.0,
+              "other": 0.0
             },
             {
               "name": "Brandon Favel",
@@ -24863,23 +25007,22 @@
               "months": 12,
               "remuneration": 45500,
               "travel": 16614,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 4732,
+              "expenses": 4732,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 66846,
-              "travelExpenses": 16614.0,
-              "other": 4732.0
+              "travelExpenses": 21346.0,
+              "other": 0.0
             }
           ],
-          "parse_status": "ok_pdf_text",
+          "parse_status": "manual_from_official_pdf",
           "warnings": [
-            "Parsed from PDF text fallback",
-            "Sanitized parsed rows: removed 1, fixed totals 0",
-            "Preserved parsed rows from previous data.json snapshot",
-            "Sanitized parsed rows: removed 0, fixed totals 0"
+            "Manual override applied from Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
           ],
-          "parse_confidence": "high",
-          "manual_review_required": false
+          "parse_confidence": "manual_reviewed",
+          "manual_review_required": false,
+          "manual_override": true,
+          "override_source": "Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
         },
         {
           "year": "2019-2020",
@@ -24906,12 +25049,12 @@
               "months": 12,
               "remuneration": 85000,
               "travel": 39127,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 5364,
+              "expenses": 5364,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 129491,
-              "travelExpenses": 39127.0,
-              "other": 5364.0
+              "travelExpenses": 44491.0,
+              "other": 0.0
             },
             {
               "name": "Isobelle Weenie",
@@ -24919,12 +25062,12 @@
               "months": 12,
               "remuneration": 45500,
               "travel": 24230,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 11092,
+              "expenses": 11092,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 80822,
-              "travelExpenses": 24230.0,
-              "other": 11092.0
+              "travelExpenses": 35322.0,
+              "other": 0.0
             },
             {
               "name": "Darwin Kasokeo",
@@ -24932,12 +25075,12 @@
               "months": 12,
               "remuneration": 45500,
               "travel": 13432,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 31083,
+              "expenses": 31083,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 90015,
-              "travelExpenses": 13432.0,
-              "other": 31083.0
+              "travelExpenses": 44515.0,
+              "other": 0.0
             },
             {
               "name": "Milton Tootoosis",
@@ -24945,12 +25088,12 @@
               "months": 12,
               "remuneration": 45500,
               "travel": 28518,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 5627,
+              "expenses": 5627,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 79645,
-              "travelExpenses": 28518.0,
-              "other": 5627.0
+              "travelExpenses": 34145.0,
+              "other": 0.0
             },
             {
               "name": "Brandon Favel",
@@ -24958,23 +25101,22 @@
               "months": 12,
               "remuneration": 45500,
               "travel": 27471,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 25912,
+              "expenses": 25912,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 98883,
-              "travelExpenses": 27471.0,
-              "other": 25912.0
+              "travelExpenses": 53383.0,
+              "other": 0.0
             }
           ],
-          "parse_status": "ok_pdf_text",
+          "parse_status": "manual_from_official_pdf",
           "warnings": [
-            "Parsed from PDF text fallback",
-            "Sanitized parsed rows: removed 1, fixed totals 0",
-            "Preserved parsed rows from previous data.json snapshot",
-            "Sanitized parsed rows: removed 0, fixed totals 0"
+            "Manual override applied from Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
           ],
-          "parse_confidence": "high",
-          "manual_review_required": false
+          "parse_confidence": "manual_reviewed",
+          "manual_review_required": false,
+          "manual_override": true,
+          "override_source": "Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
         },
         {
           "year": "2020-2021",
@@ -25002,11 +25144,11 @@
               "remuneration": 93445,
               "travel": 12598,
               "expenses": 1811,
-              "creditCard": 31200,
-              "otherPayments": null,
-              "total": 139054,
-              "travelExpenses": 45609.0,
-              "other": 0.0
+              "creditCard": 0,
+              "otherPayments": 307705,
+              "total": 415559,
+              "travelExpenses": 14409.0,
+              "other": 307705.0
             },
             {
               "name": "Brandon Favel",
@@ -25015,11 +25157,11 @@
               "remuneration": 53200,
               "travel": 12861,
               "expenses": 1811,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 67872,
+              "creditCard": 0,
+              "otherPayments": 14237,
+              "total": 82109,
               "travelExpenses": 14672.0,
-              "other": 0.0
+              "other": 14237.0
             },
             {
               "name": "Darwin Kasokeo",
@@ -25028,11 +25170,11 @@
               "remuneration": 53200,
               "travel": 12120,
               "expenses": 7339,
-              "creditCard": 152320,
-              "otherPayments": null,
-              "total": 222255,
-              "travelExpenses": 171779.0,
-              "other": 0.0
+              "creditCard": 0,
+              "otherPayments": 374575,
+              "total": 447234,
+              "travelExpenses": 19459.0,
+              "other": 374575.0
             },
             {
               "name": "Bryan Tootoosis",
@@ -25040,12 +25182,12 @@
               "months": 6,
               "remuneration": 28000,
               "travel": 15419,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 6681,
+              "expenses": 6681,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 50100,
-              "travelExpenses": 15419.0,
-              "other": 6681.0
+              "travelExpenses": 22100.0,
+              "other": 0.0
             },
             {
               "name": "Marlene Chickeness",
@@ -25053,12 +25195,12 @@
               "months": 6,
               "remuneration": 28000,
               "travel": 5752,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 1260,
+              "expenses": 1260,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 35012,
-              "travelExpenses": 5752.0,
-              "other": 1260.0
+              "travelExpenses": 7012.0,
+              "other": 0.0
             },
             {
               "name": "Isobelle Weenie",
@@ -25067,11 +25209,11 @@
               "remuneration": 20825,
               "travel": 6120,
               "expenses": 13802,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 40747,
+              "creditCard": 0,
+              "otherPayments": 1600,
+              "total": 42347,
               "travelExpenses": 19922.0,
-              "other": 0.0
+              "other": 1600.0
             },
             {
               "name": "Milton Tootoosis",
@@ -25079,23 +25221,22 @@
               "months": 6,
               "remuneration": 20825,
               "travel": 5474,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 1200,
+              "expenses": 1200,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 27499,
-              "travelExpenses": 5474.0,
-              "other": 1200.0
+              "travelExpenses": 6674.0,
+              "other": 0.0
             }
           ],
-          "parse_status": "ok_pdf_text",
+          "parse_status": "manual_from_official_pdf",
           "warnings": [
-            "Parsed from PDF text fallback",
-            "Sanitized parsed rows: removed 1, fixed totals 3",
-            "Preserved parsed rows from previous data.json snapshot",
-            "Sanitized parsed rows: removed 0, fixed totals 0"
+            "Manual override applied from Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
           ],
-          "parse_confidence": "high",
-          "manual_review_required": false
+          "parse_confidence": "manual_reviewed",
+          "manual_review_required": false,
+          "manual_override": true,
+          "override_source": "Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
         },
         {
           "year": "2021-2022",
@@ -25123,11 +25264,11 @@
               "remuneration": 94094,
               "travel": 27965,
               "expenses": 23100,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 145159,
+              "creditCard": 0,
+              "otherPayments": 43200,
+              "total": 188359,
               "travelExpenses": 51065.0,
-              "other": 0.0
+              "other": 43200.0
             },
             {
               "name": "Brandon Favel",
@@ -25136,11 +25277,11 @@
               "remuneration": 54600,
               "travel": 18043,
               "expenses": 10800,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 83443,
+              "creditCard": 0,
+              "otherPayments": 10200,
+              "total": 93643,
               "travelExpenses": 28843.0,
-              "other": 0.0
+              "other": 10200.0
             },
             {
               "name": "Darwin Kasokeo",
@@ -25149,11 +25290,11 @@
               "remuneration": 54600,
               "travel": 15072,
               "expenses": 16419,
-              "creditCard": 40876,
-              "otherPayments": null,
-              "total": 126967,
-              "travelExpenses": 72367.0,
-              "other": 0.0
+              "creditCard": 0,
+              "otherPayments": 263171,
+              "total": 349262,
+              "travelExpenses": 31491.0,
+              "other": 263171.0
             },
             {
               "name": "Bryan Tootoosis",
@@ -25162,11 +25303,11 @@
               "remuneration": 54600,
               "travel": 53494,
               "expenses": 23900,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 131994,
+              "creditCard": 0,
+              "otherPayments": 16500,
+              "total": 148494,
               "travelExpenses": 77394.0,
-              "other": 0.0
+              "other": 16500.0
             },
             {
               "name": "Marlene Chickeness",
@@ -25174,23 +25315,22 @@
               "months": 12,
               "remuneration": 54600,
               "travel": 19718,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 13505,
+              "expenses": 13505,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 87823,
-              "travelExpenses": 19718.0,
-              "other": 13505.0
+              "travelExpenses": 33223.0,
+              "other": 0.0
             }
           ],
-          "parse_status": "ok_pdf_text",
+          "parse_status": "manual_from_official_pdf",
           "warnings": [
-            "Parsed from PDF text fallback",
-            "Sanitized parsed rows: removed 1, fixed totals 4",
-            "Preserved parsed rows from previous data.json snapshot",
-            "Sanitized parsed rows: removed 0, fixed totals 0"
+            "Manual override applied from Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
           ],
-          "parse_confidence": "high",
-          "manual_review_required": false
+          "parse_confidence": "manual_reviewed",
+          "manual_review_required": false,
+          "manual_override": true,
+          "override_source": "Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
         },
         {
           "year": "2022-2023",
@@ -25218,11 +25358,11 @@
               "remuneration": 94094,
               "travel": 41572,
               "expenses": 19500,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 155166,
+              "creditCard": 0,
+              "otherPayments": 176550,
+              "total": 331716,
               "travelExpenses": 61072.0,
-              "other": 0.0
+              "other": 176550.0
             },
             {
               "name": "Brandon Favel",
@@ -25231,11 +25371,11 @@
               "remuneration": 54600,
               "travel": 44954,
               "expenses": 52100,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 151654,
+              "creditCard": 0,
+              "otherPayments": 2000,
+              "total": 153654,
               "travelExpenses": 97054.0,
-              "other": 0.0
+              "other": 2000.0
             },
             {
               "name": "Darwin Kasokeo",
@@ -25244,11 +25384,11 @@
               "remuneration": 54600,
               "travel": 32754,
               "expenses": 12700,
-              "creditCard": 24989,
-              "otherPayments": null,
-              "total": 125043,
-              "travelExpenses": 70443.0,
-              "other": 0.0
+              "creditCard": 0,
+              "otherPayments": 257780,
+              "total": 357834,
+              "travelExpenses": 45454.0,
+              "other": 257780.0
             },
             {
               "name": "Bryan Tootoosis",
@@ -25257,11 +25397,11 @@
               "remuneration": 54600,
               "travel": 71931,
               "expenses": 12309,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 138840,
+              "creditCard": 0,
+              "otherPayments": 1800,
+              "total": 140640,
               "travelExpenses": 84240.0,
-              "other": 0.0
+              "other": 1800.0
             },
             {
               "name": "Marlene Chickeness",
@@ -25269,23 +25409,22 @@
               "months": 12,
               "remuneration": 54600,
               "travel": 37037,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 4245,
+              "expenses": 4245,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 95882,
-              "travelExpenses": 37037.0,
-              "other": 4245.0
+              "travelExpenses": 41282.0,
+              "other": 0.0
             }
           ],
-          "parse_status": "ok_pdf_text",
+          "parse_status": "manual_from_official_pdf",
           "warnings": [
-            "Parsed from PDF text fallback",
-            "Sanitized parsed rows: removed 1, fixed totals 4",
-            "Preserved parsed rows from previous data.json snapshot",
-            "Sanitized parsed rows: removed 0, fixed totals 0"
+            "Manual override applied from Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
           ],
-          "parse_confidence": "high",
-          "manual_review_required": false
+          "parse_confidence": "manual_reviewed",
+          "manual_review_required": false,
+          "manual_override": true,
+          "override_source": "Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
         },
         {
           "year": "2023-2024",
@@ -25313,11 +25452,11 @@
               "remuneration": 94094,
               "travel": 26843,
               "expenses": 68362,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 189299,
+              "creditCard": 0,
+              "otherPayments": 51800,
+              "total": 241099,
               "travelExpenses": 95205.0,
-              "other": 0.0
+              "other": 51800.0
             },
             {
               "name": "Brandon Favel",
@@ -25326,11 +25465,11 @@
               "remuneration": 54600,
               "travel": 39128,
               "expenses": 3900,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 97628,
+              "creditCard": 0,
+              "otherPayments": 14600,
+              "total": 112228,
               "travelExpenses": 43028.0,
-              "other": 0.0
+              "other": 14600.0
             },
             {
               "name": "Darwin Kasokeo",
@@ -25339,11 +25478,11 @@
               "remuneration": 54600,
               "travel": 25266,
               "expenses": 8400,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 88266,
+              "creditCard": 0,
+              "otherPayments": 257065,
+              "total": 345331,
               "travelExpenses": 33666.0,
-              "other": 0.0
+              "other": 257065.0
             },
             {
               "name": "Marlene Chickeness",
@@ -25351,12 +25490,12 @@
               "months": 12,
               "remuneration": 54600,
               "travel": 22134,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 11389,
+              "expenses": 11389,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 88123,
-              "travelExpenses": 22134.0,
-              "other": 11389.0
+              "travelExpenses": 33523.0,
+              "other": 0.0
             },
             {
               "name": "Bryan Tootoosis",
@@ -25364,23 +25503,22 @@
               "months": 8,
               "remuneration": 31500,
               "travel": 1599,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 45,
+              "expenses": 45,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 33144,
-              "travelExpenses": 1599.0,
-              "other": 45.0
+              "travelExpenses": 1644.0,
+              "other": 0.0
             }
           ],
-          "parse_status": "ok_pdf_text",
+          "parse_status": "manual_from_official_pdf",
           "warnings": [
-            "Parsed from PDF text fallback",
-            "Sanitized parsed rows: removed 1, fixed totals 3",
-            "Preserved parsed rows from previous data.json snapshot",
-            "Sanitized parsed rows: removed 0, fixed totals 0"
+            "Manual override applied from Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
           ],
-          "parse_confidence": "high",
-          "manual_review_required": false
+          "parse_confidence": "manual_reviewed",
+          "manual_review_required": false,
+          "manual_override": true,
+          "override_source": "Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
         },
         {
           "year": "2024-2025",
@@ -25406,39 +25544,39 @@
               "role": "Chief",
               "months": 12,
               "remuneration": 103503,
-              "travel": 50000,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 33079,
+              "travel": 33079,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 50000,
               "total": 186582,
-              "travelExpenses": 50000.0,
-              "other": 33079.0
+              "travelExpenses": 33079.0,
+              "other": 50000.0
             },
             {
               "name": "Antoine, Leon",
               "role": "Councillor",
               "months": 10,
               "remuneration": 66272,
-              "travel": 6000,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 33970,
+              "travel": 33970,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 6000,
               "total": 106242,
-              "travelExpenses": 6000.0,
-              "other": 33970.0
+              "travelExpenses": 33970.0,
+              "other": 6000.0
             },
             {
               "name": "Checkosis, Norman",
               "role": "Councillor",
               "months": 10,
               "remuneration": 66272,
-              "travel": 1000,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 39306,
+              "travel": 39306,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 1000,
               "total": 106578,
-              "travelExpenses": 1000.0,
-              "other": 39306.0
+              "travelExpenses": 39306.0,
+              "other": 1000.0
             },
             {
               "name": "Chickeness, Marlene",
@@ -25446,9 +25584,9 @@
               "months": 12,
               "remuneration": 78902,
               "travel": 36932,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 115834,
               "travelExpenses": 36932.0,
               "other": 0.0
@@ -25459,9 +25597,9 @@
               "months": 10,
               "remuneration": 66272,
               "travel": 33967,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 0,
               "total": 100239,
               "travelExpenses": 33967.0,
               "other": 0.0
@@ -25471,76 +25609,36 @@
               "role": "Councillor",
               "months": 2,
               "remuneration": 8400,
-              "travel": 5204,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 1813,
+              "travel": 1813,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 5204,
               "total": 15417,
-              "travelExpenses": 5204.0,
-              "other": 1813.0
+              "travelExpenses": 1813.0,
+              "other": 5204.0
             },
             {
               "name": "Kasokeo, Darwin",
               "role": "Councillor",
               "months": 2,
               "remuneration": 8400,
-              "travel": 46402,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 1813,
+              "travel": 1813,
+              "expenses": 0,
+              "creditCard": 0,
+              "otherPayments": 46402,
               "total": 56615,
-              "travelExpenses": 46402.0,
-              "other": 1813.0
-            },
-            {
-              "name": "In the fiscal year",
-              "role": "Councillor",
-              "months": null,
-              "remuneration": 202,
-              "travel": 3,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 205,
-              "travelExpenses": 3.0,
-              "other": 0.0
-            },
-            {
-              "name": "Duane Antoine for",
-              "role": "Councillor",
-              "months": null,
-              "remuneration": 200000,
-              "travel": 202,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 200206,
-              "travelExpenses": 202.0,
-              "other": 0.0
-            },
-            {
-              "name": "During the fiscal year",
-              "role": "Councillor",
-              "months": null,
-              "remuneration": 202,
-              "travel": 4,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 206,
-              "travelExpenses": 4.0,
-              "other": 0.0
+              "travelExpenses": 1813.0,
+              "other": 46402.0
             }
           ],
-          "parse_status": "ok_pdf_text",
+          "parse_status": "manual_from_official_pdf",
           "warnings": [
-            "No clear Chief and Council remuneration table found",
-            "Parsed from PDF text fallback",
-            "Sanitized parsed rows: removed 0, fixed totals 0",
-            "Preserved parsed rows from previous data.json snapshot"
+            "Manual override applied from Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
           ],
-          "parse_confidence": "high",
-          "manual_review_required": false
+          "parse_confidence": "manual_reviewed",
+          "manual_review_required": false,
+          "manual_override": true,
+          "override_source": "Manual transcription and visual verification of the linked official ISC Poundmaker Cree Nation remuneration schedules"
         },
         {
           "year": "2025-2026",
