@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-20T14:04:08Z",
+  "generated": "2026-08-21T14:02:52Z",
   "trackedCommunityCount": 69,
   "configuredSourceCount": 92,
   "communities": [
@@ -2135,7 +2135,7 @@
       "communityIds": [
         "353"
       ],
-      "candidatesFound": 36,
+      "candidatesFound": 37,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2486,7 +2486,7 @@
       "communityIds": [
         "391"
       ],
-      "candidatesFound": 5,
+      "candidatesFound": 6,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2571,10 +2571,10 @@
         "408"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 0,
+      "status": "checked",
       "warnings": [
-        "ocean-man-official: fetch failed: HTTP Error 429: Too Many Requests"
+        "ocean-man-official: no candidate job links detected"
       ]
     },
     {
@@ -2743,10 +2743,10 @@
         "404"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 0,
+      "status": "checked",
       "warnings": [
-        "community-site-404: fetch failed: The read operation timed out"
+        "community-site-404: no candidate job links detected"
       ]
     },
     {
@@ -2903,7 +2903,7 @@
       "communityIds": [
         "391"
       ],
-      "candidatesFound": 5,
+      "candidatesFound": 6,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2972,7 +2972,7 @@
       "communityIds": [
         "353"
       ],
-      "candidatesFound": 37,
+      "candidatesFound": 38,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2986,10 +2986,10 @@
         "340"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
-      "status": "checked",
+      "reviewItems": 1,
+      "status": "unavailable",
       "warnings": [
-        "community-site-340: no candidate job links detected"
+        "community-site-340: fetch failed: HTTP Error 500: Internal Server Error"
       ]
     },
     {
@@ -3151,7 +3151,7 @@
       "communityIds": [
         "383"
       ],
-      "candidatesFound": 5,
+      "candidatesFound": 8,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
