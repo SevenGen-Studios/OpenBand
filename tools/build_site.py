@@ -470,7 +470,7 @@ def legacy_enterprise_redirect(band: dict) -> str:
         f'<script>location.replace({json.dumps(target)});</script></head><body>'
         f'<p>Community enterprise is now included within the main public-records profile. '
         f'<a href="{html.escape(target, quote=True)}">Continue to {html.escape(band["name"])}</a>.</p>'
-        '<footer>&copy; <span data-current-year>2026</span> OpenBand. All rights reserved.</footer>'
+        '<footer>&copy; <span data-current-year>2026</span> OpenBand. All rights reserved. A product of SevenGenStudios.</footer>'
         '<script>document.querySelector("[data-current-year]").textContent=new Date().getFullYear();</script>'
         '</body></html>'
     )
