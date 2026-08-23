@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-22T13:49:30Z",
+  "generated": "2026-08-23T13:50:47Z",
   "trackedCommunityCount": 69,
   "configuredSourceCount": 92,
   "communities": [
@@ -2122,10 +2122,12 @@
       "url": "https://www.fsin.ca/employment-opportunities",
       "sourceType": "provincial_first_nations_organization",
       "communityIds": [],
-      "candidatesFound": 1,
+      "candidatesFound": 0,
       "reviewItems": 2,
       "status": "checked",
-      "warnings": []
+      "warnings": [
+        "fsin-employment: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "llrib-official-jobs",
@@ -2470,10 +2472,10 @@
         "390"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
-      "status": "checked",
+      "reviewItems": 1,
+      "status": "unavailable",
       "warnings": [
-        "fishing-lake-official: no candidate job links detected"
+        "fishing-lake-official: fetch failed: HTTP Error 429: Too Many Requests"
       ]
     },
     {
@@ -2784,9 +2786,12 @@
         "394"
       ],
       "candidatesFound": 1,
-      "reviewItems": 2,
+      "reviewItems": 0,
       "status": "checked",
-      "warnings": []
+      "warnings": [
+        "community-site-394: employment page fetch failed: HTTP Error 429: Too Many Requests",
+        "community-site-394: detail fetch failed: HTTP Error 429: Too Many Requests"
+      ]
     },
     {
       "sourceId": "community-site-366",
@@ -2895,7 +2900,7 @@
       "communityIds": [
         "391"
       ],
-      "candidatesFound": 6,
+      "candidatesFound": 7,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
