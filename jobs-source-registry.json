@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-23T13:50:47Z",
+  "generated": "2026-08-24T14:06:45Z",
   "trackedCommunityCount": 69,
   "configuredSourceCount": 92,
   "communities": [
@@ -2122,12 +2122,10 @@
       "url": "https://www.fsin.ca/employment-opportunities",
       "sourceType": "provincial_first_nations_organization",
       "communityIds": [],
-      "candidatesFound": 0,
+      "candidatesFound": 1,
       "reviewItems": 2,
       "status": "checked",
-      "warnings": [
-        "fsin-employment: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "llrib-official-jobs",
@@ -2350,7 +2348,7 @@
       "communityIds": [
         "349"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 3,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2376,10 +2374,12 @@
       "communityIds": [
         "344"
       ],
-      "candidatesFound": 1,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "unavailable",
+      "warnings": [
+        "onion-lake-community-updates: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "onion-lake-job-board",
@@ -2402,10 +2402,12 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 5,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "unavailable",
+      "warnings": [
+        "cowessess-careers: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "ahtahkakoop-official-jobs",
@@ -2499,7 +2501,7 @@
       "communityIds": [
         "362"
       ],
-      "candidatesFound": 6,
+      "candidatesFound": 2,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2541,10 +2543,10 @@
         "381"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
+      "reviewItems": 0,
       "status": "unavailable",
       "warnings": [
-        "muscowpetung-jobs: fetch failed: HTTP Error 404: Not Found"
+        "muscowpetung-jobs: no candidate job links detected"
       ]
     },
     {
@@ -2785,12 +2787,11 @@
       "communityIds": [
         "394"
       ],
-      "candidatesFound": 1,
-      "reviewItems": 0,
-      "status": "checked",
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
       "warnings": [
-        "community-site-394: employment page fetch failed: HTTP Error 429: Too Many Requests",
-        "community-site-394: detail fetch failed: HTTP Error 429: Too Many Requests"
+        "community-site-394: fetch failed: HTTP Error 429: Too Many Requests"
       ]
     },
     {
@@ -2814,10 +2815,12 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 7,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-361: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "community-site-350",
@@ -2929,9 +2932,12 @@
         "362"
       ],
       "candidatesFound": 6,
-      "reviewItems": 2,
+      "reviewItems": 1,
       "status": "checked",
-      "warnings": []
+      "warnings": [
+        "community-site-362: detail fetch failed: HTTP Error 404: Not Found",
+        "community-site-362: detail fetch failed: HTTP Error 404: Not Found"
+      ]
     },
     {
       "sourceId": "community-site-393",
@@ -3066,7 +3072,7 @@
       ],
       "candidatesFound": 0,
       "reviewItems": 0,
-      "status": "checked",
+      "status": "unavailable",
       "warnings": [
         "community-site-381: no candidate job links detected"
       ]
@@ -3080,8 +3086,8 @@
         "375"
       ],
       "candidatesFound": 0,
-      "reviewItems": 3,
-      "status": "checked",
+      "reviewItems": 0,
+      "status": "unavailable",
       "warnings": [
         "community-site-375: no candidate job links detected"
       ]
@@ -3137,10 +3143,12 @@
       "communityIds": [
         "344"
       ],
-      "candidatesFound": 1,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-344: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "community-site-383",
@@ -3249,7 +3257,7 @@
       "communityIds": [
         "348"
       ],
-      "candidatesFound": 5,
+      "candidatesFound": 4,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3264,7 +3272,7 @@
       ],
       "candidatesFound": 0,
       "reviewItems": 0,
-      "status": "checked",
+      "status": "unavailable",
       "warnings": [
         "community-site-368: no candidate job links detected"
       ]
@@ -3277,7 +3285,7 @@
       "communityIds": [
         "349"
       ],
-      "candidatesFound": 4,
+      "candidatesFound": 3,
       "reviewItems": 3,
       "status": "checked",
       "warnings": [
