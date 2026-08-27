@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-26T14:09:34Z",
+  "generated": "2026-08-27T23:02:17Z",
   "trackedCommunityCount": 69,
   "configuredSourceCount": 92,
   "communities": [
@@ -2122,10 +2122,12 @@
       "url": "https://www.fsin.ca/employment-opportunities",
       "sourceType": "provincial_first_nations_organization",
       "communityIds": [],
-      "candidatesFound": 1,
+      "candidatesFound": 0,
       "reviewItems": 2,
       "status": "checked",
-      "warnings": []
+      "warnings": [
+        "fsin-employment: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "llrib-official-jobs",
@@ -2192,7 +2194,7 @@
         "347",
         "348"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 4,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2263,7 +2265,7 @@
       "communityIds": [
         "355"
       ],
-      "candidatesFound": 1,
+      "candidatesFound": 3,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2400,7 +2402,7 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 5,
+      "candidatesFound": 6,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2413,10 +2415,12 @@
       "communityIds": [
         "406"
       ],
-      "candidatesFound": 7,
-      "reviewItems": 0,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "ahtahkakoop-official-jobs: fetch failed: HTTP Error 429: Too Many Requests"
+      ]
     },
     {
       "sourceId": "big-river-official",
@@ -2470,10 +2474,10 @@
         "390"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
-      "status": "checked",
+      "reviewItems": 1,
+      "status": "unavailable",
       "warnings": [
-        "fishing-lake-official: no candidate job links detected"
+        "fishing-lake-official: fetch failed: HTTP Error 429: Too Many Requests"
       ]
     },
     {
@@ -2484,7 +2488,7 @@
       "communityIds": [
         "391"
       ],
-      "candidatesFound": 6,
+      "candidatesFound": 5,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2497,7 +2501,7 @@
       "communityIds": [
         "362"
       ],
-      "candidatesFound": 3,
+      "candidatesFound": 6,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2695,7 +2699,7 @@
       "communityIds": [
         "388"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 1,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2725,10 +2729,12 @@
       "communityIds": [
         "406"
       ],
-      "candidatesFound": 7,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-406: fetch failed: HTTP Error 429: Too Many Requests"
+      ]
     },
     {
       "sourceId": "community-site-404",
@@ -2783,10 +2789,12 @@
       "communityIds": [
         "394"
       ],
-      "candidatesFound": 1,
-      "reviewItems": 2,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-394: fetch failed: HTTP Error 429: Too Many Requests"
+      ]
     },
     {
       "sourceId": "community-site-366",
@@ -2867,10 +2875,12 @@
       "communityIds": [
         "395"
       ],
-      "candidatesFound": 1,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-395: fetch failed: HTTP Error 429: Too Many Requests"
+      ]
     },
     {
       "sourceId": "community-site-351",
@@ -2895,7 +2905,7 @@
       "communityIds": [
         "391"
       ],
-      "candidatesFound": 7,
+      "candidatesFound": 6,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2923,7 +2933,7 @@
       "communityIds": [
         "362"
       ],
-      "candidatesFound": 3,
+      "candidatesFound": 6,
       "reviewItems": 2,
       "status": "checked",
       "warnings": []
@@ -2951,10 +2961,12 @@
       "communityIds": [
         "377"
       ],
-      "candidatesFound": 3,
-      "reviewItems": 0,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-377: fetch failed: <urlopen error timed out>"
+      ]
     },
     {
       "sourceId": "community-site-353",
@@ -3117,7 +3129,7 @@
       "communityIds": [
         "363"
       ],
-      "candidatesFound": 4,
+      "candidatesFound": 3,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3143,7 +3155,7 @@
       "communityIds": [
         "383"
       ],
-      "candidatesFound": 5,
+      "candidatesFound": 8,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3171,7 +3183,7 @@
       "communityIds": [
         "355"
       ],
-      "candidatesFound": 1,
+      "candidatesFound": 3,
       "reviewItems": 2,
       "status": "checked",
       "warnings": []
@@ -3184,7 +3196,7 @@
       "communityIds": [
         "385"
       ],
-      "candidatesFound": 9,
+      "candidatesFound": 8,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3270,7 +3282,7 @@
       "communityIds": [
         "349"
       ],
-      "candidatesFound": 3,
+      "candidatesFound": 4,
       "reviewItems": 3,
       "status": "checked",
       "warnings": [
@@ -3314,7 +3326,7 @@
         "388"
       ],
       "candidatesFound": 5,
-      "reviewItems": 3,
+      "reviewItems": 2,
       "status": "checked",
       "warnings": []
     },
