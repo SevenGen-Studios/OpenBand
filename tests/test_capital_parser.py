@@ -12,6 +12,39 @@ from tools import apply_capital_overrides
 
 
 class CapitalParserTests(unittest.TestCase):
+    def test_auditor_chief_and_council_wording_does_not_reject_statement(self):
+        pages = [
+            """
+            Mistawasis Nehiyawak
+            Consolidated Financial Statements
+            March 31, 2023
+            """,
+            """
+            Independent Auditor's Report
+            Responsibilities of Management and Chief and Council for the
+            Consolidated Financial Statements
+            """,
+        ]
+
+        result = capital_parser.parse_page_texts(pages, fiscal_year="2022-2023")
+
+        self.assertEqual(result["parseStatus"], "manual_review")
+        self.assertIn("No clear statement of operations found", result["warnings"])
+
+    def test_remuneration_heading_near_front_is_not_applicable(self):
+        pages = [
+            """
+            Example First Nation
+            Schedule of Remuneration and Expenses - Chief and Council
+            For the year ended March 31, 2023
+            """
+        ]
+
+        result = capital_parser.parse_page_texts(pages, fiscal_year="2022-2023")
+
+        self.assertEqual(result["parseStatus"], "not_applicable")
+        self.assertFalse(result["publishable"])
+
     def test_one_arrow_manual_capital_overrides_reconcile(self):
         override_path = (
             Path(__file__).resolve().parents[1]
