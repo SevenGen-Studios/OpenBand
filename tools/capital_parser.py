@@ -76,8 +76,16 @@ SKIP_LINE_RE = re.compile(
     r"continued|page \d+)",
     re.I,
 )
-REMUNERATION_DOCUMENT_RE = re.compile(
-    r"schedule of remuneration and expenses|chief and council",
+REMUNERATION_HEADING_RE = re.compile(
+    r"schedule of (?:chief and council )?remuneration and expenses|"
+    r"remuneration and expenses\s*[-:]?\s*(?:chief|council)",
+    re.I,
+)
+AUDITED_DOCUMENT_RE = re.compile(
+    r"independent auditor(?:'s|s') report|"
+    r"(?:consolidated )?financial statements|"
+    r"statement of financial position|"
+    r"statement of (?:consolidated )?(?:operations|financial activities)",
     re.I,
 )
 SEGMENT_SCHEDULE_RE = re.compile(
@@ -402,6 +410,22 @@ def likely_operations_pages(page_texts):
         if score >= 5:
             candidates.append(text)
     return candidates
+
+
+def is_remuneration_only_document(page_texts):
+    """Identify a remuneration schedule without rejecting a full audit package.
+
+    Auditors commonly use the phrase "Chief and Council" in their responsibility
+    report. That phrase is document context, not evidence that the PDF itself is a
+    remuneration schedule. A remuneration-only classification therefore requires
+    a strong schedule heading near the front and no audited-statement evidence.
+    """
+    early_text = "\n".join(page_texts[:3])
+    audit_context = "\n".join(page_texts[:8])
+    return bool(
+        REMUNERATION_HEADING_RE.search(early_text)
+        and not AUDITED_DOCUMENT_RE.search(audit_context)
+    )
 
 
 def inherit_budget_context(page_texts):
@@ -986,8 +1010,7 @@ def parse_page_texts(page_texts, source_url=None, fiscal_year=None):
     position = [record["text"] for record in position_records]
     net_assets = [record["text"] for record in net_asset_records]
     if not operations:
-        full_text = "\n".join(page_texts)
-        if REMUNERATION_DOCUMENT_RE.search(full_text):
+        if is_remuneration_only_document(page_texts):
             return {
                 "parseStatus": "not_applicable",
                 "confidence": "high",
