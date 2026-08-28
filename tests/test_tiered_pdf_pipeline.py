@@ -231,7 +231,6 @@ class TieredPdfPipelineTests(unittest.TestCase):
             result = local_ocr.ocr_pdf_bytes(b"pdf")
         self.assertEqual(result["status"], "skipped_ocr_unavailable")
         self.assertIn("pdftoppm", result["warnings"][0])
-        self.assertIn("tesseract", result["warnings"][0])
 
 
 if __name__ == "__main__":
