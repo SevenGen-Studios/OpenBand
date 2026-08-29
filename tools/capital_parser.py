@@ -16,7 +16,10 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
-from tools import local_ocr
+try:
+    from tools import local_ocr
+except ModuleNotFoundError:  # Direct invocation: python tools/capital_parser.py
+    import local_ocr
 
 try:
     import pdfplumber

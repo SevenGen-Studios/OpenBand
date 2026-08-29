@@ -1,6 +1,8 @@
 import unittest
 import io
 import json
+import subprocess
+import sys
 import urllib.error
 from pathlib import Path
 from unittest import mock
@@ -12,6 +14,18 @@ from tools import apply_capital_overrides
 
 
 class CapitalParserTests(unittest.TestCase):
+    def test_capital_parser_supports_workflow_script_invocation(self):
+        result = subprocess.run(
+            [sys.executable, "tools/capital_parser.py", "--help"],
+            cwd=Path(__file__).resolve().parents[1],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("--use-openai", result.stdout)
+
     def test_auditor_chief_and_council_wording_does_not_reject_statement(self):
         pages = [
             """
