@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-19T14:22:43Z",
-  "before": 33,
-  "after": 36,
-  "newCandidates": 283,
+  "generated": "2026-08-29T17:33:12Z",
+  "before": 36,
+  "after": 31,
+  "newCandidates": 85,
   "sourceRuns": [
     {
       "bandId": 361,
@@ -11,10 +11,11 @@
       "sourceName": "Cowessess First Nation",
       "sourceUrl": "https://cowessessfn.com/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 11,
-      "pagesChecked": 6,
-      "mediaChecked": 3
+      "status": "failed",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "<urlopen error timed out>"
     },
     {
       "bandId": 361,
@@ -33,10 +34,11 @@
       "sourceName": "Cowessess Economic Development",
       "sourceUrl": "https://cowessessfn.com/entities/cowessess-ventures/",
       "sourceType": "Economic Development Organization",
-      "status": "ok",
-      "eventsFound": 7,
-      "pagesChecked": 6,
-      "mediaChecked": 3
+      "status": "failed",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "<urlopen error timed out>"
     },
     {
       "bandId": 361,
@@ -44,10 +46,11 @@
       "sourceName": "Cowessess Paradise Radio 98.1 FM",
       "sourceUrl": "https://cowessessfn.com/news/paradise-radio/",
       "sourceType": "Community Website",
-      "status": "ok",
-      "eventsFound": 7,
-      "pagesChecked": 6,
-      "mediaChecked": 3
+      "status": "failed",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "<urlopen error timed out>"
     },
     {
       "bandId": 366,
@@ -66,11 +69,10 @@
       "sourceName": "Day Star First Nation official website",
       "sourceUrl": "https://www.daystarfirstnation.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
+      "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "error": "HTTP Error 429: Too Many Requests"
+      "pagesChecked": 2,
+      "mediaChecked": 0
     },
     {
       "bandId": 391,
@@ -79,9 +81,9 @@
       "sourceUrl": "https://ggfn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 2,
+      "eventsFound": 0,
       "pagesChecked": 6,
-      "mediaChecked": 2
+      "mediaChecked": 1
     },
     {
       "bandId": 362,
@@ -279,10 +281,11 @@
       "sourceName": "Onion Lake Cree Nation",
       "sourceUrl": "https://onionlake.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 72,
-      "pagesChecked": 6,
-      "mediaChecked": 3
+      "status": "failed",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "<urlopen error timed out>"
     },
     {
       "bandId": 344,
@@ -290,10 +293,11 @@
       "sourceName": "Onion Lake Cree Nation official website",
       "sourceUrl": "https://www.onionlake.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 92,
-      "pagesChecked": 6,
-      "mediaChecked": 3
+      "status": "failed",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "<urlopen error timed out>"
     },
     {
       "bandId": 383,
@@ -302,7 +306,7 @@
       "sourceUrl": "https://www.pasquafn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 2,
+      "eventsFound": 0,
       "pagesChecked": 6,
       "mediaChecked": 1
     },
@@ -324,7 +328,7 @@
       "sourceUrl": "https://pbcn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 8,
+      "eventsFound": 20,
       "pagesChecked": 6,
       "mediaChecked": 0
     },
@@ -368,10 +372,11 @@
       "sourceName": "The Key First Nation official website",
       "sourceUrl": "https://www.keyband.com/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
+      "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 3
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "<urlopen error timed out>"
     },
     {
       "bandId": 349,
@@ -402,7 +407,7 @@
       "sourceUrl": "https://www.whitecapdakota.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 3,
+      "eventsFound": 4,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -413,7 +418,7 @@
       "sourceUrl": "https://www.woodmountainlakotafn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 18,
+      "eventsFound": 22,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -446,11 +451,10 @@
       "sourceName": "Ahtahkakoop Community News Archive",
       "sourceUrl": "https://www.ahtahkakoop.ca/news/category/all",
       "sourceType": "Community Website",
-      "status": "failed",
+      "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "error": "HTTP Error 429: Too Many Requests"
+      "pagesChecked": 4,
+      "mediaChecked": 3
     },
     {
       "bandId": 406,
@@ -458,11 +462,10 @@
       "sourceName": "Ahtahkakoop Cree Nation official website",
       "sourceUrl": "https://www.ahtahkakoop.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
+      "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "error": "HTTP Error 429: Too Many Requests"
+      "pagesChecked": 4,
+      "mediaChecked": 3
     },
     {
       "bandId": 398,
@@ -528,11 +531,10 @@
       "sourceName": "Flying Dust First Nation",
       "sourceUrl": "https://www.flyingdust.net/",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
-      "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "error": "HTTP Error 429: Too Many Requests"
+      "status": "ok",
+      "eventsFound": 2,
+      "pagesChecked": 6,
+      "mediaChecked": 1
     },
     {
       "bandId": 353,
@@ -543,7 +545,7 @@
       "status": "ok",
       "eventsFound": 0,
       "pagesChecked": 6,
-      "mediaChecked": 3
+      "mediaChecked": 0
     },
     {
       "bandId": 340,
@@ -551,10 +553,11 @@
       "sourceName": "Little Pine First Nation official website",
       "sourceUrl": "https://littlepine.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
+      "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 1,
-      "mediaChecked": 0
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "HTTP Error 500: Internal Server Error"
     },
     {
       "bandId": 354,
@@ -595,10 +598,11 @@
       "sourceName": "Muscowpetung First Nation",
       "sourceUrl": "https://muscowpetung.com/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 2,
-      "pagesChecked": 6,
-      "mediaChecked": 3
+      "status": "failed",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "<urlopen error timed out>"
     },
     {
       "bandId": 381,
@@ -606,10 +610,11 @@
       "sourceName": "Muscowpetung First Nation official website",
       "sourceUrl": "https://www.muscowpetung.com/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 1,
-      "pagesChecked": 6,
-      "mediaChecked": 3
+      "status": "failed",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "<urlopen error timed out>"
     },
     {
       "bandId": 375,
@@ -617,10 +622,11 @@
       "sourceName": "Muskeg Lake Cree Nation",
       "sourceUrl": "https://muskeglake.com/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 7,
-      "pagesChecked": 6,
-      "mediaChecked": 3
+      "status": "failed",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "<urlopen error timed out>"
     },
     {
       "bandId": 375,
@@ -628,10 +634,11 @@
       "sourceName": "Muskeg Lake Cree Nation official website",
       "sourceUrl": "https://www.muskeglake.com/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 7,
-      "pagesChecked": 6,
-      "mediaChecked": 3
+      "status": "failed",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "<urlopen error timed out>"
     },
     {
       "bandId": 392,
@@ -721,7 +728,7 @@
       "sourceType": "Official First Nation Website",
       "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 4,
+      "pagesChecked": 3,
       "mediaChecked": 0
     },
     {
@@ -765,7 +772,7 @@
       "sourceUrl": "https://calendar.powwows.com/events/categories/pow-wows-in-saskatchewan/",
       "sourceType": "Regional Event Index",
       "status": "ok",
-      "eventsFound": 10,
+      "eventsFound": 6,
       "pagesChecked": 2,
       "mediaChecked": 0
     },
@@ -776,7 +783,7 @@
       "sourceUrl": "https://support.windspeaker.com/powwows",
       "sourceType": "Indigenous Media Event Index",
       "status": "ok",
-      "eventsFound": 4,
+      "eventsFound": 3,
       "pagesChecked": 1,
       "mediaChecked": 0
     },
@@ -787,15 +794,15 @@
       "sourceUrl": "https://otc.ca/events/list/",
       "sourceType": "Treaty Organization",
       "status": "ok",
-      "eventsFound": 2,
+      "eventsFound": 0,
       "pagesChecked": 1,
       "mediaChecked": 0
     }
   ],
-  "reviewCount": 17,
+  "reviewCount": 0,
   "statusCounts": {
     "authorized_api_required": 9,
-    "failed": 16,
-    "ok": 45
+    "failed": 23,
+    "ok": 38
   }
 }
