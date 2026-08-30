@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-29T16:54:57Z",
-  "articlesBefore": 116,
-  "articlesAfter": 121,
-  "newAccepted": 5,
+  "generated": "2026-08-30T16:55:41Z",
+  "articlesBefore": 121,
+  "articlesAfter": 122,
+  "newAccepted": 1,
   "invalidExistingRemoved": [],
-  "manualReviewCount": 204,
-  "mediaDocumentsChecked": 141,
+  "manualReviewCount": 203,
+  "mediaDocumentsChecked": 140,
   "mediaDocumentsExtracted": 8,
-  "sourceFailureCount": 9,
+  "sourceFailureCount": 14,
   "communitiesTracked": 69,
   "communitiesWithResults": 29,
   "communitiesWithRecentResults": 19,
@@ -372,13 +372,13 @@
     {
       "bandId": 348,
       "communityName": "Sweetgrass First Nation",
-      "resultCount": 5,
-      "resultsLast90Days": 1,
-      "newestResult": "2026-08-19",
+      "resultCount": 6,
+      "resultsLast90Days": 2,
+      "newestResult": "2026-08-30",
       "knownSourceCount": 1,
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
-      "manualReviewCount": 9,
+      "manualReviewCount": 8,
       "failedSourceCount": 0
     },
     {
@@ -655,7 +655,7 @@
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
       "manualReviewCount": 5,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 343,
@@ -667,7 +667,7 @@
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
       "manualReviewCount": 5,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 381,
@@ -703,7 +703,7 @@
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 1
+      "failedSourceCount": 2
     },
     {
       "bandId": 380,
@@ -715,7 +715,7 @@
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 1
+      "failedSourceCount": 2
     },
     {
       "bandId": 408,
@@ -727,7 +727,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 382,
@@ -970,6 +970,46 @@
       "sourceType": "Official First Nation Website",
       "url": "https://www.jamessmithcreenation.com/",
       "reason": "URLError: <urlopen error [Errno 111] Connection refused>"
+    },
+    {
+      "bandId": 342,
+      "communityName": "Moosomin First Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "URLError: <urlopen error _ssl.c:999: The handshake operation timed out>"
+    },
+    {
+      "bandId": 343,
+      "communityName": "Mosquito, Grizzly Bear's Head, Lean Man",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "URLError: <urlopen error _ssl.c:999: The handshake operation timed out>"
+    },
+    {
+      "bandId": 392,
+      "communityName": "Muskowekwan First Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "URLError: <urlopen error _ssl.c:999: The handshake operation timed out>"
+    },
+    {
+      "bandId": 380,
+      "communityName": "Nekaneet Cree Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "URLError: <urlopen error _ssl.c:999: The handshake operation timed out>"
+    },
+    {
+      "bandId": 408,
+      "communityName": "Ocean Man First Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "URLError: <urlopen error _ssl.c:999: The handshake operation timed out>"
     }
   ],
   "sourceRuns": [
