@@ -155,8 +155,11 @@ The public site includes a centralized, production-only analytics service in
 internal events, retries failed submissions, respects Do Not Track, and avoids
 arbitrary search text.
 
-The optional internal API and protected aggregate dashboard are in
-`analytics-worker/` and `/admin/analytics/`. The site remains fully static;
+The optional internal API and protected dashboards are in `analytics-worker/`,
+`/admin/analytics/`, and `/admin/intelligence/`. OpenBand Intelligence derives
+provenance-linked financial metrics and neutral research signals from the
+existing `data.json`; it does not publish leaderboards or alter the public
+OpenBand identity. The site remains fully static;
 the API deploys separately to Cloudflare Workers with D1. Analytics is disabled
 in the committed default configuration so an unfinished endpoint never collects
 or queues data. Follow `analytics-worker/README.md` to deploy it and set the

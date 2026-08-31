@@ -11,6 +11,7 @@ database_id = "REPLACE_WITH_D1_DATABASE_ID"
 [vars]
 ALLOWED_ORIGINS = "https://openband.ca,https://www.openband.ca"
 DATA_RETENTION_DAYS = "760"
+INTELLIGENCE_DATA_URL = "https://openband.ca/data.json"
 
 [triggers]
 crons = ["17 4 * * *"]

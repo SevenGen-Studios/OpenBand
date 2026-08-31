@@ -112,7 +112,7 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("route.page==='enterprise'?'capital':route.tab", script)
 
     def test_indexable_routes_and_seo_files_exist(self):
-        for relative in ["browse/index.html", "news/index.html", "admin/index.html", "admin/analytics/index.html", "robots.txt", "sitemap.xml", "map-data.json", "contacts-data.json", "jobs-data.json", "jobs-schema.json", "jobs-sources.json", "jobs-overrides.json", "jobs-coverage-report.json", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js", "community-enterprise.json"]:
+        for relative in ["browse/index.html", "news/index.html", "admin/index.html", "admin/analytics/index.html", "admin/intelligence/index.html", "robots.txt", "sitemap.xml", "map-data.json", "contacts-data.json", "jobs-data.json", "jobs-schema.json", "jobs-sources.json", "jobs-overrides.json", "jobs-coverage-report.json", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js", "assets/intelligence-admin.js", "assets/intelligence-admin.css", "community-enterprise.json"]:
             self.assertTrue((ROOT / relative).is_file(), relative)
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
         self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 3)
@@ -137,10 +137,11 @@ class SiteRouteTests(unittest.TestCase):
         portal = (ROOT / "admin" / "index.html").read_text(encoding="utf-8")
         self.assertIn('content="noindex,nofollow,noarchive"', portal)
         self.assertIn('href="/admin/analytics/"', portal)
+        self.assertIn('href="/admin/intelligence/"', portal)
         self.assertIn("analytics.google.com", portal)
         self.assertIn("openband-analytics", portal)
         self.assertIn("workers/d1/databases", portal)
-        self.assertIn("github.com/Sheekee011/openband-v2/actions", portal)
+        self.assertIn("github.com/SevenGen-Studios/OpenBand/actions", portal)
         self.assertNotIn("ANALYTICS_ADMIN_TOKEN", portal)
         self.assertNotIn("Bearer ", portal)
 

@@ -1,3 +1,5 @@
+import {buildIntelligence, IntelligenceReport, NationAnalysis, OfficialAnalysis, StoryLead} from "./intelligence";
+
 interface D1Result<T = Record<string, unknown>> { results?: T[]; success: boolean; }
 interface D1PreparedStatement {
   bind(...values: unknown[]): D1PreparedStatement;
@@ -16,6 +18,7 @@ interface Env {
   ANALYTICS_ADMIN_TOKEN: string;
   ALLOWED_ORIGINS: string;
   DATA_RETENTION_DAYS?: string;
+  INTELLIGENCE_DATA_URL?: string;
 }
 
 interface IncomingEvent {
@@ -56,7 +59,7 @@ const json = (value: unknown, status = 200, headers: HeadersInit = {}) => new Re
 );
 
 const allowedOrigins = (env: Env) => new Set((env.ALLOWED_ORIGINS || "https://openband.ca").split(",").map(value => value.trim()).filter(Boolean));
-const corsHeaders = (request: Request, env: Env) => {
+const corsHeaders = (request: Request, env: Env): Record<string, string> => {
   const origin = request.headers.get("Origin") || "";
   return allowedOrigins(env).has(origin)
     ? {"Access-Control-Allow-Origin": origin, "Access-Control-Allow-Methods": "GET,POST,OPTIONS", "Access-Control-Allow-Headers": "Authorization,Content-Type", "Vary": "Origin"}
@@ -164,6 +167,55 @@ const authorize = (request: Request, env: Env) => {
   const token = request.headers.get("Authorization")?.replace(/^Bearer\s+/i, "") || "";
   return Boolean(env.ANALYTICS_ADMIN_TOKEN && safeEqual(token, env.ANALYTICS_ADMIN_TOKEN));
 };
+let intelligenceCache: {sourceUrl: string; expiresAt: number; report: IntelligenceReport} | null = null;
+const normalizedFilter = (value: string | null) => (value || "").normalize("NFKC").toLocaleLowerCase("en-CA").trim();
+const includesFilter = (value: unknown, filter: string) => !filter || String(value || "").normalize("NFKC").toLocaleLowerCase("en-CA").includes(filter);
+const boundedPage = (url: URL) => ({
+  limit: Math.min(500, Math.max(1, Number(url.searchParams.get("limit")) || 100)),
+  offset: Math.max(0, Number(url.searchParams.get("offset")) || 0)
+});
+
+async function loadIntelligence(env: Env, refresh: boolean): Promise<IntelligenceReport> {
+  const sourceUrl = env.INTELLIGENCE_DATA_URL || "https://openband.ca/data.json";
+  if (!refresh && intelligenceCache && intelligenceCache.sourceUrl === sourceUrl && intelligenceCache.expiresAt > Date.now()) return intelligenceCache.report;
+  const response = await fetch(sourceUrl, {headers: {Accept: "application/json"}, cf: {cacheEverything: true, cacheTtl: 300}} as RequestInit);
+  if (!response.ok) throw new Error(`OpenBand data source returned ${response.status}`);
+  const report = buildIntelligence(await response.json() as Record<string, unknown>);
+  intelligenceCache = {sourceUrl, expiresAt: Date.now() + 300000, report};
+  return report;
+}
+
+async function intelligence(request: Request, env: Env): Promise<Response> {
+  const headers = corsHeaders(request, env);
+  if (!authorize(request, env)) return json({error: "unauthorized"}, 401, {...headers, "WWW-Authenticate": "Bearer"});
+  const url = new URL(request.url), section = url.searchParams.get("section") || "overview";
+  const nation = normalizedFilter(url.searchParams.get("nation")), official = normalizedFilter(url.searchParams.get("official"));
+  const year = url.searchParams.get("year") || "", type = url.searchParams.get("type") || "", strengthFilter = url.searchParams.get("strength") || "";
+  const {limit, offset} = boundedPage(url);
+  try {
+    const report = await loadIntelligence(env, url.searchParams.get("refresh") === "1");
+    if (section === "overview") return json({generatedAt: report.generatedAt, sourceGeneratedAt: report.sourceGeneratedAt, overview: report.overview, dataQuality: report.dataQuality, priorityStoryLeads: report.storyLeads.slice(0, 25)}, 200, headers);
+    if (section === "leads") {
+      const matches = (lead: StoryLead) => includesFilter(lead.nation, nation) && includesFilter(lead.official, official) && (!year || lead.fiscalYear === year) && (!type || lead.type === type) && (!strengthFilter || lead.signalStrength === strengthFilter);
+      const filtered = report.storyLeads.filter(matches);
+      return json({generatedAt: report.generatedAt, total: filtered.length, offset, limit, results: filtered.slice(offset, offset + limit)}, 200, headers);
+    }
+    if (section === "officials") {
+      const matches = (item: OfficialAnalysis) => includesFilter(item.provenance.nation, nation) && includesFilter(item.official, official) && (!year || item.provenance.fiscalYear === year);
+      const filtered = report.officialAnalysis.filter(matches).sort((left, right) => right.provenance.fiscalYear.localeCompare(left.provenance.fiscalYear) || left.provenance.nation.localeCompare(right.provenance.nation) || left.official.localeCompare(right.official));
+      return json({generatedAt: report.generatedAt, total: filtered.length, offset, limit, results: filtered.slice(offset, offset + limit)}, 200, headers);
+    }
+    if (section === "nations") {
+      const matches = (item: NationAnalysis) => includesFilter(item.nation, nation) && (!year || item.fiscalYear === year);
+      const filtered = report.nationAnalysis.filter(matches).sort((left, right) => right.fiscalYear.localeCompare(left.fiscalYear) || left.nation.localeCompare(right.nation));
+      return json({generatedAt: report.generatedAt, total: filtered.length, offset, limit, results: filtered.slice(offset, offset + limit)}, 200, headers);
+    }
+    if (section === "quality") return json({generatedAt: report.generatedAt, dataQuality: report.dataQuality, pendingFilings: report.storyLeads.filter(lead => lead.scope === "filing").slice(offset, offset + limit)}, 200, headers);
+    return json({error: "invalid_section"}, 400, headers);
+  } catch (caught) {
+    return json({error: "intelligence_unavailable", message: caught instanceof Error ? caught.message : "The intelligence report could not be generated."}, 503, headers);
+  }
+}
 const rows = async <T = Record<string, unknown>>(env: Env, sql: string, ...bindings: unknown[]) =>
   (await env.DB.prepare(sql).bind(...bindings).all<T>()).results || [];
 const first = async <T = Record<string, unknown>>(env: Env, sql: string, ...bindings: unknown[]) =>
@@ -204,6 +256,7 @@ async function handle(request: Request, env: Env): Promise<Response> {
   if (request.method === "OPTIONS") return new Response(null, {status: 204, headers: corsHeaders(request, env)});
   if (url.pathname === "/v1/events" && request.method === "POST") return ingest(request, env);
   if (url.pathname === "/v1/dashboard" && request.method === "GET") return dashboard(request, env);
+  if (url.pathname === "/v1/intelligence" && request.method === "GET") return intelligence(request, env);
   if (url.pathname === "/health") return json({status: "ok"});
   return json({error: "not_found"}, 404);
 }
