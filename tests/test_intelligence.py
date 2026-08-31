@@ -42,12 +42,22 @@ class IntelligenceTests(unittest.TestCase):
             "otherPaymentsPercentage", "nonRemunerationPercentage", "yoy", "threeYearChange", "trends",
             "expense_heavy", "other_payment_heavy", "large_yoy_change", "high_total",
             "extreme_one_year_value", "multi_year_trend", "data_anomaly",
+            "consolidateLeads", "credibilityScore", "MATERIAL_CHANGE",
         ]:
             with self.subTest(value=value):
                 self.assertIn(value, self.engine)
         for section in ["overview", "leads", "officials", "nations", "quality"]:
             with self.subTest(section=section):
                 self.assertIn(f'section === "{section}"', self.worker)
+
+    def test_history_and_story_leads_avoid_false_duplicates(self):
+        self.assertIn("official.officialKey}:${canonical(official.role)}", self.engine)
+        self.assertIn('const key = `${lead.scope}:${recordId}`', self.engine)
+        self.assertIn("corroboratingSignals", self.engine)
+        self.assertIn("Math.abs(yoy.amount) >= floor", self.engine)
+        self.assertIn("Math.abs(trendChange.percent) >= 20", self.engine)
+        self.assertIn('lead.scope === "filing" || (lead.credibilityScore || 0) >= 70', self.engine)
+        self.assertIn("lead.signalTypes || [lead.type]", self.worker)
 
 
 if __name__ == "__main__":

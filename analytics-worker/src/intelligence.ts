@@ -122,6 +122,9 @@ export interface StoryLead {
   role?: string;
   fiscalYear: string;
   signalStrength: "very_high" | "high" | "moderate";
+  credibilityScore?: number;
+  credibilityLabel?: "strong" | "supported" | "review";
+  signalTypes?: string[];
   reason: string;
   evidence: Record<string, unknown>;
   amounts?: Amounts;
@@ -156,6 +159,7 @@ const fiscalStart = (value: unknown) => { const match = /^(\d{4})-(\d{4})$/.exec
 const ratio = (numerator: Amount, denominator: Amount): Amount => numerator == null || denominator == null || denominator <= 0 ? null : Math.round(numerator / denominator * 1000000) / 10000;
 const completeSum = (values: Amount[]): Amount => values.length && values.every(value => value != null) ? values.reduce((sum, value) => sum + (value as number), 0) : null;
 const change = (current: Amount, previous: Amount): Change | null => current == null || previous == null ? null : {amount: current - previous, percent: previous === 0 ? null : Math.round((current - previous) / Math.abs(previous) * 1000000) / 10000};
+const fieldLabel = (value: unknown) => text(value).replace(/([a-z])([A-Z])/g, "$1 $2").toLocaleLowerCase("en-CA");
 const percentile = (values: number[], fraction: number): number | null => {
   const sorted = values.filter(Number.isFinite).sort((left, right) => left - right);
   if (!sorted.length) return null;
@@ -213,7 +217,10 @@ function normalize(raw: SourceData) {
 function addOfficialHistory(officials: OfficialAnalysis[]) {
   const histories = new Map<string, OfficialAnalysis[]>();
   for (const official of officials) {
-    const key = `${official.provenance.nationId}:${official.officialKey}`;
+    // A person can legitimately appear more than once in a filing after a role
+    // change. Keep those role histories separate so YoY comparisons never join
+    // a Chief record to a Councillor record (or vice versa).
+    const key = `${official.provenance.nationId}:${official.officialKey}:${canonical(official.role)}`;
     if (!histories.has(key)) histories.set(key, []);
     histories.get(key)!.push(official);
   }
@@ -292,6 +299,59 @@ function officialLead(type: string, official: OfficialAnalysis, reason: string, 
   return {leadId: `${type}:${official.recordId}:${text(evidence.field)}`, type, scope: "official", nation: official.provenance.nation, nationId: official.provenance.nationId, official: official.official, role: official.role, fiscalYear: official.provenance.fiscalYear, signalStrength, reason, evidence, amounts: official.amounts, requiresManualVerification: true, interpretationGuardrail: DISCLAIMER, provenance: official.provenance as unknown as Record<string, unknown>};
 }
 
+const MATERIAL_CHANGE: Record<string, number> = {remuneration: 5000, expenses: 2500, otherPayments: 2500, totalReported: 5000};
+const TYPE_WEIGHT: Record<string, number> = {data_anomaly: 18, extreme_one_year_value: 12, high_total: 10, large_yoy_change: 8, nation_expense_average: 7, expense_heavy: 6, other_payment_heavy: 6, multi_year_trend: 2};
+const STRENGTH_WEIGHT: Record<StoryLead["signalStrength"], number> = {very_high: 74, high: 62, moderate: 44};
+
+function candidateCredibility(lead: StoryLead) {
+  let score = STRENGTH_WEIGHT[lead.signalStrength] + (TYPE_WEIGHT[lead.type] || 0);
+  const sourceCount = Array.isArray(lead.provenance.sourceUrls) ? lead.provenance.sourceUrls.length : text(lead.provenance.sourceUrl) ? 1 : 0;
+  if (sourceCount) score += 4;
+  if (Number(lead.evidence.cohortSize) >= 50) score += 4;
+  if (lead.evidence.previousFiscalYear || Array.isArray(lead.evidence.years)) score += 4;
+  if (lead.amounts?.totalReported != null && lead.amounts.totalReported > 0) score += 3;
+  return Math.min(100, score);
+}
+
+function consolidateLeads(candidates: StoryLead[]) {
+  const groups = new Map<string, StoryLead[]>();
+  for (const lead of candidates) {
+    const recordId = text(lead.provenance.recordId) || text(lead.provenance.filingId) || `${lead.nationId}:${lead.fiscalYear}`;
+    const key = `${lead.scope}:${recordId}`;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key)!.push(lead);
+  }
+  const strengthOrder = {very_high: 0, high: 1, moderate: 2};
+  const consolidated = [...groups.values()].map(group => {
+    const unique = [...new Map(group.map(lead => [`${lead.type}:${lead.reason}`, lead])).values()];
+    unique.sort((left, right) => candidateCredibility(right) - candidateCredibility(left) || strengthOrder[left.signalStrength] - strengthOrder[right.signalStrength]);
+    const primary = unique[0], secondary = unique.slice(1);
+    const credibilityScore = Math.min(100, candidateCredibility(primary) + Math.min(12, secondary.length * 4));
+    const credibilityLabel: StoryLead["credibilityLabel"] = credibilityScore >= 85 ? "strong" : credibilityScore >= 70 ? "supported" : "review";
+    const signalTypes = [...new Set(unique.map(lead => lead.type))];
+    const describeSignal = (lead: StoryLead) => `${lead.type.replace(/_/g, " ")}${lead.evidence.field ? ` (${fieldLabel(lead.evidence.field)})` : ""}`;
+    const corroboration = secondary.length ? ` Corroborating signal${secondary.length === 1 ? "" : "s"}: ${secondary.map(describeSignal).join(", ")}.` : "";
+    return {
+      ...primary,
+      leadId: `story:${primary.scope}:${text(primary.provenance.recordId) || text(primary.provenance.filingId) || `${primary.nationId}:${primary.fiscalYear}`}`,
+      reason: `${primary.reason}${corroboration}`,
+      credibilityScore,
+      credibilityLabel,
+      signalTypes,
+      evidence: {
+        ...primary.evidence,
+        credibility: {score: credibilityScore, label: credibilityLabel, signalCount: unique.length},
+        corroboratingSignals: secondary.map(lead => ({type: lead.type, strength: lead.signalStrength, reason: lead.reason, evidence: lead.evidence}))
+      }
+    } as StoryLead;
+  });
+  return consolidated
+    // A monotonic pattern by itself is analysis context, not yet a story lead.
+    // Filing-quality exceptions remain visible in the Data Quality workflow.
+    .filter(lead => lead.scope === "filing" || (lead.credibilityScore || 0) >= 70)
+    .sort((left, right) => (right.credibilityScore || 0) - (left.credibilityScore || 0) || strengthOrder[left.signalStrength] - strengthOrder[right.signalStrength] || (Number(right.fiscalYear.slice(0, 4)) || 0) - (Number(left.fiscalYear.slice(0, 4)) || 0) || left.type.localeCompare(right.type));
+}
+
 function signals(officials: OfficialAnalysis[], nations: NationAnalysis[], filings: Array<Record<string, unknown>>): StoryLead[] {
   const leads: StoryLead[] = [], years = [...new Set(officials.map(item => item.provenance.fiscalYear))];
   const duplicateCounts = new Map<string, number>();
@@ -320,14 +380,14 @@ function signals(officials: OfficialAnalysis[], nations: NationAnalysis[], filin
   for (const official of officials) {
     const cohort = thresholds.get(official.provenance.fiscalYear) || {};
     const expense = official.metrics.expensesPercentage, expenseT = cohort.expensesPercentage;
-    if (expense != null && expenseT && expense >= Math.max(50, expenseT.p95)) leads.push(officialLead("expense_heavy", official, `Expenses are ${expense.toFixed(1)}% of total reported payments.`, strength(expense, expenseT.p95, expenseT.p99), {expensesPercentage: expense, fiscalYearP95: expenseT.p95, cohortSize: expenseT.count}));
+    if (expense != null && official.amounts.expenses != null && official.amounts.expenses >= MATERIAL_CHANGE.expenses && expenseT && expense >= Math.max(50, expenseT.p95)) leads.push(officialLead("expense_heavy", official, `Expenses are ${expense.toFixed(1)}% of total reported payments and exceed the $${MATERIAL_CHANGE.expenses.toLocaleString("en-CA")} materiality floor.`, strength(expense, expenseT.p95, expenseT.p99), {expensesPercentage: expense, expenses: official.amounts.expenses, materialityFloor: MATERIAL_CHANGE.expenses, fiscalYearP95: expenseT.p95, cohortSize: expenseT.count}));
     const other = official.amounts.otherPayments, remuneration = official.amounts.remuneration, otherT = cohort.otherRatio;
-    if (other != null && remuneration != null && remuneration !== 0 && otherT) { const value = other / remuneration * 100; if (value >= Math.max(50, otherT.p95)) leads.push(officialLead("other_payment_heavy", official, `Other reported payments are ${value.toFixed(1)}% of remuneration.`, strength(value, otherT.p95, otherT.p99), {otherToRemunerationPercentage: value, fiscalYearP95: otherT.p95, cohortSize: otherT.count})); }
+    if (other != null && other >= MATERIAL_CHANGE.otherPayments && remuneration != null && remuneration !== 0 && otherT) { const value = other / remuneration * 100; if (value >= Math.max(50, otherT.p95)) leads.push(officialLead("other_payment_heavy", official, `Other reported payments are ${value.toFixed(1)}% of remuneration and exceed the $${MATERIAL_CHANGE.otherPayments.toLocaleString("en-CA")} materiality floor.`, strength(value, otherT.p95, otherT.p99), {otherToRemunerationPercentage: value, otherPayments: other, materialityFloor: MATERIAL_CHANGE.otherPayments, fiscalYearP95: otherT.p95, cohortSize: otherT.count})); }
     const total = official.amounts.totalReported, totalT = cohort.totalReported;
     if (total != null && totalT && total >= totalT.p95) leads.push(officialLead("high_total", official, `Total reported payments are at or above the fiscal-year 95th percentile ($${Math.round(totalT.p95).toLocaleString("en-CA")}).`, strength(total, totalT.p95, totalT.p99), {totalReported: total, fiscalYearP95: totalT.p95, cohortSize: totalT.count}));
-    for (const field of ["remuneration", "expenses", "otherPayments"] as const) { const value = official.amounts[field], threshold = cohort[field]; if (value != null && threshold && value >= threshold.p99) leads.push(officialLead("extreme_one_year_value", official, `${field.replace(/([A-Z])/g, " $1")} is at or above the fiscal-year 99th percentile.`, "very_high", {field, value, fiscalYearP99: threshold.p99, cohortSize: threshold.count})); }
-    for (const field of FIELDS) { const yoy = official.yoy[field] as Change | null, threshold = cohort[`yoy_${field}`], magnitude = Math.abs(yoy?.percent || 0); if (yoy?.percent != null && threshold && magnitude >= Math.max(50, threshold.p95)) leads.push(officialLead("large_yoy_change", official, `${field.replace(/([A-Z])/g, " $1")} ${yoy.percent > 0 ? "increased" : "decreased"} ${magnitude.toFixed(1)}% from the previous consecutive fiscal year.`, strength(magnitude, threshold.p95, threshold.p99), {field, change: yoy, previousFiscalYear: official.yoy.previousFiscalYear, fiscalYearP95: threshold.p95, cohortSize: threshold.count})); }
-    for (const [field, trend] of Object.entries(official.trends)) leads.push(officialLead("multi_year_trend", official, `${field.replace(/([A-Z])/g, " $1")} moved in the same direction for three consecutive fiscal years.`, "moderate", {field, ...trend}));
+    for (const field of ["remuneration", "expenses", "otherPayments"] as const) { const value = official.amounts[field], threshold = cohort[field], verb = field === "remuneration" ? "is" : "are"; if (value != null && threshold && value >= threshold.p99) leads.push(officialLead("extreme_one_year_value", official, `${fieldLabel(field).replace(/^./, letter => letter.toLocaleUpperCase("en-CA"))} ${verb} at or above the fiscal-year 99th percentile.`, "very_high", {field, value, fiscalYearP99: threshold.p99, cohortSize: threshold.count})); }
+    for (const field of FIELDS) { const yoy = official.yoy[field] as Change | null, threshold = cohort[`yoy_${field}`], magnitude = Math.abs(yoy?.percent || 0), floor = MATERIAL_CHANGE[field] || 5000; if (yoy?.percent != null && Math.abs(yoy.amount) >= floor && threshold && magnitude >= Math.max(50, threshold.p95)) leads.push(officialLead("large_yoy_change", official, `${field.replace(/([A-Z])/g, " $1")} ${yoy.percent > 0 ? "increased" : "decreased"} ${magnitude.toFixed(1)}% ($${Math.round(Math.abs(yoy.amount)).toLocaleString("en-CA")}) from the previous consecutive fiscal year.`, strength(magnitude, threshold.p95, threshold.p99), {field, change: yoy, absoluteMaterialityFloor: floor, previousFiscalYear: official.yoy.previousFiscalYear, fiscalYearP95: threshold.p95, cohortSize: threshold.count})); }
+    for (const [field, trend] of Object.entries(official.trends)) { const trendChange = change(trend.values[2], trend.values[0]), floor = MATERIAL_CHANGE[field] || 5000; if (trendChange?.percent != null && Math.abs(trendChange.percent) >= 20 && Math.abs(trendChange.amount) >= floor) leads.push(officialLead("multi_year_trend", official, `${field.replace(/([A-Z])/g, " $1")} moved ${trend.direction} for three consecutive fiscal years, changing ${Math.abs(trendChange.percent).toFixed(1)}% ($${Math.round(Math.abs(trendChange.amount)).toLocaleString("en-CA")}) overall.`, "moderate", {field, ...trend, threeYearChange: trendChange, minimumPercentChange: 20, absoluteMaterialityFloor: floor})); }
     const negative = Object.entries(official.amounts).filter(([, value]) => value != null && value < 0).map(([field]) => field);
     const missingCore = (["remuneration", "totalReported"] as const).filter(field => official.amounts[field] == null);
     const impossiblePercentages = Object.entries({expenses: official.metrics.expensesPercentage, remuneration: official.metrics.remunerationPercentage, otherPayments: official.metrics.otherPaymentsPercentage}).filter(([, value]) => value != null && (value < 0 || value > 100.01)).map(([field, value]) => ({field, value}));
@@ -342,11 +402,10 @@ function signals(officials: OfficialAnalysis[], nations: NationAnalysis[], filin
   for (const nation of nations) {
     const values = nationCohorts.get(nation.fiscalYear) || [], threshold = values.length >= 5 ? percentile(values, .95) : null, average = nation.perOfficialAverages.expenses;
     if (average != null && threshold != null && average >= threshold) leads.push({leadId: `nation_expense_average:${nation.nationId}:${nation.fiscalYear}`, type: "nation_expense_average", scope: "nation", nation: nation.nation, nationId: nation.nationId, official: null, fiscalYear: nation.fiscalYear, signalStrength: "high", reason: `Average reported expenses per official ($${Math.round(average).toLocaleString("en-CA")}) are at or above the fiscal-year 95th percentile.`, evidence: {averageExpenses: average, fiscalYearP95: threshold, cohortSize: values.length, officialCount: nation.officialCount}, requiresManualVerification: true, interpretationGuardrail: DISCLAIMER, provenance: {recordIds: nation.recordIds, sourceUrls: nation.sourceUrls}});
-    for (const [field, trend] of Object.entries(nation.trends)) leads.push({leadId: `multi_year_trend:${nation.nationId}:${nation.fiscalYear}:${field}`, type: "multi_year_trend", scope: "nation", nation: nation.nation, nationId: nation.nationId, official: null, fiscalYear: nation.fiscalYear, signalStrength: "moderate", reason: `Per-official average ${field.replace(/([A-Z])/g, " $1")} moved in the same direction for three consecutive fiscal years.`, evidence: {field, ...trend}, requiresManualVerification: true, interpretationGuardrail: DISCLAIMER, provenance: {recordIds: nation.recordIds, sourceUrls: nation.sourceUrls}});
+    for (const [field, trend] of Object.entries(nation.trends)) { const trendChange = change(trend.values[2], trend.values[0]), floor = MATERIAL_CHANGE[field] || 5000; if (trendChange?.percent != null && Math.abs(trendChange.percent) >= 20 && Math.abs(trendChange.amount) >= floor) leads.push({leadId: `multi_year_trend:${nation.nationId}:${nation.fiscalYear}:${field}`, type: "multi_year_trend", scope: "nation", nation: nation.nation, nationId: nation.nationId, official: null, fiscalYear: nation.fiscalYear, signalStrength: "moderate", reason: `Per-official average ${field.replace(/([A-Z])/g, " $1")} moved ${trend.direction} for three consecutive fiscal years, changing ${Math.abs(trendChange.percent).toFixed(1)}% overall.`, evidence: {field, ...trend, threeYearChange: trendChange, minimumPercentChange: 20, absoluteMaterialityFloor: floor}, requiresManualVerification: true, interpretationGuardrail: DISCLAIMER, provenance: {recordIds: nation.recordIds, sourceUrls: nation.sourceUrls}}); }
   }
   for (const filing of filings) if (filing.isRemunerationFiling && filing.posted && !filing.parsedRecordCount) leads.push({leadId: `unparsed_filing:${filing.filingId}`, type: "data_anomaly", scope: "filing", nation: text(filing.nation), nationId: text(filing.nationId), official: null, fiscalYear: text(filing.fiscalYear), signalStrength: "moderate", reason: `Posted remuneration filing has no parsed official records (status: ${text(filing.parseStatus)}).`, evidence: {issue: "posted_unparsed_filing", parseStatus: filing.parseStatus, technicalStatus: filing.technicalStatus, warnings: filing.warnings}, requiresManualVerification: true, interpretationGuardrail: DISCLAIMER, provenance: filing});
-  const strengthOrder = {very_high: 0, high: 1, moderate: 2};
-  return leads.sort((left, right) => strengthOrder[left.signalStrength] - strengthOrder[right.signalStrength] || (Number(right.fiscalYear.slice(0, 4)) || 0) - (Number(left.fiscalYear.slice(0, 4)) || 0) || left.type.localeCompare(right.type));
+  return consolidateLeads(leads);
 }
 
 export function buildIntelligence(raw: SourceData): IntelligenceReport {
@@ -355,8 +414,8 @@ export function buildIntelligence(raw: SourceData): IntelligenceReport {
   const nations = nationMetrics(officials), storyLeads = signals(officials, nations, filings);
   const fiscalYears = [...new Set(officials.map(item => item.provenance.fiscalYear).filter(Boolean))].sort();
   const nationNames = [...new Set(officials.map(item => item.provenance.nation).filter(Boolean))].sort((left, right) => left.localeCompare(right));
-  const signalTypes = [...new Set(storyLeads.map(item => item.type))].sort();
-  const signalsByType = Object.fromEntries(signalTypes.map(type => [type, storyLeads.filter(lead => lead.type === type).length]));
+  const signalTypes = [...new Set(storyLeads.flatMap(item => item.signalTypes || [item.type]))].sort();
+  const signalsByType = Object.fromEntries(signalTypes.map(type => [type, storyLeads.filter(lead => (lead.signalTypes || [lead.type]).includes(type)).length]));
   const componentAvailability = Object.fromEntries(Object.keys(officials[0]?.amounts || {}).map(field => [field, {knownRecords: officials.filter(item => item.amounts[field as keyof Amounts] != null).length, missingRecords: officials.filter(item => item.amounts[field as keyof Amounts] == null).length}]));
   return {
     generatedAt: new Date().toISOString(), sourceGeneratedAt: text(raw.generated),

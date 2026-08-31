@@ -194,9 +194,9 @@ async function intelligence(request: Request, env: Env): Promise<Response> {
   const {limit, offset} = boundedPage(url);
   try {
     const report = await loadIntelligence(env, url.searchParams.get("refresh") === "1");
-    if (section === "overview") return json({generatedAt: report.generatedAt, sourceGeneratedAt: report.sourceGeneratedAt, overview: report.overview, dataQuality: report.dataQuality, priorityStoryLeads: report.storyLeads.slice(0, 25)}, 200, headers);
+    if (section === "overview") return json({generatedAt: report.generatedAt, sourceGeneratedAt: report.sourceGeneratedAt, overview: report.overview, dataQuality: report.dataQuality, priorityStoryLeads: report.storyLeads.filter(lead => lead.scope !== "filing").slice(0, 25)}, 200, headers);
     if (section === "leads") {
-      const matches = (lead: StoryLead) => includesFilter(lead.nation, nation) && includesFilter(lead.official, official) && (!year || lead.fiscalYear === year) && (!type || lead.type === type) && (!strengthFilter || lead.signalStrength === strengthFilter);
+      const matches = (lead: StoryLead) => includesFilter(lead.nation, nation) && includesFilter(lead.official, official) && (!year || lead.fiscalYear === year) && (!type || (lead.signalTypes || [lead.type]).includes(type)) && (!strengthFilter || lead.signalStrength === strengthFilter);
       const filtered = report.storyLeads.filter(matches);
       return json({generatedAt: report.generatedAt, total: filtered.length, offset, limit, results: filtered.slice(offset, offset + limit)}, 200, headers);
     }
