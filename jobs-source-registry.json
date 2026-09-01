@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-31T19:35:22Z",
+  "generated": "2026-09-01T17:24:32Z",
   "trackedCommunityCount": 69,
   "configuredSourceCount": 92,
   "communities": [
@@ -2122,12 +2122,10 @@
       "url": "https://www.fsin.ca/employment-opportunities",
       "sourceType": "provincial_first_nations_organization",
       "communityIds": [],
-      "candidatesFound": 0,
+      "candidatesFound": 1,
       "reviewItems": 2,
       "status": "checked",
-      "warnings": [
-        "fsin-employment: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "llrib-official-jobs",
@@ -2137,7 +2135,7 @@
       "communityIds": [
         "353"
       ],
-      "candidatesFound": 35,
+      "candidatesFound": 34,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2486,7 +2484,7 @@
       "communityIds": [
         "391"
       ],
-      "candidatesFound": 5,
+      "candidatesFound": 8,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2654,12 +2652,10 @@
       "communityIds": [
         "357"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "shoal-lake-jobs: fetch failed: HTTP Error 403: Forbidden"
-      ]
+      "candidatesFound": 1,
+      "reviewItems": 0,
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "standing-buffalo-official",
@@ -2786,9 +2782,12 @@
         "394"
       ],
       "candidatesFound": 1,
-      "reviewItems": 2,
+      "reviewItems": 0,
       "status": "checked",
-      "warnings": []
+      "warnings": [
+        "community-site-394: employment page fetch failed: HTTP Error 429: Too Many Requests",
+        "community-site-394: detail fetch failed: HTTP Error 429: Too Many Requests"
+      ]
     },
     {
       "sourceId": "community-site-366",
@@ -2811,7 +2810,7 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 9,
+      "candidatesFound": 10,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2897,7 +2896,7 @@
       "communityIds": [
         "391"
       ],
-      "candidatesFound": 6,
+      "candidatesFound": 9,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2966,7 +2965,7 @@
       "communityIds": [
         "353"
       ],
-      "candidatesFound": 36,
+      "candidatesFound": 35,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3119,7 +3118,7 @@
       "communityIds": [
         "363"
       ],
-      "candidatesFound": 3,
+      "candidatesFound": 2,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3272,7 +3271,7 @@
       "communityIds": [
         "349"
       ],
-      "candidatesFound": 4,
+      "candidatesFound": 3,
       "reviewItems": 3,
       "status": "checked",
       "warnings": [
