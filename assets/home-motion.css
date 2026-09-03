@@ -1,0 +1,23 @@
+.hero-feathers{position:absolute;inset:0;overflow:hidden;pointer-events:none;user-select:none}
+.hero-feather{position:absolute;top:-110px;left:var(--left);width:var(--size);height:var(--size);opacity:0;animation:feather-fall var(--duration) var(--delay) linear infinite;will-change:transform}
+.hero-feather img{display:block;width:100%;height:100%;object-fit:contain;animation:feather-breeze 8s ease-in-out infinite alternate;animation-delay:var(--delay)}
+@keyframes feather-fall{0%{transform:translate3d(-20px,0,0);opacity:0}12%{opacity:var(--opacity)}85%{opacity:var(--opacity)}100%{transform:translate3d(35px,var(--fall-distance,650px),0);opacity:0}}
+@keyframes feather-breeze{0%{transform:translateX(-12px) rotate(-18deg)}50%{transform:translateX(14px) rotate(8deg)}100%{transform:translateX(-5px) rotate(25deg)}}
+.hero[data-motion-active="false"] .hero-feather,.hero[data-motion-active="false"] .hero-feather img{animation-play-state:paused}
+.motion-toggle{flex:0 0 32px;width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--green);cursor:pointer}
+.motion-toggle::before{content:"";width:15px;height:15px;background:currentColor;mask:url("motion-pause.svg") center/contain no-repeat}
+.motion-toggle[aria-pressed="true"]::before{mask-image:url("motion-play.svg")}
+.motion-toggle:hover{border-color:var(--green)}
+.motion-toggle:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.hero-motion-toggle{position:absolute;right:14px;bottom:12px;z-index:2;background:transparent;color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.2)}
+.hero-motion-toggle:hover{color:white;border-color:rgba(255,255,255,.6)}
+.hero-motion-toggle:focus-visible{outline-color:white}
+#recentSection>.section-head{display:grid;grid-template-columns:minmax(0,1fr) 32px;align-items:center}
+#recentList.recent-motion{gap:0;scroll-snap-type:none;scroll-behavior:auto;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain}
+#recentList.recent-motion::-webkit-scrollbar{display:none}
+.recent-motion-group{display:flex;flex:0 0 auto;gap:8px;padding:4px}
+.recent-motion-group .recent-item{flex:0 0 min(300px,82vw);width:min(300px,82vw);scroll-snap-align:none}
+.recent-motion-group .recent-btn:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:2px}
+.motion-toggle[hidden]{display:none}
+@media(max-width:760px){.hero-feather:nth-child(2),.hero-feather:nth-child(3){display:none}.hero-feather{width:60px;height:60px}.hero-feather:nth-child(4){left:48%}.hero-feather:nth-child(5){left:85%}.hero-motion-toggle{right:8px;bottom:6px}}
+@media(prefers-reduced-motion:reduce){.hero-feathers,.motion-toggle{display:none}.hero-feather,.hero-feather img{animation:none}.recent-motion-group[aria-hidden="true"]{display:none}#recentList.recent-motion{scrollbar-width:thin}}
