@@ -7,7 +7,7 @@ on:
         description: Scan every parsed audited year instead of each community's latest year
         required: false
         type: boolean
-        default: false
+        default: true
   schedule:
     - cron: "35 9 * * 2"
 
@@ -38,7 +38,7 @@ jobs:
         shell: bash
         run: |
           args=()
-          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.all_years }}" == "true" ]]; then
+          if [[ "${{ github.event_name }}" == "schedule" || "${{ inputs.all_years }}" == "true" ]]; then
             args+=(--all-years)
           fi
           python tools/project_disclosure_extractor.py "${args[@]}"
@@ -51,13 +51,13 @@ jobs:
       - name: Commit refreshed records
         shell: bash
         run: |
-          if git diff --quiet -- projects-data.json project-disclosure-report.json first-nations sitemap.xml; then
+          if git diff --quiet -- projects-data.json project-research-leads.json project-disclosure-report.json first-nations sitemap.xml; then
             echo "No project disclosure changes"
             exit 0
           fi
           git config user.name "openband-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add projects-data.json project-disclosure-report.json first-nations sitemap.xml
+          git add projects-data.json project-research-leads.json project-disclosure-report.json first-nations sitemap.xml
           git commit -m "Update audited project disclosures"
           git pull --rebase origin main
           git push origin HEAD:main

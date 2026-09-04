@@ -109,6 +109,17 @@ class ProjectsIntegrityTests(unittest.TestCase):
         self.assertEqual(rows["Community Connectivity"]["amounts"]["deferredRevenueClosing"], 150_000)
         self.assertNotIn("status", rows["New School Project"])
 
+    def test_audit_research_leads_cannot_be_public_projects(self):
+        research = json.loads((ROOT / "project-research-leads.json").read_text(encoding="utf-8"))
+        self.assertNotIn("auditResearchLeads", self.payload)
+        self.assertEqual(research.get("leadCount"), len(research.get("auditResearchLeads", [])))
+        for lead in research.get("auditResearchLeads", []):
+            with self.subTest(lead=lead.get("id")):
+                self.assertFalse(lead.get("publishable", False))
+                self.assertEqual(lead.get("researchStatus"), "pending_external_verification")
+                self.assertTrue(lead.get("sourceDocument", {}).get("url"))
+                self.assertTrue(lead.get("sourceReferences"))
+
     def test_unverified_candidates_are_source_linked_and_clearly_caveated(self):
         band_ids = {str(band["id"]) for band in self.bands}
         ids = [project["id"] for project in self.unverified]

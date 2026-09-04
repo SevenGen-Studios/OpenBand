@@ -1,12 +1,87 @@
 import unittest
 
-from tools.project_disclosure_extractor import parse_project_disclosures, scan_tasks
+from tools.project_disclosure_extractor import (
+    add_cross_year_analysis,
+    is_specific_research_lead_label,
+    parse_audit_research_leads,
+    parse_project_disclosures,
+    scan_tasks,
+)
 
 
 SOURCE = "https://example.test/big-river-2025.pdf"
 
 
 class ProjectDisclosureExtractorTests(unittest.TestCase):
+    def test_generic_accounting_labels_are_not_research_leads(self):
+        for label in (
+            "Equity in tangible capital assets",
+            "Equity in CMHC replacement reserve",
+            "Advances to members",
+            "Canada Mortgage and Housing Corporation (CMHC)",
+            "Investment in Nation business entities (Note 6)",
+            "Community Development Corporation",
+            "Corporation",
+        ):
+            with self.subTest(label=label):
+                self.assertFalse(is_specific_research_lead_label(label))
+
+    def test_audit_investment_is_a_non_public_research_lead(self):
+        rows = parse_audit_research_leads(
+            ["""Note 8 - Investments in limited partnerships
+ABC Energy Limited Partnership
+4,800,000 1,200,000
+Total investments 4,800,000 1,200,000"""],
+            band_id="107", band_name="Cowessess First Nation",
+            fiscal_year="2024-2025", source_url=SOURCE,
+        )
+        self.assertEqual(len(rows), 1)
+        row = rows[0]
+        self.assertEqual(row["originalLabel"], "ABC Energy Limited Partnership")
+        self.assertEqual(row["currentYearAmount"], 4_800_000)
+        self.assertEqual(row["comparativeAmount"], 1_200_000)
+        self.assertEqual(row["sourceReferences"][0]["pdfPage"], 1)
+        self.assertFalse(row["publishable"])
+        self.assertEqual(row["researchStatus"], "pending_external_verification")
+
+    def test_generic_totals_and_investment_income_are_not_leads(self):
+        rows = parse_audit_research_leads(
+            ["""Investments and business interests
+Investment income 840,000 720,000
+Equity in investments 991,191 889,000
+Limited Partnership Earnings 103,333 90,000
+Limited Partnership Interests (Note 7) 1,034,524 991,191
+Holdings LP Developments LP 2025 Holdings LP Developments LP 2024
+Total 4,800,000 1,200,000
+Cash 1,000,000 900,000"""],
+            band_id="107", band_name="Cowessess First Nation",
+            fiscal_year="2024-2025", source_url=SOURCE,
+        )
+        self.assertEqual(rows, [])
+
+    def test_reversed_year_columns_are_mapped_to_selected_fiscal_year(self):
+        rows = parse_audit_research_leads(
+            ["""Investments in limited partnerships
+2024 2025
+ABC Energy Limited Partnership 1,200,000 4,800,000
+ABC Holdings Inc. 2024 2025"""],
+            band_id="107", band_name="Cowessess First Nation",
+            fiscal_year="2024-2025", source_url=SOURCE,
+        )
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["currentYearAmount"], 4_800_000)
+        self.assertEqual(rows[0]["comparativeAmount"], 1_200_000)
+
+    def test_cross_year_analysis_records_changes_and_later_absence(self):
+        leads = [
+            {"firstNationIds": ["107"], "originalLabel": "ABC Energy LP", "fiscalYear": "2023-2024", "currentYearAmount": 1_200_000},
+            {"firstNationIds": ["107"], "originalLabel": "ABC Energy LP", "fiscalYear": "2024-2025", "currentYearAmount": 6_700_000},
+        ]
+        add_cross_year_analysis(leads, {"107": ["2023-2024", "2024-2025", "2025-2026"]})
+        self.assertEqual(leads[1]["amountChange"], 5_500_000)
+        self.assertEqual(leads[1]["crossYearSignal"], "increased")
+        self.assertEqual(leads[1]["notDetectedInLaterScannedYears"], ["2025-2026"])
+
     def test_known_source_label_variants_merge_without_losing_evidence(self):
         pages = [
             "Restricted cash\nCapital project - Sewage Lagoon 1,246,169 900,000",
