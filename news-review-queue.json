@@ -1,40 +1,7 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-02T16:50:13Z",
+  "generated": "2026-09-03T16:39:36Z",
   "items": [
-    {
-      "bandId": 361,
-      "communityName": "Cowessess First Nation",
-      "sourceName": "Cowessess First Nation",
-      "url": "https://cowessessfn.com/wp-content/uploads/2023/12/CFN-Nation-News-December-2023.pdf",
-      "extractionMethod": "pdf_text",
-      "detectedTitle": "community.",
-      "detectedDate": "2023-12-01",
-      "status": "extracted",
-      "reason": "Source-backed media text extracted"
-    },
-    {
-      "bandId": 361,
-      "communityName": "Cowessess First Nation",
-      "sourceName": "Cowessess First Nation",
-      "url": "https://cowessessfn.com/wp-content/uploads/2023/11/CFN-Nation-News-November-2023.pdf",
-      "extractionMethod": "pdf_text",
-      "detectedTitle": "Sports & Recreation",
-      "detectedDate": "2023-11-01",
-      "status": "extracted",
-      "reason": "Source-backed media text extracted"
-    },
-    {
-      "bandId": 361,
-      "communityName": "Cowessess First Nation",
-      "sourceName": "Cowessess First Nation",
-      "url": "https://cowessessfn.com/wp-content/uploads/2022/05/2022-04-25-CFN-Newspaper-Final-min.pdf",
-      "extractionMethod": "pdf_text",
-      "detectedTitle": "and Council.",
-      "detectedDate": "2022-03-01",
-      "status": "extracted",
-      "reason": "Source-backed media text extracted"
-    },
     {
       "bandId": 361,
       "communityName": "Cowessess First Nation",
@@ -42,83 +9,6 @@
       "url": "https://www.facebook.com/cowessessfn",
       "status": "authorized_api_required",
       "reason": "Facebook posts require an authorized Meta API token"
-    },
-    {
-      "bandId": 361,
-      "communityName": "Cowessess First Nation",
-      "sourceName": "Cowessess Economic Development",
-      "url": "https://cowessessfn.com/wp-content/uploads/2023/12/CFN-Nation-News-December-2023.pdf",
-      "extractionMethod": "pdf_text",
-      "detectedTitle": "community.",
-      "detectedDate": "2023-12-01",
-      "status": "extracted",
-      "reason": "Source-backed media text extracted"
-    },
-    {
-      "bandId": 361,
-      "communityName": "Cowessess First Nation",
-      "sourceName": "Cowessess Economic Development",
-      "url": "https://cowessessfn.com/wp-content/uploads/2023/11/CFN-Nation-News-November-2023.pdf",
-      "extractionMethod": "pdf_text",
-      "detectedTitle": "Sports & Recreation",
-      "detectedDate": "2023-11-01",
-      "status": "extracted",
-      "reason": "Source-backed media text extracted"
-    },
-    {
-      "bandId": 361,
-      "communityName": "Cowessess First Nation",
-      "sourceName": "Cowessess Economic Development",
-      "url": "https://cowessessfn.com/wp-content/uploads/2022/05/2022-04-25-CFN-Newspaper-Final-min.pdf",
-      "extractionMethod": "pdf_text",
-      "detectedTitle": "and Council.",
-      "detectedDate": "2022-03-01",
-      "status": "extracted",
-      "reason": "Source-backed media text extracted"
-    },
-    {
-      "bandId": 361,
-      "communityName": "Cowessess First Nation",
-      "sourceName": "Cowessess Paradise Radio 98.1 FM",
-      "url": "https://cowessessfn.com/wp-content/uploads/2023/12/CFN-Nation-News-December-2023.pdf",
-      "extractionMethod": "pdf_text",
-      "detectedTitle": "community.",
-      "detectedDate": "2023-12-01",
-      "status": "extracted",
-      "reason": "Source-backed media text extracted"
-    },
-    {
-      "bandId": 361,
-      "communityName": "Cowessess First Nation",
-      "sourceName": "Cowessess Paradise Radio 98.1 FM",
-      "url": "https://cowessessfn.com/wp-content/uploads/2023/11/CFN-Nation-News-November-2023.pdf",
-      "extractionMethod": "pdf_text",
-      "detectedTitle": "Sports & Recreation",
-      "detectedDate": "2023-11-01",
-      "status": "extracted",
-      "reason": "Source-backed media text extracted"
-    },
-    {
-      "bandId": 361,
-      "communityName": "Cowessess First Nation",
-      "sourceName": "Cowessess Paradise Radio 98.1 FM",
-      "url": "https://cowessessfn.com/wp-content/uploads/2022/05/2022-04-25-CFN-Newspaper-Final-min.pdf",
-      "extractionMethod": "pdf_text",
-      "detectedTitle": "and Council.",
-      "detectedDate": "2022-03-01",
-      "status": "extracted",
-      "reason": "Source-backed media text extracted"
-    },
-    {
-      "bandId": 366,
-      "communityName": "Cote First Nation",
-      "sourceName": "Cote First Nation",
-      "url": "https://cotefirstnation.ca/wp-content/uploads/2023/09/4th-Quarterly-Cote-Newsletter-DRAFT-In-Progress-8.pdf",
-      "extractionMethod": "pdf_text",
-      "detectedTitle": "Newsletter",
-      "detectedDate": "2023-02-11",
-      "status": "extracted",
-      "reason": "Source-backed media text extracted"
     },
     {
       "bandId": 391,
@@ -171,6 +61,17 @@
       "url": "https://www.kfn72.com/wp-content/uploads/2026/08/school-supplies-poster-791x1024.png",
       "extractionMethod": "image_ocr",
       "detectedTitle": "FROM THE SCHOOL",
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 377,
+      "communityName": "Kinistin Saulteaux Nation",
+      "sourceName": "Kinistin Saulteaux Nation official website",
+      "url": "https://www.kinistin.sk.ca/wp-content/uploads/2022/12/Agricultural-Benefits-CLaim-Announcement.jpg",
+      "extractionMethod": "image_ocr",
+      "detectedTitle": ", ‘ANNOUNCEMENT",
       "detectedDate": null,
       "status": "manual_review",
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
@@ -354,64 +255,6 @@
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
     },
     {
-      "bandId": 344,
-      "communityName": "Onion Lake Cree Nation",
-      "sourceName": "Onion Lake Cree Nation",
-      "url": "https://onionlake.ca/wp-content/uploads/2026/08/Fort-Pitt-2026-High-Level-Agenda-.pdf",
-      "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
-    },
-    {
-      "bandId": 344,
-      "communityName": "Onion Lake Cree Nation",
-      "url": "https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/791074875_974121639061431_8698267944658057570_n.jpg?stp=dst-jpg_p720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iz9Wp-fVoUMQ7kNvwGSed24&_nc_oc=AdqTVYcn7zXfJMvbSTF73PWzyUq9G06rNr6P90Ek3AhxAJp8u-Lc7QsCW4uqwmBBjVE&_nc_zt=23&_nc_ht=scontent-ord5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=rt_4KXKdpkNsco6sRLEh4w&_nc_tpa=Q5bMBQI5s1chQr1u5MDC6OJvm1NQzNtbB1b3hUXKjzk8vJeFJcuOk-aZoYCjUYxGkhj9_IFGJzXeyliF9g&oh=00_AQJsKsgq5O1uz3jLZQ3yxIWaUEB-tSPa3LNoY9IcKrzENQ&oe=6A9DD1B8",
-      "status": "document_unavailable",
-      "reason": "PermissionError: robots.txt disallows https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/791074875_974121639061431_8698267944658057570_n.jpg?stp=dst-jpg_p720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iz9Wp-fVoUMQ7kNvwGSed24&_nc_oc=AdqTVYcn7zXfJMvbSTF73PWzyUq9G06rNr6P90Ek3AhxAJp8u-Lc7QsCW4uqwmBBjVE&_nc_zt=23&_nc_ht=scontent-ord5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=rt_4KXKdpkNsco6sRLEh4w&_nc_tpa=Q5bMBQI5s1chQr1u5MDC6OJvm1NQzNtbB1b3hUXKjzk8vJeFJcuOk-aZoYCjUYxGkhj9_IFGJzXeyliF9g&oh=00_AQJsKsgq5O1uz3jLZQ3yxIWaUEB-tSPa3LNoY9IcKrzENQ&oe=6A9DD1B8"
-    },
-    {
-      "bandId": 344,
-      "communityName": "Onion Lake Cree Nation",
-      "url": "https://scontent-ord5-1.xx.fbcdn.net/v/t39.30808-6/790341037_122187047852941892_8474877080042004777_n.jpg?stp=dst-jpg_p720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=7NDQ7UeMRqgQ7kNvwEyBns_&_nc_oc=AdqMIRPUrSfm8X4BLE9-FCLRQJcHyCdsMzoaiSMlJHUr_EDKcsT7Xf8PMgipuzt05Mc&_nc_zt=23&_nc_ht=scontent-ord5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=rt_4KXKdpkNsco6sRLEh4w&_nc_tpa=Q5bMBQJmEQCIEvQ7LDpw-9meC0Krp4jasjdkaqx3vogtUJu_e1NhiMMtSEMNqjQV6D_Ui5IF7hvAPunOgA&oh=00_AQIzA_4LaWTk2KxRCowmDHrwDLmxElf-gMQWpaDV5lidBQ&oe=6A9DD0A7",
-      "status": "document_unavailable",
-      "reason": "PermissionError: robots.txt disallows https://scontent-ord5-1.xx.fbcdn.net/v/t39.30808-6/790341037_122187047852941892_8474877080042004777_n.jpg?stp=dst-jpg_p720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=7NDQ7UeMRqgQ7kNvwEyBns_&_nc_oc=AdqMIRPUrSfm8X4BLE9-FCLRQJcHyCdsMzoaiSMlJHUr_EDKcsT7Xf8PMgipuzt05Mc&_nc_zt=23&_nc_ht=scontent-ord5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=rt_4KXKdpkNsco6sRLEh4w&_nc_tpa=Q5bMBQJmEQCIEvQ7LDpw-9meC0Krp4jasjdkaqx3vogtUJu_e1NhiMMtSEMNqjQV6D_Ui5IF7hvAPunOgA&oh=00_AQIzA_4LaWTk2KxRCowmDHrwDLmxElf-gMQWpaDV5lidBQ&oe=6A9DD0A7"
-    },
-    {
-      "bandId": 344,
-      "communityName": "Onion Lake Cree Nation",
-      "url": "https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/791275130_122187040016941892_7418722294157212022_n.jpg?stp=dst-jpg_p720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Axq_EA15P80Q7kNvwE1J4kk&_nc_oc=Adrcn_KuMip5IvHDKBlFTDIxGImEntQlS-6wAW7bXr8atZ9k590Qg7_NH6c76C8Vsfk&_nc_zt=23&_nc_ht=scontent-ord5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=rt_4KXKdpkNsco6sRLEh4w&_nc_tpa=Q5bMBQL-OzjzNgBFBQCfG515J9rg4xtaUkj05hiPtT4BM9TzXCXQRmiz1HLgyoLE6ScfynmsfpJR7y6J8A&oh=00_AQIFbL_nfY43jLAq2DTOcuf_D5jyt8dKVlzKp0XWVu-CCA&oe=6A9DCAD0",
-      "status": "document_unavailable",
-      "reason": "PermissionError: robots.txt disallows https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/791275130_122187040016941892_7418722294157212022_n.jpg?stp=dst-jpg_p720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Axq_EA15P80Q7kNvwE1J4kk&_nc_oc=Adrcn_KuMip5IvHDKBlFTDIxGImEntQlS-6wAW7bXr8atZ9k590Qg7_NH6c76C8Vsfk&_nc_zt=23&_nc_ht=scontent-ord5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=rt_4KXKdpkNsco6sRLEh4w&_nc_tpa=Q5bMBQL-OzjzNgBFBQCfG515J9rg4xtaUkj05hiPtT4BM9TzXCXQRmiz1HLgyoLE6ScfynmsfpJR7y6J8A&oh=00_AQIFbL_nfY43jLAq2DTOcuf_D5jyt8dKVlzKp0XWVu-CCA&oe=6A9DCAD0"
-    },
-    {
-      "bandId": 344,
-      "communityName": "Onion Lake Cree Nation",
-      "sourceName": "Onion Lake Cree Nation official website",
-      "url": "https://onionlake.ca/wp-content/uploads/2026/08/Fort-Pitt-2026-High-Level-Agenda-.pdf",
-      "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
-    },
-    {
-      "bandId": 344,
-      "communityName": "Onion Lake Cree Nation",
-      "url": "https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/791074875_974121639061431_8698267944658057570_n.jpg?stp=dst-jpg_p720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iz9Wp-fVoUMQ7kNvwGSed24&_nc_oc=AdqTVYcn7zXfJMvbSTF73PWzyUq9G06rNr6P90Ek3AhxAJp8u-Lc7QsCW4uqwmBBjVE&_nc_zt=23&_nc_ht=scontent-ord5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=rt_4KXKdpkNsco6sRLEh4w&_nc_tpa=Q5bMBQI5s1chQr1u5MDC6OJvm1NQzNtbB1b3hUXKjzk8vJeFJcuOk-aZoYCjUYxGkhj9_IFGJzXeyliF9g&oh=00_AQJsKsgq5O1uz3jLZQ3yxIWaUEB-tSPa3LNoY9IcKrzENQ&oe=6A9DD1B8",
-      "status": "document_unavailable",
-      "reason": "PermissionError: robots.txt disallows https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/791074875_974121639061431_8698267944658057570_n.jpg?stp=dst-jpg_p720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iz9Wp-fVoUMQ7kNvwGSed24&_nc_oc=AdqTVYcn7zXfJMvbSTF73PWzyUq9G06rNr6P90Ek3AhxAJp8u-Lc7QsCW4uqwmBBjVE&_nc_zt=23&_nc_ht=scontent-ord5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=rt_4KXKdpkNsco6sRLEh4w&_nc_tpa=Q5bMBQI5s1chQr1u5MDC6OJvm1NQzNtbB1b3hUXKjzk8vJeFJcuOk-aZoYCjUYxGkhj9_IFGJzXeyliF9g&oh=00_AQJsKsgq5O1uz3jLZQ3yxIWaUEB-tSPa3LNoY9IcKrzENQ&oe=6A9DD1B8"
-    },
-    {
-      "bandId": 344,
-      "communityName": "Onion Lake Cree Nation",
-      "url": "https://scontent-ord5-1.xx.fbcdn.net/v/t39.30808-6/790341037_122187047852941892_8474877080042004777_n.jpg?stp=dst-jpg_p720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=7NDQ7UeMRqgQ7kNvwEyBns_&_nc_oc=AdqMIRPUrSfm8X4BLE9-FCLRQJcHyCdsMzoaiSMlJHUr_EDKcsT7Xf8PMgipuzt05Mc&_nc_zt=23&_nc_ht=scontent-ord5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=rt_4KXKdpkNsco6sRLEh4w&_nc_tpa=Q5bMBQJmEQCIEvQ7LDpw-9meC0Krp4jasjdkaqx3vogtUJu_e1NhiMMtSEMNqjQV6D_Ui5IF7hvAPunOgA&oh=00_AQIzA_4LaWTk2KxRCowmDHrwDLmxElf-gMQWpaDV5lidBQ&oe=6A9DD0A7",
-      "status": "document_unavailable",
-      "reason": "PermissionError: robots.txt disallows https://scontent-ord5-1.xx.fbcdn.net/v/t39.30808-6/790341037_122187047852941892_8474877080042004777_n.jpg?stp=dst-jpg_p720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=7NDQ7UeMRqgQ7kNvwEyBns_&_nc_oc=AdqMIRPUrSfm8X4BLE9-FCLRQJcHyCdsMzoaiSMlJHUr_EDKcsT7Xf8PMgipuzt05Mc&_nc_zt=23&_nc_ht=scontent-ord5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=rt_4KXKdpkNsco6sRLEh4w&_nc_tpa=Q5bMBQJmEQCIEvQ7LDpw-9meC0Krp4jasjdkaqx3vogtUJu_e1NhiMMtSEMNqjQV6D_Ui5IF7hvAPunOgA&oh=00_AQIzA_4LaWTk2KxRCowmDHrwDLmxElf-gMQWpaDV5lidBQ&oe=6A9DD0A7"
-    },
-    {
-      "bandId": 344,
-      "communityName": "Onion Lake Cree Nation",
-      "url": "https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/791275130_122187040016941892_7418722294157212022_n.jpg?stp=dst-jpg_p720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Axq_EA15P80Q7kNvwE1J4kk&_nc_oc=Adrcn_KuMip5IvHDKBlFTDIxGImEntQlS-6wAW7bXr8atZ9k590Qg7_NH6c76C8Vsfk&_nc_zt=23&_nc_ht=scontent-ord5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=rt_4KXKdpkNsco6sRLEh4w&_nc_tpa=Q5bMBQL-OzjzNgBFBQCfG515J9rg4xtaUkj05hiPtT4BM9TzXCXQRmiz1HLgyoLE6ScfynmsfpJR7y6J8A&oh=00_AQIFbL_nfY43jLAq2DTOcuf_D5jyt8dKVlzKp0XWVu-CCA&oe=6A9DCAD0",
-      "status": "document_unavailable",
-      "reason": "PermissionError: robots.txt disallows https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/791275130_122187040016941892_7418722294157212022_n.jpg?stp=dst-jpg_p720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Axq_EA15P80Q7kNvwE1J4kk&_nc_oc=Adrcn_KuMip5IvHDKBlFTDIxGImEntQlS-6wAW7bXr8atZ9k590Qg7_NH6c76C8Vsfk&_nc_zt=23&_nc_ht=scontent-ord5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=rt_4KXKdpkNsco6sRLEh4w&_nc_tpa=Q5bMBQL-OzjzNgBFBQCfG515J9rg4xtaUkj05hiPtT4BM9TzXCXQRmiz1HLgyoLE6ScfynmsfpJR7y6J8A&oh=00_AQIFbL_nfY43jLAq2DTOcuf_D5jyt8dKVlzKp0XWVu-CCA&oe=6A9DCAD0"
-    },
-    {
       "bandId": 383,
       "communityName": "Pasqua First Nation",
       "sourceName": "Pasqua First Nation official website",
@@ -439,20 +282,12 @@
       "bandId": 383,
       "communityName": "Pasqua First Nation",
       "sourceName": "Pasqua First Nation official website",
-      "url": "https://www.pasquafn.ca/fileadmin/user_upload/Indigenous_Youth_Entrepreneurship_Camp_-_July_20_-_July_24__2026.pdf",
-      "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
-    },
-    {
-      "bandId": 383,
-      "communityName": "Pasqua First Nation",
-      "sourceName": "Pasqua First Nation official website",
       "url": "https://www.pasquafn.ca/fileadmin/user_upload/MentaL_Health_News_Letter_August_2026.pdf",
       "extractionMethod": "pdf_text",
       "detectedTitle": "opportunities that exist in the community. You’re offering them",
-      "detectedDate": null,
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+      "detectedDate": "2026-09-03",
+      "status": "extracted",
+      "reason": "Source-backed media text extracted"
     },
     {
       "bandId": 383,
@@ -480,7 +315,7 @@
       "bandId": 348,
       "communityName": "Sweetgrass First Nation",
       "sourceName": "Sweetgrass First Nation official website",
-      "url": "https://sweetgrassfirstnation.ca/images/uploads/gallery/img_188.jpg",
+      "url": "https://sweetgrassfirstnation.ca/images/uploads/gallery/large/img_794.jpg",
       "extractionMethod": "image_ocr",
       "detectedTitle": null,
       "detectedDate": null,
@@ -491,7 +326,7 @@
       "bandId": 348,
       "communityName": "Sweetgrass First Nation",
       "sourceName": "Sweetgrass First Nation official website",
-      "url": "https://sweetgrassfirstnation.ca/images/uploads/gallery/large/img_415.jpg",
+      "url": "https://sweetgrassfirstnation.ca/images/uploads/gallery/large/img_521.jpg",
       "extractionMethod": "image_ocr",
       "detectedTitle": null,
       "detectedDate": null,
@@ -502,69 +337,12 @@
       "bandId": 348,
       "communityName": "Sweetgrass First Nation",
       "sourceName": "Sweetgrass First Nation official website",
-      "url": "https://sweetgrassfirstnation.ca/images/uploads/gallery/small/img_85.jpg",
+      "url": "https://sweetgrassfirstnation.ca/images/uploads/gallery/large/img_315.jpg",
       "extractionMethod": "image_ocr",
       "detectedTitle": null,
       "detectedDate": null,
       "status": "manual_review",
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 368,
-      "communityName": "The Key First Nation",
-      "sourceName": "The Key First Nation official website",
-      "url": "https://keyband.com/wp-content/uploads/2020/03/2020.03.17-COVID-19-Update.pdf",
-      "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
-    },
-    {
-      "bandId": 368,
-      "communityName": "The Key First Nation",
-      "sourceName": "The Key First Nation official website",
-      "url": "https://keyband.com/wp-content/uploads/2020/04/COVID-19-Assistance-Statement-FINAL.pdf",
-      "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
-    },
-    {
-      "bandId": 368,
-      "communityName": "The Key First Nation",
-      "sourceName": "The Key First Nation official website",
-      "url": "https://keyband.com/wp-content/uploads/2020/04/The-Key-First-Nation_113k.pdf",
-      "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
-    },
-    {
-      "bandId": 368,
-      "communityName": "The Key First Nation",
-      "sourceName": "The Key First Nation official website",
-      "url": "https://keyband.com/wp-content/uploads/2020/03/2020.03.17-COVID-19-Update.pdf",
-      "extractionMethod": "pdf_text",
-      "detectedTitle": "8. Community Closures",
-      "detectedDate": "2020-04-17",
-      "status": "extracted",
-      "reason": "Source-backed media text extracted"
-    },
-    {
-      "bandId": 368,
-      "communityName": "The Key First Nation",
-      "sourceName": "The Key First Nation official website",
-      "url": "https://keyband.com/wp-content/uploads/2020/04/COVID-19-Assistance-Statement-FINAL.pdf",
-      "extractionMethod": "pdf_text",
-      "detectedTitle": "On Behalf of the Chief & Council of The Key First Nation",
-      "detectedDate": "2020-04-17",
-      "status": "extracted",
-      "reason": "Source-backed media text extracted"
-    },
-    {
-      "bandId": 368,
-      "communityName": "The Key First Nation",
-      "sourceName": "The Key First Nation official website",
-      "url": "https://keyband.com/wp-content/uploads/2020/04/The-Key-First-Nation_113k.pdf",
-      "extractionMethod": "pdf_text",
-      "detectedTitle": " mental health assistance and emergency response services.",
-      "detectedDate": "2020-04-17",
-      "status": "extracted",
-      "reason": "Source-backed media text extracted"
     },
     {
       "bandId": 349,
@@ -909,9 +687,13 @@
     {
       "bandId": 395,
       "communityName": "Flying Dust First Nation",
+      "sourceName": "Flying Dust First Nation",
       "url": "https://www.flyingdust.net/uploads/1/4/5/8/145877777/membership_background_-_fd.pdf",
-      "status": "document_unavailable",
-      "reason": "HTTPError: HTTP Error 400: Bad Request"
+      "extractionMethod": "pdf_text",
+      "detectedTitle": "o Obtaining certain levels of education or professional status",
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
     },
     {
       "bandId": 395,
@@ -1097,202 +879,6 @@
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
     },
     {
-      "bandId": 381,
-      "communityName": "Muscowpetung First Nation",
-      "sourceName": "Muscowpetung First Nation",
-      "url": "https://muscowpetung.com/storage/2025/10/Muscowpetung-Documentary.jpg",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": "Play",
-      "detectedDate": "1875-09-08",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 381,
-      "communityName": "Muscowpetung First Nation",
-      "sourceName": "Muscowpetung First Nation",
-      "url": "https://muscowpetung.com/storage/2025/10/Bingo-scaled.jpg",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": "Play",
-      "detectedDate": "1875-09-08",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 381,
-      "communityName": "Muscowpetung First Nation",
-      "sourceName": "Muscowpetung First Nation",
-      "url": "https://muscowpetung.com/storage/2025/10/Eyes-scaled.jpg",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": "Play",
-      "detectedDate": "1875-09-08",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 381,
-      "communityName": "Muscowpetung First Nation",
-      "sourceName": "Muscowpetung First Nation official website",
-      "url": "https://muscowpetung.com/storage/2025/10/Muscowpetung-Documentary.jpg",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": "Play",
-      "detectedDate": "1875-09-08",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 381,
-      "communityName": "Muscowpetung First Nation",
-      "sourceName": "Muscowpetung First Nation official website",
-      "url": "https://muscowpetung.com/storage/2025/10/Bingo-scaled.jpg",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": "Play",
-      "detectedDate": "1875-09-08",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 381,
-      "communityName": "Muscowpetung First Nation",
-      "sourceName": "Muscowpetung First Nation official website",
-      "url": "https://muscowpetung.com/storage/2025/10/Eyes-scaled.jpg",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": "Play",
-      "detectedDate": "1875-09-08",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 375,
-      "communityName": "Muskeg Lake Cree Nation",
-      "sourceName": "Muskeg Lake Cree Nation",
-      "url": "https://muskeglake.com/wp-content/uploads/2020/12/MLCN-Border-Security-Update-Dec-14-2020.pdf.pdf",
-      "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
-    },
-    {
-      "bandId": 375,
-      "communityName": "Muskeg Lake Cree Nation",
-      "sourceName": "Muskeg Lake Cree Nation",
-      "url": "https://muskeglake.com/wp-content/uploads/2020/12/MLCN-ISC-COVID-19-Binder-Nov-26-2020.pdf",
-      "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
-    },
-    {
-      "bandId": 375,
-      "communityName": "Muskeg Lake Cree Nation",
-      "sourceName": "Muskeg Lake Cree Nation",
-      "url": "https://muskeglake.com/wp-content/uploads/2021/05/Copy-of-Covid-19-Corona-Virus-Awareness-Poster-Made-with-PosterMyWall-5-1.jpg",
-      "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
-    },
-    {
-      "bandId": 375,
-      "communityName": "Muskeg Lake Cree Nation",
-      "sourceName": "Muskeg Lake Cree Nation",
-      "url": "https://muskeglake.com/wp-content/uploads/2021/09/Covid-update-to-community-Sept-10-2021-.pdf",
-      "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
-    },
-    {
-      "bandId": 375,
-      "communityName": "Muskeg Lake Cree Nation",
-      "sourceName": "Muskeg Lake Cree Nation",
-      "url": "https://muskeglake.com/wp-content/uploads/2026/08/IMG_8636-scaled.jpg",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": null,
-      "detectedDate": "2026-08-22",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 375,
-      "communityName": "Muskeg Lake Cree Nation",
-      "sourceName": "Muskeg Lake Cree Nation",
-      "url": "https://muskeglake.com/wp-content/uploads/2026/08/Agenda-150-Years-Treaty-6-July-28-2026-scaled.jpg",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": null,
-      "detectedDate": "2026-08-07",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 375,
-      "communityName": "Muskeg Lake Cree Nation",
-      "sourceName": "Muskeg Lake Cree Nation",
-      "url": "https://muskeglake.com/wp-content/uploads/2024/03/MLCN-Self-Government-Branding-Guide1.png",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": null,
-      "detectedDate": "2026-06-05",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 375,
-      "communityName": "Muskeg Lake Cree Nation",
-      "sourceName": "Muskeg Lake Cree Nation official website",
-      "url": "https://muskeglake.com/wp-content/uploads/2020/12/MLCN-Border-Security-Update-Dec-14-2020.pdf.pdf",
-      "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
-    },
-    {
-      "bandId": 375,
-      "communityName": "Muskeg Lake Cree Nation",
-      "sourceName": "Muskeg Lake Cree Nation official website",
-      "url": "https://muskeglake.com/wp-content/uploads/2020/12/MLCN-ISC-COVID-19-Binder-Nov-26-2020.pdf",
-      "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
-    },
-    {
-      "bandId": 375,
-      "communityName": "Muskeg Lake Cree Nation",
-      "sourceName": "Muskeg Lake Cree Nation official website",
-      "url": "https://muskeglake.com/wp-content/uploads/2021/05/Copy-of-Covid-19-Corona-Virus-Awareness-Poster-Made-with-PosterMyWall-5-1.jpg",
-      "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
-    },
-    {
-      "bandId": 375,
-      "communityName": "Muskeg Lake Cree Nation",
-      "sourceName": "Muskeg Lake Cree Nation official website",
-      "url": "https://muskeglake.com/wp-content/uploads/2021/09/Covid-update-to-community-Sept-10-2021-.pdf",
-      "status": "detail_unverified",
-      "reason": "detail URL did not return HTML"
-    },
-    {
-      "bandId": 375,
-      "communityName": "Muskeg Lake Cree Nation",
-      "sourceName": "Muskeg Lake Cree Nation official website",
-      "url": "https://muskeglake.com/wp-content/uploads/2026/08/IMG_8636-scaled.jpg",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": null,
-      "detectedDate": "2026-08-22",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 375,
-      "communityName": "Muskeg Lake Cree Nation",
-      "sourceName": "Muskeg Lake Cree Nation official website",
-      "url": "https://muskeglake.com/wp-content/uploads/2026/08/Agenda-150-Years-Treaty-6-July-28-2026-scaled.jpg",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": null,
-      "detectedDate": "2026-08-07",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 375,
-      "communityName": "Muskeg Lake Cree Nation",
-      "sourceName": "Muskeg Lake Cree Nation official website",
-      "url": "https://muskeglake.com/wp-content/uploads/2024/03/MLCN-Self-Government-Branding-Guide1.png",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": null,
-      "detectedDate": "2026-06-05",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
       "bandId": 385,
       "communityName": "Piapot First Nation",
       "sourceName": "Piapot First Nation official website",
@@ -1364,7 +950,7 @@
       "bandId": 347,
       "communityName": "Saulteaux First Nation",
       "sourceName": "Saulteaux First Nation official website",
-      "url": "https://www.saulteauxfn.ca/uploaded_images/gallery/img_212_39.jpg",
+      "url": "https://www.saulteauxfn.ca/uploaded_images/gallery/img_212_37.jpg",
       "extractionMethod": "image_ocr",
       "detectedTitle": null,
       "detectedDate": "2023-03-27",
@@ -1375,7 +961,7 @@
       "bandId": 347,
       "communityName": "Saulteaux First Nation",
       "sourceName": "Saulteaux First Nation official website",
-      "url": "https://www.saulteauxfn.ca/uploaded_images/gallery/img_212_37.jpg",
+      "url": "https://www.saulteauxfn.ca/uploaded_images/gallery/img_212_39.jpg",
       "extractionMethod": "image_ocr",
       "detectedTitle": null,
       "detectedDate": "2023-03-27",
@@ -1589,7 +1175,7 @@
         "source-backed"
       ],
       "bandId": 391,
-      "discoveredAt": "2026-09-02T16:41:45Z",
+      "discoveredAt": "2026-09-03T16:32:54Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1616,7 +1202,7 @@
         "source-backed"
       ],
       "bandId": 341,
-      "discoveredAt": "2026-09-02T16:42:35Z",
+      "discoveredAt": "2026-09-03T16:32:58Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1642,7 +1228,7 @@
         "source-backed"
       ],
       "bandId": 341,
-      "discoveredAt": "2026-09-02T16:42:35Z",
+      "discoveredAt": "2026-09-03T16:32:58Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1669,7 +1255,7 @@
         "source-backed"
       ],
       "bandId": 374,
-      "discoveredAt": "2026-09-02T16:42:49Z",
+      "discoveredAt": "2026-09-03T16:33:03Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1696,7 +1282,7 @@
         "source-backed"
       ],
       "bandId": 374,
-      "discoveredAt": "2026-09-02T16:42:49Z",
+      "discoveredAt": "2026-09-03T16:33:03Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1724,7 +1310,7 @@
         "source-backed"
       ],
       "bandId": 374,
-      "discoveredAt": "2026-09-02T16:42:49Z",
+      "discoveredAt": "2026-09-03T16:33:03Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1752,7 +1338,7 @@
         "source-backed"
       ],
       "bandId": 374,
-      "discoveredAt": "2026-09-02T16:42:49Z",
+      "discoveredAt": "2026-09-03T16:33:03Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1779,7 +1365,7 @@
         "source-backed"
       ],
       "bandId": 374,
-      "discoveredAt": "2026-09-02T16:42:51Z",
+      "discoveredAt": "2026-09-03T16:33:15Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1806,7 +1392,7 @@
         "source-backed"
       ],
       "bandId": 374,
-      "discoveredAt": "2026-09-02T16:42:51Z",
+      "discoveredAt": "2026-09-03T16:33:15Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1834,7 +1420,7 @@
         "source-backed"
       ],
       "bandId": 374,
-      "discoveredAt": "2026-09-02T16:42:51Z",
+      "discoveredAt": "2026-09-03T16:33:15Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1862,7 +1448,7 @@
         "source-backed"
       ],
       "bandId": 374,
-      "discoveredAt": "2026-09-02T16:42:51Z",
+      "discoveredAt": "2026-09-03T16:33:15Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1893,7 +1479,7 @@
         "source-backed"
       ],
       "bandId": 371,
-      "discoveredAt": "2026-09-02T16:43:50Z",
+      "discoveredAt": "2026-09-03T16:33:58Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1923,7 +1509,7 @@
         "source-backed"
       ],
       "bandId": 371,
-      "discoveredAt": "2026-09-02T16:43:50Z",
+      "discoveredAt": "2026-09-03T16:33:58Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1931,8 +1517,8 @@
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "muskoday-first-nation-2026-09-02-98639591ce",
-      "storyKey": "371-2026-09-02-mfn-community-meeting",
+      "id": "muskoday-first-nation-2026-09-03-7c5480633d",
+      "storyKey": "371-2026-09-03-mfn-community-meeting",
       "title": "MFN Community Meeting",
       "communityName": "Muskoday First Nation",
       "communityAliases": [
@@ -1944,7 +1530,7 @@
       "category": "Community Events",
       "sourceType": "Official First Nation Website",
       "sourceName": "Muskoday First Nation",
-      "publishedAt": "2026-09-02",
+      "publishedAt": "2026-09-03",
       "datePrecision": "day",
       "url": "https://muskodayfn.ca/events/category/mfn-community-meeting",
       "summary": "25-05-08 Govt Canada Presentation Supper will be provided. 25-03-13 Community Info Mtg Poster All Band members invited to attend. Stew & Bannok provided. 25-02-13 MFN Community Info Session",
@@ -1953,7 +1539,7 @@
         "source-backed"
       ],
       "bandId": 371,
-      "discoveredAt": "2026-09-02T16:43:22Z",
+      "discoveredAt": "2026-09-03T16:33:34Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "article-metadata",
@@ -1984,7 +1570,7 @@
         "source-backed"
       ],
       "bandId": 371,
-      "discoveredAt": "2026-09-02T16:43:41Z",
+      "discoveredAt": "2026-09-03T16:34:09Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2014,7 +1600,7 @@
         "source-backed"
       ],
       "bandId": 371,
-      "discoveredAt": "2026-09-02T16:43:41Z",
+      "discoveredAt": "2026-09-03T16:34:09Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2022,8 +1608,8 @@
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "muskoday-first-nation-2026-09-02-6a55c79c34",
-      "storyKey": "371-2026-09-02-upcoming-events-muskoday-first-nation",
+      "id": "muskoday-first-nation-2026-09-03-5f69273969",
+      "storyKey": "371-2026-09-03-upcoming-events-muskoday-first-nation",
       "title": "Upcoming Events – Muskoday First Nation",
       "communityName": "Muskoday First Nation",
       "communityAliases": [
@@ -2035,7 +1621,7 @@
       "category": "Community Events",
       "sourceType": "Official First Nation Website",
       "sourceName": "Muskoday First Nation official website",
-      "publishedAt": "2026-09-02",
+      "publishedAt": "2026-09-03",
       "datePrecision": "day",
       "url": "https://www.muskodayfn.ca/",
       "summary": "25-05-08 Govt Canada Presentation Supper will be provided. 25-03-13 Community Info Mtg Poster All Band members invited to attend. Stew & Bannok provided. 25-02-13 MFN Community Info Session",
@@ -2044,7 +1630,7 @@
         "source-backed"
       ],
       "bandId": 371,
-      "discoveredAt": "2026-09-02T16:43:07Z",
+      "discoveredAt": "2026-09-03T16:33:39Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "article-metadata",
@@ -2053,8 +1639,8 @@
       "reviewReason": "Title identifies navigation, a directory, or an evergreen section"
     },
     {
-      "id": "muskoday-first-nation-2026-09-02-98639591ce",
-      "storyKey": "371-2026-09-02-mfn-community-meeting",
+      "id": "muskoday-first-nation-2026-09-03-7c5480633d",
+      "storyKey": "371-2026-09-03-mfn-community-meeting",
       "title": "MFN Community Meeting",
       "communityName": "Muskoday First Nation",
       "communityAliases": [
@@ -2066,7 +1652,7 @@
       "category": "Community Events",
       "sourceType": "Official First Nation Website",
       "sourceName": "Muskoday First Nation official website",
-      "publishedAt": "2026-09-02",
+      "publishedAt": "2026-09-03",
       "datePrecision": "day",
       "url": "https://muskodayfn.ca/events/category/mfn-community-meeting",
       "summary": "25-05-08 Govt Canada Presentation Supper will be provided. 25-03-13 Community Info Mtg Poster All Band members invited to attend. Stew & Bannok provided. 25-02-13 MFN Community Info Session",
@@ -2075,399 +1661,13 @@
         "source-backed"
       ],
       "bandId": 371,
-      "discoveredAt": "2026-09-02T16:43:13Z",
+      "discoveredAt": "2026-09-03T16:33:45Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "article-metadata",
       "sourcePage": "https://www.muskodayfn.ca/",
       "detailVerified": true,
       "reviewReason": "Source URL is a homepage or archive rather than a dated article"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-09-04-e95805092d",
-      "storyKey": "344-2026-09-04-more-galleries",
-      "title": "More Galleries",
-      "communityName": "Onion Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Healthcare",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Onion Lake Cree Nation",
-      "publishedAt": "2026-09-04",
-      "datePrecision": "day",
-      "url": "https://onionlake.ca/galleries",
-      "summary": "Friday September 4, 2026 °C m/s Featured Gallery OLCN Summer Games 2026 August 5, 2026 74 images More Galleries Upcoming Events Save the Date | 150th Treaty 6 Gathering September 6, 2026 8:00 am - 6:00 pm Mens Camp at Bronson Lake September 14, 2026 All-day event at Onion Lake Community Safety Officer Program December 17, 2026 All-day event More Events OLCN 7th Gen Podcast About Onion Lake Cree Nation The Onion Lake.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 344,
-      "discoveredAt": "2026-09-02T16:43:24Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://onionlake.ca/events?ev=mens-camp-at-bronson-lake",
-      "reviewReason": "Date appears to be a future event date, not a publication date"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-09-06-807992732d",
-      "storyKey": "344-2026-09-06-sep-14-2026-2-00-am-mens-camp-at-bronson-lake",
-      "title": "Sep 14, 2026 · 2:00 am Mens Camp at Bronson Lake",
-      "communityName": "Onion Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Healthcare",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Onion Lake Cree Nation",
-      "publishedAt": "2026-09-06",
-      "datePrecision": "day",
-      "url": "https://onionlake.ca/events",
-      "summary": "Onion Lake Cree Nation See what’s happening in the community. Pick a highlighted day on the calendar, or browse what’s coming up below. Community events from",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 344,
-      "discoveredAt": "2026-09-02T16:43:24Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://onionlake.ca/events?ev=mens-camp-at-bronson-lake",
-      "thumbnail": "https://onionlake.ca/wp-content/uploads/2025/12/Cree-speakers-poster-791x1024.png",
-      "detailVerified": false,
-      "reviewReason": "Date appears to be a future event date, not a publication date"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-09-14-429502346c",
-      "storyKey": "344-2026-09-14-onion-lake",
-      "title": "Onion Lake",
-      "communityName": "Onion Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Community Events",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Onion Lake Cree Nation",
-      "publishedAt": "2026-09-14",
-      "datePrecision": "day",
-      "url": "https://onionlake.ca/event-location/onion-lake",
-      "summary": "Mens Camp at Bronson Lake September 14, 2026 All-day event at Onion Lake.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 344,
-      "discoveredAt": "2026-09-02T16:43:24Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://onionlake.ca/events?ev=mens-camp-at-bronson-lake",
-      "thumbnail": "https://onionlake.ca/wp-content/uploads/2026/09/Mens-camp-Bronson-Lake-14-18-150x150.jpg",
-      "detailVerified": true,
-      "reviewReason": "Date appears to be a future event date, not a publication date"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-09-06-b0dd48f029",
-      "storyKey": "344-2026-09-06-dec-17-2026-2-00-am-community-safety-officer-program",
-      "title": "Dec 17, 2026 · 2:00 am Community Safety Officer Program",
-      "communityName": "Onion Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Healthcare",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Onion Lake Cree Nation",
-      "publishedAt": "2026-09-06",
-      "datePrecision": "day",
-      "url": "https://onionlake.ca/events",
-      "summary": "Onion Lake Cree Nation See what’s happening in the community. Pick a highlighted day on the calendar, or browse what’s coming up below. Community events from",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 344,
-      "discoveredAt": "2026-09-02T16:43:24Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://onionlake.ca/events?ev=mens-camp-at-bronson-lake",
-      "thumbnail": "https://onionlake.ca/wp-content/uploads/2025/12/Cree-speakers-poster-791x1024.png",
-      "detailVerified": false,
-      "reviewReason": "Date appears to be a future event date, not a publication date"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-09-01-a2953a8759",
-      "storyKey": "344-2026-09-01-community",
-      "title": "Community",
-      "communityName": "Onion Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Community Events",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Onion Lake Cree Nation",
-      "publishedAt": "2026-09-01",
-      "datePrecision": "day",
-      "url": "https://onionlake.ca/news",
-      "summary": "Onion Lake Cree Nation The latest from the Nation — community happenings, history, sports, and announcements from Onion Lake. News from",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 344,
-      "discoveredAt": "2026-09-02T16:43:23Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://onionlake.ca/news",
-      "thumbnail": "https://onionlake.ca/wp-content/uploads/2026/09/Share-our-Future-Survey-OLCNTS-819x1024.jpg",
-      "detailVerified": false,
-      "reviewReason": "Title identifies navigation, a directory, or an evergreen section"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-09-06-fe0f66100c",
-      "storyKey": "344-2026-09-06-sep-6-2026-8-00-am-save-the-date-150th-treaty-6-gathering",
-      "title": "Sep 6, 2026 · 8:00 am Save the Date | 150th Treaty 6 Gathering",
-      "communityName": "Onion Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Healthcare",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Onion Lake Cree Nation",
-      "publishedAt": "2026-09-06",
-      "datePrecision": "day",
-      "url": "https://onionlake.ca/events",
-      "summary": "Onion Lake Cree Nation See what’s happening in the community. Pick a highlighted day on the calendar, or browse what’s coming up below. Community events from",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 344,
-      "discoveredAt": "2026-09-02T16:43:24Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://onionlake.ca/events?ev=mens-camp-at-bronson-lake",
-      "thumbnail": "https://onionlake.ca/wp-content/uploads/2025/12/Cree-speakers-poster-791x1024.png",
-      "detailVerified": false,
-      "reviewReason": "Date appears to be a future event date, not a publication date"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-09-06-a6e5eb22cc",
-      "storyKey": "344-2026-09-06-open-the-agenda-pdf",
-      "title": "Open the agenda (PDF)",
-      "communityName": "Onion Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Healthcare",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Onion Lake Cree Nation",
-      "publishedAt": "2026-09-06",
-      "datePrecision": "day",
-      "url": "https://onionlake.ca/wp-content/uploads/2026/08/Fort-Pitt-2026-High-Level-Agenda-.pdf",
-      "summary": "Onion Lake Cree Nation Events See what’s happening in the community. Pick a highlighted day on the calendar, or browse what’s coming up below. Days with events are highlighted — tap one to see details. [{\"t\":\"Community Safety Officer Program\",\"u\":\"https:\\/\\/onionlake.ca\\/events\\/community-safety-officer-program\\/\",\"slug\":\"community-safety-officer-program\",\"s\":\"2026-12-17\",\"e\":\"2027-01-04\",\"tm\":\"2:00 am\",\"loc\":\"\",\"th\".",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 344,
-      "discoveredAt": "2026-09-02T16:43:24Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://onionlake.ca/events?ev=mens-camp-at-bronson-lake",
-      "thumbnail": "https://onionlake.ca/wp-content/uploads/2025/12/Cree-speakers-poster-791x1024.png",
-      "reviewReason": "Date appears to be a future event date, not a publication date"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-09-04-e95805092d",
-      "storyKey": "344-2026-09-04-more-galleries",
-      "title": "More Galleries",
-      "communityName": "Onion Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Healthcare",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Onion Lake Cree Nation official website",
-      "publishedAt": "2026-09-04",
-      "datePrecision": "day",
-      "url": "https://onionlake.ca/galleries",
-      "summary": "Friday September 4, 2026 °C m/s Featured Gallery OLCN Summer Games 2026 August 5, 2026 74 images More Galleries Upcoming Events Save the Date | 150th Treaty 6 Gathering September 6, 2026 8:00 am - 6:00 pm Mens Camp at Bronson Lake September 14, 2026 All-day event at Onion Lake Community Safety Officer Program December 17, 2026 All-day event More Events OLCN 7th Gen Podcast About Onion Lake Cree Nation The Onion Lake.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 344,
-      "discoveredAt": "2026-09-02T16:43:28Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://onionlake.ca/events?ev=mens-camp-at-bronson-lake",
-      "reviewReason": "Date appears to be a future event date, not a publication date"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-09-06-807992732d",
-      "storyKey": "344-2026-09-06-sep-14-2026-2-00-am-mens-camp-at-bronson-lake",
-      "title": "Sep 14, 2026 · 2:00 am Mens Camp at Bronson Lake",
-      "communityName": "Onion Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Healthcare",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Onion Lake Cree Nation official website",
-      "publishedAt": "2026-09-06",
-      "datePrecision": "day",
-      "url": "https://onionlake.ca/events",
-      "summary": "Onion Lake Cree Nation See what’s happening in the community. Pick a highlighted day on the calendar, or browse what’s coming up below. Community events from",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 344,
-      "discoveredAt": "2026-09-02T16:43:28Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://onionlake.ca/events?ev=mens-camp-at-bronson-lake",
-      "thumbnail": "https://onionlake.ca/wp-content/uploads/2025/12/Cree-speakers-poster-791x1024.png",
-      "detailVerified": false,
-      "reviewReason": "Date appears to be a future event date, not a publication date"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-09-14-429502346c",
-      "storyKey": "344-2026-09-14-onion-lake",
-      "title": "Onion Lake",
-      "communityName": "Onion Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Community Events",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Onion Lake Cree Nation official website",
-      "publishedAt": "2026-09-14",
-      "datePrecision": "day",
-      "url": "https://onionlake.ca/event-location/onion-lake",
-      "summary": "Mens Camp at Bronson Lake September 14, 2026 All-day event at Onion Lake.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 344,
-      "discoveredAt": "2026-09-02T16:43:28Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://onionlake.ca/events?ev=mens-camp-at-bronson-lake",
-      "thumbnail": "https://onionlake.ca/wp-content/uploads/2026/09/Mens-camp-Bronson-Lake-14-18-150x150.jpg",
-      "detailVerified": true,
-      "reviewReason": "Date appears to be a future event date, not a publication date"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-09-06-b0dd48f029",
-      "storyKey": "344-2026-09-06-dec-17-2026-2-00-am-community-safety-officer-program",
-      "title": "Dec 17, 2026 · 2:00 am Community Safety Officer Program",
-      "communityName": "Onion Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Healthcare",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Onion Lake Cree Nation official website",
-      "publishedAt": "2026-09-06",
-      "datePrecision": "day",
-      "url": "https://onionlake.ca/events",
-      "summary": "Onion Lake Cree Nation See what’s happening in the community. Pick a highlighted day on the calendar, or browse what’s coming up below. Community events from",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 344,
-      "discoveredAt": "2026-09-02T16:43:28Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://onionlake.ca/events?ev=mens-camp-at-bronson-lake",
-      "thumbnail": "https://onionlake.ca/wp-content/uploads/2025/12/Cree-speakers-poster-791x1024.png",
-      "detailVerified": false,
-      "reviewReason": "Date appears to be a future event date, not a publication date"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-09-01-a2953a8759",
-      "storyKey": "344-2026-09-01-community",
-      "title": "Community",
-      "communityName": "Onion Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Community Events",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Onion Lake Cree Nation official website",
-      "publishedAt": "2026-09-01",
-      "datePrecision": "day",
-      "url": "https://onionlake.ca/news",
-      "summary": "Onion Lake Cree Nation The latest from the Nation — community happenings, history, sports, and announcements from Onion Lake. News from",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 344,
-      "discoveredAt": "2026-09-02T16:43:28Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://onionlake.ca/news",
-      "thumbnail": "https://onionlake.ca/wp-content/uploads/2026/09/Share-our-Future-Survey-OLCNTS-819x1024.jpg",
-      "detailVerified": false,
-      "reviewReason": "Title identifies navigation, a directory, or an evergreen section"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-09-06-fe0f66100c",
-      "storyKey": "344-2026-09-06-sep-6-2026-8-00-am-save-the-date-150th-treaty-6-gathering",
-      "title": "Sep 6, 2026 · 8:00 am Save the Date | 150th Treaty 6 Gathering",
-      "communityName": "Onion Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Healthcare",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Onion Lake Cree Nation official website",
-      "publishedAt": "2026-09-06",
-      "datePrecision": "day",
-      "url": "https://onionlake.ca/events",
-      "summary": "Onion Lake Cree Nation See what’s happening in the community. Pick a highlighted day on the calendar, or browse what’s coming up below. Community events from",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 344,
-      "discoveredAt": "2026-09-02T16:43:28Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://onionlake.ca/events?ev=mens-camp-at-bronson-lake",
-      "thumbnail": "https://onionlake.ca/wp-content/uploads/2025/12/Cree-speakers-poster-791x1024.png",
-      "detailVerified": false,
-      "reviewReason": "Date appears to be a future event date, not a publication date"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-09-06-a6e5eb22cc",
-      "storyKey": "344-2026-09-06-open-the-agenda-pdf",
-      "title": "Open the agenda (PDF)",
-      "communityName": "Onion Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Healthcare",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Onion Lake Cree Nation official website",
-      "publishedAt": "2026-09-06",
-      "datePrecision": "day",
-      "url": "https://onionlake.ca/wp-content/uploads/2026/08/Fort-Pitt-2026-High-Level-Agenda-.pdf",
-      "summary": "Onion Lake Cree Nation Events See what’s happening in the community. Pick a highlighted day on the calendar, or browse what’s coming up below. Days with events are highlighted — tap one to see details. [{\"t\":\"Community Safety Officer Program\",\"u\":\"https:\\/\\/onionlake.ca\\/events\\/community-safety-officer-program\\/\",\"slug\":\"community-safety-officer-program\",\"s\":\"2026-12-17\",\"e\":\"2027-01-04\",\"tm\":\"2:00 am\",\"loc\":\"\",\"th\".",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 344,
-      "discoveredAt": "2026-09-02T16:43:28Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://onionlake.ca/events?ev=mens-camp-at-bronson-lake",
-      "thumbnail": "https://onionlake.ca/wp-content/uploads/2025/12/Cree-speakers-poster-791x1024.png",
-      "reviewReason": "Date appears to be a future event date, not a publication date"
     },
     {
       "id": "pasqua-first-nation-2026-02-27-b2fe77a551",
@@ -2481,14 +1681,14 @@
       "sourceName": "Pasqua First Nation official website",
       "publishedAt": "2026-02-27",
       "datePrecision": "day",
-      "url": "https://www.pasquafn.ca/news-events/newsletter?L=",
+      "url": "https://www.pasquafn.ca/news-events/newsletter",
       "summary": "Pro Metal Winter Edition Newsletter - February 2026 PDF Pelican Post Newsletter - December 2019 PDF",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 383,
-      "discoveredAt": "2026-09-02T16:43:38Z",
+      "discoveredAt": "2026-09-03T16:33:52Z",
       "communityConfidence": 0.98,
       "dateSource": "meta:date",
       "extractionMethod": "article-metadata",
@@ -2515,7 +1715,7 @@
         "source-backed"
       ],
       "bandId": 383,
-      "discoveredAt": "2026-09-02T16:43:45Z",
+      "discoveredAt": "2026-09-03T16:33:58Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2541,7 +1741,7 @@
         "source-backed"
       ],
       "bandId": 383,
-      "discoveredAt": "2026-09-02T16:43:45Z",
+      "discoveredAt": "2026-09-03T16:33:58Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2567,7 +1767,7 @@
         "source-backed"
       ],
       "bandId": 383,
-      "discoveredAt": "2026-09-02T16:43:45Z",
+      "discoveredAt": "2026-09-03T16:33:58Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2575,51 +1775,52 @@
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "pasqua-first-nation-2026-07-24-e43b2a6530",
-      "storyKey": "383-2026-07-24-indigenous-youth-entrepreneurship-camp-july-20-july-24-2026",
-      "title": "Indigenous Youth Entrepreneurship Camp - July 20 - July 24, 2026",
+      "id": "pasqua-first-nation-2026-09-03-d899d3b317",
+      "storyKey": "383-2026-09-03-opportunities-that-exist-in-the-community-you-re-offering-them",
+      "title": "opportunities that exist in the community. You’re offering them",
       "communityName": "Pasqua First Nation",
       "communityAliases": [],
       "provinceTerritory": "SK",
       "category": "Other",
       "sourceType": "Official First Nation Website",
       "sourceName": "Pasqua First Nation official website",
-      "publishedAt": "2026-07-24",
+      "publishedAt": "2026-09-03",
       "datePrecision": "day",
-      "url": "https://www.pasquafn.ca/fileadmin/user_upload/Indigenous_Youth_Entrepreneurship_Camp_-_July_20_-_July_24__2026.pdf",
-      "summary": "Click Here to Download Poster in PDF Format Click Here to Download Rules and Schedule in PDF Format Life Skills Workshop Attention Pasqua Residents Indigenous Youth Entrepreneurship Camp - July 20 - July 24, 2026 Apply Before June 26th for the Indigenous Youth Entrepreneurship Camp. Registration Link For More Information Click this Link - Indigenous Youth Entrepreneurship Camp - July 20 - July 24, 2026 Weather Alert.",
+      "url": "https://www.pasquafn.ca/fileadmin/user_upload/MentaL_Health_News_Letter_August_2026.pdf",
+      "summary": "Life Lines Improving your quality of life, one step at a time How Empathy Can Support Someone In Recovery Supporting someone who is recovering from addiction can empathy, you allow yourself to see the world from another be really tough. Knowing what to say or do to help them feel person’s perspective, which can make a huge difference in how supported and loved is not always easy. At times, you might feel you support.",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 383,
-      "discoveredAt": "2026-09-02T16:43:45Z",
+      "discoveredAt": "2026-09-03T16:34:16Z",
       "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
+      "dateSource": "structured-listing",
+      "extractionMethod": "pdf_text",
       "sourcePage": "https://www.pasquafn.ca/news-events",
-      "reviewReason": "Title does not clearly describe a supported community update"
+      "detailVerified": false,
+      "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "sweetgrass-first-nation-2026-09-02-1ecceff0ad",
-      "storyKey": "348-2026-09-02-2026-09-03-3-sep-dr-mirasty-clinic-visits-2026-09-03t09-30-00-09-30am-2026-09-03",
-      "title": "2026-09-03 3 Sep Dr. Mirasty Clinic Visits 2026-09-03T09:30:00 09:30AM - 2026-09-03T15:00:00 03:00PM Sweetgrass Health Clinic",
+      "id": "sweetgrass-first-nation-2026-09-03-6be76ca23d",
+      "storyKey": "348-2026-09-03-2026-09-10-10-sep-dr-mirasty-clinic-visits-2026-09-10t09-30-00-09-30am-2026-09-1",
+      "title": "2026-09-10 10 Sep Dr. Mirasty Clinic Visits 2026-09-10T09:30:00 09:30AM - 2026-09-10T15:00:00 03:00PM Sweetgrass Health Clinic",
       "communityName": "Sweetgrass First Nation",
       "communityAliases": [],
       "provinceTerritory": "SK",
       "category": "Healthcare",
       "sourceType": "Official First Nation Website",
       "sourceName": "Sweetgrass First Nation official website",
-      "publishedAt": "2026-09-03",
+      "publishedAt": "2026-09-10",
       "datePrecision": "day",
-      "url": "https://sweetgrassfirstnation.ca/events.html?EventID=701",
+      "url": "https://sweetgrassfirstnation.ca/events.html?EventID=702",
       "summary": "Discover the vibrant Events hosted by Sweetgrass First Nation, celebrating our culture, traditions, and community. Our events bring together our community members and showcase the richness and diversity of our Indigenous heritage. Learn about our festival",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 348,
-      "discoveredAt": "2026-09-02T16:43:45Z",
+      "discoveredAt": "2026-09-03T16:33:50Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "html",
@@ -2629,8 +1830,64 @@
       "reviewReason": "Date appears to be a future event date, not a publication date"
     },
     {
-      "id": "sweetgrass-first-nation-2026-09-02-aeb085e041",
-      "storyKey": "348-2026-09-02-view-events-calendar",
+      "id": "sweetgrass-first-nation-2026-09-03-2d368b51e1",
+      "storyKey": "348-2026-09-03-2026-09-14-14-sep-dr-mirasty-clinic-visits-2026-09-14t09-30-00-09-30am-2026-09-1",
+      "title": "2026-09-14 14 Sep Dr. Mirasty Clinic Visits 2026-09-14T09:30:00 09:30AM - 2026-09-14T15:00:00 03:00PM Sweetgrass Health Clinic",
+      "communityName": "Sweetgrass First Nation",
+      "communityAliases": [],
+      "provinceTerritory": "SK",
+      "category": "Healthcare",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Sweetgrass First Nation official website",
+      "publishedAt": "2026-09-14",
+      "datePrecision": "day",
+      "url": "https://sweetgrassfirstnation.ca/events.html?EventID=703",
+      "summary": "Discover the vibrant Events hosted by Sweetgrass First Nation, celebrating our culture, traditions, and community. Our events bring together our community members and showcase the richness and diversity of our Indigenous heritage. Learn about our festival",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 348,
+      "discoveredAt": "2026-09-03T16:33:50Z",
+      "communityConfidence": 0.98,
+      "dateSource": "time:datetime",
+      "extractionMethod": "html",
+      "sourcePage": "https://sweetgrassfirstnation.ca/",
+      "thumbnail": "https://sweetgrassfirstnation.ca/images/screenshot.jpg",
+      "detailVerified": true,
+      "reviewReason": "Date appears to be a future event date, not a publication date"
+    },
+    {
+      "id": "sweetgrass-first-nation-2026-09-03-afc623ec2d",
+      "storyKey": "348-2026-09-03-2026-09-23-23-sep-dr-mirasty-clinic-visits-2026-09-23t09-30-00-09-30am-2026-09-2",
+      "title": "2026-09-23 23 Sep Dr. Mirasty Clinic Visits 2026-09-23T09:30:00 09:30AM - 2026-09-23T15:00:00 03:00PM Sweetgrass Health Clinic",
+      "communityName": "Sweetgrass First Nation",
+      "communityAliases": [],
+      "provinceTerritory": "SK",
+      "category": "Healthcare",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Sweetgrass First Nation official website",
+      "publishedAt": "2026-09-23",
+      "datePrecision": "day",
+      "url": "https://sweetgrassfirstnation.ca/events.html?EventID=704",
+      "summary": "Discover the vibrant Events hosted by Sweetgrass First Nation, celebrating our culture, traditions, and community. Our events bring together our community members and showcase the richness and diversity of our Indigenous heritage. Learn about our festival",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 348,
+      "discoveredAt": "2026-09-03T16:33:50Z",
+      "communityConfidence": 0.98,
+      "dateSource": "time:datetime",
+      "extractionMethod": "html",
+      "sourcePage": "https://sweetgrassfirstnation.ca/",
+      "thumbnail": "https://sweetgrassfirstnation.ca/images/screenshot.jpg",
+      "detailVerified": true,
+      "reviewReason": "Date appears to be a future event date, not a publication date"
+    },
+    {
+      "id": "sweetgrass-first-nation-2026-09-03-c64d74ccb8",
+      "storyKey": "348-2026-09-03-view-events-calendar",
       "title": "View Events Calendar",
       "communityName": "Sweetgrass First Nation",
       "communityAliases": [],
@@ -2638,7 +1895,7 @@
       "category": "Healthcare",
       "sourceType": "Official First Nation Website",
       "sourceName": "Sweetgrass First Nation official website",
-      "publishedAt": "2026-09-02",
+      "publishedAt": "2026-09-03",
       "datePrecision": "day",
       "url": "https://sweetgrassfirstnation.ca/events.html",
       "summary": "Discover the vibrant Events hosted by Sweetgrass First Nation, celebrating our culture, traditions, and community. Our events bring together our community members and showcase the richness and diversity of our Indigenous heritage. Learn about our festival",
@@ -2647,7 +1904,7 @@
         "source-backed"
       ],
       "bandId": 348,
-      "discoveredAt": "2026-09-02T16:43:45Z",
+      "discoveredAt": "2026-09-03T16:33:50Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2675,7 +1932,7 @@
         "source-backed"
       ],
       "bandId": 348,
-      "discoveredAt": "2026-09-02T16:43:56Z",
+      "discoveredAt": "2026-09-03T16:33:57Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2702,7 +1959,7 @@
         "source-backed"
       ],
       "bandId": 348,
-      "discoveredAt": "2026-09-02T16:43:56Z",
+      "discoveredAt": "2026-09-03T16:33:57Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2729,7 +1986,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-09-02T16:43:53Z",
+      "discoveredAt": "2026-09-03T16:33:54Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2755,7 +2012,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-09-02T16:43:53Z",
+      "discoveredAt": "2026-09-03T16:33:54Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2781,7 +2038,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-09-02T16:43:53Z",
+      "discoveredAt": "2026-09-03T16:33:54Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2807,7 +2064,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-09-02T16:43:53Z",
+      "discoveredAt": "2026-09-03T16:33:54Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2833,7 +2090,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-09-02T16:43:53Z",
+      "discoveredAt": "2026-09-03T16:33:54Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2859,7 +2116,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-09-02T16:44:02Z",
+      "discoveredAt": "2026-09-03T16:34:00Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2885,7 +2142,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-09-02T16:44:02Z",
+      "discoveredAt": "2026-09-03T16:34:00Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2911,7 +2168,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-09-02T16:44:10Z",
+      "discoveredAt": "2026-09-03T16:34:05Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_text",
@@ -2938,7 +2195,7 @@
         "source-backed"
       ],
       "bandId": 349,
-      "discoveredAt": "2026-09-02T16:44:11Z",
+      "discoveredAt": "2026-09-03T16:34:06Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_text",
@@ -2965,7 +2222,7 @@
         "source-backed"
       ],
       "bandId": 365,
-      "discoveredAt": "2026-09-02T16:44:06Z",
+      "discoveredAt": "2026-09-03T16:33:55Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "html",
@@ -2992,13 +2249,13 @@
         "source-backed"
       ],
       "bandId": 372,
-      "discoveredAt": "2026-09-02T16:44:13Z",
+      "discoveredAt": "2026-09-03T16:34:19Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://www.whitecapdakota.com/",
       "thumbnail": "https://media-002-ca.cdn.govstack.com/whitecapdakota-015-ca/media/homfpwok/wdn.png",
-      "reviewReason": "Date appears to be a future event date, not a publication date"
+      "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
       "id": "whitecap-dakota-first-nation-2026-09-03-bf1d83c1c1",
@@ -3019,13 +2276,13 @@
         "source-backed"
       ],
       "bandId": 372,
-      "discoveredAt": "2026-09-02T16:44:13Z",
+      "discoveredAt": "2026-09-03T16:34:19Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://www.whitecapdakota.com/",
       "thumbnail": "https://media-002-ca.cdn.govstack.com/whitecapdakota-015-ca/media/homfpwok/wdn.png",
-      "reviewReason": "Date appears to be a future event date, not a publication date"
+      "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
       "id": "whitecap-dakota-first-nation-2026-09-03-46811fea32",
@@ -3046,13 +2303,13 @@
         "source-backed"
       ],
       "bandId": 372,
-      "discoveredAt": "2026-09-02T16:44:13Z",
+      "discoveredAt": "2026-09-03T16:34:19Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://www.whitecapdakota.com/",
       "thumbnail": "https://media-002-ca.cdn.govstack.com/whitecapdakota-015-ca/media/homfpwok/wdn.png",
-      "reviewReason": "Date appears to be a future event date, not a publication date"
+      "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
       "id": "whitecap-dakota-first-nation-2026-09-03-c399002703",
@@ -3073,13 +2330,13 @@
         "source-backed"
       ],
       "bandId": 372,
-      "discoveredAt": "2026-09-02T16:44:13Z",
+      "discoveredAt": "2026-09-03T16:34:19Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://www.whitecapdakota.com/",
       "thumbnail": "https://media-002-ca.cdn.govstack.com/whitecapdakota-015-ca/media/homfpwok/wdn.png",
-      "reviewReason": "Date appears to be a future event date, not a publication date"
+      "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
       "id": "whitecap-dakota-first-nation-2026-09-03-adc239ad6d",
@@ -3100,13 +2357,13 @@
         "source-backed"
       ],
       "bandId": 372,
-      "discoveredAt": "2026-09-02T16:44:13Z",
+      "discoveredAt": "2026-09-03T16:34:19Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://www.whitecapdakota.com/",
       "thumbnail": "https://media-002-ca.cdn.govstack.com/whitecapdakota-015-ca/media/homfpwok/wdn.png",
-      "reviewReason": "Date appears to be a future event date, not a publication date"
+      "reviewReason": "Source URL is a homepage or archive rather than a dated article"
     },
     {
       "id": "whitecap-dakota-first-nation-2026-09-03-5fc92a152c",
@@ -3127,13 +2384,13 @@
         "source-backed"
       ],
       "bandId": 372,
-      "discoveredAt": "2026-09-02T16:44:13Z",
+      "discoveredAt": "2026-09-03T16:34:19Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://www.whitecapdakota.com/",
       "thumbnail": "https://media-002-ca.cdn.govstack.com/whitecapdakota-015-ca/media/homfpwok/wdn.png",
-      "reviewReason": "Date appears to be a future event date, not a publication date"
+      "reviewReason": "Title does not clearly describe a supported community update"
     },
     {
       "id": "whitecap-dakota-first-nation-2026-09-03-144265deb7",
@@ -3154,13 +2411,13 @@
         "source-backed"
       ],
       "bandId": 372,
-      "discoveredAt": "2026-09-02T16:44:13Z",
+      "discoveredAt": "2026-09-03T16:34:19Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://www.whitecapdakota.com/",
       "thumbnail": "https://media-002-ca.cdn.govstack.com/whitecapdakota-015-ca/media/homfpwok/wdn.png",
-      "reviewReason": "Date appears to be a future event date, not a publication date"
+      "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
       "id": "wood-mountain-first-nation-2026-08-29-c64725cf2d",
@@ -3181,7 +2438,7 @@
         "source-backed"
       ],
       "bandId": 388,
-      "discoveredAt": "2026-09-02T16:44:17Z",
+      "discoveredAt": "2026-09-03T16:34:21Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3208,7 +2465,7 @@
         "source-backed"
       ],
       "bandId": 388,
-      "discoveredAt": "2026-09-02T16:44:17Z",
+      "discoveredAt": "2026-09-03T16:34:21Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3235,7 +2492,7 @@
         "source-backed"
       ],
       "bandId": 388,
-      "discoveredAt": "2026-09-02T16:44:17Z",
+      "discoveredAt": "2026-09-03T16:34:21Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3244,31 +2501,32 @@
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "wood-mountain-first-nation-2019-03-29-da62f3214b",
-      "storyKey": "388-2019-03-29-calendar",
-      "title": "Calendar — WMLFN",
+      "id": "wood-mountain-first-nation-2026-08-29-3a3500470a",
+      "storyKey": "388-2026-08-29-women-s-wellness-retreat",
+      "title": "Women’s Wellness Retreat — WMLFN",
       "communityName": "Wood Mountain First Nation",
       "communityAliases": [],
       "provinceTerritory": "SK",
-      "category": "Other",
+      "category": "Healthcare",
       "sourceType": "Official First Nation Website",
       "sourceName": "Wood Mountain First Nation official website",
-      "publishedAt": "2026-09-03",
+      "publishedAt": "2026-09-02",
       "datePrecision": "day",
-      "url": "https://www.woodmountainlakotafn.ca/calendar",
-      "summary": "M.Ed. Registered Psychologist Krystal Hawkins will facilitate a Talking Circle: a meaningful space where we come together to share, listen, and connect with one another in a supportive environment. Lunch will be provided that day. Community members are warmly invited to attend our Wellness Clinic. Nurses will be available to provide basic health checks, including blood pressure monitoring, blood sugar testing, and ot",
+      "url": "https://www.woodmountainlakotafn.ca/gen-announcements/ylcpft1nrt47hgi43t3fqzqlkft8dg",
+      "summary": "Please find the invitation for the upcoming Women’s Wellness Retreat hosted by Darci Lang below. [Click here to view the invitation/poster]",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 388,
-      "discoveredAt": "2026-09-02T16:44:26Z",
+      "discoveredAt": "2026-09-03T16:34:21Z",
       "communityConfidence": 0.98,
-      "dateSource": "time:datetime",
+      "dateSource": "json-ld:datePublished",
       "extractionMethod": "html",
-      "sourcePage": "https://www.woodmountainlakotafn.ca/gen-announcements?category=WMLFN",
+      "sourcePage": "https://www.woodmountainlakotafn.ca/",
+      "thumbnail": "https://images.squarespace-cdn.com/content/v1/681a3f1e1023425e48148ac3/1783977752559-F0888D71QJY90NLBBMF1/IMG_7086.jpeg",
       "detailVerified": true,
-      "reviewReason": "Date appears to be a future event date, not a publication date"
+      "reviewReason": "Title does not clearly describe a supported community update"
     },
     {
       "id": "wood-mountain-first-nation-2026-08-29-32ccb021cb",
@@ -3289,12 +2547,12 @@
         "source-backed"
       ],
       "bandId": 388,
-      "discoveredAt": "2026-09-02T16:44:17Z",
+      "discoveredAt": "2026-09-03T16:34:21Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://www.woodmountainlakotafn.ca/",
-      "thumbnail": "https://images.squarespace-cdn.com/content/v1/681a3f1e1023425e48148ac3/1783270170185-54ORIXYFCGJLM1ELVST5/IMG_8696.jpg",
+      "thumbnail": "https://images.squarespace-cdn.com/content/v1/681a3f1e1023425e48148ac3/1783977752559-F0888D71QJY90NLBBMF1/IMG_7086.jpeg",
       "detailVerified": false,
       "reviewReason": "Publication date could not be verified on the detail page"
     },
@@ -3317,18 +2575,18 @@
         "source-backed"
       ],
       "bandId": 388,
-      "discoveredAt": "2026-09-02T16:44:17Z",
+      "discoveredAt": "2026-09-03T16:34:21Z",
       "communityConfidence": 0.98,
       "dateSource": "json-ld:datePublished",
       "extractionMethod": "html",
       "sourcePage": "https://www.woodmountainlakotafn.ca/",
-      "thumbnail": "https://images.squarespace-cdn.com/content/v1/681a3f1e1023425e48148ac3/1783270170185-54ORIXYFCGJLM1ELVST5/IMG_8696.jpg",
+      "thumbnail": "https://images.squarespace-cdn.com/content/v1/681a3f1e1023425e48148ac3/1783977752559-F0888D71QJY90NLBBMF1/IMG_7086.jpeg",
       "detailVerified": true,
       "reviewReason": "Title does not clearly describe a supported community update"
     },
     {
-      "id": "wood-mountain-first-nation-2026-08-31-9bc7c44cc5",
-      "storyKey": "388-2026-08-31-wmlfn",
+      "id": "wood-mountain-first-nation-2026-09-02-83974fa6f9",
+      "storyKey": "388-2026-09-02-wmlfn",
       "title": "WMLFN",
       "communityName": "Wood Mountain First Nation",
       "communityAliases": [],
@@ -3336,7 +2594,7 @@
       "category": "Infrastructure",
       "sourceType": "Official First Nation Website",
       "sourceName": "Wood Mountain First Nation official website",
-      "publishedAt": "2026-08-31",
+      "publishedAt": "2026-09-02",
       "datePrecision": "day",
       "url": "https://www.woodmountainlakotafn.ca/",
       "summary": "Chief and Council extend a warm welcome to our community. We hope this website serves as a valuable resource for both community members and visitors, keeping you well-informed and connected. We are proud to offer a broad range of services, including educational support, health programs, and general announcements, all designed to benefit and strengthen our community. August 29th, 2026 308 band members have voted.",
@@ -3345,7 +2603,7 @@
         "source-backed"
       ],
       "bandId": 388,
-      "discoveredAt": "2026-09-02T16:44:18Z",
+      "discoveredAt": "2026-09-03T16:34:22Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "article-metadata",
@@ -3377,7 +2635,7 @@
         "source-backed"
       ],
       "bandId": 406,
-      "discoveredAt": "2026-09-02T16:44:16Z",
+      "discoveredAt": "2026-09-03T16:34:20Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3409,7 +2667,7 @@
         "source-backed"
       ],
       "bandId": 406,
-      "discoveredAt": "2026-09-02T16:44:28Z",
+      "discoveredAt": "2026-09-03T16:34:29Z",
       "communityConfidence": 0.94,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3440,7 +2698,7 @@
         "source-backed"
       ],
       "bandId": 406,
-      "discoveredAt": "2026-09-02T16:44:28Z",
+      "discoveredAt": "2026-09-03T16:34:29Z",
       "communityConfidence": 0.94,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3471,7 +2729,7 @@
         "source-backed"
       ],
       "bandId": 406,
-      "discoveredAt": "2026-09-02T16:44:30Z",
+      "discoveredAt": "2026-09-03T16:34:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3502,7 +2760,7 @@
         "source-backed"
       ],
       "bandId": 406,
-      "discoveredAt": "2026-09-02T16:44:30Z",
+      "discoveredAt": "2026-09-03T16:34:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3533,7 +2791,7 @@
         "source-backed"
       ],
       "bandId": 395,
-      "discoveredAt": "2026-09-02T16:44:48Z",
+      "discoveredAt": "2026-09-03T16:34:45Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3564,7 +2822,7 @@
         "source-backed"
       ],
       "bandId": 395,
-      "discoveredAt": "2026-09-02T16:44:48Z",
+      "discoveredAt": "2026-09-03T16:34:45Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3595,7 +2853,7 @@
         "source-backed"
       ],
       "bandId": 395,
-      "discoveredAt": "2026-09-02T16:44:51Z",
+      "discoveredAt": "2026-09-03T16:34:49Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3626,7 +2884,7 @@
         "source-backed"
       ],
       "bandId": 395,
-      "discoveredAt": "2026-09-02T16:44:51Z",
+      "discoveredAt": "2026-09-03T16:34:49Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3657,7 +2915,7 @@
         "source-backed"
       ],
       "bandId": 395,
-      "discoveredAt": "2026-09-02T16:44:51Z",
+      "discoveredAt": "2026-09-03T16:34:49Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3688,7 +2946,7 @@
         "source-backed"
       ],
       "bandId": 395,
-      "discoveredAt": "2026-09-02T16:45:01Z",
+      "discoveredAt": "2026-09-03T16:35:02Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "document_too_large",
@@ -3697,8 +2955,8 @@
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "lac-la-ronge-indian-band-2026-09-02-cdefbc2b4d",
-      "storyKey": "353-2026-09-02-lac-la-ronge-indian-band",
+      "id": "lac-la-ronge-indian-band-2026-09-03-00ccb49415",
+      "storyKey": "353-2026-09-03-lac-la-ronge-indian-band",
       "title": "Lac La Ronge Indian Band",
       "communityName": "Lac La Ronge Indian Band",
       "communityAliases": [],
@@ -3706,7 +2964,7 @@
       "category": "Treaties",
       "sourceType": "Official First Nation Website",
       "sourceName": "Lac La Ronge Indian Band official website",
-      "publishedAt": "2026-09-02",
+      "publishedAt": "2026-09-03",
       "datePrecision": "day",
       "url": "https://llrib.com/",
       "summary": "Located in north-central Saskatchewan, the Lac La Ronge Indian Band is the largest First Nation in Saskatchewan, and one of the 10 largest in Canada, with a population of 11843, as of March 1st, 2023. Our reserve lands extend from rich farmlands in central Saskatchewan, all the way north through the boreal forest to the mighty Churchill River and beyond. Our central administration office is located in La Ronge, 241 k",
@@ -3715,7 +2973,7 @@
         "source-backed"
       ],
       "bandId": 353,
-      "discoveredAt": "2026-09-02T16:45:15Z",
+      "discoveredAt": "2026-09-03T16:35:28Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3742,7 +3000,7 @@
         "source-backed"
       ],
       "bandId": 353,
-      "discoveredAt": "2026-09-02T16:45:14Z",
+      "discoveredAt": "2026-09-03T16:35:27Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "html",
@@ -3770,7 +3028,7 @@
         "source-backed"
       ],
       "bandId": 353,
-      "discoveredAt": "2026-09-02T16:45:14Z",
+      "discoveredAt": "2026-09-03T16:35:27Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "html",
@@ -3798,7 +3056,7 @@
         "source-backed"
       ],
       "bandId": 353,
-      "discoveredAt": "2026-09-02T16:44:58Z",
+      "discoveredAt": "2026-09-03T16:35:07Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "html",
@@ -3817,16 +3075,16 @@
       "category": "Elections",
       "sourceType": "Official First Nation Website",
       "sourceName": "Lac La Ronge Indian Band official website",
-      "publishedAt": "2026-09-01",
+      "publishedAt": "2026-09-02",
       "datePrecision": "day",
       "url": "https://jrmccsportsrec.com/",
-      "summary": "JRMCC is where we host a wide variety of community sports and events Posted by Michelle Charles. September Schedule. Posted by Sam McKenzie. Our blue jays team lost to Manitolin 5-4 ( close game) yesterday and won against Oneida NY this afternoon 2-1 ! Go LLRIB 🦾🤛🏾",
+      "summary": "JRMCC is where we host a wide variety of community sports and events We’re selling our portable dehumidifier, purchased for $1500.00, selling for $500.00. Call or text 420-7529. Hockey nets for sale, text or call 420-7529!",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 353,
-      "discoveredAt": "2026-09-02T16:45:15Z",
+      "discoveredAt": "2026-09-03T16:35:28Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "html",
@@ -3854,7 +3112,7 @@
         "source-backed"
       ],
       "bandId": 354,
-      "discoveredAt": "2026-09-02T16:45:51Z",
+      "discoveredAt": "2026-09-03T16:35:45Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3882,7 +3140,7 @@
         "source-backed"
       ],
       "bandId": 354,
-      "discoveredAt": "2026-09-02T16:45:51Z",
+      "discoveredAt": "2026-09-03T16:35:45Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3891,9 +3149,9 @@
       "reviewReason": "Source URL is a homepage or archive rather than a dated article"
     },
     {
-      "id": "mosquito-grizzly-bear-s-head-lean-man-2026-04-21-fde17b6d24",
-      "storyKey": "343-2026-04-21-medical-transportation",
-      "title": "MEDICAL TRANSPORTATION",
+      "id": "mosquito-grizzly-bear-s-head-lean-man-2026-04-21-143497d89d",
+      "storyKey": "343-2026-04-21-upcoming-medical-appointment-procedure",
+      "title": "Upcoming Medical Appointment Procedure",
       "communityName": "Mosquito, Grizzly Bear's Head, Lean Man",
       "communityAliases": [],
       "provinceTerritory": "SK",
@@ -3909,283 +3167,13 @@
         "source-backed"
       ],
       "bandId": 343,
-      "discoveredAt": "2026-09-02T16:45:19Z",
+      "discoveredAt": "2026-09-03T16:35:15Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://mosquitofn.ca/news.html",
       "thumbnail": "https://mosquitofn.ca/images/logo.png",
       "reviewReason": "Title does not clearly describe a supported community update"
-    },
-    {
-      "id": "muscowpetung-first-nation-2026-08-17-ab73e6d80d",
-      "storyKey": "381-2026-08-17-job-opportunities",
-      "title": "📢 JOB OPPORTUNITIES - Muscowpetung Saulteaux Nation",
-      "communityName": "Muscowpetung First Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Education",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Muscowpetung First Nation",
-      "publishedAt": "2026-08-17",
-      "datePrecision": "day",
-      "url": "https://muscowpetung.com/%f0%9f%93%a2-job-opportunities",
-      "summary": "Muscowpetung Saulteaux Nation is sharing the following employment opportunities currently posted on SaskJobs:",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 381,
-      "discoveredAt": "2026-09-02T16:45:38Z",
-      "communityConfidence": 0.98,
-      "dateSource": "article:published_time",
-      "extractionMethod": "html",
-      "sourcePage": "https://muscowpetung.com/updates",
-      "thumbnail": "https://muscowpetung.com/storage/2026/08/New-august-Muscowpetung-Jobs.png",
-      "detailVerified": true,
-      "reviewReason": "Title does not clearly describe a supported community update"
-    },
-    {
-      "id": "muscowpetung-first-nation-2026-08-17-ab73e6d80d",
-      "storyKey": "381-2026-08-17-job-opportunities",
-      "title": "📢 JOB OPPORTUNITIES - Muscowpetung Saulteaux Nation",
-      "communityName": "Muscowpetung First Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Education",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Muscowpetung First Nation official website",
-      "publishedAt": "2026-08-17",
-      "datePrecision": "day",
-      "url": "https://muscowpetung.com/%f0%9f%93%a2-job-opportunities",
-      "summary": "Muscowpetung Saulteaux Nation is sharing the following employment opportunities currently posted on SaskJobs:",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 381,
-      "discoveredAt": "2026-09-02T16:45:40Z",
-      "communityConfidence": 0.98,
-      "dateSource": "article:published_time",
-      "extractionMethod": "html",
-      "sourcePage": "https://muscowpetung.com/updates",
-      "thumbnail": "https://muscowpetung.com/storage/2026/08/New-august-Muscowpetung-Jobs.png",
-      "detailVerified": true,
-      "reviewReason": "Title does not clearly describe a supported community update"
-    },
-    {
-      "id": "muskeg-lake-cree-nation-2026-08-07-0d87813931",
-      "storyKey": "375-2026-08-07-muskeg-lake-cree-nation-treaty-6-150th-commemoration",
-      "title": "Muskeg Lake Cree Nation – Treaty 6 150th Commemoration – Muskeg Lake Cree Nation",
-      "communityName": "Muskeg Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Treaties",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Muskeg Lake Cree Nation",
-      "publishedAt": "2026-08-07",
-      "datePrecision": "day",
-      "url": "https://muskeglake.com/muskeg-lake-cree-nation-treaty-6-150th-commemoration",
-      "summary": "Band No. 102 ᒪᐢᑫᑯ ᓵᑲᐦᐃᑲᐣ maskêko-sâkahikan From August 20–23, 2026",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 375,
-      "discoveredAt": "2026-09-02T16:45:28Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://muskeglake.com/",
-      "thumbnail": "https://muskeglake.com/wp-content/uploads/2026/08/Agenda-150-Years-Treaty-6-July-28-2026-605x377.jpg",
-      "detailVerified": true,
-      "reviewReason": "Title does not clearly describe a supported community update"
-    },
-    {
-      "id": "muskeg-lake-cree-nation-2026-09-01-82da8df730",
-      "storyKey": "375-2026-09-01-more-details",
-      "title": "More Details",
-      "communityName": "Muskeg Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Culture & Language",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Muskeg Lake Cree Nation",
-      "publishedAt": "2026-09-01",
-      "datePrecision": "month",
-      "url": "https://muskeglake.com/",
-      "summary": "Band No. 102 ᒪᐢᑫᑯ ᓵᑲᐦᐃᑲᐣ maskêko-sâkahikan PO Box 248 Marcelin, Sk. (306) 466 – 4959",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 375,
-      "discoveredAt": "2026-09-02T16:45:28Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://muskeglake.com/",
-      "reviewReason": "Title does not clearly describe a supported community update"
-    },
-    {
-      "id": "muskeg-lake-cree-nation-2026-06-26-3a5209c548",
-      "storyKey": "375-2026-06-26-click-here-for-official-voting-information-through-uelect",
-      "title": "Click here for official voting information through uElect",
-      "communityName": "Muskeg Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Elections",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Muskeg Lake Cree Nation",
-      "publishedAt": "2026-06-26",
-      "datePrecision": "day",
-      "url": "https://uelect.ca/muskeg-lake",
-      "summary": "Your trusted partner for fair and transparent elections.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 375,
-      "discoveredAt": "2026-09-02T16:45:46Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://muskeglake.com/notice-of-ratification-vote-election-code-and-citizenship-code",
-      "thumbnail": "https://img1.wsimg.com/isteam/getty/183062055",
-      "reviewReason": "Title does not clearly describe a supported community update"
-    },
-    {
-      "id": "muskeg-lake-cree-nation-2026-06-26-8b9fa687e9",
-      "storyKey": "375-2026-06-26-view-the-notice-of-ratification-vote-in-muskeg-connect",
-      "title": "View the Notice of Ratification Vote in Muskeg Connect",
-      "communityName": "Muskeg Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Elections",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Muskeg Lake Cree Nation",
-      "publishedAt": "2026-06-26",
-      "datePrecision": "day",
-      "url": "https://muskegconnect.com/wp-login.php?redirect_to=https%3A%2F%2Fmuskegconnect.com%2Fnotice-of-ratification-vote-election-code-and-citizenship-code%2F&bp-auth=1&action=bpnoaccess",
-      "summary": "Muskeg Connect Please login to access this website. Email Address",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 375,
-      "discoveredAt": "2026-09-02T16:45:46Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://muskeglake.com/notice-of-ratification-vote-election-code-and-citizenship-code",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "muskeg-lake-cree-nation-2026-08-07-0d87813931",
-      "storyKey": "375-2026-08-07-muskeg-lake-cree-nation-treaty-6-150th-commemoration",
-      "title": "Muskeg Lake Cree Nation – Treaty 6 150th Commemoration – Muskeg Lake Cree Nation",
-      "communityName": "Muskeg Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Treaties",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Muskeg Lake Cree Nation official website",
-      "publishedAt": "2026-08-07",
-      "datePrecision": "day",
-      "url": "https://muskeglake.com/muskeg-lake-cree-nation-treaty-6-150th-commemoration",
-      "summary": "Band No. 102 ᒪᐢᑫᑯ ᓵᑲᐦᐃᑲᐣ maskêko-sâkahikan From August 20–23, 2026",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 375,
-      "discoveredAt": "2026-09-02T16:45:37Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://muskeglake.com/",
-      "thumbnail": "https://muskeglake.com/wp-content/uploads/2026/08/Agenda-150-Years-Treaty-6-July-28-2026-605x377.jpg",
-      "detailVerified": true,
-      "reviewReason": "Title does not clearly describe a supported community update"
-    },
-    {
-      "id": "muskeg-lake-cree-nation-2026-09-01-82da8df730",
-      "storyKey": "375-2026-09-01-more-details",
-      "title": "More Details",
-      "communityName": "Muskeg Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Culture & Language",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Muskeg Lake Cree Nation official website",
-      "publishedAt": "2026-09-01",
-      "datePrecision": "month",
-      "url": "https://muskeglake.com/",
-      "summary": "Band No. 102 ᒪᐢᑫᑯ ᓵᑲᐦᐃᑲᐣ maskêko-sâkahikan PO Box 248 Marcelin, Sk. (306) 466 – 4959",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 375,
-      "discoveredAt": "2026-09-02T16:45:37Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://muskeglake.com/",
-      "reviewReason": "Title does not clearly describe a supported community update"
-    },
-    {
-      "id": "muskeg-lake-cree-nation-2026-06-26-3a5209c548",
-      "storyKey": "375-2026-06-26-click-here-for-official-voting-information-through-uelect",
-      "title": "Click here for official voting information through uElect",
-      "communityName": "Muskeg Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Elections",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Muskeg Lake Cree Nation official website",
-      "publishedAt": "2026-06-26",
-      "datePrecision": "day",
-      "url": "https://uelect.ca/muskeg-lake",
-      "summary": "Your trusted partner for fair and transparent elections.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 375,
-      "discoveredAt": "2026-09-02T16:45:54Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://muskeglake.com/notice-of-ratification-vote-election-code-and-citizenship-code",
-      "thumbnail": "https://img1.wsimg.com/isteam/getty/183062055",
-      "reviewReason": "Title does not clearly describe a supported community update"
-    },
-    {
-      "id": "muskeg-lake-cree-nation-2026-06-26-8b9fa687e9",
-      "storyKey": "375-2026-06-26-view-the-notice-of-ratification-vote-in-muskeg-connect",
-      "title": "View the Notice of Ratification Vote in Muskeg Connect",
-      "communityName": "Muskeg Lake Cree Nation",
-      "communityAliases": [],
-      "provinceTerritory": "SK",
-      "category": "Elections",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Muskeg Lake Cree Nation official website",
-      "publishedAt": "2026-06-26",
-      "datePrecision": "day",
-      "url": "https://muskegconnect.com/wp-login.php?redirect_to=https%3A%2F%2Fmuskegconnect.com%2Fnotice-of-ratification-vote-election-code-and-citizenship-code%2F&bp-auth=1&action=bpnoaccess",
-      "summary": "Muskeg Connect Please login to access this website. Email Address",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 375,
-      "discoveredAt": "2026-09-02T16:45:54Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://muskeglake.com/notice-of-ratification-vote-election-code-and-citizenship-code",
-      "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
       "id": "piapot-first-nation-2026-09-11-19bde39f15",
@@ -4206,7 +3194,7 @@
         "source-backed"
       ],
       "bandId": 385,
-      "discoveredAt": "2026-09-02T16:45:55Z",
+      "discoveredAt": "2026-09-03T16:35:27Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "html",
@@ -4234,7 +3222,7 @@
         "source-backed"
       ],
       "bandId": 385,
-      "discoveredAt": "2026-09-02T16:45:55Z",
+      "discoveredAt": "2026-09-03T16:35:27Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "html",
@@ -4262,7 +3250,7 @@
         "source-backed"
       ],
       "bandId": 385,
-      "discoveredAt": "2026-09-02T16:45:55Z",
+      "discoveredAt": "2026-09-03T16:35:27Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "html",
@@ -4290,7 +3278,7 @@
         "source-backed"
       ],
       "bandId": 385,
-      "discoveredAt": "2026-09-02T16:45:55Z",
+      "discoveredAt": "2026-09-03T16:35:27Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "html",
@@ -4312,13 +3300,13 @@
       "publishedAt": "2026-09-11",
       "datePrecision": "day",
       "url": "https://piapotnation.com/wp-content/uploads/2025/02/Nehiyaw-Pwatak-Trust-Payment-Instruction-Discharge-Release-and-Indemnity-PCD-Form.pdf",
-      "summary": "{\"tvn1\":\"b02bd1ad28\",\"tvn2\":\"\"} Recent Posts Executive Coordinator to Chief & Council – Full-Time 2-Year Term – Apply by September 11, 2026 Band Administrator – Apply by September 11, 2026 Finance & Administration Officer – Apply Sep 8 Administrative Assistant – Chief Payepot School – Apply by August 28 Post-Secondary Coordinator – Apply by August 21 Quick Links Nehiyaw-Pwatak Trust Payment Instruction Discharge Rele.",
+      "summary": "{\"tvn1\":\"e55fbe1c09\",\"tvn2\":\"\"} Recent Posts Executive Coordinator to Chief & Council – Full-Time 2-Year Term – Apply by September 11, 2026 Band Administrator – Apply by September 11, 2026 Finance & Administration Officer – Apply Sep 8 Administrative Assistant – Chief Payepot School – Apply by August 28 Post-Secondary Coordinator – Apply by August 21 Quick Links Nehiyaw-Pwatak Trust Payment Instruction Discharge Rele.",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 385,
-      "discoveredAt": "2026-09-02T16:45:55Z",
+      "discoveredAt": "2026-09-03T16:35:27Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4345,7 +3333,7 @@
         "source-backed"
       ],
       "bandId": 385,
-      "discoveredAt": "2026-09-02T16:45:55Z",
+      "discoveredAt": "2026-09-03T16:35:27Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4372,7 +3360,7 @@
         "source-backed"
       ],
       "bandId": 385,
-      "discoveredAt": "2026-09-02T16:45:58Z",
+      "discoveredAt": "2026-09-03T16:35:31Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "article-metadata",
@@ -4400,7 +3388,7 @@
         "source-backed"
       ],
       "bandId": 385,
-      "discoveredAt": "2026-09-02T16:48:16Z",
+      "discoveredAt": "2026-09-03T16:37:29Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_text",
@@ -4427,7 +3415,7 @@
         "source-backed"
       ],
       "bandId": 385,
-      "discoveredAt": "2026-09-02T16:48:17Z",
+      "discoveredAt": "2026-09-03T16:37:30Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_text",
@@ -4454,7 +3442,7 @@
         "source-backed"
       ],
       "bandId": 386,
-      "discoveredAt": "2026-09-02T16:47:46Z",
+      "discoveredAt": "2026-09-03T16:35:26Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4481,7 +3469,7 @@
         "source-backed"
       ],
       "bandId": 386,
-      "discoveredAt": "2026-09-02T16:47:46Z",
+      "discoveredAt": "2026-09-03T16:35:26Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4508,7 +3496,7 @@
         "source-backed"
       ],
       "bandId": 386,
-      "discoveredAt": "2026-09-02T16:47:46Z",
+      "discoveredAt": "2026-09-03T16:35:26Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4535,7 +3523,7 @@
         "source-backed"
       ],
       "bandId": 386,
-      "discoveredAt": "2026-09-02T16:47:46Z",
+      "discoveredAt": "2026-09-03T16:35:26Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4562,7 +3550,7 @@
         "source-backed"
       ],
       "bandId": 386,
-      "discoveredAt": "2026-09-02T16:47:46Z",
+      "discoveredAt": "2026-09-03T16:35:26Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4589,7 +3577,7 @@
         "source-backed"
       ],
       "bandId": 393,
-      "discoveredAt": "2026-09-02T16:47:55Z",
+      "discoveredAt": "2026-09-03T16:35:40Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "html",
@@ -4617,7 +3605,7 @@
         "source-backed"
       ],
       "bandId": 393,
-      "discoveredAt": "2026-09-02T16:47:55Z",
+      "discoveredAt": "2026-09-03T16:35:40Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "article-metadata",
@@ -4645,7 +3633,7 @@
         "source-backed"
       ],
       "bandId": 393,
-      "discoveredAt": "2026-09-02T16:47:54Z",
+      "discoveredAt": "2026-09-03T16:35:39Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "article-metadata",
@@ -4656,8 +3644,8 @@
     }
   ],
   "summary": {
-    "manualReview": 259,
-    "mediaExtracted": 20,
+    "manualReview": 205,
+    "mediaExtracted": 8,
     "sourceFailures": 15
   }
 }

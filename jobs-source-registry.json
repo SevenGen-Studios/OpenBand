@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-02T17:13:27Z",
+  "generated": "2026-09-03T17:07:07Z",
   "trackedCommunityCount": 69,
   "configuredSourceCount": 92,
   "communities": [
@@ -2122,7 +2122,7 @@
       "url": "https://www.fsin.ca/employment-opportunities",
       "sourceType": "provincial_first_nations_organization",
       "communityIds": [],
-      "candidatesFound": 1,
+      "candidatesFound": 2,
       "reviewItems": 2,
       "status": "checked",
       "warnings": []
@@ -2211,12 +2211,10 @@
         "372",
         "376"
       ],
-      "candidatesFound": 0,
+      "candidatesFound": 3,
       "reviewItems": 0,
       "status": "checked",
-      "warnings": [
-        "stc-employment: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "pagc-jobs",
@@ -2265,12 +2263,10 @@
       "communityIds": [
         "355"
       ],
-      "candidatesFound": 0,
+      "candidatesFound": 3,
       "reviewItems": 0,
       "status": "checked",
-      "warnings": [
-        "pbcn-job-postings: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "montreal-lake-updates",
@@ -2280,12 +2276,10 @@
       "communityIds": [
         "354"
       ],
-      "candidatesFound": 0,
+      "candidatesFound": 3,
       "reviewItems": 0,
       "status": "checked",
-      "warnings": [
-        "montreal-lake-updates: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "fhqtc-careers",
@@ -2305,12 +2299,10 @@
         "387",
         "388"
       ],
-      "candidatesFound": 0,
+      "candidatesFound": 2,
       "reviewItems": 0,
       "status": "checked",
-      "warnings": [
-        "fhqtc-careers: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "ytc-careers",
@@ -2408,7 +2400,7 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 6,
+      "candidatesFound": 5,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2434,12 +2426,10 @@
       "communityIds": [
         "404"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 0,
+      "candidatesFound": 2,
+      "reviewItems": 1,
       "status": "checked",
-      "warnings": [
-        "big-river-official: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "birch-narrows-careers",
@@ -2483,7 +2473,7 @@
       "reviewItems": 1,
       "status": "unavailable",
       "warnings": [
-        "fishing-lake-official: fetch failed: HTTP Error 429: Too Many Requests"
+        "fishing-lake-official: fetch failed: IncompleteRead(481799 bytes read)"
       ]
     },
     {
@@ -2507,12 +2497,10 @@
       "communityIds": [
         "362"
       ],
-      "candidatesFound": 0,
+      "candidatesFound": 12,
       "reviewItems": 0,
       "status": "checked",
-      "warnings": [
-        "kahkewistahaw-jobs: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "kawacatoose-jobs",
@@ -2610,12 +2598,10 @@
       "communityIds": [
         "383"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 0,
+      "candidatesFound": 7,
+      "reviewItems": 3,
       "status": "checked",
-      "warnings": [
-        "pasqua-updates: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "peepeekisis-employment",
@@ -2640,12 +2626,10 @@
       "communityIds": [
         "385"
       ],
-      "candidatesFound": 0,
+      "candidatesFound": 4,
       "reviewItems": 0,
       "status": "checked",
-      "warnings": [
-        "piapot-careers: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "red-earth-jobs",
@@ -2698,7 +2682,7 @@
       "reviewItems": 1,
       "status": "unavailable",
       "warnings": [
-        "sakimay-official: fetch failed: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)>"
+        "sakimay-official: fetch failed: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.sakimay.ca'. (_ssl.c:1010)>"
       ]
     },
     {
@@ -2812,10 +2796,12 @@
       "communityIds": [
         "366"
       ],
-      "candidatesFound": 1,
-      "reviewItems": 0,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-366: fetch failed: The read operation timed out"
+      ]
     },
     {
       "sourceId": "community-site-361",
@@ -2825,7 +2811,7 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 9,
+      "candidatesFound": 8,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2897,7 +2883,7 @@
         "351"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
+      "reviewItems": 3,
       "status": "checked",
       "warnings": [
         "community-site-351: no candidate job links detected"
@@ -2939,12 +2925,10 @@
       "communityIds": [
         "362"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 0,
+      "candidatesFound": 15,
+      "reviewItems": 2,
       "status": "checked",
-      "warnings": [
-        "community-site-362: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-393",
@@ -3026,7 +3010,7 @@
         "374"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
+      "reviewItems": 1,
       "status": "checked",
       "warnings": [
         "community-site-374: no candidate job links detected"
@@ -3040,12 +3024,10 @@
       "communityIds": [
         "354"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 0,
+      "candidatesFound": 8,
+      "reviewItems": 2,
       "status": "checked",
-      "warnings": [
-        "community-site-354: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-342",
@@ -3111,12 +3093,10 @@
       "communityIds": [
         "371"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 0,
+      "candidatesFound": 7,
+      "reviewItems": 3,
       "status": "checked",
-      "warnings": [
-        "community-site-371: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-380",
@@ -3141,7 +3121,7 @@
       "communityIds": [
         "363"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 3,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3154,7 +3134,7 @@
       "communityIds": [
         "344"
       ],
-      "candidatesFound": 3,
+      "candidatesFound": 2,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3167,12 +3147,10 @@
       "communityIds": [
         "383"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 0,
+      "candidatesFound": 5,
+      "reviewItems": 3,
       "status": "checked",
-      "warnings": [
-        "community-site-383: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-384",
@@ -3197,12 +3175,10 @@
       "communityIds": [
         "355"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 0,
+      "candidatesFound": 3,
+      "reviewItems": 2,
       "status": "checked",
-      "warnings": [
-        "community-site-355: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-385",
@@ -3212,12 +3188,10 @@
       "communityIds": [
         "385"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 0,
+      "candidatesFound": 8,
+      "reviewItems": 3,
       "status": "checked",
-      "warnings": [
-        "community-site-385: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-345",
