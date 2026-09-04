@@ -116,6 +116,7 @@ def election_prerender(band: dict, records: list[dict]) -> str:
 def projects_prerender(
     band: dict,
     projects: list[dict],
+    verified_partnerships: list[dict],
     financial_disclosures: list[dict],
     unverified_projects: list[dict],
 ) -> str:
@@ -147,10 +148,29 @@ def projects_prerender(
             f'<p>{html.escape(project.get("description") or "")}</p>'
             f'<div class="project-sources"><strong>Source:</strong>{sources}</div></article>'
         )
-    content = (
+    partnerships = [
+        row for row in verified_partnerships
+        if str(band["id"]) in {str(value) for value in row.get("firstNationIds", [])}
+    ]
+    partnerships.sort(key=lambda row: str(row.get("name") or ""))
+    for row in partnerships:
+        source = next((item for item in row.get("sources", []) if item.get("url")), None)
+        source_html = (
+            f'<a href="{html.escape(source["url"], quote=True)}" rel="noopener">'
+            f'{html.escape(source.get("name") or source.get("title") or "Public source")}</a>'
+            if source else ""
+        )
+        cards.append(
+            '<article class="project-row partnership-row"><div class="project-row-top">'
+            f'<span class="project-category">{html.escape(row.get("entityType") or "Business or partnership")}</span>'
+            '<span class="partnership-verified">Source verified</span></div>'
+            f'<h4>{html.escape(row["name"])}</h4><p>{html.escape(row.get("description") or "")}</p>'
+            f'<div class="project-sources"><strong>Source:</strong>{source_html}</div></article>'
+        )
+    verified_content = (
         f'<div class="project-list">{"".join(cards)}</div>'
         if cards else
-        '<div class="projects-empty">No current or recently completed project has been added from a verifiable public source yet.</div>'
+        '<div class="projects-empty">No source-verified project or partnership has been indexed yet.</div>'
     )
     disclosures = [
         project for project in financial_disclosures
@@ -177,15 +197,6 @@ def projects_prerender(
             '<p class="project-disclosure-note">Financial disclosure only. OpenBand does not infer construction status, total project cost, approval, or completion.</p>'
             f'<div class="project-sources"><strong>{html.escape(project.get("fiscalYear") or "Audited year")}:</strong>{source_html}</div></article>'
         )
-    disclosure_section = (
-        '<section class="financial-projects"><div class="unverified-heading"><div>'
-        '<h3>Projects Named in Audited Statements</h3>'
-        '<p>Project names and financial amounts explicitly reported in audited notes or schedules.</p></div>'
-        f'<span class="project-count">{len(disclosures)} disclosures</span></div>'
-        '<div class="audited-project-warning"><strong>Evidence level:</strong> These records confirm a financial-statement disclosure, not current construction status.</div>'
-        f'<div class="project-list">{"".join(disclosure_cards)}</div></section>'
-        if disclosures else ""
-    )
     unverified = [
         project for project in unverified_projects
         if str(band["id"]) in {str(value) for value in project.get("firstNationIds", [])}
@@ -207,23 +218,22 @@ def projects_prerender(
             f'<p class="unverified-reason"><strong>Why unverified:</strong> {html.escape(project.get("whyUnverified") or "")}</p>'
             f'<div class="project-sources"><strong>Public signal:</strong>{source_html}</div></article>'
         )
-    unverified_content = (
-        f'<div class="unverified-project-list">{"".join(unverified_cards)}</div>'
-        if unverified_cards else
-        '<div class="unverified-empty">No source-linked unverified project discussion was indexed in the current public-source scan.</div>'
-    )
-    unverified_section = (
-        '<section class="unverified-projects"><div class="unverified-heading"><div>'
-        '<h3>Unverified Projects &amp; Community Discussion</h3>'
-        '<p>Source-linked proposals or discussion that are not confirmed projects.</p></div></div>'
-        '<div class="unverified-warning"><strong>Not confirmed:</strong> Inclusion here does not mean funding, approval, construction or delivery is secured.</div>'
-        f'{unverified_content}</section>'
+    additional_cards = disclosure_cards + unverified_cards
+    additional_section = (
+        '<section class="additional-project-records"><div class="unverified-heading"><div>'
+        '<h3>Additional Public Records</h3>'
+        '<p>Audit disclosures and public proposals that provide context but do not confirm current project status.</p></div>'
+        f'<span class="project-count">{len(disclosures) + len(unverified)}</span></div>'
+        '<div class="audited-project-warning"><strong>Context only:</strong> Review each record and original source before drawing conclusions about approval, construction or completion.</div>'
+        f'<div class="project-list">{"".join(additional_cards)}</div></section>'
+        if additional_cards else ""
     )
     return (
-        '<section class="profile-projects" aria-labelledby="projectsPrerenderHeading">'
-        '<div class="section-head"><div><h3 id="projectsPrerenderHeading">Community Projects</h3>'
-        '<p>Housing, infrastructure, facilities, environmental work and other developments found in public sources and audited statements.</p></div></div>'
-        f'{content}{disclosure_section}{unverified_section}</section>'
+        '<div class="profile-projects"><section class="verified-community-projects" aria-labelledby="projectsPrerenderHeading">'
+        '<div class="unverified-heading"><div><h3 id="projectsPrerenderHeading">Verified Projects &amp; Partnerships</h3>'
+        '<p>Confirmed developments and independently corroborated economic relationships from reviewed public sources.</p></div>'
+        f'<span class="project-count">{len(rows) + len(partnerships)} verified</span></div>{verified_content}</section>'
+        f'{additional_section}</div>'
     )
 
 
@@ -295,6 +305,7 @@ def profile_prerender(
     band: dict,
     election_records: list[dict],
     projects: list[dict],
+    verified_partnerships: list[dict],
     financial_disclosures: list[dict],
     unverified_projects: list[dict],
     jobs: list[dict],
@@ -318,7 +329,7 @@ def profile_prerender(
         f"<div><dt>Parsed years</dt><dd>{len(parsed)}</dd></div>"
         f'<div><dt>Authoritative source</dt><dd><a href="{isc_url}">ISC filing profile</a></dd></div>'
         f"</dl>{election_prerender(band, election_records)}"
-        f"{projects_prerender(band, projects, financial_disclosures, unverified_projects)}"
+        f"{projects_prerender(band, projects, verified_partnerships, financial_disclosures, unverified_projects)}"
         f"{jobs_prerender(band, jobs)}</div>"
     )
 
@@ -522,6 +533,7 @@ def build() -> None:
                 band,
                 elections.get("records", []),
                 projects.get("projects", []),
+                projects.get("verifiedPartnerships", []),
                 projects.get("financialDisclosures", []),
                 projects.get("unverifiedProjects", []),
                 jobs.get("listings", []),
@@ -532,8 +544,8 @@ def build() -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260904a" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260904a" defer></script>',
+            '<script src="/assets/openband.js?v=20260904b" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260904b" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)

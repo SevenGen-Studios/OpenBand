@@ -159,8 +159,8 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260904a"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260904a"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260904b"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260904b"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
@@ -179,7 +179,7 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("setRevenueFocus", javascript)
         self.assertIn("function renderUnverifiedProjectsSection", javascript)
         self.assertIn("function toggleUnverifiedProjects", javascript)
-        self.assertIn("Unverified Projects &amp; Community Discussion", javascript)
+        self.assertIn("Additional Public Records", javascript)
         self.assertIn("Revenue sources reconcile", javascript)
         self.assertIn("revenue-source-browser", javascript)
         self.assertIn("revenue-year-body", javascript)
@@ -188,7 +188,7 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("function toggleProjects", javascript)
         self.assertIn("label.textContent='Community Projects'", javascript)
         self.assertIn("function financialProjectDisclosuresForBand", javascript)
-        self.assertIn("Projects Named in Audited Statements", javascript)
+        self.assertIn("Verified Projects &amp; Partnerships", javascript)
         self.assertIn("Financial disclosure only", javascript)
         self.assertIn("else if(activeProfileTab==='projects')", javascript)
         self.assertIn("else if(activeProfileTab==='jobs')", javascript)
@@ -257,12 +257,15 @@ class SiteRouteTests(unittest.TestCase):
                 self.assertNotIn('<section class="band-office-card">', markup)
                 self.assertNotIn("Band Office contact information", markup)
 
-    def test_every_profile_has_projects_section(self):
+    def test_every_profile_has_at_most_two_organized_project_sections(self):
         for band in self.data["bands"]:
             page = ROOT / "first-nations" / slugify(band["name"]) / "index.html"
             with self.subTest(band=band["name"]):
                 markup = page.read_text(encoding="utf-8")
-                self.assertEqual(markup.count("Community Projects"), 1)
+                self.assertEqual(markup.count("Verified Projects &amp; Partnerships"), 1)
+                self.assertLessEqual(markup.count("Additional Public Records"), 1)
+                self.assertNotIn("Projects Named in Audited Statements", markup)
+                self.assertNotIn("Unverified Projects &amp; Community Discussion", markup)
 
     def test_jobs_data_and_profile_routes_are_source_linked(self):
         jobs = json.loads((ROOT / "jobs-data.json").read_text(encoding="utf-8"))
