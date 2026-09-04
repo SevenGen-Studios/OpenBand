@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-03T17:07:07Z",
+  "generated": "2026-09-04T16:57:01Z",
   "trackedCommunityCount": 69,
   "configuredSourceCount": 92,
   "communities": [
@@ -2122,8 +2122,8 @@
       "url": "https://www.fsin.ca/employment-opportunities",
       "sourceType": "provincial_first_nations_organization",
       "communityIds": [],
-      "candidatesFound": 2,
-      "reviewItems": 2,
+      "candidatesFound": 1,
+      "reviewItems": 3,
       "status": "checked",
       "warnings": []
     },
@@ -2192,7 +2192,7 @@
         "347",
         "348"
       ],
-      "candidatesFound": 4,
+      "candidatesFound": 5,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2473,7 +2473,7 @@
       "reviewItems": 1,
       "status": "unavailable",
       "warnings": [
-        "fishing-lake-official: fetch failed: IncompleteRead(481799 bytes read)"
+        "fishing-lake-official: fetch failed: HTTP Error 429: Too Many Requests"
       ]
     },
     {
@@ -2484,7 +2484,7 @@
       "communityIds": [
         "391"
       ],
-      "candidatesFound": 8,
+      "candidatesFound": 7,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2811,7 +2811,7 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 8,
+      "candidatesFound": 7,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2840,10 +2840,10 @@
         "389"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
-      "status": "checked",
+      "reviewItems": 1,
+      "status": "unavailable",
       "warnings": [
-        "community-site-389: no candidate job links detected"
+        "community-site-389: fetch failed: <urlopen error [Errno -3] Temporary failure in name resolution>"
       ]
     },
     {
@@ -2897,7 +2897,7 @@
       "communityIds": [
         "391"
       ],
-      "candidatesFound": 9,
+      "candidatesFound": 8,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2925,7 +2925,7 @@
       "communityIds": [
         "362"
       ],
-      "candidatesFound": 15,
+      "candidatesFound": 16,
       "reviewItems": 2,
       "status": "checked",
       "warnings": []
@@ -2953,12 +2953,10 @@
       "communityIds": [
         "377"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "community-site-377: fetch failed: <urlopen error timed out>"
-      ]
+      "candidatesFound": 3,
+      "reviewItems": 0,
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "community-site-353",
