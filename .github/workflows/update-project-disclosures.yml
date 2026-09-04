@@ -42,6 +42,7 @@ jobs:
             args+=(--all-years)
           fi
           python tools/project_disclosure_extractor.py "${args[@]}"
+          python tools/build_audit_partnerships.py
 
       - name: Validate project data and rebuild static routes
         run: |

@@ -120,6 +120,14 @@ class ProjectsIntegrityTests(unittest.TestCase):
                 self.assertTrue(lead.get("sourceDocument", {}).get("url"))
                 self.assertTrue(lead.get("sourceReferences"))
 
+    def test_verified_partnerships_have_audit_and_independent_sources(self):
+        for row in self.payload.get("verifiedPartnerships", []):
+            with self.subTest(partnership=row.get("id")):
+                self.assertEqual(row.get("verificationStatus"), "Public source corroborated")
+                self.assertTrue(row.get("sources"))
+                self.assertTrue(row.get("latestAuditDisclosure", {}).get("sourceUrl"))
+                self.assertTrue(row.get("latestAuditDisclosure", {}).get("sourceReferences"))
+
     def test_unverified_candidates_are_source_linked_and_clearly_caveated(self):
         band_ids = {str(band["id"]) for band in self.bands}
         ids = [project["id"] for project in self.unverified]
