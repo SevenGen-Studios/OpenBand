@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-06T16:22:08Z",
+  "generated": "2026-09-07T18:19:35Z",
   "trackedCommunityCount": 69,
   "configuredSourceCount": 92,
   "communities": [
@@ -2348,7 +2348,7 @@
       "communityIds": [
         "349"
       ],
-      "candidatesFound": 3,
+      "candidatesFound": 4,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2953,10 +2953,12 @@
       "communityIds": [
         "377"
       ],
-      "candidatesFound": 3,
-      "reviewItems": 0,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-377: fetch failed: <urlopen error timed out>"
+      ]
     },
     {
       "sourceId": "community-site-353",
