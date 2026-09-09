@@ -175,10 +175,17 @@ class SiteRouteTests(unittest.TestCase):
             with self.subTest(page=page):
                 self.assertNotIn("Cesium.js", page.read_text(encoding="utf-8"))
 
+    def test_waterhen_map_action_hidden_state_overrides_button_display(self):
+        stylesheet = (ROOT / "assets" / "openband.css").read_text(encoding="utf-8")
+        javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
+        self.assertIn(".community-map-link[hidden]{display:none!important}", stylesheet)
+        self.assertIn("available=results.dataset.bandId==='402'", javascript)
+        self.assertIn("if(!available){if(link)link.remove();return}", javascript)
+
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260904b"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260904b"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260909a"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260909b"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
