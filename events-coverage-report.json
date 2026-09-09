@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-03T17:18:38Z",
-  "before": 32,
-  "after": 33,
-  "newCandidates": 209,
+  "generated": "2026-09-08T17:36:17Z",
+  "before": 30,
+  "after": 29,
+  "newCandidates": 193,
   "sourceRuns": [
     {
       "bandId": 361,
@@ -12,9 +12,9 @@
       "sourceUrl": "https://cowessessfn.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 6,
+      "eventsFound": 3,
       "pagesChecked": 6,
-      "mediaChecked": 2
+      "mediaChecked": 1
     },
     {
       "bandId": 361,
@@ -34,9 +34,9 @@
       "sourceUrl": "https://cowessessfn.com/entities/cowessess-ventures/",
       "sourceType": "Economic Development Organization",
       "status": "ok",
-      "eventsFound": 5,
+      "eventsFound": 2,
       "pagesChecked": 6,
-      "mediaChecked": 2
+      "mediaChecked": 1
     },
     {
       "bandId": 361,
@@ -45,9 +45,9 @@
       "sourceUrl": "https://cowessessfn.com/news/paradise-radio/",
       "sourceType": "Community Website",
       "status": "ok",
-      "eventsFound": 5,
+      "eventsFound": 2,
       "pagesChecked": 6,
-      "mediaChecked": 2
+      "mediaChecked": 1
     },
     {
       "bandId": 366,
@@ -67,10 +67,11 @@
       "sourceName": "Day Star First Nation official website",
       "sourceUrl": "https://www.daystarfirstnation.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
+      "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 2,
-      "mediaChecked": 0
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
     },
     {
       "bandId": 391,
@@ -324,7 +325,7 @@
       "sourceUrl": "https://pbcn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 15,
+      "eventsFound": 12,
       "pagesChecked": 6,
       "mediaChecked": 0
     },
@@ -413,7 +414,7 @@
       "sourceUrl": "https://www.woodmountainlakotafn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 23,
+      "eventsFound": 18,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -560,11 +561,10 @@
       "sourceName": "Montreal Lake Cree Nation official website",
       "sourceUrl": "https://www.mlcn.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
-      "eventsFound": 0,
-      "pagesChecked": 4,
-      "mediaChecked": 0,
-      "error": "HTTP Error 503: Service Unavailable"
+      "status": "ok",
+      "eventsFound": 1,
+      "pagesChecked": 6,
+      "mediaChecked": 1
     },
     {
       "bandId": 342,
@@ -753,7 +753,7 @@
       "sourceUrl": "https://meadowlakeregion.ca/events",
       "sourceType": "Tribal Council Tourism",
       "status": "ok",
-      "eventsFound": 3,
+      "eventsFound": 1,
       "pagesChecked": 1,
       "mediaChecked": 0
     },
@@ -764,7 +764,7 @@
       "sourceUrl": "https://calendar.powwows.com/events/categories/pow-wows-in-saskatchewan/",
       "sourceType": "Regional Event Index",
       "status": "ok",
-      "eventsFound": 6,
+      "eventsFound": 9,
       "pagesChecked": 2,
       "mediaChecked": 0
     },
@@ -775,7 +775,7 @@
       "sourceUrl": "https://support.windspeaker.com/powwows",
       "sourceType": "Indigenous Media Event Index",
       "status": "ok",
-      "eventsFound": 3,
+      "eventsFound": 2,
       "pagesChecked": 1,
       "mediaChecked": 0
     },
@@ -791,7 +791,7 @@
       "mediaChecked": 0
     }
   ],
-  "reviewCount": 8,
+  "reviewCount": 5,
   "statusCounts": {
     "authorized_api_required": 9,
     "failed": 15,

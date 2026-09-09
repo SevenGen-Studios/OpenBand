@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-03T16:39:36Z",
-  "articlesBefore": 132,
+  "generated": "2026-09-09T16:51:53Z",
+  "articlesBefore": 136,
   "articlesAfter": 136,
-  "newAccepted": 4,
+  "newAccepted": 0,
   "invalidExistingRemoved": [],
-  "manualReviewCount": 205,
+  "manualReviewCount": 200,
   "mediaDocumentsChecked": 143,
   "mediaDocumentsExtracted": 8,
-  "sourceFailureCount": 15,
+  "sourceFailureCount": 22,
   "communitiesTracked": 69,
   "communitiesWithResults": 29,
-  "communitiesWithRecentResults": 19,
+  "communitiesWithRecentResults": 18,
   "communitiesWithoutRecentResults": [
     "Carry the Kettle Nakoda Nation",
     "Cote First Nation",
@@ -59,6 +59,7 @@
     "One Arrow First Nation",
     "Standing Buffalo Dakota Nation",
     "Star Blanket Cree Nation",
+    "Sturgeon Lake First Nation",
     "Black Lake Denesuline First Nation",
     "Fond du Lac Denesuline First Nation",
     "James Smith Cree Nation",
@@ -115,7 +116,7 @@
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 391,
@@ -210,8 +211,8 @@
       "knownSourceCount": 2,
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
-      "manualReviewCount": 18,
-      "failedSourceCount": 0
+      "manualReviewCount": 0,
+      "failedSourceCount": 2
     },
     {
       "bandId": 371,
@@ -378,7 +379,7 @@
       "knownSourceCount": 1,
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
-      "manualReviewCount": 9,
+      "manualReviewCount": 10,
       "failedSourceCount": 0
     },
     {
@@ -522,8 +523,8 @@
       "knownSourceCount": 1,
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
-      "manualReviewCount": 3,
-      "failedSourceCount": 1
+      "manualReviewCount": 5,
+      "failedSourceCount": 0
     },
     {
       "bandId": 401,
@@ -547,7 +548,7 @@
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 400,
@@ -559,7 +560,7 @@
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 390,
@@ -571,7 +572,7 @@
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 1
+      "failedSourceCount": 2
     },
     {
       "bandId": 395,
@@ -583,7 +584,7 @@
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
       "manualReviewCount": 14,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 352,
@@ -595,7 +596,7 @@
       "missingOfficialWebsite": true,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 0
+      "failedSourceCount": 1
     },
     {
       "bandId": 353,
@@ -606,7 +607,7 @@
       "knownSourceCount": 1,
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
-      "manualReviewCount": 9,
+      "manualReviewCount": 19,
       "failedSourceCount": 0
     },
     {
@@ -619,7 +620,7 @@
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 1
+      "failedSourceCount": 2
     },
     {
       "bandId": 397,
@@ -685,7 +686,7 @@
       "bandId": 375,
       "communityName": "Muskeg Lake Cree Nation",
       "resultCount": 5,
-      "resultsLast90Days": 5,
+      "resultsLast90Days": 4,
       "newestResult": "2026-08-22",
       "knownSourceCount": 2,
       "missingOfficialWebsite": false,
@@ -715,7 +716,7 @@
       "missingOfficialWebsite": false,
       "missingOfficialFacebook": true,
       "manualReviewCount": 0,
-      "failedSourceCount": 2
+      "failedSourceCount": 1
     },
     {
       "bandId": 408,
@@ -769,7 +770,7 @@
       "bandId": 347,
       "communityName": "Saulteaux First Nation",
       "resultCount": 2,
-      "resultsLast90Days": 2,
+      "resultsLast90Days": 1,
       "newestResult": "2026-06-14",
       "knownSourceCount": 1,
       "missingOfficialWebsite": false,
@@ -805,7 +806,7 @@
       "bandId": 360,
       "communityName": "Sturgeon Lake First Nation",
       "resultCount": 1,
-      "resultsLast90Days": 1,
+      "resultsLast90Days": 0,
       "newestResult": "2026-06-09",
       "knownSourceCount": 0,
       "missingOfficialWebsite": true,
@@ -908,12 +909,36 @@
       "reason": "HTTPError: HTTP Error 522: <none>"
     },
     {
+      "bandId": 389,
+      "communityName": "Day Star First Nation",
+      "sourceName": "Day Star First Nation official website",
+      "sourceType": "Official First Nation Website",
+      "url": "https://www.daystarfirstnation.ca/",
+      "reason": "URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
+    },
+    {
       "bandId": 367,
       "communityName": "Keeseekoose First Nation",
       "sourceName": "Keeseekoose First Nation official website",
       "sourceType": "Official First Nation Website",
       "url": "https://www.keeseekoose.ca/",
       "reason": "HTTPError: HTTP Error 404: Not Found"
+    },
+    {
+      "bandId": 374,
+      "communityName": "Mistawasis Nehiyawak",
+      "sourceName": "Mistawasis Nehiyawak",
+      "sourceType": "Official First Nation Website",
+      "url": "https://mistawasis.ca/",
+      "reason": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1016)>"
+    },
+    {
+      "bandId": 374,
+      "communityName": "Mistawasis Nehiyawak",
+      "sourceName": "Mistawasis Nehiyawak official website",
+      "sourceType": "Official First Nation Website",
+      "url": "https://www.mistawasis.ca/",
+      "reason": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1016)>"
     },
     {
       "bandId": 364,
@@ -930,14 +955,6 @@
       "sourceType": "Official First Nation Website",
       "url": "https://www.ahtahkakoop.com/news",
       "reason": "update page: HTTPError: HTTP Error 404: Not Found"
-    },
-    {
-      "bandId": 394,
-      "communityName": "Canoe Lake Cree First Nation",
-      "sourceName": "Canoe Lake Cree First Nation official website",
-      "sourceType": "Official First Nation Website",
-      "url": "https://www.canoelakefirstnation.com/news-up-coming",
-      "reason": "update page: HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 390,
@@ -980,12 +997,60 @@
       "reason": "URLError: <urlopen error [Errno 111] Connection refused>"
     },
     {
+      "bandId": 350,
+      "communityName": "Cumberland House Cree Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 400,
+      "communityName": "English River Dene Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 390,
+      "communityName": "Fishing Lake First Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 395,
+      "communityName": "Flying Dust First Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 352,
+      "communityName": "Hatchet Lake Denesuline",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 340,
+      "communityName": "Little Pine First Nation",
+      "sourceName": "GDELT public news index",
+      "sourceType": "Discovery Search",
+      "url": "https://api.gdeltproject.org/",
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
       "bandId": 397,
       "communityName": "Ministikwan Lake Cree Nation",
       "sourceName": "GDELT public news index",
       "sourceType": "Discovery Search",
       "url": "https://api.gdeltproject.org/",
-      "reason": "URLError: <urlopen error timed out>"
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 342,
@@ -993,7 +1058,7 @@
       "sourceName": "GDELT public news index",
       "sourceType": "Discovery Search",
       "url": "https://api.gdeltproject.org/",
-      "reason": "URLError: <urlopen error timed out>"
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 343,
@@ -1001,7 +1066,7 @@
       "sourceName": "GDELT public news index",
       "sourceType": "Discovery Search",
       "url": "https://api.gdeltproject.org/",
-      "reason": "URLError: <urlopen error timed out>"
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 392,
@@ -1009,15 +1074,7 @@
       "sourceName": "GDELT public news index",
       "sourceType": "Discovery Search",
       "url": "https://api.gdeltproject.org/",
-      "reason": "URLError: <urlopen error timed out>"
-    },
-    {
-      "bandId": 380,
-      "communityName": "Nekaneet Cree Nation",
-      "sourceName": "GDELT public news index",
-      "sourceType": "Discovery Search",
-      "url": "https://api.gdeltproject.org/",
-      "reason": "URLError: <urlopen error timed out>"
+      "reason": "HTTPError: HTTP Error 429: Too Many Requests"
     }
   ],
   "sourceRuns": [
@@ -1082,10 +1139,10 @@
       "sourceName": "Day Star First Nation official website",
       "sourceType": "Official First Nation Website",
       "url": "https://www.daystarfirstnation.ca/",
-      "pagesChecked": 1,
+      "pagesChecked": 0,
       "candidatesFound": 0,
       "reviewItems": 0,
-      "status": "checked"
+      "status": "unavailable"
     },
     {
       "bandId": 391,
@@ -1093,7 +1150,7 @@
       "sourceName": "George Gordon First Nation official website",
       "sourceType": "Official First Nation Website",
       "url": "https://ggfn.ca/",
-      "pagesChecked": 4,
+      "pagesChecked": 5,
       "candidatesFound": 13,
       "reviewItems": 3,
       "status": "checked"
@@ -1148,10 +1205,10 @@
       "sourceName": "Mistawasis Nehiyawak",
       "sourceType": "Official First Nation Website",
       "url": "https://mistawasis.ca/",
-      "pagesChecked": 5,
-      "candidatesFound": 8,
-      "reviewItems": 5,
-      "status": "checked"
+      "pagesChecked": 0,
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "unavailable"
     },
     {
       "bandId": 374,
@@ -1159,10 +1216,10 @@
       "sourceName": "Mistawasis Nehiyawak official website",
       "sourceType": "Official First Nation Website",
       "url": "https://www.mistawasis.ca/",
-      "pagesChecked": 5,
-      "candidatesFound": 8,
-      "reviewItems": 5,
-      "status": "checked"
+      "pagesChecked": 0,
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "unavailable"
     },
     {
       "bandId": 371,
@@ -1489,9 +1546,9 @@
       "sourceName": "Canoe Lake Cree First Nation official website",
       "sourceType": "Official First Nation Website",
       "url": "https://www.canoelakefirstnation.com/",
-      "pagesChecked": 1,
+      "pagesChecked": 2,
       "candidatesFound": 0,
-      "reviewItems": 3,
+      "reviewItems": 5,
       "status": "checked"
     },
     {
@@ -1546,7 +1603,7 @@
       "url": "https://llrib.com/",
       "pagesChecked": 5,
       "candidatesFound": 16,
-      "reviewItems": 4,
+      "reviewItems": 3,
       "status": "checked"
     },
     {
