@@ -318,6 +318,11 @@ def profile_prerender(
         "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/"
         f"FederalFundingMain.aspx?BAND_NUMBER={quote(str(band['id']))}&amp;lang=eng"
     )
+    map_link = (
+        '<p class="profile-prerender-map"><a class="small-btn community-map-link" '
+        'href="/first-nations/waterhen-lake-first-nation/map/">Explore 3D map <span>Beta</span></a></p>'
+        if str(band.get("id")) == "402" else ""
+    )
     return (
         f'<div id="profilePrerender" class="profile-prerender">'
         f'<div class="profile-prerender-title"><h1>{html.escape(band["name"])} Financial Records</h1>{nation_logo_markup(band, "profile", eager=True)}</div>'
@@ -328,7 +333,7 @@ def profile_prerender(
         f"<div><dt>Latest parsed remuneration</dt><dd>{html.escape(latest_parsed or 'Pending extraction')}</dd></div>"
         f"<div><dt>Parsed years</dt><dd>{len(parsed)}</dd></div>"
         f'<div><dt>Authoritative source</dt><dd><a href="{isc_url}">ISC filing profile</a></dd></div>'
-        f"</dl>{election_prerender(band, election_records)}"
+        f"</dl>{map_link}{election_prerender(band, election_records)}"
         f"{projects_prerender(band, projects, verified_partnerships, financial_disclosures, unverified_projects)}"
         f"{jobs_prerender(band, jobs)}</div>"
     )

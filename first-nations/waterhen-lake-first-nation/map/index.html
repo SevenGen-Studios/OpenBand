@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <meta name="description" content="Explore a public-data 3D map preview of Waterhen Lake First Nation, including reserve boundaries, roads, water and available building footprints.">
+  <title>Waterhen Lake First Nation 3D Map | OpenBand</title>
+  <link rel="canonical" href="https://openband.ca/first-nations/waterhen-lake-first-nation/map/">
+  <link rel="icon" href="../../../assets/favicon.svg">
+  <link rel="preconnect" href="https://cesium.com">
+  <link rel="stylesheet" href="https://cesium.com/downloads/cesiumjs/releases/1.145/Build/Cesium/Widgets/widgets.css">
+  <link rel="stylesheet" href="waterhen-map.css">
+  <script defer src="https://cesium.com/downloads/cesiumjs/releases/1.145/Build/Cesium/Cesium.js"></script>
+  <script defer src="waterhen-map.js"></script>
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">Open<span>Band</span></a>
+    <span class="lab">3D Map Beta</span>
+    <footer>&copy; <span data-current-year>2026</span> OpenBand. All rights reserved.</footer>
+    <a class="profile" href="/first-nations/waterhen-lake-first-nation/">Community profile <span aria-hidden="true">&#8599;</span></a>
+  </header>
+  <main>
+    <div id="map" aria-label="Interactive three-dimensional map of Waterhen Lake First Nation"></div>
+    <div id="loading" role="status"><span class="loader" aria-hidden="true"></span><strong>Building the Waterhen scene</strong><small>Loading terrain and verified public map layers...</small></div>
+    <section class="place" aria-label="Map location"><p class="eyebrow">Treaty 6 · Meadow Lake Tribal Council</p><h1>Waterhen Lake</h1><p>First Nation · Saskatchewan</p></section>
+    <section class="scene-panel" aria-label="Scene controls">
+      <div class="view-switcher" aria-label="Camera views"><button id="home" class="active">Community</button><button id="extent">Reserve</button></div>
+      <div class="layer-grid"><label><input id="buildings" type="checkbox" checked><span>Buildings</span></label><label><input id="labels" type="checkbox" checked><span>Labels</span></label><label><input id="boundary" type="checkbox" checked><span>Boundary</span></label></div>
+    </section>
+    <aside id="selection" hidden aria-live="polite"><button id="close" aria-label="Close feature details">&#215;</button><span id="featureType" class="feature-type">Mapped feature</span><h2 id="featureTitle"></h2><p id="featureInfo"></p><a id="featureSource" target="_blank" rel="noopener">Open source record <span aria-hidden="true">&#8599;</span></a></aside>
+    <details class="sources"><summary>Sources &amp; accuracy</summary><div class="source-body"><p>ISC administrative reserve boundary; aerial imagery from Esri; terrain from ArcGIS; roads, water and building footprints from OpenStreetMap.</p><p>Coverage may be incomplete and includes surrounding land. Untagged buildings use an illustrative 4 m height. This preview is not a legal survey or verified infrastructure inventory.</p><a href="data/metadata.json">Snapshot metadata</a> · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OSM licence</a></div></details>
+  </main>
+  <noscript>This map requires JavaScript. <a href="/first-nations/waterhen-lake-first-nation/">View the community profile</a>.</noscript>
+</body>
+</html>

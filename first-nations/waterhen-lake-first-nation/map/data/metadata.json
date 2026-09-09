@@ -1,0 +1,18 @@
+{
+  "bandId": 402,
+  "name": "Waterhen Lake First Nation",
+  "retrievedAt": "2026-09-07T05:19:29.828881+00:00",
+  "iscSource": "https://data.sac-isc.gc.ca/geomatics/rest/services/ILRS_PRD/ERIP_E_NRCan/MapServer/26/query",
+  "osmSource": "https://overpass-api.de/api/interpreter",
+  "query": "[out:json][timeout:90];(way[building](54.30,-108.49,54.54,-108.26);way[highway](54.30,-108.49,54.54,-108.26);way[waterway](54.30,-108.49,54.54,-108.26);way[natural=water](54.30,-108.49,54.54,-108.26);relation[type=multipolygon][natural=water](54.30,-108.49,54.54,-108.26);relation[type=multipolygon][water](54.30,-108.49,54.54,-108.26););out geom;",
+  "poiQuery": "[out:json][timeout:60];(nwr[amenity](54.30,-108.49,54.54,-108.26);nwr[shop](54.30,-108.49,54.54,-108.26);nwr[office](54.30,-108.49,54.54,-108.26);nwr[tourism](54.30,-108.49,54.54,-108.26);nwr[leisure](54.30,-108.49,54.54,-108.26);nwr[place](54.30,-108.49,54.54,-108.26););out center tags;",
+  "counts": {
+    "buildings": 352,
+    "roads": 65,
+    "water": 202,
+    "poi": 2,
+    "buildingsWithSourcedHeight": 0
+  },
+  "coverage": "Bounding-box snapshot includes surrounding land; OSM completeness is unknown. Water multipolygon relations are assembled when their member ways form closed rings. Named places appear only when explicitly tagged in OSM.",
+  "heightPolicy": "OSM height tags are used when valid; building:levels uses 3 metres per level. All other buildings use an illustrative 4 metre display height."
+}

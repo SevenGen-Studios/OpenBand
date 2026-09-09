@@ -157,6 +157,24 @@ class SiteRouteTests(unittest.TestCase):
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("document.querySelectorAll('[data-current-year]')", javascript)
 
+    def test_waterhen_profile_links_to_isolated_3d_map_beta(self):
+        route = ROOT / "first-nations" / "waterhen-lake-first-nation" / "map" / "index.html"
+        self.assertTrue(route.exists())
+        markup = route.read_text(encoding="utf-8")
+        self.assertIn("Waterhen Lake First Nation 3D Map", markup)
+        self.assertIn('content="noindex,follow"', markup)
+        self.assertIn("Cesium.js", markup)
+
+        waterhen = (ROOT / "first-nations" / "waterhen-lake-first-nation" / "index.html").read_text(encoding="utf-8")
+        keeseekoose = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('href="/first-nations/waterhen-lake-first-nation/map/"', waterhen)
+        self.assertNotIn("profile-prerender-map", keeseekoose)
+
+    def test_cesium_is_not_loaded_by_standard_pages(self):
+        for page in (ROOT / "index.html", ROOT / "browse" / "index.html"):
+            with self.subTest(page=page):
+                self.assertNotIn("Cesium.js", page.read_text(encoding="utf-8"))
+
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="/assets/openband.css?v=20260904b"', profile)
