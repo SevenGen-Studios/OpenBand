@@ -113,7 +113,7 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("route.page==='enterprise'?'capital':route.tab", script)
 
     def test_indexable_routes_and_seo_files_exist(self):
-        for relative in ["browse/index.html", "news/index.html", "admin/index.html", "admin/analytics/index.html", "robots.txt", "sitemap.xml", "map-data.json", "contacts-data.json", "jobs-data.json", "jobs-schema.json", "jobs-sources.json", "jobs-overrides.json", "jobs-coverage-report.json", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js", "community-enterprise.json"]:
+        for relative in ["browse/index.html", "news/index.html", "admin/index.html", "admin/analytics/index.html", "admin/intelligence/index.html", "robots.txt", "sitemap.xml", "map-data.json", "contacts-data.json", "jobs-data.json", "jobs-schema.json", "jobs-sources.json", "jobs-overrides.json", "jobs-coverage-report.json", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js", "assets/intelligence-admin.js", "assets/intelligence-admin.css", "community-enterprise.json"]:
             self.assertTrue((ROOT / relative).is_file(), relative)
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
         self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 3)
@@ -141,10 +141,11 @@ class SiteRouteTests(unittest.TestCase):
         portal = (ROOT / "admin" / "index.html").read_text(encoding="utf-8")
         self.assertIn('content="noindex,nofollow,noarchive"', portal)
         self.assertIn('href="/admin/analytics/"', portal)
+        self.assertIn('href="/admin/intelligence/"', portal)
         self.assertIn("analytics.google.com", portal)
         self.assertIn("openband-analytics", portal)
         self.assertIn("workers/d1/databases", portal)
-        self.assertIn("github.com/Sheekee011/openband-v2/actions", portal)
+        self.assertIn("github.com/SevenGen-Studios/OpenBand/actions", portal)
         self.assertNotIn("ANALYTICS_ADMIN_TOKEN", portal)
         self.assertNotIn("Bearer ", portal)
 
@@ -160,9 +161,34 @@ class SiteRouteTests(unittest.TestCase):
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("document.querySelectorAll('[data-current-year]')", javascript)
 
+    def test_waterhen_profile_links_to_isolated_3d_map_beta(self):
+        route = ROOT / "first-nations" / "waterhen-lake-first-nation" / "map" / "index.html"
+        self.assertTrue(route.exists())
+        markup = route.read_text(encoding="utf-8")
+        self.assertIn("Waterhen Lake First Nation 3D Map", markup)
+        self.assertIn('content="noindex,follow"', markup)
+        self.assertIn("Cesium.js", markup)
+
+        waterhen = (ROOT / "first-nations" / "waterhen-lake-first-nation" / "index.html").read_text(encoding="utf-8")
+        keeseekoose = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('href="/first-nations/waterhen-lake-first-nation/map/"', waterhen)
+        self.assertNotIn("profile-prerender-map", keeseekoose)
+
+    def test_cesium_is_not_loaded_by_standard_pages(self):
+        for page in (ROOT / "index.html", ROOT / "browse" / "index.html"):
+            with self.subTest(page=page):
+                self.assertNotIn("Cesium.js", page.read_text(encoding="utf-8"))
+
+    def test_waterhen_map_action_hidden_state_overrides_button_display(self):
+        stylesheet = (ROOT / "assets" / "openband.css").read_text(encoding="utf-8")
+        javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
+        self.assertIn(".community-map-link[hidden]{display:none!important}", stylesheet)
+        self.assertIn("available=results.dataset.bandId==='402'", javascript)
+        self.assertIn("if(!available){if(link)link.remove();return}", javascript)
+
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260814f"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260911a"', profile)
         self.assertIn('src="/assets/openband.js?v=20260911"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
@@ -173,11 +199,16 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("function getRevenueHistory", javascript)
         self.assertIn("Where the Revenue Came From", javascript)
         self.assertIn("revenue-segment", javascript)
+        self.assertIn("chartHistory=history.slice(-5)", javascript)
+        self.assertIn('data-revenue-year="${escAttr(row.year)}"', javascript)
+        self.assertIn("function openRevenueCategory(category,year)", javascript)
+        self.assertIn("data-revenue-year-detail", javascript)
+        self.assertIn("updateProfileRoute('push')", javascript)
         self.assertIn("setRevenueMode", javascript)
         self.assertIn("setRevenueFocus", javascript)
         self.assertIn("function renderUnverifiedProjectsSection", javascript)
         self.assertIn("function toggleUnverifiedProjects", javascript)
-        self.assertIn("Unverified Projects &amp; Community Discussion", javascript)
+        self.assertIn("Additional Public Records", javascript)
         self.assertIn("Revenue sources reconcile", javascript)
         self.assertIn("revenue-source-browser", javascript)
         self.assertIn("revenue-year-body", javascript)
@@ -186,7 +217,7 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("function toggleProjects", javascript)
         self.assertIn("label.textContent='Community Projects'", javascript)
         self.assertIn("function financialProjectDisclosuresForBand", javascript)
-        self.assertIn("Projects Named in Audited Statements", javascript)
+        self.assertIn("Verified Projects &amp; Partnerships", javascript)
         self.assertIn("Financial disclosure only", javascript)
         self.assertIn("else if(activeProfileTab==='projects')", javascript)
         self.assertIn("else if(activeProfileTab==='jobs')", javascript)
@@ -259,12 +290,15 @@ class SiteRouteTests(unittest.TestCase):
                 self.assertNotIn('<section class="band-office-card">', markup)
                 self.assertNotIn("Band Office contact information", markup)
 
-    def test_every_profile_has_projects_section(self):
+    def test_every_profile_has_at_most_two_organized_project_sections(self):
         for band in self.data["bands"]:
             page = ROOT / "first-nations" / slugify(band["name"]) / "index.html"
             with self.subTest(band=band["name"]):
                 markup = page.read_text(encoding="utf-8")
-                self.assertEqual(markup.count("Community Projects"), 1)
+                self.assertEqual(markup.count("Verified Projects &amp; Partnerships"), 1)
+                self.assertLessEqual(markup.count("Additional Public Records"), 1)
+                self.assertNotIn("Projects Named in Audited Statements", markup)
+                self.assertNotIn("Unverified Projects &amp; Community Discussion", markup)
 
     def test_jobs_data_and_profile_routes_are_source_linked(self):
         jobs = json.loads((ROOT / "jobs-data.json").read_text(encoding="utf-8"))
@@ -275,7 +309,10 @@ class SiteRouteTests(unittest.TestCase):
             self.assertTrue(row["verifiedOfficialSource"])
         profile = (ROOT / "first-nations" / "lac-la-ronge-indian-band" / "index.html").read_text(encoding="utf-8")
         self.assertIn("Jobs &amp; Employment", profile)
-        self.assertIn("Maintenance Worker (Casual)", profile)
+        self.assertTrue(
+            "No current opportunities have been indexed from public sources." in profile
+            or any(html.escape(row["title"]) in profile for row in jobs["listings"])
+        )
         self.assertNotIn('id="openbandJobPostingData"', profile)
         self.assertNotIn('id="recentJobsSection"', (ROOT / "index.html").read_text(encoding="utf-8"))
 

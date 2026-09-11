@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-08-20T14:04:08Z",
+  "generated": "2026-09-10T17:03:56Z",
   "trackedCommunityCount": 69,
   "configuredSourceCount": 92,
   "communities": [
@@ -2123,7 +2123,7 @@
       "sourceType": "provincial_first_nations_organization",
       "communityIds": [],
       "candidatesFound": 1,
-      "reviewItems": 2,
+      "reviewItems": 3,
       "status": "checked",
       "warnings": []
     },
@@ -2135,7 +2135,7 @@
       "communityIds": [
         "353"
       ],
-      "candidatesFound": 36,
+      "candidatesFound": 1,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2250,8 +2250,8 @@
         "351",
         "352"
       ],
-      "candidatesFound": 6,
-      "reviewItems": 2,
+      "candidatesFound": 5,
+      "reviewItems": 1,
       "status": "checked",
       "warnings": []
     },
@@ -2263,7 +2263,7 @@
       "communityIds": [
         "355"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 3,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2348,7 +2348,7 @@
       "communityIds": [
         "349"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 3,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2374,7 +2374,7 @@
       "communityIds": [
         "344"
       ],
-      "candidatesFound": 1,
+      "candidatesFound": 2,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2387,7 +2387,7 @@
       "communityIds": [
         "344"
       ],
-      "candidatesFound": 8,
+      "candidatesFound": 7,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2400,7 +2400,7 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 5,
+      "candidatesFound": 4,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2413,12 +2413,10 @@
       "communityIds": [
         "406"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "ahtahkakoop-official-jobs: fetch failed: HTTP Error 429: Too Many Requests"
-      ]
+      "candidatesFound": 7,
+      "reviewItems": 0,
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "big-river-official",
@@ -2486,7 +2484,7 @@
       "communityIds": [
         "391"
       ],
-      "candidatesFound": 5,
+      "candidatesFound": 7,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2499,7 +2497,7 @@
       "communityIds": [
         "362"
       ],
-      "candidatesFound": 6,
+      "candidatesFound": 8,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -2571,10 +2569,10 @@
         "408"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 0,
+      "status": "checked",
       "warnings": [
-        "ocean-man-official: fetch failed: HTTP Error 429: Too Many Requests"
+        "ocean-man-official: no candidate job links detected"
       ]
     },
     {
@@ -2654,12 +2652,10 @@
       "communityIds": [
         "357"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "shoal-lake-jobs: fetch failed: HTTP Error 403: Forbidden"
-      ]
+      "candidatesFound": 1,
+      "reviewItems": 0,
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "standing-buffalo-official",
@@ -2697,10 +2693,12 @@
       "communityIds": [
         "388"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 0,
       "reviewItems": 0,
       "status": "checked",
-      "warnings": []
+      "warnings": [
+        "wood-mountain-official: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "spaha-health-jobs",
@@ -2727,12 +2725,10 @@
       "communityIds": [
         "406"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "community-site-406: fetch failed: HTTP Error 429: Too Many Requests"
-      ]
+      "candidatesFound": 7,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "community-site-404",
@@ -2743,10 +2739,10 @@
         "404"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 0,
+      "status": "checked",
       "warnings": [
-        "community-site-404: fetch failed: The read operation timed out"
+        "community-site-404: no candidate job links detected"
       ]
     },
     {
@@ -2802,10 +2798,12 @@
       "communityIds": [
         "366"
       ],
-      "candidatesFound": 1,
-      "reviewItems": 0,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-366: fetch failed: The read operation timed out"
+      ]
     },
     {
       "sourceId": "community-site-361",
@@ -2815,7 +2813,7 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 7,
+      "candidatesFound": 5,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2847,7 +2845,7 @@
       "reviewItems": 1,
       "status": "unavailable",
       "warnings": [
-        "community-site-389: fetch failed: HTTP Error 429: Too Many Requests"
+        "community-site-389: fetch failed: <urlopen error [Errno -3] Temporary failure in name resolution>"
       ]
     },
     {
@@ -2873,12 +2871,10 @@
       "communityIds": [
         "395"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "community-site-395: fetch failed: HTTP Error 429: Too Many Requests"
-      ]
+      "candidatesFound": 1,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "community-site-351",
@@ -2903,7 +2899,7 @@
       "communityIds": [
         "391"
       ],
-      "candidatesFound": 5,
+      "candidatesFound": 8,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -2931,7 +2927,7 @@
       "communityIds": [
         "362"
       ],
-      "candidatesFound": 6,
+      "candidatesFound": 15,
       "reviewItems": 2,
       "status": "checked",
       "warnings": []
@@ -2972,8 +2968,8 @@
       "communityIds": [
         "353"
       ],
-      "candidatesFound": 37,
-      "reviewItems": 3,
+      "candidatesFound": 3,
+      "reviewItems": 0,
       "status": "checked",
       "warnings": []
     },
@@ -3015,9 +3011,9 @@
       ],
       "candidatesFound": 0,
       "reviewItems": 1,
-      "status": "checked",
+      "status": "unavailable",
       "warnings": [
-        "community-site-374: no candidate job links detected"
+        "community-site-374: fetch failed: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1010)>"
       ]
     },
     {
@@ -3138,8 +3134,8 @@
       "communityIds": [
         "344"
       ],
-      "candidatesFound": 1,
-      "reviewItems": 3,
+      "candidatesFound": 2,
+      "reviewItems": 1,
       "status": "checked",
       "warnings": []
     },
@@ -3179,7 +3175,7 @@
       "communityIds": [
         "355"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 3,
       "reviewItems": 2,
       "status": "checked",
       "warnings": []
@@ -3192,7 +3188,7 @@
       "communityIds": [
         "385"
       ],
-      "candidatesFound": 9,
+      "candidatesFound": 8,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3250,7 +3246,7 @@
       "communityIds": [
         "348"
       ],
-      "candidatesFound": 5,
+      "candidatesFound": 4,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3308,7 +3304,7 @@
       "communityIds": [
         "372"
       ],
-      "candidatesFound": 11,
+      "candidatesFound": 12,
       "reviewItems": 2,
       "status": "checked",
       "warnings": []
@@ -3321,10 +3317,12 @@
       "communityIds": [
         "388"
       ],
-      "candidatesFound": 5,
-      "reviewItems": 3,
+      "candidatesFound": 0,
+      "reviewItems": 0,
       "status": "checked",
-      "warnings": []
+      "warnings": [
+        "community-site-388: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "community-facebook-361-83",

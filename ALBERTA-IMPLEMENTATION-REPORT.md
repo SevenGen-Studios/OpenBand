@@ -86,3 +86,7 @@ A Git comparison confirmed that all 69 original Saskatchewan profile/filing reco
 See [ALBERTA.md](ALBERTA.md) for discovery, parsing, OCR retry, review, generation, and workflow commands. Detailed per-document statuses, warnings, hashes, source URLs, and Nation-level missing periods are in [the coverage ledger](alberta-coverage-report.json). The local PDF/OCR cache is ignored by Git and supports resumable research.
 
 The work is implemented locally. No deployment or public publication was performed.
+
+## Integration with current main
+
+Before pushing, the Alberta changes were merged with 74 newer upstream commits. The merge preserves the Waterhen 3D map, updated homepage and revenue explorer, and newer Saskatchewan data. All 223 tests in the combined suite pass, as do the province JavaScript checks and Alberta coverage audit. The eight documented Muskeg Lake corrections remain in place.

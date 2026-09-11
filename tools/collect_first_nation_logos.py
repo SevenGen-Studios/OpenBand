@@ -54,7 +54,7 @@ DISCOVERED_SITES = {
     "387": ("https://www.fncias.ca/about-us/our-member-nations-tribal-councils/", "First Nations Capital and Infrastructure Agency member profile"),
     "360": ("https://slfn.ca/", "Official First Nation website"),
     "358": ("https://pagc.sk.ca/wahpeton-dakota-nation/", "Official Tribal Council website"),
-    "402": ("https://www.waterhen.net/", "Official First Nation website"),
+    "402": ("https://www.mltc.net/nations/wlfn/", "Official Tribal Council website"),
     "376": ("https://yqfn.ca/yellow-quill-first-nation/", "Official First Nation website"),
     "345": ("https://poundmakercn.ca/", "Official First Nation website"),
     "352": ("https://www.adeask.ca/apps/pages/index.jsp?pREC_ID=1371397&type=d&uREC_ID=1097930", "Official Athabasca Denesuline Education Authority profile"),
@@ -99,6 +99,7 @@ MANUAL_ASSETS = {
     "392": ("https://www.muskowekwan.com/meetings", "https://images.squarespace-cdn.com/content/v1/618860b2011ecd51f00b8fda/5cefa80a-7314-4c10-b41a-c270e0fc907a/New%2BMuskow%2BLogo.png"),
     "401": ("https://www.crdn.co/", "https://www.crdn.co/images/avion_logo.png"),
     "403": ("https://www.mltc.net/nations/bndn/", "https://mltc.net/wp-content/uploads/2019/12/BNDN.jpg"),
+    "402": ("https://www.mltc.net/nations/wlfn/", "https://www.mltc.net/wp-content/uploads/2019/12/WLFN.jpg"),
 }
 
 # Visually reviewed false positives.  These are intentionally kept unverified:

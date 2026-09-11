@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>OpenBand Intelligence | Administration</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/openband.css?v=20260804a">
+<link rel="stylesheet" href="/assets/analytics-admin.css?v=20260828a">
+<link rel="stylesheet" href="/assets/intelligence-admin.css?v=20260828a">
+</head>
+<body class="analytics-admin-page intelligence-admin-page">
+<nav aria-label="Intelligence navigation"><a class="logo" href="/">Open<em>Band</em></a><div class="admin-nav-label">OpenBand Intelligence</div><div class="admin-nav-actions"><a class="admin-back" href="/admin/">Admin portal</a><a class="admin-back" href="/">Return to OpenBand</a></div></nav>
+<main class="admin-shell intelligence-shell">
+  <section id="intelligenceLogin" class="admin-login" aria-labelledby="intelligenceLoginTitle">
+    <p class="intelligence-classification">Internal · Seven Generations Capital research</p>
+    <h1 id="intelligenceLoginTitle">OpenBand Intelligence</h1>
+    <p>Administrator authentication is required. Signals are research leads—not findings or publication-ready claims.</p>
+    <form id="intelligenceLoginForm">
+      <label for="intelligenceToken">Administrator token</label>
+      <div class="admin-login-row"><input id="intelligenceToken" type="password" autocomplete="current-password" required><button type="submit">Open intelligence</button></div>
+      <p id="intelligenceLoginError" class="admin-error" role="alert" hidden></p>
+    </form>
+  </section>
+
+  <section id="intelligenceDashboard" hidden>
+    <header class="admin-head intelligence-head"><div><p class="intelligence-classification">Internal · Manual verification required</p><h1>OpenBand Intelligence</h1><p id="intelligenceGenerated">Financial signals are loading.</p></div><button id="intelligenceRefresh" class="intelligence-refresh" type="button">Refresh source data</button></header>
+    <aside class="intelligence-guardrail"><strong>Research guardrail</strong><span>A signal means a number is statistically or financially interesting. It does not imply wrongdoing, misuse, corruption, or overspending.</span></aside>
+
+    <div class="admin-tabs" role="tablist" aria-label="Intelligence sections">
+      <button class="active" type="button" role="tab" data-intelligence-tab="overview" aria-selected="true">Overview</button>
+      <button type="button" role="tab" data-intelligence-tab="leads" aria-selected="false">Story leads</button>
+      <button type="button" role="tab" data-intelligence-tab="officials" aria-selected="false">Official analysis</button>
+      <button type="button" role="tab" data-intelligence-tab="nations" aria-selected="false">Nation analysis</button>
+      <button type="button" role="tab" data-intelligence-tab="quality" aria-selected="false">Data quality</button>
+    </div>
+
+    <section class="intelligence-filters" aria-label="Intelligence filters">
+      <label>Nation<select id="intelligenceNation"><option value="">All Nations</option></select></label>
+      <label>Fiscal year<select id="intelligenceYear"><option value="">All years</option></select></label>
+      <label>Official<input id="intelligenceOfficial" type="search" placeholder="Search official"></label>
+      <label id="signalTypeLabel">Signal type<select id="intelligenceType"><option value="">All signal types</option></select></label>
+      <label id="signalStrengthLabel">Strength<select id="intelligenceStrength"><option value="">All strengths</option><option value="very_high">Very high</option><option value="high">High</option><option value="moderate">Moderate</option></select></label>
+      <button id="intelligenceApply" type="button">Apply filters</button>
+    </section>
+
+    <section class="admin-panel active" data-intelligence-panel="overview">
+      <h2>Dataset coverage</h2><div id="intelligenceMetrics" class="admin-metrics"></div>
+      <div class="admin-chart-grid"><section class="admin-card"><h3>Signals by type</h3><div id="signalTypeChart"></div></section><section class="admin-card"><h3>Priority leads</h3><div id="priorityLeads"></div></section></div>
+    </section>
+    <section class="admin-panel" data-intelligence-panel="leads"><div class="intelligence-results-head"><div><h2>Story leads</h2><p id="leadCount"></p></div></div><div id="storyLeads" class="intelligence-leads"></div></section>
+    <section class="admin-panel" data-intelligence-panel="officials"><div class="intelligence-results-head"><div><h2>Official analysis</h2><p id="officialCount"></p></div></div><div id="officialAnalysis"></div></section>
+    <section class="admin-panel" data-intelligence-panel="nations"><div class="intelligence-results-head"><div><h2>Nation analysis</h2><p id="nationCount"></p></div></div><div id="nationAnalysis"></div></section>
+    <section class="admin-panel" data-intelligence-panel="quality"><div class="intelligence-results-head"><div><h2>Data quality</h2><p>Availability limits and posted filings that still require extraction.</p></div></div><div id="qualitySummary"></div><section class="admin-card intelligence-quality-card"><h3>Posted filings without parsed official records</h3><div id="pendingFilings"></div></section></section>
+    <p id="intelligenceDashboardError" class="admin-error" role="alert" hidden></p>
+  </section>
+</main>
+<footer><div class="fl">Open<em>Band</em></div><p class="footer-copyright">&copy; <span data-current-year>2026</span> OpenBand. All rights reserved.</p></footer>
+<script src="/assets/analytics-config.js"></script>
+<script src="/assets/intelligence-admin.js?v=20260828a" defer></script>
+</body>
+</html>
