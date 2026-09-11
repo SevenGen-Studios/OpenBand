@@ -1,11 +1,12 @@
 {
-  "generatedFrom": "2026-08-12T08:55:14.526499Z",
-  "manualReviewCount": 14,
+  "generatedFrom": "2026-09-11T10:43:34+00:00",
+  "manualReviewCount": 19,
   "reasonCounts": {
     "implausibly small remuneration values appear in money columns": 4,
+    "implausibly small remuneration values appear in money columns; small month-like values appear in payment columns": 1,
     "month values appear in money columns": 1,
-    "month values appear in money columns; implausibly small remuneration values appear in money columns": 7,
-    "parser confidence is low": 2
+    "month values appear in money columns; implausibly small remuneration values appear in money columns": 8,
+    "parser confidence is low": 5
   },
   "filings": [
     {
@@ -19,6 +20,17 @@
         "Parsed via free local OCR fallback",
         "Quarantined parsed rows: implausibly small remuneration values appear in money columns",
         "Sanitized parsed rows: removed 11, fixed totals 0"
+      ]
+    },
+    {
+      "bandId": 464,
+      "band": "Cold Lake First Nations",
+      "year": "2016-2017",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=464&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 18, fixed totals 0"
       ]
     },
     {
@@ -178,6 +190,65 @@
         "Parsed via free local OCR fallback",
         "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
         "Sanitized parsed rows: removed 9, fixed totals 0"
+      ]
+    },
+    {
+      "bandId": 462,
+      "band": "Saddle Lake Cree Nation",
+      "year": "2018-2019",
+      "reason": "implausibly small remuneration values appear in money columns; small month-like values appear in payment columns",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=462&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "Row 2: total does not equal remuneration + travel/expenses + other",
+        "Quarantined parsed rows: implausibly small remuneration values appear in money columns; small month-like values appear in payment columns",
+        "Sanitized parsed rows: removed 2, fixed totals 1"
+      ]
+    },
+    {
+      "bandId": 444,
+      "band": "Samson",
+      "year": "2021-2022",
+      "reason": "parser confidence is low",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=444&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "Multiple candidate Chief and Council tables found",
+        "Row 1: unusually large remuneration amount",
+        "Row 1: unusually large total amount",
+        "Row 2: unusually large remuneration amount",
+        "Row 2: unusually large total amount",
+        "No Chief row detected",
+        "No official rows parsed",
+        "Quarantined parsed rows: parser confidence is low",
+        "Sanitized parsed rows: removed 2, fixed totals 0"
+      ]
+    },
+    {
+      "bandId": 430,
+      "band": "Siksika Nation",
+      "year": "2016-2017",
+      "reason": "parser confidence is low",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=430&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "Row 1: total does not equal remuneration + travel/expenses + other",
+        "No Chief row detected",
+        "Only one official row parsed",
+        "No official rows parsed",
+        "Quarantined parsed rows: parser confidence is low",
+        "Sanitized parsed rows: removed 1, fixed totals 0"
+      ]
+    },
+    {
+      "bandId": 430,
+      "band": "Siksika Nation",
+      "year": "2017-2018",
+      "reason": "parser confidence is low",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=430&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "No Chief row detected",
+        "Only one official row parsed",
+        "No official rows parsed",
+        "Quarantined parsed rows: parser confidence is low",
+        "Sanitized parsed rows: removed 1, fixed totals 0"
       ]
     },
     {
