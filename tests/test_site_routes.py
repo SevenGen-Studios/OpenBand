@@ -22,6 +22,7 @@ class SiteRouteTests(unittest.TestCase):
             "Keeseekoose First Nation": "keeseekoose-first-nation",
             "Beardy's & Okemasis Cree Nation": "beardys-and-okemasis-cree-nation",
             "Mistawasis Nêhiyawak": "mistawasis-nehiyawak",
+            "Tthebatthie Denesųłiné Nation": "tthebatthie-denesuline-nation",
             "Mosquito, Grizzly Bear's Head, Lean Man First Nation": "mosquito-grizzly-bears-head-lean-man-first-nation",
         }
         for name, expected in cases.items():
@@ -107,7 +108,7 @@ class SiteRouteTests(unittest.TestCase):
         script = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         profile_loader = script[script.index("async function ensureProfileData"):script.index("async function loadData")]
         capital_wrapper = script[script.index("const renderCommunityCapitalBeforeEnterprise"):script.index("function enterprisePortfolioCard")]
-        self.assertNotIn("loadEnterpriseData()", profile_loader)
+        self.assertIn("selectedBand()?.province==='AB'?loadEnterpriseData():Promise.resolve()", profile_loader)
         self.assertNotIn("appendEnterprisePreview", capital_wrapper)
         self.assertIn("route.page==='enterprise'?'capital':route.tab", script)
 
@@ -125,8 +126,11 @@ class SiteRouteTests(unittest.TestCase):
     def test_every_mapped_first_nation_has_reserve_hectares(self):
         map_data = json.loads((ROOT / "map-data.json").read_text(encoding="utf-8"))
         communities = map_data["communities"]
-        self.assertEqual({row["id"] for row in communities}, {band["id"] for band in self.data["bands"]})
+        self.assertEqual({row["id"] for row in communities} | {row["id"] for row in map_data["missingLocations"]}, {band["id"] for band in self.data["bands"]})
+        sk_ids = {b["id"] for b in self.data["bands"] if b["province"] == "SK"}
         for row in communities:
+            if row["id"] not in sk_ids:
+                continue  # Alberta areas are unverified, never manufactured.
             with self.subTest(community=row["name"]):
                 self.assertGreater(row["reserveHectares"], 0)
                 self.assertGreater(row["reserveParcelCount"], 0)
@@ -159,7 +163,7 @@ class SiteRouteTests(unittest.TestCase):
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="/assets/openband.css?v=20260814f"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260814h"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260911"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
@@ -231,8 +235,12 @@ class SiteRouteTests(unittest.TestCase):
         for record in records:
             with self.subTest(record=record["nation_name"]):
                 self.assertTrue(required.issubset(record))
-                self.assertRegex(record["office_phone"], r"^\(\d{3}\) \d{3}-\d{4}$")
-                self.assertTrue(record["mailing_address"])
+                if record["nation_id"] in ("ab-whitefish-lake-128", 469):
+                    self.assertIsNone(record["office_phone"])
+                    self.assertIsNone(record["mailing_address"])
+                else:
+                    self.assertRegex(record["office_phone"], r"^\(\d{3}\) \d{3}-\d{4}$")
+                    self.assertTrue(record["mailing_address"])
                 self.assertTrue(record["source_url"].startswith("https://"))
                 self.assertRegex(record["last_verified"], r"^\d{4}-\d{2}-\d{2}$")
                 if record["office_email"]:
@@ -277,21 +285,21 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn('id="tribalCouncilFilter"', markup)
         self.assertNotIn('<label for="treatyFilter">', markup)
         self.assertNotIn('<label for="tribalCouncilFilter">', markup)
-        self.assertIn('id="treatyFilter" aria-label="Treaty filter" hidden', markup)
-        self.assertIn('id="tribalCouncilFilter" aria-label="Tribal council filter" hidden', markup)
+        self.assertIn('id="treatyFilter" aria-label="Treaty filter"', markup)
+        self.assertIn('id="tribalCouncilFilter" aria-label="Tribal council filter"', markup)
         self.assertIn('data-map-mode="treaty"', markup)
         self.assertIn('data-map-mode="tribalCouncil"', markup)
         self.assertNotIn('id="azLinks"', markup)
         self.assertIn('class="map-list-fallback"', markup)
         map_data = json.loads((ROOT / "map-data.json").read_text(encoding="utf-8"))
-        self.assertEqual(map_data["communityCount"], len(self.data["bands"]))
-        self.assertFalse(map_data["missingLocations"])
+        self.assertEqual(map_data["communityCount"] + len(map_data["missingLocations"]), len(self.data["bands"]))
+        self.assertEqual([r["id"] for r in map_data["missingLocations"]], ["ab-whitefish-lake-128"])
         mapped_ids = {str(row["id"]) for row in map_data["communities"]}
-        self.assertEqual(mapped_ids, {str(row["id"]) for row in self.data["bands"]})
+        self.assertEqual(mapped_ids | {str(r["id"]) for r in map_data["missingLocations"]}, {str(row["id"]) for row in self.data["bands"]})
         for row in map_data["communities"]:
             self.assertGreaterEqual(row["latitude"], 48.5)
             self.assertLessEqual(row["latitude"], 60.5)
-            self.assertGreaterEqual(row["longitude"], -111.5)
+            self.assertGreaterEqual(row["longitude"], -120.5)
             self.assertLessEqual(row["longitude"], -100.5)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function renderDirectoryMap", javascript)
@@ -310,7 +318,7 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("maxZoom:16", javascript)
         self.assertIn("touchZoom:true", javascript)
         self.assertIn("RESERVE_LAND_URL", javascript)
-        self.assertIn("CPC_CODE%3D%27SK%27", javascript)
+        self.assertIn("CPC_CODE%20IN%20%28%27SK%27%2C%27AB%27%29", javascript)
         self.assertIn("function renderReserveLandLayer", javascript)
         self.assertIn("function clearReserveLandLayer", javascript)
         self.assertIn("function usesTwoTapMapNavigation", javascript)
@@ -349,7 +357,7 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_election_records_are_complete_and_source_linked(self):
         elections = json.loads((ROOT / "elections-data.json").read_text(encoding="utf-8"))
-        band_ids = {band["id"] for band in self.data["bands"]}
+        band_ids = {band["id"] for band in self.data["bands"] if band["province"] == "SK"}
         required = {"firstNationId", "firstNation", "electionDate", "candidateName", "position", "votesReceived", "elected", "sourceUrl"}
         self.assertEqual({record["firstNationId"] for record in elections["records"]}, band_ids)
         record_keys = {

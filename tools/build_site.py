@@ -16,7 +16,7 @@ PROVINCIAL_TOTAL = 74
 
 
 def slugify(value: str) -> str:
-    value = unicodedata.normalize("NFKD", value or "")
+    value = unicodedata.normalize("NFKD", (value or "").replace("ł", "l").replace("Ł", "L"))
     value = "".join(char for char in value if not unicodedata.combining(char))
     value = value.lower().replace("&", " and ").replace("'", "").replace("’", "")
     return re.sub(r"^-+|-+$", "", re.sub(r"[^a-z0-9]+", "-", value))
@@ -84,6 +84,12 @@ def election_prerender(band: dict, records: list[dict]) -> str:
         if str(record.get("firstNationId")) == str(band["id"]) and record.get("elected") and record.get("electionDate")
     ]
     if not winners:
+        if band.get('province') == 'AB':
+            governance = band.get('leadership') or {}
+            return ('<section class="election-card"><h3>Elections &amp; Leadership</h3>'
+                    '<p>Current ISC-listed appointments and term dates are shown in the Nation overview when verified. '
+                    'Appointment dates are not treated as election dates; historical remuneration stays separate.</p>'
+                    + (f'<a href="{html.escape(governance["sourceUrl"], quote=True)}">ISC governance source</a>' if governance.get('sourceUrl') else '<p>Current leadership source not yet verified.</p>') + '</section>')
         return ""
     latest_date = max(str(record["electionDate"]) for record in winners)
     winners = [record for record in winners if str(record["electionDate"]) == latest_date]
@@ -305,7 +311,7 @@ def profile_prerender(
     latest_parsed = parsed[0].get("year") if parsed else None
     isc_url = (
         "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/"
-        f"FederalFundingMain.aspx?BAND_NUMBER={quote(str(band['id']))}&amp;lang=eng"
+        f"FederalFundingMain.aspx?BAND_NUMBER={quote(str(band.get('iscBandNumber', band['id'])))}&amp;lang=eng"
     )
     return (
         f'<div id="profilePrerender" class="profile-prerender">'
@@ -532,8 +538,8 @@ def build() -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260814h" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260814h" defer></script>',
+            '<script src="/assets/openband.js?v=20260911" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260911" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)
@@ -543,8 +549,8 @@ def build() -> None:
             legacy_enterprise_redirect(band),
         )
 
-    directory_title = "Explore Saskatchewan First Nations | OpenBand"
-    directory_description = "Explore Saskatchewan First Nations on an interactive map with red First Nation and reserve land boundaries, organized by Treaty and tribal-council affiliation."
+    directory_title = "Explore Saskatchewan and Alberta First Nations | OpenBand"
+    directory_description = "Explore Saskatchewan and Alberta First Nations on an interactive map with red First Nation and reserve land boundaries, organized by Treaty and tribal-council affiliation."
     directory = set_meta(
         base,
         title=directory_title,

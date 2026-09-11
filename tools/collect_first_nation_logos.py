@@ -104,6 +104,7 @@ MANUAL_ASSETS = {
 # Visually reviewed false positives.  These are intentionally kept unverified:
 # the automatic candidate was another organization's mark, a flag, or a photo.
 REJECTED_AUTOMATIC_IDS = {
+    "450": "The source redirected to a municipal website template; its Cityvile logo is not a verified Nation mark.",
     "397": "The selected asset was the Meadow Lake Tribal Council logo, not the Nation logo.",
 }
 
@@ -392,6 +393,11 @@ def main() -> int:
         if selected_ids and band_id not in selected_ids:
             if band_id in existing:
                 records.append(existing[band_id])
+            continue
+        if band.get('province') == 'AB':
+            # Alberta marks have a separate visual review/hash gate. Scheduled
+            # generic site discovery must not overwrite that reviewed registry.
+            records.append(existing.get(band_id) or unverified_record(band, band.get('website'), 'Official First Nation website', 'Awaiting visual logo review'))
             continue
         source = sources.get(band_id)
         if band_id in REJECTED_AUTOMATIC_IDS:

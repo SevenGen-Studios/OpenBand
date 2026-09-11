@@ -23,13 +23,14 @@ class ProjectsIntegrityTests(unittest.TestCase):
         self.assertEqual(len(ids), len(set(ids)))
 
     def test_all_communities_are_in_the_public_source_audit(self):
+        audited_bands = [b for b in self.bands if b["province"] == "SK"]
         audit = self.payload["sourceAudit"]
         registry = json.loads((ROOT / audit["registry"]).read_text(encoding="utf-8"))
-        self.assertEqual(audit["communityCount"], len(self.bands))
-        self.assertEqual(len(registry["communities"]), len(self.bands))
+        self.assertEqual(audit["communityCount"], len(audited_bands))
+        self.assertEqual(len(registry["communities"]), len(audited_bands))
         self.assertEqual(
             {str(row["bandId"]) for row in registry["communities"]},
-            {str(band["id"]) for band in self.bands},
+            {str(band["id"]) for band in audited_bands},
         )
         for row in registry["communities"]:
             self.assertTrue(row.get("discoveryQueries"))

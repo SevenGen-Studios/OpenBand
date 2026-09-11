@@ -202,6 +202,11 @@ def load_overrides() -> dict[str, dict]:
 
 def build_record(band: dict, *, scan_emails: bool, overrides: dict[str, dict]) -> tuple[dict, list[str]]:
     band_id = str(band["id"])
+    if band.get('sharedIscIdentity'):
+        return {'nation_id': band['id'], 'nation_name': band['name'], 'website_url': band.get('website'),
+                'office_phone': None, 'office_email': None, 'mailing_address': None,
+                'field_sources': {'office_phone': None, 'office_email': None, 'mailing_address': None, 'website_url': band.get('website')},
+                'source_url': band.get('website'), 'last_verified': date.today().isoformat()}, []
     source_url = ISC_PROFILE.format(band_id=band_id)
     content, final_url = fetch(source_url)
     isc = parse_isc_profile(content, final_url)

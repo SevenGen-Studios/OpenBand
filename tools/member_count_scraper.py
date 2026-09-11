@@ -86,6 +86,8 @@ def update_counts(*, only_missing: bool = False, limit: int = 0, delay: float = 
     attempts = successes = failures = 0
 
     for band in site_data.get("bands", []):
+        if band.get('sharedIscIdentity'):
+            continue  # Shared band totals cannot be assigned to a component government.
         key = str(band["id"])
         if only_missing and records.get(key, {}).get("registeredMembers"):
             continue

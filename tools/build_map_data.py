@@ -126,7 +126,7 @@ def fetch_reserve_lands() -> dict:
     return request_json(
         RESERVE_LAND_URL,
         {
-            "where": "CPC_CODE='SK'",
+            "where": "CPC_CODE IN ('SK','AB')",
             "outFields": "OBJECTID,ADMIN_LAND_ID,SHORT_NAME,FIRST_NATIONS",
             "returnGeometry": "true",
             # Statistics Canada Lambert is an equal-area projection in metres.
@@ -187,11 +187,14 @@ def reserve_feature_area_hectares(feature: dict) -> float:
 
 
 def reserve_land_totals(bands: list[dict], reserve_lands: dict) -> dict[int, dict]:
-    totals = {int(band["id"]): {"hectares": 0.0, "parcelCount": 0} for band in bands}
+    totals = {band["id"]: {"hectares": 0.0, "parcelCount": 0} for band in bands}
     aliases = {
         band_id: {normalized_owner(alias) for alias in owner_names}
         for band_id, owner_names in RESERVE_OWNER_ALIASES.items()
     }
+    for band in bands:
+        if band['id'] not in aliases and not band.get('sharedIscIdentity'):
+            aliases[band['id']] = {normalized_owner(band.get('officialName') or band['name'])}
     for feature in reserve_lands.get("features", []):
         attributes = feature.get("attributes") or feature.get("properties") or {}
         owners = {
@@ -240,7 +243,7 @@ def build_map_data(
     communities = []
     missing_locations = []
     for band in sorted(bands, key=lambda row: row["name"]):
-        band_id = int(band["id"])
+        band_id = band["id"]
         location = location_by_id.get(band_id)
         if not location:
             missing_locations.append({"id": band_id, "name": band["name"]})
@@ -269,7 +272,7 @@ def build_map_data(
             community.update({
                 "reserveHectares": round(float(land.get("hectares", 0)), 1),
                 "reserveParcelCount": int(land.get("parcelCount", 0)),
-                "reserveOwnerNames": RESERVE_OWNER_ALIASES.get(band_id, []),
+                "reserveOwnerNames": RESERVE_OWNER_ALIASES.get(band_id, [band.get('officialName') or band['name']]) if not band.get('sharedIscIdentity') else [],
                 "reserveLandSourceUrl": RESERVE_LAND_URL.rsplit("/query", 1)[0],
             })
         communities.append(community)

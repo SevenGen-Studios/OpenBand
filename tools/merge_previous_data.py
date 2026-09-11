@@ -54,6 +54,11 @@ def merge_band(previous_band, current_band):
     for field in LOGO_FIELDS:
         if field in previous_band:
             current_band[field] = previous_band[field]
+    for field in ('iscBandNumber', 'officialName', 'aliases', 'sources', 'website', 'tribalCouncil',
+                  'mainReserve', 'reserves', 'population', 'leadership', 'sharedIscIdentity',
+                  'relatedNationIds', 'identityNote', 'sourceErrors', 'discoveryStatus'):
+        if field in previous_band:
+            current_band.setdefault(field, previous_band[field])
 
     previous_filings = {filing_key(filing): filing for filing in previous_band.get("filings", [])}
     restored_people = 0
@@ -62,6 +67,11 @@ def merge_band(previous_band, current_band):
     for filing in current_band.get("filings", []):
         previous_filing = previous_filings.get(filing_key(filing))
         if not previous_filing or has_people(filing):
+            continue
+        # A revised statement can have the same title/year but different rows.
+        # Never attach an older parse to a different known document.
+        if any(previous_filing.get(k) and filing.get(k) and previous_filing[k] != filing[k]
+               for k in ('href', 'sha256')):
             continue
 
         if has_people(previous_filing):

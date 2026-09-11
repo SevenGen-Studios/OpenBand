@@ -54,8 +54,9 @@ EXPENSE_SECTION_RE = re.compile(
     re.I,
 )
 FINAL_SURPLUS_RE = re.compile(
-    r"^(?:(?:annual|current)\s+)?"
-    r"(?:surplus|deficit)(?:\s+\(deficit\))?$",
+    r"^(?:(?:(?:annual|current|operating)\s+)?"
+    r"(?:surplus|deficit)(?:\s+\(deficit\))?"
+    r"|excess(?:\s+\(deficiency\))? of revenues? over (?:expenses|expenditures))$",
     re.I,
 )
 BEFORE_OTHER_RE = re.compile(
@@ -64,6 +65,7 @@ BEFORE_OTHER_RE = re.compile(
 )
 EXPENSE_SECTION_END_RE = re.compile(
     r"^(?:total\s+(?:(?:program|operating)\s+)?(?:expenses?|expenditures?)"
+    r"|(?:excess|shortfall|deficiency)\b"
     r"|.*\b(?:surplus|deficit)\b.*(?:before\s+(?:other|trust settlement)|$))",
     re.I,
 )
@@ -330,6 +332,8 @@ def is_prohibited_expense_label(label):
         return True
     if REVENUE_ONLY_LABEL_RE.search(text):
         return True
+    if re.match(r'^(?:excess|shortfall|deficiency)\b', text, re.I):
+        return True
     return bool(re.search(r"^(?:total\s+)?revenues?$", text, re.I))
 
 
@@ -549,6 +553,8 @@ def parse_surplus_adjustments(page_texts):
                 continue
             if FINAL_SURPLUS_RE.match(label):
                 return rows
+            if re.match(r'^total other (?:items|income|expenses?)\b', label, re.I):
+                continue  # Its components are already represented above.
             if not label or not values or SKIP_LINE_RE.search(label):
                 continue
             if re.fullmatch(r"page\)?", label, re.I):
@@ -860,6 +866,9 @@ def nearly_equal(left, right, tolerance=0.01):
 def validate_summary(summary):
     warnings = list(summary.get("warnings") or [])
     severe = []
+    assets, liabilities, accumulated = (parse_money(summary.get(key)) for key in ("totalAssets", "totalLiabilities", "accumulatedSurplus"))
+    if all(value is not None for value in (assets, liabilities, accumulated)) and not nearly_equal(assets, liabilities + accumulated):
+        severe.append("Total assets do not reconcile to liabilities plus accumulated surplus")
     revenue = parse_money(summary.get("totalRevenue"))
     expenses = parse_money(summary.get("totalExpenses"))
     surplus = parse_money(summary.get("annualSurplusDeficit"))
@@ -967,6 +976,74 @@ def year_over_year_warnings(current, previous):
             warnings.append(f"Major year-over-year change in {label}")
     return warnings
 
+
+def extended_statement_fields(page_texts, fiscal_year=None):
+    """Explicit accounting labels only; missing fields remain null.
+
+    Net financial assets are not total assets. Own-source revenue is a subtotal
+    of identifiable source rows, never the residual after ISC transfers.
+    """
+    position = statement_page_records(page_texts, POSITION_RE)
+    cash_flow = statement_page_records(page_texts, re.compile(r"statement(?:s)? of cash flows?", re.I))
+    patterns = {
+        "cash": r"^(?:cash|cash and cash equivalents|cash resources)$",
+        "investments": r"^investments$",
+        "accountsReceivable": r"^(?:accounts|amounts) receivable$",
+        "restrictedCash": r"^restricted cash(?: and cash equivalents)?$",
+        "otherFinancialAssets": r"^other financial assets$",
+        "totalFinancialAssets": r"^total financial assets$",
+        "totalAssets": r"^total assets$",
+        "tangibleCapitalAssets": r"^tangible capital assets$",
+        "accountsPayable": r"^accounts payable(?: and accrued liabilities)?$",
+        "deferredRevenue": r"^deferred revenue$",
+        "longTermDebt": r"^long.term debt$",
+        "otherLiabilities": r"^other liabilities$",
+        "totalLiabilities": r"^total liabilities$",
+        "accumulatedSurplus": r"^accumulated (?:surplus|deficit|surplus \(deficit\))$",
+        "netFinancialAssetsDebt": r"^net (?:financial assets|debt)(?: \(debt\)| \(net financial assets\))?$",
+    }
+    cash_patterns = {
+        "operatingCashFlow": r"^(?:cash|net cash) (?:provided by|from|used in)(?: \(used in\))? operating activities$",
+        "investingCashFlow": r"^(?:cash|net cash) (?:provided by|from|used in)(?: \(used in\))? investing activities$",
+        "financingCashFlow": r"^(?:cash|net cash) (?:provided by|from|used in)(?: \(used in\))? financing activities$",
+        "capitalAssetPurchases": r"^(?:purchase|acquisition)s? of tangible capital assets$",
+        "debtRepayments": r"^(?:repayment|principal repayment)s? of (?:long.term debt|loans)$",
+    }
+    values, references = {}, {}
+    for collection, records, title in [(patterns, position, 'Statement of Financial Position'), (cash_patterns, cash_flow, 'Statement of Cash Flows')]:
+        for key, pattern in collection.items():
+            value, reference = find_named_amount_reference(records, re.compile(pattern, re.I), table=title, section=key, fiscal_year=fiscal_year)
+            # A number in a comparative-year column must not be exposed as current.
+            values[key] = rounded(value) if not reference or reference.get('yearValidated') is not False else None
+            if reference:
+                references[key] = reference
+    values['statementSections'] = {'financialPosition': bool(position), 'cashFlow': bool(cash_flow)}
+    return values, references
+
+def identified_revenue_fields(rows):
+    patterns = {
+        'iscRevenue': r'indigenous services|indian and northern|aboriginal affairs|\bisc\b|\binac\b|\baandc\b',
+        'federalGovernmentRevenue': r'indigenous services|indian and northern|aboriginal affairs|\bisc\b|\binac\b|\baandc\b|government of canada|^federal government|health canada|canada mortgage|employment and social development canada|crown.indigenous relations',
+        'albertaGovernmentRevenue': r'(?:government|province) of alberta|^alberta (?:health|education|government)',
+        'taxationRevenue': r'^(?:property )?tax(?:ation|es)?(?: revenue)?$',
+        'rentalLeaseRevenue': r'rental|rental income|lease revenue|lease income',
+        'investmentIncome': r'investment income|interest income|dividend income',
+        'businessRevenue': r'business income|business revenue|earnings from.*(?:enterprise|partnership)|gaming revenue|oil and gas revenue',
+        'otherRevenue': r'^other (?:income|revenue)$',
+        'ownSourceRevenue': r'^(?:own.source revenue)$|taxation|rental income|lease (?:income|revenue)|investment income|interest income|dividend income|business (?:income|revenue)|gaming revenue|oil and gas revenue',
+        'governmentRevenue': r'indigenous services|indian and northern|aboriginal affairs|\bisc\b|\binac\b|\baandc\b|government of|province of|^federal government|health canada|canada mortgage|employment and social development canada|crown.indigenous relations|^alberta (?:health|education|government)|^other government',
+        'otherGovernmentRevenue': r'^other government (?:revenue|funding|transfers)$',
+    }
+    values = {}
+    for key, pattern in patterns.items():
+        selected = [r for r in rows if re.search(pattern, str(r.get('originalLabel') or r.get('label') or ''), re.I)]
+        # A reported OSR subtotal and its components must never both be summed.
+        if key == 'ownSourceRevenue':
+            explicit = [r for r in selected if re.fullmatch(r'own.source revenue', str(r.get('originalLabel') or r.get('label') or ''), re.I)]
+            if explicit:
+                selected = explicit
+        values[key] = rounded(sum_rows(selected)) if selected else None
+    return values
 
 def parse_page_texts(page_texts, source_url=None, fiscal_year=None):
     operations_records = statement_page_records(page_texts, OPERATIONS_RE)
@@ -1162,6 +1239,10 @@ def parse_page_texts(page_texts, source_url=None, fiscal_year=None):
         "fiscalYear": fiscal_year,
         "parser": "capital_text_v3",
     }
+    additional, references = extended_statement_fields(page_texts, fiscal_year)
+    summary.update(additional)
+    summary['sourceReferences'].update(references)
+    summary.update(identified_revenue_fields(revenue_source_rows))
     summary.update(validate_summary(summary))
     summary["extractionCompleteness"] = (
         "complete" if summary.get("publishable") else "partial"

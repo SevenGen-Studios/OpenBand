@@ -1,0 +1,53 @@
+name: Refresh Alberta public disclosures
+on:
+  workflow_dispatch:
+    inputs:
+      parse_limit:
+        description: Maximum new documents to parse (0 = all)
+        default: '100'
+        required: true
+      ocr:
+        description: Retry unresolved documents with free OCR
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt lxml Pillow
+      - run: sudo apt-get update && sudo apt-get install -y poppler-utils tesseract-ocr
+      - name: Discover official roster and disclosures
+        run: python tools/ingest_alberta.py --refresh-roster --discover --refresh
+      - name: Parse and validate public PDFs
+        env:
+          PARSE_LIMIT: ${{ inputs.parse_limit }}
+          ENABLE_OCR: ${{ inputs.ocr }}
+        run: |
+          args=(--parse --limit "$PARSE_LIMIT")
+          if [ "$ENABLE_OCR" = true ]; then args+=(--ocr --retry); fi
+          python tools/ingest_alberta.py "${args[@]}"
+      - run: python -m tools.merge_alberta_enrichment
+      - run: python -m tools.audit_alberta
+      - run: python tools/build_site.py && python -m unittest discover -s tests
+      - run: node tests/test_provinces.js && node --check assets/openband.js && node --check assets/province-ui.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: alberta-source-review
+          path: |
+            data.json
+            capital-data.json
+            alberta-nations.json
+            alberta-coverage-report.*
+            contacts-data.json
+            member-counts.json
+            map-data.json
+            first-nations/
+          retention-days: 14

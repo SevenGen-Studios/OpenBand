@@ -671,6 +671,9 @@ def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]
     }
     map_data = read_json(root / "map-data.json", {"communities": []})
     tracked = {str(row.get("id")): row for row in map_data.get("communities", []) if row.get("id") is not None}
+    # Source coverage must include Nations whose map coordinates are unknown.
+    for band in read_json(root / "data.json", {"bands": []}).get("bands", []):
+        tracked.setdefault(str(band['id']), band)
     coverage_sources = {community_id: [] for community_id in tracked}
     for source in sources:
         for community_id in source_coverage(source, set(tracked)):
@@ -693,7 +696,7 @@ def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]
             "status": "active_listings" if any(
                 str(row.get("communityId")) == community_id or community_id in row.get("firstNationIds", [])
                 for row in public
-            ) else "sources_checked_no_active_listing",
+            ) else "sources_checked_no_active_listing" if coverage_sources[community_id] else "no_verified_sources",
         }
         for community_id in sorted(tracked, key=lambda value: tracked[value].get("name", ""))
     ]

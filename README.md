@@ -2,11 +2,12 @@
 
 OpenBand makes First Nations Financial Transparency Act filings easier to search, inspect, export, and verify.
 
-The public website focuses on Saskatchewan FNFTA Chief and Council remuneration filings. Every displayed result should stay connected to the original Indigenous Services Canada source filing so readers can verify the figures themselves.
+The public website supports Saskatchewan and Alberta First Nations, audited statements, and Chief and Council remuneration. Every displayed result stays connected to its original source filing. Alberta has complete roster coverage with explicitly incomplete disclosure and extraction coverage; see [the Alberta coverage audit](alberta-coverage-report.md).
 
 ## Website Features
 
-- Search Saskatchewan First Nations by name.
+- Search Saskatchewan and Alberta First Nations by name, alternate name, or ISC identifier; filter by province and treaty.
+- Compare validated financial summaries within the same fiscal year, with field-specific coverage counts.
 - View Chief and Council remuneration rows by fiscal year.
 - Open the original Indigenous Services Canada FNFTA filing from each result.
 - Export the currently displayed table as CSV.
@@ -15,6 +16,8 @@ The public website focuses on Saskatchewan FNFTA Chief and Council remuneration 
 - See whether a filing is parsed, pending, not posted, or needs extraction review.
 
 ## What Is In This Repo
+
+Alberta source reconciliation, update commands, review rules, and known gaps are documented in [ALBERTA.md](ALBERTA.md).
 
 - `index.html` - homepage and shared static application shell
 - `assets/openband.css` / `assets/openband.js` - cacheable shared site assets
