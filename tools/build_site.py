@@ -480,6 +480,46 @@ def write_page(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8")
 
 
+def provincial_landing(base: str, code: str, name: str) -> str:
+    path = f"/{name.lower()}/"
+    title = f"OpenBand Canada | {name} First Nations Public Financial Records"
+    description = (
+        f"Search {name} First Nations public financial records, filing history, "
+        "and original Indigenous Services Canada source documents."
+    )
+    page = set_meta(
+        base,
+        title=title,
+        description=description,
+        path=path,
+        structured={
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": title,
+            "url": f"{ORIGIN}{path}",
+            "description": description,
+            "isPartOf": {"@type": "WebSite", "name": "OpenBand", "url": f"{ORIGIN}/"},
+        },
+    )
+    page = page.replace(
+        '<body data-page="home">',
+        f'<body data-page="province" data-province="{code}">',
+        1,
+    )
+    page = page.replace('<h1 id="heroTitle">OpenBand</h1>', '<h1 id="heroTitle">First Nations Public Financial Records</h1>', 1)
+    page = page.replace(
+        'Choose a province to search First Nations public financial records and original source documents.',
+        f'Search {name} First Nations to review public filings, financial records, and original ISC source documents.',
+        1,
+    )
+    page = page.replace(
+        '<script src="/assets/openband.js?v=20260911a" defer></script>',
+        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20260911a" defer></script>',
+        1,
+    )
+    return page
+
+
 def legacy_enterprise_redirect(band: dict) -> str:
     target = f"/first-nations/{slugify(band['name'])}/?tab=capital"
     title = f"{band['name']} Community Capital | OpenBand"
@@ -517,6 +557,9 @@ def build() -> None:
     profile_root = ROOT / "first-nations"
     profile_root.mkdir(parents=True, exist_ok=True)
 
+    write_page(ROOT / "saskatchewan" / "index.html", provincial_landing(base, "SK", "Saskatchewan"))
+    write_page(ROOT / "alberta" / "index.html", provincial_landing(base, "AB", "Alberta"))
+
     for band in bands:
         slug = slugify(band["name"])
         path = f"/first-nations/{slug}/"
@@ -537,7 +580,7 @@ def build() -> None:
         if band.get("logo_verified") and band.get("logo_url"):
             structured["about"]["logo"] = f'{ORIGIN}{band["logo_url"]}'
         page = set_meta(base, title=title, description=description, path=path, structured=structured)
-        page = page.replace('<body data-page="home">', f'<body data-page="profile" data-band-id="{band["id"]}">', 1)
+        page = page.replace('<body data-page="home">', f'<body data-page="profile" data-band-id="{band["id"]}" data-province="{band.get("province", "SK")}">', 1)
         page = page.replace(
             '<div id="profilePrerender" class="profile-prerender" hidden></div>',
             profile_prerender(
@@ -555,8 +598,8 @@ def build() -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20260911" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260911" defer></script>',
+            '<script src="/assets/openband.js?v=20260911a" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20260911a" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)
@@ -603,7 +646,7 @@ def build() -> None:
     write_page(ROOT / "news" / "index.html", news_page)
 
     lastmod = str(data.get("generated") or "")[:10]
-    paths = ["/", "/browse/", "/news/"] + [f"/first-nations/{slug}/" for slug in slugs]
+    paths = ["/", "/saskatchewan/", "/alberta/", "/browse/", "/news/"] + [f"/first-nations/{slug}/" for slug in slugs]
     urls = "".join(
         f"<url><loc>{ORIGIN}{path}</loc>{f'<lastmod>{lastmod}</lastmod>' if lastmod else ''}</url>"
         for path in paths
@@ -618,7 +661,7 @@ def build() -> None:
         f"User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: {ORIGIN}/sitemap.xml\n", encoding="utf-8"
     )
     (ROOT / ".nojekyll").touch()
-    print(f"Generated {len(bands)} profile pages, legacy redirects, browse, news, robots.txt, and sitemap.xml")
+    print(f"Generated {len(bands)} profile pages, provincial landings, legacy redirects, browse, news, robots.txt, and sitemap.xml")
 
 
 if __name__ == "__main__":

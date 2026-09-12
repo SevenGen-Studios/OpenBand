@@ -1,10 +1,27 @@
 /* Integrates provincial controls into the existing static application. */
-function selectedProvince(){return document.getElementById('provinceFilter')?.value||''}
+function selectedProvince(){return document.body.dataset.province||OpenBandProvinces.fromPath(location.pathname)||new URL(location.href).searchParams.get('province')||''}
 function provinceBands(){return bandsData.filter(b=>OpenBandProvinces.inProvince(b,selectedProvince()))}
-function provinceLabel(){return OpenBandProvinces.names[selectedProvince()]||'Saskatchewan and Alberta'}
+function provinceLabel(){return OpenBandProvinces.names[selectedProvince()]||'First Nations'}
+function applyProvinceContext(province){
+  const code=['SK','AB'].includes(province)?province:'';
+  if(code)document.body.dataset.province=code;else delete document.body.dataset.province;
+  document.querySelectorAll('[data-province-link]').forEach(link=>{const active=link.dataset.provinceLink===code;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current')});
+  const name=OpenBandProvinces.names[code],title=document.getElementById('heroTitle'),intro=document.getElementById('heroIntro'),searchLabel=document.querySelector('label[for="si"]'),hint=document.getElementById('heroHint'),browse=document.getElementById('heroBrowse'),homeBrowse=document.getElementById('homeBrowse'),navBrowse=document.querySelector('#primaryNav>a[href^="/browse/"]'),overviewBrowse=document.querySelector('#provinceOverview .text-link'),howLink=document.getElementById('howLink'),homeTitle=document.getElementById('homeIntroTitle'),homeCopy=document.getElementById('homeIntroCopy');
+  if(title)title.textContent=name?'First Nations Public Financial Records':'OpenBand';
+  if(intro)intro.textContent=name?`Search ${name} First Nations to review public filings, financial records, and original ISC source documents.`:'Choose a province to search First Nations public financial records and original source documents.';
+  if(searchLabel)searchLabel.textContent=`Search ${name||'First Nations'}`;
+  if(hint)hint.textContent=name?`${name} First Nations · FNFTA public filings · Source: Indigenous Services Canada`:'Public FNFTA records organized by province';
+  if(browse){browse.href=code?`/browse/?province=${code}`:'/browse/';browse.textContent=name?`Browse ${name} First Nations`:'Browse all First Nations'}
+  if(homeBrowse){homeBrowse.href=code?`/browse/?province=${code}`:'/browse/';homeBrowse.textContent=name?`Browse ${name} First Nations`:'Browse all First Nations'}
+  if(navBrowse)navBrowse.href=code?`/browse/?province=${code}`:'/browse/';
+  if(overviewBrowse)overviewBrowse.href=code?`/browse/?province=${code}`:'/browse/';
+  if(howLink)howLink.href=code?`${OpenBandProvinces.routeFor(code)}#how`:'/#how';
+  if(homeTitle)homeTitle.textContent=name?`${name} public records, easier to review`:'Public records, easier to review';
+  if(homeCopy)homeCopy.textContent=name?`OpenBand organizes ${name} First Nations FNFTA filings into searchable profiles while keeping original ISC source documents one click away.`:'OpenBand organizes public FNFTA filings into searchable profiles while keeping original source documents one click away.';
+}
 function updateProvinceUI(){
   const province=selectedProvince(),rows=provinceBands();
-  document.querySelector('#provinceOverview h2').textContent=`${provinceLabel()} Coverage`;
+  const overviewTitle=document.querySelector('#provinceOverview h2');if(overviewTitle)overviewTitle.textContent=`${provinceLabel()} Coverage`;
   const count=document.getElementById('coverageCount');
   count.textContent=province?`${rows.length} of ${OpenBandProvinces.totals[province]}`:`${rows.length} indexed`;
   document.getElementById('coverageLabel').textContent=` ${provinceLabel()} First Nations tracked`;
@@ -62,4 +79,3 @@ function extendedFinancialMarkup(band){
   };
   return `<section class="nation-details"><h3>Additional reported figures · ${esc(year)}</h3><p>Explicit source labels only. Unavailable fields have not been reliably extracted. Revenue categories can overlap; do not add federal revenue to ISC revenue or own-source revenue to its components.</p>${Object.entries(sections).map(([heading,fields])=>`<details><summary>${esc(heading)}</summary><dl class="province-subtotals">${Object.entries(fields).map(([key,label])=>`<div><dt>${esc(label)}</dt><dd>${typeof summary[key]==='number'?formatMoney(summary[key]):'Unavailable'}</dd></div>`).join('')}</dl></details>`).join('')}<p><a href="${escAttr(summary.sourceUrl)}" target="_blank" rel="noopener">Original audited statement</a></p></section>`;
 }
-document.getElementById('provinceFilter').addEventListener('change',()=>{document.getElementById('treatyFilter').value='';document.getElementById('tribalCouncilFilter').value='';updateProvinceUI();renderProvinceSummary(getProvinceSummary());renderRecentlyUpdated();renderChips();document.getElementById('acl').style.display='none';if(document.body.dataset.view==='directory')renderDirectory();const url=new URL(location.href);if(selectedProvince())url.searchParams.set('province',selectedProvince());else url.searchParams.delete('province');history.replaceState({},'',url)});

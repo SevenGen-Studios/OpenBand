@@ -116,7 +116,15 @@ class SiteRouteTests(unittest.TestCase):
         for relative in ["browse/index.html", "news/index.html", "admin/index.html", "admin/analytics/index.html", "admin/intelligence/index.html", "robots.txt", "sitemap.xml", "map-data.json", "contacts-data.json", "jobs-data.json", "jobs-schema.json", "jobs-sources.json", "jobs-overrides.json", "jobs-coverage-report.json", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js", "assets/intelligence-admin.js", "assets/intelligence-admin.css", "community-enterprise.json"]:
             self.assertTrue((ROOT / relative).is_file(), relative)
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
-        self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 3)
+        self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 5)
+        for province, code in [("saskatchewan", "SK"), ("alberta", "AB")]:
+            page = ROOT / province / "index.html"
+            self.assertTrue(page.exists())
+            markup = page.read_text(encoding="utf-8")
+            self.assertIn(f'data-page="province" data-province="{code}"', markup)
+            self.assertIn(f'<link rel="canonical" href="{ORIGIN}/{province}/">', markup)
+            self.assertIn(f"{province.title()} First Nations Public Financial Records", markup)
+            self.assertIn(f"{ORIGIN}/{province}/", sitemap)
         self.assertIn(f"{ORIGIN}/browse/", sitemap)
         self.assertIn(f"{ORIGIN}/news/", sitemap)
         self.assertNotIn("/community-enterprise/", sitemap)
@@ -188,8 +196,8 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260911a"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260911"', profile)
+        self.assertIn('href="/assets/openband.css?v=20260911b"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260911a"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
