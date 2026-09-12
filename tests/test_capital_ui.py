@@ -34,6 +34,16 @@ class CapitalUiTests(unittest.TestCase):
         self.assertIn("${yearControl}${capitalMemberChip(band)}", review_branch)
         self.assertIn("Review posted PDF", review_branch)
 
+    def test_missing_surplus_is_not_described_as_a_surplus(self):
+        self.assertIn(
+            "if(surplus===0&&revenue!==expenses)",
+            self.script,
+        )
+        self.assertIn(
+            "The annual surplus or deficit has not been reliably extracted",
+            self.script,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

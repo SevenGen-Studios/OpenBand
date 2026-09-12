@@ -96,6 +96,8 @@ class NewsDiscoveryTests(unittest.TestCase):
         )
         self.assertTrue(generic_news_title("Upcoming Events - Muskoday First Nation"))
         self.assertTrue(generic_news_title("Piapot First Nation Official Website"))
+        self.assertTrue(generic_news_title("Newsletters"))
+        self.assertTrue(generic_news_title("Piikani Nation Documents"))
         self.assertTrue(
             generic_news_item(
                 {
@@ -170,6 +172,22 @@ class NewsDiscoveryTests(unittest.TestCase):
         self.assertTrue(
             all(item["discoveryQueries"] for item in registry["communities"])
         )
+        alberta = next(item for item in registry["communities"] if item["provinceTerritory"] == "AB")
+        self.assertTrue(any("Alberta" in query for query in alberta["discoveryQueries"]))
+        self.assertNotIn("Saskatchewan", " ".join(alberta["discoveryQueries"]))
+
+    def test_alberta_candidate_preserves_province(self):
+        from tools.news_discovery import normalized_candidate
+        community = {"bandId": 430, "communityName": "Siksika Nation", "provinceTerritory": "AB"}
+        item = normalized_candidate(
+            community,
+            self.source,
+            title="Siksika Nation housing update",
+            summary="The Nation published a housing update.",
+            url="https://example.com/siksika-housing",
+            published="2026-09-01",
+        )
+        self.assertEqual("AB", item["provinceTerritory"])
 
     def test_date_and_url_normalization(self):
         self.assertEqual(("2026-06-01", "month"), parse_date_text("June 2026 Newsletter"))

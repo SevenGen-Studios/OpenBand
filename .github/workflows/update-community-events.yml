@@ -1,4 +1,4 @@
-name: Update Saskatchewan community events
+name: Update community events
 
 on:
   workflow_dispatch:
@@ -101,7 +101,7 @@ jobs:
             echo "No community event data changes to commit"
             exit 0
           fi
-          git commit -m "Update Saskatchewan community events"
+          git commit -m "Update community events"
           # Static pages are rebuilt for verification, but event cards load from the JSON data.
           # Clean generated files so a concurrent unrelated site commit can be rebased safely.
           git reset --hard HEAD

@@ -269,7 +269,7 @@ _NAME_RE = re.compile(r"^[A-Za-z][A-Za-z'.,() -]{1,90}\*?$")
 _ROLE_WORD_RE = re.compile(r"\b(chief|councillor|councilor)\b", re.I)
 _ROLE_ONLY_RE = re.compile(r"^\s*(chief|councillor|councilor)\s*$", re.I)
 _COLUMN_HEADER_RE = re.compile(
-    r"\b(name|position|title|role|months?|remuneration|salary|honou?raria|travel|per\s*diems?|expenses?|reimbursements?|credit\s*card|visa|mastercard|other|payments?|benefits?|incentives?|total)\b",
+    r"\b(name|position|title|role|months?|remuneration|salary|honou?raria|travel|per\s*diems?|expenses?|reimbursements?|credit\s*card|visa|mastercard|other|payments?|benefits?|incentives?|comps?|compensation|vacation|total)\b",
     re.I,
 )
 _TOTAL_ROW_RE = re.compile(r"^\s*(total|subtotal|grand\s+total)\b", re.I)
@@ -331,11 +331,13 @@ def _column_key(text):
         return "role"
     if re.search(r"\bname\b", t):
         return "name"
+    if t == "band":
+        return "remuneration"
     if "credit" in t or "visa" in t or "mastercard" in t:
         return "creditCard"
-    if re.search(r"\b(total\s+paid|total)$|^total\b", t) and "remuneration" not in t:
+    if re.search(r"\b(total\s+paid|totals?)$|^totals?\b", t) and "remuneration" not in t:
         return "total"
-    if re.search(r"\b(other|benefits?|incentives?)\b", t):
+    if re.search(r"\b(other|benefits?|incentives?|comps?|compensation|vacation)\b", t):
         return "otherPayments"
     if re.search(r"\b(remuneration|salary|honou?raria|wages?)\b", t):
         return "remuneration"
@@ -350,7 +352,7 @@ def _column_key(text):
 
 def _build_column_map(table):
     header_rows = []
-    for row in table[:8]:
+    for row in table[:12]:
         cells = [_clean_cell(cell) for cell in row]
         if _is_header_row(cells):
             header_rows.append(cells)
@@ -382,6 +384,15 @@ def _first_amount_in_cell(cell):
     if not match:
         return None
     return _parse_amount(match.group(0).replace("$", "").strip())
+
+
+def _amounts_in_cell(cell):
+    values = []
+    for match in _MONEY_RE.finditer(_clean_cell(cell).replace("$", " $ ")):
+        value = _parse_amount(match.group(0).replace("$", "").strip())
+        if value is not None:
+            values.append(value)
+    return values
 
 
 def _looks_like_total(candidate, parts):
@@ -553,7 +564,15 @@ def _assign_text_money_values(amounts, header_hint=""):
 
 
 def _strip_role_words(value):
-    return scraper.clean_person_name(_ROLE_WORD_RE.sub(" ", _clean_cell(value)).strip(" -:\t")).replace("\u2019", "'")
+    name = scraper.clean_person_name(_ROLE_WORD_RE.sub(" ", _clean_cell(value)).strip(" -:\t")).replace("\u2019", "'")
+    # Borderless PDF tables can split a first name across adjacent extraction
+    # cells (for example, "Co" + "dy" + "Thomas"). Rejoin only a lowercase
+    # fragment immediately before the next capitalized name token.
+    return re.sub(
+        r"\b([A-Z][a-z])\s+([a-z]{1,2})(?=\s+[A-Z])",
+        lambda match: match.group(1) + match.group(2),
+        name,
+    )
 
 
 def _extract_role_from_cells(cells):
@@ -595,6 +614,9 @@ def _parse_keyword_table_row(row, column_map, header_hint):
     if not name:
         before_numbers = cells[: numeric_cols[0]]
         candidates = []
+        combined_candidate = _strip_role_words(" ".join(before_numbers))
+        if _looks_like_person_name(combined_candidate):
+            candidates.append(combined_candidate)
         for cell in before_numbers:
             if _ROLE_ONLY_RE.match(cell):
                 continue
@@ -627,7 +649,8 @@ def _parse_keyword_table_row(row, column_map, header_hint):
     mapped_money = {"remuneration": None, "travel": None, "expenses": None, "creditCard": None, "otherPayments": None, "total": None}
     for idx, key in column_map.items():
         if key in mapped_money and idx < len(cells):
-            value = amounts_by_col.get(idx)
+            cell_amounts = _amounts_in_cell(cells[idx])
+            value = sum(cell_amounts) if key == "otherPayments" and cell_amounts else amounts_by_col.get(idx)
             if value is not None:
                 mapped_money[key] = value
 
@@ -999,7 +1022,20 @@ def _extract_remuneration_rows_enhanced(pdf_url):
             with scraper.pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
                 for page in pdf.pages:
                     page_text = page.extract_text(x_tolerance=1, y_tolerance=3) or ""
-                    for table in page.extract_tables() or []:
+                    tables = page.extract_tables() or []
+                    if not tables and re.search(
+                        r"chief\s+and\s+council|chief\s+and\s+councillors|remuneration\s+and\s+expenses",
+                        page_text,
+                        re.I,
+                    ):
+                        tables = page.extract_tables({
+                            "vertical_strategy": "text",
+                            "horizontal_strategy": "text",
+                            "snap_tolerance": 4,
+                            "join_tolerance": 4,
+                            "intersection_tolerance": 4,
+                        }) or []
+                    for table in tables:
                         quality = parser_quality.score_candidate_table(table, page_text)
                         if not quality["accepted"]:
                             continue

@@ -26,13 +26,17 @@ class ProjectsIntegrityTests(unittest.TestCase):
         audited_bands = [b for b in self.bands if b["province"] == "SK"]
         audit = self.payload["sourceAudit"]
         registry = json.loads((ROOT / audit["registry"]).read_text(encoding="utf-8"))
+        audited_registry = [
+            row for row in registry["communities"]
+            if row.get("provinceTerritory", "SK") == "SK"
+        ]
         self.assertEqual(audit["communityCount"], len(audited_bands))
-        self.assertEqual(len(registry["communities"]), len(audited_bands))
+        self.assertEqual(len(audited_registry), len(audited_bands))
         self.assertEqual(
-            {str(row["bandId"]) for row in registry["communities"]},
+            {str(row["bandId"]) for row in audited_registry},
             {str(band["id"]) for band in audited_bands},
         )
-        for row in registry["communities"]:
+        for row in audited_registry:
             self.assertTrue(row.get("discoveryQueries"))
             self.assertTrue(any("facebook.com" in query for query in row["discoveryQueries"]))
             self.assertTrue(any("housing OR infrastructure" in query for query in row["discoveryQueries"]))

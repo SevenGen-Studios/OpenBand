@@ -1,4 +1,4 @@
-name: Update Saskatchewan community news
+name: Update community news
 
 on:
   workflow_dispatch:
@@ -102,7 +102,7 @@ jobs:
             echo "No news changes to commit"
             exit 0
           fi
-          git commit -m "Update Saskatchewan community news"
+          git commit -m "Update community news"
           for attempt in 1 2 3; do
             git pull --rebase origin main && git push origin HEAD:main && exit 0
             echo "Push attempt $attempt failed; retrying after concurrent data writer"

@@ -4,14 +4,56 @@ import json
 import unittest
 from collections import defaultdict
 from pathlib import Path
-from tools.ingest_alberta import canonical_url, document_identity, normalized_name, parse_filings
+from tools.ingest_alberta import canonical_url, document_identity, normalized_name, parse_filings, should_preserve_remuneration
 from tools.capital_parser import identified_revenue_fields, validate_summary, parse_page_texts
 from tools.merge_previous_data import merge_band
+from run_scraper import _build_column_map, _parse_keyword_table_row
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 class AlbertaTests(unittest.TestCase):
+    def test_bounded_parser_creates_cache_directory_before_task_write(self):
+        source = (ROOT / 'tools' / 'ingest_alberta.py').read_text(encoding='utf-8')
+        function = source[source.index('def bounded_parse'):source.index('def parse_documents')]
+        self.assertLess(function.index('CACHE.mkdir'), function.index('write(source, task)'))
+
+    def test_alberta_remuneration_uses_shared_table_aware_parser(self):
+        source = (ROOT / 'tools' / 'ingest_alberta.py').read_text(encoding='utf-8')
+        parse_one = source[source.index('def parse_one'):source.index('def bounded_parse')]
+        self.assertIn('_extract_remuneration_rows_enhanced', parse_one)
+        self.assertNotIn('_extract_people_from_text_pages(pages)', parse_one)
+
+    def test_weaker_remuneration_reparse_cannot_replace_validated_rows(self):
+        existing = {
+            'people': [{'name': 'Chief'}, {'name': 'Councillor 1'}, {'name': 'Councillor 2'}],
+            'parse_confidence': 'high',
+        }
+        fewer = {'people': [{'name': 'Chief'}, {'name': 'Councillor 1'}], 'parse_confidence': 'high'}
+        unrelated = {
+            'people': list(existing['people']),
+            'parse_confidence': 'high',
+            'warnings': ['Possible unrelated financial statement table'],
+        }
+        stronger = {'people': list(existing['people']) + [{'name': 'Councillor 3'}], 'parse_confidence': 'high'}
+        self.assertTrue(should_preserve_remuneration(existing, fewer))
+        self.assertTrue(should_preserve_remuneration(existing, unrelated))
+        self.assertFalse(should_preserve_remuneration(existing, stronger))
+
+    def test_borderless_remuneration_columns_keep_travel_and_compensation_separate(self):
+        table = [
+            ['', '', '', '', 'Months', 'Band', 'Travel C', 'omps Vacation', 'Totals'],
+            ['', 'Chief and', 'C', 'ouncil', '$', '$', '$', '$ $', ''],
+            ['', 'Chief - Co', 'dy', 'Thomas', '12', '230,000', '1,112', '25,963', '257,075'],
+            ['', 'Councillor', '-', 'Ronald V. Morin Sr.', '6', '95,972', '-', '9,688 11,509', '117,169'],
+        ]
+        column_map, header = _build_column_map(table)
+        chief = _parse_keyword_table_row(table[2], column_map, header)
+        councillor = _parse_keyword_table_row(table[3], column_map, header)
+        self.assertEqual(chief['name'], 'Cody Thomas')
+        self.assertEqual((chief['remuneration'], chief['travel'], chief['otherPayments'], chief['total']), (230000, 1112, 25963, 257075))
+        self.assertEqual((councillor['remuneration'], councillor['travel'], councillor['otherPayments'], councillor['total']), (95972, None, 21197, 117169))
+
     def test_alexander_surplus_is_not_added_to_expenses(self):
         page = (ROOT/'tests/fixtures/ab_438_2025_operations.txt').read_text(encoding='utf-8')
         summary = parse_page_texts([page], fiscal_year='2024-2025')
@@ -58,6 +100,24 @@ class AlbertaTests(unittest.TestCase):
         self.assertTrue(document_identity(['Unrelated First Nation March 31, 2025'], band, filing))
         self.assertTrue(document_identity(['Example First Nation March 31, 2024'], band, filing))
         self.assertTrue(document_identity([''], band, filing))
+
+    def test_document_identity_accepts_safe_alberta_legal_name_variants(self):
+        filing = {'year':'2024-2025'}
+        self.assertEqual(document_identity(
+            ['Enoch Cree Nation Consolidated Financial Statements March 31, 2025'],
+            {'name':'Enoch Cree Nation #440','aliases':[]}, filing), [])
+        self.assertEqual(document_identity(
+            ['Tallcree First Nation Financial Statements for the year ended March 31, 2025'],
+            {'name':'Tallcree Tribal Government','aliases':[]}, filing), [])
+        self.assertEqual(document_identity(
+            ['Loon River First Nation Financial Statements March 31, 2025'],
+            {'name':'Loon River Cree','aliases':[]}, filing), [])
+
+    def test_document_identity_accepts_expected_year_when_comparative_date_appears_first(self):
+        issues = document_identity(
+            ['Example First Nation comparative March 31, 2024; year ended March 31, 2025'],
+            {'name':'Example First Nation','aliases':[]}, {'year':'2024-2025'})
+        self.assertEqual(issues, [])
 
     def test_listing_omits_unposted_and_deduplicates_urls(self):
         def listing(url):

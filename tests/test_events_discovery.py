@@ -95,6 +95,19 @@ class EventDateTests(unittest.TestCase):
 
 
 class EventExtractionTests(unittest.TestCase):
+    def test_alberta_event_preserves_province(self):
+        from tools.events_discovery import normalized_event
+        community = {"bandId": 430, "communityName": "Siksika Nation", "provinceTerritory": "AB"}
+        item = normalized_event(
+            community,
+            SOURCE,
+            title="Community Health Fair",
+            context="Community Health Fair September 20, 2026",
+            url="https://example.org/health-fair",
+            start="2026-09-20",
+        )
+        self.assertEqual("AB", item["provinceTerritory"])
+
     def test_shared_index_assigns_only_explicitly_named_community(self):
         waterhen = {
             "bandId": 402,

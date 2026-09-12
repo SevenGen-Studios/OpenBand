@@ -1,6 +1,6 @@
 # Alberta coverage audit
 
-Generated 2026-09-11T11:56:57+00:00
+Generated 2026-09-12T17:54:34+00:00
 
 - expectedNations: 48
 - addedNations: 48
@@ -9,8 +9,8 @@ Generated 2026-09-11T11:56:57+00:00
 - financialDocuments: 754
 - auditedStatements: 400
 - remunerationDocuments: 354
-- successfullyParsedDocuments: 256
-- documentsRequiringReview: 498
+- successfullyParsedDocuments: 324
+- documentsRequiringReview: 430
 - retrievedPdfs: 754
 - technicalFailures: 0
 - nationsWithStatements: 43
