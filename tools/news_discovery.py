@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Discover and normalize source-backed Saskatchewan community updates."""
+"""Discover and normalize source-backed community updates by province."""
 
 from __future__ import annotations
 
@@ -173,6 +173,12 @@ MONTHS = {
     "nov": 11,
     "dec": 12,
 }
+
+PROVINCE_NAMES = {"SK": "Saskatchewan", "AB": "Alberta"}
+
+
+def province_name(value):
+    return PROVINCE_NAMES.get(str(value or "SK").upper(), str(value or "Saskatchewan"))
 
 
 def utc_now():
@@ -403,7 +409,7 @@ def normalized_candidate(
         "title": clean_text(title),
         "communityName": community["communityName"],
         "communityAliases": community.get("aliases") or [],
-        "provinceTerritory": "SK",
+        "provinceTerritory": community.get("provinceTerritory", "SK"),
         "category": classify_category(f"{title} {summary}"),
         "sourceType": source_type,
         "sourceName": source.get("name") or community["communityName"],
@@ -771,7 +777,11 @@ def is_supported_update(title, context=""):
 def generic_news_title(title):
     text = clean_text(title)
     normalized = normalized_text(text)
-    if len(text) < 8 or normalized in GENERIC_LINK_TEXT:
+    if len(text) < 8 or normalized in GENERIC_LINK_TEXT or normalized in {
+        "documents",
+        "newsletters",
+        "piikani nation documents",
+    }:
         return True
     return bool(
         re.match(
@@ -985,9 +995,12 @@ def discover_gdelt_batch(fetcher, communities):
     community_query = " OR ".join(
         f'"{community["communityName"]}"' for community in communities
     )
+    province_query = " OR ".join(
+        sorted({province_name(community.get("provinceTerritory")) for community in communities})
+    )
     params = urllib.parse.urlencode(
         {
-            "query": f"({community_query}) Saskatchewan",
+            "query": f"({community_query}) ({province_query})",
             "mode": "ArtList",
             "maxrecords": "250",
             "format": "json",
@@ -1328,6 +1341,7 @@ def ensure_registry(data, news, registry):
     rows = []
     for band in data.get("bands", []):
         band_id = str(band["id"])
+        province = str(band.get("province") or "SK").upper()
         current = registry_rows.get(band_id, {})
         old = existing_sources.get(band_id, {})
         sources = list(current.get("sources") or [])
@@ -1369,9 +1383,10 @@ def ensure_registry(data, news, registry):
             )
             sources.append(copied)
             known_urls.add(url)
+        isc_band_number = band.get("iscBandNumber", band["id"])
         isc_url = (
             "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/"
-            f"FederalFundingMain.aspx?BAND_NUMBER={band['id']}&lang=eng"
+            f"FederalFundingMain.aspx?BAND_NUMBER={isc_band_number}&lang=eng"
         )
         if canonical_url(isc_url) not in known_urls:
             sources.append(
@@ -1389,12 +1404,19 @@ def ensure_registry(data, news, registry):
             {
                 "bandId": band["id"],
                 "communityName": band["name"],
-                "aliases": current.get("aliases") or [],
-                "provinceTerritory": "SK",
+                "aliases": list(dict.fromkeys([
+                    *(current.get("aliases") or []),
+                    *(band.get("aliases") or []),
+                ])),
+                "provinceTerritory": province,
                 "treaty": band.get("treaty"),
                 "sources": sources,
                 "discoveryQueries": current.get("discoveryQueries")
-                or build_discovery_queries(band["name"], current.get("aliases") or []),
+                or build_discovery_queries(
+                    band["name"],
+                    list(dict.fromkeys([*(current.get("aliases") or []), *(band.get("aliases") or [])])),
+                    province,
+                ),
             }
         )
     return {
@@ -1408,16 +1430,17 @@ def ensure_registry(data, news, registry):
     }
 
 
-def build_discovery_queries(name, aliases):
+def build_discovery_queries(name, aliases, province="SK"):
+    region = province_name(province)
     names = [name] + list(aliases or [])
     queries = []
     for value in names:
         queries.extend(
             [
-                f'"{value}" announcement Saskatchewan',
+                f'"{value}" announcement {region}',
                 f'"{value}" community update',
                 f'site:facebook.com "{value}" announcement',
-                f'"{value}" funding OR housing OR infrastructure',
+                f'"{value}" {region} funding OR housing OR infrastructure',
             ]
         )
     return list(dict.fromkeys(queries))
@@ -1444,7 +1467,7 @@ def registry_for_frontend(registry):
             {
                 "bandId": community["bandId"],
                 "communityName": community["communityName"],
-                "provinceTerritory": "SK",
+                "provinceTerritory": community.get("provinceTerritory", "SK"),
                 "treaty": community.get("treaty"),
                 "monitoringStatus": (
                     "official-source-found" if non_baseline else "source-research-needed"
@@ -1805,6 +1828,12 @@ def run(args):
             for community in communities
             if str(community["bandId"]) in requested
         ]
+    if args.province:
+        requested_province = args.province.upper()
+        communities = [
+            community for community in communities
+            if str(community.get("provinceTerritory", "SK")).upper() == requested_province
+        ]
 
     scan_inputs = [
         (community, source)
@@ -1909,7 +1938,7 @@ def run(args):
         {
             "schemaVersion": 1,
             "generated": iso_now(),
-            "scope": "Saskatchewan First Nations community updates",
+            "scope": "Saskatchewan and Alberta First Nations community updates",
             "sourceTypes": SOURCE_TYPES,
             "articles": merged,
             "communitySources": registry_for_frontend(registry),
@@ -1954,6 +1983,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--pilot", action="store_true")
     parser.add_argument("--band-id", action="append")
+    parser.add_argument("--province", choices=["SK", "AB", "sk", "ab"])
     parser.add_argument("--lookback-days", type=int, default=550)
     parser.add_argument("--confidence-threshold", type=float, default=0.82)
     parser.add_argument("--delay", type=float, default=0.35)

@@ -33,7 +33,7 @@ BASE = 'https://services.sac-isc.gc.ca/fnp/main/Search/'
 COUNT_SOURCE = 'https://www.alberta.ca/first-nations-relations'
 TREATY_SOURCE = 'https://www.sac-isc.gc.ca/eng/1595274954300/1595274980122'
 ROSTER_PATH = ROOT / 'alberta-nations.json'
-PARSER_REVISION = 'alberta-20260911-v4'
+PARSER_REVISION = 'alberta-20260912-v7'
 
 def now():
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
@@ -255,13 +255,30 @@ def document_identity(pages, band, filing):
     """Check the report cover, independently of ISC's URL and listing."""
     cover = normalized_name(' '.join(pages[:4]))
     names = [band['name'], band.get('officialName', '')] + band.get('aliases', [])
-    identity = any(normalized_name(n) in cover for n in names if len(normalized_name(n)) >= 5)
+    exact_names = {normalized_name(re.sub(r'\s+#?\d+\s*$', '', n)) for n in names if n}
+    generic_identity_words = {
+        'band', 'cree', 'dakota', 'dene', 'first', 'government', 'indian',
+        'nation', 'nations', 'nakoda', 'saulteaux', 'tribal', 'tribe',
+    }
+    identity_cores = {
+        ' '.join(word for word in name.split() if word not in generic_identity_words)
+        for name in exact_names
+    }
+    identity_cores = {core for core in identity_cores if len(core) >= 5}
+    identity = any(name in cover for name in exact_names if len(name) >= 5)
+    if not identity:
+        identity = any(re.search(rf'\b{re.escape(core)}\b', cover) for core in identity_cores)
     year = int(filing['year'].split('-')[1])
-    dates = re.findall(r'(?:march\s+31\s*,?\s*|31\s+march\s*,?\s*)(20\d{2})', ' '.join(pages[:4]), re.I)
+    month = r'(?:january|february|march|april|may|june|july|august|september|october|november|december)'
+    dates = re.findall(
+        rf'(?:{month}\s+\d{{1,2}}\s*,?\s*|\d{{1,2}}\s+{month}\s*,?\s*)(20\d{{2}})',
+        ' '.join(pages[:4]),
+        re.I,
+    )
     reasons = []
     if not identity:
         reasons.append('Nation identity not confirmed in document cover; manual review required')
-    if not dates or int(dates[0]) != year:
+    if not dates or year not in {int(value) for value in dates}:
         reasons.append('Fiscal year end not confirmed in document cover; manual review required')
     return reasons
 
@@ -271,6 +288,7 @@ def parse_one(task):
     import run_scraper
     import pdfplumber
     update, summary = {'parserRevision': PARSER_REVISION}, None
+    recognized = None
     try:
         payload = download(filing['href'])
         if not payload.lstrip().startswith(b'%PDF-'):
@@ -321,12 +339,11 @@ def parse_one(task):
         elif 'remuneration' in filing['docType'].lower():
             run_scraper.scraper.fetch_url = lambda *args, **kwargs: payload
             run_scraper.openai_fallback_enabled = lambda: False
-            if not ocr:
+            if ocr and recognized is not None:
+                run_scraper.local_ocr.ocr_pdf_bytes = lambda *a, **kw: recognized
+            else:
                 run_scraper.local_ocr.ocr_pdf_bytes = lambda *a, **kw: {'pages': [], 'status': 'deferred', 'warnings': ['OCR deferred; rerun with --ocr or review original PDF']}
-            people = run_scraper._extract_people_from_text_pages(pages)
-            result = run_scraper.parser_quality.apply_validation_metadata({'people': people, 'parse_status': 'ok_pdf_text' if people else 'manual_review', 'warnings': []})
-            if not people:
-                result.update({'manual_review_required': True, 'warnings': ['No reliable text rows; requires OCR or source review']})
+            result = run_scraper._extract_remuneration_rows_enhanced(filing['href'])
             if issues or result.get('manual_review_required'):
                 result.update({'people': [], 'parse_status': 'manual_review', 'manual_review_required': True})
                 result['warnings'] = list(dict.fromkeys(result.get('warnings', []) + issues))
@@ -341,6 +358,7 @@ def parse_one(task):
 def bounded_parse(task):
     """A pathological PDF must not stall the rest of the province's queue."""
     band, filing, ocr = task
+    CACHE.mkdir(parents=True, exist_ok=True)
     key = hashlib.sha256((str(band['id']) + filing['href']).encode()).hexdigest()
     source, output = CACHE / f'{key}.task.json', CACHE / f'{key}.result.json'
     if output.exists() and not ocr:
@@ -354,6 +372,25 @@ def bounded_parse(task):
         return read(output)
     except Exception as error:
         return str(band['id']), filing['href'], {'parse_status': 'manual_review', 'warnings': [f'Bounded extraction stopped: {type(error).__name__}'], 'lastChecked': now(), 'verificationStatus': 'parse_timeout_or_error'}, None
+
+
+def should_preserve_remuneration(filing, update):
+    """Keep an already validated schedule when a reparse is demonstrably weaker."""
+    existing = filing.get('people') or []
+    candidate = update.get('people') or []
+    if not existing:
+        return False
+    if not candidate and update.get('parse_status') in {'manual_review', 'error'}:
+        return True
+    warnings = ' '.join(update.get('warnings', [])).lower()
+    severe_warning = any(marker in warnings for marker in (
+        'no chief row detected', 'possible unrelated financial statement table',
+        'totals do not reconcile', 'possible merged rows',
+    ))
+    confidence = {'low': 0, 'medium': 1, 'high': 2}
+    lower_confidence = confidence.get(update.get('parse_confidence'), 0) < confidence.get(filing.get('parse_confidence'), 0)
+    return len(candidate) < len(existing) or severe_warning or lower_confidence
+
 
 def parse_documents(limit=0, workers=3, ocr=False, retry=False, reparse=False, document_type='all'):
     from tools.capital_parser import save_summary
@@ -372,10 +409,25 @@ def parse_documents(limit=0, workers=3, ocr=False, retry=False, reparse=False, d
         for index, future in enumerate(as_completed(pending), 1):
             bid, url, update, summary = future.result()
             filing = filings[bid, url]
-            filing.update(update)
+            existing = None
             if summary:
                 existing = capital.get('bands', {}).get(bid, {}).get('years', {}).get(filing['year'])
-                if reparse or not existing or not existing.get('publishable') or summary.get('publishable'):
+            preserve_capital = bool(existing and existing.get('publishable') and not summary.get('publishable'))
+            preserve_remuneration = should_preserve_remuneration(filing, update)
+            preserve_verified = preserve_capital or preserve_remuneration
+            if preserve_verified:
+                filing['lastReparseAttempt'] = update.get('lastChecked', now())
+                warnings = list(update.get('warnings', []))
+                if preserve_remuneration and update.get('people'):
+                    warnings.append(
+                        f"Candidate reparse had {len(update['people'])} rows; preserved {len(filing.get('people', []))} existing rows"
+                    )
+                filing['reparseWarnings'] = list(dict.fromkeys(warnings))
+                filing['reparseStatus'] = update.get('parse_status', 'manual_review')
+            else:
+                filing.update(update)
+            if summary:
+                if not preserve_verified and (not existing or not existing.get('publishable') or summary.get('publishable')):
                     save_summary(capital, by_id[bid], filing, summary)
             print(f"[{index}/{len(tasks)}] {bid} {filing['year']} {filing['docType']}: {filing['parse_status']}", flush=True)
             if index % 50 == 0:

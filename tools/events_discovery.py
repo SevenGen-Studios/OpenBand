@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Discover source-backed Saskatchewan First Nation community events.
+"""Discover source-backed First Nation community events by province.
 
 Only events that pass the public publish gate are written to the permanent site dataset.
 """
@@ -77,6 +77,14 @@ SHARED_EVENT_INDEXES = [
             "https://calendar.powwows.com/events/categories/pow-wows-in-saskatchewan/?pno=2",
         ],
         "associationConfidence": 0.9,
+        "provinceTerritory": "SK",
+    },
+    {
+        "name": "Alberta Powwow Calendar",
+        "type": "Regional Event Index",
+        "url": "https://calendar.powwows.com/events/categories/pow-wows-in-alberta/",
+        "associationConfidence": 0.9,
+        "provinceTerritory": "AB",
     },
     {
         "name": "Windspeaker Powwow Calendar",
@@ -332,7 +340,7 @@ def normalized_event(community: dict, source: dict, *, title: str, context: str,
         "communityName": community["communityName"],
         "communityAliases": community.get("aliases") or [],
         "bandId": community["bandId"],
-        "provinceTerritory": "SK",
+        "provinceTerritory": community.get("provinceTerritory", "SK"),
         "title": title,
         "category": event_category(f"{title} {context}"),
         "startDate": start,
@@ -816,6 +824,12 @@ def run(args):
     if args.band_id:
         selected = {str(value) for value in args.band_id}
         communities = [row for row in communities if str(row.get("bandId")) in selected]
+    if args.province:
+        requested_province = args.province.upper()
+        communities = [
+            row for row in communities
+            if str(row.get("provinceTerritory", "SK")).upper() == requested_province
+        ]
 
     for community in communities:
         for source in community.get("sources") or []:
@@ -864,9 +878,17 @@ def run(args):
             runs.append(run_row)
 
     for source in SHARED_EVENT_INDEXES:
+        source_province = source.get("provinceTerritory")
+        shared_communities = [
+            row for row in communities
+            if not source_province
+            or str(row.get("provinceTerritory", "SK")).upper() == source_province
+        ]
+        if not shared_communities:
+            continue
         run_row = {
             "bandId": None,
-            "communityName": "Saskatchewan shared indexes",
+            "communityName": f"{source_province or 'Regional'} shared indexes",
             "sourceName": source["name"],
             "sourceUrl": source["url"],
             "sourceType": source["type"],
@@ -885,7 +907,7 @@ def run(args):
                 found.extend(extract_shared_index_events(
                     body.decode("utf-8", errors="replace"),
                     final_url,
-                    communities,
+                    shared_communities,
                     source,
                     today,
                 ))
@@ -918,6 +940,7 @@ def run(args):
 def parse_args():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--band-id", action="append", default=[])
+    parser.add_argument("--province", choices=["SK", "AB", "sk", "ab"])
     parser.add_argument("--delay", type=float, default=0.3)
     parser.add_argument("--timeout", type=int, default=25)
     parser.add_argument("--max-pages-per-source", type=int, default=6)
