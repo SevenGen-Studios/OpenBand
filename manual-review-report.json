@@ -1,14 +1,27 @@
 {
   "generatedFrom": "2026-09-11T10:43:34+00:00",
-  "manualReviewCount": 19,
+  "manualReviewCount": 26,
   "reasonCounts": {
     "implausibly small remuneration values appear in money columns": 4,
-    "implausibly small remuneration values appear in money columns; small month-like values appear in payment columns": 1,
-    "month values appear in money columns": 1,
+    "month values appear in money columns": 2,
     "month values appear in money columns; implausibly small remuneration values appear in money columns": 8,
-    "parser confidence is low": 5
+    "no Chief row in a small parsed filing": 4,
+    "parser confidence is low": 8
   },
   "filings": [
+    {
+      "bandId": 445,
+      "band": "Beaver First Nation",
+      "year": "2014-2015",
+      "reason": "no Chief row in a small parsed filing",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=445&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "Multiple candidate Chief and Council tables found",
+        "No Chief row detected",
+        "Quarantined parsed rows: no Chief row in a small parsed filing",
+        "Sanitized parsed rows: removed 7, fixed totals 0"
+      ]
+    },
     {
       "bandId": 404,
       "band": "Big River First Nation",
@@ -23,14 +36,28 @@
       ]
     },
     {
-      "bandId": 464,
-      "band": "Cold Lake First Nations",
-      "year": "2016-2017",
-      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=464&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "bandId": 451,
+      "band": "Duncan's First Nation",
+      "year": "2020-2021",
+      "reason": "month values appear in money columns",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=451&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
-        "Sanitized parsed rows: removed 18, fixed totals 0"
+        "Parsed from keyword-aware PDF table extraction",
+        "Quarantined parsed rows: month values appear in money columns",
+        "Sanitized parsed rows: removed 3, fixed totals 0"
+      ]
+    },
+    {
+      "bandId": 466,
+      "band": "Kehewin Cree Nation",
+      "year": "2016-2017",
+      "reason": "no Chief row in a small parsed filing",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=466&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "Parsed from keyword-aware PDF table extraction",
+        "No Chief row detected",
+        "Quarantined parsed rows: no Chief row in a small parsed filing",
+        "Sanitized parsed rows: removed 3, fixed totals 0"
       ]
     },
     {
@@ -193,15 +220,92 @@
       ]
     },
     {
-      "bandId": 462,
-      "band": "Saddle Lake Cree Nation",
-      "year": "2018-2019",
-      "reason": "implausibly small remuneration values appear in money columns; small month-like values appear in payment columns",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=462&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "bandId": 444,
+      "band": "Samson",
+      "year": "2015-2016",
+      "reason": "parser confidence is low",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=444&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Quarantined parsed rows: implausibly small remuneration values appear in money columns; small month-like values appear in payment columns",
-        "Sanitized parsed rows: removed 2, fixed totals 1"
+        "Multiple candidate Chief and Council tables found",
+        "Row 1: total does not equal remuneration + travel/expenses + other",
+        "Row 1: unusually large remuneration amount",
+        "Row 1: unusually large total amount",
+        "No Chief row detected",
+        "Only one official row parsed",
+        "No official rows parsed",
+        "Quarantined parsed rows: parser confidence is low",
+        "Sanitized parsed rows: removed 1, fixed totals 0"
+      ]
+    },
+    {
+      "bandId": 444,
+      "band": "Samson",
+      "year": "2017-2018",
+      "reason": "parser confidence is low",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=444&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "Multiple candidate Chief and Council tables found",
+        "Row 1: unusually large remuneration amount",
+        "Row 1: unusually large total amount",
+        "No Chief row detected",
+        "Only one official row parsed",
+        "No official rows parsed",
+        "Quarantined parsed rows: parser confidence is low",
+        "Sanitized parsed rows: removed 1, fixed totals 0"
+      ]
+    },
+    {
+      "bandId": 444,
+      "band": "Samson",
+      "year": "2018-2019",
+      "reason": "parser confidence is low",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=444&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "Multiple candidate Chief and Council tables found",
+        "Row 1: unusually large remuneration amount",
+        "Row 1: unusually large total amount",
+        "Row 2: unusually large remuneration amount",
+        "Row 2: unusually large total amount",
+        "No Chief row detected",
+        "No official rows parsed",
+        "Quarantined parsed rows: parser confidence is low",
+        "Sanitized parsed rows: removed 2, fixed totals 0"
+      ]
+    },
+    {
+      "bandId": 444,
+      "band": "Samson",
+      "year": "2019-2020",
+      "reason": "parser confidence is low",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=444&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "Multiple candidate Chief and Council tables found",
+        "Row 1: unusually large remuneration amount",
+        "Row 1: unusually large total amount",
+        "Row 2: unusually large remuneration amount",
+        "Row 2: unusually large total amount",
+        "No Chief row detected",
+        "No official rows parsed",
+        "Quarantined parsed rows: parser confidence is low",
+        "Sanitized parsed rows: removed 2, fixed totals 0"
+      ]
+    },
+    {
+      "bandId": 444,
+      "band": "Samson",
+      "year": "2020-2021",
+      "reason": "parser confidence is low",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=444&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "Multiple candidate Chief and Council tables found",
+        "Row 1: unusually large remuneration amount",
+        "Row 1: unusually large total amount",
+        "Row 2: unusually large remuneration amount",
+        "Row 2: unusually large total amount",
+        "No Chief row detected",
+        "No official rows parsed",
+        "Quarantined parsed rows: parser confidence is low",
+        "Sanitized parsed rows: removed 2, fixed totals 0"
       ]
     },
     {
@@ -223,32 +327,16 @@
       ]
     },
     {
-      "bandId": 430,
-      "band": "Siksika Nation",
-      "year": "2016-2017",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=430&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "bandId": 456,
+      "band": "Sucker Creek",
+      "year": "2018-2019",
+      "reason": "month values appear in money columns; implausibly small remuneration values appear in money columns",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=456&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "No Chief row detected",
-        "Only one official row parsed",
-        "No official rows parsed",
-        "Quarantined parsed rows: parser confidence is low",
-        "Sanitized parsed rows: removed 1, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 430,
-      "band": "Siksika Nation",
-      "year": "2017-2018",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=430&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "No Chief row detected",
-        "Only one official row parsed",
-        "No official rows parsed",
-        "Quarantined parsed rows: parser confidence is low",
-        "Sanitized parsed rows: removed 1, fixed totals 0"
+        "Parsed from keyword-aware PDF table extraction",
+        "Parsed row totals do not match source total row",
+        "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 11, fixed totals 0"
       ]
     },
     {
@@ -263,6 +351,32 @@
         "Row 8: total does not equal remuneration + travel/expenses + other",
         "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
         "Sanitized parsed rows: removed 8, fixed totals 1"
+      ]
+    },
+    {
+      "bandId": 446,
+      "band": "Tallcree Tribal Government",
+      "year": "2014-2015",
+      "reason": "no Chief row in a small parsed filing",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=446&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "Multiple candidate Chief and Council tables found",
+        "No Chief row detected",
+        "Quarantined parsed rows: no Chief row in a small parsed filing",
+        "Sanitized parsed rows: removed 5, fixed totals 0"
+      ]
+    },
+    {
+      "bandId": 446,
+      "band": "Tallcree Tribal Government",
+      "year": "2015-2016",
+      "reason": "no Chief row in a small parsed filing",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=446&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "Multiple candidate Chief and Council tables found",
+        "No Chief row detected",
+        "Quarantined parsed rows: no Chief row in a small parsed filing",
+        "Sanitized parsed rows: removed 5, fixed totals 0"
       ]
     },
     {
