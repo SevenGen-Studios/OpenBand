@@ -547,6 +547,7 @@ def build() -> None:
     jobs = json.loads((ROOT / "jobs-data.json").read_text(encoding="utf-8"))
     bands = sorted(data.get("bands", []), key=lambda item: item["name"])
     base = (ROOT / "index.html").read_text(encoding="utf-8")
+    base = base.replace('<a class="logo" href="/">Open<em>Band</em></a>', '<a class="logo" href="/">Open<em>Band</em></a><a class="nav-home" id="homeLink" href="/">Home</a>', 1)
     slugs = [slugify(band["name"]) for band in bands]
     if len(slugs) != len(set(slugs)):
         raise RuntimeError("Community slugs are not unique")
