@@ -8,10 +8,17 @@ assert.equal(data.filter(b=>P.inProvince(b,'AB')&&b.treaty==='Treaty 7').length,
 assert.equal(data.filter(b=>P.matches(b,'Goodfish')).length,1);
 assert.equal(data.filter(b=>P.matches(b,"Smith's Landing")).length,1);
 assert.equal(data.filter(b=>P.matches(b,'462')).length,2);
+assert.equal(P.fromPath('/saskatchewan/'),'SK');
+assert.equal(P.fromPath('/sk'),'SK');
+assert.equal(P.fromPath('/alberta/index.html'),'AB');
+assert.equal(P.fromPath('/ab/'),'AB');
+assert.equal(P.fromPath('/first-nations/keeseekoose-first-nation/'),'');
+assert.equal(P.routeFor('SK'),'/saskatchewan/');
+assert.equal(P.routeFor('AB'),'/alberta/');
 const bands=[{id:1,province:'AB'},{id:2,province:'AB'},{id:3,province:'SK'},{id:4,province:'AB'}];
 const capital={bands:{1:{years:{'2024-2025':{parseStatus:'parsed',publishable:true,totalRevenue:100,totalAssets:null,sha256:'same'}}},2:{years:{'2023-2024':{parseStatus:'parsed',totalRevenue:500},'2024-2025':{parseStatus:'manual_review',publishable:false,totalRevenue:900}}},3:{years:{'2024-2025':{parseStatus:'parsed',totalRevenue:600}}},4:{years:{'2024-2025':{parseStatus:'parsed',totalRevenue:100,sha256:'same'}}}}};
 const subtotal=P.aggregate(bands,capital,'AB','2024-2025');
 assert.equal(subtotal.reporting,1);assert.equal(subtotal.fields.totalRevenue.total,100);
 assert.equal(subtotal.fields.totalAssets.total,null);assert.equal(subtotal.fields.totalAssets.reporting,0);
 assert.equal(P.aggregate(bands,capital,'AB','2025-2026').fields.totalRevenue.total,null);
-console.log('Province, alias, treaty, fiscal-year, null-value and duplicate-source checks passed.');
+console.log('Province routes, aliases, treaties, fiscal years, null values and duplicate-source checks passed.');
