@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-13T17:05:51Z",
+  "generated": "2026-09-14T18:46:17Z",
   "trackedCommunityCount": 117,
   "configuredSourceCount": 139,
   "communities": [
@@ -3496,7 +3496,7 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 4,
+      "candidatesFound": 5,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3909,7 +3909,7 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 5,
+      "candidatesFound": 6,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4107,7 +4107,7 @@
       "reviewItems": 1,
       "status": "unavailable",
       "warnings": [
-        "community-site-374: fetch failed: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1010)>"
+        "community-site-374: fetch failed: <urlopen error [Errno 111] Connection refused>"
       ]
     },
     {
@@ -4247,7 +4247,7 @@
       "communityIds": [
         "383"
       ],
-      "candidatesFound": 5,
+      "candidatesFound": 8,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4288,7 +4288,7 @@
       "communityIds": [
         "385"
       ],
-      "candidatesFound": 8,
+      "candidatesFound": 9,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4404,7 +4404,7 @@
       "communityIds": [
         "372"
       ],
-      "candidatesFound": 12,
+      "candidatesFound": 10,
       "reviewItems": 2,
       "status": "checked",
       "warnings": []
@@ -4590,7 +4590,10 @@
       "candidatesFound": 5,
       "reviewItems": 1,
       "status": "checked",
-      "warnings": []
+      "warnings": [
+        "community-site-448: employment page fetch failed: HTTP Error 500: Internal Server Error",
+        "community-site-448: detail fetch failed: HTTP Error 500: Internal Server Error"
+      ]
     },
     {
       "sourceId": "community-site-450",
@@ -5012,10 +5015,10 @@
         "432"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
-      "status": "checked",
+      "reviewItems": 1,
+      "status": "unavailable",
       "warnings": [
-        "community-site-432: no candidate job links detected"
+        "community-site-432: fetch failed: The read operation timed out"
       ]
     },
     {
