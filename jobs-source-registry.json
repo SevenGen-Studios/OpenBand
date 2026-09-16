@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-15T17:47:43Z",
+  "generated": "2026-09-16T17:45:02Z",
   "trackedCommunityCount": 117,
   "configuredSourceCount": 139,
   "communities": [
@@ -3218,7 +3218,7 @@
       "url": "https://www.fsin.ca/employment-opportunities",
       "sourceType": "provincial_first_nations_organization",
       "communityIds": [],
-      "candidatesFound": 2,
+      "candidatesFound": 1,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3288,7 +3288,7 @@
         "347",
         "348"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 4,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -3496,7 +3496,7 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 6,
+      "candidatesFound": 8,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3879,12 +3879,11 @@
       "communityIds": [
         "394"
       ],
-      "candidatesFound": 1,
-      "reviewItems": 0,
-      "status": "checked",
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
       "warnings": [
-        "community-site-394: employment page fetch failed: HTTP Error 429: Too Many Requests",
-        "community-site-394: detail fetch failed: HTTP Error 429: Too Many Requests"
+        "community-site-394: fetch failed: HTTP Error 429: Too Many Requests"
       ]
     },
     {
@@ -3899,7 +3898,7 @@
       "reviewItems": 1,
       "status": "unavailable",
       "warnings": [
-        "community-site-366: fetch failed: The read operation timed out"
+        "community-site-366: fetch failed: <urlopen error [Errno -3] Temporary failure in name resolution>"
       ]
     },
     {
@@ -3910,7 +3909,7 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 6,
+      "candidatesFound": 8,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4248,7 +4247,7 @@
       "communityIds": [
         "383"
       ],
-      "candidatesFound": 5,
+      "candidatesFound": 8,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4289,12 +4288,10 @@
       "communityIds": [
         "385"
       ],
-      "candidatesFound": 9,
+      "candidatesFound": 10,
       "reviewItems": 3,
       "status": "checked",
-      "warnings": [
-        "community-site-385: detail fetch failed: The read operation timed out"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-345",
@@ -4536,7 +4533,7 @@
       "communityIds": [
         "435"
       ],
-      "candidatesFound": 14,
+      "candidatesFound": 15,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4593,9 +4590,7 @@
       "candidatesFound": 5,
       "reviewItems": 1,
       "status": "checked",
-      "warnings": [
-        "community-site-448: detail fetch failed: HTTP Error 500: Internal Server Error"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-450",
@@ -4688,11 +4683,10 @@
         "465"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
-      "status": "checked",
+      "reviewItems": 1,
+      "status": "unavailable",
       "warnings": [
-        "community-site-465: employment page fetch failed: HTTP Error 429: Too Many Requests",
-        "community-site-465: no candidate job links detected"
+        "community-site-465: fetch failed: HTTP Error 429: Too Many Requests"
       ]
     },
     {
@@ -4789,10 +4783,12 @@
       "communityIds": [
         "453"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 0,
       "reviewItems": 3,
       "status": "checked",
-      "warnings": []
+      "warnings": [
+        "community-site-453: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "community-site-461",
@@ -4875,7 +4871,7 @@
       "communityIds": [
         "436"
       ],
-      "candidatesFound": 1,
+      "candidatesFound": 2,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4901,11 +4897,11 @@
       "communityIds": [
         "444"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "candidatesFound": 15,
+      "reviewItems": 3,
+      "status": "checked",
       "warnings": [
-        "community-site-444: fetch failed: The read operation timed out"
+        "community-site-444: detail fetch failed: HTTP Error 404: Not Found"
       ]
     },
     {
@@ -5031,10 +5027,10 @@
         "477"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
-      "status": "checked",
+      "reviewItems": 1,
+      "status": "unavailable",
       "warnings": [
-        "community-site-477: no candidate job links detected"
+        "community-site-477: fetch failed: HTTP Error 429: Too Many Requests"
       ]
     },
     {
