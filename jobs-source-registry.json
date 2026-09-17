@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-16T17:45:02Z",
+  "generated": "2026-09-17T17:45:39Z",
   "trackedCommunityCount": 117,
   "configuredSourceCount": 139,
   "communities": [
@@ -3219,7 +3219,7 @@
       "sourceType": "provincial_first_nations_organization",
       "communityIds": [],
       "candidatesFound": 1,
-      "reviewItems": 3,
+      "reviewItems": 1,
       "status": "checked",
       "warnings": []
     },
@@ -3496,7 +3496,7 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 8,
+      "candidatesFound": 9,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3593,7 +3593,7 @@
       "communityIds": [
         "362"
       ],
-      "candidatesFound": 6,
+      "candidatesFound": 3,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -3722,7 +3722,7 @@
       "communityIds": [
         "385"
       ],
-      "candidatesFound": 4,
+      "candidatesFound": 3,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -4049,10 +4049,12 @@
       "communityIds": [
         "377"
       ],
-      "candidatesFound": 3,
-      "reviewItems": 0,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-377: fetch failed: <urlopen error timed out>"
+      ]
     },
     {
       "sourceId": "community-site-353",
@@ -4234,7 +4236,7 @@
       "communityIds": [
         "344"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 3,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4247,7 +4249,7 @@
       "communityIds": [
         "383"
       ],
-      "candidatesFound": 8,
+      "candidatesFound": 5,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4288,7 +4290,7 @@
       "communityIds": [
         "385"
       ],
-      "candidatesFound": 10,
+      "candidatesFound": 3,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4533,7 +4535,7 @@
       "communityIds": [
         "435"
       ],
-      "candidatesFound": 15,
+      "candidatesFound": 16,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4590,7 +4592,9 @@
       "candidatesFound": 5,
       "reviewItems": 1,
       "status": "checked",
-      "warnings": []
+      "warnings": [
+        "community-site-448: detail fetch failed: HTTP Error 500: Internal Server Error"
+      ]
     },
     {
       "sourceId": "community-site-450",
@@ -4628,7 +4632,7 @@
       "communityIds": [
         "440"
       ],
-      "candidatesFound": 1,
+      "candidatesFound": 2,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4641,7 +4645,7 @@
       "communityIds": [
         "443"
       ],
-      "candidatesFound": 9,
+      "candidatesFound": 10,
       "reviewItems": 3,
       "status": "checked",
       "warnings": [
@@ -4854,14 +4858,10 @@
       "communityIds": [
         "478"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 6,
       "reviewItems": 0,
       "status": "checked",
-      "warnings": [
-        "community-site-478: employment page fetch failed: HTTP Error 404: Not Found",
-        "community-site-478: detail fetch failed: HTTP Error 404: Not Found",
-        "community-site-478: detail fetch failed: HTTP Error 404: Not Found"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-436",
@@ -4897,7 +4897,7 @@
       "communityIds": [
         "444"
       ],
-      "candidatesFound": 15,
+      "candidatesFound": 16,
       "reviewItems": 3,
       "status": "checked",
       "warnings": [
