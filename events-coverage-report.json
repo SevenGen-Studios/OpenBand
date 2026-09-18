@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-17T17:55:53Z",
-  "before": 68,
-  "after": 70,
-  "newCandidates": 225,
+  "generated": "2026-09-18T17:38:29Z",
+  "before": 70,
+  "after": 72,
+  "newCandidates": 201,
   "sourceRuns": [
     {
       "bandId": 361,
@@ -124,10 +124,11 @@
       "sourceName": "Lucky Man Cree Nation official website",
       "sourceUrl": "https://luckymancree.com/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 19,
-      "pagesChecked": 6,
-      "mediaChecked": 3
+      "status": "failed",
+      "eventsFound": 0,
+      "pagesChecked": 3,
+      "mediaChecked": 0,
+      "error": "The read operation timed out"
     },
     {
       "bandId": 374,
@@ -414,7 +415,7 @@
       "sourceUrl": "https://www.woodmountainlakotafn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 28,
+      "eventsFound": 17,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -810,7 +811,7 @@
       "sourceUrl": "https://beaverlakecreenation.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 18,
+      "eventsFound": 26,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -887,10 +888,11 @@
       "sourceName": "Driftpile Cree Nation official website",
       "sourceUrl": "https://www.driftpilecreenation.com/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
+      "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 3
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "<urlopen error timed out>"
     },
     {
       "bandId": 451,
@@ -910,10 +912,11 @@
       "sourceName": "Enoch Cree Nation #440 official website",
       "sourceUrl": "https://enochnation.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 1,
-      "pagesChecked": 6,
-      "mediaChecked": 3
+      "status": "failed",
+      "eventsFound": 0,
+      "pagesChecked": 3,
+      "mediaChecked": 0,
+      "error": "<urlopen error timed out>"
     },
     {
       "bandId": 443,
@@ -922,7 +925,7 @@
       "sourceUrl": "https://www.ermineskin.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 8,
+      "eventsFound": 9,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1056,7 +1059,7 @@
       "sourceUrl": "https://mikisewcree.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 28,
+      "eventsFound": 27,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1113,7 +1116,7 @@
       "sourceUrl": "https://piikanination.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 14,
+      "eventsFound": 16,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1157,11 +1160,10 @@
       "sourceName": "Siksika Nation official website",
       "sourceUrl": "https://www.siksikanation.com/index.html",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
-      "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "error": "<urlopen error timed out>"
+      "status": "ok",
+      "eventsFound": 25,
+      "pagesChecked": 6,
+      "mediaChecked": 1
     },
     {
       "bandId": 455,
@@ -1180,10 +1182,11 @@
       "sourceName": "Sucker Creek official website",
       "sourceUrl": "https://scfn.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
+      "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 0
+      "pagesChecked": 2,
+      "mediaChecked": 0,
+      "error": "<urlopen error timed out>"
     },
     {
       "bandId": 434,
@@ -1215,7 +1218,7 @@
       "sourceType": "Official First Nation Website",
       "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 4,
+      "pagesChecked": 6,
       "mediaChecked": 0
     },
     {
@@ -1224,10 +1227,11 @@
       "sourceName": "Tsuut'ina Nation official website",
       "sourceUrl": "https://www.tsuutina.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 28,
-      "pagesChecked": 6,
-      "mediaChecked": 3
+      "status": "failed",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "<urlopen error timed out>"
     },
     {
       "bandId": 477,
@@ -1334,10 +1338,10 @@
       "error": "invalid literal for int() with base 10: 'ab-whitefish-lake-128'"
     }
   ],
-  "reviewCount": 3,
+  "reviewCount": 2,
   "statusCounts": {
     "authorized_api_required": 9,
-    "failed": 30,
-    "ok": 79
+    "failed": 34,
+    "ok": 75
   }
 }
