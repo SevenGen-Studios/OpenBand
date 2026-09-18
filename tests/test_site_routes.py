@@ -274,7 +274,7 @@ class SiteRouteTests(unittest.TestCase):
         for record in records:
             with self.subTest(record=record["nation_name"]):
                 self.assertTrue(required.issubset(record))
-                if record["nation_id"] in ("ab-whitefish-lake-128", 469):
+                if record["nation_id"] == "ab-whitefish-lake-128":
                     self.assertIsNone(record["office_phone"])
                     self.assertIsNone(record["mailing_address"])
                 else:
