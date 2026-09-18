@@ -3,19 +3,41 @@ on:
   workflow_dispatch:
     inputs:
       parse_limit:
-        description: Maximum new documents to parse (0 = all)
-        default: '100'
+        description: Documents to process in this batch (use 25-50; 0 = all)
+        default: '25'
+        required: true
+      workers:
+        description: Parallel local parser workers
+        default: '4'
+        required: true
+      document_type:
+        description: Which filing type to process in this batch
+        type: choice
+        options:
+          - all
+          - audited
+          - remuneration
+        default: all
         required: true
       ocr:
-        description: Retry unresolved documents with free OCR
+        description: Use free OCR for documents selected in this batch
+        type: boolean
+        default: false
+      retry_unresolved:
+        description: Reprocess previously checked documents that are not validated
         type: boolean
         default: false
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: openband-v2-data-writers
+  cancel-in-progress: false
+
 jobs:
   ingest:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 360
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -28,15 +50,44 @@ jobs:
       - name: Parse and validate public PDFs
         env:
           PARSE_LIMIT: ${{ inputs.parse_limit }}
+          PARSER_WORKERS: ${{ inputs.workers }}
+          DOCUMENT_TYPE: ${{ inputs.document_type }}
           ENABLE_OCR: ${{ inputs.ocr }}
         run: |
-          args=(--parse --limit "$PARSE_LIMIT")
-          if [ "$ENABLE_OCR" = true ]; then args+=(--ocr --retry); fi
+          args=(--parse --limit "$PARSE_LIMIT" --workers "$PARSER_WORKERS" --document-type "$DOCUMENT_TYPE")
+          if [ "$ENABLE_OCR" = true ]; then args+=(--ocr); fi
+          if [ "${{ inputs.retry_unresolved }}" = true ]; then args+=(--retry); fi
           python tools/ingest_alberta.py "${args[@]}"
       - run: python -m tools.merge_alberta_enrichment
       - run: python -m tools.audit_alberta
       - run: python tools/build_site.py && python -m unittest discover -s tests
       - run: node tests/test_provinces.js && node --check assets/openband.js && node --check assets/province-ui.js
+
+      - name: Publish validated Alberta refresh
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            alberta-nations.json alberta-coverage-report.json alberta-coverage-report.md alberta-coverage-report.html \
+            data.json capital-data.json contacts-data.json member-counts.json map-data.json \
+            community-enterprise.json first-nation-logos.json first-nation-logo-report.json \
+            first-nations browse sitemap.xml robots.txt .nojekyll
+          if git diff --cached --quiet; then
+            echo "No Alberta data changes to publish"
+            exit 0
+          fi
+          git commit -m "Refresh Alberta public disclosures"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if git rebase origin/main && git push origin HEAD:main; then
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 10))
+          done
+          echo "Failed to publish Alberta data after 3 attempts" >&2
+          exit 1
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -51,3 +102,4 @@ jobs:
             map-data.json
             first-nations/
           retention-days: 14
+
