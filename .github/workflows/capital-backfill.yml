@@ -7,6 +7,15 @@ on:
         description: "Comma-separated fiscal years"
         required: true
         default: "2024-2025,2023-2024,2022-2023"
+      province:
+        description: "Province to process (AB keeps this recovery pass Alberta-only)"
+        required: true
+        type: choice
+        options:
+          - AB
+          - SK
+          - ALL
+        default: AB
       max_filings:
         description: "Maximum audited statements to parse (0 means all matching filings)"
         required: true
@@ -26,6 +35,11 @@ on:
         required: true
         type: boolean
         default: false
+      unresolved_only:
+        description: "Skip already publishable summaries and focus on pending/manual-review records"
+        required: true
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -73,17 +87,24 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: gpt-4.1
           CAPITAL_YEARS: ${{ inputs.years }}
+          CAPITAL_PROVINCE: ${{ inputs.province }}
           CAPITAL_LIMIT: ${{ inputs.max_filings }}
           USE_OPENAI: ${{ inputs.use_openai }}
         run: |
           set -euo pipefail
           IFS=',' read -ra YEARS <<< "$CAPITAL_YEARS"
           COMMON_ARGS=(--limit "$CAPITAL_LIMIT" --report capital-extraction-report.json)
+          if [ "$CAPITAL_PROVINCE" != "ALL" ]; then
+            COMMON_ARGS+=(--province "$CAPITAL_PROVINCE")
+          fi
           if [ "$USE_OPENAI" = "true" ]; then
             COMMON_ARGS+=(--use-openai)
           fi
           if [ "${{ inputs.reparse_existing }}" = "true" ]; then
             COMMON_ARGS+=(--force)
+          fi
+          if [ "${{ inputs.unresolved_only }}" = "true" ]; then
+            COMMON_ARGS+=(--unresolved-only)
           fi
           if [ "${{ inputs.refresh_existing }}" != "true" ]; then
             for YEAR in "${YEARS[@]}"; do
