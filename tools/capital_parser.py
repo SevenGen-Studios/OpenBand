@@ -34,7 +34,7 @@ MONEY_RE = re.compile(r"\(?\$?\s*-?\d[\d,]*(?:\.\d+)?\)?")
 YEAR_RE = re.compile(r"\b20\d{2}\b")
 OPERATIONS_RE = re.compile(
     r"statement of (?:consolidated )?(?:operations|revenues? and expenses|"
-    r"financial activities|activities)",
+    r"revenues? and expenditures?|financial activities|activities)",
     re.I,
 )
 POSITION_RE = re.compile(r"statement of financial position", re.I)
@@ -406,7 +406,12 @@ def likely_operations_pages(page_texts):
         header = "\n".join(lines[:12])
         low = text.lower()
         score = 0
-        if re.search(r"statement of .{0,30}(?:operations|activities)", header, re.I):
+        if re.search(
+            r"statement of .{0,45}(?:operations|activities|"
+            r"revenues? and (?:expenses|expenditures))",
+            header,
+            re.I,
+        ):
             score += 4
         if re.search(r"^revenues?(?:\s+\(.*\))?$", text, re.I | re.M):
             score += 2
@@ -1746,10 +1751,16 @@ def main():
     parser.add_argument("--data", default="data.json")
     parser.add_argument("--output", default="capital-data.json")
     parser.add_argument("--band", action="append", default=[])
+    parser.add_argument("--province", help="Only process filings for this province code, such as AB")
     parser.add_argument("--year", action="append", default=[])
     parser.add_argument("--limit", type=int, default=10)
     parser.add_argument("--use-openai", action="store_true")
     parser.add_argument("--force", action="store_true")
+    parser.add_argument(
+        "--unresolved-only",
+        action="store_true",
+        help="Skip existing publishable summaries while retrying unresolved records",
+    )
     parser.add_argument("--report", default="capital-extraction-report.json")
     args = parser.parse_args()
 
@@ -1761,6 +1772,8 @@ def main():
     attempts = []
     for band in data.get("bands", []):
         if args.band and band.get("name") not in args.band:
+            continue
+        if args.province and str(band.get("province") or "").upper() != args.province.upper():
             continue
         for filing in band.get("filings", []):
             if not filing.get("posted") or not filing.get("href") or not is_audited_statement(filing):
@@ -1784,7 +1797,12 @@ def main():
                     }
                 )
                 continue
-            if existing and existing.get("parseStatus") == "parsed" and not args.force:
+            if (
+                existing
+                and existing.get("parseStatus") == "parsed"
+                and existing.get("publishable") is not False
+                and (args.unresolved_only or not args.force)
+            ):
                 continue
             candidates.append((band, filing, existing))
 
