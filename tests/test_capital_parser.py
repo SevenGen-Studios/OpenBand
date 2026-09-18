@@ -25,6 +25,31 @@ class CapitalParserTests(unittest.TestCase):
 
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn("--use-openai", result.stdout)
+        self.assertIn("--province", result.stdout)
+        self.assertIn("--unresolved-only", result.stdout)
+
+    def test_statement_of_revenue_and_expenditures_is_supported(self):
+        page = """
+        Example First Nation
+        Consolidated Statement of Revenue and Expenditures
+        For the year ended March 31, 2025
+        2025 2024
+        Revenues
+        Government funding 900,000 800,000
+        Rental income 100,000 90,000
+        Total revenue 1,000,000 890,000
+        Expenditures
+        Education 600,000 550,000
+        Operations 350,000 340,000
+        Total expenditures 950,000 890,000
+        Annual surplus 50,000 -
+        """
+
+        result = capital_parser.parse_page_texts([page], fiscal_year="2024-2025")
+
+        self.assertNotIn("No clear statement of operations found", result["warnings"])
+        self.assertEqual(result["totalRevenue"], 1_000_000)
+        self.assertEqual(result["totalExpenses"], 950_000)
 
     def test_auditor_chief_and_council_wording_does_not_reject_statement(self):
         pages = [
