@@ -72,6 +72,9 @@ jobs:
             data.json capital-data.json contacts-data.json member-counts.json map-data.json \
             community-enterprise.json first-nation-logos.json first-nation-logo-report.json \
             first-nations browse sitemap.xml robots.txt .nojekyll
+          # Build steps can update a generated file outside the explicit data list.
+          # Include those outputs so the commit is self-contained before rebasing.
+          git add -A
           if git diff --cached --quiet; then
             echo "No Alberta data changes to publish"
             exit 0
@@ -79,7 +82,7 @@ jobs:
           git commit -m "Refresh Alberta public disclosures"
           for attempt in 1 2 3; do
             git fetch origin main
-            if git rebase origin/main && git push origin HEAD:main; then
+            if git rebase --autostash origin/main && git push origin HEAD:main; then
               exit 0
             fi
             git rebase --abort 2>/dev/null || true
