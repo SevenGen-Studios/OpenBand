@@ -168,6 +168,20 @@ class EventExtractionTests(unittest.TestCase):
             408,
         )
 
+    def test_shared_community_match_handles_synthetic_alberta_id(self):
+        whitefish = {
+            "bandId": "ab-whitefish-lake-128",
+            "communityName": "Whitefish Lake First Nation #128",
+            "aliases": [],
+        }
+        self.assertEqual(
+            match_shared_community(
+                [whitefish],
+                "Whitefish Lake First Nation #128 community gathering August 4, 2026",
+            )["bandId"],
+            "ab-whitefish-lake-128",
+        )
+
     def test_json_ld_event_is_extracted(self):
         html = """
         <html><head><script type="application/ld+json">
