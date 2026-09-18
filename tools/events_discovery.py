@@ -531,6 +531,21 @@ def extract_html_events(html: str, page_url: str, community: dict, source: dict,
     return events, list(dict.fromkeys(follow)), list(dict.fromkeys(media))
 
 
+def shared_aliases_for_community(community: dict) -> list[str]:
+    """Return configured shared-calendar aliases without assuming IDs are numeric.
+
+    Alberta has one intentionally synthetic profile ID for the separately
+    administered Whitefish Lake #128 government. Shared event sources should
+    still be scanned for that profile instead of crashing while coercing the
+    ID to ``int``.
+    """
+    try:
+        band_id = int(community.get("bandId"))
+    except (TypeError, ValueError):
+        return []
+    return SHARED_COMMUNITY_ALIASES.get(band_id, [])
+
+
 def match_shared_community(communities: list[dict], value: str) -> dict | None:
     """Return one explicitly named community; ambiguous matches are rejected."""
     haystack = f" {normalized_text(value)} "
@@ -539,7 +554,7 @@ def match_shared_community(communities: list[dict], value: str) -> dict | None:
         names = [
             community.get("communityName"),
             *(community.get("aliases") or []),
-            *SHARED_COMMUNITY_ALIASES.get(int(community.get("bandId") or 0), []),
+            *shared_aliases_for_community(community),
         ]
         if any(
             len(term := normalized_text(name)) >= 8 and f" {term} " in haystack
@@ -555,7 +570,7 @@ def concise_shared_event_title(title: str, community: dict) -> str:
     names = [
         community.get("communityName"),
         *(community.get("aliases") or []),
-        *SHARED_COMMUNITY_ALIASES.get(int(community.get("bandId") or 0), []),
+        *shared_aliases_for_community(community),
     ]
     positions = []
     for name in names:
