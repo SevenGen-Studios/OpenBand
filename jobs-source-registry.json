@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-17T17:45:39Z",
+  "generated": "2026-09-18T17:12:07Z",
   "trackedCommunityCount": 117,
   "configuredSourceCount": 139,
   "communities": [
@@ -3231,7 +3231,7 @@
       "communityIds": [
         "353"
       ],
-      "candidatesFound": 32,
+      "candidatesFound": 31,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -3288,7 +3288,7 @@
         "347",
         "348"
       ],
-      "candidatesFound": 4,
+      "candidatesFound": 3,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -3444,7 +3444,7 @@
       "communityIds": [
         "349"
       ],
-      "candidatesFound": 3,
+      "candidatesFound": 4,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3470,10 +3470,12 @@
       "communityIds": [
         "344"
       ],
-      "candidatesFound": 2,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "unavailable",
+      "warnings": [
+        "onion-lake-community-updates: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "onion-lake-job-board",
@@ -3496,10 +3498,12 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 9,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "unavailable",
+      "warnings": [
+        "cowessess-careers: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "ahtahkakoop-official-jobs",
@@ -3635,10 +3639,10 @@
         "381"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
+      "reviewItems": 0,
       "status": "unavailable",
       "warnings": [
-        "muscowpetung-jobs: fetch failed: HTTP Error 404: Not Found"
+        "muscowpetung-jobs: no candidate job links detected"
       ]
     },
     {
@@ -3707,12 +3711,10 @@
       "communityIds": [
         "384"
       ],
-      "candidatesFound": 0,
+      "candidatesFound": 1,
       "reviewItems": 1,
       "status": "checked",
-      "warnings": [
-        "peepeekisis-employment: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "piapot-careers",
@@ -3790,7 +3792,7 @@
         "388"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
+      "reviewItems": 0,
       "status": "checked",
       "warnings": [
         "wood-mountain-official: no candidate job links detected"
@@ -3909,10 +3911,12 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 8,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-361: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "community-site-350",
@@ -4023,7 +4027,7 @@
       "communityIds": [
         "362"
       ],
-      "candidatesFound": 6,
+      "candidatesFound": 3,
       "reviewItems": 2,
       "status": "checked",
       "warnings": []
@@ -4049,12 +4053,10 @@
       "communityIds": [
         "377"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "community-site-377: fetch failed: <urlopen error timed out>"
-      ]
+      "candidatesFound": 3,
+      "reviewItems": 0,
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "community-site-353",
@@ -4064,7 +4066,7 @@
       "communityIds": [
         "353"
       ],
-      "candidatesFound": 33,
+      "candidatesFound": 32,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4167,7 +4169,7 @@
       ],
       "candidatesFound": 0,
       "reviewItems": 0,
-      "status": "checked",
+      "status": "unavailable",
       "warnings": [
         "community-site-381: no candidate job links detected"
       ]
@@ -4181,8 +4183,8 @@
         "375"
       ],
       "candidatesFound": 0,
-      "reviewItems": 3,
-      "status": "checked",
+      "reviewItems": 0,
+      "status": "unavailable",
       "warnings": [
         "community-site-375: no candidate job links detected"
       ]
@@ -4236,10 +4238,12 @@
       "communityIds": [
         "344"
       ],
-      "candidatesFound": 3,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-344: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "community-site-383",
@@ -4363,7 +4367,7 @@
       ],
       "candidatesFound": 0,
       "reviewItems": 0,
-      "status": "checked",
+      "status": "unavailable",
       "warnings": [
         "community-site-368: no candidate job links detected"
       ]
@@ -4425,6 +4429,19 @@
       "warnings": [
         "community-site-388: no candidate job links detected"
       ]
+    },
+    {
+      "sourceId": "community-site-ab-whitefish-lake-128",
+      "sourceName": "Whitefish Lake First Nation #128 official website",
+      "url": "https://www.wfl128.ca/",
+      "sourceType": "isc_listed_first_nation_website",
+      "communityIds": [
+        "ab-whitefish-lake-128"
+      ],
+      "candidatesFound": 1,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "community-site-438",
@@ -4535,10 +4552,12 @@
       "communityIds": [
         "435"
       ],
-      "candidatesFound": 16,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-435: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "community-site-433",
@@ -4592,9 +4611,7 @@
       "candidatesFound": 5,
       "reviewItems": 1,
       "status": "checked",
-      "warnings": [
-        "community-site-448: detail fetch failed: HTTP Error 500: Internal Server Error"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-450",
@@ -4645,7 +4662,7 @@
       "communityIds": [
         "443"
       ],
-      "candidatesFound": 10,
+      "candidatesFound": 9,
       "reviewItems": 3,
       "status": "checked",
       "warnings": [
@@ -4707,6 +4724,19 @@
       "warnings": [
         "community-site-475: no candidate job links detected"
       ]
+    },
+    {
+      "sourceId": "community-site-469",
+      "sourceName": "Heart Lake official website",
+      "url": "https://heartlakefirstnation.com/",
+      "sourceType": "isc_listed_first_nation_website",
+      "communityIds": [
+        "469"
+      ],
+      "candidatesFound": 1,
+      "reviewItems": 2,
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "community-site-449",
@@ -4787,12 +4817,10 @@
       "communityIds": [
         "453"
       ],
-      "candidatesFound": 0,
+      "candidatesFound": 1,
       "reviewItems": 3,
       "status": "checked",
-      "warnings": [
-        "community-site-453: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-461",
@@ -4858,7 +4886,7 @@
       "communityIds": [
         "478"
       ],
-      "candidatesFound": 6,
+      "candidatesFound": 7,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -4871,10 +4899,12 @@
       "communityIds": [
         "436"
       ],
-      "candidatesFound": 2,
-      "reviewItems": 3,
+      "candidatesFound": 0,
+      "reviewItems": 2,
       "status": "checked",
-      "warnings": []
+      "warnings": [
+        "community-site-436: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "community-site-462",
@@ -5012,10 +5042,10 @@
         "432"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
-      "status": "checked",
+      "reviewItems": 1,
+      "status": "unavailable",
       "warnings": [
-        "community-site-432: no candidate job links detected"
+        "community-site-432: fetch failed: The read operation timed out"
       ]
     },
     {
@@ -5060,32 +5090,6 @@
       "warnings": [
         "community-site-474: no candidate job links detected"
       ]
-    },
-    {
-      "sourceId": "community-site-469",
-      "sourceName": "Heart Lake official website",
-      "url": "https://heartlakefirstnation.com/",
-      "sourceType": "isc_listed_first_nation_website",
-      "communityIds": [
-        "469"
-      ],
-      "candidatesFound": 1,
-      "reviewItems": 2,
-      "status": "checked",
-      "warnings": []
-    },
-    {
-      "sourceId": "community-site-ab-whitefish-lake-128",
-      "sourceName": "Whitefish Lake First Nation #128 official website",
-      "url": "https://www.wfl128.ca/",
-      "sourceType": "isc_listed_first_nation_website",
-      "communityIds": [
-        "ab-whitefish-lake-128"
-      ],
-      "candidatesFound": 1,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
     },
     {
       "sourceId": "community-facebook-361-130",
