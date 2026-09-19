@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-18T17:38:29Z",
-  "before": 70,
-  "after": 72,
-  "newCandidates": 201,
+  "generated": "2026-09-19T16:58:42Z",
+  "before": 72,
+  "after": 74,
+  "newCandidates": 230,
   "sourceRuns": [
     {
       "bandId": 361,
@@ -113,10 +113,11 @@
       "sourceName": "Kinistin Saulteaux Nation official website",
       "sourceUrl": "https://www.kinistin.sk.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
+      "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 3,
-      "mediaChecked": 1
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "<urlopen error timed out>"
     },
     {
       "bandId": 341,
@@ -124,11 +125,10 @@
       "sourceName": "Lucky Man Cree Nation official website",
       "sourceUrl": "https://luckymancree.com/",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
-      "eventsFound": 0,
-      "pagesChecked": 3,
-      "mediaChecked": 0,
-      "error": "The read operation timed out"
+      "status": "ok",
+      "eventsFound": 19,
+      "pagesChecked": 6,
+      "mediaChecked": 3
     },
     {
       "bandId": 374,
@@ -326,7 +326,7 @@
       "sourceUrl": "https://pbcn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 4,
+      "eventsFound": 3,
       "pagesChecked": 6,
       "mediaChecked": 0
     },
@@ -888,11 +888,10 @@
       "sourceName": "Driftpile Cree Nation official website",
       "sourceUrl": "https://www.driftpilecreenation.com/",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
+      "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "error": "<urlopen error timed out>"
+      "pagesChecked": 6,
+      "mediaChecked": 3
     },
     {
       "bandId": 451,
@@ -912,11 +911,10 @@
       "sourceName": "Enoch Cree Nation #440 official website",
       "sourceUrl": "https://enochnation.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
-      "eventsFound": 0,
-      "pagesChecked": 3,
-      "mediaChecked": 0,
-      "error": "<urlopen error timed out>"
+      "status": "ok",
+      "eventsFound": 1,
+      "pagesChecked": 6,
+      "mediaChecked": 3
     },
     {
       "bandId": 443,
@@ -925,7 +923,7 @@
       "sourceUrl": "https://www.ermineskin.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 9,
+      "eventsFound": 10,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1059,7 +1057,7 @@
       "sourceUrl": "https://mikisewcree.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 27,
+      "eventsFound": 28,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1161,7 +1159,7 @@
       "sourceUrl": "https://www.siksikanation.com/index.html",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 25,
+      "eventsFound": 24,
       "pagesChecked": 6,
       "mediaChecked": 1
     },
@@ -1182,11 +1180,10 @@
       "sourceName": "Sucker Creek official website",
       "sourceUrl": "https://scfn.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
+      "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 2,
-      "mediaChecked": 0,
-      "error": "<urlopen error timed out>"
+      "pagesChecked": 6,
+      "mediaChecked": 0
     },
     {
       "bandId": 434,
@@ -1231,7 +1228,7 @@
       "eventsFound": 0,
       "pagesChecked": 0,
       "mediaChecked": 0,
-      "error": "<urlopen error timed out>"
+      "error": "The read operation timed out"
     },
     {
       "bandId": 477,
@@ -1284,11 +1281,10 @@
       "sourceName": "Meadow Lake Tribal Council regional events",
       "sourceUrl": "https://meadowlakeregion.ca/events",
       "sourceType": "Tribal Council Tourism",
-      "status": "failed",
-      "eventsFound": 0,
+      "status": "ok",
+      "eventsFound": 1,
       "pagesChecked": 1,
-      "mediaChecked": 0,
-      "error": "invalid literal for int() with base 10: 'ab-whitefish-lake-128'"
+      "mediaChecked": 0
     },
     {
       "bandId": null,
@@ -1307,11 +1303,10 @@
       "sourceName": "Alberta Powwow Calendar",
       "sourceUrl": "https://calendar.powwows.com/events/categories/pow-wows-in-alberta/",
       "sourceType": "Regional Event Index",
-      "status": "failed",
-      "eventsFound": 0,
+      "status": "ok",
+      "eventsFound": 1,
       "pagesChecked": 1,
-      "mediaChecked": 0,
-      "error": "invalid literal for int() with base 10: 'ab-whitefish-lake-128'"
+      "mediaChecked": 0
     },
     {
       "bandId": null,
@@ -1319,11 +1314,10 @@
       "sourceName": "Windspeaker Powwow Calendar",
       "sourceUrl": "https://support.windspeaker.com/powwows",
       "sourceType": "Indigenous Media Event Index",
-      "status": "failed",
-      "eventsFound": 0,
+      "status": "ok",
+      "eventsFound": 7,
       "pagesChecked": 1,
-      "mediaChecked": 0,
-      "error": "invalid literal for int() with base 10: 'ab-whitefish-lake-128'"
+      "mediaChecked": 0
     },
     {
       "bandId": null,
@@ -1331,17 +1325,16 @@
       "sourceName": "Office of the Treaty Commissioner events",
       "sourceUrl": "https://otc.ca/events/list/",
       "sourceType": "Treaty Organization",
-      "status": "failed",
+      "status": "ok",
       "eventsFound": 0,
       "pagesChecked": 1,
-      "mediaChecked": 0,
-      "error": "invalid literal for int() with base 10: 'ab-whitefish-lake-128'"
+      "mediaChecked": 0
     }
   ],
   "reviewCount": 2,
   "statusCounts": {
     "authorized_api_required": 9,
-    "failed": 34,
-    "ok": 75
+    "failed": 27,
+    "ok": 82
   }
 }
