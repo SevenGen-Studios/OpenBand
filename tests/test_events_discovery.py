@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 from datetime import date
 
 from tools.events_discovery import (
@@ -226,6 +227,21 @@ class EventExtractionTests(unittest.TestCase):
             html, "https://example.org", COMMUNITY, SOURCE, date(2026, 8, 13)
         )
         self.assertEqual(events, [])
+
+    def test_merge_uses_reference_date_when_wall_clock_is_later(self):
+        item = {
+            "id": "one", "bandId": 378, "title": "Annual Powwow",
+            "startDate": "2026-08-21", "sourceUrl": "https://example.org/powwow",
+            "description": "Event date: August 21, 2026", "confidence": 0.9,
+            "extractionMethod": "html",
+        }
+        with patch("tools.events_discovery.utc_today", return_value=date(2030, 1, 1)):
+            self.assertEqual(merge_events([], [item], date(2026, 8, 13)), [item])
+            self.assertTrue(is_publishable_event(item, date(2026, 8, 13)))
+            self.assertFalse(is_publishable_event(item))
+            self.assertEqual(merge_events([], [item]), [])
+            mismatched = {**item, "startDate": "2026-08-22"}
+            self.assertEqual(merge_events([], [mismatched], date(2026, 8, 13)), [])
 
     def test_merge_deduplicates_same_source_event(self):
         item = {

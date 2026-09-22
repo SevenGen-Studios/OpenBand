@@ -741,7 +741,7 @@ def merge_events(existing: list[dict], candidates: list[dict], today: date | Non
     for item in [*existing, *candidates]:
         start = str(item.get("startDate") or "")
         url = canonical_url(item.get("sourceUrl"))
-        if not (minimum <= start <= maximum and url.startswith("https://") and is_publishable_event(item)):
+        if not (minimum <= start <= maximum and url.startswith("https://") and is_publishable_event(item, today)):
             continue
         identity = event_identity_title(item.get("title"))
         key = f"{item.get('bandId')}|{start}|{identity}"
@@ -777,8 +777,9 @@ def merge_events(existing: list[dict], candidates: list[dict], today: date | Non
     return rows
 
 
-def is_publishable_event(item: dict) -> bool:
-    """Reject directory pages, code noise, stale dates, and dates without event context."""
+def is_publishable_event(item: dict, today: date | None = None) -> bool:
+    """Validate source dates against the same reference date as the discovery run."""
+    today = today or utc_today()
     title = clean_text(item.get("title"))
     description = clean_text(item.get("description"))
     url = canonical_url(item.get("sourceUrl"))
@@ -810,9 +811,9 @@ def is_publishable_event(item: dict) -> bool:
     if method == "json-ld":
         return True
     if method == "meta-api":
-        return is_event_text(title, description) and bool(event_dates(description))
+        return is_event_text(title, description) and bool(event_dates(description, today))
     if method.startswith("ocr") or method in {"pdftotext", "html", "html-page", "shared-index"}:
-        expected_start, _ = choose_event_date(title, description)
+        expected_start, _ = choose_event_date(title, description, today)
         if not expected_start or expected_start != str(item.get("startDate") or ""):
             return False
         if method.startswith("ocr") or method == "pdftotext":
@@ -821,7 +822,7 @@ def is_publishable_event(item: dict) -> bool:
             return False
     explicit_date = bool(re.search(r"\b(?:event date|date|when|starts?|runs?|join us)\s*[:\-]?\s*", description, re.I))
     title_has_event = bool(EVENT_WORDS.search(title))
-    return title_has_event and (explicit_date or bool(event_dates(title)))
+    return title_has_event and (explicit_date or bool(event_dates(title, today)))
 
 
 def run(args):

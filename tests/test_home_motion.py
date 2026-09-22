@@ -11,14 +11,14 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class HomeMotionTests(unittest.TestCase):
     def setUp(self):
-        self.script = (ROOT / 'assets/home-motion.js').read_text()
-        self.css = (ROOT / 'assets/home-motion.css').read_text()
+        self.script = (ROOT / 'assets/home-motion.js').read_text(encoding="utf-8")
+        self.css = (ROOT / 'assets/home-motion.css').read_text(encoding="utf-8")
 
     def test_shared_pages_load_motion_once(self):
         for name in ['index.html', 'browse/index.html', 'news/index.html',
                      'first-nations/mistawasis-nehiyawak/index.html']:
             with self.subTest(page=name):
-                page = (ROOT / name).read_text()
+                page = (ROOT / name).read_text(encoding="utf-8")
                 self.assertEqual(page.count('/assets/home-motion.js?v=20260903a'), 1)
                 self.assertEqual(page.count('/assets/home-motion.css?v=20260903a'), 1)
 
