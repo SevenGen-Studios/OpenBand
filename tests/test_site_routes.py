@@ -197,7 +197,7 @@ class SiteRouteTests(unittest.TestCase):
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="/assets/openband.css?v=20260911b"', profile)
-        self.assertIn('src="/assets/openband.js?v=20260921"', profile)
+        self.assertIn('src="/assets/openband.js?v=20260922"', profile)
         self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
@@ -356,7 +356,7 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("el('tribalCouncilFilter').value=directoryMapMode==='tribalCouncil'?item.dataset.mapGroup:''", javascript)
         self.assertIn("function loadMapData", javascript)
         self.assertIn("location.assign(profilePath(band.name))", javascript)
-        self.assertIn("maxBounds:PRAIRIE_MAP_BOUNDS", javascript)
+        self.assertNotIn("maxBounds:PRAIRIE_MAP_BOUNDS", javascript)
         self.assertIn("scrollWheelZoom:true", javascript)
         self.assertIn("wheelPxPerZoomLevel:140", javascript)
         self.assertIn("radius:9", javascript)

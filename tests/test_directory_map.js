@@ -4,6 +4,22 @@ const vm = require('node:vm');
 const source = fs.readFileSync('assets/openband.js', 'utf8');
 const extracted = source.split('\n').filter(line =>
   ['const PROVINCE_MAP_BOUNDS=', 'function fitDirectoryMap(', 'async function showDirectoryPage('].some(prefix => line.startsWith(prefix))).join('\n');
+// Exercise the real Leaflet setup: hard geographic limits previously shifted
+// Alberta east even though fitBounds received the correct province coordinates.
+let mapOptions, tileOptions;
+const mapStub = {on:()=>{}, createPane:()=>({style:{}})};
+const addable = {addTo:()=>addable};
+const setup = vm.createContext({
+  directoryMap:null, directoryLayer:null, reserveLandData:null,
+  el:()=>({}), fitDirectoryMap:()=>{},
+  window:{L:{map:(id,options)=>{mapOptions=options;return mapStub;},
+    tileLayer:(url,options)=>{tileOptions=options;return addable;},
+    control:{zoom:()=>addable,scale:()=>addable},layerGroup:()=>addable}}
+});
+vm.runInContext(source.split('\n').find(line=>line.startsWith('function ensureDirectoryMap(')),setup);
+setup.ensureDirectoryMap();
+assert.equal(mapOptions.maxBounds,undefined,'Pan limits must not shift province centering');
+assert.equal(tileOptions.bounds,undefined,'Tiles must fill the viewport west of Alberta');
 let province = 'AB';
 let lastBounds;
 let renders = 0;
