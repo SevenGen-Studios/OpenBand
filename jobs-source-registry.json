@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-22T17:45:43Z",
+  "generated": "2026-09-23T17:58:45Z",
   "trackedCommunityCount": 117,
   "configuredSourceCount": 139,
   "communities": [
@@ -3566,10 +3566,10 @@
         "390"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 0,
+      "status": "checked",
       "warnings": [
-        "fishing-lake-official: fetch failed: HTTP Error 429: Too Many Requests"
+        "fishing-lake-official: no candidate job links detected"
       ]
     },
     {
@@ -3864,12 +3864,10 @@
       "communityIds": [
         "398"
       ],
-      "candidatesFound": 1,
-      "reviewItems": 2,
+      "candidatesFound": 6,
+      "reviewItems": 3,
       "status": "checked",
-      "warnings": [
-        "community-site-398: employment page fetch failed: URL can't contain control characters. '/Opportunities, /opportunities/,' (found at least ' ')"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-394",
@@ -4021,7 +4019,7 @@
       "communityIds": [
         "362"
       ],
-      "candidatesFound": 3,
+      "candidatesFound": 4,
       "reviewItems": 2,
       "status": "checked",
       "warnings": []
@@ -4047,10 +4045,12 @@
       "communityIds": [
         "377"
       ],
-      "candidatesFound": 3,
-      "reviewItems": 0,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-377: fetch failed: <urlopen error timed out>"
+      ]
     },
     {
       "sourceId": "community-site-353",
@@ -4245,7 +4245,7 @@
       "communityIds": [
         "383"
       ],
-      "candidatesFound": 8,
+      "candidatesFound": 5,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4444,10 +4444,10 @@
         "438"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 3,
+      "status": "checked",
       "warnings": [
-        "community-site-438: fetch failed: HTTP Error 429: Too Many Requests"
+        "community-site-438: no candidate job links detected"
       ]
     },
     {
@@ -4544,7 +4544,7 @@
       "communityIds": [
         "435"
       ],
-      "candidatesFound": 18,
+      "candidatesFound": 17,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4639,7 +4639,7 @@
       "communityIds": [
         "440"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 1,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4876,7 +4876,7 @@
       "communityIds": [
         "478"
       ],
-      "candidatesFound": 7,
+      "candidatesFound": 6,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
