@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-23T17:58:45Z",
+  "generated": "2026-09-24T17:59:36Z",
   "trackedCommunityCount": 117,
   "configuredSourceCount": 139,
   "communities": [
@@ -3359,7 +3359,7 @@
       "communityIds": [
         "355"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 4,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -3470,7 +3470,7 @@
       "communityIds": [
         "344"
       ],
-      "candidatesFound": 3,
+      "candidatesFound": 2,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3509,7 +3509,7 @@
       "communityIds": [
         "406"
       ],
-      "candidatesFound": 7,
+      "candidatesFound": 6,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -3606,7 +3606,7 @@
       "communityIds": [
         "393"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 3,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -3821,7 +3821,7 @@
       "communityIds": [
         "406"
       ],
-      "candidatesFound": 7,
+      "candidatesFound": 6,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4019,7 +4019,7 @@
       "communityIds": [
         "362"
       ],
-      "candidatesFound": 4,
+      "candidatesFound": 3,
       "reviewItems": 2,
       "status": "checked",
       "warnings": []
@@ -4032,7 +4032,7 @@
       "communityIds": [
         "393"
       ],
-      "candidatesFound": 1,
+      "candidatesFound": 3,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4045,12 +4045,10 @@
       "communityIds": [
         "377"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "community-site-377: fetch failed: <urlopen error timed out>"
-      ]
+      "candidatesFound": 3,
+      "reviewItems": 0,
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "community-site-353",
@@ -4232,7 +4230,7 @@
       "communityIds": [
         "344"
       ],
-      "candidatesFound": 3,
+      "candidatesFound": 2,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4273,7 +4271,7 @@
       "communityIds": [
         "355"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 4,
       "reviewItems": 2,
       "status": "checked",
       "warnings": []
@@ -4529,11 +4527,14 @@
       "communityIds": [
         "458"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "candidatesFound": 2,
+      "reviewItems": 3,
+      "status": "checked",
       "warnings": [
-        "community-site-458: fetch failed: HTTP Error 429: Too Many Requests"
+        "community-site-458: employment page fetch failed: HTTP Error 429: Too Many Requests",
+        "community-site-458: employment page fetch failed: HTTP Error 429: Too Many Requests",
+        "community-site-458: detail fetch failed: HTTP Error 429: Too Many Requests",
+        "community-site-458: detail fetch failed: HTTP Error 429: Too Many Requests"
       ]
     },
     {
@@ -4544,7 +4545,7 @@
       "communityIds": [
         "435"
       ],
-      "candidatesFound": 17,
+      "candidatesFound": 21,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -4876,7 +4877,7 @@
       "communityIds": [
         "478"
       ],
-      "candidatesFound": 6,
+      "candidatesFound": 7,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -4917,7 +4918,7 @@
       "communityIds": [
         "444"
       ],
-      "candidatesFound": 16,
+      "candidatesFound": 17,
       "reviewItems": 3,
       "status": "checked",
       "warnings": [
@@ -5061,10 +5062,12 @@
       "communityIds": [
         "459"
       ],
-      "candidatesFound": 3,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-459: fetch failed: <urlopen error [Errno -2] Name or service not known>"
+      ]
     },
     {
       "sourceId": "community-site-474",
