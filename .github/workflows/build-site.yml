@@ -61,6 +61,9 @@ jobs:
           python tools/build_analytics_config.py
           python tools/build_site.py
 
+      - name: Install parser test dependencies
+        run: python -m pip install --disable-pip-version-check lxml
+
       - name: Run site and analytics tests
         run: python -m unittest discover -s tests -v
 
