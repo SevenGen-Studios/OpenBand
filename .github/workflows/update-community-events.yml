@@ -7,6 +7,15 @@ on:
         description: "Optional ISC band number; leave blank to scan all communities"
         required: false
         type: string
+      province:
+        description: "Province to scan when band_id is blank"
+        required: true
+        type: choice
+        options:
+          - AB
+          - SK
+          - ALL
+        default: AB
   schedule:
     - cron: "41 13 * * *"
 
@@ -50,6 +59,8 @@ jobs:
           ARGS=()
           if [ -n "${{ github.event.inputs.band_id }}" ]; then
             ARGS+=(--band-id "${{ github.event.inputs.band_id }}")
+          elif [ "${{ github.event.inputs.province || 'AB' }}" != "ALL" ]; then
+            ARGS+=(--province "${{ github.event.inputs.province || 'AB' }}")
           fi
           python tools/events_discovery.py "${ARGS[@]}"
 
