@@ -80,7 +80,7 @@ class LayoutTableTests(unittest.TestCase):
         pages = layout_tables.extract_table_page_texts(FakePdf(), kind="capital")
         self.assertEqual(len(pages), 3)
         self.assertEqual(pages[0], "")
-        self.assertIn("Revenue | 1,000", pages[1])
+        self.assertIn("Revenue 1,000", pages[1])
         self.assertEqual(pages[2], "")
 
 
