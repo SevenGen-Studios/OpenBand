@@ -44,6 +44,11 @@ jobs:
           fi
       - name: Test employment pipeline
         run: python -m unittest tests.test_jobs_pipeline -v
+      - name: Rebase generated changes onto latest main
+        run: |
+          git config pull.rebase true
+          git pull --rebase --autostash origin main
+
       - name: Commit verified data and review report
         run: |
           if git diff --quiet -- jobs-data.json jobs-coverage-report.json jobs-review-queue.json jobs-source-registry.json; then
