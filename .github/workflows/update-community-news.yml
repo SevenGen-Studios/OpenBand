@@ -8,6 +8,15 @@ on:
         required: true
         default: false
         type: boolean
+      province:
+        description: "Province to scan"
+        required: true
+        type: choice
+        options:
+          - AB
+          - SK
+          - ALL
+        default: AB
   schedule:
     - cron: "23 12 * * *"
 
@@ -51,6 +60,9 @@ jobs:
           ARGS=()
           if [ "${{ github.event.inputs.pilot_only || 'false' }}" = "true" ]; then
             ARGS+=(--pilot)
+          fi
+          if [ "${{ github.event.inputs.province || 'AB' }}" != "ALL" ]; then
+            ARGS+=(--province "${{ github.event.inputs.province || 'AB' }}")
           fi
           python tools/news_discovery.py "${ARGS[@]}"
 
