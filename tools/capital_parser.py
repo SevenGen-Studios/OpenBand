@@ -22,6 +22,11 @@ except ModuleNotFoundError:  # Direct invocation: python tools/capital_parser.py
     import local_ocr
 
 try:
+    from tools import layout_tables
+except ModuleNotFoundError:  # Direct invocation: python tools/capital_parser.py
+    import layout_tables
+
+try:
     import pdfplumber
 except ImportError:  # pragma: no cover
     pdfplumber = None
@@ -1282,20 +1287,7 @@ def parse_page_texts(page_texts, source_url=None, fiscal_year=None):
 
 
 def table_page_texts(pdf):
-    pages = []
-    for page in pdf.pages:
-        header_text = page.extract_text(x_tolerance=1, y_tolerance=3) or ""
-        header = "\n".join(header_text.splitlines()[:10])
-        rows = []
-        for table in page.extract_tables() or []:
-            for row in table or []:
-                cells = [clean_text(cell) for cell in row or []]
-                cells = [cell for cell in cells if cell]
-                if cells:
-                    rows.append(" ".join(cells))
-        if rows:
-            pages.append(header + "\n" + "\n".join(rows))
-    return pages
+    return layout_tables.extract_table_page_texts(pdf, kind="capital")
 
 
 def summary_score(summary):
@@ -1358,7 +1350,10 @@ def parse_pdf_bytes(pdf_bytes, source_url=None, fiscal_year=None):
         reconstructed = table_page_texts(pdf)
     if reconstructed:
         fallback = parse_page_texts(reconstructed, source_url, fiscal_year)
-        fallback["parser"] = "capital_table_v2"
+        fallback["parser"] = "capital_layout_v1"
+        fallback.setdefault("warnings", []).append(
+            "Used coordinate-aware table reconstruction after primary text extraction"
+        )
         if summary_score(fallback) > summary_score(primary):
             fallback.setdefault("warnings", []).append(
                 "Primary text extraction was replaced by table reconstruction"
