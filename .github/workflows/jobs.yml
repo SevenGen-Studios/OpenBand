@@ -2,6 +2,16 @@ name: Update community jobs
 
 on:
   workflow_dispatch:
+    inputs:
+      province:
+        description: "Province to scan"
+        required: true
+        type: choice
+        options:
+          - AB
+          - SK
+          - ALL
+        default: AB
   schedule:
     - cron: "20 13 * * *"
 
@@ -26,7 +36,12 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends poppler-utils tesseract-ocr
       - name: Collect and validate public opportunities
-        run: python tools/jobs_collector.py
+        run: |
+          if [ "${{ github.event.inputs.province || 'AB' }}" = "ALL" ]; then
+            python tools/jobs_collector.py
+          else
+            python tools/jobs_collector.py --province "${{ github.event.inputs.province || 'AB' }}"
+          fi
       - name: Test employment pipeline
         run: python -m unittest tests.test_jobs_pipeline -v
       - name: Commit verified data and review report
