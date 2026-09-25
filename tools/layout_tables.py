@@ -22,7 +22,8 @@ REMUNERATION_RE = re.compile(
 CAPITAL_RE = re.compile(
     r"statement\s+of|revenue|revenues|expense|expenses|expenditure|"
     r"surplus|deficit|assets?|liabilit|debt|capital|cash|operations|"
-    r"financial position|financial activities",
+    r"financial position|financial activities|government|community|"
+    r"economic|education|health|social|housing|membership|programs?",
     re.I,
 )
 
@@ -159,7 +160,8 @@ def extract_table_page_texts(pdf, kind="capital"):
         lines = [header] if header else []
         for candidate in candidates:
             for row in candidate["rows"]:
-                # Keep blank positions visible with a stable separator.
-                lines.append(" | ".join(row))
+                # Keep cell order without adding punctuation to labels.  The
+                # existing parser uses exact labels for total-row detection.
+                lines.append(" ".join(row))
         pages.append("\n".join(lines))
     return pages if found_table else []
