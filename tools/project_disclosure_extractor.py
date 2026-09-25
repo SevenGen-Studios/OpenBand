@@ -488,9 +488,16 @@ def extract_one(task: dict) -> dict:
         return {**task, "status": "failed", "reason": str(exc), "records": [], "researchLeads": []}
 
 
-def scan_tasks(capital: dict, all_years: bool) -> list[dict]:
+def scan_tasks(
+    capital: dict,
+    all_years: bool,
+    province: str | None = None,
+    province_by_band: dict[str, str] | None = None,
+) -> list[dict]:
     tasks = []
     for band_id, band in capital.get("bands", {}).items():
+        if province and str((province_by_band or {}).get(str(band_id), "")).upper() != province.upper():
+            continue
         eligible = [
             (year, row) for year, row in band.get("years", {}).items()
             if row.get("parseStatus") in {"parsed", "manual_review"}
@@ -514,14 +521,26 @@ def main() -> None:
     parser.add_argument("--research-leads", default=str(ROOT / "project-research-leads.json"))
     parser.add_argument("--report", default=str(ROOT / "project-disclosure-report.json"))
     parser.add_argument("--all-years", action="store_true")
+    parser.add_argument("--province", choices=["AB", "SK", "ALL"], default="ALL")
+    parser.add_argument("--data", default=str(ROOT / "data.json"))
     parser.add_argument("--workers", type=int, default=3)
     parser.add_argument("--limit", type=int, default=0)
     args = parser.parse_args()
 
     capital = json.loads(Path(args.capital).read_text(encoding="utf-8"))
+    roster = json.loads(Path(args.data).read_text(encoding="utf-8"))
+    province_by_band = {
+        str(band.get("id")): str(band.get("province") or "").upper()
+        for band in roster.get("bands", [])
+    }
     projects_path = Path(args.projects)
     projects = json.loads(projects_path.read_text(encoding="utf-8"))
-    tasks = scan_tasks(capital, args.all_years)
+    tasks = scan_tasks(
+        capital,
+        args.all_years,
+        None if args.province == "ALL" else args.province,
+        province_by_band,
+    )
     if args.limit:
         tasks = tasks[: args.limit]
 
