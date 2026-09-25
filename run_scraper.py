@@ -27,6 +27,7 @@ urllib.request.urlopen = _patched_urlopen
 
 import scraper  # noqa: E402
 from tools import local_ocr  # noqa: E402
+from tools import layout_tables  # noqa: E402
 from tools import parser_quality  # noqa: E402
 
 scraper.urllib.request.urlopen = _patched_urlopen
@@ -1022,20 +1023,11 @@ def _extract_remuneration_rows_enhanced(pdf_url):
             with scraper.pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
                 for page in pdf.pages:
                     page_text = page.extract_text(x_tolerance=1, y_tolerance=3) or ""
-                    tables = page.extract_tables() or []
-                    if not tables and re.search(
-                        r"chief\s+and\s+council|chief\s+and\s+councillors|remuneration\s+and\s+expenses",
-                        page_text,
-                        re.I,
-                    ):
-                        tables = page.extract_tables({
-                            "vertical_strategy": "text",
-                            "horizontal_strategy": "text",
-                            "snap_tolerance": 4,
-                            "join_tolerance": 4,
-                            "intersection_tolerance": 4,
-                        }) or []
-                    for table in tables:
+                    candidates = layout_tables.extract_tables_for_page(
+                        page, page_text, kind="remuneration"
+                    )
+                    for candidate in candidates:
+                        table = candidate["rows"]
                         quality = parser_quality.score_candidate_table(table, page_text)
                         if not quality["accepted"]:
                             continue
@@ -1055,6 +1047,9 @@ def _extract_remuneration_rows_enhanced(pdf_url):
                 note = "Parsed from keyword-aware PDF table extraction" if keyword_people else None
                 if note:
                     warnings.append(note)
+                warnings.append(
+                    "Coordinate-aware pdfplumber table extraction was validated before publication"
+                )
                 if candidate_count > 1:
                     warnings.append("Multiple candidate Chief and Council tables found")
                 quality = accepted_qualities[0] if accepted_qualities else None
