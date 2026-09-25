@@ -41,7 +41,11 @@ CLOSED_WORDS = re.compile(
     re.IGNORECASE,
 )
 OPEN_UNTIL_FILLED = re.compile(r"\b(open until filled|until (?:a suitable candidate is )?filled)\b", re.IGNORECASE)
-EMPLOYMENT_PAGE_WORDS = re.compile(r"\b(job|jobs|career|careers|employment|opportunities|work with us)\b", re.IGNORECASE)
+EMPLOYMENT_PAGE_WORDS = re.compile(
+    r"\b(job|jobs|career|careers|employment|opportunities|work with us|"
+    r"vacancies|job postings|join our team)\b",
+    re.IGNORECASE,
+)
 MEDIA_SUFFIXES = {".pdf", ".png", ".jpg", ".jpeg", ".webp", ".tif", ".tiff"}
 NON_JOB_MEDIA = re.compile(r"\b(logo|icon|favicon|banner|header|footer|avatar|sponsor)\b", re.IGNORECASE)
 MONTHS = {
@@ -216,7 +220,7 @@ class AnchorCollector(HTMLParser):
             self.current = None
 
 
-def configured_sources(root: Path) -> list[dict]:
+def configured_sources(root: Path, province: str | None = None) -> list[dict]:
     """Merge curated boards with ISC-listed community sites and verified Facebook pages."""
     curated = read_json(root / "jobs-sources.json", {"sources": []}).get("sources", [])
     sources = list(curated)
@@ -264,7 +268,29 @@ def configured_sources(root: Path) -> list[dict]:
                 "scanMedia": True,
             })
             known_pairs.add((community_id, url.rstrip("/")))
-    return sources
+    if not province:
+        return sources
+    requested = province.upper()
+    roster = read_json(root / "data.json", {"bands": []}).get("bands", [])
+    province_by_id = {
+        str(row.get("id")): str(row.get("province") or "").upper()
+        for row in roster
+    }
+    filtered = []
+    for source in sources:
+        declared = str(source.get("province") or "").upper()
+        if declared and declared != requested:
+            continue
+        ids = [str(value) for value in source.get("communityIds", [])]
+        if ids:
+            if not any(province_by_id.get(value) == requested for value in ids):
+                continue
+        elif source.get("coversAllTrackedCommunities") and declared != requested:
+            continue
+        elif not declared and not source.get("coversAllTrackedCommunities"):
+            continue
+        filtered.append(source)
+    return filtered
 
 
 def fetch_markup(url: str) -> tuple[str, str | None]:
@@ -582,8 +608,14 @@ def expand_verified_batches(overrides: dict) -> list[dict]:
     return rows
 
 
-def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]:
-    sources = configured_sources(root)
+def collect(
+    root: Path,
+    today: date,
+    offline: bool = False,
+    province: str | None = None,
+) -> tuple[dict, dict]:
+    all_sources = configured_sources(root)
+    sources = configured_sources(root, province)
     overrides = read_json(root / "jobs-overrides.json", {})
     previous = read_json(root / "jobs-data.json", {"listings": []})
     warnings = []
@@ -612,6 +644,16 @@ def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]
             })
             if source_text:
                 source_texts[source["id"]] = source_text
+        if province:
+            roster = read_json(root / "data.json", {"bands": []}).get("bands", [])
+            province_by_id = {
+                str(row.get("id")): str(row.get("province") or "").upper()
+                for row in roster
+            }
+            candidates.extend(
+                row for row in previous.get("listings", [])
+                if province_by_id.get(str(row.get("communityId"))) != province.upper()
+            )
     else:
         candidates.extend(row for row in previous.get("listings", []) if not row.get("manualOverride"))
 
@@ -675,7 +717,7 @@ def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]
     for band in read_json(root / "data.json", {"bands": []}).get("bands", []):
         tracked.setdefault(str(band['id']), band)
     coverage_sources = {community_id: [] for community_id in tracked}
-    for source in sources:
+    for source in all_sources:
         for community_id in source_coverage(source, set(tracked)):
             coverage_sources[community_id].append({
                 "id": source["id"],
@@ -702,7 +744,7 @@ def collect(root: Path, today: date, offline: bool = False) -> tuple[dict, dict]
     ]
     report = {
         "generated": data["generated"],
-        "sourcesConfigured": len(sources),
+        "sourcesConfigured": len(all_sources),
         "sourcesChecked": 0 if offline else len(sources),
         "verifiedActiveListings": len([row for row in active if row.get("verifiedOfficialSource")]),
         "communitiesWithListings": data["communityCount"],
@@ -760,9 +802,10 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=ROOT)
     parser.add_argument("--offline", action="store_true")
+    parser.add_argument("--province", choices=["AB", "SK"], default=None)
     parser.add_argument("--today", type=date.fromisoformat, default=date.today())
     args = parser.parse_args()
-    data, report = collect(args.root, args.today, args.offline)
+    data, report = collect(args.root, args.today, args.offline, args.province)
     review_queue = report.pop("_reviewQueue")
     source_registry = report.pop("_sourceRegistry")
     write_json(args.root / "jobs-data.json", data)
