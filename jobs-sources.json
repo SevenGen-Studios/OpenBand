@@ -7,6 +7,7 @@
       "name": "FSIN Employment Opportunities",
       "url": "https://www.fsin.ca/employment-opportunities",
       "sourceType": "provincial_first_nations_organization",
+      "province": "SK",
       "communityIds": [],
       "communityNames": [],
       "coversAllTrackedCommunities": true,
@@ -429,6 +430,40 @@
       "sourceType": "official_first_nation",
       "communityIds": ["388"],
       "communityNames": ["Wood Mountain Lakota First Nation"],
+      "parser": "job_link_index",
+      "verifiedOfficialSource": true,
+      "autoPublish": false
+    },
+    {
+      "id": "treatysix-careers",
+      "name": "Confederacy of Treaty Six First Nations Careers",
+      "url": "https://www.treatysix.org/careers",
+      "sourceType": "treaty_organization",
+      "province": "AB",
+      "communityIds": ["438", "437", "460", "464", "440", "443", "465", "469", "466", "439", "442", "431", "441", "462", "444", "434"],
+      "parser": "job_link_index",
+      "verifiedOfficialSource": true,
+      "autoPublish": false
+    },
+    {
+      "id": "treaty7-job-opportunities",
+      "name": "Treaty 7 First Nations Chiefs' Association Job Opportunities",
+      "url": "https://www.treaty7.org/job-opportunities",
+      "sourceType": "treaty_organization",
+      "province": "AB",
+      "communityIds": ["473", "435", "433", "475", "436", "430", "432"],
+      "parser": "job_link_index",
+      "verifiedOfficialSource": true,
+      "autoPublish": false
+    },
+    {
+      "id": "ktcea-careers",
+      "name": "Kee Tas Kee Now Tribal Council Education Authority Careers",
+      "url": "https://www.ktcea.ca/careers/postings",
+      "sourceType": "tribal_council_education_authority",
+      "province": "AB",
+      "communityIds": ["476", "453", "478", "459"],
+      "communityNames": ["Loon River Cree", "Lubicon Lake Band No. 453", "Peerless Trout First Nation", "Whitefish Lake"],
       "parser": "job_link_index",
       "verifiedOfficialSource": true,
       "autoPublish": false
