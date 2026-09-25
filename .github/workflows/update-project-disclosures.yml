@@ -8,6 +8,15 @@ on:
         required: false
         type: boolean
         default: true
+      province:
+        description: Province to scan (AB keeps this recovery pass Alberta-only)
+        required: false
+        type: choice
+        options:
+          - AB
+          - SK
+          - ALL
+        default: AB
   schedule:
     - cron: "35 9 * * 2"
 
@@ -40,6 +49,9 @@ jobs:
           args=()
           if [[ "${{ github.event_name }}" == "schedule" || "${{ inputs.all_years }}" == "true" ]]; then
             args+=(--all-years)
+          fi
+          if [[ "${{ inputs.province || 'AB' }}" != "ALL" ]]; then
+            args+=(--province "${{ inputs.province || 'AB' }}")
           fi
           python tools/project_disclosure_extractor.py "${args[@]}"
           python tools/build_audit_partnerships.py
