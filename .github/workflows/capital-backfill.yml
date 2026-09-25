@@ -179,6 +179,11 @@ jobs:
       - name: Remove validation snapshot
         run: rm -f capital-data.before.json
 
+      - name: Rebase generated changes onto latest main
+        run: |
+          git config pull.rebase true
+          git pull --rebase --autostash origin main
+
       - name: Commit Community Capital data
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
