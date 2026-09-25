@@ -80,6 +80,12 @@ class JobsPipelineTests(unittest.TestCase):
         self.assertTrue(all(row["verifiedOfficialSource"] for row in website_sources))
         self.assertTrue(all(row["url"].startswith("https://") for row in website_sources))
 
+    def test_alberta_source_filter_excludes_saskatchewan_regional_board(self):
+        sources = configured_sources(ROOT, "AB")
+        ids = {row["id"] for row in sources}
+        self.assertIn("treatysix-careers", ids)
+        self.assertNotIn("fsin-employment", ids)
+
     def test_missing_money_is_not_converted_to_zero(self):
         record = normalize_listing(
             {
