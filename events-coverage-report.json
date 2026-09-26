@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-25T19:15:58Z",
+  "generated": "2026-09-26T17:29:27Z",
   "before": 86,
-  "after": 86,
-  "newCandidates": 194,
+  "after": 89,
+  "newCandidates": 191,
   "sourceRuns": [
     {
       "bandId": 438,
@@ -68,9 +68,9 @@
       "sourceUrl": "https://beaverlakecreenation.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 16,
+      "eventsFound": 14,
       "pagesChecked": 6,
-      "mediaChecked": 3
+      "mediaChecked": 2
     },
     {
       "bandId": 458,
@@ -80,7 +80,7 @@
       "sourceType": "Official First Nation Website",
       "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 1,
+      "pagesChecked": 0,
       "mediaChecked": 0,
       "error": "HTTP Error 429: Too Many Requests"
     },
@@ -158,7 +158,7 @@
       "sourceType": "Official First Nation Website",
       "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 2,
+      "pagesChecked": 0,
       "mediaChecked": 0,
       "error": "HTTP Error 429: Too Many Requests"
     },
@@ -180,7 +180,7 @@
       "sourceUrl": "https://www.ermineskin.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 8,
+      "eventsFound": 11,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -212,10 +212,11 @@
       "sourceName": "Frog Lake official website",
       "sourceUrl": "https://www.froglake.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
+      "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 1,
-      "mediaChecked": 1
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 475,
@@ -348,7 +349,7 @@
       "sourceType": "Official First Nation Website",
       "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 3,
+      "pagesChecked": 0,
       "mediaChecked": 0,
       "error": "HTTP Error 429: Too Many Requests"
     },
@@ -381,7 +382,7 @@
       "sourceUrl": "https://slcn125.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 1,
+      "eventsFound": 0,
       "pagesChecked": 6,
       "mediaChecked": 2
     },
@@ -415,7 +416,7 @@
       "sourceUrl": "https://www.siksikanation.com/index.html",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 19,
+      "eventsFound": 17,
       "pagesChecked": 6,
       "mediaChecked": 1
     },
@@ -481,7 +482,7 @@
       "sourceUrl": "https://www.tsuutina.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 37,
+      "eventsFound": 36,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -491,10 +492,11 @@
       "sourceName": "Tthebatthie Denesųłiné Nation official website",
       "sourceUrl": "https://www.slfn196.com/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
+      "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 3,
-      "mediaChecked": 0
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 459,
@@ -577,7 +579,7 @@
   ],
   "reviewCount": 3,
   "statusCounts": {
-    "failed": 8,
-    "ok": 43
+    "failed": 10,
+    "ok": 41
   }
 }
