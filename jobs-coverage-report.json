@@ -1,18 +1,20 @@
 {
-  "generated": "2026-09-26T17:13:25Z",
+  "generated": "2026-09-27T17:47:50Z",
   "sourcesConfigured": 142,
   "sourcesChecked": 50,
   "verifiedActiveListings": 10,
   "communitiesWithListings": 11,
   "pendingVerification": 355,
   "expiredOrClosed": 21,
-  "duplicatesSuppressed": 100,
+  "duplicatesSuppressed": 104,
   "trackedCommunities": 117,
   "communitiesWithSourceCoverage": 117,
   "communitiesWithDirectSources": 100,
-  "mediaDocumentsReviewed": 71,
+  "mediaDocumentsReviewed": 68,
   "warnings": [
+    "treatysix-careers: no candidate job links detected",
     "treaty7-job-opportunities: no candidate job links detected",
+    "community-site-438: employment page fetch failed: HTTP Error 429: Too Many Requests",
     "community-site-438: no candidate job links detected",
     "community-site-437: fetch failed: <urlopen error [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1010)>",
     "community-site-473: no candidate job links detected",
@@ -35,7 +37,7 @@
     "community-site-457: no candidate job links detected",
     "community-site-432: no candidate job links detected",
     "community-site-477: fetch failed: HTTP Error 429: Too Many Requests",
-    "community-site-459: fetch failed: <urlopen error [Errno -2] Name or service not known>",
+    "community-site-459: fetch failed: <urlopen error [Errno 111] Connection refused>",
     "community-site-474: no candidate job links detected"
   ]
 }

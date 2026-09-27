@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-26T17:13:25Z",
+  "generated": "2026-09-27T17:47:50Z",
   "trackedCommunityCount": 117,
   "configuredSourceCount": 50,
   "communities": [
@@ -3424,10 +3424,12 @@
         "444",
         "434"
       ],
-      "candidatesFound": 1,
+      "candidatesFound": 0,
       "reviewItems": 1,
       "status": "checked",
-      "warnings": []
+      "warnings": [
+        "treatysix-careers: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "treaty7-job-opportunities",
@@ -3488,9 +3490,10 @@
         "438"
       ],
       "candidatesFound": 0,
-      "reviewItems": 3,
+      "reviewItems": 0,
       "status": "checked",
       "warnings": [
+        "community-site-438: employment page fetch failed: HTTP Error 429: Too Many Requests",
         "community-site-438: no candidate job links detected"
       ]
     },
@@ -4107,7 +4110,7 @@
       "reviewItems": 1,
       "status": "unavailable",
       "warnings": [
-        "community-site-459: fetch failed: <urlopen error [Errno -2] Name or service not known>"
+        "community-site-459: fetch failed: <urlopen error [Errno 111] Connection refused>"
       ]
     },
     {
