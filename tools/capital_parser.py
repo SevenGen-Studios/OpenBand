@@ -22,9 +22,10 @@ except ModuleNotFoundError:  # Direct invocation: python tools/capital_parser.py
     import local_ocr
 
 try:
-    from tools import layout_tables
+    from tools import layout_tables, docling_adapter
 except ModuleNotFoundError:  # Direct invocation: python tools/capital_parser.py
     import layout_tables
+    import docling_adapter
 
 try:
     import pdfplumber
@@ -210,11 +211,23 @@ def line_parts(line):
     return label, [value for value in values if value is not None]
 
 
+def actual_column_index(page_text):
+    """Resolve explicit actual/budget ordering; retain legacy budget-first layouts."""
+    header = "\n".join(page_text.splitlines()[:14]).lower()
+    if "budget" not in header:
+        return 0
+    actual = header.find("actual")
+    budget = header.find("budget")
+    return 0 if actual >= 0 and actual < budget else 1
+
+
 def actual_value(values, page_text, line=""):
     if not values:
         return None
     header = "\n".join(page_text.splitlines()[:12]).lower()
     if "budget" in header:
+        if actual_column_index(page_text) == 0:
+            return values[0]
         if len(values) >= 3:
             return values[1]
         if len(values) == 2 and re.search(
@@ -373,7 +386,7 @@ def current_year_column(page_text, fiscal_year=None):
     years = YEAR_RE.findall(header)
     expected = expected_fiscal_year(fiscal_year)
     budget_layout = "budget" in header.lower()
-    selected_index = 1 if budget_layout and len(years) >= 2 else 0
+    selected_index = actual_column_index(page_text) if budget_layout else 0
     selected_year = years[selected_index] if len(years) > selected_index else None
     return {
         "expectedYear": expected,
@@ -579,12 +592,20 @@ def find_named_amount_reference(
 def parse_surplus_adjustments(page_texts):
     rows = []
     active = False
+    expense_section = False
+    seen_expenses = False
     for page_text in page_texts:
         for raw_line in page_text.splitlines():
             line = clean_text(raw_line)
             label, values = line_parts(line)
+            if EXPENSE_SECTION_RE.fullmatch(label):
+                seen_expenses = True
             if BEFORE_OTHER_RE.search(label):
                 active = True
+                continue
+            if seen_expenses and re.fullmatch(r"other (?:items|income|revenue \(expenditures\)|expenses?|expenditures)", label, re.I):
+                active = True
+                expense_section = bool(re.fullmatch(r"other (?:items|expenses?|expenditures)", label, re.I))
                 continue
             if not active:
                 continue
@@ -601,6 +622,8 @@ def parse_surplus_adjustments(page_texts):
             amount = actual_value(values, page_text, line)
             if amount is None or amount == 0:
                 continue
+            if expense_section and amount > 0:
+                amount = -amount
             raw_values = MONEY_RE.findall(line)
             if (
                 abs(amount) < 100
@@ -902,7 +925,7 @@ def nearly_equal(left, right, tolerance=0.01):
 
 def validate_summary(summary):
     warnings = list(summary.get("warnings") or [])
-    severe = []
+    severe = list(summary.get("structuredTableIssues") or [])
     assets, liabilities, accumulated = (parse_money(summary.get(key)) for key in ("totalAssets", "totalLiabilities", "accumulatedSurplus"))
     if all(value is not None for value in (assets, liabilities, accumulated)) and not nearly_equal(assets, liabilities + accumulated):
         severe.append("Total assets do not reconcile to liabilities plus accumulated surplus")
@@ -963,6 +986,8 @@ def validate_summary(summary):
         warnings.append("Extreme expense category amount; source verification recommended")
     if surplus is None:
         warnings.append("Annual surplus or deficit was not extracted")
+        if summary.get("requiresSurplusValidation"):
+            severe.append("New extraction requires a reported final surplus for validation")
     elif revenue is not None and expenses is not None and not nearly_equal(
         surplus, revenue - expenses + adjustments
     ):
@@ -1081,6 +1106,149 @@ def identified_revenue_fields(rows):
                 selected = explicit
         values[key] = rounded(sum_rows(selected)) if selected else None
     return values
+
+def expand_explicit_table_rows(rows):
+    """Split only explicitly aligned multiline labels and monetary cells."""
+    expanded = []
+    for row in rows:
+        lines = [str(cell).splitlines() for cell in row]
+        counts = [len(parts) for parts in lines]
+        if counts and counts[0] > 1 and len(set(counts)) == 1 and all(
+            re.fullmatch(r"\s*\(?\$?\s*-?\d[\d,]*(?:\.\d+)?\)?\s*|\s*[-—–]\s*", value)
+            for parts in lines[1:] for value in parts
+        ):
+            expanded.extend([list(values) for values in zip(*lines)])
+        else:
+            expanded.append(row)
+    return expanded
+
+
+def parse_structured_capital(extracted, source_url=None, fiscal_year=None):
+    """Read actual cells directly; never collapse blank monetary columns."""
+    pages = extracted.get("pages") or []
+    summary = parse_page_texts(pages, source_url, fiscal_year)
+    candidates = [table for table in extracted.get("tables", [])
+                  if isinstance(table.get("page"), int)
+                  and 0 < table["page"] <= len(pages)
+                  and OPERATIONS_RE.search("\n".join(pages[table["page"] - 1].splitlines()[:8]))
+                  and any(REVENUE_SECTION_RE.fullmatch(clean_text(str(row[0])))
+                          for row in table.get("rows", []) if row)]
+    if len(candidates) != 1:
+        summary["structuredTableIssues"] = ["No unique structured statement of operations table found"]
+        summary.update(validate_summary(summary))
+        return summary
+    table = candidates[0]
+    raw_rows = table.get("rawRows") or []
+    # Use raw rows only when the header is already a complete column header.
+    rows = raw_rows if raw_rows and len(raw_rows[0]) == len(table["rows"][0]) and all(
+        YEAR_RE.search(str(cell)) for cell in raw_rows[0][1:]
+    ) else table["rows"]
+    rows = expand_explicit_table_rows(rows)
+    year = expected_fiscal_year(fiscal_year)
+    headers = rows[0]
+    columns = [i for i, cell in enumerate(headers) if i > 0
+               and year in str(cell) and "budget" not in str(cell).lower()]
+    if len(columns) != 1:
+        summary["structuredTableIssues"] = ["Actual current-year table column is ambiguous"]
+        summary.update(validate_summary(summary))
+        return summary
+    column = columns[0]
+    summary = {"sourceUrl": source_url, "fiscalYear": fiscal_year,
+               "requiresSurplusValidation": True, "sourceReferences": {}}
+    sections = {"revenue": [], "expenses": [], "adjustments": []}
+    totals = {}
+    issues = []
+    section = None
+    pending_label = ""
+    final_surplus = None
+    adjustment_sign = 1
+    def reference(kind):
+        return {"pdfPage": table["page"], "table": "Statement of Operations",
+                "section": kind, "fiscalYear": fiscal_year,
+                "selectedColumn": "actual", "selectedYear": year,
+                "yearValidated": True, "columnIndex": column}
+    for row in rows[1:]:
+        if len(row) != len(headers):
+            issues.append("Structured table has inconsistent cell count")
+            continue
+        label = clean_text(str(row[0]))
+        cell = clean_text(str(row[column]))
+        if REVENUE_SECTION_RE.fullmatch(label):
+            section = "revenue"
+            continue
+        if EXPENSE_SECTION_RE.fullmatch(label):
+            section = "expenses"
+            continue
+        if re.fullmatch(r"other (?:items|income|revenue \(expenditures\))", label, re.I):
+            section = "adjustments"
+            adjustment_sign = -1 if label.lower() == "other items" else 1
+            continue
+        if re.search(r"before (?:the following|other)", label, re.I):
+            section = None
+            continue
+        if FINAL_SURPLUS_RE.fullmatch(label):
+            final_surplus = parse_money(cell)
+            section = None
+            continue
+        if re.search(r"accumulated surplus", label, re.I):
+            section = None
+            continue
+        if not section:
+            continue
+        if not cell:
+            if label and any(str(value).strip() for value in row[1:]):
+                issues.append("Blank actual cell requires source review: " + label)
+            elif label:
+                pending_label = label
+            continue
+        if cell in {"-", "—", "–"}:
+            continue  # Explicit source dash, not an inferred zero.
+        if len(MONEY_RE.findall(cell)) != 1:
+            issues.append("Possible merged monetary rows: " + label)
+            continue
+        amount = parse_money(cell)
+        if amount is None:
+            issues.append("Unreadable actual amount: " + label)
+            continue
+        if not label or TOTAL_REVENUE_RE.fullmatch(label) or TOTAL_EXPENSE_RE.fullmatch(label):
+            if section in totals:
+                issues.append("Multiple reported section totals")
+            totals[section] = amount
+            pending_label = ""
+            continue
+        label = clean_text(pending_label + " " + label) if pending_label else label
+        pending_label = ""
+        if section == "expenses" and is_prohibited_expense_label(label):
+            issues.append("Revenue label found in structured expenses: " + label)
+            continue
+        category = broad_revenue_category(label) if section == "revenue" else broad_expense_category(label)
+        sections[section].append({"sourceLabel": label, "label": label,
+                                  "category": category, "amount": amount * (adjustment_sign if section == "adjustments" else 1),
+                                  "sourceReference": reference(section)})
+    for section, key in [("revenue", "totalRevenue"), ("expenses", "totalExpenses")]:
+        breakdown, sources = aggregate_categories(sections[section])
+        summary[key] = totals.get(section)
+        summary["revenueBreakdown" if section == "revenue" else "expenseBreakdown"] = breakdown
+        summary["sourceRevenueRows" if section == "revenue" else "sourceExpenseRows"] = sources
+        summary.setdefault("sourceReferences", {})[key] = reference(section)
+    summary["annualSurplusDeficit"] = final_surplus
+    summary["sourceReferences"]["annualSurplusDeficit"] = reference("surplus / deficit")
+    summary["surplusAdjustments"] = sections["adjustments"]
+    for row in summary["sourceRevenueRows"]:
+        row.update({"originalLabel": row["label"], "normalizedCategory": row["category"],
+                    "sourceDocument": source_url, "fiscalYear": fiscal_year,
+                    "extractionConfidence": "medium"})
+    summary["structuredTableIssues"] = list(dict.fromkeys(issues))
+    summary["warnings"] = []
+    summary["parser"] = "capital_docling_structured_v1"
+    # Text-derived ancillary metrics were not verified through this table.
+    for key in ("capitalSpending", "capitalAssets", "debt", "cashInvestments"):
+        summary[key] = None
+    summary["expenseDetails"] = []
+    summary["expenseDetailSchedules"] = []
+    summary.update(validate_summary(summary))
+    return summary
+
 
 def parse_page_texts(page_texts, source_url=None, fiscal_year=None):
     operations_records = statement_page_records(page_texts, OPERATIONS_RE)
@@ -1239,6 +1407,7 @@ def parse_page_texts(page_texts, source_url=None, fiscal_year=None):
         )
 
     summary = {
+        "requiresSurplusValidation": True,
         "totalRevenue": rounded(total_revenue),
         "totalExpenses": rounded(total_expenses),
         "annualSurplusDeficit": rounded(surplus),
@@ -1435,6 +1604,21 @@ def parse_pdf_with_fallbacks(
                 ocr_warnings,
             )
         )
+
+    docling_result = docling_adapter.extract_pdf(pdf_bytes)
+    if docling_result.get("pages"):
+        try:
+            candidate = parse_structured_capital(docling_result, source_url, fiscal_year)
+            candidate.update(validate_summary(candidate))
+            stages.append(extraction_stage("docling", candidate.get("parseStatus", "error"), candidate.get("warnings")))
+            if candidate.get("publishable"):
+                return with_extraction_stages(candidate, stages)
+            if summary_score(candidate) > summary_score(best):
+                best = candidate
+        except Exception as exc:
+            stages.append(extraction_stage("docling", "error", [f"Docling output parsing failed: {type(exc).__name__}"]))
+    elif docling_result.get("status") != "disabled":
+        stages.append(extraction_stage("docling", docling_result.get("status", "error"), docling_result.get("warnings")))
 
     if not use_openai:
         warning = (

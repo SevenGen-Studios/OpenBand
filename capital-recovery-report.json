@@ -1,0 +1,1234 @@
+{
+  "apiCalls": 0,
+  "before": {
+    "postedSources": 1125,
+    "parsed": 567,
+    "partial": 228,
+    "failed": 304,
+    "notApplicable": 21,
+    "missing": 5,
+    "coveragePercent": 51.36
+  },
+  "after": {
+    "postedSources": 1125,
+    "parsed": 579,
+    "partial": 216,
+    "failed": 304,
+    "notApplicable": 21,
+    "missing": 5,
+    "coveragePercent": 52.45
+  },
+  "albertaBefore": {
+    "postedSources": 400,
+    "parsed": 134,
+    "partial": 133,
+    "failed": 133,
+    "notApplicable": 0,
+    "missing": 0,
+    "coveragePercent": 33.5
+  },
+  "albertaAfter": {
+    "postedSources": 400,
+    "parsed": 146,
+    "partial": 121,
+    "failed": 133,
+    "notApplicable": 0,
+    "missing": 0,
+    "coveragePercent": 36.5
+  },
+  "accepted": [
+    {
+      "bandId": "467",
+      "community": "Fort McKay First Nation",
+      "year": "2025-2026",
+      "parser": "capital_text_v3",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2025-2026&DOC=Audited consolidated financial statements&lang=eng"
+    },
+    {
+      "bandId": "464",
+      "community": "Cold Lake First Nations",
+      "year": "2024-2025",
+      "parser": "capital_docling_structured_v1",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=464&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng"
+    },
+    {
+      "bandId": "442",
+      "community": "Montana",
+      "year": "2024-2025",
+      "parser": "capital_text_v3",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=442&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng"
+    },
+    {
+      "bandId": "459",
+      "community": "Whitefish Lake",
+      "year": "2024-2025",
+      "parser": "capital_text_v3",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=459&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng"
+    },
+    {
+      "bandId": "455",
+      "community": "Sturgeon Lake Cree Nation",
+      "year": "2024-2025",
+      "parser": "capital_text_v3",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng"
+    },
+    {
+      "bandId": "467",
+      "community": "Fort McKay First Nation",
+      "year": "2023-2024",
+      "parser": "capital_text_v3",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng"
+    },
+    {
+      "bandId": "467",
+      "community": "Fort McKay First Nation",
+      "year": "2022-2023",
+      "parser": "capital_text_v3",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2022-2023&DOC=Audited consolidated financial statements&lang=eng"
+    },
+    {
+      "bandId": "442",
+      "community": "Montana",
+      "year": "2023-2024",
+      "parser": "capital_text_v3",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=442&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng"
+    },
+    {
+      "bandId": "459",
+      "community": "Whitefish Lake",
+      "year": "2023-2024",
+      "parser": "capital_text_v3",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=459&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng"
+    },
+    {
+      "bandId": "459",
+      "community": "Whitefish Lake",
+      "year": "2022-2023",
+      "parser": "capital_text_v3",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=459&FY=2022-2023&DOC=Audited consolidated financial statements&lang=eng"
+    },
+    {
+      "bandId": "457",
+      "community": "Swan River First Nation",
+      "year": "2022-2023",
+      "parser": "capital_text_v3",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=457&FY=2022-2023&DOC=Audited consolidated financial statements&lang=eng"
+    },
+    {
+      "bandId": "457",
+      "community": "Swan River First Nation",
+      "year": "2023-2024",
+      "parser": "capital_text_v3",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=457&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng"
+    }
+  ],
+  "attempts": [
+    {
+      "bandId": "467",
+      "band": "Fort McKay First Nation",
+      "fiscalYear": "2025-2026",
+      "status": "parsed",
+      "completeness": "complete",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "parsed",
+          "warnings": [
+            "Annual surplus includes separately reported adjustments",
+            "Capital spending was not extracted",
+            "Debt summary was not extracted"
+          ]
+        }
+      ],
+      "reasons": [
+        "Annual surplus includes separately reported adjustments",
+        "Capital spending was not extracted",
+        "Debt summary was not extracted"
+      ]
+    },
+    {
+      "bandId": "459",
+      "band": "Whitefish Lake",
+      "fiscalYear": "2024-2025",
+      "status": "parsed",
+      "completeness": "complete",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "parsed",
+          "warnings": [
+            "Annual surplus includes separately reported adjustments",
+            "Debt summary was not extracted"
+          ]
+        }
+      ],
+      "reasons": [
+        "Annual surplus includes separately reported adjustments",
+        "Debt summary was not extracted"
+      ]
+    },
+    {
+      "bandId": "457",
+      "band": "Swan River First Nation",
+      "fiscalYear": "2024-2025",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Revenue, expenses, and annual surplus do not reconcile",
+            "Debt summary was not extracted"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "455",
+      "band": "Sturgeon Lake Cree Nation",
+      "fiscalYear": "2024-2025",
+      "status": "parsed",
+      "completeness": "complete",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "parsed",
+          "warnings": [
+            "Annual surplus includes separately reported adjustments",
+            "Capital spending was not extracted"
+          ]
+        }
+      ],
+      "reasons": [
+        "Annual surplus includes separately reported adjustments",
+        "Capital spending was not extracted"
+      ]
+    },
+    {
+      "bandId": "444",
+      "band": "Samson",
+      "fiscalYear": "2024-2025",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Revenue, expenses, and annual surplus do not reconcile",
+            "Extreme expense category amount; source verification recommended"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "457",
+      "band": "Swan River First Nation",
+      "fiscalYear": "2024-2025",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Revenue, expenses, and annual surplus do not reconcile",
+            "Debt summary was not extracted"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "444",
+      "band": "Samson",
+      "fiscalYear": "2024-2025",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Revenue, expenses, and annual surplus do not reconcile",
+            "Extreme expense category amount; source verification recommended"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "462",
+      "band": "Saddle Lake Cree Nation",
+      "fiscalYear": "2024-2025",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Expense categories exceed reported expenses",
+            "Revenue, expenses, and annual surplus do not reconcile"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "442",
+      "band": "Montana",
+      "fiscalYear": "2024-2025",
+      "status": "parsed",
+      "completeness": "complete",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "parsed",
+          "warnings": [
+            "Annual surplus includes separately reported adjustments",
+            "Debt summary was not extracted"
+          ]
+        }
+      ],
+      "reasons": [
+        "Annual surplus includes separately reported adjustments",
+        "Debt summary was not extracted"
+      ]
+    },
+    {
+      "bandId": "461",
+      "band": "Mikisew Cree First Nation",
+      "fiscalYear": "2024-2025",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Revenue categories do not reconcile to total revenue",
+            "Revenue, expenses, and annual surplus do not reconcile"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "452",
+      "band": "Kapawe'no First Nation",
+      "fiscalYear": "2024-2025",
+      "status": "preserved_existing",
+      "completeness": "failed",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "No clear statement of operations found"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "467",
+      "band": "Fort McKay First Nation",
+      "fiscalYear": "2024-2025",
+      "status": "manual_review",
+      "completeness": "failed",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "No clear statement of operations found"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "No clear statement of operations found",
+        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+      ]
+    },
+    {
+      "bandId": "448",
+      "band": "Dene Tha'",
+      "fiscalYear": "2024-2025",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Revenue categories do not reconcile to total revenue",
+            "Revenue, expenses, and annual surplus do not reconcile",
+            "Debt summary was not extracted"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "464",
+      "band": "Cold Lake First Nations",
+      "fiscalYear": "2024-2025",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Revenue, expenses, and annual surplus do not reconcile",
+            "Capital spending was not extracted",
+            "Debt summary was not extracted"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "435",
+      "band": "Blood",
+      "fiscalYear": "2024-2025",
+      "status": "manual_review",
+      "completeness": "failed",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "No clear statement of operations found"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "No clear statement of operations found",
+        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+      ]
+    },
+    {
+      "bandId": "459",
+      "band": "Whitefish Lake",
+      "fiscalYear": "2023-2024",
+      "status": "parsed",
+      "completeness": "complete",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "parsed",
+          "warnings": [
+            "Annual surplus includes separately reported adjustments",
+            "Debt summary was not extracted"
+          ]
+        }
+      ],
+      "reasons": [
+        "Annual surplus includes separately reported adjustments",
+        "Debt summary was not extracted"
+      ]
+    },
+    {
+      "bandId": "457",
+      "band": "Swan River First Nation",
+      "fiscalYear": "2023-2024",
+      "status": "parsed",
+      "completeness": "complete",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "parsed",
+          "warnings": [
+            "Annual surplus includes separately reported adjustments",
+            "Debt summary was not extracted"
+          ]
+        }
+      ],
+      "reasons": [
+        "Annual surplus includes separately reported adjustments",
+        "Debt summary was not extracted"
+      ]
+    },
+    {
+      "bandId": "444",
+      "band": "Samson",
+      "fiscalYear": "2023-2024",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Revenue, expenses, and annual surplus do not reconcile",
+            "Extreme expense category amount; source verification recommended",
+            "Debt summary was not extracted"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "462",
+      "band": "Saddle Lake Cree Nation",
+      "fiscalYear": "2023-2024",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Expense categories exceed reported expenses",
+            "A reported total was extracted from the wrong fiscal-year column",
+            "Revenue, expenses, and annual surplus do not reconcile",
+            "Debt summary was not extracted"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "442",
+      "band": "Montana",
+      "fiscalYear": "2023-2024",
+      "status": "parsed",
+      "completeness": "complete",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "parsed",
+          "warnings": [
+            "Annual surplus includes separately reported adjustments",
+            "Debt summary was not extracted"
+          ]
+        }
+      ],
+      "reasons": [
+        "Annual surplus includes separately reported adjustments",
+        "Debt summary was not extracted"
+      ]
+    },
+    {
+      "bandId": "461",
+      "band": "Mikisew Cree First Nation",
+      "fiscalYear": "2023-2024",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Revenue categories do not reconcile to total revenue",
+            "Revenue, expenses, and annual surplus do not reconcile"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "466",
+      "band": "Kehewin Cree Nation",
+      "fiscalYear": "2023-2024",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Revenue, expenses, and annual surplus do not reconcile"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "467",
+      "band": "Fort McKay First Nation",
+      "fiscalYear": "2023-2024",
+      "status": "parsed",
+      "completeness": "complete",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "parsed",
+          "warnings": [
+            "Annual surplus includes separately reported adjustments",
+            "Capital spending was not extracted",
+            "Debt summary was not extracted"
+          ]
+        }
+      ],
+      "reasons": [
+        "Annual surplus includes separately reported adjustments",
+        "Capital spending was not extracted",
+        "Debt summary was not extracted"
+      ]
+    },
+    {
+      "bandId": "450",
+      "band": "Driftpile Cree Nation",
+      "fiscalYear": "2023-2024",
+      "status": "manual_review",
+      "completeness": "failed",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "No clear statement of operations found"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "No clear statement of operations found",
+        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+      ]
+    },
+    {
+      "bandId": "448",
+      "band": "Dene Tha'",
+      "fiscalYear": "2023-2024",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Revenue categories do not reconcile to total revenue",
+            "Expense categories exceed reported expenses",
+            "Revenue, expenses, and annual surplus do not reconcile",
+            "Extreme expense category amount; source verification recommended",
+            "Debt summary was not extracted"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "459",
+      "band": "Whitefish Lake",
+      "fiscalYear": "2022-2023",
+      "status": "parsed",
+      "completeness": "complete",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "parsed",
+          "warnings": [
+            "Annual surplus includes separately reported adjustments",
+            "Debt summary was not extracted"
+          ]
+        }
+      ],
+      "reasons": [
+        "Annual surplus includes separately reported adjustments",
+        "Debt summary was not extracted"
+      ]
+    },
+    {
+      "bandId": "446",
+      "band": "Tallcree Tribal Government",
+      "fiscalYear": "2022-2023",
+      "status": "manual_review",
+      "completeness": "failed",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "No clear statement of operations found"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "No clear statement of operations found",
+        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+      ]
+    },
+    {
+      "bandId": "457",
+      "band": "Swan River First Nation",
+      "fiscalYear": "2022-2023",
+      "status": "parsed",
+      "completeness": "complete",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "parsed",
+          "warnings": [
+            "Annual surplus includes separately reported adjustments",
+            "Debt summary was not extracted"
+          ]
+        }
+      ],
+      "reasons": [
+        "Annual surplus includes separately reported adjustments",
+        "Debt summary was not extracted"
+      ]
+    },
+    {
+      "bandId": "462",
+      "band": "Saddle Lake Cree Nation",
+      "fiscalYear": "2022-2023",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Expense categories exceed reported expenses",
+            "Revenue, expenses, and annual surplus do not reconcile"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "461",
+      "band": "Mikisew Cree First Nation",
+      "fiscalYear": "2022-2023",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Revenue categories do not reconcile to total revenue",
+            "Revenue, expenses, and annual surplus do not reconcile"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "466",
+      "band": "Kehewin Cree Nation",
+      "fiscalYear": "2022-2023",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Revenue, expenses, and annual surplus do not reconcile"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "467",
+      "band": "Fort McKay First Nation",
+      "fiscalYear": "2022-2023",
+      "status": "parsed",
+      "completeness": "complete",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "parsed",
+          "warnings": [
+            "Annual surplus includes separately reported adjustments",
+            "Capital spending was not extracted",
+            "Debt summary was not extracted"
+          ]
+        }
+      ],
+      "reasons": [
+        "Annual surplus includes separately reported adjustments",
+        "Capital spending was not extracted",
+        "Debt summary was not extracted"
+      ]
+    },
+    {
+      "bandId": "448",
+      "band": "Dene Tha'",
+      "fiscalYear": "2022-2023",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Revenue categories do not reconcile to total revenue",
+            "Revenue, expenses, and annual surplus do not reconcile",
+            "Extreme expense category amount; source verification recommended",
+            "Debt summary was not extracted"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "464",
+      "band": "Cold Lake First Nations",
+      "fiscalYear": "2022-2023",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Total revenue was not extracted",
+            "Revenue, expenses, and annual surplus do not reconcile",
+            "Capital spending was not extracted"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    },
+    {
+      "bandId": "435",
+      "band": "Blood",
+      "fiscalYear": "2022-2023",
+      "status": "preserved_existing",
+      "completeness": "partial",
+      "parser": "capital_text_v3",
+      "extractionStages": [
+        {
+          "stage": "local",
+          "status": "manual_review",
+          "warnings": [
+            "Total revenue was not extracted",
+            "Revenue breakdown is incomplete",
+            "Expense breakdown is incomplete",
+            "A reported total was extracted from the wrong fiscal-year column",
+            "Revenue, expenses, and annual surplus do not reconcile",
+            "Capital spending was not extracted",
+            "Debt summary was not extracted"
+          ]
+        },
+        {
+          "stage": "ocr",
+          "status": "skipped_ocr_unavailable",
+          "warnings": [
+            "Local OCR unavailable; missing tesseract or rapidocr_onnxruntime"
+          ]
+        },
+        {
+          "stage": "openai",
+          "status": "disabled",
+          "warnings": [
+            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+          ]
+        }
+      ],
+      "reasons": [
+        "New extraction was less complete; existing publishable data preserved"
+      ]
+    }
+  ],
+  "notes": [
+    "Cold Lake was recovered from cached structured extraction.",
+    "Failed trials were not merged; verified and already publishable records were preserved.",
+    "Local Tesseract/Poppler OCR unavailable; scans need free OCR on GitHub Actions.",
+    "Automated validation is not independent source verification."
+  ]
+}

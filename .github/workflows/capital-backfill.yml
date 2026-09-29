@@ -1,6 +1,9 @@
 name: Backfill Community Capital data
 
 on:
+  push:
+    branches: [main]
+    paths: [capital-recovery-report.json]
   workflow_dispatch:
     inputs:
       years:
@@ -22,6 +25,11 @@ on:
         default: "30"
       use_openai:
         description: "Last resort: use paid OpenAI fallback after local parsing and OCR fail"
+        required: true
+        type: boolean
+        default: false
+      use_docling:
+        description: "Try optional local Docling after standard extraction and OCR"
         required: true
         type: boolean
         default: false
@@ -71,6 +79,10 @@ jobs:
       - name: Install free local OCR tools
         run: sudo apt-get update && sudo apt-get install -y poppler-utils tesseract-ocr
 
+      - name: Install optional local Docling
+        if: ${{ inputs.use_docling }}
+        run: pip install -r requirements-docling.txt --extra-index-url https://download.pytorch.org/whl/cpu
+
       - name: Run parser tests
         run: python -m unittest discover -s tests -v
 
@@ -86,10 +98,11 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: gpt-4.1
-          CAPITAL_YEARS: ${{ inputs.years }}
-          CAPITAL_PROVINCE: ${{ inputs.province }}
-          CAPITAL_LIMIT: ${{ inputs.max_filings }}
-          USE_OPENAI: ${{ inputs.use_openai }}
+          CAPITAL_YEARS: ${{ inputs.years || '2024-2025' }}
+          CAPITAL_PROVINCE: ${{ inputs.province || 'AB' }}
+          CAPITAL_LIMIT: ${{ inputs.max_filings || '10' }}
+          USE_OPENAI: ${{ inputs.use_openai || false }}
+          OPENBAND_ENABLE_DOCLING: ${{ inputs.use_docling || false }}
         run: |
           set -euo pipefail
           IFS=',' read -ra YEARS <<< "$CAPITAL_YEARS"
@@ -103,7 +116,7 @@ jobs:
           if [ "${{ inputs.reparse_existing }}" = "true" ]; then
             COMMON_ARGS+=(--force)
           fi
-          if [ "${{ inputs.unresolved_only }}" = "true" ]; then
+          if [ "${{ github.event_name }}" = "push" ] || [ "${{ inputs.unresolved_only }}" = "true" ]; then
             COMMON_ARGS+=(--unresolved-only)
           fi
           if [ "${{ inputs.refresh_existing }}" != "true" ]; then

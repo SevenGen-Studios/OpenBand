@@ -28,6 +28,7 @@ urllib.request.urlopen = _patched_urlopen
 import scraper  # noqa: E402
 from tools import local_ocr  # noqa: E402
 from tools import layout_tables  # noqa: E402
+from tools import docling_adapter  # noqa: E402
 from tools import parser_quality  # noqa: E402
 
 scraper.urllib.request.urlopen = _patched_urlopen
@@ -73,6 +74,22 @@ def _openai_file_part(pdf_bytes, pdf_url=None):
 
 def _extract_with_openai_vision_fixed(pdf_bytes, pdf_url=None):
     global _openai_blocked_reason
+
+    docling_result = docling_adapter.extract_pdf(pdf_bytes)
+    if docling_result.get("status") != "disabled":
+        for table in docling_result.get("tables", []):
+            people = _extract_people_from_keyword_table(table["rows"])
+            if not people:
+                continue
+            result = parser_quality.apply_validation_metadata({
+                "parse_status": "ok_docling", "people": people,
+                "warnings": warnings + docling_result.get("warnings", []),
+            })
+            if not result.get("manual_review_required"):
+                result["parse_stages"] = stages + [_stage("docling", "ok_docling")]
+                result["source_page"] = table.get("page")
+                return result
+        stages.append(_stage("docling", "no_validated_rows", docling_result.get("warnings", [])))
 
     if not openai_fallback_enabled():
         return {
