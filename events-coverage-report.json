@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-28T20:19:54Z",
+  "generated": "2026-09-29T18:57:53Z",
   "before": 90,
-  "after": 90,
-  "newCandidates": 200,
+  "after": 92,
+  "newCandidates": 177,
   "sourceRuns": [
     {
       "bandId": 438,
@@ -91,9 +91,9 @@
       "sourceUrl": "https://www.bloodtribe.org/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 14,
-      "pagesChecked": 6,
-      "mediaChecked": 3
+      "eventsFound": 0,
+      "pagesChecked": 1,
+      "mediaChecked": 0
     },
     {
       "bandId": 433,
@@ -134,10 +134,11 @@
       "sourceName": "Dene Tha' official website",
       "sourceUrl": "https://www.denetha.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 9,
-      "pagesChecked": 6,
-      "mediaChecked": 0
+      "status": "failed",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "HTTP Error 503: Service Unavailable"
     },
     {
       "bandId": 450,
@@ -180,7 +181,7 @@
       "sourceUrl": "https://www.ermineskin.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 9,
+      "eventsFound": 11,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -371,7 +372,7 @@
       "sourceUrl": "https://piikanination.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 15,
+      "eventsFound": 14,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -482,7 +483,7 @@
       "sourceUrl": "https://www.tsuutina.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 34,
+      "eventsFound": 33,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -578,7 +579,7 @@
   ],
   "reviewCount": 3,
   "statusCounts": {
-    "failed": 9,
-    "ok": 42
+    "failed": 10,
+    "ok": 41
   }
 }
