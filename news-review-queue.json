@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-30T18:09:12Z",
+  "generated": "2026-10-01T18:37:00Z",
   "items": [
     {
       "bandId": 463,
@@ -39,6 +39,17 @@
       "detectedDate": "2026-09-06",
       "status": "extracted",
       "reason": "Source-backed media text extracted"
+    },
+    {
+      "bandId": 463,
+      "communityName": "Athabasca Chipewyan First Nation",
+      "sourceName": "Athabasca Chipewyan First Nation official website",
+      "url": "https://acfn.com/wp-content/uploads/2026/09/ACFN-AGM-Poster-2revised-Final-150x150.jpg",
+      "extractionMethod": "image_ocr",
+      "detectedTitle": null,
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
     },
     {
       "bandId": 473,
@@ -90,6 +101,55 @@
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
     },
     {
+      "bandId": 435,
+      "communityName": "Blood",
+      "sourceName": "Blood official website",
+      "url": "https://mail.bloodtribe.org/owa",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: URLError: <urlopen error [Errno -5] No address associated with hostname>"
+    },
+    {
+      "bandId": 435,
+      "communityName": "Blood",
+      "sourceName": "Blood official website",
+      "url": "https://outlook.office365.com/",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 417: Expectation Failed"
+    },
+    {
+      "bandId": 435,
+      "communityName": "Blood",
+      "sourceName": "Blood official website",
+      "url": "https://bloodtribe.org/wp-content/uploads/2026/09/HUDRLDRI-Policies.pdf",
+      "extractionMethod": "pdf_text",
+      "detectedTitle": "HOUSING UNIT DISPUTE",
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 435,
+      "communityName": "Blood",
+      "sourceName": "Blood official website",
+      "url": "https://bloodtribe.org/wp-content/uploads/2026/09/Public-Notice-OFFICE-CLOSURE-Sept-2026-150x150.png",
+      "extractionMethod": "image_ocr",
+      "detectedTitle": null,
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 435,
+      "communityName": "Blood",
+      "sourceName": "Blood official website",
+      "url": "https://bloodtribe.org/wp-content/uploads/2025/12/Blood-Tribe-Economic-Development-150x150.jpeg",
+      "extractionMethod": "image_ocr",
+      "detectedTitle": null,
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
       "bandId": 470,
       "communityName": "Chipewyan Prairie First Nation",
       "sourceName": "Chipewyan Prairie First Nation official website",
@@ -128,7 +188,7 @@
       "sourceName": "Driftpile Cree Nation official website",
       "url": "https://dcn450.com/wp-content/uploads/2026/03/DCN-Annuities-Payment-Application.pdf",
       "extractionMethod": "pdf_ocr",
-      "detectedTitle": "Annuity Payment Application Click Here",
+      "detectedTitle": "Community Update",
       "detectedDate": null,
       "status": "manual_review",
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
@@ -203,7 +263,7 @@
       "bandId": 443,
       "communityName": "Ermineskin Tribe",
       "sourceName": "Ermineskin Tribe official website",
-      "url": "https://ermineskin.ca/wp-content/uploads/2026/09/825278335_2271500086724446_8787994922172184159_n-819x1024.png",
+      "url": "https://ermineskin.ca/wp-content/uploads/2026/09/828995906_28370198769287837_6619439326670745661_n-576x1024.jpg",
       "extractionMethod": "image_ocr",
       "detectedTitle": ".path{fill:none;stroke:#333;stroke-miterlimit:10;stroke-width:1.5px;}",
       "detectedDate": null,
@@ -214,7 +274,7 @@
       "bandId": 443,
       "communityName": "Ermineskin Tribe",
       "sourceName": "Ermineskin Tribe official website",
-      "url": "https://ermineskin.ca/wp-content/uploads/2026/09/825330032_2978086159200109_7941389991237199387_n-1024x1024.png",
+      "url": "https://ermineskin.ca/wp-content/uploads/2026/09/828467656_2159060734991237_3722070702627696692_n-1024x576.png",
       "extractionMethod": "image_ocr",
       "detectedTitle": ".path{fill:none;stroke:#333;stroke-miterlimit:10;stroke-width:1.5px;}",
       "detectedDate": null,
@@ -283,7 +343,7 @@
       "sourceName": "Fort McMurray #468 First Nation official website",
       "url": "https://www.fmfn468.com/media/jeshbath/community-pillars-v4.png?rmode=max&width=657&height=658",
       "extractionMethod": "image_ocr",
-      "detectedTitle": null,
+      "detectedTitle": "Culture ¥, ‘ ‘",
       "detectedDate": null,
       "status": "manual_review",
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
@@ -653,6 +713,30 @@
       "bandId": 444,
       "communityName": "Samson",
       "sourceName": "Samson official website",
+      "url": "https://samsoncree.com/samson-celebration-powwow-initiation-aug-2026",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://samsoncree.com/temporary-closure-for-2nd-3rd-floors-of-cta-building-july-23-24-2026",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://samsoncree.com/nipisihkopahk-acimowin-newsletter-may2026",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
       "url": "https://samsoncree.com/after-school-care-program-with-samson-head-start",
       "status": "detail_unverified",
       "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
@@ -662,6 +746,14 @@
       "communityName": "Samson",
       "sourceName": "Samson official website",
       "url": "https://samsoncree.com/scn-elders-community-engagement-sept-25-2026",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://samsoncree.com/nipisihkopahk-acimowin-newsletter-may2026",
       "status": "detail_unverified",
       "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
     },
@@ -704,6 +796,30 @@
       "url": "https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsamsoncree.com%2Fsocial-media-and-online-gaming-safety-july-2026%2F&title=Social+media+and+Online+Gaming+Safety+July.+2026&summary=&source=SCN",
       "status": "detail_unverified",
       "reason": "detail fetch failed: PermissionError: robots.txt disallows https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsamsoncree.com%2Fsocial-media-and-online-gaming-safety-july-2026%2F&title=Social+media+and+Online+Gaming+Safety+July.+2026&summary=&source=SCN"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://samsoncree.com/samson-celebration-powwow-initiation-aug-2026",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://samsoncree.com/temporary-closure-for-2nd-3rd-floors-of-cta-building-july-23-24-2026",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://samsoncree.com/nipisihkopahk-acimowin-newsletter-may2026",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 444,
@@ -999,128 +1115,106 @@
       "bandId": 432,
       "communityName": "Tsuut'ina Nation",
       "sourceName": "Tsuut'ina Nation official website",
-      "url": "https://tsuutina.com/event/baby-me-swimming-program-group-3/2026-08-30",
+      "url": "https://tsuutina.com/event/elders-tea-coming-home-youth-competition-powwow",
       "status": "detail_unverified",
-      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/baby-me-swimming-program-group-3/2026-08-30"
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/elders-tea-coming-home-youth-competition-powwow"
     },
     {
       "bandId": 432,
       "communityName": "Tsuut'ina Nation",
       "sourceName": "Tsuut'ina Nation official website",
-      "url": "https://tsuutina.com/event/mobile-optometry-clinic-september-3rd-2026",
+      "url": "https://tsuutina.com/event/coming-home-youth-powwow",
       "status": "detail_unverified",
-      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/mobile-optometry-clinic-september-3rd-2026"
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/coming-home-youth-powwow"
     },
     {
       "bandId": 432,
       "communityName": "Tsuut'ina Nation",
       "sourceName": "Tsuut'ina Nation official website",
-      "url": "https://tsuutina.com/event/medicine-picking",
+      "url": "https://tsuutina.com/event/youth-program-evening-ballet/2026-09-28",
       "status": "detail_unverified",
-      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/medicine-picking"
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/youth-program-evening-ballet/2026-09-28"
     },
     {
       "bandId": 432,
       "communityName": "Tsuut'ina Nation",
       "sourceName": "Tsuut'ina Nation official website",
-      "url": "https://tsuutina.com/event/baby-me-swimming-program-group-3/2026-09-06",
+      "url": "https://tsuutina.com/event/every-child-matters-community-walk-2026",
       "status": "detail_unverified",
-      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/baby-me-swimming-program-group-3/2026-09-06"
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/every-child-matters-community-walk-2026"
     },
     {
       "bandId": 432,
       "communityName": "Tsuut'ina Nation",
       "sourceName": "Tsuut'ina Nation official website",
-      "url": "https://tsuutina.com/event/self-empowerment-program-4",
+      "url": "https://tsuutina.com/event/chair-yoga-and-gentle-movement-class",
       "status": "detail_unverified",
-      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/self-empowerment-program-4"
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/chair-yoga-and-gentle-movement-class"
     },
     {
       "bandId": 432,
       "communityName": "Tsuut'ina Nation",
       "sourceName": "Tsuut'ina Nation official website",
-      "url": "https://tsuutina.com/event/ages-stages-screenings",
+      "url": "https://tsuutina.com/event/bullhead-community-hall-donation-day-initiative",
       "status": "detail_unverified",
-      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/ages-stages-screenings"
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/bullhead-community-hall-donation-day-initiative"
     },
     {
       "bandId": 432,
       "communityName": "Tsuut'ina Nation",
       "sourceName": "Tsuut'ina Nation official website",
-      "url": "https://tsuutina.com/event/self-empowerment-program-4/2026-09-09",
+      "url": "https://tsuutina.com/event/drive-in-movie-night",
       "status": "detail_unverified",
-      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/self-empowerment-program-4/2026-09-09"
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/drive-in-movie-night"
     },
     {
       "bandId": 432,
       "communityName": "Tsuut'ina Nation",
       "sourceName": "Tsuut'ina Nation official website",
-      "url": "https://tsuutina.com/event/chiila-elementary-school-open-house-2026",
+      "url": "https://tsuutina.com/event/youth-program-evening-ballet/2026-10-05",
       "status": "detail_unverified",
-      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/chiila-elementary-school-open-house-2026"
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/youth-program-evening-ballet/2026-10-05"
     },
     {
       "bandId": 432,
       "communityName": "Tsuut'ina Nation",
       "sourceName": "Tsuut'ina Nation official website",
-      "url": "https://tsuutina.com/event/self-empowerment-program-4/2026-09-10",
+      "url": "https://tsuutina.com/event/community-engagement-sessions-your-voice-in-how-we-hire",
       "status": "detail_unverified",
-      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/self-empowerment-program-4/2026-09-10"
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/community-engagement-sessions-your-voice-in-how-we-hire"
     },
     {
       "bandId": 432,
       "communityName": "Tsuut'ina Nation",
       "sourceName": "Tsuut'ina Nation official website",
-      "url": "https://tsuutina.com/event/tosguna-elders-gathering",
+      "url": "https://tsuutina.com/event/asl-plains-indian-sign-language-classes",
       "status": "detail_unverified",
-      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/tosguna-elders-gathering"
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/asl-plains-indian-sign-language-classes"
     },
     {
       "bandId": 432,
       "communityName": "Tsuut'ina Nation",
       "sourceName": "Tsuut'ina Nation official website",
-      "url": "https://tsuutina.com/event/medicine-picking-youth-program",
+      "url": "https://tsuutina.com/event/psp-ucalgary-nursing-info-session",
       "status": "detail_unverified",
-      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/medicine-picking-youth-program"
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/psp-ucalgary-nursing-info-session"
     },
     {
       "bandId": 432,
       "communityName": "Tsuut'ina Nation",
       "sourceName": "Tsuut'ina Nation official website",
-      "url": "https://tsuutina.com/event/tsuutina-trail-run-2026",
+      "url": "https://tsuutina.com/event/community-engagement-sessions-your-voice-in-how-we-hire/2026-10-08",
       "status": "detail_unverified",
-      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/tsuutina-trail-run-2026"
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/community-engagement-sessions-your-voice-in-how-we-hire/2026-10-08"
     },
     {
       "bandId": 432,
       "communityName": "Tsuut'ina Nation",
       "sourceName": "Tsuut'ina Nation official website",
-      "url": "https://tsuutina.com/wp-content/uploads/2026/05/20260519_Baby-and-Me-Swimming-Program-scaled.jpg",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": null,
+      "url": "https://tsuutina.com/wp-content/uploads/2022/06/Nation-App-Promo.pdf",
+      "extractionMethod": "pdf_text",
+      "detectedTitle": "How to Get the App",
       "detectedDate": null,
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 432,
-      "communityName": "Tsuut'ina Nation",
-      "sourceName": "Tsuut'ina Nation official website",
-      "url": "https://tsuutina.com/wp-content/uploads/2025/01/Da-Hi-January-2026.pdf",
-      "extractionMethod": "document_too_large",
-      "detectedTitle": "January DÀ-HÍ 2026",
-      "detectedDate": "2026-01-01",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 432,
-      "communityName": "Tsuut'ina Nation",
-      "sourceName": "Tsuut'ina Nation official website",
-      "url": "https://tsuutina.com/wp-content/uploads/2025/01/Da-Hi-February-2026-Final-3.pdf",
-      "extractionMethod": "document_too_large",
-      "detectedTitle": "February DÀ-HÍ 2026",
-      "detectedDate": "2026-01-01",
       "status": "manual_review",
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
     },
@@ -1187,7 +1281,7 @@
         "source-backed"
       ],
       "bandId": 463,
-      "discoveredAt": "2026-09-30T18:02:26Z",
+      "discoveredAt": "2026-10-01T18:30:25Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1214,7 +1308,7 @@
         "source-backed"
       ],
       "bandId": 463,
-      "discoveredAt": "2026-09-30T18:02:26Z",
+      "discoveredAt": "2026-10-01T18:30:25Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1241,13 +1335,104 @@
         "source-backed"
       ],
       "bandId": 463,
-      "discoveredAt": "2026-09-30T18:03:32Z",
+      "discoveredAt": "2026-10-01T18:31:07Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_text",
       "sourcePage": "https://acfn.com/",
       "detailVerified": false,
       "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "blood-2026-09-30-e8d453b5b9",
+      "storyKey": "435-2026-09-30-blood-tribe-webmail",
+      "title": "Blood Tribe Webmail",
+      "communityName": "Blood",
+      "communityAliases": [
+        "Blood Tribe",
+        "Kainai Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Employment",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Blood official website",
+      "publishedAt": "2026-09-30",
+      "datePrecision": "day",
+      "url": "https://mail.bloodtribe.org/owa",
+      "summary": "Skip to content Menu Governance Blood Tribe Chief & Council Bylaws Kainayssini Administration Directory Departments Emergency Contacts Opioid Response Events News Jobs Search for: Search Button Quick Links: Blood Tribe Chief & Council Entities Contact Us Facebook Instagram YouTube TikTok Open Search Window Blood Tribe Webmail BT Office 365 Email Oki, Welcome! To promote the rights and well-being of our Nation under t.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 435,
+      "discoveredAt": "2026-10-01T18:30:23Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://bloodtribe.org/",
+      "thumbnail": "https://bloodtribe.org/wp-content/uploads/2023/05/header_logo.png",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "blood-2026-09-30-40861a0c2f",
+      "storyKey": "435-2026-09-30-bt-office-365-email",
+      "title": "BT Office 365 Email",
+      "communityName": "Blood",
+      "communityAliases": [
+        "Blood Tribe",
+        "Kainai Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Employment",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Blood official website",
+      "publishedAt": "2026-09-30",
+      "datePrecision": "day",
+      "url": "https://outlook.office365.com/",
+      "summary": "Skip to content Menu Governance Blood Tribe Chief & Council Bylaws Kainayssini Administration Directory Departments Emergency Contacts Opioid Response Events News Jobs Search for: Search Button Quick Links: Blood Tribe Chief & Council Entities Contact Us Facebook Instagram YouTube TikTok Open Search Window Blood Tribe Webmail BT Office 365 Email Oki, Welcome! To promote the rights and well-being of our Nation under t.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 435,
+      "discoveredAt": "2026-10-01T18:30:23Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://bloodtribe.org/",
+      "thumbnail": "https://bloodtribe.org/wp-content/uploads/2023/05/header_logo.png",
+      "reviewReason": "Source URL is a homepage or archive rather than a dated article"
+    },
+    {
+      "id": "blood-2026-09-26-c9fb78d53d",
+      "storyKey": "435-2026-09-26-skip-to-content",
+      "title": "Skip to content",
+      "communityName": "Blood",
+      "communityAliases": [
+        "Blood Tribe",
+        "Kainai Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Employment",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Blood official website",
+      "publishedAt": "2026-09-25",
+      "datePrecision": "day",
+      "url": "https://bloodtribe.org/public-notice-blood-tribe-bottle-depot-to-be-closed-on-saturday-september-26-2026",
+      "summary": "Please be advised the Blood Tribe Bottle Depot will be closed on Saturday, September 26, 2026, due to staff shortage. The Bottle Depot will reopen on Tuesday, September 29.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 435,
+      "discoveredAt": "2026-10-01T18:30:35Z",
+      "communityConfidence": 0.98,
+      "dateSource": "article:published_time",
+      "extractionMethod": "html",
+      "sourcePage": "https://bloodtribe.org/public-notice-blood-tribe-bottle-depot-to-be-closed-on-saturday-september-26-2026",
+      "thumbnail": "https://bloodtribe.org/wp-content/uploads/2023/05/header_logo.png",
+      "detailVerified": true,
+      "reviewReason": "Title does not clearly describe a supported community update"
     },
     {
       "id": "chipewyan-prairie-first-nation-2026-07-21-dd7d660d1f",
@@ -1268,7 +1453,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-09-30T18:02:30Z",
+      "discoveredAt": "2026-10-01T18:30:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1294,7 +1479,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-09-30T18:02:30Z",
+      "discoveredAt": "2026-10-01T18:30:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1320,7 +1505,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-09-30T18:02:30Z",
+      "discoveredAt": "2026-10-01T18:30:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1346,7 +1531,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-09-30T18:02:30Z",
+      "discoveredAt": "2026-10-01T18:30:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1372,7 +1557,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-09-30T18:02:30Z",
+      "discoveredAt": "2026-10-01T18:30:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1398,7 +1583,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-09-30T18:02:30Z",
+      "discoveredAt": "2026-10-01T18:30:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1424,7 +1609,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-09-30T18:02:30Z",
+      "discoveredAt": "2026-10-01T18:30:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1450,7 +1635,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-09-30T18:02:30Z",
+      "discoveredAt": "2026-10-01T18:30:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1476,7 +1661,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-09-30T18:02:30Z",
+      "discoveredAt": "2026-10-01T18:30:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1502,7 +1687,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-09-30T18:02:30Z",
+      "discoveredAt": "2026-10-01T18:30:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1528,7 +1713,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-09-30T18:02:30Z",
+      "discoveredAt": "2026-10-01T18:30:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1554,7 +1739,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-09-30T18:02:30Z",
+      "discoveredAt": "2026-10-01T18:30:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1580,7 +1765,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-09-30T18:02:30Z",
+      "discoveredAt": "2026-10-01T18:30:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1606,7 +1791,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-09-30T18:02:45Z",
+      "discoveredAt": "2026-10-01T18:30:43Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_text",
@@ -1633,7 +1818,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-09-30T18:02:38Z",
+      "discoveredAt": "2026-10-01T18:31:01Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1661,7 +1846,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-09-30T18:03:06Z",
+      "discoveredAt": "2026-10-01T18:31:28Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1687,7 +1872,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-09-30T18:02:38Z",
+      "discoveredAt": "2026-10-01T18:31:01Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1715,7 +1900,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-09-30T18:02:38Z",
+      "discoveredAt": "2026-10-01T18:31:01Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1743,7 +1928,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-09-30T18:02:38Z",
+      "discoveredAt": "2026-10-01T18:31:01Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1771,7 +1956,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-09-30T18:02:38Z",
+      "discoveredAt": "2026-10-01T18:31:01Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1799,7 +1984,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-09-30T18:02:38Z",
+      "discoveredAt": "2026-10-01T18:31:01Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1827,7 +2012,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-09-30T18:03:06Z",
+      "discoveredAt": "2026-10-01T18:31:28Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1853,7 +2038,7 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-09-30T18:03:01Z",
+      "discoveredAt": "2026-10-01T18:31:10Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1881,7 +2066,7 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-09-30T18:03:01Z",
+      "discoveredAt": "2026-10-01T18:31:10Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1909,7 +2094,7 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-09-30T18:03:01Z",
+      "discoveredAt": "2026-10-01T18:31:10Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1937,7 +2122,7 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-09-30T18:03:01Z",
+      "discoveredAt": "2026-10-01T18:31:10Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1965,7 +2150,7 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-09-30T18:03:01Z",
+      "discoveredAt": "2026-10-01T18:31:10Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1993,7 +2178,7 @@
         "source-backed"
       ],
       "bandId": 467,
-      "discoveredAt": "2026-09-30T18:03:08Z",
+      "discoveredAt": "2026-10-01T18:31:02Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2019,7 +2204,7 @@
         "source-backed"
       ],
       "bandId": 467,
-      "discoveredAt": "2026-09-30T18:03:08Z",
+      "discoveredAt": "2026-10-01T18:31:02Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2049,7 +2234,7 @@
         "source-backed"
       ],
       "bandId": 475,
-      "discoveredAt": "2026-09-30T18:03:35Z",
+      "discoveredAt": "2026-10-01T18:31:08Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2076,7 +2261,7 @@
         "source-backed"
       ],
       "bandId": 447,
-      "discoveredAt": "2026-09-30T18:04:12Z",
+      "discoveredAt": "2026-10-01T18:31:26Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2104,12 +2289,95 @@
         "source-backed"
       ],
       "bandId": 461,
-      "discoveredAt": "2026-09-30T18:05:02Z",
+      "discoveredAt": "2026-10-01T18:32:07Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://mikisewcree.ca/latest-news",
       "thumbnail": "https://mikisewcree.ca/wp-content/uploads/2026/07/RMHS-Promo-Poster-400x250.png",
+      "detailVerified": true,
+      "reviewReason": "Title does not clearly describe a supported community update"
+    },
+    {
+      "id": "mikisew-cree-first-nation-2026-10-01-a98e92455a",
+      "storyKey": "461-2026-10-01-september",
+      "title": "September",
+      "communityName": "Mikisew Cree First Nation",
+      "communityAliases": [],
+      "provinceTerritory": "AB",
+      "category": "Culture & Language",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Mikisew Cree First Nation official website",
+      "publishedAt": "2026-10-01",
+      "datePrecision": "month",
+      "url": "https://mikisewcree.ca/events-2",
+      "summary": "October 2026 November MO TU WE TH FR SA SU 28 29 Mikisew Awasis Kisiwatsowin Society: Cree Language Class 30 1 Mikisew Awasis Kisiwatsowin Society: Cree Language Class 2 Mikisew Awasis Kisiwatsowin Society: Mikisew Meals Mikisew Awasis Kisiwatsowin Society: Jingle Dress Lessons Fort McMurrary 3 4 5 6 Mikisew Awasis Kisiwatsowin Society: Cree Language Class 7 8 Mikisew Awasis Kisiwatsowin Society: Cree Language Class.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 461,
+      "discoveredAt": "2026-10-01T18:32:08Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://mikisewcree.ca/events-2",
+      "detailVerified": false,
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "mikisew-cree-first-nation-2026-02-04-d01a96607a",
+      "storyKey": "461-2026-02-04-mcfn-health-department-in-edmonton-february-4-2026",
+      "title": "Featured Event MCFN Health Department in Edmonton – February 4, 2026 Join our email list",
+      "communityName": "Mikisew Cree First Nation",
+      "communityAliases": [],
+      "provinceTerritory": "AB",
+      "category": "Healthcare",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Mikisew Cree First Nation official website",
+      "publishedAt": "2026-02-04",
+      "datePrecision": "day",
+      "url": "https://mikisewcree.ca/mcfn-health-department-in-edmonton-february-4-2026",
+      "summary": "Departments Directory Forms Careers",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 461,
+      "discoveredAt": "2026-10-01T18:32:08Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://mikisewcree.ca/upcoming-events",
+      "thumbnail": "https://mikisewcree.ca/wp-content/uploads/2026/01/Health-Event-2-400x250.jpg",
+      "detailVerified": true,
+      "reviewReason": "Title does not clearly describe a supported community update"
+    },
+    {
+      "id": "mikisew-cree-first-nation-2026-02-02-89f4751073",
+      "storyKey": "461-2026-02-02-mcfn-health-department-in-fort-mcmurray-february-2-2026",
+      "title": "Featured Event MCFN Health Department in Fort McMurray – February 2, 2026 Join our email list",
+      "communityName": "Mikisew Cree First Nation",
+      "communityAliases": [],
+      "provinceTerritory": "AB",
+      "category": "Healthcare",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Mikisew Cree First Nation official website",
+      "publishedAt": "2026-02-02",
+      "datePrecision": "day",
+      "url": "https://mikisewcree.ca/mcfn-health-department-in-fort-mcmurray-february-2-2026",
+      "summary": "Departments Directory Forms Careers",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 461,
+      "discoveredAt": "2026-10-01T18:32:08Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://mikisewcree.ca/upcoming-events",
+      "thumbnail": "https://mikisewcree.ca/wp-content/uploads/2026/01/Health-Event-1-400x250.jpg",
       "detailVerified": true,
       "reviewReason": "Title does not clearly describe a supported community update"
     },
@@ -2132,7 +2400,7 @@
         "source-backed"
       ],
       "bandId": 478,
-      "discoveredAt": "2026-09-30T18:04:51Z",
+      "discoveredAt": "2026-10-01T18:32:28Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2159,7 +2427,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-09-30T18:04:58Z",
+      "discoveredAt": "2026-10-01T18:32:37Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2187,7 +2455,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-09-30T18:04:58Z",
+      "discoveredAt": "2026-10-01T18:32:37Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2215,7 +2483,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-09-30T18:04:58Z",
+      "discoveredAt": "2026-10-01T18:32:37Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2243,7 +2511,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-09-30T18:04:58Z",
+      "discoveredAt": "2026-10-01T18:32:37Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2271,7 +2539,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-09-30T18:04:58Z",
+      "discoveredAt": "2026-10-01T18:32:37Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2299,7 +2567,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-09-30T18:04:58Z",
+      "discoveredAt": "2026-10-01T18:32:37Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2327,7 +2595,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-09-30T18:04:50Z",
+      "discoveredAt": "2026-10-01T18:32:28Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2355,7 +2623,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-09-30T18:04:58Z",
+      "discoveredAt": "2026-10-01T18:32:37Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2383,7 +2651,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-09-30T18:04:58Z",
+      "discoveredAt": "2026-10-01T18:32:37Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2411,7 +2679,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-09-30T18:04:58Z",
+      "discoveredAt": "2026-10-01T18:32:37Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2439,7 +2707,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-09-30T18:04:58Z",
+      "discoveredAt": "2026-10-01T18:32:37Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2467,7 +2735,7 @@
         "source-backed"
       ],
       "bandId": 462,
-      "discoveredAt": "2026-09-30T18:04:58Z",
+      "discoveredAt": "2026-10-01T18:32:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2496,7 +2764,7 @@
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-09-30T18:05:31Z",
+      "discoveredAt": "2026-10-01T18:32:54Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2517,14 +2785,14 @@
       "sourceName": "Samson official website",
       "publishedAt": "2026-09-25",
       "datePrecision": "day",
-      "url": "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&osid=1&passive=1209600&service=mail&flowName=WebLiteSignIn&flowEntry=ServiceLogin&dsh=S-1539706409%3A1790791540937747",
+      "url": "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&osid=1&passive=1209600&service=mail&flowName=WebLiteSignIn&flowEntry=ServiceLogin&dsh=S-685963801%3A1790879578588521",
       "summary": "Gmail is email that’s intuitive, efficient, and useful. 15 GB of storage, less spam, and mobile access.",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-09-30T18:05:31Z",
+      "discoveredAt": "2026-10-01T18:32:54Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2552,7 +2820,7 @@
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-09-30T18:05:33Z",
+      "discoveredAt": "2026-10-01T18:32:56Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2580,7 +2848,7 @@
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-09-30T18:05:33Z",
+      "discoveredAt": "2026-10-01T18:32:56Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2608,7 +2876,7 @@
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-09-30T18:05:33Z",
+      "discoveredAt": "2026-10-01T18:32:56Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2627,27 +2895,26 @@
       "category": "Culture & Language",
       "sourceType": "Official First Nation Website",
       "sourceName": "Samson official website",
-      "publishedAt": "2026-07-21",
+      "publishedAt": "2026-07-22",
       "datePrecision": "day",
       "url": "https://samsoncree.com/samson-celebration-powwow-initiation-aug-2026",
-      "summary": "SCN Celebrations Initiation Powwow!August 6, 2026 from 1:00-3:00PM at the Maskwacis Bear Park!Initiation for Samson community Members!Open to all ages, Tiny tot to Golden AgesWe will provide: Elders, protocol, giveaway, drum/song. We would like to support you to be part of the powwow circle.Scan the QR code or go to ww.samsonheadstart.com to register! Registration is also",
+      "summary": "Stay Safe Online & Level Up Your Digital Skills! July 22, 2026 at HBMC Classroom 1 2:30 PM Learn how to: – Stay safe on social media – Protect your personal information – Recognize online scams and cyberbullying – Practice safe online gaming habits Attend in person or online and receive a $25 gift card! For more information: comms@samsoncree.com 780-585-3793 ext. 103 Categories: 2026 , July 2026-07-21T11:29:10-04:00.",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-09-30T18:05:33Z",
+      "discoveredAt": "2026-10-01T18:32:56Z",
       "communityConfidence": 0.98,
-      "dateSource": "article:published_time",
+      "dateSource": "structured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://samsoncree.com/social-media-and-online-gaming-safety-july-2026",
-      "detailVerified": true,
-      "reviewReason": "Title does not clearly describe a supported community update"
+      "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
       "id": "samson-2026-07-22-8945218c86",
       "storyKey": "444-2026-07-22-next-next-post-temporary-closure-for-2nd-and-3rd-floors-of-cta-building-july-23-",
-      "title": "Temporary Closure for 2nd & 3rd Floors of CTA Building July 23 & 24, 2026 - SCN",
+      "title": "Next Next post: Temporary Closure for 2nd & 3rd Floors of CTA Building July 23 & 24, 2026",
       "communityName": "Samson",
       "communityAliases": [
         "Samson Cree Nation"
@@ -2656,21 +2923,20 @@
       "category": "Emergencies",
       "sourceType": "Official First Nation Website",
       "sourceName": "Samson official website",
-      "publishedAt": "2026-07-23",
+      "publishedAt": "2026-07-22",
       "datePrecision": "day",
       "url": "https://samsoncree.com/temporary-closure-for-2nd-3rd-floors-of-cta-building-july-23-24-2026",
-      "summary": "Please be advised that some Samson Cree Nation departments are currently transitioning back to the Band Office. Due to an ongoing air conditioning issue and the current heat warning, staff located on the 2nd and 3rd floors of the Band Office will be temporarily relocated to the 1st floor/basement or working remotely for July 23",
+      "summary": "Stay Safe Online & Level Up Your Digital Skills! July 22, 2026 at HBMC Classroom 1 2:30 PM Learn how to: – Stay safe on social media – Protect your personal information – Recognize online scams and cyberbullying – Practice safe online gaming habits Attend in person or online and receive a $25 gift card! For more information: comms@samsoncree.com 780-585-3793 ext. 103 Categories: 2026 , July 2026-07-21T11:29:10-04:00.",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-09-30T18:05:33Z",
+      "discoveredAt": "2026-10-01T18:32:56Z",
       "communityConfidence": 0.98,
-      "dateSource": "article:published_time",
+      "dateSource": "structured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://samsoncree.com/social-media-and-online-gaming-safety-july-2026",
-      "detailVerified": true,
       "reviewReason": "Title does not clearly describe a supported community update"
     },
     {
@@ -2692,7 +2958,7 @@
         "source-backed"
       ],
       "bandId": 430,
-      "discoveredAt": "2026-09-30T18:05:43Z",
+      "discoveredAt": "2026-10-01T18:32:45Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2719,7 +2985,7 @@
         "source-backed"
       ],
       "bandId": 430,
-      "discoveredAt": "2026-09-30T18:05:43Z",
+      "discoveredAt": "2026-10-01T18:32:45Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2746,7 +3012,7 @@
         "source-backed"
       ],
       "bandId": 455,
-      "discoveredAt": "2026-09-30T18:05:34Z",
+      "discoveredAt": "2026-10-01T18:32:57Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2772,7 +3038,7 @@
         "source-backed"
       ],
       "bandId": 455,
-      "discoveredAt": "2026-09-30T18:05:34Z",
+      "discoveredAt": "2026-10-01T18:32:57Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2789,7 +3055,7 @@
       "category": "Governance",
       "sourceType": "Official First Nation Website",
       "sourceName": "Sucker Creek official website",
-      "publishedAt": "2026-09-30",
+      "publishedAt": "2026-10-01",
       "datePrecision": "day",
       "url": "https://scfn.ca/events",
       "summary": "Treaty 8 Territory · Box 65, Enilda Alberta, Canada Nehiyaw People · Treaty 8 Territory Heart of Alberta",
@@ -2798,7 +3064,7 @@
         "source-backed"
       ],
       "bandId": 456,
-      "discoveredAt": "2026-09-30T18:05:59Z",
+      "discoveredAt": "2026-10-01T18:33:05Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "html",
@@ -2825,7 +3091,7 @@
         "source-backed"
       ],
       "bandId": 457,
-      "discoveredAt": "2026-09-30T18:07:33Z",
+      "discoveredAt": "2026-10-01T18:34:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2851,7 +3117,7 @@
         "source-backed"
       ],
       "bandId": 457,
-      "discoveredAt": "2026-09-30T18:07:33Z",
+      "discoveredAt": "2026-10-01T18:34:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2877,7 +3143,7 @@
         "source-backed"
       ],
       "bandId": 457,
-      "discoveredAt": "2026-09-30T18:07:33Z",
+      "discoveredAt": "2026-10-01T18:34:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2903,7 +3169,7 @@
         "source-backed"
       ],
       "bandId": 457,
-      "discoveredAt": "2026-09-30T18:07:33Z",
+      "discoveredAt": "2026-10-01T18:34:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2929,7 +3195,7 @@
         "source-backed"
       ],
       "bandId": 457,
-      "discoveredAt": "2026-09-30T18:07:33Z",
+      "discoveredAt": "2026-10-01T18:34:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2955,7 +3221,7 @@
         "source-backed"
       ],
       "bandId": 457,
-      "discoveredAt": "2026-09-30T18:07:33Z",
+      "discoveredAt": "2026-10-01T18:34:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2981,7 +3247,7 @@
         "source-backed"
       ],
       "bandId": 457,
-      "discoveredAt": "2026-09-30T18:08:14Z",
+      "discoveredAt": "2026-10-01T18:35:45Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "image_ocr",
@@ -3010,7 +3276,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-09-30T18:07:02Z",
+      "discoveredAt": "2026-10-01T18:34:11Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3019,270 +3285,9 @@
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "tsuut-ina-nation-2026-08-30-cce6c00bed",
-      "storyKey": "432-2026-08-30-baby-and-me-swimming-program-group-3",
-      "title": "Baby & Me Swimming Program – Group 3",
-      "communityName": "Tsuut'ina Nation",
-      "communityAliases": [
-        "Tsuu T'Ina Nation"
-      ],
-      "provinceTerritory": "AB",
-      "category": "Other",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Tsuut'ina Nation official website",
-      "publishedAt": "2026-08-30",
-      "datePrecision": "day",
-      "url": "https://tsuutina.com/event/baby-me-swimming-program-group-3/2026-08-30",
-      "summary": "10:00 10:00 am - 11:00 11:00 am Recurring Baby & Me Swimming Program – Group 3 2026-08-30 August 30 @ 10:00 am - 11:00 am Recurring Baby & Me Swimming Program – Group 3.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 432,
-      "discoveredAt": "2026-09-30T18:07:01Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://tsuutina.com/events-calendar",
-      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "tsuut-ina-nation-2026-09-03-2c36f6dcb6",
-      "storyKey": "432-2026-09-03-mobile-optometry-clinic-september-3rd-2026",
-      "title": "Mobile Optometry Clinic – September 3rd 2026",
-      "communityName": "Tsuut'ina Nation",
-      "communityAliases": [
-        "Tsuu T'Ina Nation"
-      ],
-      "provinceTerritory": "AB",
-      "category": "Healthcare",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Tsuut'ina Nation official website",
-      "publishedAt": "2026-09-03",
-      "datePrecision": "day",
-      "url": "https://tsuutina.com/event/mobile-optometry-clinic-september-3rd-2026",
-      "summary": "1 event, 2026-09-03 3 09:00 9:00 am - 15:00 3:00 pm Mobile Optometry Clinic – September 3rd 2026 2026-09-03 September 3 @ 9:00 am - 3:00 pm Mobile Optometry Clinic – September 3rd 2026 Mobile Optometry Clinic - September 3rd 2026 1 event, 2026-09-04 4 1 event, 2026-09-04 4 14:00 2:00 pm - 17:00 5:00 pm Medicine Picking.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 432,
-      "discoveredAt": "2026-09-30T18:07:01Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://tsuutina.com/events-calendar",
-      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "tsuut-ina-nation-2026-09-04-d7399fde3f",
-      "storyKey": "432-2026-09-04-medicine-picking",
-      "title": "Medicine Picking",
-      "communityName": "Tsuut'ina Nation",
-      "communityAliases": [
-        "Tsuu T'Ina Nation"
-      ],
-      "provinceTerritory": "AB",
-      "category": "Community Events",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Tsuut'ina Nation official website",
-      "publishedAt": "2026-09-04",
-      "datePrecision": "day",
-      "url": "https://tsuutina.com/event/medicine-picking",
-      "summary": "1 event, 2026-09-04 4 14:00 2:00 pm - 17:00 5:00 pm Medicine Picking 2026-09-04 September 4 @ 2:00 pm - 5:00 pm Medicine Picking MEDICINE PICKING 0 events, 2026-09-05 5 0 events, 2026-09-05 5 1 event, 2026-09-06 6 1 event, 2026-09-06 6.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 432,
-      "discoveredAt": "2026-09-30T18:07:01Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://tsuutina.com/events-calendar",
-      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "tsuut-ina-nation-2026-09-06-bc90528b40",
-      "storyKey": "432-2026-09-06-baby-and-me-swimming-program-group-3",
-      "title": "Baby & Me Swimming Program – Group 3",
-      "communityName": "Tsuut'ina Nation",
-      "communityAliases": [
-        "Tsuu T'Ina Nation"
-      ],
-      "provinceTerritory": "AB",
-      "category": "Other",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Tsuut'ina Nation official website",
-      "publishedAt": "2026-09-06",
-      "datePrecision": "day",
-      "url": "https://tsuutina.com/event/baby-me-swimming-program-group-3/2026-09-06",
-      "summary": "10:00 10:00 am - 11:00 11:00 am Recurring Baby & Me Swimming Program – Group 3 2026-09-06 September 6 @ 10:00 am - 11:00 am Recurring Baby & Me Swimming Program – Group 3.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 432,
-      "discoveredAt": "2026-09-30T18:07:01Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://tsuutina.com/events-calendar",
-      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "tsuut-ina-nation-2026-09-08-b556bd3eb5",
-      "storyKey": "432-2026-09-08-self-empowerment-program",
-      "title": "Self Empowerment Program",
-      "communityName": "Tsuut'ina Nation",
-      "communityAliases": [
-        "Tsuu T'Ina Nation"
-      ],
-      "provinceTerritory": "AB",
-      "category": "Community Events",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Tsuut'ina Nation official website",
-      "publishedAt": "2026-09-08",
-      "datePrecision": "day",
-      "url": "https://tsuutina.com/event/self-empowerment-program-4",
-      "summary": "1 event, 2026-09-08 8 09:30 9:30 am - 15:00 3:00 pm Self Empowerment Program 2026-09-08 September 8 @ 9:30 am - 3:00 pm Self Empowerment Program 2 events, 2026-09-09 9 2 events, 2026-09-09 9 09:00 9:00 am - 12:00 12:00 pm Ages & Stages screenings 2026-09-09.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 432,
-      "discoveredAt": "2026-09-30T18:07:01Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://tsuutina.com/events-calendar",
-      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "tsuut-ina-nation-2026-09-09-217fe4bb4b",
-      "storyKey": "432-2026-09-09-ages-and-stages-screenings",
-      "title": "Ages & Stages screenings",
-      "communityName": "Tsuut'ina Nation",
-      "communityAliases": [
-        "Tsuu T'Ina Nation"
-      ],
-      "provinceTerritory": "AB",
-      "category": "Community Events",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Tsuut'ina Nation official website",
-      "publishedAt": "2026-09-09",
-      "datePrecision": "day",
-      "url": "https://tsuutina.com/event/ages-stages-screenings",
-      "summary": "2 events, 2026-09-09 9 09:00 9:00 am - 12:00 12:00 pm Ages & Stages screenings 2026-09-09 September 9 @ 9:00 am - 12:00 pm Ages & Stages screenings 09:30 9:30 am - 15:00 3:00 pm Recurring Self Empowerment Program 2026-09-09 September 9 @ 9:30 am - 3:00 pm Recurring Self Empowerment Program.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 432,
-      "discoveredAt": "2026-09-30T18:07:01Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://tsuutina.com/events-calendar",
-      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "tsuut-ina-nation-2026-09-09-dda0a1a75b",
-      "storyKey": "432-2026-09-09-self-empowerment-program",
-      "title": "Self Empowerment Program",
-      "communityName": "Tsuut'ina Nation",
-      "communityAliases": [
-        "Tsuu T'Ina Nation"
-      ],
-      "provinceTerritory": "AB",
-      "category": "Other",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Tsuut'ina Nation official website",
-      "publishedAt": "2026-09-09",
-      "datePrecision": "day",
-      "url": "https://tsuutina.com/event/self-empowerment-program-4/2026-09-09",
-      "summary": "09:30 9:30 am - 15:00 3:00 pm Recurring Self Empowerment Program 2026-09-09 September 9 @ 9:30 am - 3:00 pm Recurring Self Empowerment Program.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 432,
-      "discoveredAt": "2026-09-30T18:07:01Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://tsuutina.com/events-calendar",
-      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "tsuut-ina-nation-2026-09-10-1a87f0ebc9",
-      "storyKey": "432-2026-09-10-chiila-elementary-school-open-house-2026",
-      "title": "Chiila Elementary School Open House 2026",
-      "communityName": "Tsuut'ina Nation",
-      "communityAliases": [
-        "Tsuu T'Ina Nation"
-      ],
-      "provinceTerritory": "AB",
-      "category": "Education",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Tsuut'ina Nation official website",
-      "publishedAt": "2026-09-10",
-      "datePrecision": "day",
-      "url": "https://tsuutina.com/event/chiila-elementary-school-open-house-2026",
-      "summary": "3 events, 2026-09-10 10 09:00 9:00 am - 15:00 3:00 pm Chiila Elementary School Open House 2026 2026-09-10 September 10 @ 9:00 am - 3:00 pm Chiila Elementary School Open House 2026 09:30 9:30 am - 15:00 3:00 pm Recurring Self Empowerment Program 2026-09-10 September 10 @ 9:30 am - 3:00 pm Recurring Self Empowerment Program.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 432,
-      "discoveredAt": "2026-09-30T18:07:01Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://tsuutina.com/events-calendar",
-      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "tsuut-ina-nation-2026-09-10-a13e2a47be",
-      "storyKey": "432-2026-09-10-self-empowerment-program",
-      "title": "Self Empowerment Program",
-      "communityName": "Tsuut'ina Nation",
-      "communityAliases": [
-        "Tsuu T'Ina Nation"
-      ],
-      "provinceTerritory": "AB",
-      "category": "Other",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Tsuut'ina Nation official website",
-      "publishedAt": "2026-09-10",
-      "datePrecision": "day",
-      "url": "https://tsuutina.com/event/self-empowerment-program-4/2026-09-10",
-      "summary": "09:30 9:30 am - 15:00 3:00 pm Recurring Self Empowerment Program 2026-09-10 September 10 @ 9:30 am - 3:00 pm Recurring Self Empowerment Program.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 432,
-      "discoveredAt": "2026-09-30T18:07:01Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://tsuutina.com/events-calendar",
-      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "tsuut-ina-nation-2026-09-10-3605f087fc",
-      "storyKey": "432-2026-09-10-tosguna-elders-gathering",
-      "title": "Tosguna Elders Gathering",
+      "id": "tsuut-ina-nation-2026-09-27-1635bdbbee",
+      "storyKey": "432-2026-09-27-elders-tea-coming-home-youth-competition-powwow",
+      "title": "Elders Tea: Coming Home Youth Competition Powwow",
       "communityName": "Tsuut'ina Nation",
       "communityAliases": [
         "Tsuu T'Ina Nation"
@@ -3291,16 +3296,16 @@
       "category": "Culture & Language",
       "sourceType": "Official First Nation Website",
       "sourceName": "Tsuut'ina Nation official website",
-      "publishedAt": "2026-09-10",
+      "publishedAt": "2026-09-27",
       "datePrecision": "day",
-      "url": "https://tsuutina.com/event/tosguna-elders-gathering",
-      "summary": "3:00 pm Recurring Self Empowerment Program 11:30 11:30 am - 16:30 4:30 pm Tosguna Elders Gathering 2026-09-10 September 10 @ 11:30 am - 4:30 pm Tosguna Elders Gathering 1 event, 2026-09-11 11 1 event, 2026-09-11 11 14:00 2:00 pm - 17:00 5:00 pm Medicine Picking- Youth Program 2026-09-11.",
+      "url": "https://tsuutina.com/event/elders-tea-coming-home-youth-competition-powwow",
+      "summary": "2 events, 2026-09-27 27 11:00 11:00 am - 17:00 5:00 pm Elders Tea: Coming Home Youth Competition Powwow 2026-09-27 September 27 @ 11:00 am - 5:00 pm Elders Tea: Coming Home Youth Competition Powwow 13:00 1:00 pm - 22:00 10:00 pm Coming Home Youth Powwow 2026-09-27 September 27 @ 1:00 pm - 10:00 pm Coming Home Youth Powwow 1 event, 2026-09-28.",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-09-30T18:07:01Z",
+      "discoveredAt": "2026-10-01T18:34:10Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3309,27 +3314,27 @@
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "tsuut-ina-nation-2026-09-11-7a43f17330",
-      "storyKey": "432-2026-09-11-medicine-picking-youth-program",
-      "title": "Medicine Picking- Youth Program",
+      "id": "tsuut-ina-nation-2026-09-27-bcfd4cccda",
+      "storyKey": "432-2026-09-27-coming-home-youth-powwow",
+      "title": "Coming Home Youth Powwow",
       "communityName": "Tsuut'ina Nation",
       "communityAliases": [
         "Tsuu T'Ina Nation"
       ],
       "provinceTerritory": "AB",
-      "category": "Community Events",
+      "category": "Culture & Language",
       "sourceType": "Official First Nation Website",
       "sourceName": "Tsuut'ina Nation official website",
-      "publishedAt": "2026-09-11",
+      "publishedAt": "2026-09-27",
       "datePrecision": "day",
-      "url": "https://tsuutina.com/event/medicine-picking-youth-program",
-      "summary": "1 event, 2026-09-11 11 14:00 2:00 pm - 17:00 5:00 pm Medicine Picking- Youth Program 2026-09-11 September 11 @ 2:00 pm - 5:00 pm Medicine Picking- Youth Program 2 events, 2026-09-12 12 2 events, 2026-09-12 12 09:00 9:00 am - 13:00 1:00 pm 7th Annual Tsuut’ina Trail Run 2026 2026-09-12.",
+      "url": "https://tsuutina.com/event/coming-home-youth-powwow",
+      "summary": "- 5:00 pm Elders Tea: Coming Home Youth Competition Powwow 13:00 1:00 pm - 22:00 10:00 pm Coming Home Youth Powwow 2026-09-27 September 27 @ 1:00 pm - 10:00 pm Coming Home Youth Powwow 1 event, 2026-09-28 28 1 event, 2026-09-28 28 17:30 5:30 pm - 18:30 6:30 pm Recurring Youth Program Evening Ballet.",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-09-30T18:07:01Z",
+      "discoveredAt": "2026-10-01T18:34:10Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3338,9 +3343,125 @@
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "tsuut-ina-nation-2026-09-12-7eac6018d3",
-      "storyKey": "432-2026-09-12-7th-annual-tsuut-ina-trail-run-2026",
-      "title": "7th Annual Tsuut’ina Trail Run 2026",
+      "id": "tsuut-ina-nation-2026-09-28-435b037226",
+      "storyKey": "432-2026-09-28-youth-program-evening-ballet",
+      "title": "Youth Program Evening Ballet",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Other",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-09-28",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/youth-program-evening-ballet/2026-09-28",
+      "summary": "17:30 5:30 pm - 18:30 6:30 pm Recurring Youth Program Evening Ballet 2026-09-28 September 28 @ 5:30 pm - 6:30 pm Recurring Youth Program Evening Ballet.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-01T18:34:10Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-09-29-475c354b3f",
+      "storyKey": "432-2026-09-29-every-child-matters-community-walk-2026",
+      "title": "Every Child Matters Community Walk 2026",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Emergencies",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-09-29",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/every-child-matters-community-walk-2026",
+      "summary": "1 event, 2026-09-29 29 10:00 10:00 am - 13:00 1:00 pm Every Child Matters Community Walk 2026 2026-09-29 September 29 @ 10:00 am - 1:00 pm Every Child Matters Community Walk 2026 2 events, 2026-09-30 30 2 events, 2026-09-30 30 08:00 8:00 am - 17:00 5:00 pm Adminstration Office Closure 2026-09-30.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-01T18:34:10Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-10-01-a652e46ecb",
+      "storyKey": "432-2026-10-01-chair-yoga-and-gentle-movement-class",
+      "title": "Chair Yoga and Gentle Movement Class",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Treaties",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-10-01",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/chair-yoga-and-gentle-movement-class",
+      "summary": "2 events, 2026-10-01 1 13:00 1:00 pm - 14:30 2:30 pm Chair Yoga and Gentle Movement Class 2026-10-01 October 1 @ 1:00 pm - 2:30 pm Chair Yoga and Gentle Movement Class 14:00 2:00 pm - 16:00 4:00 pm Bullhead Community Hall Donation Day Initiative 2026-10-01 October 1 @ 2:00 pm - 4:00 pm Bullhead Community Hall Donation Day Initiative 1 event, 2026-10-02.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-01T18:34:10Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-10-01-917ab2120d",
+      "storyKey": "432-2026-10-01-bullhead-community-hall-donation-day-initiative",
+      "title": "Bullhead Community Hall Donation Day Initiative",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Treaties",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-10-01",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/bullhead-community-hall-donation-day-initiative",
+      "summary": "- 2:30 pm Chair Yoga and Gentle Movement Class 14:00 2:00 pm - 16:00 4:00 pm Bullhead Community Hall Donation Day Initiative 2026-10-01 October 1 @ 2:00 pm - 4:00 pm Bullhead Community Hall Donation Day Initiative 1 event, 2026-10-02 2 1 event, 2026-10-02 2 18:00 6:00 pm - 22:00 10:00 pm Drive-in Movie Night 2026-10-02.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-01T18:34:10Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-10-02-ebf6277f44",
+      "storyKey": "432-2026-10-02-drive-in-movie-night",
+      "title": "Drive-in Movie Night",
       "communityName": "Tsuut'ina Nation",
       "communityAliases": [
         "Tsuu T'Ina Nation"
@@ -3349,26 +3470,171 @@
       "category": "Community Events",
       "sourceType": "Official First Nation Website",
       "sourceName": "Tsuut'ina Nation official website",
-      "publishedAt": "2026-09-12",
+      "publishedAt": "2026-10-02",
       "datePrecision": "day",
-      "url": "https://tsuutina.com/event/tsuutina-trail-run-2026",
-      "summary": "2 events, 2026-09-12 12 09:00 9:00 am - 13:00 1:00 pm 7th Annual Tsuut’ina Trail Run 2026 2026-09-12 September 12 @ 9:00 am - 1:00 pm 7th Annual Tsuut’ina Trail Run 2026 12:00 12:00 pm - 17:00 5:00 pm Something Wondrous Festival 2026 2026-09-12 September 12 @ 12:00 pm - 5:00 pm Something Wondrous Festival 2026 1 event, 2026-09-13.",
+      "url": "https://tsuutina.com/event/drive-in-movie-night",
+      "summary": "1 event, 2026-10-02 2 18:00 6:00 pm - 22:00 10:00 pm Drive-in Movie Night 2026-10-02 October 2 @ 6:00 pm - 10:00 pm Drive-in Movie Night 1 event, 2026-10-03 3 1 event, 2026-10-03 3 16:00 4:00 pm - 22:00 10:00 pm Recurring Hand Game Club.",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-09-30T18:07:01Z",
+      "discoveredAt": "2026-10-01T18:34:10Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://tsuutina.com/events-calendar",
       "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
-      "reviewReason": "Publication date could not be verified on the detail page"
+      "reviewReason": "Date appears to be a future event date, not a publication date"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-10-05-10f86094f3",
+      "storyKey": "432-2026-10-05-youth-program-evening-ballet",
+      "title": "Youth Program Evening Ballet",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Other",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-10-05",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/youth-program-evening-ballet/2026-10-05",
+      "summary": "17:30 5:30 pm - 18:30 6:30 pm Recurring Youth Program Evening Ballet 2026-10-05 October 5 @ 5:30 pm - 6:30 pm Recurring Youth Program Evening Ballet.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-01T18:34:10Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Date appears to be a future event date, not a publication date"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-10-06-d9520c7562",
+      "storyKey": "432-2026-10-06-community-engagement-sessions-your-voice-in-how-we-hire",
+      "title": "Community Engagement Sessions: Your Voice in How We Hire",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Culture & Language",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-10-06",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/community-engagement-sessions-your-voice-in-how-we-hire",
+      "summary": "2 events, 2026-10-06 6 11:00 11:00 am - 12:00 12:00 pm Community Engagement Sessions: Your Voice in How We Hire 2026-10-06 October 6 @ 11:00 am - 12:00 pm Community Engagement Sessions: Your Voice in How We Hire 16:30 4:30 pm - 18:30 6:30 pm ASL & Plains Indian Sign Language Classes 2026-10-06 October 6 @ 4:30 pm - 6:30 pm ASL & Plains Indian Sign Language Classes 2 events, 2026-10-07.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-01T18:34:10Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Date appears to be a future event date, not a publication date"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-10-06-40c6d1b0f3",
+      "storyKey": "432-2026-10-06-asl-and-plains-indian-sign-language-classes",
+      "title": "ASL & Plains Indian Sign Language Classes",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Culture & Language",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-10-06",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/asl-plains-indian-sign-language-classes",
+      "summary": "- 12:00 pm Community Engagement Sessions: Your Voice in How We Hire 16:30 4:30 pm - 18:30 6:30 pm ASL & Plains Indian Sign Language Classes 2026-10-06 October 6 @ 4:30 pm - 6:30 pm ASL & Plains Indian Sign Language Classes 2 events, 2026-10-07 7 2 events, 2026-10-07 7 11:30 11:30 am - 13:00 1:00 pm Recurring Gunaha Classes.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-01T18:34:10Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Date appears to be a future event date, not a publication date"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-10-07-b20d9e9cd3",
+      "storyKey": "432-2026-10-07-psp-and-ucalgary-nursing-info-session",
+      "title": "PSP & UCalgary Nursing Info Session",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Community Events",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-10-07",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/psp-ucalgary-nursing-info-session",
+      "summary": "1:00 pm Recurring Gunaha Classes 15:30 3:30 pm - 17:30 5:30 pm PSP & UCalgary Nursing Info Session 2026-10-07 October 7 @ 3:30 pm - 5:30 pm PSP & UCalgary Nursing Info Session The Post Secondary Program & University of Calgary are hosting a Nursing Info Session for anyone who is thinking of […] 4 events, 2026-10-08 8 4 events, 2026-10-08 8 10:00 10:00 am - 17:00 5:00 pm Recurring.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-01T18:34:10Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Date appears to be a future event date, not a publication date"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-10-08-3585934f20",
+      "storyKey": "432-2026-10-08-community-engagement-sessions-your-voice-in-how-we-hire",
+      "title": "Community Engagement Sessions: Your Voice in How We Hire",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Other",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-10-08",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/community-engagement-sessions-your-voice-in-how-we-hire/2026-10-08",
+      "summary": "11:00 11:00 am - 12:00 12:00 pm Recurring Community Engagement Sessions: Your Voice in How We Hire 2026-10-08 October 8 @ 11:00 am - 12:00 pm Recurring Community Engagement Sessions: Your Voice in How We Hire.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-01T18:34:10Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Date appears to be a future event date, not a publication date"
     }
   ],
   "summary": {
-    "manualReview": 195,
+    "manualReview": 212,
     "mediaExtracted": 7,
     "sourceFailures": 26
   }
