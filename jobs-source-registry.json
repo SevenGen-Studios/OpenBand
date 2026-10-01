@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-09-30T18:30:36Z",
+  "generated": "2026-10-01T18:58:56Z",
   "trackedCommunityCount": 117,
   "configuredSourceCount": 50,
   "communities": [
@@ -3426,9 +3426,9 @@
       ],
       "candidatesFound": 0,
       "reviewItems": 1,
-      "status": "checked",
+      "status": "unavailable",
       "warnings": [
-        "treatysix-careers: no candidate job links detected"
+        "treatysix-careers: fetch failed: HTTP Error 429: Too Many Requests"
       ]
     },
     {
@@ -3490,10 +3490,9 @@
         "438"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
+      "reviewItems": 3,
       "status": "checked",
       "warnings": [
-        "community-site-438: employment page fetch failed: HTTP Error 429: Too Many Requests",
         "community-site-438: no candidate job links detected"
       ]
     },
@@ -3966,7 +3965,7 @@
       "communityIds": [
         "444"
       ],
-      "candidatesFound": 15,
+      "candidatesFound": 16,
       "reviewItems": 3,
       "status": "checked",
       "warnings": [
