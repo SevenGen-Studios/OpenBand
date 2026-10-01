@@ -25,8 +25,12 @@ records. Failed trial output stays separate from published data.
 
 ## Scanned documents
 
-GitHub Actions installs Tesseract and Poppler for free OCR. They are not
-installed in the local environment used for this recovery pass. The optional
+GitHub Actions installs Tesseract and Poppler for free OCR. Locally, Poppler
+can also use an installed `rapidocr` or `rapidocr_onnxruntime` package when
+Tesseract is unavailable. RapidOCR cells are grouped by vertical baseline and
+ordered left-to-right; missing cells are never fabricated. Both package output
+formats are supported. OCR remains subject to the same publication validation.
+The optional
 Docling tier also runs locally and is off by default; it has a conversion
 timeout and model-download/runtime overhead. Raw cells are preserved where
 possible. Missing OCR dashes and unaligned merged rows stay blocked.
@@ -35,3 +39,14 @@ Passing mathematical checks is automated validation, not an independent audit
 of every source figure. Coverage figures count available summaries, not proof
 that every field in an audited statement was extracted. Missing ancillary
 metrics remain null, and failed candidates do not inflate coverage.
+
+## Statement-context fixes
+
+The parser recognizes current-year/budget/prior-year headers such as
+`2022 Budget 2021`. Labeled subtotals are excluded from component lists, and a
+plain `Total` is accepted as an expense total only inside the expense section.
+`Other items` is a neutral adjustment heading, not an instruction to subtract
+every value. Reported negative signs are preserved; explicitly described
+depreciation, amortization, losses and distributions are deductions. Investment
+earnings retain their reported sign. Final surplus reconciliation remains
+mandatory, so uncertain adjustment wording cannot bypass publication checks.

@@ -4,6 +4,18 @@ from tools import capital_parser as parser
 
 
 class CapitalColumnRegressions(unittest.TestCase):
+    def test_explicit_dashes_preserve_current_year_position(self):
+        first = "Statement of Operations\n2021 Budget 2020"
+        self.assertEqual(parser.actual_value([180000], first, "Trust fund transfers - - 180,000"), 0)
+        second = "Statement of Operations\n2020 2020 2019\nBudget Actual Actual"
+        self.assertEqual(parser.actual_value([-1092181, 1973243], second,
+                                            "Funds 16 - (1,092,181) 1,973,243"), -1092181)
+
+    def test_cold_lake_unlabelled_actual_before_budget(self):
+        header = "Consolidated Statement of Operations\nYear ended March 31\n2022\n2022 Budget 2021"
+        self.assertEqual(parser.actual_column_index(header), 0)
+        self.assertEqual(parser.actual_value([43442193, 21668115, 34511867], header), 43442193)
+
     def test_cold_lake_actual_before_budget(self):
         header = "Statement of Operations\n2025 Actual 2025 Budget 2024 Actual"
         self.assertEqual(parser.actual_value([45328903, 41719304, 46987164], header), 45328903)

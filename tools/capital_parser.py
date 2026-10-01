@@ -48,10 +48,17 @@ NET_ASSET_RE = re.compile(
     r"statement of (?:changes? in )?net (?:financial assets|financial debt|debt)",
     re.I,
 )
-TOTAL_REVENUE_RE = re.compile(r"^(?:total\s+)?revenues?$", re.I)
+TOTAL_REVENUE_RE = re.compile(
+    r"^(?:total\s+)?revenues?(?:\s*\(continued(?: from previous page)?\))?$", re.I,
+)
 REVENUE_SECTION_RE = re.compile(
     r"^revenues?(?:\s+\(.*\))?$",
     re.I,
+)
+OTHER_ADJUSTMENT_RE = re.compile(
+    r"^other (?:items|income|revenue|expenses?|expenditures)"
+    r"(?:\s*\((?:income|revenue|expenses?|expenditures)\)|"
+    r"\s+and\s+(?:expenses?|expenditures))?$", re.I,
 )
 TOTAL_EXPENSE_RE = re.compile(
     r"^(?:total\s+)?(?:(?:program|operating)\s+)?"
@@ -65,7 +72,9 @@ EXPENSE_SECTION_RE = re.compile(
 FINAL_SURPLUS_RE = re.compile(
     r"^(?:(?:(?:annual|current|operating)\s+)?"
     r"(?:surplus|deficit)(?:\s+\(deficit\))?"
-    r"|excess(?:\s+\(deficiency\))? of revenues? over (?:expenses|expenditures))$",
+    r"|excess(?:\s+\(deficiency\))? of revenues? over (?:expenses|expenditures)"
+    r"|surplus of revenues? over (?:expenses|expenditures)"
+    r"|\(?deficit\)?/surplus of revenues? over (?:expenses|expenditures))$",
     re.I,
 )
 BEFORE_OTHER_RE = re.compile(
@@ -173,6 +182,9 @@ def rounded(value):
 def line_parts(line):
     line = re.sub(r"\((?:note|schedule)[^)]*\)", "", line, flags=re.I)
     matches = list(MONEY_RE.finditer(line))
+    entity = re.match(r"^\d{5,}\s+[A-Za-z].*?\b(?:Ltd\.?|Inc\.?|Corp\.?|Limited)\b", line, re.I)
+    if entity:
+        matches = [match for match in matches if match.start() >= entity.end()]
     if not matches:
         return clean_text(line), []
     if len(matches) > 1:
@@ -216,6 +228,8 @@ def actual_column_index(page_text):
     header = "\n".join(page_text.splitlines()[:14]).lower()
     if "budget" not in header:
         return 0
+    if re.search(r"^\s*(20\d{2})\s+budget\s+20\d{2}\s*$", header, re.M):
+        return 0  # Explicit current-year, budget, prior-year header ordering.
     actual = header.find("actual")
     budget = header.find("budget")
     return 0 if actual >= 0 and actual < budget else 1
@@ -225,6 +239,13 @@ def actual_value(values, page_text, line=""):
     if not values:
         return None
     header = "\n".join(page_text.splitlines()[:12]).lower()
+    if "budget" in header and line:
+        tail = re.search(r"((?:(?:\(?-?\d[\d,]*(?:\.\d+)?\)?|\$|(?<!\S)-(?!\S))\s*){3,})$", line)
+        if tail:
+            slots = re.findall(r"\(?-?\d[\d,]*(?:\.\d+)?\)?|(?<!\S)-(?!\S)", tail.group(1))
+            if len(slots) >= 3:
+                cell = slots[-3:][actual_column_index(page_text)]
+                return 0 if cell == "-" else parse_money(cell)
     if "budget" in header:
         if actual_column_index(page_text) == 0:
             return values[0]
@@ -370,9 +391,24 @@ def statement_page_records(page_texts, pattern):
     records = []
     for page_number, text in enumerate(page_texts, start=1):
         header = "\n".join(text.splitlines()[:8])
+        if pattern is OPERATIONS_RE and not is_primary_operations_page(text):
+            continue
         if pattern.search(header):
             records.append({"page": page_number, "text": text})
     return records
+
+
+def is_primary_operations_page(text):
+    lines = [clean_text(line) for line in text.splitlines()[:12]]
+    if any(re.fullmatch(r"contents|table of contents", line, re.I) for line in lines):
+        return False
+    return any(
+        re.match(r"^(?:consolidated\s+)?statement of\b", line, re.I)
+        and OPERATIONS_RE.search(line)
+        and "," not in line
+        and not re.search(r"by program|by segment|schedule\s*[-\d]|notes to", line, re.I)
+        for line in lines
+    )
 
 
 def expected_fiscal_year(fiscal_year):
@@ -420,6 +456,8 @@ def statement_pages(page_texts, pattern):
 def likely_operations_pages(page_texts):
     candidates = []
     for text in page_texts:
+        if not is_primary_operations_page(text):
+            continue
         lines = text.splitlines()
         header = "\n".join(lines[:12])
         low = text.lower()
@@ -440,6 +478,24 @@ def likely_operations_pages(page_texts):
         if score >= 5:
             candidates.append(text)
     return candidates
+
+
+def join_statement_labels(text):
+    """Reconnect explicitly wrapped surplus and accumulated-surplus labels."""
+    lines = text.splitlines()
+    result = []
+    i = 0
+    while i < len(lines):
+        line = clean_text(lines[i])
+        if (i + 1 < len(lines) and not MONEY_RE.search(line)
+                and re.search(r"^(?:\(?deficit\)?/surplus|surplus of revenues? over|excess|accumulated surplus)", line, re.I)
+                and re.search(r"^(?:expenditures|expenses|year|before other)\b", clean_text(lines[i + 1]), re.I)):
+            result.append(line + " " + clean_text(lines[i + 1]))
+            i += 2
+        else:
+            result.append(lines[i])
+            i += 1
+    return "\n".join(result)
 
 
 def is_remuneration_only_document(page_texts):
@@ -508,8 +564,11 @@ def parse_section_rows(
                 continue
             if reject_pattern and reject_pattern.search(label):
                 continue
-            if TOTAL_REVENUE_RE.match(label) or TOTAL_EXPENSE_RE.match(label):
+            if ((TOTAL_REVENUE_RE.match(label) and label.lower() != "revenue")
+                    or TOTAL_EXPENSE_RE.match(label)):
                 continue
+            if re.match(r"^total\b", label, re.I):
+                continue  # Labeled subtotals must not duplicate their component rows.
             if section == "expenses" and is_prohibited_expense_label(label):
                 continue
             if len(values) == 1 and re.search(r"\s-\s+-\s+\(", line):
@@ -562,12 +621,23 @@ def find_named_amount_reference(
     fiscal_year=None,
 ):
     found = []
+    expense_active = False
     for record in page_records:
         page_text = record["text"]
         for raw_line in page_text.splitlines():
             line = clean_text(raw_line)
             label, values = line_parts(line)
-            if not pattern.search(label):
+            if section == "expenses":
+                if EXPENSE_SECTION_RE.fullmatch(label) and not values:
+                    expense_active = True
+                if EXPENSE_SECTION_END_RE.search(label) and not TOTAL_EXPENSE_RE.fullmatch(label):
+                    expense_active = False
+                if not expense_active:
+                    continue
+            plain_expense_total = section == "expenses" and label.lower() == "total"
+            if section == "revenue" and label.lower() == "revenue" and values:
+                continue  # A trust-fund Revenue line is not the statement total.
+            if not pattern.search(label) and not plain_expense_total:
                 continue
             value = actual_value(values, page_text, line)
             if value is None:
@@ -589,6 +659,17 @@ def find_named_amount_reference(
     return found[-1] if last else found[0]
 
 
+def adjustment_amount(label, amount, expense_section=False):
+    """Keep reported signs; only explicitly described deductions invert positives."""
+    deduction = re.search(
+        r"\b(?:amorti[sz]ation|depreciation|write[- ]?down|"
+        r"member distributions?|profit distributions?)\b|^(?:net\s+)?loss\b", label, re.I
+    )
+    if amount > 0 and (expense_section or deduction):
+        return -amount
+    return amount
+
+
 def parse_surplus_adjustments(page_texts):
     rows = []
     active = False
@@ -603,14 +684,16 @@ def parse_surplus_adjustments(page_texts):
             if BEFORE_OTHER_RE.search(label):
                 active = True
                 continue
-            if seen_expenses and re.fullmatch(r"other (?:items|income|revenue \(expenditures\)|expenses?|expenditures)", label, re.I):
+            if seen_expenses and OTHER_ADJUSTMENT_RE.fullmatch(label):
                 active = True
-                expense_section = bool(re.fullmatch(r"other (?:items|expenses?|expenditures)", label, re.I))
+                expense_section = bool(re.fullmatch(r"other (?:expenses?|expenditures)", label, re.I))
                 continue
             if not active:
                 continue
             if FINAL_SURPLUS_RE.match(label):
                 return rows
+            if re.search(r"\b(?:surplus|deficit|excess)\b.*\bbefore\b", label, re.I):
+                continue  # Intermediate subtotals are not adjustment components.
             if re.match(r'^total other (?:items|income|expenses?)\b', label, re.I):
                 continue  # Its components are already represented above.
             if not label or not values or SKIP_LINE_RE.search(label):
@@ -622,8 +705,7 @@ def parse_surplus_adjustments(page_texts):
             amount = actual_value(values, page_text, line)
             if amount is None or amount == 0:
                 continue
-            if expense_section and amount > 0:
-                amount = -amount
+            amount = adjustment_amount(label, amount, expense_section)
             raw_values = MONEY_RE.findall(line)
             if (
                 abs(amount) < 100
@@ -929,6 +1011,14 @@ def validate_summary(summary):
     assets, liabilities, accumulated = (parse_money(summary.get(key)) for key in ("totalAssets", "totalLiabilities", "accumulatedSurplus"))
     if all(value is not None for value in (assets, liabilities, accumulated)) and not nearly_equal(assets, liabilities + accumulated):
         severe.append("Total assets do not reconcile to liabilities plus accumulated surplus")
+    financial_assets = parse_money(summary.get("totalFinancialAssets"))
+    net_financial_assets = parse_money(summary.get("netFinancialAssetsDebt"))
+    net_label = (summary.get("sourceReferences") or {}).get("netFinancialAssetsDebt", {}).get("sourceLabel", "")
+    if net_financial_assets is not None and re.match(r"^net debt\b", net_label, re.I):
+        net_financial_assets = -abs(net_financial_assets)
+    if (all(value is not None for value in (financial_assets, liabilities, net_financial_assets))
+            and not nearly_equal(financial_assets - liabilities, net_financial_assets)):
+        severe.append("Financial assets do not reconcile to liabilities plus net financial assets")
     revenue = parse_money(summary.get("totalRevenue"))
     expenses = parse_money(summary.get("totalExpenses"))
     surplus = parse_money(summary.get("annualSurplusDeficit"))
@@ -1078,7 +1168,34 @@ def extended_statement_fields(page_texts, fiscal_year=None):
             # A number in a comparative-year column must not be exposed as current.
             values[key] = rounded(value) if not reference or reference.get('yearValidated') is not False else None
             if reference:
+                record = next((record for record in records if record["page"] == reference["pdfPage"]), None)
+                if record:
+                    for line in record["text"].splitlines():
+                        label, amounts = line_parts(clean_text(line))
+                        if amounts and re.search(pattern, label, re.I):
+                            reference["sourceLabel"] = label
+                            break
                 references[key] = reference
+    asset_ref = references.get("totalAssets")
+    if asset_ref:
+        record = next((record for record in position if record["page"] == asset_ref["pdfPage"]), None)
+        if record and re.search(r"^non.financial assets\s*$", record["text"], re.I | re.M):
+            asset_section = None
+            totals = []
+            for line in record["text"].splitlines():
+                label, amounts = line_parts(clean_text(line))
+                if label.lower() == "financial assets":
+                    asset_section = "financial"
+                elif re.fullmatch(r"non.financial assets", label, re.I):
+                    asset_section = "nonfinancial"
+                elif label.lower() == "total assets" and amounts:
+                    totals.append((asset_section, actual_value(amounts, record["text"], line)))
+            if totals and all(section == "financial" for section, _ in totals):
+                values["totalFinancialAssets"] = values["totalAssets"]
+                references["totalFinancialAssets"] = {**asset_ref, "section": "totalFinancialAssets",
+                                                     "sourceLabel": "Total assets (financial assets section)"}
+                values["totalAssets"] = None
+                references.pop("totalAssets", None)
     values['statementSections'] = {'financialPosition': bool(position), 'cashFlow': bool(cash_flow)}
     return values, references
 
@@ -1130,7 +1247,7 @@ def parse_structured_capital(extracted, source_url=None, fiscal_year=None):
     candidates = [table for table in extracted.get("tables", [])
                   if isinstance(table.get("page"), int)
                   and 0 < table["page"] <= len(pages)
-                  and OPERATIONS_RE.search("\n".join(pages[table["page"] - 1].splitlines()[:8]))
+                  and is_primary_operations_page(pages[table["page"] - 1])
                   and any(REVENUE_SECTION_RE.fullmatch(clean_text(str(row[0])))
                           for row in table.get("rows", []) if row)]
     if len(candidates) != 1:
@@ -1179,9 +1296,9 @@ def parse_structured_capital(extracted, source_url=None, fiscal_year=None):
         if EXPENSE_SECTION_RE.fullmatch(label):
             section = "expenses"
             continue
-        if re.fullmatch(r"other (?:items|income|revenue \(expenditures\))", label, re.I):
+        if OTHER_ADJUSTMENT_RE.fullmatch(label):
             section = "adjustments"
-            adjustment_sign = -1 if label.lower() == "other items" else 1
+            adjustment_sign = -1 if re.fullmatch(r"other (?:expenses?|expenditures)", label, re.I) else 1
             continue
         if re.search(r"before (?:the following|other)", label, re.I):
             section = None
@@ -1223,7 +1340,7 @@ def parse_structured_capital(extracted, source_url=None, fiscal_year=None):
             continue
         category = broad_revenue_category(label) if section == "revenue" else broad_expense_category(label)
         sections[section].append({"sourceLabel": label, "label": label,
-                                  "category": category, "amount": amount * (adjustment_sign if section == "adjustments" else 1),
+                                  "category": category, "amount": adjustment_amount(label, amount, adjustment_sign == -1) if section == "adjustments" else amount,
                                   "sourceReference": reference(section)})
     for section, key in [("revenue", "totalRevenue"), ("expenses", "totalExpenses")]:
         breakdown, sources = aggregate_categories(sections[section])
@@ -1252,6 +1369,20 @@ def parse_structured_capital(extracted, source_url=None, fiscal_year=None):
 
 def parse_page_texts(page_texts, source_url=None, fiscal_year=None):
     operations_records = statement_page_records(page_texts, OPERATIONS_RE)
+    # Audit bundles may append a separately governed community's statements.
+    # Keep the first contiguous main statement, not later audit packages.
+    if operations_records:
+        first_statement = [operations_records[0]]
+        for record in operations_records[1:]:
+            if record["page"] != first_statement[-1]["page"] + 1:
+                break
+            first_statement.append(record)
+        operations_records = first_statement
+        for index in range(operations_records[-1]["page"], len(page_texts)):
+            if any(re.fullmatch(r"contents|table of contents", clean_text(line), re.I)
+                   for line in page_texts[index].splitlines()[:8]):
+                page_texts = page_texts[:index]
+                break
     if not operations_records:
         likely = likely_operations_pages(page_texts)
         operations_records = [
@@ -1259,7 +1390,7 @@ def parse_page_texts(page_texts, source_url=None, fiscal_year=None):
             for text in likely
         ]
     operations = inherit_budget_context(
-        [record["text"] for record in operations_records]
+        [join_statement_labels(record["text"]) for record in operations_records]
     )
     for record, text in zip(operations_records, operations):
         record["text"] = text

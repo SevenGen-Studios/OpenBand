@@ -35,7 +35,12 @@ def availability():
 
             rapidocr = True
         except ImportError:
-            missing.append("tesseract or rapidocr_onnxruntime")
+            try:
+                from rapidocr import RapidOCR  # noqa: F401
+
+                rapidocr = True
+            except ImportError:
+                missing.append("tesseract or RapidOCR")
     return {
         "available": not missing,
         "pdftoppm": pdftoppm,
@@ -45,17 +50,43 @@ def availability():
     }
 
 
+def coordinate_lines(items):
+    """Group OCR cells by baseline before ordering each financial row left-to-right."""
+    cells = []
+    for box, text in items:
+        if not box or not str(text).strip():
+            continue
+        xs, ys = zip(*box)
+        cells.append((min(xs), (min(ys) + max(ys)) / 2,
+                      max(max(ys) - min(ys), 1), str(text).strip()))
+    rows = []
+    for cell in sorted(cells, key=lambda item: (item[1], item[0])):
+        matches = [row for row in rows
+                   if abs(cell[1] - row[0][1]) <= min(cell[2], row[0][2]) * 0.4]
+        if matches:
+            min(matches, key=lambda row: abs(cell[1] - row[0][1])).append(cell)
+        else:
+            rows.append([cell])
+    return "\n".join(" ".join(cell[3] for cell in sorted(row)) for row in rows)
+
+
 def _rapidocr_text(image):
     """Return reading-order text from RapidOCR when Tesseract is unavailable."""
     global _RAPID_OCR
     if _RAPID_OCR is None:
-        from rapidocr_onnxruntime import RapidOCR
+        try:
+            from rapidocr_onnxruntime import RapidOCR
+        except ImportError:
+            from rapidocr import RapidOCR
 
         _RAPID_OCR = RapidOCR()
-    result, _ = _RAPID_OCR(str(image))
-    if not result:
+    output = _RAPID_OCR(str(image))
+    if isinstance(output, tuple):
+        result, _ = output
+        return coordinate_lines([(item[0], item[1]) for item in result or []])
+    if output.boxes is None or output.txts is None:
         return ""
-    return "\n".join(str(item[1]) for item in result if len(item) > 1 and item[1])
+    return coordinate_lines([(box.tolist(), text) for box, text in zip(output.boxes, output.txts)])
 
 
 def ocr_pdf_bytes(pdf_bytes, max_pages=None, dpi=None, timeout=None):
