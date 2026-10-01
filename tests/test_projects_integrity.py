@@ -8,6 +8,19 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class ProjectsIntegrityTests(unittest.TestCase):
+    def test_alberta_registry_proposals_and_identity_are_preserved(self):
+        registry = [p for p in self.projects if any(
+            "iaac-aeic.gc.ca" in s["url"] for s in p["sources"])]
+        for project in registry:
+            self.assertNotEqual(project.get("status"), "Completed")
+        rows = {p["id"]: p for p in self.projects}
+        self.assertEqual(rows["whitefish128-subdivision"]["firstNationIds"],
+                         ["ab-whitefish-lake-128"])
+        self.assertEqual(rows["whitefish459-wetland-mapping"]["firstNationIds"], ["459"])
+        self.assertEqual(set(rows["yellowhead-belvedere-housing"]["firstNationIds"]),
+                         {"431", "434", "438", "437"})
+        self.assertNotIn("estimatedCost", rows["peerless-admin-office"])
+
     @classmethod
     def setUpClass(cls):
         cls.bands = json.loads((ROOT / "data.json").read_text(encoding="utf-8"))["bands"]
@@ -76,6 +89,21 @@ class ProjectsIntegrityTests(unittest.TestCase):
     def test_project_coverage_expanded_after_all_community_audit(self):
         covered = {str(band_id) for project in self.projects for band_id in project["firstNationIds"]}
         self.assertGreaterEqual(len(covered), 35)
+
+    def test_alberta_projects_have_explicit_community_links(self):
+        alberta = {str(b["id"]) for b in self.bands if b["province"] == "AB"}
+        rows = [r for r in self.projects if alberta.intersection(map(str, r["firstNationIds"]))]
+        self.assertGreaterEqual(len(rows), 22)
+        self.assertGreaterEqual(len({str(i) for r in rows for i in r["firstNationIds"]}), 15)
+        by_id = {r["id"]: r for r in rows}
+        self.assertEqual(by_id["bigstone-energy-feasibility"]["firstNationIds"], ["458"])
+        self.assertNotIn("status", by_id["bigstone-energy-feasibility"])
+        self.assertNotIn("estimatedCost", by_id["lubicon-tiny-homes-study"])
+        self.assertNotIn("status", by_id["cold-lake-wireless-upgrade"])
+        self.assertEqual(by_id["fox-lake-access-road"]["statusAsOf"], "2019-07-19")
+        shared = by_id["newo-clean-energy-training"]
+        self.assertEqual(set(shared["firstNationIds"]), {"437", "442"})
+        self.assertIn("not allocated per Nation", shared["description"])
 
     def test_audited_project_disclosures_are_source_linked_and_do_not_infer_status(self):
         band_ids = {str(band["id"]) for band in self.bands}
