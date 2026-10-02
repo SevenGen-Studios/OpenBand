@@ -1,7 +1,42 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-01T18:37:00Z",
+  "generated": "2026-10-02T18:03:24Z",
   "items": [
+    {
+      "bandId": 438,
+      "communityName": "Alexander",
+      "sourceName": "Alexander official website",
+      "url": "https://www.alexanderfn.com/",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 438,
+      "communityName": "Alexander",
+      "sourceName": "Alexander official website",
+      "url": "https://www.alexanderfn.com/chief-council",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 438,
+      "communityName": "Alexander",
+      "sourceName": "Alexander official website",
+      "url": "https://www.alexanderfn.com/members",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 438,
+      "communityName": "Alexander",
+      "sourceName": "Alexander official website",
+      "url": "https://static.wixstatic.com/media/4e529d_dc026b0b4e374726b0869947aaa1307f~mv2.jpg/v1/fill/w_142,h_150,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/afn%20water%20protection%20thumbnail_edited_jp.jpg",
+      "extractionMethod": "image_ocr",
+      "detectedTitle": "\"AFN WATER",
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
     {
       "bandId": 463,
       "communityName": "Athabasca Chipewyan First Nation",
@@ -36,7 +71,7 @@
       "url": "https://acfn.com/wp-content/uploads/2024/04/ACFN_DLRM_Water-Policy-2023-FINAL.pdf",
       "extractionMethod": "pdf_text",
       "detectedTitle": "Water Policy 2023",
-      "detectedDate": "2026-09-06",
+      "detectedDate": "2026-10-01",
       "status": "extracted",
       "reason": "Source-backed media text extracted"
     },
@@ -68,6 +103,63 @@
       "reason": "detail fetch failed: HTTPError: HTTP Error 403: Forbidden"
     },
     {
+      "bandId": 473,
+      "communityName": "Bearspaw",
+      "sourceName": "Bearspaw official website",
+      "url": "https://bearspawfirstnation.ca/wp-content/uploads/2025/07/Bearspaw-Election-Regs-Amendment-25-2025-6-9.pdf",
+      "status": "detail_unverified",
+      "reason": "detail URL did not return HTML"
+    },
+    {
+      "bandId": 473,
+      "communityName": "Bearspaw",
+      "sourceName": "Bearspaw official website",
+      "url": "https://bearspawfirstnation.ca/wp-content/uploads/2025/07/BFN-COMMUNITY-MEETINGS-NOTICE-JUNE-2025-v2.pdf",
+      "status": "detail_unverified",
+      "reason": "detail URL did not return HTML"
+    },
+    {
+      "bandId": 473,
+      "communityName": "Bearspaw",
+      "sourceName": "Bearspaw official website",
+      "url": "https://bearspawfirstnation.ca/wp-content/uploads/2025/07/BFN-Electiion-Code-Fact-Sheet-2025-2025-6-9.pdf",
+      "status": "detail_unverified",
+      "reason": "detail URL did not return HTML"
+    },
+    {
+      "bandId": 473,
+      "communityName": "Bearspaw",
+      "sourceName": "Bearspaw official website",
+      "url": "https://bearspawfirstnation.ca/wp-content/uploads/2023/02/Eden-Valley-Reserve-Report-by-Tom-TYM.pdf",
+      "extractionMethod": "pdf_ocr",
+      "detectedTitle": "To provide a site for school and health services.",
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 473,
+      "communityName": "Bearspaw",
+      "sourceName": "Bearspaw official website",
+      "url": "https://bearspawfirstnation.ca/wp-content/uploads/2023/03/Building-Operational-Frameworks-to-Creat-Stable-Stoney-Institutions.pdf",
+      "extractionMethod": "pdf_ocr",
+      "detectedTitle": "e Dismantling of Treaty 7 Tribal Council;",
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 473,
+      "communityName": "Bearspaw",
+      "sourceName": "Bearspaw official website",
+      "url": "https://bearspawfirstnation.ca/wp-content/uploads/2023/03/Treaty-7.pdf",
+      "extractionMethod": "pdf_ocr",
+      "detectedTitle": "ORDER IN COUNCIL SETTING UP COMMISSION",
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
       "bandId": 460,
       "communityName": "Beaver Lake Cree Nation",
       "sourceName": "Beaver Lake Cree Nation official website",
@@ -96,55 +188,6 @@
       "url": "https://beaverlakecreenation.ca/wp-content/uploads/2026/09/COMMUNITY-ENGAGEMENT-Citizenship-Committee-150x150.png",
       "extractionMethod": "image_ocr",
       "detectedTitle": "COMMUNITY ENGAGEMENT",
-      "detectedDate": null,
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 435,
-      "communityName": "Blood",
-      "sourceName": "Blood official website",
-      "url": "https://mail.bloodtribe.org/owa",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: URLError: <urlopen error [Errno -5] No address associated with hostname>"
-    },
-    {
-      "bandId": 435,
-      "communityName": "Blood",
-      "sourceName": "Blood official website",
-      "url": "https://outlook.office365.com/",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 417: Expectation Failed"
-    },
-    {
-      "bandId": 435,
-      "communityName": "Blood",
-      "sourceName": "Blood official website",
-      "url": "https://bloodtribe.org/wp-content/uploads/2026/09/HUDRLDRI-Policies.pdf",
-      "extractionMethod": "pdf_text",
-      "detectedTitle": "HOUSING UNIT DISPUTE",
-      "detectedDate": null,
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 435,
-      "communityName": "Blood",
-      "sourceName": "Blood official website",
-      "url": "https://bloodtribe.org/wp-content/uploads/2026/09/Public-Notice-OFFICE-CLOSURE-Sept-2026-150x150.png",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": null,
-      "detectedDate": null,
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 435,
-      "communityName": "Blood",
-      "sourceName": "Blood official website",
-      "url": "https://bloodtribe.org/wp-content/uploads/2025/12/Blood-Tribe-Economic-Development-150x150.jpeg",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": null,
       "detectedDate": null,
       "status": "manual_review",
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
@@ -216,6 +259,104 @@
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
     },
     {
+      "bandId": 450,
+      "communityName": "Driftpile Cree Nation",
+      "sourceName": "Driftpile Cree Nation official website",
+      "url": "https://dcn450.com/wp-content/uploads/2026/03/DCN-Annuities-Payment-Application.pdf",
+      "extractionMethod": "pdf_ocr",
+      "detectedTitle": "Community Update",
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 450,
+      "communityName": "Driftpile Cree Nation",
+      "sourceName": "Driftpile Cree Nation official website",
+      "url": "https://dcn450.com/wp-content/uploads/2025/01/DCN-Election-Results-YouTube-Thumbnail-300x169.png",
+      "extractionMethod": "image_ocr",
+      "detectedTitle": "Election 2sacnomne",
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 450,
+      "communityName": "Driftpile Cree Nation",
+      "sourceName": "Driftpile Cree Nation official website",
+      "url": "https://dcn450.com/wp-content/uploads/2024/12/Election-Update-1-300x169.png",
+      "extractionMethod": "image_ocr",
+      "detectedTitle": null,
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 451,
+      "communityName": "Duncan's First Nation",
+      "sourceName": "Duncan's First Nation official website",
+      "url": "https://www.duncansfirstnation.com/_files/ugd/9fae88_4f60f0df78ef44b5847ec6197b2b5154.pdf",
+      "status": "detail_unverified",
+      "reason": "detail URL did not return HTML"
+    },
+    {
+      "bandId": 451,
+      "communityName": "Duncan's First Nation",
+      "sourceName": "Duncan's First Nation official website",
+      "url": "https://www.duncansfirstnation.com/_files/ugd/9fae88_da6d3f5480d64ad0897a597723f0aa70.pdf",
+      "status": "detail_unverified",
+      "reason": "detail URL did not return HTML"
+    },
+    {
+      "bandId": 451,
+      "communityName": "Duncan's First Nation",
+      "sourceName": "Duncan's First Nation official website",
+      "url": "https://www.duncansfirstnation.com/_files/ugd/9fae88_d1be4a12f2b74703ba970f9fc5a872a5.pdf",
+      "status": "detail_unverified",
+      "reason": "detail URL did not return HTML"
+    },
+    {
+      "bandId": 451,
+      "communityName": "Duncan's First Nation",
+      "sourceName": "Duncan's First Nation official website",
+      "url": "https://www.duncansfirstnation.com/_files/ugd/e19202_d073df21daaf4325a1147c95f649320a.pdf",
+      "status": "detail_unverified",
+      "reason": "detail URL did not return HTML"
+    },
+    {
+      "bandId": 451,
+      "communityName": "Duncan's First Nation",
+      "sourceName": "Duncan's First Nation official website",
+      "url": "https://bbcfab30-2f2f-42f1-a3e3-59ec33672899.filesusr.com/ugd/9fae88_4f60f0df78ef44b5847ec6197b2b5154.pdf",
+      "extractionMethod": "pdf_text",
+      "detectedTitle": "Duncan’s First Nation Development Corporation",
+      "detectedDate": "2025-06-19",
+      "status": "extracted",
+      "reason": "Source-backed media text extracted"
+    },
+    {
+      "bandId": 451,
+      "communityName": "Duncan's First Nation",
+      "sourceName": "Duncan's First Nation official website",
+      "url": "https://bbcfab30-2f2f-42f1-a3e3-59ec33672899.filesusr.com/ugd/9fae88_da6d3f5480d64ad0897a597723f0aa70.pdf",
+      "extractionMethod": "pdf_ocr",
+      "detectedTitle": "Duncan’s First Nation Election",
+      "detectedDate": "2025-06-03",
+      "status": "extracted",
+      "reason": "Source-backed media text extracted"
+    },
+    {
+      "bandId": 451,
+      "communityName": "Duncan's First Nation",
+      "sourceName": "Duncan's First Nation official website",
+      "url": "https://bbcfab30-2f2f-42f1-a3e3-59ec33672899.filesusr.com/ugd/9fae88_d1be4a12f2b74703ba970f9fc5a872a5.pdf",
+      "extractionMethod": "pdf_text",
+      "detectedTitle": "2025 General Election",
+      "detectedDate": "2025-06-03",
+      "status": "extracted",
+      "reason": "Source-backed media text extracted"
+    },
+    {
       "bandId": 440,
       "communityName": "Enoch Cree Nation #440",
       "sourceName": "Enoch Cree Nation #440 official website",
@@ -263,7 +404,7 @@
       "bandId": 443,
       "communityName": "Ermineskin Tribe",
       "sourceName": "Ermineskin Tribe official website",
-      "url": "https://ermineskin.ca/wp-content/uploads/2026/09/828995906_28370198769287837_6619439326670745661_n-576x1024.jpg",
+      "url": "https://ermineskin.ca/wp-content/uploads/2026/10/830424756_1386159719897843_2645028662935411840_n-792x1024.png",
       "extractionMethod": "image_ocr",
       "detectedTitle": ".path{fill:none;stroke:#333;stroke-miterlimit:10;stroke-width:1.5px;}",
       "detectedDate": null,
@@ -274,7 +415,40 @@
       "bandId": 443,
       "communityName": "Ermineskin Tribe",
       "sourceName": "Ermineskin Tribe official website",
-      "url": "https://ermineskin.ca/wp-content/uploads/2026/09/828467656_2159060734991237_3722070702627696692_n-1024x576.png",
+      "url": "https://ermineskin.ca/wp-content/uploads/2026/10/828469169_28254530597549634_8705863766449838935_n-1024x577.png",
+      "extractionMethod": "image_ocr",
+      "detectedTitle": ".path{fill:none;stroke:#333;stroke-miterlimit:10;stroke-width:1.5px;}",
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 443,
+      "communityName": "Ermineskin Tribe",
+      "sourceName": "Ermineskin Tribe official website",
+      "url": "https://ermineskin.ca/wp-content/uploads/2024/02/YSW-Brochure-2024.pdf",
+      "extractionMethod": "pdf_text",
+      "detectedTitle": "environment.",
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 443,
+      "communityName": "Ermineskin Tribe",
+      "sourceName": "Ermineskin Tribe official website",
+      "url": "https://ermineskin.ca/wp-content/uploads/2026/10/830424756_1386159719897843_2645028662935411840_n-792x1024.png",
+      "extractionMethod": "image_ocr",
+      "detectedTitle": ".path{fill:none;stroke:#333;stroke-miterlimit:10;stroke-width:1.5px;}",
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 443,
+      "communityName": "Ermineskin Tribe",
+      "sourceName": "Ermineskin Tribe official website",
+      "url": "https://ermineskin.ca/wp-content/uploads/2026/10/828469169_28254530597549634_8705863766449838935_n-1024x577.png",
       "extractionMethod": "image_ocr",
       "detectedTitle": ".path{fill:none;stroke:#333;stroke-miterlimit:10;stroke-width:1.5px;}",
       "detectedDate": null,
@@ -326,6 +500,24 @@
       "url": "https://www.fortmckay.com/app/uploads/2024/11/FMFN-Annual-Report_Fiscal-Year-2023.pdf",
       "extractionMethod": "pdf_text",
       "detectedTitle": "GOVERNANCE",
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 468,
+      "communityName": "Fort McMurray #468 First Nation",
+      "url": "https://fmfn468.com/wp-content/uploads/2022/02/Community-Pillars-V4.png",
+      "status": "document_unavailable",
+      "reason": "HTTPError: HTTP Error 404: Not Found"
+    },
+    {
+      "bandId": 468,
+      "communityName": "Fort McMurray #468 First Nation",
+      "sourceName": "Fort McMurray #468 First Nation official website",
+      "url": "https://www.fmfn468.com/media/jeshbath/community-pillars-v4.png?rmode=max&width=657&height=658",
+      "extractionMethod": "image_ocr",
+      "detectedTitle": "Culture ¥, ‘ ‘",
       "detectedDate": null,
       "status": "manual_review",
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
@@ -564,10 +756,91 @@
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
     },
     {
+      "bandId": 442,
+      "communityName": "Montana",
+      "sourceName": "Montana official website",
+      "url": "https://montanafirstnation.com/wp-content/uploads/2026/07/Executive-Secretary.pdf",
+      "status": "detail_unverified",
+      "reason": "detail URL did not return HTML"
+    },
+    {
+      "bandId": 442,
+      "communityName": "Montana",
+      "sourceName": "Montana official website",
+      "url": "https://montanafirstnation.com/wp-content/uploads/2026/05/Greenhouse-Operator__May_2026.pdf",
+      "status": "detail_unverified",
+      "reason": "detail URL did not return HTML"
+    },
+    {
+      "bandId": 442,
+      "communityName": "Montana",
+      "sourceName": "Montana official website",
+      "url": "https://montanafirstnation.com/wp-content/uploads/2026/01/Administration-Finance-Clerk-JAN-2026.pdf",
+      "status": "detail_unverified",
+      "reason": "detail URL did not return HTML"
+    },
+    {
+      "bandId": 442,
+      "communityName": "Montana",
+      "sourceName": "Montana official website",
+      "url": "https://montanafirstnation.com/wp-content/uploads/2026/01/Custodian_2026.pdf",
+      "status": "detail_unverified",
+      "reason": "detail URL did not return HTML"
+    },
+    {
+      "bandId": 442,
+      "communityName": "Montana",
+      "sourceName": "Montana official website",
+      "url": "https://montanafirstnation.com/wp-content/uploads/2025/12/November-Newsletter-MFN-2025-V1.pdf",
+      "status": "detail_unverified",
+      "reason": "detail URL did not return HTML"
+    },
+    {
+      "bandId": 442,
+      "communityName": "Montana",
+      "sourceName": "Montana official website",
+      "url": "https://montanafirstnation.com/wp-content/uploads/2025/10/Medical-Transportation-Driver-OCT-24-2025.pdf",
+      "status": "detail_unverified",
+      "reason": "detail URL did not return HTML"
+    },
+    {
+      "bandId": 442,
+      "communityName": "Montana",
+      "sourceName": "Montana official website",
+      "url": "https://montanafirstnation.com/wp-content/uploads/2026/07/Executive-Secretary.pdf",
+      "extractionMethod": "pdf_ocr",
+      "detectedTitle": "Maskwacis Cree Tribal Council",
+      "detectedDate": "2025-10-24",
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 442,
+      "communityName": "Montana",
+      "sourceName": "Montana official website",
+      "url": "https://montanafirstnation.com/wp-content/uploads/2026/05/Greenhouse-Operator__May_2026.pdf",
+      "extractionMethod": "pdf_text",
+      "detectedTitle": "economic development.",
+      "detectedDate": "2025-10-24",
+      "status": "extracted",
+      "reason": "Source-backed media text extracted"
+    },
+    {
+      "bandId": 442,
+      "communityName": "Montana",
+      "sourceName": "Montana official website",
+      "url": "https://montanafirstnation.com/wp-content/uploads/2026/01/Administration-Finance-Clerk-JAN-2026.pdf",
+      "extractionMethod": "pdf_text",
+      "detectedTitle": "staff member from any department, and occasionally communicates with and assists community members",
+      "detectedDate": "2025-10-24",
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
       "bandId": 431,
       "communityName": "O'Chiese",
       "sourceName": "O'Chiese official website",
-      "url": "https://e511e108-f4f1-4980-b02a-8483c4fce9e8.filesusr.com/ugd/e58042_10d8c712f1984e84ab97f8e62aa0b004.pdf?dn=AUGUST+2026+Newsletter.pdf",
+      "url": "https://e511e108-f4f1-4980-b02a-8483c4fce9e8.filesusr.com/ugd/e58042_ee147c251991416db460a2b2257a813a.pdf?dn=SEPTEMBER+2026+Newsletter.pdf",
       "extractionMethod": "document_too_large",
       "detectedTitle": null,
       "detectedDate": null,
@@ -713,22 +986,6 @@
       "bandId": 444,
       "communityName": "Samson",
       "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/samson-celebration-powwow-initiation-aug-2026",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/temporary-closure-for-2nd-3rd-floors-of-cta-building-july-23-24-2026",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
       "url": "https://samsoncree.com/nipisihkopahk-acimowin-newsletter-may2026",
       "status": "detail_unverified",
       "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
@@ -801,7 +1058,7 @@
       "bandId": 444,
       "communityName": "Samson",
       "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/samson-celebration-powwow-initiation-aug-2026",
+      "url": "https://samsoncree.com/nipisihkopahk-acimowin-newsletter-may2026",
       "status": "detail_unverified",
       "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
     },
@@ -809,9 +1066,122 @@
       "bandId": 444,
       "communityName": "Samson",
       "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/temporary-closure-for-2nd-3rd-floors-of-cta-building-july-23-24-2026",
+      "url": "https://samsoncree.com/after-school-care-program-with-samson-head-start",
       "status": "detail_unverified",
       "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://samsoncree.com/scn-elders-community-engagement-sept-25-2026",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://samsoncree.com/wp-content/uploads/2026/09/After-School-Care-Program-2026-2027-SHS-FNCFS-Prevention-1-1.png",
+      "extractionMethod": "image_ocr",
+      "detectedTitle": null,
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://samsoncree.com/wp-content/uploads/2026/08/Pigeon-Lake-Community-Engagement-2.0-1.png",
+      "extractionMethod": "image_ocr",
+      "detectedTitle": null,
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://samsoncree.com/wp-content/uploads/2026/08/Hydroponic-Technician_-Farm-Operator-Project-Development-Business-Development-JPEG_Page_2.jpg",
+      "extractionMethod": "image_ocr",
+      "detectedTitle": null,
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://samsoncree.com/nipisihkopahk-acimowin-newsletter-may2026",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://samsoncree.com/after-school-care-program-with-samson-head-start",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://samsoncree.com/scn-elders-community-engagement-sept-25-2026",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://samsoncree.com/nipisihkopahk-acimowin-newsletter-may2026",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://samsoncree.com/imunify-bot-check",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://samsoncree.com/imunify-bot-check"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://www.instagram.com/samsoncreenation",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://www.instagram.com/samsoncreenation"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://twitter.com/share?url=https%3A%2F%2Fsamsoncree.com%2Fsocial-media-and-online-gaming-safety-july-2026%2F&text=Social+media+and+Online+Gaming+Safety+July.+2026",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://twitter.com/share?url=https%3A%2F%2Fsamsoncree.com%2Fsocial-media-and-online-gaming-safety-july-2026%2F&text=Social+media+and+Online+Gaming+Safety+July.+2026"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://pinterest.com/pin/create/button",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://pinterest.com/pin/create/button"
+    },
+    {
+      "bandId": 444,
+      "communityName": "Samson",
+      "sourceName": "Samson official website",
+      "url": "https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsamsoncree.com%2Fsocial-media-and-online-gaming-safety-july-2026%2F&title=Social+media+and+Online+Gaming+Safety+July.+2026&summary=&source=SCN",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsamsoncree.com%2Fsocial-media-and-online-gaming-safety-july-2026%2F&title=Social+media+and+Online+Gaming+Safety+July.+2026&summary=&source=SCN"
     },
     {
       "bandId": 444,
@@ -901,9 +1271,25 @@
       "bandId": 430,
       "communityName": "Siksika Nation",
       "sourceName": "Siksika Nation official website",
-      "url": "https://siksikanation.com/wp-content/uploads/2026/09/Truth-Reconciliation-Day-30-SEPT.png",
+      "url": "https://www.instagram.com/siksika_nation",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://www.instagram.com/siksika_nation"
+    },
+    {
+      "bandId": 430,
+      "communityName": "Siksika Nation",
+      "sourceName": "Siksika Nation official website",
+      "url": "https://ca.linkedin.com/company/siksika-nation-tribal-administration",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://ca.linkedin.com/company/siksika-nation-tribal-administration"
+    },
+    {
+      "bandId": 430,
+      "communityName": "Siksika Nation",
+      "sourceName": "Siksika Nation official website",
+      "url": "https://siksikanation.com/wp-content/uploads/2025/11/2025-2028-Siksika-Nation-Chief-and-Council-Group-Photo.png",
       "extractionMethod": "image_ocr",
-      "detectedTitle": "Download",
+      "detectedTitle": null,
       "detectedDate": null,
       "status": "manual_review",
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
@@ -1049,10 +1435,10 @@
       "sourceName": "Swan River First Nation official website",
       "url": "https://srfn.ca/wp-content/uploads/2026/09/1000050195.jpg",
       "extractionMethod": "image_ocr",
-      "detectedTitle": null,
+      "detectedTitle": "Treaty 8 rights and Health, education, ",
       "detectedDate": "2026-10-19",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+      "status": "extracted",
+      "reason": "Source-backed media text extracted"
     },
     {
       "bandId": 457,
@@ -1219,12 +1605,135 @@
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
     },
     {
+      "bandId": 432,
+      "communityName": "Tsuut'ina Nation",
+      "sourceName": "Tsuut'ina Nation official website",
+      "url": "https://tsuutina.com/chief-council",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 404: Not Found"
+    },
+    {
+      "bandId": 432,
+      "communityName": "Tsuut'ina Nation",
+      "sourceName": "Tsuut'ina Nation official website",
+      "url": "https://tsuutina.com/chief-council",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 404: Not Found"
+    },
+    {
+      "bandId": 432,
+      "communityName": "Tsuut'ina Nation",
+      "sourceName": "Tsuut'ina Nation official website",
+      "url": "https://tsuutina.com/event/elders-tea-coming-home-youth-competition-powwow",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/elders-tea-coming-home-youth-competition-powwow"
+    },
+    {
+      "bandId": 432,
+      "communityName": "Tsuut'ina Nation",
+      "sourceName": "Tsuut'ina Nation official website",
+      "url": "https://tsuutina.com/event/coming-home-youth-powwow",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/coming-home-youth-powwow"
+    },
+    {
+      "bandId": 432,
+      "communityName": "Tsuut'ina Nation",
+      "sourceName": "Tsuut'ina Nation official website",
+      "url": "https://tsuutina.com/event/youth-program-evening-ballet/2026-09-28",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/youth-program-evening-ballet/2026-09-28"
+    },
+    {
+      "bandId": 432,
+      "communityName": "Tsuut'ina Nation",
+      "sourceName": "Tsuut'ina Nation official website",
+      "url": "https://tsuutina.com/event/every-child-matters-community-walk-2026",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/every-child-matters-community-walk-2026"
+    },
+    {
+      "bandId": 432,
+      "communityName": "Tsuut'ina Nation",
+      "sourceName": "Tsuut'ina Nation official website",
+      "url": "https://tsuutina.com/event/chair-yoga-and-gentle-movement-class",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/chair-yoga-and-gentle-movement-class"
+    },
+    {
+      "bandId": 432,
+      "communityName": "Tsuut'ina Nation",
+      "sourceName": "Tsuut'ina Nation official website",
+      "url": "https://tsuutina.com/event/bullhead-community-hall-donation-day-initiative",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/bullhead-community-hall-donation-day-initiative"
+    },
+    {
+      "bandId": 432,
+      "communityName": "Tsuut'ina Nation",
+      "sourceName": "Tsuut'ina Nation official website",
+      "url": "https://tsuutina.com/event/drive-in-movie-night",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/drive-in-movie-night"
+    },
+    {
+      "bandId": 432,
+      "communityName": "Tsuut'ina Nation",
+      "sourceName": "Tsuut'ina Nation official website",
+      "url": "https://tsuutina.com/event/youth-program-evening-ballet/2026-10-05",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/youth-program-evening-ballet/2026-10-05"
+    },
+    {
+      "bandId": 432,
+      "communityName": "Tsuut'ina Nation",
+      "sourceName": "Tsuut'ina Nation official website",
+      "url": "https://tsuutina.com/event/community-engagement-sessions-your-voice-in-how-we-hire",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/community-engagement-sessions-your-voice-in-how-we-hire"
+    },
+    {
+      "bandId": 432,
+      "communityName": "Tsuut'ina Nation",
+      "sourceName": "Tsuut'ina Nation official website",
+      "url": "https://tsuutina.com/event/asl-plains-indian-sign-language-classes",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/asl-plains-indian-sign-language-classes"
+    },
+    {
+      "bandId": 432,
+      "communityName": "Tsuut'ina Nation",
+      "sourceName": "Tsuut'ina Nation official website",
+      "url": "https://tsuutina.com/event/psp-ucalgary-nursing-info-session",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/psp-ucalgary-nursing-info-session"
+    },
+    {
+      "bandId": 432,
+      "communityName": "Tsuut'ina Nation",
+      "sourceName": "Tsuut'ina Nation official website",
+      "url": "https://tsuutina.com/event/community-engagement-sessions-your-voice-in-how-we-hire/2026-10-08",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://tsuutina.com/event/community-engagement-sessions-your-voice-in-how-we-hire/2026-10-08"
+    },
+    {
+      "bandId": 432,
+      "communityName": "Tsuut'ina Nation",
+      "sourceName": "Tsuut'ina Nation official website",
+      "url": "https://tsuutina.com/wp-content/uploads/2022/06/Nation-App-Promo.pdf",
+      "extractionMethod": "pdf_text",
+      "detectedTitle": "How to Get the App",
+      "detectedDate": null,
+      "status": "manual_review",
+      "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
       "bandId": "ab-whitefish-lake-128",
       "communityName": "Whitefish Lake First Nation #128",
       "sourceName": "Whitefish Lake First Nation #128 official website",
       "url": "https://static1.squarespace.com/static/67d2fd98449c9556a729f7af/t/6ab2ecb7fb2f4b266515ff2b/1790110903240/Housing+Application.pdf",
       "extractionMethod": "pdf_ocr",
-      "detectedTitle": "First Nation Children's Housing fund Application Fillable PDF",
+      "detectedTitle": "Application Deadline: 4:30 pm November 2, 2026",
       "detectedDate": null,
       "status": "manual_review",
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
@@ -1263,8 +1772,8 @@
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
     },
     {
-      "id": "athabasca-chipewyan-first-nation-2026-09-06-e3a4406bdf",
-      "storyKey": "463-2026-09-06-consultation-policy",
+      "id": "athabasca-chipewyan-first-nation-2026-10-01-fa4ea323fd",
+      "storyKey": "463-2026-10-01-consultation-policy",
       "title": "Consultation Policy",
       "communityName": "Athabasca Chipewyan First Nation",
       "communityAliases": [],
@@ -1272,7 +1781,7 @@
       "category": "Other",
       "sourceType": "Official First Nation Website",
       "sourceName": "Athabasca Chipewyan First Nation official website",
-      "publishedAt": "2026-09-06",
+      "publishedAt": "2026-10-01",
       "datePrecision": "day",
       "url": "https://acfn.com/wp-content/uploads/2023/08/ACFN-Consultation-Policy.pdf",
       "summary": "We are the K'ai Tailé Denesųłiné Welcome to the Athabasca Chipewyan First Nation. We have occupied this region for thousands of years, continuing our traditions of hunting, trapping, fishing and gathering today just as our ancestors did before us. As stewards of the region, we have a deep understanding of our land and are committed to creating a better world for the next generation. Protecting and honouring our conn.",
@@ -1281,7 +1790,7 @@
         "source-backed"
       ],
       "bandId": 463,
-      "discoveredAt": "2026-10-01T18:30:25Z",
+      "discoveredAt": "2026-10-02T17:55:15Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1290,8 +1799,8 @@
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "athabasca-chipewyan-first-nation-2026-09-06-d00dc12cbc",
-      "storyKey": "463-2026-09-06-water-policy",
+      "id": "athabasca-chipewyan-first-nation-2026-10-01-1f85206784",
+      "storyKey": "463-2026-10-01-water-policy",
       "title": "Water Policy",
       "communityName": "Athabasca Chipewyan First Nation",
       "communityAliases": [],
@@ -1299,7 +1808,7 @@
       "category": "Infrastructure",
       "sourceType": "Official First Nation Website",
       "sourceName": "Athabasca Chipewyan First Nation official website",
-      "publishedAt": "2026-09-06",
+      "publishedAt": "2026-10-01",
       "datePrecision": "day",
       "url": "https://acfn.com/wp-content/uploads/2024/04/ACFN_DLRM_Water-Policy-2023-FINAL.pdf",
       "summary": "K'ai Tailé Denesųłiné Welcome to the Athabasca Chipewyan First Nation. We have occupied this region for thousands of years, continuing our traditions of hunting, trapping, fishing and gathering today just as our ancestors did before us. As stewards of the region, we have a deep understanding of our land and are committed to creating a better world for the next generation. Protecting and honouring our connection to t.",
@@ -1308,7 +1817,7 @@
         "source-backed"
       ],
       "bandId": 463,
-      "discoveredAt": "2026-10-01T18:30:25Z",
+      "discoveredAt": "2026-10-02T17:55:15Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1317,8 +1826,8 @@
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "athabasca-chipewyan-first-nation-2026-09-06-16599f6bd8",
-      "storyKey": "463-2026-09-06-water-policy-2023",
+      "id": "athabasca-chipewyan-first-nation-2026-10-01-4170dee812",
+      "storyKey": "463-2026-10-01-water-policy-2023",
       "title": "Water Policy 2023",
       "communityName": "Athabasca Chipewyan First Nation",
       "communityAliases": [],
@@ -1326,7 +1835,7 @@
       "category": "Infrastructure",
       "sourceType": "Official First Nation Website",
       "sourceName": "Athabasca Chipewyan First Nation official website",
-      "publishedAt": "2026-09-06",
+      "publishedAt": "2026-10-01",
       "datePrecision": "day",
       "url": "https://acfn.com/wp-content/uploads/2024/04/ACFN_DLRM_Water-Policy-2023-FINAL.pdf",
       "summary": "tu bet’a ts’ena With Water We Live Athabasca Chipewyan First Nation (ACFN) Water Policy 2023 ACFN WATER POLICY We, the Athabasca Chipewyan First Nation have occupied the lands around the Athabasca River and the Peace-Athabasca Delta for the last 10,000 years. Our rights to use the lands and water on our traditional territory have never been extinguished, and we have the right to continue our traditional way of life.",
@@ -1335,7 +1844,7 @@
         "source-backed"
       ],
       "bandId": 463,
-      "discoveredAt": "2026-10-01T18:31:07Z",
+      "discoveredAt": "2026-10-02T17:56:18Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_text",
@@ -1344,93 +1853,119 @@
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "blood-2026-09-30-e8d453b5b9",
-      "storyKey": "435-2026-09-30-blood-tribe-webmail",
-      "title": "Blood Tribe Webmail",
-      "communityName": "Blood",
+      "id": "bearspaw-2025-06-09-b3db9b3072",
+      "storyKey": "473-2025-06-09-bearspaw-election-regs-amendment-25-2025-6-9",
+      "title": "Bearspaw Election Regs Amendment ’25 – 2025-6-9",
+      "communityName": "Bearspaw",
       "communityAliases": [
-        "Blood Tribe",
-        "Kainai Nation"
+        "Bearspaw First Nation"
       ],
       "provinceTerritory": "AB",
-      "category": "Employment",
+      "category": "Elections",
       "sourceType": "Official First Nation Website",
-      "sourceName": "Blood official website",
-      "publishedAt": "2026-09-30",
+      "sourceName": "Bearspaw official website",
+      "publishedAt": "2025-06-09",
       "datePrecision": "day",
-      "url": "https://mail.bloodtribe.org/owa",
-      "summary": "Skip to content Menu Governance Blood Tribe Chief & Council Bylaws Kainayssini Administration Directory Departments Emergency Contacts Opioid Response Events News Jobs Search for: Search Button Quick Links: Blood Tribe Chief & Council Entities Contact Us Facebook Instagram YouTube TikTok Open Search Window Blood Tribe Webmail BT Office 365 Email Oki, Welcome! To promote the rights and well-being of our Nation under t.",
+      "url": "https://bearspawfirstnation.ca/wp-content/uploads/2025/07/Bearspaw-Election-Regs-Amendment-25-2025-6-9.pdf",
+      "summary": "Bearspaw official website published this community update.",
       "tags": [
         "community-update",
         "source-backed"
       ],
-      "bandId": 435,
-      "discoveredAt": "2026-10-01T18:30:23Z",
+      "bandId": 473,
+      "discoveredAt": "2026-10-02T17:55:37Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
-      "sourcePage": "https://bloodtribe.org/",
-      "thumbnail": "https://bloodtribe.org/wp-content/uploads/2023/05/header_logo.png",
+      "sourcePage": "https://bearspawfirstnation.ca/2026/07/06/never-miss-an-update",
+      "thumbnail": "https://bearspawfirstnation.ca/wp-content/uploads/2026/07/Screenshot-2026-07-06-at-3.36.55-PM.jpg",
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "blood-2026-09-30-40861a0c2f",
-      "storyKey": "435-2026-09-30-bt-office-365-email",
-      "title": "BT Office 365 Email",
-      "communityName": "Blood",
+      "id": "bearspaw-2025-06-01-0a349095e2",
+      "storyKey": "473-2025-06-01-bfn-community-meetings-notice-june-2025-v2",
+      "title": "BFN COMMUNITY MEETINGS NOTICE JUNE 2025 v2",
+      "communityName": "Bearspaw",
       "communityAliases": [
-        "Blood Tribe",
-        "Kainai Nation"
+        "Bearspaw First Nation"
       ],
       "provinceTerritory": "AB",
-      "category": "Employment",
+      "category": "Community Events",
       "sourceType": "Official First Nation Website",
-      "sourceName": "Blood official website",
-      "publishedAt": "2026-09-30",
-      "datePrecision": "day",
-      "url": "https://outlook.office365.com/",
-      "summary": "Skip to content Menu Governance Blood Tribe Chief & Council Bylaws Kainayssini Administration Directory Departments Emergency Contacts Opioid Response Events News Jobs Search for: Search Button Quick Links: Blood Tribe Chief & Council Entities Contact Us Facebook Instagram YouTube TikTok Open Search Window Blood Tribe Webmail BT Office 365 Email Oki, Welcome! To promote the rights and well-being of our Nation under t.",
+      "sourceName": "Bearspaw official website",
+      "publishedAt": "2025-06-01",
+      "datePrecision": "month",
+      "url": "https://bearspawfirstnation.ca/wp-content/uploads/2025/07/BFN-COMMUNITY-MEETINGS-NOTICE-JUNE-2025-v2.pdf",
+      "summary": "Bearspaw official website published this community update.",
       "tags": [
         "community-update",
         "source-backed"
       ],
-      "bandId": 435,
-      "discoveredAt": "2026-10-01T18:30:23Z",
+      "bandId": 473,
+      "discoveredAt": "2026-10-02T17:55:37Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
-      "sourcePage": "https://bloodtribe.org/",
-      "thumbnail": "https://bloodtribe.org/wp-content/uploads/2023/05/header_logo.png",
-      "reviewReason": "Source URL is a homepage or archive rather than a dated article"
+      "sourcePage": "https://bearspawfirstnation.ca/2026/07/06/never-miss-an-update",
+      "thumbnail": "https://bearspawfirstnation.ca/wp-content/uploads/2026/07/Screenshot-2026-07-06-at-3.36.55-PM.jpg",
+      "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "blood-2026-09-26-c9fb78d53d",
-      "storyKey": "435-2026-09-26-skip-to-content",
-      "title": "Skip to content",
-      "communityName": "Blood",
+      "id": "bearspaw-2025-06-09-5f603e02b8",
+      "storyKey": "473-2025-06-09-bfn-election-code-fact-sheet-2025-2025-6-9",
+      "title": "BFN Election Code Fact Sheet 2025 – 2025-6-9",
+      "communityName": "Bearspaw",
       "communityAliases": [
-        "Blood Tribe",
-        "Kainai Nation"
+        "Bearspaw First Nation"
       ],
       "provinceTerritory": "AB",
-      "category": "Employment",
+      "category": "Elections",
       "sourceType": "Official First Nation Website",
-      "sourceName": "Blood official website",
-      "publishedAt": "2026-09-25",
+      "sourceName": "Bearspaw official website",
+      "publishedAt": "2025-06-09",
       "datePrecision": "day",
-      "url": "https://bloodtribe.org/public-notice-blood-tribe-bottle-depot-to-be-closed-on-saturday-september-26-2026",
-      "summary": "Please be advised the Blood Tribe Bottle Depot will be closed on Saturday, September 26, 2026, due to staff shortage. The Bottle Depot will reopen on Tuesday, September 29.",
+      "url": "https://bearspawfirstnation.ca/wp-content/uploads/2025/07/BFN-Electiion-Code-Fact-Sheet-2025-2025-6-9.pdf",
+      "summary": "Bearspaw official website published this community update.",
       "tags": [
         "community-update",
         "source-backed"
       ],
-      "bandId": 435,
-      "discoveredAt": "2026-10-01T18:30:35Z",
+      "bandId": 473,
+      "discoveredAt": "2026-10-02T17:55:37Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://bearspawfirstnation.ca/2026/07/06/never-miss-an-update",
+      "thumbnail": "https://bearspawfirstnation.ca/wp-content/uploads/2026/07/Screenshot-2026-07-06-at-3.36.55-PM.jpg",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "bearspaw-2026-07-06-eae9913a0e",
+      "storyKey": "473-2026-07-06-continue-reading",
+      "title": "Continue reading",
+      "communityName": "Bearspaw",
+      "communityAliases": [
+        "Bearspaw First Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Other",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Bearspaw official website",
+      "publishedAt": "2026-07-06",
+      "datePrecision": "day",
+      "url": "https://bearspawfirstnation.ca/2026/07/06/never-miss-an-update",
+      "summary": "Download the app by August 28, 2026, and you will automatically be entered into a draw to win an 85-inch big screen TV!",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 473,
+      "discoveredAt": "2026-10-02T17:55:37Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "html",
-      "sourcePage": "https://bloodtribe.org/public-notice-blood-tribe-bottle-depot-to-be-closed-on-saturday-september-26-2026",
-      "thumbnail": "https://bloodtribe.org/wp-content/uploads/2023/05/header_logo.png",
+      "sourcePage": "https://bearspawfirstnation.ca/2026/07/06/never-miss-an-update",
+      "thumbnail": "https://bearspawfirstnation.ca/wp-content/uploads/2026/07/Screenshot-2026-07-06-at-3.36.55-PM.jpg",
       "detailVerified": true,
       "reviewReason": "Title does not clearly describe a supported community update"
     },
@@ -1453,7 +1988,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-01T18:30:34Z",
+      "discoveredAt": "2026-10-02T17:55:23Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1479,7 +2014,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-01T18:30:34Z",
+      "discoveredAt": "2026-10-02T17:55:23Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1505,7 +2040,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-01T18:30:34Z",
+      "discoveredAt": "2026-10-02T17:55:23Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1531,7 +2066,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-01T18:30:34Z",
+      "discoveredAt": "2026-10-02T17:55:23Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1557,7 +2092,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-01T18:30:34Z",
+      "discoveredAt": "2026-10-02T17:55:24Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1583,7 +2118,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-01T18:30:34Z",
+      "discoveredAt": "2026-10-02T17:55:24Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1609,7 +2144,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-01T18:30:34Z",
+      "discoveredAt": "2026-10-02T17:55:24Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1635,7 +2170,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-01T18:30:34Z",
+      "discoveredAt": "2026-10-02T17:55:24Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1661,7 +2196,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-01T18:30:34Z",
+      "discoveredAt": "2026-10-02T17:55:24Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1687,7 +2222,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-01T18:30:34Z",
+      "discoveredAt": "2026-10-02T17:55:24Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1713,7 +2248,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-01T18:30:34Z",
+      "discoveredAt": "2026-10-02T17:55:24Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1739,7 +2274,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-01T18:30:34Z",
+      "discoveredAt": "2026-10-02T17:55:24Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1765,7 +2300,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-01T18:30:34Z",
+      "discoveredAt": "2026-10-02T17:55:24Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1791,11 +2326,196 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-01T18:30:43Z",
+      "discoveredAt": "2026-10-02T17:55:38Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_text",
       "sourcePage": "https://www.cpfn.ca/latest-news/bylaw-updates-july-2026",
+      "detailVerified": false,
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "duncan-s-first-nation-2025-06-19-2aa35bed5d",
+      "storyKey": "451-2025-06-19-dfn-development-corporation-approves-member-cultural-support",
+      "title": "DFN Development Corporation approves Member Cultural Support",
+      "communityName": "Duncan's First Nation",
+      "communityAliases": [],
+      "provinceTerritory": "AB",
+      "category": "Other",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Duncan's First Nation official website",
+      "publishedAt": "2025-06-19",
+      "datePrecision": "day",
+      "url": "https://www.duncansfirstnation.com/_files/ugd/9fae88_4f60f0df78ef44b5847ec6197b2b5154.pdf",
+      "summary": "CONTACT US More Use tab to navigate through the menu items. PHONE DIRECTIONS ​ NEWS: WHAT'S HAPPENING DFN Development Corporation approves Member Cultural Support June 19, 2025 (Click on headline above) $2B methanol facility being planned in Alberta for exports to Asia January 2, 2019 Box 148, Brownvale, Alberta T0H 0L0 Email: info@DuncansFirstNation.ca Tel: 780-597-3777 Fax: 780-597-3920 © 2018 Duncan's First Nation.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 451,
+      "discoveredAt": "2026-10-02T17:56:08Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://www.duncansfirstnation.com/copy-of-early-childhood",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "duncan-s-first-nation-2025-06-03-5cee0dd53d",
+      "storyKey": "451-2025-06-03-2025-07-15-election-results",
+      "title": "2025-07-15 Election Results",
+      "communityName": "Duncan's First Nation",
+      "communityAliases": [],
+      "provinceTerritory": "AB",
+      "category": "Elections",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Duncan's First Nation official website",
+      "publishedAt": "2025-06-03",
+      "datePrecision": "day",
+      "url": "https://www.duncansfirstnation.com/_files/ugd/9fae88_da6d3f5480d64ad0897a597723f0aa70.pdf",
+      "summary": "More Use tab to navigate through the menu items. PHONE DIRECTIONS ​ ELECTION: WHAT'S HAPPENING ELECTION 2025 RESULTS 2025-07-15 Election Results Notice from Electoral Officer 2025 2025 Election Appeal Results Nominated Candidates for the 2025 Election and Candidate Platform Notice June 3, 2025 Nominated Candidates Election Results 2025 Box 148, Brownvale, Alberta T0H 0L0 Email: info@DuncansFirstNation.ca Tel: 780-597.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 451,
+      "discoveredAt": "2026-10-02T17:56:08Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://www.duncansfirstnation.com/copy-of-news-1",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "duncan-s-first-nation-2025-06-03-4e9b48e3bb",
+      "storyKey": "451-2025-06-03-notice-from-electoral-officer-2025",
+      "title": "Notice from Electoral Officer 2025",
+      "communityName": "Duncan's First Nation",
+      "communityAliases": [],
+      "provinceTerritory": "AB",
+      "category": "Elections",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Duncan's First Nation official website",
+      "publishedAt": "2025-06-03",
+      "datePrecision": "day",
+      "url": "https://www.duncansfirstnation.com/_files/ugd/9fae88_d1be4a12f2b74703ba970f9fc5a872a5.pdf",
+      "summary": "Use tab to navigate through the menu items. PHONE DIRECTIONS ​ ELECTION: WHAT'S HAPPENING ELECTION 2025 RESULTS 2025-07-15 Election Results Notice from Electoral Officer 2025 2025 Election Appeal Results Nominated Candidates for the 2025 Election and Candidate Platform Notice June 3, 2025 Nominated Candidates Election Results 2025 Box 148, Brownvale, Alberta T0H 0L0 Email: info@DuncansFirstNation.ca Tel: 780-597-3777.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 451,
+      "discoveredAt": "2026-10-02T17:56:08Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://www.duncansfirstnation.com/copy-of-news-1",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "duncan-s-first-nation-2025-06-03-d2f18387ef",
+      "storyKey": "451-2025-06-03-2025-election-appeal-results",
+      "title": "2025 Election Appeal Results",
+      "communityName": "Duncan's First Nation",
+      "communityAliases": [],
+      "provinceTerritory": "AB",
+      "category": "Elections",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Duncan's First Nation official website",
+      "publishedAt": "2025-06-03",
+      "datePrecision": "day",
+      "url": "https://www.duncansfirstnation.com/_files/ugd/e19202_d073df21daaf4325a1147c95f649320a.pdf",
+      "summary": "PHONE DIRECTIONS ​ ELECTION: WHAT'S HAPPENING ELECTION 2025 RESULTS 2025-07-15 Election Results Notice from Electoral Officer 2025 2025 Election Appeal Results Nominated Candidates for the 2025 Election and Candidate Platform Notice June 3, 2025 Nominated Candidates Election Results 2025 Box 148, Brownvale, Alberta T0H 0L0 Email: info@DuncansFirstNation.ca Tel: 780-597-3777 Fax: 780-597-3920 © 2018 Duncan's First Nat.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 451,
+      "discoveredAt": "2026-10-02T17:56:08Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://www.duncansfirstnation.com/copy-of-news-1",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "duncan-s-first-nation-2025-06-19-8eac73f7d0",
+      "storyKey": "451-2025-06-19-duncan-s-first-nation-development-corporation",
+      "title": "Duncan’s First Nation Development Corporation",
+      "communityName": "Duncan's First Nation",
+      "communityAliases": [],
+      "provinceTerritory": "AB",
+      "category": "Business & Economic Development",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Duncan's First Nation official website",
+      "publishedAt": "2025-06-19",
+      "datePrecision": "day",
+      "url": "https://bbcfab30-2f2f-42f1-a3e3-59ec33672899.filesusr.com/ugd/9fae88_4f60f0df78ef44b5847ec6197b2b5154.pdf",
+      "summary": "Attention DFN Members, Duncan’s First Nation Development Corporation has been operating for a few years now. Our Economic Development Team has worked hard to build opportunities that provide ongoing revenue for our Nation. Due to this, on May 6, 2025 at a Development Corporation Board meeting, a Cultural Support supplement was approved for Member households in the amount of $1,000. These funds are meant to support yo.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 451,
+      "discoveredAt": "2026-10-02T17:56:13Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "pdf_text",
+      "sourcePage": "https://www.duncansfirstnation.com/copy-of-early-childhood",
+      "detailVerified": false,
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "duncan-s-first-nation-2025-06-03-007b13b3a7",
+      "storyKey": "451-2025-06-03-duncan-s-first-nation-election",
+      "title": "Duncan’s First Nation Election",
+      "communityName": "Duncan's First Nation",
+      "communityAliases": [],
+      "provinceTerritory": "AB",
+      "category": "Elections",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Duncan's First Nation official website",
+      "publishedAt": "2025-06-03",
+      "datePrecision": "day",
+      "url": "https://bbcfab30-2f2f-42f1-a3e3-59ec33672899.filesusr.com/ugd/9fae88_da6d3f5480d64ad0897a597723f0aa70.pdf",
+      "summary": "Results for 2025 Duncan’s First Nation Election Chief Votes (Top candidate elected) (Top two candidates elected) Keith Lawrence Delvin Mooswah Jr. Candidates listed in alphabetical order by last name. (E) = Elected , *Tie-breaking vote given by Electoral Officer in accordance with section 9 of the Duncan’s First Nation Custom Election Regulations If you have any questions, please contact: M. Joseph Redman wl ha,| oA.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 451,
+      "discoveredAt": "2026-10-02T17:56:14Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "pdf_ocr",
+      "sourcePage": "https://www.duncansfirstnation.com/copy-of-news-1",
+      "detailVerified": false,
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "duncan-s-first-nation-2025-06-03-14fb75c7be",
+      "storyKey": "451-2025-06-03-2025-general-election",
+      "title": "2025 General Election",
+      "communityName": "Duncan's First Nation",
+      "communityAliases": [],
+      "provinceTerritory": "AB",
+      "category": "Elections",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Duncan's First Nation official website",
+      "publishedAt": "2025-06-03",
+      "datePrecision": "day",
+      "url": "https://bbcfab30-2f2f-42f1-a3e3-59ec33672899.filesusr.com/ugd/9fae88_d1be4a12f2b74703ba970f9fc5a872a5.pdf",
+      "summary": "For Public Posting at the Duncan’s First Nation Attention: Duncan’s First Nation Electors Re: Duncan’s First Nation Nomination Meeting 2025 General Election I am writing this letter to address questions raised following the Nomination Meeting held on June 3, 2025. Several people have asked about the publication of names of the nominators of the candidates, and have contacted me to request this information. For the re.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 451,
+      "discoveredAt": "2026-10-02T17:56:14Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "pdf_text",
+      "sourcePage": "https://www.duncansfirstnation.com/copy-of-news-1",
       "detailVerified": false,
       "reviewReason": "Publication date could not be verified on the detail page"
     },
@@ -1818,7 +2538,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-10-01T18:31:01Z",
+      "discoveredAt": "2026-10-02T17:56:22Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1846,7 +2566,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-10-01T18:31:28Z",
+      "discoveredAt": "2026-10-02T17:57:04Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -1872,7 +2592,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-10-01T18:31:01Z",
+      "discoveredAt": "2026-10-02T17:56:22Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1900,7 +2620,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-10-01T18:31:01Z",
+      "discoveredAt": "2026-10-02T17:56:22Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1928,7 +2648,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-10-01T18:31:01Z",
+      "discoveredAt": "2026-10-02T17:56:22Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1956,7 +2676,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-10-01T18:31:01Z",
+      "discoveredAt": "2026-10-02T17:56:22Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -1984,7 +2704,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-10-01T18:31:01Z",
+      "discoveredAt": "2026-10-02T17:56:22Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2012,7 +2732,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-10-01T18:31:28Z",
+      "discoveredAt": "2026-10-02T17:57:04Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2020,16 +2740,18 @@
       "reviewReason": "Title does not clearly describe a supported community update"
     },
     {
-      "id": "ermineskin-tribe-2026-09-30-b2a3f1d8c5",
-      "storyKey": "443-2026-09-30-newsletters",
+      "id": "ermineskin-tribe-2026-10-01-9f60442c96",
+      "storyKey": "443-2026-10-01-newsletters",
       "title": "Newsletters",
       "communityName": "Ermineskin Tribe",
-      "communityAliases": [],
+      "communityAliases": [
+        "Ermineskin Cree Nation"
+      ],
       "provinceTerritory": "AB",
-      "category": "Elections",
+      "category": "Employment",
       "sourceType": "Official First Nation Website",
       "sourceName": "Ermineskin Tribe official website",
-      "publishedAt": "2026-09-30",
+      "publishedAt": "2026-10-01",
       "datePrecision": "day",
       "url": "https://ermineskin.ca/newsletters",
       "summary": "Subscribe our newsletter by email. The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
@@ -2038,7 +2760,7 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-10-01T18:31:10Z",
+      "discoveredAt": "2026-10-02T17:56:22Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2048,16 +2770,18 @@
       "reviewReason": "Title identifies navigation, a directory, or an evergreen section"
     },
     {
-      "id": "ermineskin-tribe-2026-09-30-2bef2a8e84",
-      "storyKey": "443-2026-09-30-job-opportunities",
+      "id": "ermineskin-tribe-2026-10-01-6fe10f4da0",
+      "storyKey": "443-2026-10-01-job-opportunities",
       "title": "Job Opportunities",
       "communityName": "Ermineskin Tribe",
-      "communityAliases": [],
+      "communityAliases": [
+        "Ermineskin Cree Nation"
+      ],
       "provinceTerritory": "AB",
-      "category": "Elections",
+      "category": "Employment",
       "sourceType": "Official First Nation Website",
       "sourceName": "Ermineskin Tribe official website",
-      "publishedAt": "2026-09-30",
+      "publishedAt": "2026-10-01",
       "datePrecision": "day",
       "url": "https://ermineskin.ca/job-opportunities",
       "summary": "as of September 16th, 2026 The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
@@ -2066,7 +2790,7 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-10-01T18:31:10Z",
+      "discoveredAt": "2026-10-02T17:56:22Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2076,16 +2800,18 @@
       "reviewReason": "Employment posting belongs in Jobs & Employment"
     },
     {
-      "id": "ermineskin-tribe-2026-09-30-8400eec0bc",
-      "storyKey": "443-2026-09-30-emergency-contacts",
+      "id": "ermineskin-tribe-2026-10-01-0f8dbfd56f",
+      "storyKey": "443-2026-10-01-emergency-contacts",
       "title": "Emergency Contacts",
       "communityName": "Ermineskin Tribe",
-      "communityAliases": [],
+      "communityAliases": [
+        "Ermineskin Cree Nation"
+      ],
       "provinceTerritory": "AB",
-      "category": "Elections",
+      "category": "Employment",
       "sourceType": "Official First Nation Website",
       "sourceName": "Ermineskin Tribe official website",
-      "publishedAt": "2026-09-30",
+      "publishedAt": "2026-10-01",
       "datePrecision": "day",
       "url": "https://ermineskin.ca/ermergency-contact",
       "summary": "The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
@@ -2094,7 +2820,7 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-10-01T18:31:10Z",
+      "discoveredAt": "2026-10-02T17:56:22Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2104,16 +2830,18 @@
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "ermineskin-tribe-2026-09-30-8cbd985aee",
-      "storyKey": "443-2026-09-30-more-news",
+      "id": "ermineskin-tribe-2026-10-01-714c298ed7",
+      "storyKey": "443-2026-10-01-more-news",
       "title": "More News",
       "communityName": "Ermineskin Tribe",
-      "communityAliases": [],
+      "communityAliases": [
+        "Ermineskin Cree Nation"
+      ],
       "provinceTerritory": "AB",
-      "category": "Elections",
+      "category": "Employment",
       "sourceType": "Official First Nation Website",
       "sourceName": "Ermineskin Tribe official website",
-      "publishedAt": "2026-09-30",
+      "publishedAt": "2026-10-01",
       "datePrecision": "day",
       "url": "https://ermineskin.ca/news",
       "summary": "The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
@@ -2122,7 +2850,7 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-10-01T18:31:10Z",
+      "discoveredAt": "2026-10-02T17:56:22Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2132,16 +2860,18 @@
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "ermineskin-tribe-2026-09-30-08ea30c368",
-      "storyKey": "443-2026-09-30-more-updates",
+      "id": "ermineskin-tribe-2026-10-01-3bac77da10",
+      "storyKey": "443-2026-10-01-more-updates",
       "title": "More Updates",
       "communityName": "Ermineskin Tribe",
-      "communityAliases": [],
+      "communityAliases": [
+        "Ermineskin Cree Nation"
+      ],
       "provinceTerritory": "AB",
-      "category": "Elections",
+      "category": "Employment",
       "sourceType": "Official First Nation Website",
       "sourceName": "Ermineskin Tribe official website",
-      "publishedAt": "2026-09-30",
+      "publishedAt": "2026-10-01",
       "datePrecision": "day",
       "url": "https://ermineskin.ca/eventsc",
       "summary": "The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
@@ -2150,7 +2880,157 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-10-01T18:31:10Z",
+      "discoveredAt": "2026-10-02T17:56:22Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://ermineskin.ca/",
+      "thumbnail": "https://ermineskin.ca/wp-content/uploads/2019/04/qw.jpg",
+      "detailVerified": false,
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "ermineskin-tribe-2026-10-01-9f60442c96",
+      "storyKey": "443-2026-10-01-newsletters",
+      "title": "Newsletters",
+      "communityName": "Ermineskin Tribe",
+      "communityAliases": [
+        "Ermineskin Cree Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Employment",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Ermineskin Tribe official website",
+      "publishedAt": "2026-10-01",
+      "datePrecision": "day",
+      "url": "https://ermineskin.ca/newsletters",
+      "summary": "Subscribe our newsletter by email. The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 443,
+      "discoveredAt": "2026-10-02T17:56:23Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://ermineskin.ca/",
+      "thumbnail": "https://ermineskin.ca/wp-content/uploads/2019/04/qw.jpg",
+      "detailVerified": true,
+      "reviewReason": "Title identifies navigation, a directory, or an evergreen section"
+    },
+    {
+      "id": "ermineskin-tribe-2026-10-01-6fe10f4da0",
+      "storyKey": "443-2026-10-01-job-opportunities",
+      "title": "Job Opportunities",
+      "communityName": "Ermineskin Tribe",
+      "communityAliases": [
+        "Ermineskin Cree Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Employment",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Ermineskin Tribe official website",
+      "publishedAt": "2026-10-01",
+      "datePrecision": "day",
+      "url": "https://ermineskin.ca/job-opportunities",
+      "summary": "as of September 16th, 2026 The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 443,
+      "discoveredAt": "2026-10-02T17:56:23Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://ermineskin.ca/",
+      "thumbnail": "https://ermineskin.ca/wp-content/uploads/2019/04/qw.jpg",
+      "detailVerified": true,
+      "reviewReason": "Employment posting belongs in Jobs & Employment"
+    },
+    {
+      "id": "ermineskin-tribe-2026-10-01-0f8dbfd56f",
+      "storyKey": "443-2026-10-01-emergency-contacts",
+      "title": "Emergency Contacts",
+      "communityName": "Ermineskin Tribe",
+      "communityAliases": [
+        "Ermineskin Cree Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Employment",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Ermineskin Tribe official website",
+      "publishedAt": "2026-10-01",
+      "datePrecision": "day",
+      "url": "https://ermineskin.ca/ermergency-contact",
+      "summary": "The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 443,
+      "discoveredAt": "2026-10-02T17:56:23Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://ermineskin.ca/",
+      "thumbnail": "https://ermineskin.ca/wp-content/uploads/2019/04/qw.jpg",
+      "detailVerified": false,
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "ermineskin-tribe-2026-10-01-714c298ed7",
+      "storyKey": "443-2026-10-01-more-news",
+      "title": "More News",
+      "communityName": "Ermineskin Tribe",
+      "communityAliases": [
+        "Ermineskin Cree Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Employment",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Ermineskin Tribe official website",
+      "publishedAt": "2026-10-01",
+      "datePrecision": "day",
+      "url": "https://ermineskin.ca/news",
+      "summary": "The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 443,
+      "discoveredAt": "2026-10-02T17:56:23Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://ermineskin.ca/",
+      "thumbnail": "https://ermineskin.ca/wp-content/uploads/2019/04/qw.jpg",
+      "detailVerified": false,
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "ermineskin-tribe-2026-10-01-3bac77da10",
+      "storyKey": "443-2026-10-01-more-updates",
+      "title": "More Updates",
+      "communityName": "Ermineskin Tribe",
+      "communityAliases": [
+        "Ermineskin Cree Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Employment",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Ermineskin Tribe official website",
+      "publishedAt": "2026-10-01",
+      "datePrecision": "day",
+      "url": "https://ermineskin.ca/eventsc",
+      "summary": "The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 443,
+      "discoveredAt": "2026-10-02T17:56:23Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2178,7 +3058,7 @@
         "source-backed"
       ],
       "bandId": 467,
-      "discoveredAt": "2026-10-01T18:31:02Z",
+      "discoveredAt": "2026-10-02T17:56:27Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2204,7 +3084,7 @@
         "source-backed"
       ],
       "bandId": 467,
-      "discoveredAt": "2026-10-01T18:31:02Z",
+      "discoveredAt": "2026-10-02T17:56:27Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2234,7 +3114,7 @@
         "source-backed"
       ],
       "bandId": 475,
-      "discoveredAt": "2026-10-01T18:31:08Z",
+      "discoveredAt": "2026-10-02T17:57:11Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2261,7 +3141,7 @@
         "source-backed"
       ],
       "bandId": 447,
-      "discoveredAt": "2026-10-01T18:31:26Z",
+      "discoveredAt": "2026-10-02T17:57:25Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2289,7 +3169,7 @@
         "source-backed"
       ],
       "bandId": 461,
-      "discoveredAt": "2026-10-01T18:32:07Z",
+      "discoveredAt": "2026-10-02T17:58:44Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2317,7 +3197,7 @@
         "source-backed"
       ],
       "bandId": 461,
-      "discoveredAt": "2026-10-01T18:32:08Z",
+      "discoveredAt": "2026-10-02T17:58:45Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2344,7 +3224,7 @@
         "source-backed"
       ],
       "bandId": 461,
-      "discoveredAt": "2026-10-01T18:32:08Z",
+      "discoveredAt": "2026-10-02T17:58:45Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2372,7 +3252,7 @@
         "source-backed"
       ],
       "bandId": 461,
-      "discoveredAt": "2026-10-01T18:32:08Z",
+      "discoveredAt": "2026-10-02T17:58:45Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2380,6 +3260,260 @@
       "thumbnail": "https://mikisewcree.ca/wp-content/uploads/2026/01/Health-Event-1-400x250.jpg",
       "detailVerified": true,
       "reviewReason": "Title does not clearly describe a supported community update"
+    },
+    {
+      "id": "montana-2025-10-24-10a19fbb1b",
+      "storyKey": "442-2025-10-24-montana-integrated-services-department-misd",
+      "title": "Montana Integrated Services Department (MISD)",
+      "communityName": "Montana",
+      "communityAliases": [
+        "Montana First Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Infrastructure",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Montana official website",
+      "publishedAt": "2025-10-24",
+      "datePrecision": "day",
+      "url": "https://montanafirstnation.com/",
+      "summary": "*Make written laws over a number of tribal matters currently under provincial and federal legislation. *Encourage tribal members to become more involved in tribal decision-making. *Continue to increase the tribal land base by lobbying the federal and provincial governments to convert acquired off-reserve lands to reserve status.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 442,
+      "discoveredAt": "2026-10-02T17:58:21Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://montanafirstnation.com/",
+      "reviewReason": "Source URL is a homepage or archive rather than a dated article"
+    },
+    {
+      "id": "montana-2025-10-24-0c251f6f13",
+      "storyKey": "442-2025-10-24-https-www-who-int-emergencies-diseases-novel-coronavirus-2019",
+      "title": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019",
+      "communityName": "Montana",
+      "communityAliases": [
+        "Montana First Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Healthcare",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Montana official website",
+      "publishedAt": "2025-10-24",
+      "datePrecision": "day",
+      "url": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019",
+      "summary": "Information on COVID-19, the infectious disease caused by the most recently discovered coronavirus.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 442,
+      "discoveredAt": "2026-10-02T17:58:21Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://montanafirstnation.com/",
+      "thumbnail": "https://cdn.who.int/media/images/default-source/health-topics/coronavirus/corona-virus-getty.tmb-1200v.jpg?sfvrsn=217a6a68_42",
+      "reviewReason": "Title does not clearly describe a supported community update"
+    },
+    {
+      "id": "montana-2025-10-24-25f5d4f239",
+      "storyKey": "442-2025-10-24-executive-secretary",
+      "title": "Executive Secretary",
+      "communityName": "Montana",
+      "communityAliases": [
+        "Montana First Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Healthcare",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Montana official website",
+      "publishedAt": "2025-10-24",
+      "datePrecision": "day",
+      "url": "https://montanafirstnation.com/wp-content/uploads/2026/07/Executive-Secretary.pdf",
+      "summary": "Babylon by TELUS Health is a free app that allows you to receive virtual healthcare from your phone, without leaving the house. Leveraging the power of technology, residents in BC and Alberta can now video chat directly with a licensed doctor from their phones. Across the rest of the country, Canadians are able to download the app and use the Symptom Checker, which utilizes AI to analyze symptoms and suggest courses.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 442,
+      "discoveredAt": "2026-10-02T17:58:21Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://montanafirstnation.com/",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "montana-2025-10-24-2e143318e8",
+      "storyKey": "442-2025-10-24-greenhouse-operator",
+      "title": "Greenhouse Operator",
+      "communityName": "Montana",
+      "communityAliases": [
+        "Montana First Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Healthcare",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Montana official website",
+      "publishedAt": "2025-10-24",
+      "datePrecision": "day",
+      "url": "https://montanafirstnation.com/wp-content/uploads/2026/05/Greenhouse-Operator__May_2026.pdf",
+      "summary": "Leveraging the power of technology, residents in BC and Alberta can now video chat directly with a licensed doctor from their phones. Across the rest of the country, Canadians are able to download the app and use the Symptom Checker, which utilizes AI to analyze symptoms and suggest courses of action, including COVID-19. Its use can help relieve the current stresses on our healthcare system while reducing your risk o.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 442,
+      "discoveredAt": "2026-10-02T17:58:21Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://montanafirstnation.com/",
+      "reviewReason": "Title does not clearly describe a supported community update"
+    },
+    {
+      "id": "montana-2025-10-24-da73866c8a",
+      "storyKey": "442-2025-10-24-administration-finance-clerk",
+      "title": "Administration Finance Clerk",
+      "communityName": "Montana",
+      "communityAliases": [
+        "Montana First Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Healthcare",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Montana official website",
+      "publishedAt": "2025-10-24",
+      "datePrecision": "day",
+      "url": "https://montanafirstnation.com/wp-content/uploads/2026/01/Administration-Finance-Clerk-JAN-2026.pdf",
+      "summary": "Its use can help relieve the current stresses on our healthcare system while reducing your risk of catching or spreading illnesses. Download Babylon by TELUS Health: Google Play & Apple Store TELUS Talks Health Podcast https://www.who.int/emergencies/diseases/novel-coronavirus-2019 News and Job opportunities Executive Secretary Greenhouse Operator Administration Finance Clerk Custodian November 2025 Newsletter Medica.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 442,
+      "discoveredAt": "2026-10-02T17:58:21Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://montanafirstnation.com/",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "montana-2025-10-24-d5f28c350f",
+      "storyKey": "442-2025-10-24-custodian",
+      "title": "Custodian",
+      "communityName": "Montana",
+      "communityAliases": [
+        "Montana First Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Healthcare",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Montana official website",
+      "publishedAt": "2025-10-24",
+      "datePrecision": "day",
+      "url": "https://montanafirstnation.com/wp-content/uploads/2026/01/Custodian_2026.pdf",
+      "summary": "Download Babylon by TELUS Health: Google Play & Apple Store TELUS Talks Health Podcast https://www.who.int/emergencies/diseases/novel-coronavirus-2019 News and Job opportunities Executive Secretary Greenhouse Operator Administration Finance Clerk Custodian November 2025 Newsletter Medical Transportation Driver OCT 24 2025 Latest Newsletter, Press Release [wpdm_package id=’371′] [wpdm_package id=’263′] [wpdm_package i.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 442,
+      "discoveredAt": "2026-10-02T17:58:21Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://montanafirstnation.com/",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "montana-2025-10-24-da9ed0162c",
+      "storyKey": "442-2025-10-24-november-2025-newsletter",
+      "title": "November 2025 Newsletter",
+      "communityName": "Montana",
+      "communityAliases": [
+        "Montana First Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Healthcare",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Montana official website",
+      "publishedAt": "2025-10-24",
+      "datePrecision": "day",
+      "url": "https://montanafirstnation.com/wp-content/uploads/2025/12/November-Newsletter-MFN-2025-V1.pdf",
+      "summary": "Google Play & Apple Store TELUS Talks Health Podcast https://www.who.int/emergencies/diseases/novel-coronavirus-2019 News and Job opportunities Executive Secretary Greenhouse Operator Administration Finance Clerk Custodian November 2025 Newsletter Medical Transportation Driver OCT 24 2025 Latest Newsletter, Press Release [wpdm_package id=’371′] [wpdm_package id=’263′] [wpdm_package id=’262′] [wpdm_package id=’248′] [.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 442,
+      "discoveredAt": "2026-10-02T17:58:21Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://montanafirstnation.com/",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "montana-2025-10-24-36d213033c",
+      "storyKey": "442-2025-10-24-medical-transportation-driver-oct-24-2025",
+      "title": "Medical Transportation Driver OCT 24 2025",
+      "communityName": "Montana",
+      "communityAliases": [
+        "Montana First Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Healthcare",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Montana official website",
+      "publishedAt": "2025-10-24",
+      "datePrecision": "day",
+      "url": "https://montanafirstnation.com/wp-content/uploads/2025/10/Medical-Transportation-Driver-OCT-24-2025.pdf",
+      "summary": "TELUS Talks Health Podcast https://www.who.int/emergencies/diseases/novel-coronavirus-2019 News and Job opportunities Executive Secretary Greenhouse Operator Administration Finance Clerk Custodian November 2025 Newsletter Medical Transportation Driver OCT 24 2025 Latest Newsletter, Press Release [wpdm_package id=’371′] [wpdm_package id=’263′] [wpdm_package id=’262′] [wpdm_package id=’248′] [wpdm_package id=’233′] Add.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 442,
+      "discoveredAt": "2026-10-02T17:58:21Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://montanafirstnation.com/",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "montana-2025-10-24-f2ca781c28",
+      "storyKey": "442-2025-10-24-economic-development",
+      "title": "economic development.",
+      "communityName": "Montana",
+      "communityAliases": [
+        "Montana First Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Business & Economic Development",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Montana official website",
+      "publishedAt": "2025-10-24",
+      "datePrecision": "day",
+      "url": "https://montanafirstnation.com/wp-content/uploads/2026/05/Greenhouse-Operator__May_2026.pdf",
+      "summary": "GREENHOUSE OPERATOR JOB DESCRIPTION About the Role Reporting to the Greenhouse Manager, the Greenhouse Operator is responsible for supporting the day-to-day production and harvesting of crops in a year-round indoor commercial greenhouse and hydroponic system. This includes seeding, growing, harvesting, packaging, cleaning, and maintenance duties to ensure the consistent production of high-quality lettuce, leafy green.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 442,
+      "discoveredAt": "2026-10-02T17:59:03Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "pdf_text",
+      "sourcePage": "https://montanafirstnation.com/",
+      "detailVerified": false,
+      "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
       "id": "peerless-trout-first-nation-2026-09-21-ae3290a0b2",
@@ -2400,7 +3534,7 @@
         "source-backed"
       ],
       "bandId": 478,
-      "discoveredAt": "2026-10-01T18:32:28Z",
+      "discoveredAt": "2026-10-02T17:58:28Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2427,7 +3561,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-01T18:32:37Z",
+      "discoveredAt": "2026-10-02T17:58:33Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2455,7 +3589,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-01T18:32:37Z",
+      "discoveredAt": "2026-10-02T17:58:33Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2483,7 +3617,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-01T18:32:37Z",
+      "discoveredAt": "2026-10-02T17:58:33Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2511,7 +3645,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-01T18:32:37Z",
+      "discoveredAt": "2026-10-02T17:58:33Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2539,7 +3673,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-01T18:32:37Z",
+      "discoveredAt": "2026-10-02T17:58:33Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2567,7 +3701,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-01T18:32:37Z",
+      "discoveredAt": "2026-10-02T17:58:33Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2595,7 +3729,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-01T18:32:28Z",
+      "discoveredAt": "2026-10-02T17:58:25Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2623,7 +3757,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-01T18:32:37Z",
+      "discoveredAt": "2026-10-02T17:58:33Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2651,7 +3785,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-01T18:32:37Z",
+      "discoveredAt": "2026-10-02T17:58:33Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2679,7 +3813,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-01T18:32:37Z",
+      "discoveredAt": "2026-10-02T17:58:33Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2707,7 +3841,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-01T18:32:37Z",
+      "discoveredAt": "2026-10-02T17:58:33Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2735,7 +3869,7 @@
         "source-backed"
       ],
       "bandId": 462,
-      "discoveredAt": "2026-10-01T18:32:34Z",
+      "discoveredAt": "2026-10-02T17:58:36Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2764,7 +3898,7 @@
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-01T18:32:54Z",
+      "discoveredAt": "2026-10-02T17:59:10Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2785,14 +3919,14 @@
       "sourceName": "Samson official website",
       "publishedAt": "2026-09-25",
       "datePrecision": "day",
-      "url": "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&osid=1&passive=1209600&service=mail&flowName=WebLiteSignIn&flowEntry=ServiceLogin&dsh=S-685963801%3A1790879578588521",
+      "url": "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&osid=1&passive=1209600&service=mail&flowName=WebLiteSignIn&flowEntry=ServiceLogin&dsh=S-1423375380%3A1790963960060184",
       "summary": "Gmail is email that’s intuitive, efficient, and useful. 15 GB of storage, less spam, and mobile access.",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-01T18:32:54Z",
+      "discoveredAt": "2026-10-02T17:59:10Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2820,7 +3954,7 @@
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-01T18:32:56Z",
+      "discoveredAt": "2026-10-02T17:59:12Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2848,7 +3982,7 @@
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-01T18:32:56Z",
+      "discoveredAt": "2026-10-02T17:59:12Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2876,7 +4010,7 @@
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-01T18:32:56Z",
+      "discoveredAt": "2026-10-02T17:59:12Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2895,26 +4029,27 @@
       "category": "Culture & Language",
       "sourceType": "Official First Nation Website",
       "sourceName": "Samson official website",
-      "publishedAt": "2026-07-22",
+      "publishedAt": "2026-07-21",
       "datePrecision": "day",
       "url": "https://samsoncree.com/samson-celebration-powwow-initiation-aug-2026",
-      "summary": "Stay Safe Online & Level Up Your Digital Skills! July 22, 2026 at HBMC Classroom 1 2:30 PM Learn how to: – Stay safe on social media – Protect your personal information – Recognize online scams and cyberbullying – Practice safe online gaming habits Attend in person or online and receive a $25 gift card! For more information: comms@samsoncree.com 780-585-3793 ext. 103 Categories: 2026 , July 2026-07-21T11:29:10-04:00.",
+      "summary": "SCN Celebrations Initiation Powwow!August 6, 2026 from 1:00-3:00PM at the Maskwacis Bear Park!Initiation for Samson community Members!Open to all ages, Tiny tot to Golden AgesWe will provide: Elders, protocol, giveaway, drum/song. We would like to support you to be part of the powwow circle.Scan the QR code or go to ww.samsonheadstart.com to register! Registration is also",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-01T18:32:56Z",
+      "discoveredAt": "2026-10-02T17:59:12Z",
       "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
+      "dateSource": "article:published_time",
       "extractionMethod": "html",
       "sourcePage": "https://samsoncree.com/social-media-and-online-gaming-safety-july-2026",
-      "reviewReason": "Publication date could not be verified on the detail page"
+      "detailVerified": true,
+      "reviewReason": "Title does not clearly describe a supported community update"
     },
     {
       "id": "samson-2026-07-22-8945218c86",
       "storyKey": "444-2026-07-22-next-next-post-temporary-closure-for-2nd-and-3rd-floors-of-cta-building-july-23-",
-      "title": "Next Next post: Temporary Closure for 2nd & 3rd Floors of CTA Building July 23 & 24, 2026",
+      "title": "Temporary Closure for 2nd & 3rd Floors of CTA Building July 23 & 24, 2026 - SCN",
       "communityName": "Samson",
       "communityAliases": [
         "Samson Cree Nation"
@@ -2923,20 +4058,219 @@
       "category": "Emergencies",
       "sourceType": "Official First Nation Website",
       "sourceName": "Samson official website",
-      "publishedAt": "2026-07-22",
+      "publishedAt": "2026-07-23",
       "datePrecision": "day",
       "url": "https://samsoncree.com/temporary-closure-for-2nd-3rd-floors-of-cta-building-july-23-24-2026",
+      "summary": "Please be advised that some Samson Cree Nation departments are currently transitioning back to the Band Office. Due to an ongoing air conditioning issue and the current heat warning, staff located on the 2nd and 3rd floors of the Band Office will be temporarily relocated to the 1st floor/basement or working remotely for July 23",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 444,
+      "discoveredAt": "2026-10-02T17:59:12Z",
+      "communityConfidence": 0.98,
+      "dateSource": "article:published_time",
+      "extractionMethod": "html",
+      "sourcePage": "https://samsoncree.com/social-media-and-online-gaming-safety-july-2026",
+      "detailVerified": true,
+      "reviewReason": "Title does not clearly describe a supported community update"
+    },
+    {
+      "id": "samson-2026-09-25-1162b1b9a2",
+      "storyKey": "444-2026-09-25-instagram-page-opens-in-new-window",
+      "title": "Instagram page opens in new window",
+      "communityName": "Samson",
+      "communityAliases": [
+        "Samson Cree Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Other",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Samson official website",
+      "publishedAt": "2026-09-25",
+      "datePrecision": "day",
+      "url": "https://www.instagram.com/samsoncreenation",
+      "summary": ":root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #FFF;--wp--preset--color--pale-pink: #f.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 444,
+      "discoveredAt": "2026-10-02T17:59:15Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://samsoncree.com/",
+      "reviewReason": "Title does not clearly describe a supported community update"
+    },
+    {
+      "id": "samson-2026-09-25-0a2d12df7f",
+      "storyKey": "444-2026-09-25-staff-webmail",
+      "title": "Staff Webmail",
+      "communityName": "Samson",
+      "communityAliases": [
+        "Samson Cree Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Other",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Samson official website",
+      "publishedAt": "2026-09-25",
+      "datePrecision": "day",
+      "url": "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&osid=1&passive=1209600&service=mail&flowName=WebLiteSignIn&flowEntry=ServiceLogin&dsh=S-1423375380%3A1790963964959042",
+      "summary": "Gmail is email that’s intuitive, efficient, and useful. 15 GB of storage, less spam, and mobile access.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 444,
+      "discoveredAt": "2026-10-02T17:59:15Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://samsoncree.com/",
+      "reviewReason": "Title does not clearly describe a supported community update"
+    },
+    {
+      "id": "samson-2026-07-22-4f6a5f2d99",
+      "storyKey": "444-2026-07-22-share-on-x-share-on-x",
+      "title": "Share on X Share on X",
+      "communityName": "Samson",
+      "communityAliases": [
+        "Samson Cree Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Other",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Samson official website",
+      "publishedAt": "2026-07-22",
+      "datePrecision": "day",
+      "url": "https://twitter.com/share?url=https%3A%2F%2Fsamsoncree.com%2Fsocial-media-and-online-gaming-safety-july-2026%2F&text=Social+media+and+Online+Gaming+Safety+July.+2026",
       "summary": "Stay Safe Online & Level Up Your Digital Skills! July 22, 2026 at HBMC Classroom 1 2:30 PM Learn how to: – Stay safe on social media – Protect your personal information – Recognize online scams and cyberbullying – Practice safe online gaming habits Attend in person or online and receive a $25 gift card! For more information: comms@samsoncree.com 780-585-3793 ext. 103 Categories: 2026 , July 2026-07-21T11:29:10-04:00.",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-01T18:32:56Z",
+      "discoveredAt": "2026-10-02T17:59:18Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://samsoncree.com/social-media-and-online-gaming-safety-july-2026",
+      "reviewReason": "Title does not clearly describe a supported community update"
+    },
+    {
+      "id": "samson-2026-07-22-6de68499a2",
+      "storyKey": "444-2026-07-22-pin-it-share-on-pinterest",
+      "title": "Pin it Share on Pinterest",
+      "communityName": "Samson",
+      "communityAliases": [
+        "Samson Cree Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Other",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Samson official website",
+      "publishedAt": "2026-07-22",
+      "datePrecision": "day",
+      "url": "https://pinterest.com/pin/create/button",
+      "summary": "Stay Safe Online & Level Up Your Digital Skills! July 22, 2026 at HBMC Classroom 1 2:30 PM Learn how to: – Stay safe on social media – Protect your personal information – Recognize online scams and cyberbullying – Practice safe online gaming habits Attend in person or online and receive a $25 gift card! For more information: comms@samsoncree.com 780-585-3793 ext. 103 Categories: 2026 , July 2026-07-21T11:29:10-04:00.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 444,
+      "discoveredAt": "2026-10-02T17:59:18Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://samsoncree.com/social-media-and-online-gaming-safety-july-2026",
+      "reviewReason": "Title does not clearly describe a supported community update"
+    },
+    {
+      "id": "samson-2026-07-22-5042f2e60b",
+      "storyKey": "444-2026-07-22-share-on-linkedin-share-on-linkedin",
+      "title": "Share on LinkedIn Share on LinkedIn",
+      "communityName": "Samson",
+      "communityAliases": [
+        "Samson Cree Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Other",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Samson official website",
+      "publishedAt": "2026-07-22",
+      "datePrecision": "day",
+      "url": "https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsamsoncree.com%2Fsocial-media-and-online-gaming-safety-july-2026%2F&title=Social+media+and+Online+Gaming+Safety+July.+2026&summary=&source=SCN",
+      "summary": "Stay Safe Online & Level Up Your Digital Skills! July 22, 2026 at HBMC Classroom 1 2:30 PM Learn how to: – Stay safe on social media – Protect your personal information – Recognize online scams and cyberbullying – Practice safe online gaming habits Attend in person or online and receive a $25 gift card! For more information: comms@samsoncree.com 780-585-3793 ext. 103 Categories: 2026 , July 2026-07-21T11:29:10-04:00.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 444,
+      "discoveredAt": "2026-10-02T17:59:18Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://samsoncree.com/social-media-and-online-gaming-safety-july-2026",
+      "reviewReason": "Title does not clearly describe a supported community update"
+    },
+    {
+      "id": "samson-2026-07-22-914d002fca",
+      "storyKey": "444-2026-07-22-previous-previous-post-samson-celebration-powwow-initiation-aug-2026",
+      "title": "Previous Previous post: Samson Celebration Powwow Initiation Aug. 2026",
+      "communityName": "Samson",
+      "communityAliases": [
+        "Samson Cree Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Culture & Language",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Samson official website",
+      "publishedAt": "2026-07-21",
+      "datePrecision": "day",
+      "url": "https://samsoncree.com/samson-celebration-powwow-initiation-aug-2026",
+      "summary": "SCN Celebrations Initiation Powwow!August 6, 2026 from 1:00-3:00PM at the Maskwacis Bear Park!Initiation for Samson community Members!Open to all ages, Tiny tot to Golden AgesWe will provide: Elders, protocol, giveaway, drum/song. We would like to support you to be part of the powwow circle.Scan the QR code or go to ww.samsonheadstart.com to register! Registration is also",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 444,
+      "discoveredAt": "2026-10-02T17:59:18Z",
+      "communityConfidence": 0.98,
+      "dateSource": "article:published_time",
+      "extractionMethod": "html",
+      "sourcePage": "https://samsoncree.com/social-media-and-online-gaming-safety-july-2026",
+      "detailVerified": true,
+      "reviewReason": "Title does not clearly describe a supported community update"
+    },
+    {
+      "id": "samson-2026-07-22-8945218c86",
+      "storyKey": "444-2026-07-22-next-next-post-temporary-closure-for-2nd-and-3rd-floors-of-cta-building-july-23-",
+      "title": "Temporary Closure for 2nd & 3rd Floors of CTA Building July 23 & 24, 2026 - SCN",
+      "communityName": "Samson",
+      "communityAliases": [
+        "Samson Cree Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Emergencies",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Samson official website",
+      "publishedAt": "2026-07-23",
+      "datePrecision": "day",
+      "url": "https://samsoncree.com/temporary-closure-for-2nd-3rd-floors-of-cta-building-july-23-24-2026",
+      "summary": "Please be advised that some Samson Cree Nation departments are currently transitioning back to the Band Office. Due to an ongoing air conditioning issue and the current heat warning, staff located on the 2nd and 3rd floors of the Band Office will be temporarily relocated to the 1st floor/basement or working remotely for July 23",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 444,
+      "discoveredAt": "2026-10-02T17:59:18Z",
+      "communityConfidence": 0.98,
+      "dateSource": "article:published_time",
+      "extractionMethod": "html",
+      "sourcePage": "https://samsoncree.com/social-media-and-online-gaming-safety-july-2026",
+      "detailVerified": true,
       "reviewReason": "Title does not clearly describe a supported community update"
     },
     {
@@ -2958,39 +4292,89 @@
         "source-backed"
       ],
       "bandId": 430,
-      "discoveredAt": "2026-10-01T18:32:45Z",
+      "discoveredAt": "2026-10-02T18:00:15Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
-      "sourcePage": "https://siksikanation.com/office-closure-notice-september-30-2026",
-      "thumbnail": "https://siksikanation.com/wp-content/uploads/2022/08/SN-news-2.jpg",
+      "sourcePage": "https://siksikanation.com/event/snf-2026-community-survey-deadline-extension-september-8-2026",
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "siksika-nation-2026-09-29-d06232a846",
-      "storyKey": "430-2026-09-29-linkedin",
+      "id": "siksika-nation-2026-08-14-0b4b92f3bf",
+      "storyKey": "430-2026-08-14-linkedin",
       "title": "Linkedin",
       "communityName": "Siksika Nation",
       "communityAliases": [],
       "provinceTerritory": "AB",
-      "category": "Other",
+      "category": "Business & Economic Development",
       "sourceType": "Official First Nation Website",
       "sourceName": "Siksika Nation official website",
-      "publishedAt": "2026-09-29",
+      "publishedAt": "2026-08-14",
       "datePrecision": "day",
       "url": "https://ca.linkedin.com/company/siksika-nation-tribal-administration",
-      "summary": "in observance of the National Day for Truth & Reconciliation. Kiitakitamaatsin! Truth & Reconciliation Day – 30 SEPT Download Facebook Twitter Instagram Linkedin Contact P.O. Box 1100 Siksika AB T0J 3W0 (403) 734-5100 +1 800 551-5724 Related Posts Public Notice: The Alberta Referendum Vote is Coming Up September 29, 2026 Read More » Public Notice: Siksika West Side Hydrant Flushing – September 29, 2026 September 29.",
+      "summary": "Read More » Blackfoot Confederacy Conference – September 21 – 23, 2026 Read More » SGOC Community Investment Strategy Survey Closes – August 14, 2026 Read More » Facebook Twitter Instagram Linkedin © 2026 Siksika Nation – All Rights Reserved Designed by Two Trees Studio – Webdesign & IT Support {\"prefetch\":[{\"source\":\"document\",\"where\":{\"and\":[{\"href_matches\":\"/*\"},{\"not\":{\"href_matches\":[\"/wp-*.php\",\"/wp-admin/*\",\"/.",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 430,
-      "discoveredAt": "2026-10-01T18:32:45Z",
+      "discoveredAt": "2026-10-02T18:00:15Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
-      "sourcePage": "https://siksikanation.com/office-closure-notice-september-30-2026",
-      "thumbnail": "https://siksikanation.com/wp-content/uploads/2022/08/SN-news-2.jpg",
+      "sourcePage": "https://siksikanation.com/event/snf-2026-community-survey-deadline-extension-september-8-2026",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "siksika-nation-2026-09-08-255ba069cc",
+      "storyKey": "430-2026-09-08-instagram",
+      "title": "Instagram",
+      "communityName": "Siksika Nation",
+      "communityAliases": [],
+      "provinceTerritory": "AB",
+      "category": "Business & Economic Development",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Siksika Nation official website",
+      "publishedAt": "2026-09-08",
+      "datePrecision": "day",
+      "url": "https://www.instagram.com/siksika_nation",
+      "summary": "SNF 2026 Community Survey Deadline Extension – September 8, 2026 Read More » Blackfoot Confederacy Conference – September 21 – 23, 2026 Read More » SGOC Community Investment Strategy Survey Closes – August 14, 2026 Read More » Facebook Twitter Instagram Linkedin © 2026 Siksika Nation – All Rights Reserved Designed by Two Trees Studio – Webdesign & IT Support {\"prefetch\":[{\"source\":\"document\",\"where\":{\"and\":[{\"href_ma.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 430,
+      "discoveredAt": "2026-10-02T18:00:15Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://siksikanation.com/event/snf-2026-community-survey-deadline-extension-september-8-2026",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "siksika-nation-2026-08-14-0b4b92f3bf",
+      "storyKey": "430-2026-08-14-linkedin",
+      "title": "Linkedin",
+      "communityName": "Siksika Nation",
+      "communityAliases": [],
+      "provinceTerritory": "AB",
+      "category": "Business & Economic Development",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Siksika Nation official website",
+      "publishedAt": "2026-08-14",
+      "datePrecision": "day",
+      "url": "https://ca.linkedin.com/company/siksika-nation-tribal-administration",
+      "summary": "Read More » Blackfoot Confederacy Conference – September 21 – 23, 2026 Read More » SGOC Community Investment Strategy Survey Closes – August 14, 2026 Read More » Facebook Twitter Instagram Linkedin © 2026 Siksika Nation – All Rights Reserved Designed by Two Trees Studio – Webdesign & IT Support {\"prefetch\":[{\"source\":\"document\",\"where\":{\"and\":[{\"href_matches\":\"/*\"},{\"not\":{\"href_matches\":[\"/wp-*.php\",\"/wp-admin/*\",\"/.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 430,
+      "discoveredAt": "2026-10-02T18:00:15Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://siksikanation.com/event/snf-2026-community-survey-deadline-extension-september-8-2026",
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
@@ -3012,7 +4396,7 @@
         "source-backed"
       ],
       "bandId": 455,
-      "discoveredAt": "2026-10-01T18:32:57Z",
+      "discoveredAt": "2026-10-02T18:00:25Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3038,7 +4422,7 @@
         "source-backed"
       ],
       "bandId": 455,
-      "discoveredAt": "2026-10-01T18:32:57Z",
+      "discoveredAt": "2026-10-02T18:00:25Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3055,7 +4439,7 @@
       "category": "Governance",
       "sourceType": "Official First Nation Website",
       "sourceName": "Sucker Creek official website",
-      "publishedAt": "2026-10-01",
+      "publishedAt": "2026-10-02",
       "datePrecision": "day",
       "url": "https://scfn.ca/events",
       "summary": "Treaty 8 Territory · Box 65, Enilda Alberta, Canada Nehiyaw People · Treaty 8 Territory Heart of Alberta",
@@ -3064,7 +4448,7 @@
         "source-backed"
       ],
       "bandId": 456,
-      "discoveredAt": "2026-10-01T18:33:05Z",
+      "discoveredAt": "2026-10-02T18:00:54Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "html",
@@ -3091,7 +4475,7 @@
         "source-backed"
       ],
       "bandId": 457,
-      "discoveredAt": "2026-10-01T18:34:39Z",
+      "discoveredAt": "2026-10-02T18:02:13Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3117,7 +4501,7 @@
         "source-backed"
       ],
       "bandId": 457,
-      "discoveredAt": "2026-10-01T18:34:39Z",
+      "discoveredAt": "2026-10-02T18:02:13Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3143,7 +4527,7 @@
         "source-backed"
       ],
       "bandId": 457,
-      "discoveredAt": "2026-10-01T18:34:39Z",
+      "discoveredAt": "2026-10-02T18:02:13Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3169,7 +4553,7 @@
         "source-backed"
       ],
       "bandId": 457,
-      "discoveredAt": "2026-10-01T18:34:39Z",
+      "discoveredAt": "2026-10-02T18:02:13Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3195,7 +4579,7 @@
         "source-backed"
       ],
       "bandId": 457,
-      "discoveredAt": "2026-10-01T18:34:39Z",
+      "discoveredAt": "2026-10-02T18:02:13Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3221,12 +4605,39 @@
         "source-backed"
       ],
       "bandId": 457,
-      "discoveredAt": "2026-10-01T18:34:39Z",
+      "discoveredAt": "2026-10-02T18:02:13Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://srfn.ca/news",
       "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "swan-river-first-nation-2026-10-19-c295fd6610",
+      "storyKey": "457-2026-10-19-treaty-8-rights-and-health-education",
+      "title": "Treaty 8 rights and Health, education,",
+      "communityName": "Swan River First Nation",
+      "communityAliases": [],
+      "provinceTerritory": "AB",
+      "category": "Healthcare",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Swan River First Nation official website",
+      "publishedAt": "2026-10-19",
+      "datePrecision": "day",
+      "url": "https://srfn.ca/wp-content/uploads/2026/09/1000050195.jpg",
+      "summary": "SWAN RIVER FIRST NATION « TREATY 8 TERRITORY _ eae, ' WHY THIS = © PSS ee OTE Waw. v in 4 aa es ah Namath MATTERS TO SWAN RIVER so swanaver ’ FIRST NATION Our treaty our Future Generations Swan River First Nation is a proud Treaty 8 First Nation. Any discussion about Alberta’s future raises important questions about our rights, our lands, and the well-being of our people and future generations. Treaty 8 rights and He.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 457,
+      "discoveredAt": "2026-10-02T18:02:22Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "image_ocr",
+      "sourcePage": "https://srfn.ca/",
+      "detailVerified": false,
+      "reviewReason": "Date appears to be a future event date, not a publication date"
     },
     {
       "id": "swan-river-first-nation-2026-10-19-79afa96525",
@@ -3247,7 +4658,7 @@
         "source-backed"
       ],
       "bandId": 457,
-      "discoveredAt": "2026-10-01T18:35:45Z",
+      "discoveredAt": "2026-10-02T18:02:24Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "image_ocr",
@@ -3276,7 +4687,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-01T18:34:11Z",
+      "discoveredAt": "2026-10-02T18:01:49Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3305,7 +4716,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-01T18:34:10Z",
+      "discoveredAt": "2026-10-02T18:01:48Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3334,7 +4745,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-01T18:34:10Z",
+      "discoveredAt": "2026-10-02T18:01:48Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3363,7 +4774,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-01T18:34:10Z",
+      "discoveredAt": "2026-10-02T18:01:48Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3392,7 +4803,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-01T18:34:10Z",
+      "discoveredAt": "2026-10-02T18:01:48Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3421,7 +4832,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-01T18:34:10Z",
+      "discoveredAt": "2026-10-02T18:01:48Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3450,7 +4861,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-01T18:34:10Z",
+      "discoveredAt": "2026-10-02T18:01:48Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3479,13 +4890,13 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-01T18:34:10Z",
+      "discoveredAt": "2026-10-02T18:01:48Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://tsuutina.com/events-calendar",
       "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
-      "reviewReason": "Date appears to be a future event date, not a publication date"
+      "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
       "id": "tsuut-ina-nation-2026-10-05-10f86094f3",
@@ -3508,7 +4919,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-01T18:34:10Z",
+      "discoveredAt": "2026-10-02T18:01:48Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3537,7 +4948,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-01T18:34:10Z",
+      "discoveredAt": "2026-10-02T18:01:48Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3566,7 +4977,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-01T18:34:10Z",
+      "discoveredAt": "2026-10-02T18:01:48Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3589,13 +5000,13 @@
       "publishedAt": "2026-10-07",
       "datePrecision": "day",
       "url": "https://tsuutina.com/event/psp-ucalgary-nursing-info-session",
-      "summary": "1:00 pm Recurring Gunaha Classes 15:30 3:30 pm - 17:30 5:30 pm PSP & UCalgary Nursing Info Session 2026-10-07 October 7 @ 3:30 pm - 5:30 pm PSP & UCalgary Nursing Info Session The Post Secondary Program & University of Calgary are hosting a Nursing Info Session for anyone who is thinking of […] 4 events, 2026-10-08 8 4 events, 2026-10-08 8 10:00 10:00 am - 17:00 5:00 pm Recurring.",
+      "summary": "1:00 pm Recurring Gunaha Classes 15:30 3:30 pm - 17:30 5:30 pm PSP & UCalgary Nursing Info Session 2026-10-07 October 7 @ 3:30 pm - 5:30 pm PSP & UCalgary Nursing Info Session The Post Secondary Program & University of Calgary are hosting a Nursing Info Session for anyone who is thinking of […] 5 events, 2026-10-08 8 5 events, 2026-10-08 8 10:00 10:00 am - 17:00 5:00 pm Recurring.",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-01T18:34:10Z",
+      "discoveredAt": "2026-10-02T18:01:48Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3624,7 +5035,384 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-01T18:34:10Z",
+      "discoveredAt": "2026-10-02T18:01:48Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Date appears to be a future event date, not a publication date"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-09-01-e31a857b6e",
+      "storyKey": "432-2026-09-01-toggle-sidebar",
+      "title": "Toggle Sidebar",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Infrastructure",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-09-01",
+      "datePrecision": "month",
+      "url": "https://tsuutina.com/da-hi-community-newsletter",
+      "summary": "This is the Tsuut’ina Nation’s Newsletter, titled DÀ-HÍ, which means “at this point in time.” Inside, you can find events, news, and Nation member submissions, along with much more. We’re so happy to have you here and engaging with our content! If you’d like to be featured in or send a submission for an upcoming issue, please email the Communications Department at DA-HI Submissions",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-02T18:01:51Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/da-hi-community-newsletter",
+      "thumbnail": "https://tsuutina.com/wp-content/uploads/2025/01/0-3.jpeg",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-09-27-1635bdbbee",
+      "storyKey": "432-2026-09-27-elders-tea-coming-home-youth-competition-powwow",
+      "title": "Elders Tea: Coming Home Youth Competition Powwow",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Culture & Language",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-09-27",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/elders-tea-coming-home-youth-competition-powwow",
+      "summary": "2 events, 2026-09-27 27 11:00 11:00 am - 17:00 5:00 pm Elders Tea: Coming Home Youth Competition Powwow 2026-09-27 September 27 @ 11:00 am - 5:00 pm Elders Tea: Coming Home Youth Competition Powwow 13:00 1:00 pm - 22:00 10:00 pm Coming Home Youth Powwow 2026-09-27 September 27 @ 1:00 pm - 10:00 pm Coming Home Youth Powwow 1 event, 2026-09-28.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-02T18:01:50Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-09-27-bcfd4cccda",
+      "storyKey": "432-2026-09-27-coming-home-youth-powwow",
+      "title": "Coming Home Youth Powwow",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Culture & Language",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-09-27",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/coming-home-youth-powwow",
+      "summary": "- 5:00 pm Elders Tea: Coming Home Youth Competition Powwow 13:00 1:00 pm - 22:00 10:00 pm Coming Home Youth Powwow 2026-09-27 September 27 @ 1:00 pm - 10:00 pm Coming Home Youth Powwow 1 event, 2026-09-28 28 1 event, 2026-09-28 28 17:30 5:30 pm - 18:30 6:30 pm Recurring Youth Program Evening Ballet.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-02T18:01:50Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-09-28-435b037226",
+      "storyKey": "432-2026-09-28-youth-program-evening-ballet",
+      "title": "Youth Program Evening Ballet",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Other",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-09-28",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/youth-program-evening-ballet/2026-09-28",
+      "summary": "17:30 5:30 pm - 18:30 6:30 pm Recurring Youth Program Evening Ballet 2026-09-28 September 28 @ 5:30 pm - 6:30 pm Recurring Youth Program Evening Ballet.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-02T18:01:50Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-09-29-475c354b3f",
+      "storyKey": "432-2026-09-29-every-child-matters-community-walk-2026",
+      "title": "Every Child Matters Community Walk 2026",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Emergencies",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-09-29",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/every-child-matters-community-walk-2026",
+      "summary": "1 event, 2026-09-29 29 10:00 10:00 am - 13:00 1:00 pm Every Child Matters Community Walk 2026 2026-09-29 September 29 @ 10:00 am - 1:00 pm Every Child Matters Community Walk 2026 2 events, 2026-09-30 30 2 events, 2026-09-30 30 08:00 8:00 am - 17:00 5:00 pm Adminstration Office Closure 2026-09-30.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-02T18:01:50Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-10-01-a652e46ecb",
+      "storyKey": "432-2026-10-01-chair-yoga-and-gentle-movement-class",
+      "title": "Chair Yoga and Gentle Movement Class",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Treaties",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-10-01",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/chair-yoga-and-gentle-movement-class",
+      "summary": "2 events, 2026-10-01 1 13:00 1:00 pm - 14:30 2:30 pm Chair Yoga and Gentle Movement Class 2026-10-01 October 1 @ 1:00 pm - 2:30 pm Chair Yoga and Gentle Movement Class 14:00 2:00 pm - 16:00 4:00 pm Bullhead Community Hall Donation Day Initiative 2026-10-01 October 1 @ 2:00 pm - 4:00 pm Bullhead Community Hall Donation Day Initiative 1 event, 2026-10-02.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-02T18:01:50Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-10-01-917ab2120d",
+      "storyKey": "432-2026-10-01-bullhead-community-hall-donation-day-initiative",
+      "title": "Bullhead Community Hall Donation Day Initiative",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Treaties",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-10-01",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/bullhead-community-hall-donation-day-initiative",
+      "summary": "- 2:30 pm Chair Yoga and Gentle Movement Class 14:00 2:00 pm - 16:00 4:00 pm Bullhead Community Hall Donation Day Initiative 2026-10-01 October 1 @ 2:00 pm - 4:00 pm Bullhead Community Hall Donation Day Initiative 1 event, 2026-10-02 2 1 event, 2026-10-02 2 18:00 6:00 pm - 22:00 10:00 pm Drive-in Movie Night 2026-10-02.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-02T18:01:50Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-10-02-ebf6277f44",
+      "storyKey": "432-2026-10-02-drive-in-movie-night",
+      "title": "Drive-in Movie Night",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Community Events",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-10-02",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/drive-in-movie-night",
+      "summary": "1 event, 2026-10-02 2 18:00 6:00 pm - 22:00 10:00 pm Drive-in Movie Night 2026-10-02 October 2 @ 6:00 pm - 10:00 pm Drive-in Movie Night 1 event, 2026-10-03 3 1 event, 2026-10-03 3 16:00 4:00 pm - 22:00 10:00 pm Recurring Hand Game Club.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-02T18:01:50Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-10-05-10f86094f3",
+      "storyKey": "432-2026-10-05-youth-program-evening-ballet",
+      "title": "Youth Program Evening Ballet",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Other",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-10-05",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/youth-program-evening-ballet/2026-10-05",
+      "summary": "17:30 5:30 pm - 18:30 6:30 pm Recurring Youth Program Evening Ballet 2026-10-05 October 5 @ 5:30 pm - 6:30 pm Recurring Youth Program Evening Ballet.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-02T18:01:50Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Date appears to be a future event date, not a publication date"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-10-06-d9520c7562",
+      "storyKey": "432-2026-10-06-community-engagement-sessions-your-voice-in-how-we-hire",
+      "title": "Community Engagement Sessions: Your Voice in How We Hire",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Culture & Language",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-10-06",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/community-engagement-sessions-your-voice-in-how-we-hire",
+      "summary": "2 events, 2026-10-06 6 11:00 11:00 am - 12:00 12:00 pm Community Engagement Sessions: Your Voice in How We Hire 2026-10-06 October 6 @ 11:00 am - 12:00 pm Community Engagement Sessions: Your Voice in How We Hire 16:30 4:30 pm - 18:30 6:30 pm ASL & Plains Indian Sign Language Classes 2026-10-06 October 6 @ 4:30 pm - 6:30 pm ASL & Plains Indian Sign Language Classes 2 events, 2026-10-07.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-02T18:01:50Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Date appears to be a future event date, not a publication date"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-10-06-40c6d1b0f3",
+      "storyKey": "432-2026-10-06-asl-and-plains-indian-sign-language-classes",
+      "title": "ASL & Plains Indian Sign Language Classes",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Culture & Language",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-10-06",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/asl-plains-indian-sign-language-classes",
+      "summary": "- 12:00 pm Community Engagement Sessions: Your Voice in How We Hire 16:30 4:30 pm - 18:30 6:30 pm ASL & Plains Indian Sign Language Classes 2026-10-06 October 6 @ 4:30 pm - 6:30 pm ASL & Plains Indian Sign Language Classes 2 events, 2026-10-07 7 2 events, 2026-10-07 7 11:30 11:30 am - 13:00 1:00 pm Recurring Gunaha Classes.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-02T18:01:50Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Date appears to be a future event date, not a publication date"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-10-07-b20d9e9cd3",
+      "storyKey": "432-2026-10-07-psp-and-ucalgary-nursing-info-session",
+      "title": "PSP & UCalgary Nursing Info Session",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Community Events",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-10-07",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/psp-ucalgary-nursing-info-session",
+      "summary": "1:00 pm Recurring Gunaha Classes 15:30 3:30 pm - 17:30 5:30 pm PSP & UCalgary Nursing Info Session 2026-10-07 October 7 @ 3:30 pm - 5:30 pm PSP & UCalgary Nursing Info Session The Post Secondary Program & University of Calgary are hosting a Nursing Info Session for anyone who is thinking of […] 5 events, 2026-10-08 8 5 events, 2026-10-08 8 10:00 10:00 am - 17:00 5:00 pm Recurring.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-02T18:01:50Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://tsuutina.com/events-calendar",
+      "thumbnail": "https://tsuutina.com/wp-content/themes/truemarket/assets/dist/images/og_image_fb.jpg",
+      "reviewReason": "Date appears to be a future event date, not a publication date"
+    },
+    {
+      "id": "tsuut-ina-nation-2026-10-08-3585934f20",
+      "storyKey": "432-2026-10-08-community-engagement-sessions-your-voice-in-how-we-hire",
+      "title": "Community Engagement Sessions: Your Voice in How We Hire",
+      "communityName": "Tsuut'ina Nation",
+      "communityAliases": [
+        "Tsuu T'Ina Nation"
+      ],
+      "provinceTerritory": "AB",
+      "category": "Other",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Tsuut'ina Nation official website",
+      "publishedAt": "2026-10-08",
+      "datePrecision": "day",
+      "url": "https://tsuutina.com/event/community-engagement-sessions-your-voice-in-how-we-hire/2026-10-08",
+      "summary": "11:00 11:00 am - 12:00 12:00 pm Recurring Community Engagement Sessions: Your Voice in How We Hire 2026-10-08 October 8 @ 11:00 am - 12:00 pm Recurring Community Engagement Sessions: Your Voice in How We Hire.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 432,
+      "discoveredAt": "2026-10-02T18:01:50Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3634,8 +5422,8 @@
     }
   ],
   "summary": {
-    "manualReview": 212,
-    "mediaExtracted": 7,
-    "sourceFailures": 26
+    "manualReview": 309,
+    "mediaExtracted": 12,
+    "sourceFailures": 27
   }
 }
