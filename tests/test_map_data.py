@@ -6,10 +6,14 @@ from tools.build_map_data import (
     parse_relation_text,
     reserve_feature_area_hectares,
     reserve_land_totals,
+    normalized_owner,
 )
 
 
 class MapDataTests(unittest.TestCase):
+    def test_renamed_alberta_owner_matches_isc_diacritics(self):
+        self.assertEqual(normalized_owner('Tthebatthie Denesųłiné Nation'),
+                         normalized_owner('Tthebatthie Denesuliné Nation'))
     def test_official_records_join_by_band_number(self):
         bands = [{"id": 378, "name": "Carry the Kettle Nakoda Nation", "treaty": "Treaty 4"}]
         locations = {"features": [{

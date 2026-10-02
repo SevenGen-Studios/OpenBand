@@ -960,13 +960,8 @@ def _extract_people_from_text_pages(pages):
         if vertical_people:
             people.extend(vertical_people)
             continue
-        page_is_schedule = bool(
-            re.search(
-                r"chief\s+and\s+council|chief\s+and\s+councillors|remuneration\s+and\s+expenses",
-                text,
-                re.I,
-            )
-        )
+        page_is_schedule = bool(re.search(
+            r"chief\s+and\s+council|chief\s+and\s+councillors|remuneration\s+and\s+expenses", text, re.I))
         header_context = ""
         in_data_section = False
         section_role = None
@@ -1015,6 +1010,43 @@ def _stage(name, status, warnings=None):
     }
 
 
+def _extract_elected_salary_schedule(text):
+    """Parse the explicit salary/honoraria schedule without dropping dash columns."""
+    if not re.search(r'for\s+elected\s+officials', text, re.I):
+        return []
+    if not re.search(r'Months\s+in\s+Salary\s+Honoraria\s+Travel\s+Northern\s+Total', text, re.I):
+        return []
+    amount = r'(?:\d{1,3}(?:,\d{3})*(?:\.\d+)?|-)'
+    row_pattern = re.compile(
+        rf'^(Chief|Councillor|Councilor)\s*-\s*(.+?)\s+(\d{{1,2}})\s+'
+        rf'({amount})\s+({amount})\s+({amount})\s+({amount})\s+({amount})$', re.I)
+    footer_pattern = re.compile(rf'^({amount})\s+({amount})\s+({amount})\s+({amount})\s+({amount})$')
+    people, columns, footer = [], [], None
+    for line in text.splitlines():
+        line = ' '.join(line.split())
+        match = row_pattern.fullmatch(line)
+        if match:
+            role, name, months = match.group(1, 2, 3)
+            if not _looks_like_person_name(name) or not 0 < int(months) <= 12:
+                return []
+            values = [0 if value == '-' else float(value.replace(',', '')) for value in match.groups()[3:]]
+            salary, honoraria, travel, northern, total = values
+            if abs(sum(values[:4]) - total) > 1:
+                return []
+            columns.append(values)
+            people.append({'name': name, 'role': 'Chief' if role.lower() == 'chief' else 'Councillor',
+                           'months': int(months), 'remuneration': salary + honoraria,
+                           'travel': travel, 'expenses': None, 'creditCard': None,
+                           'otherPayments': northern, 'total': total})
+        elif people and (match := footer_pattern.fullmatch(line)):
+            footer = [0 if value == '-' else float(value.replace(',', '')) for value in match.groups()]
+    if not people or footer is None or not any(p['role'] == 'Chief' for p in people):
+        return []
+    if any(abs(sum(row[i] for row in columns) - footer[i]) > 1 for i in range(5)):
+        return []
+    return people
+
+
 def _extract_remuneration_rows_enhanced(pdf_url):
     if not pdf_url:
         return {"parse_status": "no_pdf_url", "warnings": ["No PDF URL available"], "people": []}
@@ -1040,6 +1072,15 @@ def _extract_remuneration_rows_enhanced(pdf_url):
             with scraper.pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
                 for page in pdf.pages:
                     page_text = page.extract_text(x_tolerance=1, y_tolerance=3) or ""
+                    salary_people = _extract_elected_salary_schedule(page_text)
+                    if salary_people:
+                        result = parser_quality.apply_validation_metadata({
+                            'parse_status': 'ok_pdf_salary_schedule', 'people': salary_people,
+                            'warnings': ['Salary and honoraria combined as remuneration; all source columns and totals reconciled'],
+                        }, source_total=sum(p['total'] for p in salary_people))
+                        if not result.get('manual_review_required'):
+                            result['parse_stages'] = [_stage('local', 'ok_pdf_salary_schedule', result.get('warnings'))]
+                            return result
                     candidates = layout_tables.extract_tables_for_page(
                         page, page_text, kind="remuneration"
                     )

@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import unicodedata
 import urllib.parse
 import urllib.request
 from datetime import date
@@ -166,6 +167,8 @@ def council_display_name(value: Optional[str]) -> Optional[str]:
 
 
 def normalized_owner(value: str) -> str:
+    value = unicodedata.normalize('NFKD', value.replace('ł', 'l').replace('Ł', 'L'))
+    value = ''.join(c for c in value if not unicodedata.combining(c))
     return re.sub(r"[^a-z0-9]+", " ", value.casefold()).strip()
 
 

@@ -12,6 +12,7 @@ from tools.ingest_alberta import ROOT, CACHE, read, write, now, canonical_url, n
 def audit():
     registry, data = read(ROOT/'alberta-nations.json'), read(ROOT/'data.json')
     capital, enterprise = read(ROOT/'capital-data.json'), read(ROOT/'community-enterprise.json')
+    map_rows = {str(c['id']): c for c in read(ROOT/'map-data.json')['communities']}
     expected = {str(b['id']) for b in registry['nations']}
     bands = [b for b in data['bands'] if b.get('province') == 'AB']
     actual = {str(b['id']) for b in bands}
@@ -91,6 +92,14 @@ def audit():
         if not band.get('logo_verified'):
             issues.append({'severity':'review','type':'logo_unverified','nationId':band['id']})
         rows.append({'id':band['id'],'iscBandNumber':band['iscBandNumber'],'name':band['name'],'treaty':band.get('treaty'),
+                     'reserveHectares':map_rows.get(str(band['id']), {}).get('reserveHectares'),
+                     'reserveLandSourceUrl':map_rows.get(str(band['id']), {}).get('reserveLandSourceUrl'),
+                     'reserveLandIncludesShared':map_rows.get(str(band['id']), {}).get('reserveLandIncludesShared', False),
+                     'listingCheckedAt':next((s['retrievedAt'] for s in band.get('sources',[]) if s['field']=='filings'), None),
+                     'unindexedAuditedYears':[f'{y}-{y+1}' for y in range(2014,2026) if f'{y}-{y+1}' not in audited],
+                     'unindexedRemunerationYears':[f'{y}-{y+1}' for y in range(2014,2026) if f'{y}-{y+1}' not in remuneration],
+                     'parsedRemunerationYears':sorted({f['year'] for f in band.get('filings',[]) if f.get('people')}),
+                     'documentsRequiringReview':sum(not d['successfullyParsed'] for d in documents if d['nationId']==band['id']),
                      'sharedIscIdentity':band.get('sharedIscIdentity',False),'financialYears':sorted(audited),'remunerationYears':sorted(remuneration),
                      'fiscalYears':sorted(years),'documentCount':sum(1 for d in documents if d['nationId']==band['id']),
                      'verifiedLogo':bool(band.get('logo_verified')),'website':band.get('website'),'verifiedBusinesses':businesses,

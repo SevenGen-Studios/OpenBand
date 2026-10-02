@@ -10,6 +10,7 @@ import argparse
 import hashlib
 import io
 import json
+import math
 import re
 import sys
 import unicodedata
@@ -33,7 +34,7 @@ BASE = 'https://services.sac-isc.gc.ca/fnp/main/Search/'
 COUNT_SOURCE = 'https://www.alberta.ca/first-nations-relations'
 TREATY_SOURCE = 'https://www.sac-isc.gc.ca/eng/1595274954300/1595274980122'
 ROSTER_PATH = ROOT / 'alberta-nations.json'
-PARSER_REVISION = 'alberta-20260912-v7'
+PARSER_REVISION = 'alberta-20261001-v8'
 
 def now():
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
@@ -242,14 +243,45 @@ def integrate_profiles(data, bands):
         location = location_by_id.get(bid)
         if location:
             lon, lat = location['geometry']['coordinates']
+            previous = next((c for c in maps['communities'] if str(c['id']) == bid), {})
             maps['communities'] = [c for c in maps['communities'] if str(c['id']) != bid]
-            maps['communities'].append({'id': band['id'], 'name': band['name'], 'province': 'AB',
+            maps['communities'].append({**previous, 'id': band['id'], 'name': band['name'], 'province': 'AB',
                                        'latitude': lat, 'longitude': lon, 'treaty': band.get('treaty'),
                                        'tribalCouncil': band.get('tribalCouncil'),
                                        'tribalCouncilSourceUrl': page_url('FNMain', band['iscBandNumber']),
                                        'reserveOwnerNames': [band['officialName']]})
+    update_reserve_areas(data['bands'], maps)
     for filename, value in [('member-counts.json', members), ('contacts-data.json', contacts), ('map-data.json', maps)]:
         write(ROOT / filename, value)
+
+
+def update_reserve_areas(bands, maps):
+    """Use ISC's listed hectares, preserving shared-parcel scope and provenance."""
+    owners = {}
+    for band in bands:
+        for reserve in band.get('reserves', []):
+            owners.setdefault(reserve['number'], set()).add(str(band['id']))
+    by_id = {str(b['id']): b for b in bands}
+    for community in maps['communities']:
+        band = by_id.get(str(community['id']))
+        if not band or band.get('province') != 'AB' or band.get('sharedIscIdentity'):
+            continue
+        reserves = {r['number']: r for r in band.get('reserves', [])}
+        if not reserves:
+            continue
+        try:
+            areas = [float(str(r['hectares']).replace(',', '')) for r in reserves.values()]
+        except (ValueError, TypeError, KeyError):
+            continue
+        if not all(math.isfinite(a) and a >= 0 for a in areas):
+            continue
+        community.update({
+            'reserveHectares': round(sum(areas), 2),
+            'reserveParcelCount': len(reserves),
+            'reserveLandSourceUrl': page_url('FNReserves', band['iscBandNumber']),
+            'reserveLandMethod': 'ISC listed reserve areas; shared parcels are not apportioned',
+            'reserveLandIncludesShared': any(len(owners[n]) > 1 for n in reserves),
+        })
 
 def document_identity(pages, band, filing):
     """Check the report cover, independently of ISC's URL and listing."""

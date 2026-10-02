@@ -57,6 +57,15 @@ Logos require a visual review and exact local-asset hash in `manual_overrides/al
 
 ## Coverage and limitations
 
+The October 2, 2026 repair pass is documented in `alberta-fix-report.md`.
+It rechecked all individual ISC disclosure listings, restored ISC-listed reserve
+areas for 47 profiles, verified 15 additional logos, corrected official website
+links, and recovered four Tthebatthie remuneration years. Missing disclosure
+links and failed extraction checks remain explicitly documented rather than
+being filled with inferred records. `tools/review_alberta_sources.py` refreshes
+website and logo candidates without approving them or changing shared datasets.
+Visual decisions and exact asset hashes remain in the logo review overrides.
+
 `alberta-coverage-report.json` is the detailed document and review ledger; `.md` and `.html` provide readable summaries. It lists every Nation, audited and remuneration years, missing periods, source failures, verified businesses/logos, and documents needing review. Roster completion does not imply complete financial coverage.
 
 Bearspaw, Chiniki, Goodstoney, Sawridge, and Whitefish Lake #128 have no individually indexed ISC disclosures in this collection. Shared administration links are provided where available. Official-site candidate reports and alternate versions remain separately labelled until document equivalence and extraction are verified. Website access failures, sparse business research, unverified logos, and scanned or unreconciled financial records remain in the review queue.

@@ -3,12 +3,12 @@
   "nations": [
     {
       "id": 438,
-      "website": "http://www.alexanderfn.com/",
-      "checkedAt": "2026-09-11T10:55:48+00:00",
+      "website": "https://www.alexanderfn.com/",
+      "checkedAt": "2026-10-02T05:59:51+00:00",
       "researchPages": [
         {
-          "url": "http://www.alexanderfn.com/",
-          "status": "retrieved"
+          "url": "https://www.alexanderfn.com/",
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -18,28 +18,38 @@
         "nation_id": 438,
         "nation_name": "Alexander",
         "slug": "alexander",
-        "logo_url": null,
-        "logo_source": "http://www.alexanderfn.com/",
-        "logo_asset_source": null,
-        "logo_verified": false,
-        "logo_status": "logo_unverified",
+        "logo_url": "/public/first-nation-logos/alexander.webp",
+        "logo_source": "https://www.alexanderfn.com/",
+        "logo_asset_source": "https://static.wixstatic.com/media/4e529d_8bead5ef5f7a4549b1e85441085daf1b~mv2.png",
+        "logo_verified": true,
+        "logo_status": "verified",
         "source_kind": "Official First Nation website",
-        "verification_note": "no attributable logo/crest asset passed validation",
-        "verified_at": null
+        "verification_note": "Logo/brand asset visually verified in the header of the named Nation's official site.",
+        "verified_at": "2026-10-02",
+        "width": 512,
+        "height": 512,
+        "bytes": 165640,
+        "sha256": "c51c80a4bc2923ddcbd3e41d3ed9b728d832d5f283dd83589e7ade0adc0d1b73"
       }
     },
     {
       "id": 437,
       "website": "http://www.alexisnakotasioux.com/",
-      "checkedAt": "2026-09-11T10:55:48+00:00",
+      "checkedAt": "2026-10-02T05:59:51+00:00",
       "researchPages": [
         {
-          "url": "http://www.alexisnakotasioux.com/",
-          "status": "retrieved"
+          "url": "https://www.alexisnakotasioux.com/",
+          "status": "access_or_identity_review"
         }
       ],
       "candidateDocuments": [],
-      "errors": [],
+      "errors": [
+        {
+          "kind": "website",
+          "url": "https://www.alexisnakotasioux.com/",
+          "error": "<urlopen error [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1010)>"
+        }
+      ],
       "websiteVerified": true,
       "logo": {
         "nation_id": 437,
@@ -75,15 +85,11 @@
     {
       "id": 463,
       "website": "https://acfn.com/",
-      "checkedAt": "2026-09-11T10:55:48+00:00",
+      "checkedAt": "2026-10-02T05:59:51+00:00",
       "researchPages": [
         {
           "url": "https://acfn.com/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://acfn.com/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -122,33 +128,43 @@
     },
     {
       "id": 473,
-      "website": "http://www.stoneynation.com/",
-      "checkedAt": "2026-09-11T10:55:48+00:00",
-      "researchPages": [],
+      "website": "https://bearspawfirstnation.ca/",
+      "checkedAt": "2026-10-02T05:59:51+00:00",
+      "researchPages": [
+        {
+          "url": "https://bearspawfirstnation.ca/",
+          "status": "identity_verified"
+        }
+      ],
       "candidateDocuments": [],
       "errors": [],
       "logo": {
         "nation_id": 473,
         "nation_name": "Bearspaw",
         "slug": "bearspaw",
-        "logo_url": null,
-        "logo_source": "http://www.stoneynation.com/",
-        "logo_asset_source": null,
-        "logo_verified": false,
-        "logo_status": "logo_unverified",
-        "source_kind": "ISC-listed website",
-        "verification_note": "No distinct Nation logo source verified; shared Stoney marks are not assigned to individual Nations.",
-        "verified_at": null
-      }
+        "logo_url": "/public/first-nation-logos/bearspaw.webp",
+        "logo_source": "https://bearspawfirstnation.ca/",
+        "logo_asset_source": "https://bearspawfirstnation.ca/wp-content/uploads/elementor/thumbs/Bearspaw-logos-1-qke94zd5r10iai6wgxr3xzrt8vpnvr8d90iobvgh02.png",
+        "logo_verified": true,
+        "logo_status": "verified",
+        "source_kind": "Official First Nation website",
+        "verification_note": "Logo/brand asset published by the named Nation's official site.",
+        "verified_at": "2026-10-01",
+        "width": 225,
+        "height": 277,
+        "bytes": 28898,
+        "sha256": "9c71490c20dee543e7733233b99bc586278399d6d694ec89e99f742ee62fbfa7"
+      },
+      "websiteVerified": true
     },
     {
       "id": 445,
       "website": "https://www.beaverfirstnation.com/",
-      "checkedAt": "2026-09-11T10:55:48+00:00",
+      "checkedAt": "2026-10-02T05:59:52+00:00",
       "researchPages": [
         {
           "url": "https://www.beaverfirstnation.com/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -188,19 +204,11 @@
     {
       "id": 460,
       "website": "https://beaverlakecreenation.ca/",
-      "checkedAt": "2026-09-11T10:55:48+00:00",
+      "checkedAt": "2026-10-02T05:59:52+00:00",
       "researchPages": [
         {
           "url": "https://beaverlakecreenation.ca/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://beaverlakecreenation.ca/business/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://beaverlakecreenation.ca/business",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -210,36 +218,28 @@
         "nation_id": 460,
         "nation_name": "Beaver Lake Cree Nation",
         "slug": "beaver-lake-cree-nation",
-        "logo_url": null,
+        "logo_url": "/public/first-nation-logos/beaver-lake-cree-nation.webp",
         "logo_source": "https://beaverlakecreenation.ca/",
-        "logo_asset_source": null,
-        "logo_verified": false,
-        "logo_status": "logo_unverified",
+        "logo_asset_source": "https://beaverlakecreenation.ca/wp-content/uploads/2022/02/Group-381.png",
+        "logo_verified": true,
+        "logo_status": "verified",
         "source_kind": "Official First Nation website",
-        "verification_note": "no attributable logo/crest asset passed validation",
-        "verified_at": null
+        "verification_note": "Logo/brand asset visually verified in the header of the named Nation's official site.",
+        "verified_at": "2026-10-02",
+        "width": 229,
+        "height": 86,
+        "bytes": 16700,
+        "sha256": "53a86d60069d386c85339734c708eb0f6a2dbc7c96ff3f8b502700cefb450ece"
       }
     },
     {
       "id": 458,
-      "website": "http://www.bigstone.ca/",
-      "checkedAt": "2026-09-11T10:55:50+00:00",
+      "website": "https://www.bigstone.ca/",
+      "checkedAt": "2026-10-02T05:59:52+00:00",
       "researchPages": [
         {
-          "url": "http://www.bigstone.ca/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.bigstone.ca/economic-development",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.bigstone.ca/finance",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.bigstone.ca/business-entities",
-          "status": "retrieved"
+          "url": "https://www.bigstone.ca/",
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -278,13 +278,19 @@
     },
     {
       "id": 435,
-      "website": "http://www.bloodtribe.org/",
-      "checkedAt": "2026-09-11T10:55:51+00:00",
-      "researchPages": [],
+      "website": "https://bloodtribe.org/",
+      "checkedAt": "2026-10-02T05:59:52+00:00",
+      "researchPages": [
+        {
+          "url": "https://bloodtribe.org/",
+          "status": "identity_verified"
+        }
+      ],
       "candidateDocuments": [],
       "errors": [
         {
-          "url": "http://www.bloodtribe.org/",
+          "kind": "website",
+          "url": "https://bloodtribe.org/",
           "error": "HTTP Error 403: Forbidden"
         }
       ],
@@ -292,28 +298,30 @@
         "nation_id": 435,
         "nation_name": "Blood",
         "slug": "blood",
-        "logo_url": null,
-        "logo_source": "http://www.bloodtribe.org/",
-        "logo_asset_source": null,
-        "logo_verified": false,
-        "logo_status": "logo_unverified",
+        "logo_url": "/public/first-nation-logos/blood.webp",
+        "logo_source": "https://bloodtribe.org/",
+        "logo_asset_source": "https://bloodtribe.org/wp-content/uploads/2023/05/banner_logo-260x300.png",
+        "logo_verified": true,
+        "logo_status": "verified",
         "source_kind": "Official First Nation website",
-        "verification_note": "HTTP Error 403: Forbidden",
-        "verified_at": null
-      }
+        "verification_note": "Logo/brand asset visually verified in the header of the named Nation's official site.",
+        "verified_at": "2026-10-02",
+        "width": 260,
+        "height": 300,
+        "bytes": 30752,
+        "sha256": "389dc8c03a1fb2d8b213ad80b8fab9a3baa67b396b0ee5ff2e32b7e06df224cb"
+      },
+      "websiteVerified": true,
+      "websiteVerificationMethod": "Manual review of live official page through web browser"
     },
     {
       "id": 433,
       "website": "https://www.chiniki.com/",
-      "checkedAt": "2026-09-11T10:55:51+00:00",
+      "checkedAt": "2026-10-02T05:59:52+00:00",
       "researchPages": [
         {
           "url": "https://www.chiniki.com/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.chiniki.com/business",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -353,11 +361,11 @@
     {
       "id": 470,
       "website": "https://www.cpfn.ca/",
-      "checkedAt": "2026-09-11T10:55:51+00:00",
+      "checkedAt": "2026-10-02T05:59:53+00:00",
       "researchPages": [
         {
           "url": "https://www.cpfn.ca/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -396,12 +404,12 @@
     },
     {
       "id": 464,
-      "website": "http://www.clfns.com/",
-      "checkedAt": "2026-09-11T10:55:51+00:00",
+      "website": "https://clfns.com/",
+      "checkedAt": "2026-10-02T05:59:53+00:00",
       "researchPages": [
         {
-          "url": "http://www.clfns.com/",
-          "status": "retrieved"
+          "url": "https://clfns.com/",
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -411,28 +419,38 @@
         "nation_id": 464,
         "nation_name": "Cold Lake First Nations",
         "slug": "cold-lake-first-nations",
-        "logo_url": null,
-        "logo_source": "http://www.clfns.com/",
-        "logo_asset_source": null,
-        "logo_verified": false,
-        "logo_status": "logo_unverified",
+        "logo_url": "/public/first-nation-logos/cold-lake-first-nations.webp",
+        "logo_source": "https://clfns.com/",
+        "logo_asset_source": "https://clfns.com/wp-content/uploads/2024/04/small_logo.png",
+        "logo_verified": true,
+        "logo_status": "verified",
         "source_kind": "Official First Nation website",
-        "verification_note": "no attributable logo/crest asset passed validation",
-        "verified_at": null
+        "verification_note": "Logo/brand asset visually verified in the header of the named Nation's official site.",
+        "verified_at": "2026-10-02",
+        "width": 290,
+        "height": 101,
+        "bytes": 7402,
+        "sha256": "bd632ee49fe38d41a435c9b28f70bff35b07d77a2bd5453079d8f97421671c77"
       }
     },
     {
       "id": 448,
       "website": "http://www.denetha.ca/",
-      "checkedAt": "2026-09-11T10:55:52+00:00",
+      "checkedAt": "2026-10-02T05:59:53+00:00",
       "researchPages": [
         {
-          "url": "http://www.denetha.ca/",
-          "status": "retrieved"
+          "url": "https://www.denetha.ca/",
+          "status": "access_or_identity_review"
         }
       ],
       "candidateDocuments": [],
-      "errors": [],
+      "errors": [
+        {
+          "kind": "website",
+          "url": "https://www.denetha.ca/",
+          "error": "HTTP Error 503: Service Unavailable"
+        }
+      ],
       "websiteVerified": true,
       "logo": {
         "nation_id": 448,
@@ -467,26 +485,17 @@
     },
     {
       "id": 450,
-      "website": "http://www.driftpilecreenation.com/",
-      "checkedAt": "2026-09-11T10:55:53+00:00",
+      "website": "https://dcn450.com/",
+      "checkedAt": "2026-10-02T05:59:53+00:00",
       "researchPages": [
         {
-          "url": "http://www.driftpilecreenation.com/",
-          "status": "retrieved"
-        },
-        {
-          "url": "http://www.driftpilecreenation.com/",
-          "status": "retrieved"
+          "url": "https://dcn450.com/",
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
-      "errors": [
-        {
-          "url": "http://www.driftpilecreenation.com/",
-          "error": "Visual review: site redirects to unrelated Cityvile municipal template; source-listed website is not currently verified."
-        }
-      ],
-      "websiteVerified": false,
+      "errors": [],
+      "websiteVerified": true,
       "logo": {
         "nation_id": 450,
         "nation_name": "Driftpile Cree Nation",
@@ -521,19 +530,11 @@
     {
       "id": 451,
       "website": "https://www.duncansfirstnation.com/",
-      "checkedAt": "2026-09-11T10:55:53+00:00",
+      "checkedAt": "2026-10-02T05:59:53+00:00",
       "researchPages": [
         {
           "url": "https://www.duncansfirstnation.com/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.duncansfirstnation.com/economic-development",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.duncansfirstnation.com/news-events",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -543,28 +544,28 @@
         "nation_id": 451,
         "nation_name": "Duncan's First Nation",
         "slug": "duncans-first-nation",
-        "logo_url": null,
+        "logo_url": "/public/first-nation-logos/duncans-first-nation.webp",
         "logo_source": "https://www.duncansfirstnation.com/",
-        "logo_asset_source": null,
-        "logo_verified": false,
-        "logo_status": "logo_unverified",
+        "logo_asset_source": "https://static.wixstatic.com/media/bfb42a_4a85a6591bf54209ba7255030f71c690~mv2.png/v1/fill/w_427,h_132,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/bfb42a_4a85a6591bf54209ba7255030f71c690~mv2.png",
+        "logo_verified": true,
+        "logo_status": "verified",
         "source_kind": "Official First Nation website",
-        "verification_note": "no attributable logo/crest asset passed validation",
-        "verified_at": null
+        "verification_note": "Logo/brand asset visually verified in the header of the named Nation's official site.",
+        "verified_at": "2026-10-02",
+        "width": 427,
+        "height": 132,
+        "bytes": 32502,
+        "sha256": "513ab18926604761daf4efe2189f0956d18825787653fb71c3086292ecf810f7"
       }
     },
     {
       "id": 440,
       "website": "https://enochnation.ca/",
-      "checkedAt": "2026-09-11T10:55:53+00:00",
+      "checkedAt": "2026-10-02T05:59:54+00:00",
       "researchPages": [
         {
           "url": "https://enochnation.ca/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://enochnation.ca/branch/finance/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -584,8 +585,8 @@
         "verified_at": "2026-09-11",
         "width": null,
         "height": null,
-        "bytes": 10187,
-        "sha256": "9e39a6d510aecba4856464608c58cf85e8944b8f3056d73b61a14b2f86dcec47"
+        "bytes": 10158,
+        "sha256": "3dd215335c55094368b04a1e51d8c28a14a4bb304ee2bb940e2c587763fbece0"
       },
       "logoAttempts": [
         {
@@ -603,63 +604,50 @@
     },
     {
       "id": 443,
-      "website": "http://www.ermineskin.ca/",
-      "checkedAt": "2026-09-11T10:55:54+00:00",
+      "website": "https://ermineskin.ca/",
+      "checkedAt": "2026-10-02T05:59:54+00:00",
       "researchPages": [
         {
-          "url": "http://www.ermineskin.ca/",
-          "status": "retrieved"
-        },
-        {
-          "url": "http://www.ermineskin.ca/finance-benefits/",
-          "status": "retrieved"
+          "url": "https://ermineskin.ca/",
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
-      "errors": [],
+      "errors": [
+        {
+          "kind": "website",
+          "url": "https://ermineskin.ca/",
+          "error": "Website identity not confirmed"
+        }
+      ],
       "websiteVerified": true,
       "logo": {
         "nation_id": 443,
         "nation_name": "Ermineskin Tribe",
         "slug": "ermineskin-tribe",
-        "logo_url": null,
-        "logo_source": "http://www.ermineskin.ca/",
-        "logo_asset_source": null,
-        "logo_verified": false,
-        "logo_status": "logo_unverified",
+        "logo_url": "/public/first-nation-logos/ermineskin-tribe.webp",
+        "logo_source": "https://ermineskin.ca/",
+        "logo_asset_source": "https://ermineskin.ca/wp-content/uploads/2018/06/ermineskin-web-logo_75.png",
+        "logo_verified": true,
+        "logo_status": "verified",
         "source_kind": "Official First Nation website",
-        "verification_note": "official site identity could not be matched to this Nation",
-        "verified_at": null
-      }
+        "verification_note": "Logo/brand asset visually verified in the header of the named Nation's official site.",
+        "verified_at": "2026-10-02",
+        "width": 268,
+        "height": 75,
+        "bytes": 5080,
+        "sha256": "5b5800471a851ec280568c2b59b0e7fc1f0ee99f7531e9493aaa95648d659b92"
+      },
+      "websiteVerificationMethod": "Manual review of live official page through web browser"
     },
     {
       "id": 467,
       "website": "https://www.fortmckay.com/",
-      "checkedAt": "2026-09-11T10:55:55+00:00",
+      "checkedAt": "2026-10-02T05:59:54+00:00",
       "researchPages": [
         {
           "url": "https://www.fortmckay.com/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.fortmckay.com/facilities/business-centre/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.fortmckay.com/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.fortmckay.com/joint-ventures/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.fortmckay.com/local-businesses/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.fortmckay.com/directory/business/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [
@@ -714,12 +702,12 @@
     },
     {
       "id": 468,
-      "website": "https://fmfn468.com/",
-      "checkedAt": "2026-09-11T10:55:56+00:00",
+      "website": "https://www.fmfn468.com/",
+      "checkedAt": "2026-10-02T05:59:55+00:00",
       "researchPages": [
         {
-          "url": "https://fmfn468.com/",
-          "status": "retrieved"
+          "url": "https://www.fmfn468.com/",
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -729,32 +717,28 @@
         "nation_id": 468,
         "nation_name": "Fort McMurray #468 First Nation",
         "slug": "fort-mcmurray-468-first-nation",
-        "logo_url": null,
-        "logo_source": "https://fmfn468.com/",
-        "logo_asset_source": null,
-        "logo_verified": false,
-        "logo_status": "logo_unverified",
+        "logo_url": "/public/first-nation-logos/fort-mcmurray-468-first-nation.webp",
+        "logo_source": "https://www.fmfn468.com/",
+        "logo_asset_source": "https://www.fmfn468.com/media/xeop42k5/fnfm-logo-transparent-background-2.png",
+        "logo_verified": true,
+        "logo_status": "verified",
         "source_kind": "Official First Nation website",
-        "verification_note": "no attributable logo/crest asset passed validation",
-        "verified_at": null
+        "verification_note": "Logo/brand asset visually verified in the header of the named Nation's official site.",
+        "verified_at": "2026-10-02",
+        "width": 436,
+        "height": 512,
+        "bytes": 53208,
+        "sha256": "20166256974f87359a74871c0e2dc55764322b9505eb16250b4d126bbc66733f"
       }
     },
     {
       "id": 465,
       "website": "https://www.froglake.ca/",
-      "checkedAt": "2026-09-11T10:55:57+00:00",
+      "checkedAt": "2026-10-02T05:59:55+00:00",
       "researchPages": [
         {
           "url": "https://www.froglake.ca/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.froglake.ca/business",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.froglake.ca",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -794,11 +778,11 @@
     {
       "id": 475,
       "website": "https://www.goodstoneynation.ca/",
-      "checkedAt": "2026-09-11T10:55:58+00:00",
+      "checkedAt": "2026-10-02T05:59:56+00:00",
       "researchPages": [
         {
           "url": "https://www.goodstoneynation.ca/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -846,27 +830,11 @@
     {
       "id": 469,
       "website": "https://heartlakefirstnation.com/",
-      "checkedAt": "2026-09-11T10:55:58+00:00",
+      "checkedAt": "2026-10-02T05:59:56+00:00",
       "researchPages": [
         {
           "url": "https://heartlakefirstnation.com/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://heartlakefirstnation.com/economic-development/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://heartlakefirstnation.com/economic-development/heart-lake-first-nation-construction/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://heartlakefirstnation.com/economic-development/joint-venture-partnerships/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://heartlakefirstnation.com/economic-development/industry-relationships/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -906,11 +874,11 @@
     {
       "id": 449,
       "website": "https://horselakefn.org/",
-      "checkedAt": "2026-09-11T10:55:59+00:00",
+      "checkedAt": "2026-10-02T05:59:57+00:00",
       "researchPages": [
         {
           "url": "https://horselakefn.org/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -920,24 +888,28 @@
         "nation_id": 449,
         "nation_name": "Horse Lake First Nation",
         "slug": "horse-lake-first-nation",
-        "logo_url": null,
+        "logo_url": "/public/first-nation-logos/horse-lake-first-nation.webp",
         "logo_source": "https://horselakefn.org/",
-        "logo_asset_source": null,
-        "logo_verified": false,
-        "logo_status": "logo_unverified",
+        "logo_asset_source": "https://horselakefn.org/wp-content/uploads/2025/12/cropped-favicon-192x192.jpg",
+        "logo_verified": true,
+        "logo_status": "verified",
         "source_kind": "Official First Nation website",
-        "verification_note": "no attributable logo/crest asset passed validation",
-        "verified_at": null
+        "verification_note": "Logo/brand asset visually verified in the header of the named Nation's official site.",
+        "verified_at": "2026-10-02",
+        "width": 192,
+        "height": 192,
+        "bytes": 2322,
+        "sha256": "69e9cedcf2c8511cac0571c5eb28946a53fb1d0c65c552d8a1a5c1c2fd680563"
       }
     },
     {
       "id": 452,
       "website": "https://www.kapaweno.com/",
-      "checkedAt": "2026-09-11T10:55:59+00:00",
+      "checkedAt": "2026-10-02T05:59:57+00:00",
       "researchPages": [
         {
           "url": "https://www.kapaweno.com/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -947,24 +919,34 @@
         "nation_id": 452,
         "nation_name": "Kapawe'no First Nation",
         "slug": "kapaweno-first-nation",
-        "logo_url": null,
+        "logo_url": "/public/first-nation-logos/kapaweno-first-nation.webp",
         "logo_source": "https://www.kapaweno.com/",
-        "logo_asset_source": null,
-        "logo_verified": false,
-        "logo_status": "logo_unverified",
+        "logo_asset_source": "https://static.wixstatic.com/media/10af7d_b4ceda779c79486da42742f39c56b67e%7Emv2.jpg",
+        "logo_verified": true,
+        "logo_status": "verified",
         "source_kind": "Official First Nation website",
-        "verification_note": "no attributable logo/crest asset passed validation",
-        "verified_at": null
+        "verification_note": "Logo/brand asset visually verified in the header of the named Nation's official site.",
+        "verified_at": "2026-10-02",
+        "width": 315,
+        "height": 512,
+        "bytes": 10022,
+        "sha256": "c8fd6c26e090a94311343d3eca714c5c6235e0d459cb8a57c818de2a3f455df2"
       }
     },
     {
       "id": 466,
       "website": "https://www.kehewincree.ca/",
-      "checkedAt": "2026-09-11T10:56:00+00:00",
-      "researchPages": [],
+      "checkedAt": "2026-10-02T05:59:58+00:00",
+      "researchPages": [
+        {
+          "url": "https://www.kehewincree.ca/",
+          "status": "identity_verified"
+        }
+      ],
       "candidateDocuments": [],
       "errors": [
         {
+          "kind": "website",
           "url": "https://www.kehewincree.ca/",
           "error": "HTTP Error 403: Forbidden"
         }
@@ -981,24 +963,18 @@
         "source_kind": "Official First Nation website",
         "verification_note": "HTTP Error 403: Forbidden",
         "verified_at": null
-      }
+      },
+      "websiteVerified": true,
+      "websiteVerificationMethod": "Manual review of live official page through web browser"
     },
     {
       "id": 447,
-      "website": "http://lrrcn.ab.ca/",
-      "checkedAt": "2026-09-11T10:56:00+00:00",
+      "website": "https://lrrcn.ab.ca/",
+      "checkedAt": "2026-10-02T05:59:58+00:00",
       "researchPages": [
         {
-          "url": "http://lrrcn.ab.ca/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://lrrcn.ab.ca/local-businesses/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://lrrcn.ab.ca/programs-services/economic-development-department/",
-          "status": "retrieved"
+          "url": "https://lrrcn.ab.ca/",
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -1038,11 +1014,11 @@
     {
       "id": 476,
       "website": "https://loonriverfirstnation.ca/",
-      "checkedAt": "2026-09-11T10:56:00+00:00",
+      "checkedAt": "2026-10-02T05:59:58+00:00",
       "researchPages": [
         {
           "url": "https://loonriverfirstnation.ca/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -1082,11 +1058,11 @@
     {
       "id": 439,
       "website": "https://louisbulltribe.ca/",
-      "checkedAt": "2026-09-11T10:56:00+00:00",
+      "checkedAt": "2026-10-02T05:59:58+00:00",
       "researchPages": [
         {
           "url": "https://louisbulltribe.ca/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -1096,28 +1072,38 @@
         "nation_id": 439,
         "nation_name": "Louis Bull Tribe",
         "slug": "louis-bull-tribe",
-        "logo_url": null,
+        "logo_url": "/public/first-nation-logos/louis-bull-tribe.webp",
         "logo_source": "https://louisbulltribe.ca/",
-        "logo_asset_source": null,
-        "logo_verified": false,
-        "logo_status": "logo_unverified",
+        "logo_asset_source": "https://img1.wsimg.com/isteam/ip/fee28431-b09f-4377-9f36-65bc4f67daef/logowebsitelogo.png",
+        "logo_verified": true,
+        "logo_status": "verified",
         "source_kind": "Official First Nation website",
-        "verification_note": "no attributable logo/crest asset passed validation",
-        "verified_at": null
+        "verification_note": "Logo/brand asset visually verified in the header of the named Nation's official site.",
+        "verified_at": "2026-10-02",
+        "width": 512,
+        "height": 69,
+        "bytes": 8312,
+        "sha256": "09314f9a508518caeb6c02c975f38cedcadc786dfdd3348594a421e324a3893d"
       }
     },
     {
       "id": 453,
       "website": "https://www.lubiconlakeband.ca/",
-      "checkedAt": "2026-09-11T10:56:02+00:00",
+      "checkedAt": "2026-10-02T05:59:58+00:00",
       "researchPages": [
         {
           "url": "https://www.lubiconlakeband.ca/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
-      "errors": [],
+      "errors": [
+        {
+          "kind": "logo",
+          "url": "https://www.lubiconlakeband.ca/",
+          "error": "no attributable logo/crest asset passed validation"
+        }
+      ],
       "websiteVerified": true,
       "logo": {
         "nation_id": 453,
@@ -1136,15 +1122,11 @@
     {
       "id": 461,
       "website": "https://mikisewcree.ca/",
-      "checkedAt": "2026-09-11T10:56:02+00:00",
+      "checkedAt": "2026-10-02T05:59:58+00:00",
       "researchPages": [
         {
           "url": "https://mikisewcree.ca/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://mikisewcree.ca/mikisew-group",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -1183,14 +1165,20 @@
     },
     {
       "id": 442,
-      "website": "http://www.montanafirstnation.com/about.html",
-      "checkedAt": "2026-09-11T10:56:02+00:00",
-      "researchPages": [],
+      "website": "https://montanafirstnation.com/",
+      "checkedAt": "2026-10-02T05:59:59+00:00",
+      "researchPages": [
+        {
+          "url": "https://montanafirstnation.com/",
+          "status": "identity_verified"
+        }
+      ],
       "candidateDocuments": [],
       "errors": [
         {
-          "url": "http://www.montanafirstnation.com/about.html",
-          "error": "HTTP Error 404: Not Found"
+          "kind": "logo",
+          "url": "https://montanafirstnation.com/",
+          "error": "no attributable logo/crest asset passed validation"
         }
       ],
       "logo": {
@@ -1205,28 +1193,17 @@
         "source_kind": "Official First Nation website",
         "verification_note": "HTTP Error 404: Not Found",
         "verified_at": null
-      }
+      },
+      "websiteVerified": true
     },
     {
       "id": 431,
-      "website": "http://www.ochiese.ca/",
-      "checkedAt": "2026-09-11T10:56:04+00:00",
+      "website": "https://www.ochiese.ca/",
+      "checkedAt": "2026-10-02T06:00:00+00:00",
       "researchPages": [
         {
-          "url": "http://www.ochiese.ca/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.ochiese.ca/business-centre",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.ochiese.ca/economicdevelopment",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.ochiese.ca/finance",
-          "status": "retrieved"
+          "url": "https://www.ochiese.ca/",
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -1236,28 +1213,28 @@
         "nation_id": 431,
         "nation_name": "O'Chiese",
         "slug": "ochiese",
-        "logo_url": null,
-        "logo_source": "http://www.ochiese.ca/",
-        "logo_asset_source": null,
-        "logo_verified": false,
-        "logo_status": "logo_unverified",
+        "logo_url": "/public/first-nation-logos/ochiese.webp",
+        "logo_source": "https://www.ochiese.ca/",
+        "logo_asset_source": "https://static.wixstatic.com/media/6fce76_c340233ba61d40d09c4c0d6a821c2338%7Emv2.png",
+        "logo_verified": true,
+        "logo_status": "verified",
         "source_kind": "Official First Nation website",
-        "verification_note": "no attributable logo/crest asset passed validation",
-        "verified_at": null
+        "verification_note": "Logo/brand asset visually verified in the header of the named Nation's official site.",
+        "verified_at": "2026-10-02",
+        "width": 512,
+        "height": 512,
+        "bytes": 53004,
+        "sha256": "774afc72ba341ad53ca531faa1837bafc3a60c55eafae1300399fb8ab97d7ccc"
       }
     },
     {
       "id": 441,
-      "website": "http://www.paulfirstnation.com/",
-      "checkedAt": "2026-09-11T10:56:05+00:00",
+      "website": "https://www.paulfirstnation.com/",
+      "checkedAt": "2026-10-02T06:00:00+00:00",
       "researchPages": [
         {
-          "url": "http://www.paulfirstnation.com/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.paulfirstnation.com/business",
-          "status": "retrieved"
+          "url": "https://www.paulfirstnation.com/",
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -1297,32 +1274,15 @@
     {
       "id": 478,
       "website": "https://www.ptfn.net/",
-      "checkedAt": "2026-09-11T10:56:05+00:00",
+      "checkedAt": "2026-10-02T06:00:00+00:00",
       "researchPages": [
         {
           "url": "https://www.ptfn.net/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
-      "errors": [
-        {
-          "url": "https://www.ptfn.net/our-nation/publications/",
-          "error": "HTTP Error 404: Not Found"
-        },
-        {
-          "url": "https://www.ptfn.net/departments/finance/",
-          "error": "HTTP Error 404: Not Found"
-        },
-        {
-          "url": "https://www.ptfn.net/business/",
-          "error": "HTTP Error 404: Not Found"
-        },
-        {
-          "url": "https://www.ptfn.net/business/ptfn-development-coperation/",
-          "error": "HTTP Error 404: Not Found"
-        }
-      ],
+      "errors": [],
       "websiteVerified": true,
       "logo": {
         "nation_id": 478,
@@ -1358,11 +1318,11 @@
     {
       "id": 436,
       "website": "https://piikanination.com/",
-      "checkedAt": "2026-09-11T10:56:06+00:00",
+      "checkedAt": "2026-10-02T06:00:00+00:00",
       "researchPages": [
         {
           "url": "https://piikanination.com/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -1402,19 +1362,11 @@
     {
       "id": 462,
       "website": "https://slcn125.ca/",
-      "checkedAt": "2026-09-11T10:56:07+00:00",
+      "checkedAt": "2026-10-02T06:00:01+00:00",
       "researchPages": [
         {
           "url": "https://slcn125.ca/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://slcn125.ca/departments/economic-development/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://slcn125.ca/departments/finance/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -1453,12 +1405,12 @@
     },
     {
       "id": 444,
-      "website": "http://www.samsoncree.com/",
-      "checkedAt": "2026-09-11T10:56:07+00:00",
+      "website": "https://samsoncree.com/",
+      "checkedAt": "2026-10-02T06:00:01+00:00",
       "researchPages": [
         {
-          "url": "http://www.samsoncree.com/",
-          "status": "retrieved"
+          "url": "https://samsoncree.com/",
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -1498,19 +1450,11 @@
     {
       "id": 454,
       "website": "https://sawridgefirstnation.com/",
-      "checkedAt": "2026-09-11T10:56:07+00:00",
+      "checkedAt": "2026-10-02T06:00:01+00:00",
       "researchPages": [
         {
           "url": "https://sawridgefirstnation.com/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://sawridgefirstnation.com/economic-development/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://sawridgefirstnation.com/sawridge-first-nation-statement-on-financial-transparency/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -1520,24 +1464,28 @@
         "nation_id": 454,
         "nation_name": "Sawridge First Nation",
         "slug": "sawridge-first-nation",
-        "logo_url": null,
+        "logo_url": "/public/first-nation-logos/sawridge-first-nation.webp",
         "logo_source": "https://sawridgefirstnation.com/",
-        "logo_asset_source": null,
-        "logo_verified": false,
-        "logo_status": "logo_unverified",
+        "logo_asset_source": "https://sawridgefirstnation.com/wp-content/uploads/2018/01/sawridge.png",
+        "logo_verified": true,
+        "logo_status": "verified",
         "source_kind": "Official First Nation website",
-        "verification_note": "no attributable logo/crest asset passed validation",
-        "verified_at": null
+        "verification_note": "Logo/brand asset visually verified in the header of the named Nation's official site.",
+        "verified_at": "2026-10-02",
+        "width": 110,
+        "height": 51,
+        "bytes": 1542,
+        "sha256": "c719b2f5f65b2e8b106889cc846d5ea73b5f50027d4bed8d3311d312d5b36b90"
       }
     },
     {
       "id": 430,
-      "website": "http://www.siksikanation.com/index.html",
-      "checkedAt": "2026-09-11T10:56:07+00:00",
+      "website": "https://siksikanation.com/",
+      "checkedAt": "2026-10-02T06:00:02+00:00",
       "researchPages": [
         {
-          "url": "http://www.siksikanation.com/index.html",
-          "status": "retrieved"
+          "url": "https://siksikanation.com/",
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -1577,11 +1525,11 @@
     {
       "id": 455,
       "website": "https://www.sturgeonlake.ca/",
-      "checkedAt": "2026-09-11T10:56:08+00:00",
+      "checkedAt": "2026-10-02T06:00:02+00:00",
       "researchPages": [
         {
           "url": "https://www.sturgeonlake.ca/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -1621,27 +1569,11 @@
     {
       "id": 456,
       "website": "https://scfn.ca/",
-      "checkedAt": "2026-09-11T10:56:10+00:00",
+      "checkedAt": "2026-10-02T06:00:02+00:00",
       "researchPages": [
         {
           "url": "https://scfn.ca/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://scfn.ca/departments/economic-development/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://scfn.ca/departments/finance/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://scfn.ca/finance",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://scfn.ca/economic-development",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -1681,15 +1613,11 @@
     {
       "id": 434,
       "website": "https://www.sunchildfirstnation.com/",
-      "checkedAt": "2026-09-11T10:56:10+00:00",
+      "checkedAt": "2026-10-02T06:00:04+00:00",
       "researchPages": [
         {
           "url": "https://www.sunchildfirstnation.com/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.sunchildfirstnation.com/administration/finance/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -1729,15 +1657,11 @@
     {
       "id": 457,
       "website": "https://srfn.ca/",
-      "checkedAt": "2026-09-11T10:56:10+00:00",
+      "checkedAt": "2026-10-02T06:00:05+00:00",
       "researchPages": [
         {
           "url": "https://srfn.ca/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://srfn.ca/finance-and-admin/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -1777,19 +1701,11 @@
     {
       "id": 446,
       "website": "https://www.tallcree.ca/",
-      "checkedAt": "2026-09-11T10:56:11+00:00",
+      "checkedAt": "2026-10-02T06:00:05+00:00",
       "researchPages": [
         {
           "url": "https://www.tallcree.ca/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.tallcree.ca/economic-development/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.tallcree.ca/finance-department/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [
@@ -1844,21 +1760,16 @@
     },
     {
       "id": 432,
-      "website": "http://www.tsuutina.ca/",
-      "checkedAt": "2026-09-11T10:56:12+00:00",
+      "website": "https://tsuutina.com/",
+      "checkedAt": "2026-10-02T06:00:05+00:00",
       "researchPages": [
         {
-          "url": "http://www.tsuutina.ca/",
-          "status": "retrieved"
+          "url": "https://tsuutina.com/",
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
-      "errors": [
-        {
-          "url": "http://www.tsuutina.ca/business-directory/",
-          "error": "HTTP Error 404: Not Found"
-        }
-      ],
+      "errors": [],
       "websiteVerified": true,
       "logo": {
         "nation_id": 432,
@@ -1894,11 +1805,11 @@
     {
       "id": 477,
       "website": "https://www.slfn196.com/",
-      "checkedAt": "2026-09-11T10:56:12+00:00",
+      "checkedAt": "2026-10-02T06:00:05+00:00",
       "researchPages": [
         {
           "url": "https://www.slfn196.com/",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -1938,15 +1849,21 @@
     {
       "id": 459,
       "website": "https://www.whitefishlake459.com/",
-      "checkedAt": "2026-09-11T10:56:13+00:00",
+      "checkedAt": "2026-10-02T06:00:06+00:00",
       "researchPages": [
         {
           "url": "https://www.whitefishlake459.com/",
-          "status": "retrieved"
+          "status": "access_or_identity_review"
         }
       ],
       "candidateDocuments": [],
-      "errors": [],
+      "errors": [
+        {
+          "kind": "website",
+          "url": "https://www.whitefishlake459.com/",
+          "error": "<urlopen error [Errno 11002] getaddrinfo failed>"
+        }
+      ],
       "websiteVerified": true,
       "logo": {
         "nation_id": 459,
@@ -1965,15 +1882,11 @@
     {
       "id": "ab-whitefish-lake-128",
       "website": "https://www.wfl128.ca/",
-      "checkedAt": "2026-09-11T10:56:13+00:00",
+      "checkedAt": "2026-10-02T06:00:06+00:00",
       "researchPages": [
         {
           "url": "https://www.wfl128.ca/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://www.wfl128.ca/finance",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -1996,15 +1909,11 @@
     {
       "id": 474,
       "website": "https://woodlandcree.ca/",
-      "checkedAt": "2026-09-11T10:56:14+00:00",
+      "checkedAt": "2026-10-02T06:00:07+00:00",
       "researchPages": [
         {
           "url": "https://woodlandcree.ca/",
-          "status": "retrieved"
-        },
-        {
-          "url": "https://woodlandcree.ca/economic-development",
-          "status": "retrieved"
+          "status": "identity_verified"
         }
       ],
       "candidateDocuments": [],
@@ -2014,14 +1923,18 @@
         "nation_id": 474,
         "nation_name": "Woodland Cree First Nation",
         "slug": "woodland-cree-first-nation",
-        "logo_url": null,
+        "logo_url": "/public/first-nation-logos/woodland-cree-first-nation.webp",
         "logo_source": "https://woodlandcree.ca/",
-        "logo_asset_source": null,
-        "logo_verified": false,
-        "logo_status": "logo_unverified",
+        "logo_asset_source": "https://woodlandcree.ca/wp-content/uploads/2024/01/2019-Woodland-Cree.png",
+        "logo_verified": true,
+        "logo_status": "verified",
         "source_kind": "Official First Nation website",
-        "verification_note": "no attributable logo/crest asset passed validation",
-        "verified_at": null
+        "verification_note": "Logo/brand asset visually verified in the header of the named Nation's official site.",
+        "verified_at": "2026-10-02",
+        "width": 455,
+        "height": 512,
+        "bytes": 140864,
+        "sha256": "7580b577870a55702481fe9143ed303610d1a8541b809f1a5f55389523c67fd1"
       }
     }
   ]

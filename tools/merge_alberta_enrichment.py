@@ -1,4 +1,5 @@
 """Merge reviewed profile/logo/business evidence into the shared OpenBand data."""
+import hashlib
 from tools.ingest_alberta import ROOT, read, write, now, page_url
 from tools.build_site import slugify
 from tools.collect_first_nation_logos import unverified_record
@@ -23,7 +24,8 @@ def merge():
         aliases = {435: ['Blood Tribe', 'Kainai Nation'], 475: ['Wesley First Nation', 'Goodstoney First Nation'],
                    459: ['Whitefish Lake First Nation #459', 'Atikameg'], 438: ['Alexander First Nation'],
                    441: ['Paul First Nation'], 473: ['Bearspaw First Nation'], 433: ['Chiniki First Nation'],
-                   442: ['Montana First Nation'], 444: ['Samson Cree Nation']}
+                   442: ['Montana First Nation'], 444: ['Samson Cree Nation'],
+                   443: ['Ermineskin Cree Nation']}
         band['aliases'] = sorted(set(band.get('aliases', []) + aliases.get(band['id'], [])))
         if record.get('websiteVerified'):
             band['website'] = record['website']
@@ -36,6 +38,13 @@ def merge():
             band['identityNote'] = 'A distinct Stoney Nakoda Nation. ISC also lists Stoney Tribal Administration (471); its shared financial statements are not individual-Nation totals.'
             band['relatedDisclosureSources'] = [{'title': 'Stoney Tribal Administration shared disclosures', 'url': page_url('FederalFundingMain', 471), 'scope': 'Shared administration; not included in individual financial totals'}]
         logo = record['logo']
+        # A failed website refresh must not erase a still-valid reviewed asset.
+        approved = reviews.get(str(band['id']), {}).get('sha256')
+        previous = next((r for r in logos['logos'] if str(r['nation_id']) == str(band['id'])), None)
+        if approved and logo.get('sha256') != approved and previous and previous.get('sha256') == approved:
+            asset = ROOT / (previous.get('logo_url') or '').lstrip('/')
+            if asset.is_file() and hashlib.sha256(asset.read_bytes()).hexdigest() == approved:
+                logo = dict(previous)
         if not (logo.get('sha256') and reviews.get(str(band['id']), {}).get('sha256') == logo['sha256']):
             reason = reviews.get(str(band['id']), {}).get('reason', 'No visually verified official logo available.')
             logo = unverified_record(band, record.get('website'), 'Official First Nation website', reason)

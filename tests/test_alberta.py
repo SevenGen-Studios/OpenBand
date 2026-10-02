@@ -4,15 +4,44 @@ import json
 import unittest
 from collections import defaultdict
 from pathlib import Path
-from tools.ingest_alberta import canonical_url, document_identity, normalized_name, parse_filings, should_preserve_remuneration
+from tools.ingest_alberta import canonical_url, document_identity, normalized_name, parse_filings, should_preserve_remuneration, update_reserve_areas
 from tools.capital_parser import identified_revenue_fields, validate_summary, parse_page_texts
 from tools.merge_previous_data import merge_band
-from run_scraper import _build_column_map, _parse_keyword_table_row
+from run_scraper import _build_column_map, _parse_keyword_table_row, _extract_elected_salary_schedule
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 class AlbertaTests(unittest.TestCase):
+    def test_salary_honoraria_schedule_keeps_dash_columns_and_checks_footer(self):
+        text = '''For Elected Officials
+Months in Salary Honoraria Travel Northern Total
+Office Allowance
+Chief - T. Paulette 12 103,333 - - - 103,333
+Councilor - K. Youngman 12 - 19,200 1,247 - 20,447
+103,333 19,200 1,247 - 123,780'''
+        people = _extract_elected_salary_schedule(text)
+        self.assertEqual(len(people), 2)
+        self.assertEqual((people[0]['remuneration'], people[0]['travel'], people[0]['total']), (103333, 0, 103333))
+        self.assertEqual((people[1]['remuneration'], people[1]['travel'], people[1]['total']), (19200, 1247, 20447))
+        self.assertEqual(_extract_elected_salary_schedule(text.replace('123,780', '123,781.5')), [])
+        self.assertEqual(_extract_elected_salary_schedule(text.rsplit('\n', 1)[0]), [])
+
+    def test_reserve_areas_deduplicate_parcels_and_keep_shared_identity_separate(self):
+        parcel = {'number': '06640', 'hectares': '2,127.40'}
+        bands = [{'id': 473, 'province': 'AB', 'iscBandNumber': 473, 'reserves': [parcel, parcel]},
+                 {'id': 433, 'province': 'AB', 'iscBandNumber': 433, 'reserves': [parcel]},
+                 {'id': 'ab-whitefish-lake-128', 'province': 'AB', 'sharedIscIdentity': True},
+                 {'id': 344, 'province': 'SK'}]
+        maps = {'communities': [{'id': b['id'], 'latitude': 50} for b in bands]}
+        update_reserve_areas(bands, maps)
+        row = maps['communities'][0]
+        self.assertEqual((row['reserveHectares'], row['reserveParcelCount']), (2127.4, 1))
+        self.assertTrue(row['reserveLandIncludesShared'])
+        self.assertIn('BAND_NUMBER=473', row['reserveLandSourceUrl'])
+        self.assertNotIn('reserveHectares', maps['communities'][2])
+        self.assertEqual(maps['communities'][3], {'id': 344, 'latitude': 50})
+
     def test_bounded_parser_creates_cache_directory_before_task_write(self):
         source = (ROOT / 'tools' / 'ingest_alberta.py').read_text(encoding='utf-8')
         function = source[source.index('def bounded_parse'):source.index('def parse_documents')]

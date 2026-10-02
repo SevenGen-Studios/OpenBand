@@ -7,6 +7,9 @@ from tools.collect_first_nation_logos import collect_band, unverified_record
 
 # Public sources reviewed September 11, 2026. Each URL identifies its Nation.
 SITES = {
+    450: 'https://dcn450.com/', 435: 'https://bloodtribe.org/',
+    473: 'https://bearspawfirstnation.ca/', 442: 'https://montanafirstnation.com/',
+    443: 'https://ermineskin.ca/',
     445: 'https://www.beaverfirstnation.com/', 451: 'https://www.duncansfirstnation.com/',
     440: 'https://enochnation.ca/', 465: 'https://www.froglake.ca/',
     469: 'https://heartlakefirstnation.com/', 466: 'https://www.kehewincree.ca/',

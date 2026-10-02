@@ -150,7 +150,8 @@ class LogoHTMLParser(HTMLParser):
         if tag == "title":
             self.in_title = True
         if tag == "img":
-            src = values.get("src") or values.get("data-src") or values.get("data-lazy-src")
+            src = next((values.get(key) for key in ('src', 'data-src', 'data-lazy-src')
+                        if values.get(key) and not values[key].startswith('data:')), None)
             if src:
                 self.candidates.append({
                     "url": urljoin(self.page_url, src),
