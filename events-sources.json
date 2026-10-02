@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-01T19:01:05Z",
+  "generated": "2026-10-02T18:40:25Z",
   "notes": "Event discovery sources are derived from the verified News registry. Add event-specific calendars here when found.",
   "communities": [
     {
@@ -2522,6 +2522,16 @@
           "adapter": "static",
           "monitor": false,
           "official": true
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Bearspaw official website",
+          "url": "https://bearspawfirstnation.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
         }
       ],
       "discoveryQueries": [
@@ -2665,6 +2675,16 @@
           "adapter": "static",
           "monitor": false,
           "official": true
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Blood official website",
+          "url": "https://bloodtribe.org/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
         }
       ],
       "discoveryQueries": [
@@ -2781,6 +2801,16 @@
           "adapter": "static",
           "monitor": false,
           "official": true
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Cold Lake First Nations official website",
+          "url": "https://clfns.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
         }
       ],
       "discoveryQueries": [
@@ -2849,6 +2879,16 @@
           "adapter": "static",
           "monitor": false,
           "official": true
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Driftpile Cree Nation official website",
+          "url": "https://dcn450.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
         }
       ],
       "discoveryQueries": [
@@ -2929,7 +2969,9 @@
     {
       "bandId": 443,
       "communityName": "Ermineskin Tribe",
-      "aliases": [],
+      "aliases": [
+        "Ermineskin Cree Nation"
+      ],
       "provinceTerritory": "AB",
       "treaty": "Treaty 6",
       "sources": [
@@ -2951,6 +2993,16 @@
           "adapter": "static",
           "monitor": false,
           "official": true
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Ermineskin Tribe official website",
+          "url": "https://ermineskin.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
         }
       ],
       "discoveryQueries": [
@@ -3021,6 +3073,16 @@
           "adapter": "static",
           "monitor": false,
           "official": true
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Fort McMurray #468 First Nation official website",
+          "url": "https://www.fmfn468.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
         }
       ],
       "discoveryQueries": [
@@ -3235,6 +3297,16 @@
           "adapter": "static",
           "monitor": false,
           "official": true
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Kehewin Cree Nation official website",
+          "url": "https://www.kehewincree.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
         }
       ],
       "discoveryQueries": [
@@ -3453,6 +3525,16 @@
           "adapter": "static",
           "monitor": false,
           "official": true
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Montana official website",
+          "url": "https://montanafirstnation.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
         }
       ],
       "discoveryQueries": [
@@ -3669,6 +3751,16 @@
           "adapter": "static",
           "monitor": false,
           "official": true
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Samson official website",
+          "url": "https://samsoncree.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
         }
       ],
       "discoveryQueries": [
@@ -3741,6 +3833,16 @@
           "adapter": "static",
           "monitor": false,
           "official": true
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Siksika Nation official website",
+          "url": "https://siksikanation.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
         }
       ],
       "discoveryQueries": [
@@ -3947,6 +4049,16 @@
           "adapter": "static",
           "monitor": false,
           "official": true
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Tsuut'ina Nation official website",
+          "url": "https://tsuutina.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC First Nation profile"
         }
       ],
       "discoveryQueries": [
