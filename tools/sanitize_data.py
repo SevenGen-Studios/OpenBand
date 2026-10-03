@@ -113,6 +113,26 @@ def normalize_name_case(text):
     return " ".join(format_token(token) for token in text.split())
 
 
+def format_alberta_official_names(data):
+    """Use initial capitals for Alberta governance and remuneration names."""
+    changed = 0
+    for band in data.get('bands', []):
+        if band.get('province') != 'AB':
+            continue
+        records = [(official, key) for official in (band.get('leadership') or {}).get('officials', [])
+                   for key in ('givenName', 'surname')]
+        records += [(person, 'name') for filing in band.get('filings', []) for person in filing.get('people', [])]
+        for record, key in records:
+            value = record.get(key)
+            if not isinstance(value, str):
+                continue
+            formatted = re.sub(r"[^\W\d_]+", lambda match: match.group().capitalize(), value)
+            if formatted != value:
+                record[key] = formatted
+                changed += 1
+    return changed
+
+
 def reorder_last_first_name(text):
     tokens = text.split()
     if len(tokens) < 2 or len(tokens) > 4:
@@ -509,6 +529,7 @@ def sanitize_data(data):
                 fixed += filing_fixed
 
     data["band_count"] = len(data.get("bands", []))
+    format_alberta_official_names(data)
     return inspected, removed, fixed
 
 
