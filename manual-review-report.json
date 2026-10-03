@@ -1,13 +1,13 @@
 {
   "generatedFrom": "2026-10-02T05:55:12+00:00",
-  "manualReviewCount": 292,
+  "manualReviewCount": 284,
   "reasonCounts": {
     "implausibly small remuneration values appear in money columns": 4,
     "month values appear in money columns": 2,
     "month values appear in money columns; implausibly small remuneration values appear in money columns": 8,
     "no Chief row in a small parsed filing": 4,
     "no reliable official rows remain after validation": 55,
-    "parser confidence is low": 219
+    "parser confidence is low": 211
   },
   "filings": [
     {
@@ -126,7 +126,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=438&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -165,12 +165,8 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=437&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
-        "Parsed via free local OCR fallback",
-        "At least one official row does not reconcile",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "Row 6: total does not equal remuneration + travel/expenses + other",
-        "OCR output failed validation",
+        "PDF has no usable native text; used free local OCR",
+        "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -182,11 +178,8 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=437&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
-        "Parsed via free local OCR fallback",
-        "At least one official row does not reconcile",
-        "Row 6: total does not equal remuneration + travel/expenses + other",
-        "OCR output failed validation",
+        "PDF has no usable native text; used free local OCR",
+        "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -198,10 +191,10 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=437&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
-        "At least one official row does not reconcile",
-        "Row 9: total does not equal remuneration + travel/expenses + other",
+        "Row 9: ambiguous decimal separator in remuneration",
+        "Row 9: ambiguous decimal separator in total",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -241,12 +234,12 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=445&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
         "A complete Chief and Council schedule requires an identified Chief row",
-        "At least one official row does not reconcile",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
+        "Parsed officials do not reconcile with the source total row",
         "No Chief row detected",
+        "Parsed row totals do not match source total row",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -260,13 +253,7 @@
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=460&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
         "PDF has no usable native text; used free local OCR",
-        "Parsed via free local OCR fallback",
-        "Totals do not reconcile for many rows",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "OCR output failed validation",
+        "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -326,7 +313,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=458&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -425,7 +412,8 @@
       "warnings": [
         "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
-        "A complete Chief and Council schedule requires an identified Chief row",
+        "Row 9: ambiguous decimal separator in travelExpenses",
+        "Row 13: ambiguous decimal separator in remuneration",
         "Totals do not reconcile for many rows",
         "Row 1: total does not equal remuneration + travel/expenses + other",
         "Row 2: total does not equal remuneration + travel/expenses + other",
@@ -434,7 +422,12 @@
         "Row 5: total does not equal remuneration + travel/expenses + other",
         "Row 6: total does not equal remuneration + travel/expenses + other",
         "Row 7: total does not equal remuneration + travel/expenses + other",
-        "No Chief row detected",
+        "Row 8: total does not equal remuneration + travel/expenses + other",
+        "Row 9: total does not equal remuneration + travel/expenses + other",
+        "Row 10: total does not equal remuneration + travel/expenses + other",
+        "Row 11: total does not equal remuneration + travel/expenses + other",
+        "Row 12: total does not equal remuneration + travel/expenses + other",
+        "Row 13: total does not equal remuneration + travel/expenses + other",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -449,6 +442,7 @@
       "warnings": [
         "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
+        "A complete Chief and Council schedule requires an identified Chief row",
         "Totals do not reconcile for many rows",
         "Row 1: total does not equal remuneration + travel/expenses + other",
         "Row 2: total does not equal remuneration + travel/expenses + other",
@@ -459,10 +453,7 @@
         "Row 7: total does not equal remuneration + travel/expenses + other",
         "Row 8: total does not equal remuneration + travel/expenses + other",
         "Row 9: total does not equal remuneration + travel/expenses + other",
-        "Row 10: total does not equal remuneration + travel/expenses + other",
-        "Row 11: total does not equal remuneration + travel/expenses + other",
-        "Row 12: total does not equal remuneration + travel/expenses + other",
-        "Row 13: total does not equal remuneration + travel/expenses + other",
+        "No Chief row detected",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -475,12 +466,13 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=435&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
-        "Totals do not reconcile for many rows",
+        "A complete Chief and Council schedule requires an identified Chief row",
+        "At least one official row does not reconcile",
         "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
+        "No Chief row detected",
+        "Only one official row parsed",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -493,7 +485,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=435&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
         "Totals do not reconcile for many rows",
         "Row 1: total does not equal remuneration + travel/expenses + other",
@@ -504,11 +496,6 @@
         "Row 6: total does not equal remuneration + travel/expenses + other",
         "Row 7: total does not equal remuneration + travel/expenses + other",
         "Row 8: total does not equal remuneration + travel/expenses + other",
-        "Row 9: total does not equal remuneration + travel/expenses + other",
-        "Row 10: total does not equal remuneration + travel/expenses + other",
-        "Row 11: total does not equal remuneration + travel/expenses + other",
-        "Row 12: total does not equal remuneration + travel/expenses + other",
-        "Row 13: total does not equal remuneration + travel/expenses + other",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -521,7 +508,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=435&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
         "Totals do not reconcile for many rows",
         "Row 1: total does not equal remuneration + travel/expenses + other",
@@ -534,9 +521,6 @@
         "Row 8: total does not equal remuneration + travel/expenses + other",
         "Row 9: total does not equal remuneration + travel/expenses + other",
         "Row 10: total does not equal remuneration + travel/expenses + other",
-        "Row 11: total does not equal remuneration + travel/expenses + other",
-        "Row 12: total does not equal remuneration + travel/expenses + other",
-        "Row 13: total does not equal remuneration + travel/expenses + other",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -899,7 +883,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=464&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -964,8 +948,7 @@
         "Row 8: total does not equal remuneration + travel/expenses + other",
         "Row 9: total does not equal remuneration + travel/expenses + other",
         "Local text output failed validation; trying free local OCR",
-        "Parsed via free local OCR fallback",
-        "OCR output failed validation",
+        "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -990,6 +973,8 @@
         "Row 10: total does not equal remuneration + travel/expenses + other",
         "Local text output failed validation; trying free local OCR",
         "Parsed via free local OCR fallback",
+        "Parsed officials do not reconcile with the source total row",
+        "Parsed row totals do not match source total row",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -1004,10 +989,7 @@
       "warnings": [
         "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
-        "At least one official row does not reconcile",
         "Parsed officials do not reconcile with the source total row",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "Row 6: total does not equal remuneration + travel/expenses + other",
         "Parsed row totals do not match source total row",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
@@ -1021,19 +1003,11 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=450&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
-        "Row 1: ambiguous decimal separator in total",
-        "Row 2: ambiguous decimal separator in other",
-        "Row 3: ambiguous decimal separator in other",
-        "Row 4: ambiguous decimal separator in other",
-        "Totals do not reconcile for many rows",
+        "At least one official row does not reconcile",
         "Parsed officials do not reconcile with the source total row",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 8: total does not equal remuneration + travel/expenses + other",
+        "Row 7: total does not equal remuneration + travel/expenses + other",
         "Parsed row totals do not match source total row",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
@@ -1047,22 +1021,10 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=450&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
-        "Totals do not reconcile for many rows",
-        "Parsed officials do not reconcile with the source total row",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "Row 6: total does not equal remuneration + travel/expenses + other",
-        "Row 7: total does not equal remuneration + travel/expenses + other",
-        "Row 8: total does not equal remuneration + travel/expenses + other",
-        "Row 9: total does not equal remuneration + travel/expenses + other",
+        "At least one official row does not reconcile",
         "Row 10: total does not equal remuneration + travel/expenses + other",
-        "Row 11: total does not equal remuneration + travel/expenses + other",
-        "Parsed row totals do not match source total row",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -1077,46 +1039,8 @@
       "warnings": [
         "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
-        "Row 6: ambiguous decimal separator in remuneration",
         "Row 6: ambiguous decimal separator in travelExpenses",
         "Row 6: ambiguous decimal separator in total",
-        "Row 7: ambiguous decimal separator in travelExpenses",
-        "Row 7: ambiguous decimal separator in total",
-        "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 451,
-      "band": "Duncan's First Nation",
-      "province": "AB",
-      "year": "2014-2015",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=451&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "PDF has no usable native text; used free local OCR",
-        "Parsed via free local OCR fallback",
-        "At least one official row does not reconcile",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 451,
-      "band": "Duncan's First Nation",
-      "province": "AB",
-      "year": "2016-2017",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=451&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "No clear Chief and Council remuneration table found",
-        "Parsed via free local OCR fallback",
-        "Totals do not reconcile for many rows",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -1129,7 +1053,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=451&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -1168,7 +1092,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=440&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
         "Parsed officials do not reconcile with the source total row",
         "Parsed row totals do not match source total row",
@@ -1184,11 +1108,10 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=440&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
-        "A complete Chief and Council schedule requires an identified Chief row",
-        "No Chief row detected",
-        "Only one official row parsed",
+        "Parsed officials do not reconcile with the source total row",
+        "Parsed row totals do not match source total row",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -1202,10 +1125,7 @@
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=440&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
         "PDF has no usable native text; used free local OCR",
-        "Parsed via free local OCR fallback",
-        "Row 4: ambiguous decimal separator in travelExpenses",
-        "Row 4: ambiguous decimal separator in total",
-        "OCR output failed validation",
+        "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -1311,7 +1231,13 @@
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
         "PDF has no usable native text; used free local OCR",
-        "Local OCR text contained no reliable official rows",
+        "Parsed via free local OCR fallback",
+        "Totals do not reconcile for many rows",
+        "Row 1: total does not equal remuneration + travel/expenses + other",
+        "Row 2: total does not equal remuneration + travel/expenses + other",
+        "Row 3: total does not equal remuneration + travel/expenses + other",
+        "Row 4: total does not equal remuneration + travel/expenses + other",
+        "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -1323,11 +1249,12 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
+        "A complete Chief and Council schedule requires an identified Chief row",
         "At least one official row does not reconcile",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
+        "Row 1: total does not equal remuneration + travel/expenses + other",
+        "No Chief row detected",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -1340,15 +1267,8 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
-        "Parsed via free local OCR fallback",
-        "Totals do not reconcile for many rows",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "OCR output failed validation",
+        "PDF has no usable native text; used free local OCR",
+        "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -1360,15 +1280,8 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
-        "Parsed via free local OCR fallback",
-        "Totals do not reconcile for many rows",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "OCR output failed validation",
+        "PDF has no usable native text; used free local OCR",
+        "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -1380,28 +1293,8 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 467,
-      "band": "Fort McKay First Nation",
-      "province": "AB",
-      "year": "2019-2020",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "No clear Chief and Council remuneration table found",
-        "Parsed via free local OCR fallback",
-        "Totals do not reconcile for many rows",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -1438,13 +1331,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "Parsed via free local OCR fallback",
-        "Row 1: possible footer total parsed as official",
-        "At least one official row does not reconcile",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "No Chief row detected",
-        "Only one official row parsed",
-        "OCR output failed validation",
+        "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -1505,7 +1392,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=465&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -1518,7 +1405,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=465&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -1624,19 +1511,6 @@
       ]
     },
     {
-      "bandId": 469,
-      "band": "Heart Lake",
-      "province": "AB",
-      "year": "2014-2015",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=469&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "PDF has no usable native text; used free local OCR",
-        "Local OCR text contained no reliable official rows",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
       "bandId": 449,
       "band": "Horse Lake First Nation",
       "province": "AB",
@@ -1657,7 +1531,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=449&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -1752,7 +1626,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=452&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -1830,10 +1704,10 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=466&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
-        "At least one official row does not reconcile",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
+        "Parsed officials do not reconcile with the source total row",
+        "Parsed row totals do not match source total row",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -2133,7 +2007,8 @@
       "warnings": [
         "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted",
+        "Nation identity not confirmed in document cover; manual review required"
       ]
     },
     {
@@ -2144,7 +2019,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=476&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -2157,7 +2032,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=476&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -2171,7 +2046,14 @@
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=439&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
         "PDF has no usable native text; used free local OCR",
-        "Local OCR text contained no reliable official rows",
+        "Parsed via free local OCR fallback",
+        "Totals do not reconcile for many rows",
+        "Row 1: total does not equal remuneration + travel/expenses + other",
+        "Row 2: total does not equal remuneration + travel/expenses + other",
+        "Row 3: total does not equal remuneration + travel/expenses + other",
+        "Row 4: total does not equal remuneration + travel/expenses + other",
+        "Row 5: total does not equal remuneration + travel/expenses + other",
+        "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -2183,7 +2065,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=439&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
         "Parsed officials do not reconcile with the source total row",
         "Parsed row totals do not match source total row",
@@ -2199,12 +2081,14 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=439&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
+        "A complete Chief and Council schedule requires an identified Chief row",
         "At least one official row does not reconcile",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "Row 8: total does not equal remuneration + travel/expenses + other",
+        "Parsed officials do not reconcile with the source total row",
+        "Row 3: total does not equal remuneration + travel/expenses + other",
+        "No Chief row detected",
+        "Parsed row totals do not match source total row",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -2219,12 +2103,10 @@
       "warnings": [
         "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
-        "Totals do not reconcile for many rows",
+        "A complete Chief and Council schedule requires an identified Chief row",
         "Parsed officials do not reconcile with the source total row",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 7: total does not equal remuneration + travel/expenses + other",
+        "No Chief row detected",
+        "Only one official row parsed",
         "Parsed row totals do not match source total row",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
@@ -2240,31 +2122,12 @@
       "warnings": [
         "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
-        "Row 1: ambiguous decimal separator in travelExpenses",
+        "A complete Chief and Council schedule requires an identified Chief row",
         "Totals do not reconcile for many rows",
         "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
         "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 453,
-      "band": "Lubicon Lake Band No. 453",
-      "province": "AB",
-      "year": "2014-2015",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=453&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "PDF has no usable native text; used free local OCR",
-        "Parsed via free local OCR fallback",
-        "A complete Chief and Council schedule requires an identified Chief row",
-        "At least one official row does not reconcile",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
+        "Row 4: total does not equal remuneration + travel/expenses + other",
         "No Chief row detected",
-        "Only one official row parsed",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -3132,9 +2995,14 @@
       "warnings": [
         "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
-        "At least one official row does not reconcile",
+        "Row 3: ambiguous decimal separator in remuneration",
+        "Row 5: ambiguous decimal separator in remuneration",
+        "Row 5: ambiguous decimal separator in other",
+        "Totals do not reconcile for many rows",
+        "Row 3: total does not equal remuneration + travel/expenses + other",
         "Row 4: total does not equal remuneration + travel/expenses + other",
         "Row 5: total does not equal remuneration + travel/expenses + other",
+        "Row 7: total does not equal remuneration + travel/expenses + other",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -3147,14 +3015,10 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=441&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
-        "Row 2: ambiguous decimal separator in remuneration",
-        "Row 3: ambiguous decimal separator in remuneration",
-        "Totals do not reconcile for many rows",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
+        "Parsed officials do not reconcile with the source total row",
+        "Parsed row totals do not match source total row",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -3167,7 +3031,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=441&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -3208,8 +3072,8 @@
       "warnings": [
         "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
-        "A complete Chief and Council schedule requires an identified Chief row",
-        "No Chief row detected",
+        "Row 7: missing or zero total",
+        "Row 8: missing or zero total",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -3222,36 +3086,19 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=478&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
         "Row 1: ambiguous decimal separator in travelExpenses",
-        "Row 3: ambiguous decimal separator in other",
+        "Row 1: ambiguous decimal separator in other",
+        "Row 2: ambiguous decimal separator in other",
         "Row 4: ambiguous decimal separator in other",
         "Row 5: ambiguous decimal separator in total",
         "Totals do not reconcile for many rows",
-        "Parsed officials do not reconcile with the source total row",
         "Row 1: total does not equal remuneration + travel/expenses + other",
         "Row 2: total does not equal remuneration + travel/expenses + other",
         "Row 3: total does not equal remuneration + travel/expenses + other",
         "Row 4: total does not equal remuneration + travel/expenses + other",
         "Row 5: total does not equal remuneration + travel/expenses + other",
-        "Parsed row totals do not match source total row",
-        "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 478,
-      "band": "Peerless Trout First Nation",
-      "province": "AB",
-      "year": "2016-2017",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=478&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "No clear Chief and Council remuneration table found",
-        "Parsed via free local OCR fallback",
-        "At least one official row does not reconcile",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -3418,7 +3265,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=436&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -3431,7 +3278,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=436&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -3457,7 +3304,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=436&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -3470,7 +3317,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=436&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -3590,11 +3437,24 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=444&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
-        "OCR deferred; rerun with --ocr or review original PDF",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted",
-        "Nation identity not confirmed in document cover; manual review required",
-        "Fiscal year end not confirmed in document cover; manual review required"
+        "PDF has no usable native text; used free local OCR",
+        "Parsed via free local OCR fallback",
+        "Row 4: ambiguous decimal separator in remuneration",
+        "A complete Chief and Council schedule requires an identified Chief row",
+        "Totals do not reconcile for many rows",
+        "Row 1: total does not equal remuneration + travel/expenses + other",
+        "Row 2: total does not equal remuneration + travel/expenses + other",
+        "Row 3: total does not equal remuneration + travel/expenses + other",
+        "Row 4: total does not equal remuneration + travel/expenses + other",
+        "Row 5: total does not equal remuneration + travel/expenses + other",
+        "Row 6: total does not equal remuneration + travel/expenses + other",
+        "Row 7: total does not equal remuneration + travel/expenses + other",
+        "Row 8: total does not equal remuneration + travel/expenses + other",
+        "Row 9: total does not equal remuneration + travel/expenses + other",
+        "Row 10: total does not equal remuneration + travel/expenses + other",
+        "No Chief row detected",
+        "OCR output failed validation",
+        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
     {
@@ -3606,7 +3466,19 @@
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=444&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
         "No clear Chief and Council remuneration table found",
-        "OCR deferred; rerun with --ocr or review original PDF",
+        "Parsed via free local OCR fallback",
+        "Totals do not reconcile for many rows",
+        "Row 1: total does not equal remuneration + travel/expenses + other",
+        "Row 2: total does not equal remuneration + travel/expenses + other",
+        "Row 3: total does not equal remuneration + travel/expenses + other",
+        "Row 4: total does not equal remuneration + travel/expenses + other",
+        "Row 5: total does not equal remuneration + travel/expenses + other",
+        "Row 6: total does not equal remuneration + travel/expenses + other",
+        "Row 7: total does not equal remuneration + travel/expenses + other",
+        "Row 8: total does not equal remuneration + travel/expenses + other",
+        "Row 9: total does not equal remuneration + travel/expenses + other",
+        "Row 10: total does not equal remuneration + travel/expenses + other",
+        "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -3641,7 +3513,8 @@
         "Row 18: total does not equal remuneration + travel/expenses + other",
         "No Chief row detected",
         "Local text output failed validation; trying free local OCR",
-        "OCR deferred; rerun with --ocr or review original PDF",
+        "Parsed via free local OCR fallback",
+        "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -3669,7 +3542,8 @@
         "Row 12: total does not equal remuneration + travel/expenses + other",
         "Row 13: total does not equal remuneration + travel/expenses + other",
         "Local text output failed validation; trying free local OCR",
-        "OCR deferred; rerun with --ocr or review original PDF",
+        "Parsed via free local OCR fallback",
+        "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -3701,20 +3575,7 @@
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=430&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
         "PDF has no usable native text; used free local OCR",
-        "Parsed via free local OCR fallback",
-        "A complete Chief and Council schedule requires an identified Chief row",
-        "Totals do not reconcile for many rows",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "Row 6: total does not equal remuneration + travel/expenses + other",
-        "Row 7: total does not equal remuneration + travel/expenses + other",
-        "Row 8: total does not equal remuneration + travel/expenses + other",
-        "Row 9: total does not equal remuneration + travel/expenses + other",
-        "No Chief row detected",
-        "OCR output failed validation",
+        "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -3726,7 +3587,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=430&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -3768,7 +3629,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=430&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -3805,8 +3666,6 @@
         "Row 19: total does not equal remuneration + travel/expenses + other",
         "Row 20: total does not equal remuneration + travel/expenses + other",
         "Row 21: total does not equal remuneration + travel/expenses + other",
-        "Row 22: total does not equal remuneration + travel/expenses + other",
-        "Row 23: total does not equal remuneration + travel/expenses + other",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -3833,8 +3692,6 @@
         "Row 9: total does not equal remuneration + travel/expenses + other",
         "Row 10: total does not equal remuneration + travel/expenses + other",
         "Row 11: total does not equal remuneration + travel/expenses + other",
-        "Row 12: total does not equal remuneration + travel/expenses + other",
-        "Row 13: total does not equal remuneration + travel/expenses + other",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -3900,7 +3757,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -3913,7 +3770,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -3952,7 +3809,14 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "Local OCR text contained no reliable official rows",
+        "Parsed via free local OCR fallback",
+        "A complete Chief and Council schedule requires an identified Chief row",
+        "Totals do not reconcile for many rows",
+        "Row 1: total does not equal remuneration + travel/expenses + other",
+        "Row 2: total does not equal remuneration + travel/expenses + other",
+        "Row 3: total does not equal remuneration + travel/expenses + other",
+        "No Chief row detected",
+        "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -3977,6 +3841,7 @@
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
         "Parsed from PDF text fallback",
+        "A complete Chief and Council schedule requires an identified Chief row",
         "Totals do not reconcile for many rows",
         "Row 2: total does not equal remuneration + travel/expenses + other",
         "Row 3: total does not equal remuneration + travel/expenses + other",
@@ -3987,7 +3852,6 @@
         "No Chief row detected",
         "Local text output failed validation; trying free local OCR",
         "Parsed via free local OCR fallback",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -4001,6 +3865,7 @@
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
         "Parsed from PDF text fallback",
+        "A complete Chief and Council schedule requires an identified Chief row",
         "Totals do not reconcile for many rows",
         "Row 1: total does not equal remuneration + travel/expenses + other",
         "Row 2: total does not equal remuneration + travel/expenses + other",
@@ -4026,6 +3891,7 @@
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
         "Parsed from PDF text fallback",
+        "A complete Chief and Council schedule requires an identified Chief row",
         "Totals do not reconcile for many rows",
         "Row 1: total does not equal remuneration + travel/expenses + other",
         "Row 2: total does not equal remuneration + travel/expenses + other",
@@ -4146,10 +4012,7 @@
       "warnings": [
         "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
-        "Totals do not reconcile for many rows",
         "Parsed officials do not reconcile with the source total row",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
         "Parsed row totals do not match source total row",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
@@ -4164,11 +4027,7 @@
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=456&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
         "Parsed via free local OCR fallback",
-        "A complete Chief and Council schedule requires an identified Chief row",
-        "At least one official row does not reconcile",
         "Parsed officials do not reconcile with the source total row",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "No Chief row detected",
         "Parsed row totals do not match source total row",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
@@ -4182,7 +4041,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=456&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -4205,27 +4064,11 @@
       "bandId": 434,
       "band": "Sunchild First Nation",
       "province": "AB",
-      "year": "2014-2015",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=434&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "PDF has no usable native text; used free local OCR",
-        "Parsed via free local OCR fallback",
-        "Parsed officials do not reconcile with the source total row",
-        "Parsed row totals do not match source total row",
-        "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 434,
-      "band": "Sunchild First Nation",
-      "province": "AB",
       "year": "2015-2016",
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=434&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -4240,22 +4083,6 @@
       "warnings": [
         "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 457,
-      "band": "Swan River First Nation",
-      "province": "AB",
-      "year": "2014-2015",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=457&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "PDF has no usable native text; used free local OCR",
-        "Parsed via free local OCR fallback",
-        "A complete Chief and Council schedule requires an identified Chief row",
-        "No Chief row detected",
-        "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -4363,13 +4190,23 @@
       "warnings": [
         "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
-        "At least one official row does not reconcile",
+        "Totals do not reconcile for many rows",
+        "Row 1: total does not equal remuneration + travel/expenses + other",
+        "Row 2: total does not equal remuneration + travel/expenses + other",
         "Row 3: total does not equal remuneration + travel/expenses + other",
+        "Row 4: total does not equal remuneration + travel/expenses + other",
         "Row 5: total does not equal remuneration + travel/expenses + other",
         "Row 6: total does not equal remuneration + travel/expenses + other",
+        "Row 7: total does not equal remuneration + travel/expenses + other",
         "Row 8: total does not equal remuneration + travel/expenses + other",
+        "Row 9: total does not equal remuneration + travel/expenses + other",
+        "Row 10: total does not equal remuneration + travel/expenses + other",
+        "Row 11: total does not equal remuneration + travel/expenses + other",
+        "Row 12: total does not equal remuneration + travel/expenses + other",
         "Row 13: total does not equal remuneration + travel/expenses + other",
+        "Row 14: total does not equal remuneration + travel/expenses + other",
         "Row 15: total does not equal remuneration + travel/expenses + other",
+        "Row 16: total does not equal remuneration + travel/expenses + other",
         "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -4419,7 +4256,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=477&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -4674,7 +4511,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=474&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
@@ -4687,7 +4524,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=474&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "No clear Chief and Council remuneration table found",
+        "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]

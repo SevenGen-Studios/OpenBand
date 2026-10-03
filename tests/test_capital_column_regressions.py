@@ -6,6 +6,38 @@ from tools import capital_parser as parser
 
 
 class CapitalColumnRegressions(unittest.TestCase):
+    def test_recovery_requires_the_final_result_after_other_items(self):
+        text = 'Statement of Operations\n2025 2024\nRevenue\nIndigenous Services Canada 800 700\nRental income 200 100\nTotal revenue 1,000 800\nExpenses\nEducation 500 400\nHealth 300 200\nTotal expenses 800 600\nSurplus before other items 200 200\nOther items'
+        result = parser.parse_page_texts([text], fiscal_year='2024-2025', require_reported_totals=True)
+        self.assertFalse(result['publishable'])
+        self.assertIsNone(result['annualSurplusDeficit'])
+
+    def test_current_year_revenue_adjustment_is_not_rental_income(self):
+        self.assertNotEqual(parser.broad_revenue_category('Deferred revenue-current year'), 'Rental and property income')
+        self.assertEqual(parser.broad_revenue_category('Rental income'), 'Rental and property income')
+
+    def test_native_covid_label_and_unlabelled_totals_reconcile(self):
+        text = (Path(__file__).parent / 'fixtures' / 'ab_453_2022_operations.txt').read_text(encoding='utf8')
+        result = parser.parse_page_texts([text], fiscal_year='2021-2022', require_reported_totals=True)
+        self.assertTrue(result['publishable'], result['warnings'])
+        self.assertEqual(result['totalRevenue'], 50570203)
+        self.assertEqual(result['totalExpenses'], 13496504)
+        self.assertEqual(result['annualSurplusDeficit'], 34840305)
+        covid = next(row for row in result['sourceExpenseRows'] if row['label'] == 'Covid-19')
+        self.assertEqual(covid['amount'], 463720)
+        damaged = text.replace('Covid-19 463,720 788,052', '')
+        self.assertFalse(parser.parse_page_texts([damaged], fiscal_year='2021-2022', require_reported_totals=True)['publishable'])
+
+    def test_member_savings_plan_distributions_are_reported_deductions(self):
+        text = (Path(__file__).parent / 'fixtures' / 'ab_467_2023_operations.txt').read_text(encoding='utf8')
+        result = parser.parse_page_texts([text], fiscal_year='2022-2023', require_reported_totals=True)
+        self.assertTrue(result['publishable'], result['warnings'])
+        self.assertEqual(result['totalRevenue'], 87793591)
+        self.assertEqual(result['totalExpenses'], 56882299)
+        self.assertEqual(result['annualSurplusDeficit'], 18087289)
+        savings = next(row for row in result['surplusAdjustments'] if 'savings plan' in row['label'])
+        self.assertEqual(savings['amount'], -875000)
+
     def test_reported_deficit_of_revenues_over_expenses(self):
         text = '''Statement of Operations
 Year ended March 31, 2025

@@ -9,7 +9,7 @@ from tools.ingest_alberta import ROOT, read, write, now
 def validated(filing):
     return filing.get('verificationStatus') == 'automated_validated' and not filing.get('manual_review_required')
 
-def generate(baseline_revision="ebcf2bb"):
+def generate(baseline_revision="ebcf2bb", round_baseline=None):
     baseline = json.loads(subprocess.check_output(['git', 'show', f'{baseline_revision}:data.json']))
     current = read(ROOT / 'data.json')
     old_capital = json.loads(subprocess.check_output(['git', 'show', f'{baseline_revision}:capital-data.json']))
@@ -38,6 +38,7 @@ def generate(baseline_revision="ebcf2bb"):
                          'recovered': recovered, 'status': f.get('parse_status'),
                          'parserRevision': f.get('parserRevision'), 'ocrStatus': f.get('ocrStatus'), 'ocrEngine': f.get('ocrEngine'),
                          'documentChecks': f.get('documentChecks'), 'listedDocType': f.get('listedDocType'),
+                         'manualSourceReview': f.get('manualSourceReview'),
                          'warnings': f.get('reparseWarnings', f.get('warnings', [])) if not recovered else f.get('warnings', [])})
     before_valid = sum(validated(f) for f in old.values())
     added = sum(r['recovered'] for r in rows)
@@ -57,16 +58,36 @@ def generate(baseline_revision="ebcf2bb"):
                                           for f in b['filings'] if f.get('posted') and f.get('href'))
     result = {'generated': now(), 'baselineCommit': subprocess.check_output(['git', 'rev-parse', baseline_revision]).decode().strip(),
               'summary': summary, 'documents': sorted(rows, key=lambda r: (r['nation'], r['year'], r['documentType']))}
+    if round_baseline:
+        previous_data = json.loads(subprocess.check_output(['git', 'show', f'{round_baseline}:data.json']))
+        previous_capital = json.loads(subprocess.check_output(['git', 'show', f'{round_baseline}:capital-data.json']))
+        prior = {(str(b['id']), f['href']): f for b in previous_data['bands'] if b.get('province') == 'AB'
+                 for f in b['filings'] if f.get('posted') and f.get('href') and not validated(f)}
+        current_filings = {(str(b['id']), f.get('href')): f for b in current['bands'] if b.get('province') == 'AB'
+                           for f in b['filings']}
+        newly_validated = [current_filings[key] for key in prior if validated(current_filings[key])]
+        prior_years = {(bid, year) for bid in ab_ids for year, s in
+                       previous_capital.get('bands', {}).get(bid, {}).get('years', {}).items() if s.get('publishable')}
+        result['latestPass'] = {
+            'baselineCommit': subprocess.check_output(['git', 'rev-parse', round_baseline]).decode().strip(),
+            'reviewBefore': len(prior), 'recoveredDocuments': len(newly_validated),
+            'recoveredByType': dict(Counter(f['docType'] for f in newly_validated)),
+            'newlyPublishableFinancialYears': len(new_financial - prior_years),
+        }
     write(ROOT / 'alberta-parser-recovery-report.json', result)
     lines = ['# Alberta filing parser recovery', '', f"Generated {result['generated']}", '',
              f"Reprocessed {summary['originalReviewDocumentsAttempted']} of {len(rows)} previously unresolved documents.",
              f"Validated filings increased from {before_valid} to {before_valid + added}; the review queue decreased from {len(rows)} to {len(rows) - added}.", '',
              f"The baseline contained {summary['correctedPreviouslyContradictoryValidationFlags']} contradictory validation flags on quarantined remuneration records. Those records are included in the retry queue; empty schedules are not counted as validated.", '',
              f"Publishable financial summaries increased from {len(old_financial)} to {len(new_financial)} Nation-years. Some recovered document validations confirm financial summaries that were already available; document recoveries are not all new financial years.", '',
-             'The recovery uses native text, separately validated geometric table candidates, and free local OCR. Explicit PDF covers correct swapped ISC document labels while preserving the listing label and original URL.', '',
+             'The recovery uses native text, separately validated geometric table candidates, and free local OCR. Complete visual transcriptions are bound to the exact PDF hash, source year and URL; all named rows and reported components must reconcile. Explicit PDF covers correct swapped ISC document labels while preserving the listing label and original URL.', '',
              'Numeric official names, footer totals, merged columns, implausible amounts, and non-reconciling rows remain withheld. Missing values and unidentified officials are not invented. Some files still require source or accounting review after bounded OCR.', '',
              'Saskatchewan source records and financial summaries are unchanged.', '',
              '| Nation | Year | Document | Result |', '|---|---|---|---|']
+    if result.get('latestPass'):
+        latest = result['latestPass']
+        lines[4:4] = [f"Latest pass: {latest['recoveredDocuments']} additional validated documents from a queue of "
+                      f"{latest['reviewBefore']}, including {latest['newlyPublishableFinancialYears']} newly publishable financial Nation-years.", '']
     for r in result['documents']:
         source_url = quote(r['sourcePdf'], safe=':/?=&%#+,')
         lines.append(f"| {r['nation']} | {r['year']} | [{r['documentType']}]({source_url}) | {'Recovered' if r['recovered'] else 'Review required'} |")
@@ -78,4 +99,6 @@ def generate(baseline_revision="ebcf2bb"):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--baseline", default="ebcf2bb")
-    generate(parser.parse_args().baseline)
+    parser.add_argument("--round-baseline", help="Also report recoveries since the preceding parser pass")
+    args = parser.parse_args()
+    generate(args.baseline, args.round_baseline)

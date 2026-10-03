@@ -17,6 +17,49 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class AlbertaTests(unittest.TestCase):
+    def test_completed_current_worker_result_survives_ocr_shutdown_timeout(self):
+        from tools import ingest_alberta
+        import subprocess
+        task = ({'id':'1'}, {'href':'https://example.test/source.pdf'}, True)
+        for revision, expected in ((ingest_alberta.PARSER_REVISION, 'automated_validated'), ('old-parser','parse_timeout_or_error')):
+            with tempfile.TemporaryDirectory() as directory:
+                def completed_then_timeout(args, **kwargs):
+                    output = Path(args[args.index('--result')+1])
+                    ingest_alberta.write(output, ['1', task[1]['href'], {'parserRevision':revision,
+                                         'sha256':'source-digest', 'verificationStatus':'automated_validated'}, None])
+                    raise subprocess.TimeoutExpired(args, 180)
+                with patch.object(ingest_alberta, 'CACHE', Path(directory)), patch.object(
+                        ingest_alberta.subprocess, 'run', side_effect=completed_then_timeout):
+                    result = ingest_alberta.bounded_parse(task)
+                self.assertEqual(result[2]['verificationStatus'], expected)
+
+    def test_visual_schedule_review_requires_the_same_pdf_year_and_complete_rows(self):
+        from tools.ingest_alberta import reviewed_remuneration, read
+        reviews = read(ROOT/'tools/alberta-source-cache/remuneration-reviews.json')['reviews']
+        for review in reviews:
+            band = {'id': review['bandId']}
+            filing = {'year': review['year'], 'href': review['sourcePdf']}
+            result = reviewed_remuneration(band, filing, review['sha256'])
+            self.assertFalse(result['manual_review_required'])
+            self.assertEqual(len(result['people']), review['sourceRowCount'])
+            self.assertIsNone(reviewed_remuneration(band, filing, 'changed-source'))
+            self.assertIsNone(reviewed_remuneration(band, dict(filing, year='wrong-year'), review['sha256']))
+        duncan = next(r for r in reviews if r['bandId']=='451' and r['year']=='2016-2017')
+        self.assertEqual(len(duncan['people']), 6)
+        self.assertIn('Tony Testawich', [p['name'] for p in duncan['people']])
+        fort = next(r for r in reviews if r['bandId']=='467')
+        self.assertEqual(sum(p['total'] for p in fort['people']), fort['sourceTotal'])
+
+    def test_partial_ocr_officials_and_unreconciled_footer_are_withheld(self):
+        from tools.ingest_alberta import remuneration_completeness_issues
+        text = 'Chief and Council\nA Person Chief 12 100 20 120\nB Person Councillor 12 100 20 120\nC Person Councillor 12 100 20 120\nTotals 300 60 360'
+        partial = {'people': [{'name':'A Person'}, {'name':'B Person'}]}
+        issues = remuneration_completeness_issues(partial, [[], [text]])
+        self.assertIn('Parsed officials are fewer than the printed Chief and Council rows', issues)
+        self.assertIn('Printed schedule footer was not reconciled', issues)
+        complete = {'people':[{'name':name} for name in ('A Person','B Person','C Person')], 'sourceTotal':360}
+        self.assertEqual(remuneration_completeness_issues(complete, [[text],[text]]), [])
+
     def test_quarantined_validation_flag_is_not_a_recovered_filing(self):
         from tools.alberta_recovery_report import validated
         self.assertFalse(validated({'verificationStatus': 'automated_validated',

@@ -22,13 +22,30 @@ def normalize_ocr_headings(text):
     """Restore spaces in known report headings without changing names or figures."""
     for heading in (
         'Consolidated Statement of Operations', 'Statement of Operations',
+        'Statement of Changes in Net Financial Assets', 'Statement of Changes in Net Financial Debt',
+        'Statement of Cash Flows',
         'Statement of Financial Position', 'Statement of Financial Activities',
         'Statement of Revenues and Expenses', 'Statement of Revenues and Expenditures',
         'Schedule of Remuneration and Expenses', 'Chief and Councillors', 'Chief and Council',
         'Number of Months', 'Total Revenue', 'Total Expenses', 'Annual Surplus',
         'Annual Deficit', 'Accumulated Surplus', 'Net Financial Assets', 'For the year ended',
+        'Surplus before the following', 'Other items', 'Other income (expense)',
+        'Surplus before other items', 'Surplus (deficit) before other items',
+        'Other income (expenses)', 'Other expenses', 'Other expenditures',
+        'Deferred revenue', 'Loss on disposal of tangible capital assets',
+        'C-92 Capacity Funding', 'Indigenous Services Canada', 'Health Canada',
+        'First Nations and Inuit Health Branch', 'Employment and Social Development Canada',
+        'Government of Alberta', 'First Nations Development Fund', 'Investment income',
+        'Deficiency of revenues over expenses', 'Excess of revenue over expenditures',
+        'Excess (shortfall) of revenue over expenditures',
+        'Excess (deficiency) of revenue over expenditures',
+        'Excess (deficiency) of revenue over expenses',
+        'Excess (deficiency) of revenues over expenses',
+        'Deficiency of revenue over expenses', 'Excess of revenue over expenses',
+        'Surplus (deficit)',
+        'Settlement Trust member distribution', 'Business profit distributions',
     ):
-        pattern = r'\b' + r'\s*'.join(re.escape(word) for word in heading.split()) + r'\b'
+        pattern = r'(?<!\w)' + r'\s*'.join(re.escape(word) for word in heading.split()) + r'(?!\w)'
         text = re.sub(pattern, heading, text, flags=re.I)
     return text
 
@@ -75,7 +92,7 @@ def availability(engine=None):
     }
 
 
-def coordinate_lines(items):
+def coordinate_lines(items, align_financial_columns=False, return_metadata=False):
     """Group OCR cells by baseline before ordering each financial row left-to-right."""
     cells = []
     for box, text in items:
@@ -92,10 +109,88 @@ def coordinate_lines(items):
             min(matches, key=lambda row: abs(cell[1] - row[0][1])).append(cell)
         else:
             rows.append([cell])
-    return "\n".join(" ".join(cell[3] for cell in sorted(row)) for row in rows)
+    lines = [" ".join(cell[3] for cell in sorted(row)) for row in rows]
+    if align_financial_columns:
+        aligned = financial_column_lines(items, rows, lines)
+        if aligned is not None:
+            result = {'text': '\n'.join(aligned), 'financialColumnsAligned': True}
+            return result if return_metadata else result['text']
+    result = {'text': '\n'.join(lines), 'financialColumnsAligned': False}
+    return result if return_metadata else result['text']
 
 
-def _rapidocr_text(image):
+def financial_column_lines(items, rows, lines):
+    """Retain empty numeric columns only when year headings and amounts align."""
+    header = normalize_ocr_headings('\n'.join(lines[:14]))
+    if not re.search(r'statement of (?:consolidated )?(?:operations|financial activities|revenues|'
+                     r'financial position|cash flows?|(?:changes? in )?net financial (?:assets|debt))', header, re.I):
+        return None
+    if re.search(r'\bcontents\b|by (?:program|segment)', header, re.I):
+        return None
+    amount_re = re.compile(r'^\(?\$?\s*-?\d[\d,]*(?:\.\d+)?\)?$')
+    right = max((max(p[0] for p in box) for box, text in items), default=0)
+    amounts = [(max(p[0] for p in box), str(text).strip(), max(p[1] for p in box)-min(p[1] for p in box))
+               for box, text in items if amount_re.fullmatch(str(text).strip())
+               and max(p[0] for p in box) > right * .55
+               and not re.fullmatch(r'20\d{2}', str(text).strip())]
+    clusters = []
+    for x, text, height in sorted(amounts):
+        if not clusters or x - clusters[-1][-1][0] > max(10, height * .6):
+            clusters.append([])
+        clusters[-1].append((x, text, height))
+    clusters = [group for group in clusters if len(group) >= 3]
+    centers = [sum(x for x, _, _ in group) / len(group) for group in clusters]
+    edge_by_cell = {(min(p[0] for p in box), str(text).strip()): max(p[0] for p in box) for box,text in items}
+    headings, matched_centers = None, None
+    for row in rows[:14]:
+        years = [cell for cell in sorted(row) if re.fullmatch(r'20\d{2}', cell[3])]
+        if len(years) not in (2, 3):
+            continue
+        year_edges = [edge_by_cell[(cell[0], cell[3])] for cell in years]
+        spacing = min(b-a for a,b in zip(year_edges, year_edges[1:]))
+        # A fiscal-date caption may share the header baseline, but must remain
+        # entirely to the left of the numeric year columns.
+        if any(cell not in years and not re.fullmatch(
+                r'\$|budget|actual|schedules?|notes?|\(?unaudited\)?|\(?audited\)?', cell[3], re.I)
+               and edge_by_cell[(cell[0], cell[3])] >= years[0][0] - spacing * .1 for cell in row):
+            continue
+        candidates = [center for center in centers
+                      if any(abs(center-edge) <= spacing * .3 for edge in year_edges)]
+        # Schedule indices have no corresponding fiscal-year heading.
+        if len(candidates) == len(years):
+            headings, matched_centers = years, candidates
+            break
+    if not headings:
+        return None
+    centers = matched_centers
+    spacing = min(b-a for a,b in zip(centers, centers[1:]))
+    if any(abs(cell[0]-center) > spacing * .6 for cell, center in zip(headings, centers)):
+        return None
+    # Use original right edges rather than string width or inferred amounts.
+    output = []
+    for row, original in zip(rows, lines):
+        if any(re.fullmatch(r'20\d{2}', cell[3]) for cell in row):
+            output.append(original)
+            continue
+        slots, labels, used = ['-'] * len(centers), [], False
+        for cell in sorted(row):
+            text = cell[3]
+            edge = edge_by_cell.get((cell[0], text), cell[0])
+            if amount_re.fullmatch(text) and edge > centers[0] - spacing * .4:
+                column = min(range(len(centers)), key=lambda i: abs(centers[i]-edge))
+                if abs(centers[column]-edge) > spacing * .2 or slots[column] != '-':
+                    return None  # Conflicting or shifted cells require another extraction.
+                slots[column], used = text, True
+            elif text != '$':
+                if not (re.search(r'\bschedules?\b', header, re.I)
+                        and re.fullmatch(r'\d{1,2}', text)
+                        and edge < centers[0] - spacing * .4):
+                    labels.append(text)
+        output.append(' '.join(labels + slots) if used else original)
+    return output
+
+
+def _rapidocr_text(image, return_metadata=False):
     """Return reading-order text from RapidOCR when Tesseract is unavailable."""
     global _RAPID_OCR
     if _RAPID_OCR is None:
@@ -109,10 +204,13 @@ def _rapidocr_text(image):
     output = _RAPID_OCR(str(image))
     if isinstance(output, tuple):
         result, _ = output
-        return coordinate_lines([(item[0], item[1]) for item in result or []])
-    if output.boxes is None or output.txts is None:
-        return ""
-    return coordinate_lines([(box.tolist(), text) for box, text in zip(output.boxes, output.txts)])
+        items = [(item[0], item[1]) for item in result or []]
+    elif output.boxes is None or output.txts is None:
+        items = []
+    else:
+        items = [(box.tolist(), text) for box, text in zip(output.boxes, output.txts)]
+    result = coordinate_lines(items, align_financial_columns=True, return_metadata=True)
+    return result if return_metadata else result['text']
 
 
 def _windows_text(image):
@@ -163,6 +261,7 @@ def ocr_pdf_bytes(pdf_bytes, max_pages=None, dpi=None, timeout=None, page_number
     timeout = timeout or int(os.getenv("OPENBAND_OCR_TIMEOUT", "180"))
 
     pages = []
+    aligned_pages = []
     try:
         with tempfile.TemporaryDirectory(prefix="openband-ocr-") as temp_dir:
             temp = Path(temp_dir)
@@ -196,7 +295,10 @@ def ocr_pdf_bytes(pdf_bytes, max_pages=None, dpi=None, timeout=None, page_number
                             pages[page_number - 1] = ''  # Unconfirmed numeric text cannot be published.
                             pages[page_number - 1] = _rapidocr_text_isolated(image)
                     else:
-                        pages[page_number - 1] = _rapidocr_text(image)
+                        recognized = _rapidocr_text(image, return_metadata=True)
+                        pages[page_number - 1] = recognized['text'] if isinstance(recognized, dict) else recognized
+                        if isinstance(recognized, dict) and recognized['financialColumnsAligned']:
+                            aligned_pages.append(page_number)
                     image.unlink()
                     processed.append(page_number)
                     if stop_after is None and stop_when is not None and stop_when(pages):
@@ -206,6 +308,7 @@ def ocr_pdf_bytes(pdf_bytes, max_pages=None, dpi=None, timeout=None, page_number
                 return {'status': 'ok_ocr_text' if any(pages) else 'error_ocr_empty',
                         'warnings': [], 'pages': pages, 'page_count': len(processed),
                         'page_numbers': processed,
+                        'financialColumnPages': aligned_pages,
                         'engine': 'windows_with_rapidocr_crosscheck' if tools.get('windows') else
                                   'tesseract' if tools['tesseract'] else 'rapidocr'}
 

@@ -75,12 +75,14 @@ FINAL_SURPLUS_RE = re.compile(
     r"|excess(?:\s+\(deficiency\))? of revenues? over (?:expenses|expenditures)"
     r"|surplus of revenues? over (?:expenses|expenditures)"
     r"|deficit of revenues? over (?:expenses|expenditures)"
+    r"|deficiency of revenues? over (?:expenses|expenditures)"
+    r"|excess\s*\(shortfall\) of revenues? over (?:expenses|expenditures)"
     r"|\(?deficit\)?/surplus of revenues? over (?:expenses|expenditures))$",
     re.I,
 )
 BEFORE_OTHER_RE = re.compile(
     r"^(?:.*\b(?:surplus|deficit|excess|deficiency)\b.*\bbefore\s+"
-    r"(?:other|trust settlement|(?:the\s+)?undernoted)|before\s+(?:the\s+)?undernoted)",
+    r"(?:other|trust settlement|(?:the\s+)?undernoted|the following)|before\s+(?:the\s+)?undernoted)",
     re.I,
 )
 EXPENSE_SECTION_END_RE = re.compile(
@@ -184,6 +186,9 @@ def rounded(value):
 def line_parts(line):
     line = re.sub(r"\((?:note|schedule)[^)]*\)", "", line, flags=re.I)
     matches = list(MONEY_RE.finditer(line))
+    program_label = re.match(r'^(?:Covid[ -]?19|C-92)\b', line, re.I)
+    if program_label:
+        matches = [match for match in matches if match.start() >= program_label.end()]
     entity = re.match(r"^\d{5,}\s+[A-Za-z].*?\b(?:Ltd\.?|Inc\.?|Corp\.?|Limited)\b", line, re.I)
     if entity:
         matches = [match for match in matches if match.start() >= entity.end()]
@@ -204,11 +209,12 @@ def line_parts(line):
         later = [parse_money(match.group(0)) for match in matches[1:]]
         is_schedule_index = (
             amount is not None
+            and len(matches) >= 3
             and (
-                0 <= amount <= 99
+                0 < amount <= 99
                 or (
                     len(matches) >= 4
-                    and 0 <= amount <= 9999
+                    and 0 < amount <= 9999
                 )
             )
             and "," not in raw
@@ -304,7 +310,7 @@ def broad_revenue_category(label):
         return "Government funding and transfers"
     if re.search(r"tax(?:ation|es)?|property tax|local revenue|levy", low):
         return "Taxation and local revenue"
-    if re.search(r"rent|lease|property (?:income|management)", low):
+    if re.search(r"\brent|\blease|property (?:income|management)", low):
         return "Rental and property income"
     if re.search(r"donation|sponsor|fundrais|contribution", low):
         return "Donations or contributions"
@@ -380,6 +386,8 @@ def is_prohibited_expense_label(label):
     text = normalize_category(label)
     if not text:
         return True
+    if re.fullmatch(r'C-92\s*Capacity\s*Funding', text, re.I):
+        return False  # Explicit expense program in the source operations statement.
     if SETTLEMENT_REVENUE_RE.search(text):
         return True
     if REVENUE_ONLY_LABEL_RE.search(text):
@@ -696,7 +704,7 @@ def adjustment_amount(label, amount, expense_section=False):
     """Keep reported signs; only explicitly described deductions invert positives."""
     deduction = re.search(
         r"\b(?:amorti[sz]ation|depreciation|write[- ]?down|"
-        r"member distributions?|profit distributions?)\b|^(?:net\s+)?loss\b", label, re.I
+        r"members?(?: savings plan)? distributions?|profit distributions?|impairment loss)\b|^(?:net\s+)?loss\b", label, re.I
     )
     if amount > 0 and (expense_section or deduction):
         return -amount
@@ -1062,6 +1070,22 @@ def validate_summary(summary):
     source_references = summary.get("sourceReferences") or {}
     adjustments = sum_rows(adjustment_rows)
 
+    if summary.get('requiresReportedTotals'):
+        if summary.get('finalResultReported') is False:
+            severe.append('Recovery requires a reported final annual result')
+        if any(not source_references.get(field) for field in ('totalRevenue', 'totalExpenses')):
+            severe.append('OCR recovery requires reported revenue and expense totals')
+        for values, total, label in ((revenue_rows, revenue, 'Revenue'), (expense_rows, expenses, 'Expense')):
+            if total is not None and not nearly_equal(sum_rows(values), total, tolerance=0):
+                severe.append(label + ' rows do not reconcile exactly to the reported total')
+        if all(v is not None for v in (revenue, expenses, surplus)) and not nearly_equal(surplus, revenue-expenses+adjustments, tolerance=0):
+            severe.append('Reported annual result does not reconcile exactly')
+    if summary.get('requiresAlignedColumns'):
+        pages = {source_references.get(field, {}).get('pdfPage') for field in
+                 ('totalRevenue', 'totalExpenses', 'annualSurplusDeficit')}
+        if not pages.issubset(set(summary.get('ocrFinancialColumnPages', []))):
+            severe.append('Actual numeric column positions were not confirmed on every reported total page')
+
     if revenue is None or revenue <= 0:
         severe.append("Total revenue was not extracted")
     if expenses is None or expenses <= 0:
@@ -1400,7 +1424,7 @@ def parse_structured_capital(extracted, source_url=None, fiscal_year=None):
     return summary
 
 
-def parse_page_texts(page_texts, source_url=None, fiscal_year=None):
+def parse_page_texts(page_texts, source_url=None, fiscal_year=None, require_reported_totals=False):
     operations_records = statement_page_records(page_texts, OPERATIONS_RE)
     # Audit bundles may append a separately governed community's statements.
     # Keep the first contiguous main statement, not later audit packages.
@@ -1500,6 +1524,30 @@ def parse_page_texts(page_texts, source_url=None, fiscal_year=None):
         section="expenses",
         fiscal_year=fiscal_year,
     )
+    for section, start, end in (('revenue', REVENUE_SECTION_RE, EXPENSE_SECTION_RE),
+                                ('expenses', EXPENSE_SECTION_RE, EXPENSE_SECTION_END_RE)):
+        if (section == 'revenue' and total_revenue is not None) or (section == 'expenses' and total_expenses is not None):
+            continue
+        candidates, active = [], False
+        for record in operations_records:
+            for line in record['text'].splitlines():
+                label, values = line_parts(clean_text(line))
+                if start.fullmatch(label) and not values:
+                    active = True
+                    continue
+                if active and end.search(label):
+                    active = False
+                if active and not label and len(values) >= 2:
+                    amount = actual_value(values, record['text'], line)
+                    if amount is not None:
+                        candidates.append((amount, source_reference(record['page'], record['text'],
+                                          'Statement of Operations', section, fiscal_year)))
+        if candidates:
+            amount, reference = candidates[-1]
+            if section == 'revenue':
+                total_revenue, total_revenue_ref = amount, reference
+            else:
+                total_expenses, total_expenses_ref = amount, reference
     total_revenue = total_revenue if total_revenue is not None else sum_rows(revenue_rows)
     total_expenses = total_expenses if total_expenses is not None else sum_rows(expense_rows)
     surplus_adjustments = parse_surplus_adjustments(operations)
@@ -1511,7 +1559,8 @@ def parse_page_texts(page_texts, source_url=None, fiscal_year=None):
         section="surplus / deficit",
         fiscal_year=fiscal_year,
     )
-    if surplus is None and not surplus_adjustments:
+    final_surplus_reported = surplus is not None and bool(surplus_ref)
+    if surplus is None and not surplus_adjustments and not require_reported_totals:
         surplus, surplus_ref = find_named_amount_reference(
             operations_records,
             BEFORE_OTHER_RE,
@@ -1574,6 +1623,8 @@ def parse_page_texts(page_texts, source_url=None, fiscal_year=None):
 
     summary = {
         "requiresSurplusValidation": True,
+        "requiresReportedTotals": require_reported_totals,
+        "finalResultReported": final_surplus_reported,
         "totalRevenue": rounded(total_revenue),
         "totalExpenses": rounded(total_expenses),
         "annualSurplusDeficit": rounded(surplus),

@@ -37,7 +37,7 @@ BASE = 'https://services.sac-isc.gc.ca/fnp/main/Search/'
 COUNT_SOURCE = 'https://www.alberta.ca/first-nations-relations'
 TREATY_SOURCE = 'https://www.sac-isc.gc.ca/eng/1595274954300/1595274980122'
 ROSTER_PATH = ROOT / 'alberta-nations.json'
-PARSER_REVISION = 'alberta-20261002-v25'
+PARSER_REVISION = 'alberta-20261003-v27'
 
 def now():
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
@@ -351,6 +351,59 @@ def document_type_from_cover(pages):
         return 'Audited consolidated financial statements'
     return None
 
+def reviewed_remuneration(band, filing, digest):
+    """Apply a complete visual transcription only to the exact reviewed PDF."""
+    from tools.parser_quality import validate_people
+    reviews = read(ROOT / 'tools/alberta-source-cache/remuneration-reviews.json', {}).get('reviews', [])
+    review = next((item for item in reviews if str(item['bandId']) == str(band['id'])
+                   and item['year'] == filing['year'] and item['sha256'] == digest
+                   and canonical_url(item['sourcePdf']) == canonical_url(filing['href'])), None)
+    if not review:
+        return None
+    if (not review.get('completeSchedule') or not review.get('identityAndYearConfirmed')
+            or review.get('sourceRowCount') != len(review['people'])):
+        raise ValueError('Reviewed schedule is incomplete')
+    checked = validate_people(review['people'], source_total=review.get('sourceTotal'), strict=True)
+    if checked['manual_review_required']:
+        raise ValueError('Reviewed schedule failed row or footer reconciliation')
+    for field, total in review.get('sourceColumnTotals', {}).items():
+        actual = sum(person.get('reportedComponents', {}).get(field, 0) or 0 for person in review['people'])
+        if abs(actual-total) > 5:
+            raise ValueError('Reviewed schedule failed a reported column total')
+    result = {'people': checked['people'], 'parse_status': 'parsed', 'parse_confidence': 'high',
+              'manual_review_required': False, 'warnings': [], 'sourceTotal': review.get('sourceTotal'),
+              'manualSourceReview': {key: value for key, value in review.items() if key != 'people'},
+              'parse_stages': [{'stage': 'reviewed_original_pdf', 'status': 'complete_rows_reconciled', 'warnings': []}]}
+    if review.get('sourceTotal') is not None:
+        result['sourceTotal'] = review['sourceTotal']
+    return result
+
+
+def remuneration_completeness_issues(result, page_sets):
+    """Do not validate a subset of the printed officials or ignore a footer."""
+    if not result.get('people'):
+        return []
+    largest_count, footer = 0, False
+    for pages in page_sets:
+        count = 0
+        for page in pages:
+            for line in page.splitlines():
+                numbers = re.findall(r'\d[\d,]*(?:\.\d+)?', line)
+                note_or_heading = re.search(r'chiefs?\s+and\s+council', line, re.I) or re.match(
+                    r'^\s*(?:notes?\b|\d+[.)]\s|for the year|year ended)', line, re.I)
+                if not note_or_heading and len(numbers) >= 2 and re.search(r'\b(?:chief|councill?or)\b', line, re.I):
+                    count += 1
+                if re.match(r'^\s*totals\b', line, re.I) or (len(numbers) >= 2 and re.match(r'^\s*total\b', line, re.I)):
+                    footer = True
+        largest_count = max(largest_count, count)
+    issues = []
+    if largest_count > len(result['people']):
+        issues.append('Parsed officials are fewer than the printed Chief and Council rows')
+    if footer and result.get('sourceTotal') is None:
+        issues.append('Printed schedule footer was not reconciled')
+    return issues
+
+
 def parse_one(task):
     band, filing, ocr = task
     from tools import capital_parser
@@ -389,6 +442,25 @@ def parse_one(task):
                            'listedDocumentTitle': filing.get('listedDocumentTitle', filing.get('documentTitle')),
                            'documentTypeMethod': 'Explicit PDF cover title; ISC listing label differs'})
             filing = dict(filing, docType=actual_type)
+        reviewed = reviewed_remuneration(band, filing, update['sha256']) if 'remuneration' in filing['docType'].lower() else None
+        if 'remuneration' in filing['docType'].lower():
+            update['manualSourceReview'] = None
+        if reviewed:
+            issues = []  # The reviewed hash fixes the source identity and year.
+            ocr = False
+            update.update(ocrStatus='not_required_reviewed_source', ocrEngine='not_required_reviewed_source',
+                          ocrWarnings=[], ocrFinancialColumnPages=[])
+            update['extractionMethod'] = 'Complete source schedule visually reviewed; source digest and arithmetic validated'
+        native_summary = None
+        if capital_parser.is_audited_statement(filing) and not issues:
+            candidate = capital_parser.parse_page_texts(
+                native_pages, filing['href'], filing['year'], require_reported_totals=True)
+            if candidate.get('publishable'):
+                native_summary = candidate
+                update['extractionMethod'] = 'Native PDF text; reported totals and fiscal-year columns reconciled'
+                update.update(ocrStatus='not_required_native_text', ocrEngine='not_required_native_text',
+                              ocrWarnings=[], ocrFinancialColumnPages=[])
+                ocr = False
         if ocr:
             # OCR the cover and statements once, then use those same pages for
             # independent identity checks and the existing accounting parsers.
@@ -407,9 +479,32 @@ def parse_one(task):
                     selected.add(1)
                 if not selected:
                     selected = set(range(1, min(len(pages), 12) + 1))
+            ocr_variant = os.getenv('OPENBAND_OCR_ENGINE', '')
+            if ocr_variant == 'rapidocr' and capital_parser.is_audited_statement(filing):
+                # Earlier OCR provides page-location hints only. Fresh recognition
+                # still supplies every published value, identity and fiscal year.
+                hint_key = hashlib.sha256((update['sha256'] + repr(sorted(selected)) +
+                                           '180windows').encode()).hexdigest()
+                hint = read(CACHE / f'{hint_key}.ocr.json', {})
+                hint_pages = [run_scraper.local_ocr.normalize_ocr_headings(p)
+                              for p in hint.get('pages', [])]
+                operations = capital_parser.likely_operations_pages(hint_pages)
+                if operations and not document_identity(hint_pages, band, filing):
+                    hinted = {1}
+                    for index, text in enumerate(hint_pages):
+                        if text in operations:
+                            hinted.update((index + 1, index + 2))
+                    for index, text in enumerate(hint_pages):
+                        heading = '\n'.join(text.splitlines()[:14])
+                        if re.search(r'statement of.{0,40}(financial position|cash flows|'
+                                     r'net (?:assets|debt)|accumulated surplus)', heading, re.I):
+                            hinted.add(index + 1)
+                    selected = {number for number in hinted if number <= len(pages)}
+            if ocr_variant == 'rapidocr':
+                ocr_variant += ':financial-columns-v3'
             ocr_key = hashlib.sha256((update['sha256'] + repr(sorted(selected)) +
                                       os.getenv('OPENBAND_OCR_DPI', '220') +
-                                      os.getenv('OPENBAND_OCR_ENGINE', '')).encode()).hexdigest()
+                                      ocr_variant).encode()).hexdigest()
             ocr_cache = CACHE / f'{ocr_key}.ocr.json'
             if ocr_cache.exists():
                 recognized = read(ocr_cache)
@@ -418,7 +513,7 @@ def parse_one(task):
                 if capital_parser.is_audited_statement(filing):
                     stop_when = lambda recognized_pages: capital_parser.parse_page_texts(
                         [run_scraper.local_ocr.normalize_ocr_headings(p) for p in recognized_pages],
-                        filing['href'], filing['year']).get('publishable', False)
+                        filing['href'], filing['year'], require_reported_totals=os.getenv('OPENBAND_OCR_ENGINE')=='rapidocr').get('publishable', False)
                 recognized = run_scraper.local_ocr.ocr_pdf_bytes(
                     payload, page_numbers=sorted(selected), stop_when=stop_when, extra_pages=2)
                 if recognized.get('status') == 'ok_ocr_text':
@@ -428,6 +523,7 @@ def parse_one(task):
             update['ocrStatus'] = recognized.get('status')
             update['ocrWarnings'] = recognized.get('warnings', [])
             update['ocrEngine'] = recognized.get('engine', 'rapidocr')
+            update['ocrFinancialColumnPages'] = recognized.get('financialColumnPages', [])
             ocr_pages = recognized.get('pages', [])
             if ocr_pages:
                 if issues:
@@ -443,9 +539,10 @@ def parse_one(task):
                            'documentTypeMethod': 'Explicit PDF cover title; ISC listing label differs'})
             filing = dict(filing, docType=actual_type)
         if capital_parser.is_audited_statement(filing):
-            summary = capital_parser.parse_page_texts(pages, filing['href'], filing['year'])
+            require_totals = True
+            summary = native_summary or capital_parser.parse_page_texts(pages, filing['href'], filing['year'], require_reported_totals=require_totals)
             if not summary.get('publishable') and ocr and ocr_pages:
-                alternative = capital_parser.parse_page_texts(ocr_pages, filing['href'], filing['year'])
+                alternative = capital_parser.parse_page_texts(ocr_pages, filing['href'], filing['year'], require_reported_totals=require_totals)
                 if alternative.get('publishable'):
                     summary = alternative
             native_operations = capital_parser.likely_operations_pages(
@@ -457,6 +554,40 @@ def parse_one(task):
                     summary = candidate
             if recognized and recognized.get('warnings'):
                 summary['warnings'] = list(dict.fromkeys(summary.get('warnings', []) + recognized['warnings']))
+            summary['requiresReportedTotals'] = True
+            summary.update(capital_parser.validate_summary(summary))
+            if recognized and recognized.get('engine') == 'rapidocr':
+                aligned = set(recognized.get('financialColumnPages', []))
+                references = summary.get('sourceReferences', {})
+                # Optional balance-sheet and cash-flow figures may be absent.
+                # Keep them blank when OCR did not confirm their year columns.
+                withheld = []
+                for field, reference in list(references.items()):
+                    if field in ('totalRevenue', 'totalExpenses', 'annualSurplusDeficit'):
+                        continue
+                    if reference.get('pdfPage') not in aligned:
+                        if field in summary:
+                            summary[field] = None
+                        if field in ('cash', 'investments'):
+                            summary['cashInvestments'] = None
+                        if field == 'capitalSpending':
+                            summary['capitalSpending'] = None
+                        withheld.append(field)
+                        del references[field]
+                if summary.get('debt') and any(component.get('sourceReference', {}).get('pdfPage') not in aligned
+                                               for component in summary['debt'].get('components', [])):
+                    summary['debt'] = None
+                    withheld.append('debt')
+                if withheld:
+                    summary.setdefault('warnings', []).append('Unconfirmed OCR year columns; optional fields withheld: ' + ', '.join(withheld))
+                reference_pages = {summary.get('sourceReferences', {}).get(field, {}).get('pdfPage')
+                                   for field in ('totalRevenue', 'totalExpenses', 'annualSurplusDeficit')}
+                summary['ocrFinancialColumnPages'] = sorted(aligned)
+                summary['requiresAlignedColumns'] = True
+                summary['requiresReportedTotals'] = True
+                summary.update(capital_parser.validate_summary(summary))
+                if not reference_pages.issubset(aligned):
+                    issues.append('Actual numeric column positions were not confirmed on every reported total page')
             if issues:
                 summary.update({'publishable': False, 'parseStatus': 'manual_review', 'confidence': 'low'})
                 summary['warnings'] = list(dict.fromkeys(summary.get('warnings', []) + issues))
@@ -473,9 +604,11 @@ def parse_one(task):
                 run_scraper.local_ocr.ocr_pdf_bytes = lambda *a, **kw: recognized
             else:
                 run_scraper.local_ocr.ocr_pdf_bytes = lambda *a, **kw: {'pages': [], 'status': 'deferred', 'warnings': ['OCR deferred; rerun with --ocr or review original PDF']}
-            result = run_scraper._extract_remuneration_rows_enhanced(
+            result = reviewed or run_scraper._extract_remuneration_rows_enhanced(
                 filing['href'], recognized_ocr=recognized, native_page_texts=native_pages,
                 skip_native=bool(ocr and sum(len(p.strip()) for p in native_pages) < 100))
+            if not reviewed:
+                issues.extend(remuneration_completeness_issues(result, [native_pages, recognized.get('pages', []) if recognized else []]))
             if issues or result.get('manual_review_required'):
                 result.update({'people': [], 'parse_status': 'manual_review', 'manual_review_required': True})
                 result['warnings'] = list(dict.fromkeys(result.get('warnings', []) + issues))
@@ -500,6 +633,12 @@ def bounded_parse(task):
             requested_engine = os.getenv('OPENBAND_OCR_ENGINE', '')
             if ocr and requested_engine == 'windows':
                 reusable = reusable and str(cached[2].get('ocrEngine', '')).startswith('windows')
+            if ocr and requested_engine == 'rapidocr':
+                reusable = reusable and cached[2].get('ocrEngine') == 'rapidocr'
+            if ocr and cached[2].get('ocrStatus') == 'not_required_native_text':
+                reusable = bool(cached[3] and cached[3].get('publishable')
+                                and cached[3].get('requiresReportedTotals')
+                                and cached[2].get('documentChecks', {}).get('identityAndYearConfirmed'))
             if cached[2].get('people'):
                 from tools.parser_quality import validate_people
                 reusable = reusable and not validate_people(
@@ -510,12 +649,24 @@ def bounded_parse(task):
             # A synced or interrupted cache must not abort the province's queue.
             pass
     write(source, task)
+    started = time.time()
     try:
         subprocess.run([sys.executable, str(Path(__file__).resolve()), '--task', str(source), '--result', str(output)],
                        timeout=180 if ocr else 45, check=True, capture_output=True,
                        text=True, encoding='utf-8', errors='replace')
         return read(output)
     except Exception as error:
+        if isinstance(error, subprocess.TimeoutExpired) and output.exists() and output.stat().st_mtime >= started:
+            try:
+                completed = read(output)
+                if (completed[0] == str(band['id']) and completed[1] == filing['href']
+                        and completed[2].get('parserRevision') == PARSER_REVISION
+                        and completed[2].get('sha256')):
+                    # OCR runtime shutdown can exceed the deadline after the
+                    # fully validated result has already been written.
+                    return completed
+            except (OSError, ValueError, TypeError, IndexError):
+                pass
         detail = str(getattr(error, 'stderr', '') or '')[-500:].strip()
         warning = f'Bounded extraction stopped: {type(error).__name__}'
         if detail:

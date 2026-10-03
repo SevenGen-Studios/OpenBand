@@ -48,7 +48,7 @@ def audit():
                    'retrievedAt':filing.get('retrievedAt'), 'status':filing.get('parse_status'),
                    'warnings':filing.get('warnings',[]),'sha256':filing.get('sha256'),
                    'verificationStatus':filing.get('verificationStatus')}
-            for field in ('listedDocType', 'listedDocumentTitle', 'documentTypeMethod', 'ocrStatus', 'ocrWarnings', 'ocrEngine', 'documentChecks'):
+            for field in ('listedDocType', 'listedDocumentTitle', 'documentTypeMethod', 'extractionMethod', 'manualSourceReview', 'ocrStatus', 'ocrWarnings', 'ocrEngine', 'ocrFinancialColumnPages', 'documentChecks'):
                 if field in filing:
                     doc[field] = filing[field]
             doc['pdfRetrieved'] = bool(filing.get('sha256') and filing.get('httpStatus') == 200)
