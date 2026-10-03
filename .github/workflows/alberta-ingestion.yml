@@ -60,6 +60,7 @@ jobs:
           python tools/ingest_alberta.py "${args[@]}"
       - run: python -m tools.merge_alberta_enrichment
       - run: python -m tools.audit_alberta
+      - run: python tools/manual_review_report.py
       - run: python tools/build_site.py && python -m unittest discover -s tests
       - run: node tests/test_provinces.js && node --check assets/openband.js && node --check assets/province-ui.js
 

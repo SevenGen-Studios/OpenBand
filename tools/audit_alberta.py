@@ -48,6 +48,9 @@ def audit():
                    'retrievedAt':filing.get('retrievedAt'), 'status':filing.get('parse_status'),
                    'warnings':filing.get('warnings',[]),'sha256':filing.get('sha256'),
                    'verificationStatus':filing.get('verificationStatus')}
+            for field in ('listedDocType', 'listedDocumentTitle', 'documentTypeMethod', 'ocrStatus', 'ocrWarnings', 'ocrEngine', 'documentChecks'):
+                if field in filing:
+                    doc[field] = filing[field]
             doc['pdfRetrieved'] = bool(filing.get('sha256') and filing.get('httpStatus') == 200)
             cache = CACHE / hashlib.sha256(canonical_url(url).encode()).hexdigest()
             if cache.exists():
@@ -69,7 +72,7 @@ def audit():
                 issues.append({'severity':'error','type':'wrong_nation_document','document':doc})
             if query.get('FY',[doc['year']])[0] != doc['year']:
                 issues.append({'severity':'error','type':'wrong_url_fiscal_year','document':doc})
-            doc['successfullyParsed'] = filing.get('verificationStatus') == 'automated_validated'
+            doc['successfullyParsed'] = filing.get('verificationStatus') == 'automated_validated' and not filing.get('manual_review_required')
             if doc['successfullyParsed'] and not filing.get('documentChecks',{}).get('identityAndYearConfirmed'):
                 issues.append({'severity':'error','type':'unconfirmed_published_identity','document':doc})
             urls[canonical_url(url)].append(doc)
@@ -117,7 +120,9 @@ def audit():
                'successfullyParsedDocuments':sum(d['successfullyParsed'] for d in documents),
                'documentsRequiringReview':sum(not d['successfullyParsed'] for d in documents),
                'retrievedPdfs':sum(d.get('pdfRetrieved',False) for d in documents),
-               'technicalFailures':sum(d['status']=='error' for d in documents),
+               'technicalFailures':sum(not d['successfullyParsed'] and (
+                   d['status']=='error' or d['verificationStatus'] in {'parse_timeout_or_error', 'retrieval_or_parse_error'}
+                   or str(d.get('ocrStatus', '')).startswith('error')) for d in documents),
                'nationsWithStatements':sum(bool(r['financialYears']) for r in rows),
                'nationsWithRemuneration':sum(bool(r['remunerationYears']) for r in rows),
                'verifiedLogos':sum(r['verifiedLogo'] for r in rows),'officialWebsites':sum(bool(r['website']) for r in rows),

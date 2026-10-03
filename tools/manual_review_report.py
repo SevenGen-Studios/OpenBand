@@ -30,7 +30,9 @@ def build_report(data):
         for filing in band.get("filings", []):
             if not is_remuneration(filing):
                 continue
-            if filing.get("parse_status") != "pending_manual_review":
+            if filing.get("parse_status") not in {
+                "pending_manual_review", "manual_review", "pending_openai_opt_in"
+            } and not filing.get('manual_review_required'):
                 continue
 
             reason = review_reason(filing)
@@ -39,6 +41,7 @@ def build_report(data):
                 {
                     "bandId": band.get("id"),
                     "band": band.get("name"),
+                    "province": band.get("province"),
                     "year": filing.get("year"),
                     "reason": reason,
                     "sourcePdf": filing.get("href"),

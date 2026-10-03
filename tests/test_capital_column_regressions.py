@@ -1,9 +1,108 @@
 import unittest
+from pathlib import Path
+from unittest.mock import MagicMock, patch
 
 from tools import capital_parser as parser
 
 
 class CapitalColumnRegressions(unittest.TestCase):
+    def test_reported_deficit_of_revenues_over_expenses(self):
+        text = '''Statement of Operations
+Year ended March 31, 2025
+Budget 2025 2024
+Revenue
+Government grants 80,000 90,000 70,000
+Rental income 10,000 10,000 10,000
+Total revenue 90,000 100,000 80,000
+Expenses
+Education 50,000 70,000 55,000
+Health 40,000 42,000 30,000
+Total expenses 90,000 112,000 85,000
+Deficit of revenues over expenses 5,000 (12,000) (5,000)'''
+        result = parser.parse_page_texts([text], fiscal_year='2024-2025')
+        self.assertTrue(result['publishable'], result['warnings'])
+        self.assertEqual(result['annualSurplusDeficit'], -12000)
+
+    def test_reviewed_position_field_requires_the_same_pdf_and_year(self):
+        review = {'value': 53436809, 'sourceSha256': 'verified-pdf',
+                  'sourceReference': {'fiscalYear': '2018-2019', 'pdfPage': 6}}
+        for digest, expected in [('verified-pdf', 53436809), ('revised-pdf', None)]:
+            capital = {'bands': {'462': {'years': {'2018-2019': {'fieldReviews': {'accumulatedSurplus': review}}}}}}
+            summary = {'sha256': digest, 'accumulatedSurplus': None}
+            parser.save_summary(capital, {'id': '462', 'name': 'Saddle Lake'}, {'year': '2018-2019'}, summary)
+            self.assertEqual(summary['accumulatedSurplus'], expected)
+
+    def test_piikani_undernoted_gain_reconciles_final_surplus(self):
+        text = (Path(__file__).parent / 'fixtures' / 'ab_436_2021_operations.txt').read_text(encoding='utf8')
+        result = parser.parse_page_texts([text], fiscal_year='2020-2021')
+        self.assertTrue(result['publishable'], result['warnings'])
+        self.assertEqual(result['totalRevenue'], 56326873)
+        self.assertEqual(result['totalExpenses'], 52780568)
+        self.assertEqual(result['annualSurplusDeficit'], 3581515)
+        self.assertEqual(result['surplusAdjustments'][0]['amount'], 35210)
+        self.assertEqual(result['totalRevenue'] - result['totalExpenses'] + parser.sum_rows(result['surplusAdjustments']), result['annualSurplusDeficit'])
+
+    def test_preextracted_text_keeps_notes_without_rebuilding_their_tables(self):
+        operations = 'Statement of Operations\n2025 2024\nRevenue\nGovernment grants 100 90\nExpenses'
+        notes = 'Notes to Financial Statements\nDetails retained from native extraction'
+        pdf = MagicMock()
+        pdf.pages = [object(), object()]
+        def extract(page, text, kind):
+            if page is pdf.pages[1]:
+                raise RuntimeError('Unrelated notes must not delay statement reconstruction')
+            return [{'rows': [['Government grants', '100', '90']]}]
+        with patch.object(parser.layout_tables, 'extract_tables_for_page', side_effect=extract):
+            pages = parser.table_page_texts(pdf, [operations, notes])
+        self.assertEqual(pages[1], notes)
+        self.assertIn('Government grants 100 90', pages[0])
+
+    def test_colon_section_headings_and_continued_operations_reconcile(self):
+        pages = ['''Example First Nation
+Statement of Operations
+Year ended March 31, 2025, with comparative information for 2024
+Budget 2025 2024
+Revenue:
+Government grants 80,000 90,000 70,000
+Rental income 10,000 10,000 10,000
+Total revenue 90,000 100,000 80,000
+Expenses:
+Education 40,000 50,000 40,000''', '''Example First Nation
+Statement of Operations (continued)
+Year ended March 31, 2025, with comparative information for 2024
+Budget 2025 2024
+Health 20,000 30,000 20,000
+Total expenses 60,000 80,000 60,000
+Annual surplus 30,000 20,000 20,000''']
+        result = parser.parse_page_texts(pages, fiscal_year='2024-2025')
+        self.assertTrue(result['publishable'], result['warnings'])
+        self.assertEqual(result['totalRevenue'], 100000)
+        self.assertEqual(result['totalExpenses'], 80000)
+        self.assertEqual(result['annualSurplusDeficit'], 20000)
+        health = next(row for row in result['sourceExpenseRows'] if row['label'] == 'Health')
+        self.assertEqual(health['sourceReference']['pdfPage'], 2)
+
+    def test_comparative_year_in_report_date_is_not_a_column(self):
+        header = ('Consolidated Statement of Operations\n'
+                  'Year ended March 31, 2021, with comparative information for 2020\n'
+                  'Budget 2021 2020')
+        column = parser.current_year_column(header, '2020-2021')
+        self.assertEqual(column['selectedYear'], '2021')
+        self.assertTrue(column['validated'])
+        self.assertEqual(parser.actual_value([100, 120, 90], header), 120)
+
+    def test_report_date_cannot_hide_a_wrong_actual_year(self):
+        header = ('Statement of Operations\nYear ended March 31, 2025\n'
+                  '2025 Budget 2024 Actual 2023 Actual')
+        column = parser.current_year_column(header, '2024-2025')
+        self.assertEqual(column['selectedYear'], '2024')
+        self.assertFalse(column['validated'])
+
+    def test_actual_before_budget_year_placeholder(self):
+        column = parser.current_year_column(
+            'Statement of Operations\nYear ended March 31\n2022\n2022 Budget 2021', '2021-2022')
+        self.assertEqual(column['selectedYear'], '2022')
+        self.assertTrue(column['validated'])
+
     def test_explicit_dashes_preserve_current_year_position(self):
         first = "Statement of Operations\n2021 Budget 2020"
         self.assertEqual(parser.actual_value([180000], first, "Trust fund transfers - - 180,000"), 0)

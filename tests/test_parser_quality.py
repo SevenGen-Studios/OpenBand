@@ -1,4 +1,6 @@
 import unittest
+from pathlib import Path
+from unittest.mock import MagicMock, patch
 
 import run_scraper
 from tools import parser_quality
@@ -6,6 +8,117 @@ from tools import sanitize_data
 
 
 class ParserQualityTests(unittest.TestCase):
+    def test_samson_dual_role_preserves_reported_funding_subtotals(self):
+        text = (Path(__file__).parent / 'fixtures' / 'ab_444_2016_remuneration.txt').read_text(encoding='utf8')
+        people = run_scraper._extract_split_funding_schedule(text)
+        self.assertEqual(len(people), 13)
+        self.assertEqual(people[0]['name'], 'Kurt Buffalo')
+        self.assertEqual(people[0]['role'], 'Chief/Councillor')
+        self.assertEqual(people[0]['total'], 250924)
+        self.assertFalse(parser_quality.validate_people(people, source_total=2579057, strict=True)['manual_review_required'])
+        self.assertEqual(run_scraper._extract_split_funding_schedule(text.replace('195,924', '195,900')), [])
+        with patch.object(run_scraper.scraper, 'fetch_url', return_value=b'%PDF-test'), \
+             patch.object(run_scraper.scraper.pdfplumber, 'open') as native:
+            result = run_scraper._extract_remuneration_rows_enhanced('https://example.test/pay.pdf', native_page_texts=[text])
+        native.assert_not_called()
+        self.assertEqual(result['sourceTotal'], 2579057)
+        self.assertFalse(result['manual_review_required'])
+
+    def test_precomputed_ocr_reconciles_footer_before_native_tables(self):
+        text = '''Schedule of Remuneration and Expenses Chief and Council
+Name Position Months Remuneration Travel Expenses Total
+Jane Bear Chief 12 80,000 10,000 90,000
+John Bear Councillor 12 40,000 5,000 45,000
+Total 120,000 15,000 135,000'''
+        self.assertEqual(run_scraper._ocr_footer_total([text]), 135000)
+        self.assertIsNone(run_scraper._ocr_footer_total([
+            text.replace('Travel Expenses Total', 'Travel Expenses')]))
+        self.assertEqual(run_scraper._ocr_footer_total([
+            'Name Position Months Remuneration Expenses\nTotal 120,000 15,000']), 135000)
+        with patch.object(run_scraper.scraper, 'fetch_url', return_value=b'%PDF-test'), \
+             patch.object(run_scraper.scraper.pdfplumber, 'open') as native:
+            result = run_scraper._extract_remuneration_rows_enhanced(
+                'https://example.com/pay.pdf', recognized_ocr={'pages': [text]})
+        native.assert_not_called()
+        self.assertFalse(result['manual_review_required'])
+        self.assertEqual(result['sourceTotal'], 135000)
+
+    def test_strict_recovery_requires_chief_and_unambiguous_cents(self):
+        row = {'name': 'Jane Bear', 'role': 'Councillor', 'remuneration': 80000, 'total': 80000}
+        self.assertTrue(parser_quality.validate_people([row], strict=True)['manual_review_required'])
+        row.update(role='Chief', remuneration=230006.117, total=230006.117)
+        self.assertTrue(parser_quality.validate_people([row], strict=True)['manual_review_required'])
+        row.update(remuneration=80000.25, total=80000.25)
+        checked = parser_quality.apply_validation_metadata({'people': [row]}, source_total=80000.25, strict=True)
+        self.assertFalse(checked['manual_review_required'])
+        self.assertEqual(checked['sourceTotal'], 80000.25)
+
+    def test_split_funding_schedule_reconciles_without_double_counting(self):
+        text = '''Schedule of Remuneration and Expenses Chief and Council
+Months Remuneration paid from all Sources Expenses paid from all Sources Nation own Funds
+Vernon Saddleback Chief 12 75,000 75,000 7,200 7,200 19,589 57,645 136,019 227,653 19,589 208,064
+Elesha Buffalo Councillor 12 70,000 70,000 7,200 7,200 16,931 56,095 27,340 114,766 16,931 97,835
+145,000 145,000 14,400 14,400 36,520 113,740 163,359 342,419 36,520 305,899'''
+        people = run_scraper._extract_split_funding_schedule(text)
+        self.assertEqual(len(people), 2)
+        self.assertEqual(people[0]['remuneration'], 75000)
+        self.assertEqual(people[0]['expenses'], 227653)
+        self.assertEqual(people[0]['total'], 302653)
+        self.assertEqual(run_scraper._extract_split_funding_schedule(
+            text.replace('208,064', '208,000')), [])
+        self.assertEqual(run_scraper._extract_split_funding_schedule(
+            '\n'.join(text.splitlines()[:-1])), [])
+
+    def test_numeric_names_plural_totals_and_dates_require_review(self):
+        for name in ('12', '12 $', 'Totals:', 'Year Ended March'):
+            result = parser_quality.validate_people([
+                {'name': name, 'role': 'Chief', 'remuneration': 80000, 'total': 80000}
+            ])
+            self.assertTrue(result['manual_review_required'], name)
+
+    def test_strict_recovery_refuses_a_single_nonreconciling_row(self):
+        result = parser_quality.validate_people([
+            {'name': 'Jane Bear', 'role': 'Chief', 'remuneration': 80000,
+             'travel': 10000, 'total': 120000}
+        ], strict=True)
+        self.assertTrue(result['manual_review_required'])
+        small_mismatch = [{'name': 'Jane Bear', 'role': 'Chief', 'remuneration': 80000,
+                           'travel': 10000, 'total': 90100}]
+        self.assertTrue(parser_quality.validate_people(small_mismatch, strict=True)['manual_review_required'])
+        self.assertTrue(parser_quality.validate_people([
+            {'name': 'Jane Bear', 'role': 'Chief', 'remuneration': 90000, 'total': 90000}
+        ], source_total=91000, strict=True)['manual_review_required'])
+
+    def test_alternative_table_strategies_do_not_mix_official_rows(self):
+        header = ['Name', 'Position', 'Months', 'Remuneration', 'Travel', 'Total']
+        good = [header, ['Jane Bear', 'Chief', '12', '80,000', '10,000', '90,000'],
+                ['John Bear', 'Councillor', '12', '40,000', '5,000', '45,000']]
+        bad = [header, ['12', 'Chief', '12', '80,000', '10,000', '90,000']]
+        page = MagicMock()
+        page.extract_text.return_value = 'Schedule of Remuneration and Expenses Chief and Council'
+        pdf = MagicMock()
+        pdf.__enter__.return_value.pages = [page]
+        with patch.object(run_scraper.scraper, 'fetch_url', return_value=b'%PDF-mock'), \
+             patch.object(run_scraper.scraper.pdfplumber, 'open', return_value=pdf), \
+             patch.object(run_scraper.layout_tables, 'extract_tables_for_page',
+                          return_value=[{'rows': bad}, {'rows': good}, {'rows': good}]):
+            result = run_scraper._extract_remuneration_rows_enhanced('https://example.com/schedule.pdf')
+        self.assertFalse(result['manual_review_required'])
+        self.assertEqual([p['name'] for p in result['people']], ['Jane Bear', 'John Bear'])
+
+    def test_strict_recovery_rejects_merged_official_names(self):
+        people = [{'name': name, 'role': 'Councillor', 'remuneration': 100, 'total': 100}
+                  for name in ('Mark Petroski', 'Hank Napesis', 'Mark Petroski Hank Napesis')]
+        self.assertTrue(parser_quality.validate_people(people, strict=True)['manual_review_required'])
+
+    def test_strict_recovery_rejects_merged_numeric_columns(self):
+        for name, amount in [('Name of Individual Jane Bear John Bear', 121212),
+                             ('Jane Bear', 121212121212), ('7,200 7,200 Jane Bear', 80000)]:
+            result = parser_quality.validate_people([
+                {'name': name, 'role': 'Chief', 'remuneration': amount, 'total': amount}
+            ], strict=True)
+            self.assertTrue(result['manual_review_required'])
+
     def parse_table(self, table, page_text="Schedule of Remuneration and Expenses - Chief and Council"):
         quality = parser_quality.score_candidate_table(table, page_text)
         people = run_scraper._extract_people_from_keyword_table(table)

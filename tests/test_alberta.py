@@ -1,7 +1,11 @@
 """Alberta identity, source matching, and conservative financial regressions."""
 import hashlib
 import json
+import io
+import tempfile
 import unittest
+from contextlib import redirect_stdout
+from unittest.mock import patch
 from collections import defaultdict
 from pathlib import Path
 from tools.ingest_alberta import canonical_url, document_identity, normalized_name, parse_filings, should_preserve_remuneration, update_reserve_areas
@@ -13,6 +17,42 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class AlbertaTests(unittest.TestCase):
+    def test_quarantined_validation_flag_is_not_a_recovered_filing(self):
+        from tools.alberta_recovery_report import validated
+        self.assertFalse(validated({'verificationStatus': 'automated_validated',
+                                    'manual_review_required': True, 'people': []}))
+        self.assertTrue(validated({'verificationStatus': 'automated_validated',
+                                   'manual_review_required': False}))
+
+    def test_worker_failure_does_not_abort_other_filings_or_mutate_shared_identity(self):
+        from tools import ingest_alberta
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            data = {'bands': [{'id': 1, 'name': 'Example', 'aliases': ['Historic Example'],
+                              'province': 'AB', 'filings': [
+                {'year': '2024-2025', 'docType': 'Remuneration', 'href': 'https://example.test/fail.pdf',
+                 'posted': True, 'parse_status': 'manual_review'},
+                {'year': '2023-2024', 'docType': 'Remuneration', 'href': 'https://example.test/good.pdf',
+                 'posted': True, 'parse_status': 'manual_review'}]}]}
+            (root / 'data.json').write_text(json.dumps(data), encoding='utf-8')
+            (root / 'capital-data.json').write_text('{"bands":{}}', encoding='utf-8')
+            def worker(task):
+                band, filing, _ = task
+                band['aliases'].append('Worker-only alias')
+                if 'fail.pdf' in filing['href']:
+                    raise ValueError('unreadable checkpoint')
+                return '1', filing['href'], {'parse_status': 'manual_review',
+                                            'warnings': ['Second filing completed']}, None
+            with patch.object(ingest_alberta, 'ROOT', root), \
+                 patch.object(ingest_alberta, 'bounded_parse', side_effect=worker), \
+                 redirect_stdout(io.StringIO()):
+                ingest_alberta.parse_documents(workers=2)
+            saved = ingest_alberta.read(root / 'data.json')['bands'][0]
+            self.assertEqual(saved['aliases'], ['Historic Example'])
+            filings = {f['year']: f for f in saved['filings']}
+            self.assertIn('ValueError', filings['2024-2025']['warnings'][0])
+            self.assertEqual(filings['2023-2024']['warnings'], ['Second filing completed'])
+
     def test_salary_honoraria_schedule_keeps_dash_columns_and_checks_footer(self):
         text = '''For Elected Officials
 Months in Salary Honoraria Travel Northern Total
@@ -68,6 +108,8 @@ Councilor - K. Youngman 12 - 19,200 1,247 - 20,447
         self.assertTrue(should_preserve_remuneration(existing, fewer))
         self.assertTrue(should_preserve_remuneration(existing, unrelated))
         self.assertFalse(should_preserve_remuneration(existing, stronger))
+        self.assertFalse(should_preserve_remuneration(
+            dict(existing, sha256='old-source'), dict(fewer, sha256='revised-source')))
 
     def test_borderless_remuneration_columns_keep_travel_and_compensation_separate(self):
         table = [
@@ -147,6 +189,30 @@ Councilor - K. Youngman 12 - 19,200 1,247 - 20,447
             ['Example First Nation comparative March 31, 2024; year ended March 31, 2025'],
             {'name':'Example First Nation','aliases':[]}, {'year':'2024-2025'})
         self.assertEqual(issues, [])
+
+    def test_pdf_cover_type_can_correct_swapped_isc_labels(self):
+        from tools.ingest_alberta import document_type_from_cover
+        self.assertEqual(document_type_from_cover([
+            "Example First Nation\nSchedule of Remuneration and Expenses\nMarch31,2025"
+        ]), 'Schedule of Remuneration and Expenses')
+        self.assertEqual(document_type_from_cover([
+            "Example First Nation\nConsolidatedFinancialStatements\nMarch31,2025"
+        ]), 'Audited consolidated financial statements')
+        self.assertIsNone(document_type_from_cover(['Independent review report; ambiguous title']))
+        self.assertEqual(document_type_from_cover([
+            'Schedule of Chief and Council Remuneration and Expenses\n'
+            'The amounts are based on the financial statements.'
+        ]), 'Schedule of Remuneration and Expenses')
+        self.assertIsNone(document_type_from_cover([
+            'Notes to the Financial Statements\nFinancial statements are referenced here.'
+        ]))
+
+    def test_ocr_cover_accepts_joined_words_but_keeps_identity_and_year_checks(self):
+        band = {'name': 'Example First Nation', 'aliases': []}
+        filing = {'year': '2024-2025'}
+        self.assertEqual(document_identity(['ExampleFirstNation March31,2025'], band, filing), [])
+        self.assertTrue(document_identity(['UnrelatedFirstNation March31,2025'], band, filing))
+        self.assertTrue(document_identity(['ExampleFirstNation March31,2024'], band, filing))
 
     def test_listing_omits_unposted_and_deduplicates_urls(self):
         def listing(url):

@@ -52,7 +52,7 @@ TOTAL_REVENUE_RE = re.compile(
     r"^(?:total\s+)?revenues?(?:\s*\(continued(?: from previous page)?\))?$", re.I,
 )
 REVENUE_SECTION_RE = re.compile(
-    r"^revenues?(?:\s+\(.*\))?$",
+    r"^revenues?(?:\s+\(.*\))?\s*:?\s*$",
     re.I,
 )
 OTHER_ADJUSTMENT_RE = re.compile(
@@ -66,7 +66,7 @@ TOTAL_EXPENSE_RE = re.compile(
     re.I,
 )
 EXPENSE_SECTION_RE = re.compile(
-    r"^(?:program\s+)?(?:expenses?|expenditures?)(?:\s+\(.*\))?$",
+    r"^(?:program\s+)?(?:expenses?|expenditures?)(?:\s+\(.*\))?\s*:?\s*$",
     re.I,
 )
 FINAL_SURPLUS_RE = re.compile(
@@ -74,11 +74,13 @@ FINAL_SURPLUS_RE = re.compile(
     r"(?:surplus|deficit)(?:\s+\(deficit\))?"
     r"|excess(?:\s+\(deficiency\))? of revenues? over (?:expenses|expenditures)"
     r"|surplus of revenues? over (?:expenses|expenditures)"
+    r"|deficit of revenues? over (?:expenses|expenditures)"
     r"|\(?deficit\)?/surplus of revenues? over (?:expenses|expenditures))$",
     re.I,
 )
 BEFORE_OTHER_RE = re.compile(
-    r"^.*\b(?:surplus|deficit)\b.*\bbefore\s+(?:other|trust settlement)",
+    r"^(?:.*\b(?:surplus|deficit|excess|deficiency)\b.*\bbefore\s+"
+    r"(?:other|trust settlement|(?:the\s+)?undernoted)|before\s+(?:the\s+)?undernoted)",
     re.I,
 )
 EXPENSE_SECTION_END_RE = re.compile(
@@ -92,7 +94,7 @@ CAPITAL_PURCHASE_RE = re.compile(
     re.I,
 )
 SKIP_LINE_RE = re.compile(
-    r"^(schedules?|budget|actual|note|the accompanying|for the year|as at|"
+    r"^(schedules?|budget|actual|note|the accompanying|for the year|year ended|as at|"
     r"continued|page \d+)",
     re.I,
 )
@@ -419,7 +421,38 @@ def expected_fiscal_year(fiscal_year):
 def current_year_column(page_text, fiscal_year=None):
     """Describe the selected actual column and whether it matches the filing year."""
     header = "\n".join(page_text.splitlines()[:14])
-    years = YEAR_RE.findall(header)
+    # Dates and comparative-year prose describe the report, not column positions.
+    # Prefer rows made entirely of year and column-label tokens.
+    column_rows = []
+    report_dates = []
+    label_count = len(re.findall(r'\bactual\b', header, re.I))
+    for line in page_text.splitlines()[:14]:
+        date_pattern = (
+            r'^\s*(?:(?:for\s+the\s+)?year\s+ended|as\s+at)\s+'
+            r'(?:[A-Za-z]+\s*\d{1,2}|\d{1,2}\s*[A-Za-z]+)\s*,?\s*20\d{2}\b')
+        date = re.match(date_pattern, line, re.I)
+        if date:
+            report_dates.extend(YEAR_RE.findall(date.group(0)))
+        line = re.sub(date_pattern, '', line, flags=re.I)
+        years_in_row = YEAR_RE.findall(line)
+        residual = YEAR_RE.sub('', line)
+        residual = re.sub(r'\b(?:budget|actual|unaudited|audited|restated|schedules?|notes?)\b', '', residual, flags=re.I)
+        if years_in_row and not re.sub(r'[\s()$,:-]', '', residual):
+            slots = list(years_in_row)
+            if len(slots) == 2 and 'budget' in header.lower():
+                low = line.lower()
+                if re.match(r'^\s*budget\b', low) and 'actual' not in low:
+                    slots.insert(0, None)
+                elif re.fullmatch(r'\s*20\d{2}\s+budget\s+20\d{2}\s*', low):
+                    slots.insert(1, None)
+                elif 'budget' not in low and label_count != 1:
+                    slots.insert(0, None)
+            column_rows.append(slots)
+    years = max(column_rows, key=len) if column_rows else []
+    if len(years) == 1 and len(column_rows) > 1:
+        years = [year for row in column_rows for year in row]
+    if not years and 'budget' not in header.lower():
+        years = report_dates[:1]
     expected = expected_fiscal_year(fiscal_year)
     budget_layout = "budget" in header.lower()
     selected_index = actual_column_index(page_text) if budget_layout else 0
@@ -489,7 +522,7 @@ def join_statement_labels(text):
         line = clean_text(lines[i])
         if (i + 1 < len(lines) and not MONEY_RE.search(line)
                 and re.search(r"^(?:\(?deficit\)?/surplus|surplus of revenues? over|excess|accumulated surplus)", line, re.I)
-                and re.search(r"^(?:expenditures|expenses|year|before other)\b", clean_text(lines[i + 1]), re.I)):
+                and re.search(r"^(?:expenditures|expenses|year|before (?:other|(?:the )?undernoted))\b", clean_text(lines[i + 1]), re.I)):
             result.append(line + " " + clean_text(lines[i + 1]))
             i += 2
         else:
@@ -1442,7 +1475,9 @@ def parse_page_texts(page_texts, source_url=None, fiscal_year=None):
         fiscal_year=fiscal_year,
     )
     if len(expense_rows) < 2:
-        expense_rows = parse_segment_schedule_expenses(page_texts, fiscal_year)
+        schedule_rows = parse_segment_schedule_expenses(page_texts, fiscal_year)
+        if schedule_rows:
+            expense_rows = schedule_rows
     revenue_breakdown, revenue_source_rows = aggregate_categories(revenue_rows)
     expense_breakdown, expense_source_rows = aggregate_categories(expense_rows)
     expense_details, expense_detail_schedules = parse_expense_detail_schedules(
@@ -1586,7 +1621,20 @@ def parse_page_texts(page_texts, source_url=None, fiscal_year=None):
     return summary
 
 
-def table_page_texts(pdf):
+def table_page_texts(pdf, page_texts=None):
+    if page_texts is not None:
+        reconstructed, found = list(page_texts), False
+        for index, text in enumerate(page_texts):
+            header = '\n'.join(text.splitlines()[:12])
+            if not (is_primary_operations_page(text) or POSITION_RE.search(header)
+                    or NET_ASSET_RE.search(header) or re.search(r'statement of cash flows?', header, re.I)):
+                continue
+            candidates = layout_tables.extract_tables_for_page(pdf.pages[index], text, kind='capital')
+            if candidates:
+                found = True
+                reconstructed[index] = header + '\n' + '\n'.join(
+                    ' '.join(row) for candidate in candidates for row in candidate['rows'])
+        return reconstructed if found else []
     return layout_tables.extract_table_page_texts(pdf, kind="capital")
 
 
@@ -1631,7 +1679,7 @@ def with_extraction_stages(summary, stages):
     return result
 
 
-def parse_pdf_bytes(pdf_bytes, source_url=None, fiscal_year=None):
+def parse_pdf_bytes(pdf_bytes, source_url=None, fiscal_year=None, native_page_texts=None):
     if pdfplumber is None:
         return {
             "parseStatus": "error",
@@ -1640,14 +1688,14 @@ def parse_pdf_bytes(pdf_bytes, source_url=None, fiscal_year=None):
         }
 
     with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
-        page_texts = [
+        page_texts = native_page_texts if native_page_texts is not None else [
             page.extract_text(x_tolerance=1, y_tolerance=3) or ""
             for page in pdf.pages
         ]
         primary = parse_page_texts(page_texts, source_url, fiscal_year)
         if primary.get("publishable") or primary.get("parseStatus") == "not_applicable":
             return primary
-        reconstructed = table_page_texts(pdf)
+        reconstructed = table_page_texts(pdf, native_page_texts)
     if reconstructed:
         fallback = parse_page_texts(reconstructed, source_url, fiscal_year)
         fallback["parser"] = "capital_layout_v1"
@@ -1913,6 +1961,23 @@ def save_summary(capital_data, band, filing, summary):
         {"name": band["name"], "years": {}},
     )
     band_record["name"] = band["name"]
+    existing = band_record.get('years', {}).get(filing['year'], {})
+    restored = False
+    for field, review in existing.get('fieldReviews', {}).items():
+        reference = review.get('sourceReference', {})
+        if (field in {'totalAssets', 'totalLiabilities', 'totalFinancialAssets', 'totalNonFinancialAssets',
+                      'netFinancialAssetsDebt', 'accumulatedSurplus', 'capitalAssets'}
+                and review.get('sourceSha256') == summary.get('sha256')
+                and summary.get('sha256') and reference.get('fiscalYear') == filing['year']):
+            summary[field] = review['value']
+            summary.setdefault('sourceReferences', {})[field] = reference
+            summary.setdefault('fieldReviews', {})[field] = review
+            restored = True
+    if restored:
+        summary.update(validate_summary(summary))
+        if not summary['publishable']:
+            filing.update({'parse_status': 'manual_review', 'manual_review_required': True,
+                           'verificationStatus': 'pdf_retrieved', 'warnings': summary['warnings']})
     band_record.setdefault("years", {})[filing["year"]] = summary
 
 

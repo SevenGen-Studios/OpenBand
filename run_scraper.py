@@ -870,7 +870,7 @@ def _dedupe_people(people):
     seen = set()
     clean = []
     for person in people:
-        key = (person.get("name", "").lower(), person.get("role", "").lower())
+        key = (re.sub(r'\s+', '', person.get("name", "").lower()), person.get("role", "").lower())
         if not person.get("name") or key in seen:
             continue
         seen.add(key)
@@ -956,6 +956,10 @@ def _extract_people_from_text_pages(pages):
     """Parse extracted or OCR-produced page text through the same row parser."""
     people = []
     for text in pages:
+        funding_people = _extract_split_funding_schedule(text)
+        if funding_people:
+            people.extend(funding_people)
+            continue
         vertical_people = _extract_people_from_vertical_ocr_page(text)
         if vertical_people:
             people.extend(vertical_people)
@@ -1010,6 +1014,53 @@ def _stage(name, status, warnings=None):
     }
 
 
+def _extract_split_funding_schedule(text):
+    """Use reported pay/expense subtotals without counting funding splits twice."""
+    compact = re.sub(r'\s+', '', text).lower()
+    if not all(word in compact for word in ('remuneration', 'expenses', 'months', 'own', 'sources')):
+        return []
+    if compact.count('paidfromall') < 2:
+        return []
+    people, columns, footer = [], [], None
+    money = r'(?:\(?-?\d+(?:,\d{3})*(?:\.\d+)?\)?|-)'
+    row = re.compile(r'^(.+?)\s+(Chief(?:/Councillor)?|Councillor|Councilor)\s+(\d+(?:\.\d+)?)\s+(.+)$', re.I)
+    for line in text.splitlines():
+        line = ' '.join(line.replace('$', ' ').split())
+        match = row.fullmatch(line)
+        amount_text = match[4] if match else line
+        if not re.fullmatch(rf'{money}(?:\s+{money})+', amount_text):
+            continue
+        values = [0 if value == '-' else parser_quality.number(value)
+                  for value in re.findall(money, amount_text)]
+        if len(values) not in (10, 11):
+            continue
+        normalized = values[-9:]
+        remuneration, *_, expenses, expense_federal, expense_own = normalized
+        if (abs(sum(values[:-9]) - remuneration) > 1
+                or abs(sum(normalized[1:6]) - expenses) > 1
+                or abs(expense_federal + expense_own - expenses) > 1):
+            return []
+        if match:
+            name, role, months = match.group(1, 2, 3)
+            if not _looks_like_person_name(name) or not 0 < float(months) <= 12:
+                return []
+            columns.append(normalized)
+            people.append({'name': name, 'role': 'Chief/Councillor' if '/' in role else 'Chief' if role.lower() == 'chief' else 'Councillor',
+                           'months': float(months), 'remuneration': remuneration, 'travel': None,
+                           'expenses': expenses, 'creditCard': None, 'otherPayments': None,
+                           'total': remuneration + expenses,
+                           'sourceColumnChecks': 'Pay subtotal, five expense components, funding splits and footer reconciled'})
+        elif people:
+            footer = normalized
+    if not people or footer is None or not any(p['role'].startswith('Chief') for p in people):
+        return []
+    if any(abs(sum(row[i] for row in columns) - footer[i]) > 2 for i in range(9)):
+        return []
+    for person in people:
+        person['sourceScheduleTotal'] = footer[0] + footer[6]
+    return people
+
+
 def _extract_elected_salary_schedule(text):
     """Parse the explicit salary/honoraria schedule without dropping dash columns."""
     if not re.search(r'for\s+elected\s+officials', text, re.I):
@@ -1047,7 +1098,34 @@ def _extract_elected_salary_schedule(text):
     return people
 
 
-def _extract_remuneration_rows_enhanced(pdf_url):
+def _ocr_footer_total(pages):
+    """Read a labelled grand total or the two printed pay/expense subtotals."""
+    found = []
+    for text in pages:
+        lines = text.splitlines()
+        header = '\n'.join(lines[:30])
+        final_total = any(re.fullmatch(r'\s*total\s*', line, re.I) for line in lines[:30]) or bool(
+            re.search(r'\b(?:travel|expenses)\b[^\n]*\btotal\s*$', header, re.I | re.M))
+        two_components = bool(re.search(r'\bremuneration\b', header, re.I)
+                              and re.search(r'\bexpenses\b', header, re.I)
+                              and not re.search(r'\b(?:salary|honoraria|honouraria|benefits|travel)\b', header, re.I))
+        for index, line in enumerate(lines):
+            match = re.fullmatch(r'\s*(?:grand\s+)?totals?\s*:?\s*([$\d(),.\s-]+)', line, re.I)
+            if not match and index >= len(lines) - 6:
+                # Many source schedules print an unlabelled footer below the
+                # officials. It still has to reconcile with all parsed rows.
+                match = re.fullmatch(r'\s*([$\d(),.\s-]+)', line)
+            if match:
+                values = [parser_quality.number(value) for value in re.findall(r'\(?\$?\d[\d,]*(?:\.\d+)?\)?', match[1])]
+                if all(value is not None for value in values):
+                    if final_total and len(values) >= 2:
+                        found.append(values[-1])
+                    elif two_components and len(values) == 2:
+                        found.append(sum(values))
+    return found[-1] if len(found) == 1 else None
+
+
+def _extract_remuneration_rows_enhanced(pdf_url, recognized_ocr=None, skip_native=False, native_page_texts=None):
     if not pdf_url:
         return {"parse_status": "no_pdf_url", "warnings": ["No PDF URL available"], "people": []}
 
@@ -1062,7 +1140,30 @@ def _extract_remuneration_rows_enhanced(pdf_url):
             "people": [],
         }
 
-    if scraper.pdfplumber is not None:
+    for text in native_page_texts or []:
+        people = _extract_split_funding_schedule(text)
+        if people:
+            result = parser_quality.apply_validation_metadata({
+                'parse_status': 'ok_pdf_split_funding', 'people': people,
+                'warnings': ['Reported pay and expense subtotals used; funding splits, components and footer reconciled'],
+            }, source_total=people[0]['sourceScheduleTotal'], strict=True)
+            if not result.get('manual_review_required'):
+                result['parse_stages'] = [_stage('local', 'ok_pdf_split_funding', result.get('warnings'))]
+                return result
+
+    if recognized_ocr and recognized_ocr.get('pages'):
+        source_total = _ocr_footer_total(recognized_ocr['pages'])
+        if source_total is not None:
+            result = parser_quality.apply_validation_metadata({
+                'parse_status': 'ok_ocr',
+                'warnings': ['Free local OCR rows reconcile with the printed remuneration/expense footer'],
+                'people': _extract_people_from_text_pages(recognized_ocr['pages']),
+            }, source_total=source_total, strict=True)
+            if not result.get('manual_review_required'):
+                result['parse_stages'] = [_stage('ocr', 'ok_ocr', result.get('warnings'))]
+                return result
+
+    if scraper.pdfplumber is not None and not skip_native:
         try:
             keyword_people = []
             fallback_people = []
@@ -1073,32 +1174,46 @@ def _extract_remuneration_rows_enhanced(pdf_url):
                 for page in pdf.pages:
                     page_text = page.extract_text(x_tolerance=1, y_tolerance=3) or ""
                     salary_people = _extract_elected_salary_schedule(page_text)
+                    method = 'ok_pdf_salary_schedule'
+                    note = 'Salary and honoraria combined as remuneration; all source columns and totals reconciled'
+                    if not salary_people:
+                        salary_people = _extract_split_funding_schedule(page_text)
+                        method = 'ok_pdf_split_funding'
+                        note = 'Reported pay and expense subtotals used; funding splits, components and footer reconciled'
                     if salary_people:
                         result = parser_quality.apply_validation_metadata({
-                            'parse_status': 'ok_pdf_salary_schedule', 'people': salary_people,
-                            'warnings': ['Salary and honoraria combined as remuneration; all source columns and totals reconciled'],
-                        }, source_total=sum(p['total'] for p in salary_people))
+                            'parse_status': method, 'people': salary_people,
+                            'warnings': [note],
+                        }, source_total=salary_people[0].get('sourceScheduleTotal', sum(p['total'] for p in salary_people)), strict=True)
                         if not result.get('manual_review_required'):
-                            result['parse_stages'] = [_stage('local', 'ok_pdf_salary_schedule', result.get('warnings'))]
+                            result['parse_stages'] = [_stage('local', method, result.get('warnings'))]
                             return result
                     candidates = layout_tables.extract_tables_for_page(
                         page, page_text, kind="remuneration"
                     )
+                    page_candidates = []
                     for candidate in candidates:
                         table = candidate["rows"]
                         quality = parser_quality.score_candidate_table(table, page_text)
                         if not quality["accepted"]:
                             continue
                         candidate_count += 1
+                        source_total = parser_quality.source_total_from_table(table, require_total_header=True)
+                        parsed = _extract_people_from_keyword_table(table)
+                        keyword = bool(parsed)
+                        parsed = parsed or scraper.extract_people_from_table(table)
+                        checked = parser_quality.validate_people(parsed, source_total, quality, strict=True)
+                        if not checked['manual_review_required']:
+                            page_candidates.append((parsed, keyword, source_total, quality))
+                    if page_candidates:
+                        # Alternative geometric strategies describe the same page.
+                        # Select one validated interpretation instead of mixing their rows.
+                        parsed, keyword, source_total, quality = max(
+                            page_candidates, key=lambda item: (len(item[0]), item[1], item[3]['score']))
+                        (keyword_people if keyword else fallback_people).extend(parsed)
                         accepted_qualities.append(quality)
-                        source_total = parser_quality.source_total_from_table(table)
                         if source_total is not None:
                             source_totals.append(source_total)
-                        parsed = _extract_people_from_keyword_table(table)
-                        if parsed:
-                            keyword_people.extend(parsed)
-                        else:
-                            fallback_people.extend(scraper.extract_people_from_table(table))
             people = _dedupe_people(keyword_people or fallback_people)
             if people and not _looks_project_heavy(people):
                 method = "ok_pdf_keyword_table" if keyword_people else "ok_pdfplumber"
@@ -1112,8 +1227,9 @@ def _extract_remuneration_rows_enhanced(pdf_url):
                     warnings.append("Multiple candidate Chief and Council tables found")
                 quality = accepted_qualities[0] if accepted_qualities else None
                 source_total = source_totals[0] if source_totals else None
-                result = {"parse_status": method, "warnings": warnings, "people": people}
-                result = parser_quality.apply_validation_metadata(result, source_total, quality)
+                result = {"parse_status": method, "warnings": warnings, "people": people,
+                          "sourceTotal": source_total}
+                result = parser_quality.apply_validation_metadata(result, source_total, quality, strict=True)
                 if not result.get("manual_review_required"):
                     result["parse_stages"] = stages + [_stage("local", method, result.get("warnings"))]
                     return result
@@ -1135,7 +1251,7 @@ def _extract_remuneration_rows_enhanced(pdf_url):
                     "warnings": warnings + ["Parsed from PDF text fallback"],
                     "people": text_people,
                 }
-                result = parser_quality.apply_validation_metadata(result)
+                result = parser_quality.apply_validation_metadata(result, strict=True)
                 if not result.get("manual_review_required"):
                     result["parse_stages"] = stages + [_stage("local", "ok_pdf_text", result.get("warnings"))]
                     return result
@@ -1145,12 +1261,12 @@ def _extract_remuneration_rows_enhanced(pdf_url):
         except Exception as exc:
             warnings.append(f"PDF text extraction failed: {exc}")
     else:
-        warnings.append("pdfplumber unavailable")
+        warnings.append("PDF has no usable native text; used free local OCR" if skip_native else "pdfplumber unavailable")
 
     if not stages:
         stages.append(_stage("local", "no_reliable_rows", warnings))
 
-    ocr_result = local_ocr.ocr_pdf_bytes(pdf_bytes)
+    ocr_result = recognized_ocr if recognized_ocr is not None else local_ocr.ocr_pdf_bytes(pdf_bytes)
     ocr_warnings = ocr_result.get("warnings") or []
     if ocr_result.get("pages"):
         ocr_people = _extract_people_from_text_pages(ocr_result["pages"])
@@ -1160,7 +1276,7 @@ def _extract_remuneration_rows_enhanced(pdf_url):
                     "parse_status": "ok_ocr",
                     "warnings": warnings + ["Parsed via free local OCR fallback"] + ocr_warnings,
                     "people": ocr_people,
-                }
+                }, source_total=_ocr_footer_total(ocr_result['pages']), strict=True
             )
             if not result.get("manual_review_required"):
                 result["parse_stages"] = stages + [_stage("ocr", "ok_ocr")]

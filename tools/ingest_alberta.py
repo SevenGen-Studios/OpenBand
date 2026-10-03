@@ -11,12 +11,15 @@ import hashlib
 import io
 import json
 import math
+import os
 import re
+import shutil
 import sys
 import unicodedata
 import subprocess
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import parse_qs, urlencode, urljoin, urlsplit, urlunsplit
@@ -34,7 +37,7 @@ BASE = 'https://services.sac-isc.gc.ca/fnp/main/Search/'
 COUNT_SOURCE = 'https://www.alberta.ca/first-nations-relations'
 TREATY_SOURCE = 'https://www.sac-isc.gc.ca/eng/1595274954300/1595274980122'
 ROSTER_PATH = ROOT / 'alberta-nations.json'
-PARSER_REVISION = 'alberta-20261001-v8'
+PARSER_REVISION = 'alberta-20261002-v25'
 
 def now():
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
@@ -47,7 +50,11 @@ def write(path, value):
     # Existing OneDrive-backed data files may reject replace/rename even when
     # writes are allowed. Match the repository's other builders; parser results
     # are independently checkpointed per document before updating shared files.
-    payload = (json.dumps(value, ensure_ascii=False, indent=2) + '\n').encode('utf-8')
+    compact = path.name == 'capital-data.json'
+    payload = (json.dumps(value, ensure_ascii=False, indent=None if compact else 2,
+                          separators=(',', ':') if compact else None) + '\n').encode('utf-8')
+    if shutil.disk_usage(path.parent).free < max(len(payload), 16 * 1024 * 1024):
+        raise OSError('Insufficient disk space for a safe checkpoint; existing file was not opened')
     for attempt in range(6):
         try:
             with path.open('r+b' if path.exists() else 'wb') as handle:
@@ -76,12 +83,18 @@ def download(url, refresh=False):
     CACHE.mkdir(parents=True, exist_ok=True)
     key = hashlib.sha256(canonical_url(url).encode()).hexdigest()
     path = CACHE / key
+    requires_pdf = urlsplit(url).path.lower().endswith(('.pdf', 'displaybinarydata.aspx'))
     if path.exists() and not refresh:
-        return path.read_bytes()
+        cached = path.read_bytes()
+        if not requires_pdf or cached.lstrip().startswith(b'%PDF-'):
+            return cached
     request = Request(canonical_url(url), headers={'User-Agent': 'OpenBand/2.0 public records research (+https://openband.ca)'})
     with urlopen(request, timeout=35) as response:
         payload = response.read(45 * 1024 * 1024)
-    path.write_bytes(payload)
+    # Leave room for OCR images and checkpoints on small local disks.
+    valid_payload = not requires_pdf or payload.lstrip().startswith(b'%PDF-')
+    if valid_payload and shutil.disk_usage(CACHE).free > len(payload) + 512 * 1024 * 1024:
+        path.write_bytes(payload)
     return payload
 
 def page_url(page, band_id):
@@ -299,11 +312,16 @@ def document_identity(pages, band, filing):
     identity_cores = {core for core in identity_cores if len(core) >= 5}
     identity = any(name in cover for name in exact_names if len(name) >= 5)
     if not identity:
+        # OCR can concatenate adjacent words in a printed cover title.
+        compact_cover = cover.replace(' ', '')
+        identity = any(name.replace(' ', '') in compact_cover
+                       for name in exact_names if len(name.replace(' ', '')) >= 8)
+    if not identity:
         identity = any(re.search(rf'\b{re.escape(core)}\b', cover) for core in identity_cores)
     year = int(filing['year'].split('-')[1])
     month = r'(?:january|february|march|april|may|june|july|august|september|october|november|december)'
     dates = re.findall(
-        rf'(?:{month}\s+\d{{1,2}}\s*,?\s*|\d{{1,2}}\s+{month}\s*,?\s*)(20\d{{2}})',
+        rf'(?:{month}\s*\d{{1,2}}\s*,?\s*|\d{{1,2}}\s*{month}\s*,?\s*)(20\d{{2}})',
         ' '.join(pages[:4]),
         re.I,
     )
@@ -313,6 +331,22 @@ def document_identity(pages, band, filing):
     if not dates or year not in {int(value) for value in dates}:
         reasons.append('Fiscal year end not confirmed in document cover; manual review required')
     return reasons
+
+
+def document_type_from_cover(pages):
+    """Recognize explicit cover titles when ISC has interchanged its PDF labels."""
+    cover = next((p for p in pages if p.strip()), '')
+    lines = [re.sub(r'\s+', '', line).lower() for line in cover.splitlines() if line.strip()][:20]
+    remuneration = any(re.match(
+        r'^schedules?of.*(?:remuneration|salaries|honoraria)|'
+        r'^(?:chiefandcouncil)?remunerationandexpenses', line) for line in lines)
+    financial = any(re.fullmatch(r'(?:consolidated|audited)?financialstatements(?:of.*)?', line)
+                    for line in lines)
+    if remuneration and not financial:
+        return 'Schedule of Remuneration and Expenses'
+    if financial and not remuneration:
+        return 'Audited consolidated financial statements'
+    return None
 
 def parse_one(task):
     band, filing, ocr = task
@@ -343,12 +377,54 @@ def parse_one(task):
         except ImportError:
             with pdfplumber.open(io.BytesIO(payload)) as pdf:
                 pages = [p.extract_text(x_tolerance=1, y_tolerance=3) or '' for p in pdf.pages]
+        native_pages = pages
         issues = document_identity(pages, band, filing)
+        actual_type = document_type_from_cover(pages)
+        if actual_type and actual_type != filing['docType']:
+            update.update({'docType': actual_type, 'listedDocType': filing.get('listedDocType', filing['docType']),
+                           'documentTitle': f"{actual_type} — {filing['year']}",
+                           'listedDocumentTitle': filing.get('listedDocumentTitle', filing.get('documentTitle')),
+                           'documentTypeMethod': 'Explicit PDF cover title; ISC listing label differs'})
+            filing = dict(filing, docType=actual_type)
         if ocr:
             # OCR the cover and statements once, then use those same pages for
             # independent identity checks and the existing accounting parsers.
-            recognized = run_scraper.local_ocr.ocr_pdf_bytes(payload)
+            if capital_parser.is_audited_statement(filing):
+                selected = {i + 1 for i, text in enumerate(pages[:12]) if len(text.strip()) < 100}
+                selected.update(i + 1 for i, text in enumerate(pages)
+                                if re.search(r'statement.{0,40}(operations|activities|revenues|expenditures)', text, re.I))
+                # The cover and operations page catch scrambled native text;
+                # scanned statements still receive all of the first 12 pages.
+                if pages:
+                    selected.add(1)
+            else:
+                selected = {i + 1 for i, text in enumerate(pages[:12])
+                            if len(text.strip()) < 100 or re.search(r'\bmonths?\b', text, re.I)}
+                if issues and pages:
+                    selected.add(1)
+                if not selected:
+                    selected = set(range(1, min(len(pages), 12) + 1))
+            ocr_key = hashlib.sha256((update['sha256'] + repr(sorted(selected)) +
+                                      os.getenv('OPENBAND_OCR_DPI', '220') +
+                                      os.getenv('OPENBAND_OCR_ENGINE', '')).encode()).hexdigest()
+            ocr_cache = CACHE / f'{ocr_key}.ocr.json'
+            if ocr_cache.exists():
+                recognized = read(ocr_cache)
+            else:
+                stop_when = None
+                if capital_parser.is_audited_statement(filing):
+                    stop_when = lambda recognized_pages: capital_parser.parse_page_texts(
+                        [run_scraper.local_ocr.normalize_ocr_headings(p) for p in recognized_pages],
+                        filing['href'], filing['year']).get('publishable', False)
+                recognized = run_scraper.local_ocr.ocr_pdf_bytes(
+                    payload, page_numbers=sorted(selected), stop_when=stop_when, extra_pages=2)
+                if recognized.get('status') == 'ok_ocr_text':
+                    write(ocr_cache, recognized)
+            recognized = dict(recognized, pages=[run_scraper.local_ocr.normalize_ocr_headings(p)
+                                                for p in recognized.get('pages', [])])
             update['ocrStatus'] = recognized.get('status')
+            update['ocrWarnings'] = recognized.get('warnings', [])
+            update['ocrEngine'] = recognized.get('engine', 'rapidocr')
             ocr_pages = recognized.get('pages', [])
             if ocr_pages:
                 if issues:
@@ -356,18 +432,37 @@ def parse_one(task):
                 pages = [native if len(native.strip()) > 80 else scanned
                          for native, scanned in zip(pages, ocr_pages)] + pages[len(ocr_pages):]
         update['documentChecks'] = {'identityAndYearConfirmed': not issues, 'warnings': issues}
+        actual_type = document_type_from_cover(pages)
+        if actual_type and actual_type != filing['docType']:
+            update.update({'docType': actual_type, 'listedDocType': filing.get('listedDocType', filing['docType']),
+                           'documentTitle': f"{actual_type} — {filing['year']}",
+                           'listedDocumentTitle': filing.get('listedDocumentTitle', filing.get('documentTitle')),
+                           'documentTypeMethod': 'Explicit PDF cover title; ISC listing label differs'})
+            filing = dict(filing, docType=actual_type)
         if capital_parser.is_audited_statement(filing):
             summary = capital_parser.parse_page_texts(pages, filing['href'], filing['year'])
             if not summary.get('publishable') and ocr and ocr_pages:
                 alternative = capital_parser.parse_page_texts(ocr_pages, filing['href'], filing['year'])
                 if alternative.get('publishable'):
                     summary = alternative
+            native_operations = capital_parser.likely_operations_pages(
+                [run_scraper.local_ocr.normalize_ocr_headings(p) for p in native_pages])
+            if not summary.get('publishable') and not issues and (not ocr or native_operations):
+                # Use the shared coordinate-aware pipeline before requesting OCR.
+                candidate = capital_parser.parse_pdf_bytes(payload, filing['href'], filing['year'], native_page_texts=pages)
+                if capital_parser.summary_score(candidate) > capital_parser.summary_score(summary):
+                    summary = candidate
+            if recognized and recognized.get('warnings'):
+                summary['warnings'] = list(dict.fromkeys(summary.get('warnings', []) + recognized['warnings']))
             if issues:
                 summary.update({'publishable': False, 'parseStatus': 'manual_review', 'confidence': 'low'})
                 summary['warnings'] = list(dict.fromkeys(summary.get('warnings', []) + issues))
             summary['sha256'] = update['sha256']
             update['parse_status'] = summary['parseStatus']
             update['warnings'] = summary.get('warnings', [])
+            update['manual_review_required'] = not summary.get('publishable', False)
+            update['parse_confidence'] = summary.get('confidence', 'low')
+            update['people'] = []
         elif 'remuneration' in filing['docType'].lower():
             run_scraper.scraper.fetch_url = lambda *args, **kwargs: payload
             run_scraper.openai_fallback_enabled = lambda: False
@@ -375,7 +470,9 @@ def parse_one(task):
                 run_scraper.local_ocr.ocr_pdf_bytes = lambda *a, **kw: recognized
             else:
                 run_scraper.local_ocr.ocr_pdf_bytes = lambda *a, **kw: {'pages': [], 'status': 'deferred', 'warnings': ['OCR deferred; rerun with --ocr or review original PDF']}
-            result = run_scraper._extract_remuneration_rows_enhanced(filing['href'])
+            result = run_scraper._extract_remuneration_rows_enhanced(
+                filing['href'], recognized_ocr=recognized, native_page_texts=native_pages,
+                skip_native=bool(ocr and sum(len(p.strip()) for p in native_pages) < 100))
             if issues or result.get('manual_review_required'):
                 result.update({'people': [], 'parse_status': 'manual_review', 'manual_review_required': True})
                 result['warnings'] = list(dict.fromkeys(result.get('warnings', []) + issues))
@@ -393,21 +490,40 @@ def bounded_parse(task):
     CACHE.mkdir(parents=True, exist_ok=True)
     key = hashlib.sha256((str(band['id']) + filing['href']).encode()).hexdigest()
     source, output = CACHE / f'{key}.task.json', CACHE / f'{key}.result.json'
-    if output.exists() and not ocr:
-        cached = read(output)
-        if cached[2].get('parse_status') != 'error' and cached[2].get('parserRevision') == PARSER_REVISION:
-            return cached
+    if output.exists():
+        try:
+            cached = read(output)
+            reusable = not ocr or cached[2].get('ocrStatus') == 'ok_ocr_text'
+            requested_engine = os.getenv('OPENBAND_OCR_ENGINE', '')
+            if ocr and requested_engine == 'windows':
+                reusable = reusable and str(cached[2].get('ocrEngine', '')).startswith('windows')
+            if cached[2].get('people'):
+                from tools.parser_quality import validate_people
+                reusable = reusable and not validate_people(
+                    cached[2]['people'], source_total=cached[2].get('sourceTotal'), strict=True)['manual_review_required']
+            if reusable and cached[2].get('parse_status') != 'error' and cached[2].get('parserRevision') == PARSER_REVISION:
+                return cached
+        except (OSError, ValueError, TypeError, IndexError, KeyError):
+            # A synced or interrupted cache must not abort the province's queue.
+            pass
     write(source, task)
     try:
         subprocess.run([sys.executable, str(Path(__file__).resolve()), '--task', str(source), '--result', str(output)],
-                       timeout=180 if ocr else 45, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                       timeout=180 if ocr else 45, check=True, capture_output=True,
+                       text=True, encoding='utf-8', errors='replace')
         return read(output)
     except Exception as error:
-        return str(band['id']), filing['href'], {'parse_status': 'manual_review', 'warnings': [f'Bounded extraction stopped: {type(error).__name__}'], 'lastChecked': now(), 'verificationStatus': 'parse_timeout_or_error'}, None
+        detail = str(getattr(error, 'stderr', '') or '')[-500:].strip()
+        warning = f'Bounded extraction stopped: {type(error).__name__}'
+        if detail:
+            warning += ': ' + detail
+        return str(band['id']), filing['href'], {'parse_status': 'manual_review', 'warnings': [warning], 'lastChecked': now(), 'verificationStatus': 'parse_timeout_or_error'}, None
 
 
 def should_preserve_remuneration(filing, update):
     """Keep an already validated schedule when a reparse is demonstrably weaker."""
+    if filing.get('sha256') and update.get('sha256') and filing['sha256'] != update['sha256']:
+        return False  # A revised source cannot inherit rows from the old PDF.
     existing = filing.get('people') or []
     candidate = update.get('people') or []
     if not existing:
@@ -427,7 +543,8 @@ def should_preserve_remuneration(filing, update):
 def parse_documents(limit=0, workers=3, ocr=False, retry=False, reparse=False, document_type='all'):
     from tools.capital_parser import save_summary
     data, capital = read(ROOT / 'data.json'), read(ROOT / 'capital-data.json')
-    tasks = [(band, filing, ocr) for band in data['bands'] if band.get('province') == 'AB'
+    tasks = [({key: deepcopy(band[key]) for key in ('id', 'name', 'officialName', 'aliases') if key in band},
+              deepcopy(filing), ocr) for band in data['bands'] if band.get('province') == 'AB'
              for filing in band.get('filings', []) if filing.get('posted') and filing.get('href')
              and (document_type=='all' or document_type in filing['docType'].lower())
              and (reparse or not filing.get('lastChecked') or retry and filing.get('verificationStatus') != 'automated_validated')]
@@ -437,9 +554,16 @@ def parse_documents(limit=0, workers=3, ocr=False, retry=False, reparse=False, d
     by_id = {str(b['id']): b for b in data['bands']}
     filings = {(str(b['id']), f['href']): f for b in data['bands'] for f in b.get('filings', []) if f.get('href')}
     with ThreadPoolExecutor(max_workers=workers) as pool:
-        pending = [pool.submit(bounded_parse, task) for task in tasks]
+        pending = {pool.submit(bounded_parse, task): task for task in tasks}
         for index, future in enumerate(as_completed(pending), 1):
-            bid, url, update, summary = future.result()
+            try:
+                bid, url, update, summary = future.result()
+            except Exception as error:
+                band, source_filing, _ = pending[future]
+                bid, url, summary = str(band['id']), source_filing['href'], None
+                update = {'parse_status': 'manual_review', 'verificationStatus': 'parse_timeout_or_error',
+                          'warnings': [f'Worker result unavailable: {type(error).__name__}: {error}'],
+                          'lastChecked': now()}
             filing = filings[bid, url]
             existing = None
             if summary:
@@ -448,6 +572,11 @@ def parse_documents(limit=0, workers=3, ocr=False, retry=False, reparse=False, d
             preserve_remuneration = should_preserve_remuneration(filing, update)
             preserve_verified = preserve_capital or preserve_remuneration
             if preserve_verified:
+                if preserve_capital and filing.get('verificationStatus') != 'automated_validated':
+                    # A previously published financial summary stays intact,
+                    # but successful retrieval must clear a stale worker error.
+                    filing.update({key: value for key, value in update.items() if key not in
+                                   ('people', 'docType', 'documentTitle', 'listedDocType', 'listedDocumentTitle')})
                 filing['lastReparseAttempt'] = update.get('lastChecked', now())
                 warnings = list(update.get('warnings', []))
                 if preserve_remuneration and update.get('people'):
@@ -462,7 +591,7 @@ def parse_documents(limit=0, workers=3, ocr=False, retry=False, reparse=False, d
                 if not preserve_verified and (not existing or not existing.get('publishable') or summary.get('publishable')):
                     save_summary(capital, by_id[bid], filing, summary)
             print(f"[{index}/{len(tasks)}] {bid} {filing['year']} {filing['docType']}: {filing['parse_status']}", flush=True)
-            if index % 50 == 0:
+            if index % 10 == 0:
                 write(ROOT / 'data.json', data)
                 write(ROOT / 'capital-data.json', capital)
     write(ROOT / 'data.json', data)

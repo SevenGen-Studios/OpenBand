@@ -37,7 +37,7 @@ HEADER_RE = re.compile(
     re.IGNORECASE,
 )
 
-TOTAL_NAME_RE = re.compile(r"^\s*(total|subtotal|grand\s+total)\b", re.IGNORECASE)
+TOTAL_NAME_RE = re.compile(r"^\s*(totals?|subtotals?|grand\s+totals?)\b", re.IGNORECASE)
 ROLE_RE = re.compile(r"\b(chief|councillor|councilor|council\s+member|council)\b", re.IGNORECASE)
 
 
@@ -151,13 +151,27 @@ def score_candidate_table(table, page_text=""):
     }
 
 
-def source_total_from_table(table):
+def source_total_from_table(table, require_total_header=False):
     """Best-effort extraction of the PDF footer total for reconciliation."""
+    total_column = None
+    if require_total_header:
+        for row in (table or [])[:6]:
+            if any(ROLE_RE.search(clean_text(cell)) and number(cell) is not None for cell in row or []):
+                break
+            for column, cell in enumerate(row or []):
+                if re.search(r'\btotal\b', clean_text(cell), re.I) and not TOTAL_NAME_RE.search(clean_text(cell)):
+                    total_column = column
+                elif clean_text(cell).lower() == 'total':
+                    total_column = column
+        if total_column is None:
+            return None
     for row in reversed(table or []):
         cells = [clean_text(cell) for cell in row or []]
         row_text = " ".join(cells)
         if not TOTAL_NAME_RE.search(row_text):
             continue
+        if require_total_header:
+            return number(cells[total_column]) if total_column < len(cells) else None
         values = [number(cell) for cell in cells]
         values = [value for value in values if value is not None]
         if values:
@@ -165,7 +179,7 @@ def source_total_from_table(table):
     return None
 
 
-def validate_people(people, source_total=None, table_quality=None):
+def validate_people(people, source_total=None, table_quality=None, strict=False):
     warnings = []
     severe = []
     normalized = []
@@ -199,6 +213,11 @@ def validate_people(people, source_total=None, table_quality=None):
             severe.append(f"Row {index}: missing official name")
         elif TOTAL_NAME_RE.search(name):
             severe.append(f"Row {index}: possible footer total parsed as official")
+        elif len(re.sub(r'[^A-Za-z]', '', name)) < 3 or re.search(
+                r'\b(year ended|schedule of|number of months)\b', name, re.I):
+            severe.append(f"Row {index}: official name is a number or document heading")
+        elif strict and (len(name) > 80 or re.search(r'\d|\bname of individual\b', name, re.I)):
+            severe.append(f"Row {index}: official name contains merged columns or a table heading")
 
         if "chief" in role.lower():
             chief_count += 1
@@ -211,7 +230,7 @@ def validate_people(people, source_total=None, table_quality=None):
 
         if total is None or total <= 0:
             severe.append(f"Row {index}: missing or zero total")
-        elif component_total > 0 and not nearly_equal(total, component_total):
+        elif component_total > 0 and not nearly_equal(total, component_total, tolerance=0 if strict else 0.04):
             mismatch_count += 1
             row_warnings.append(f"Row {index}: total does not equal remuneration + travel/expenses + other")
 
@@ -220,27 +239,44 @@ def validate_people(people, source_total=None, table_quality=None):
 
         for key in ("remuneration", "travelExpenses", "other", "total"):
             value = number(normalized_person.get(key))
+            if strict and value is not None and abs(value * 100 - round(value * 100)) > 0.0001:
+                severe.append(f"Row {index}: ambiguous decimal separator in {key}")
             if value is not None and value < 0:
                 row_warnings.append(f"Row {index}: negative {key} amount")
             if value is not None and value > 1000000:
                 row_warnings.append(f"Row {index}: unusually large {key} amount")
+                if strict:
+                    severe.append(f"Row {index}: unusually large {key} needs source review")
 
         warnings.extend(row_warnings)
         normalized.append(normalized_person)
 
     if chief_count == 0:
         warnings.append("No Chief row detected")
+        if strict:
+            severe.append("A complete Chief and Council schedule requires an identified Chief row")
 
     if len(normalized) == 1:
         warnings.append("Only one official row parsed")
 
+    if strict:
+        names = [re.sub(r'[^a-z]', '', clean_text(p.get('name')).lower()) for p in normalized]
+        for index, name in enumerate(names):
+            contained = {other for other in names if len(other) >= 8 and other != name and other in name}
+            if len(contained) >= 2:
+                severe.append(f"Row {index + 1}: possible merged official names")
+
     if mismatch_count and mismatch_count >= max(2, len(normalized) // 2):
         severe.append("Totals do not reconcile for many rows")
+    elif strict and mismatch_count:
+        severe.append("At least one official row does not reconcile")
 
     if source_total is not None:
         parsed_sum = sum(number(person.get("total")) or 0 for person in normalized)
-        if not nearly_equal(parsed_sum, source_total):
+        if not nearly_equal(parsed_sum, source_total, tolerance=0 if strict else 0.04):
             warnings.append("Parsed row totals do not match source total row")
+            if strict:
+                severe.append("Parsed officials do not reconcile with the source total row")
 
     if table_quality:
         warnings.extend(table_quality.get("warnings") or [])
@@ -270,9 +306,11 @@ def validate_people(people, source_total=None, table_quality=None):
     }
 
 
-def apply_validation_metadata(result, source_total=None, table_quality=None):
-    validated = validate_people(result.get("people") or [], source_total, table_quality)
+def apply_validation_metadata(result, source_total=None, table_quality=None, strict=False):
+    validated = validate_people(result.get("people") or [], source_total, table_quality, strict)
     merged = dict(result)
+    if source_total is not None:
+        merged["sourceTotal"] = source_total
     merged["people"] = validated["people"]
     merged["parse_confidence"] = validated["confidence"]
     merged["manual_review_required"] = validated["manual_review_required"]

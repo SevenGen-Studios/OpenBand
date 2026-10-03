@@ -21,6 +21,7 @@ python -m tools.ingest_alberta --refresh-roster --discover --refresh
 python -m tools.ingest_alberta --parse --workers 3
 python -m tools.merge_alberta_enrichment
 python -m tools.audit_alberta
+python tools/manual_review_report.py
 python tools/build_site.py
 python -m unittest discover -s tests
 node tests/test_provinces.js
@@ -37,11 +38,56 @@ python -m tools.ingest_alberta --parse --reparse
 python -m tools.ingest_alberta --parse --reparse --document-type audited
 ```
 
-The `alberta-ingestion.yml` manual GitHub workflow performs discovery, parsing, validation, generation, and tests, and uploads a review artifact. It does not commit or publish changes. Review the resulting coverage report and original PDFs before accepting updates. Increment the ingestion parser revision when interpretation changes so old checkpoints cannot bypass new checks.
+The `alberta-ingestion.yml` manually triggered GitHub workflow performs discovery, parsing, validation, generation, and tests, uploads a review artifact, and commits and pushes the validated refresh to main. Review the resulting coverage report and original PDFs. Increment the ingestion parser revision when interpretation changes so old checkpoints cannot bypass new checks.
+
+OCR preserves original page numbers, processes selected cover and statement pages,
+and caches successfully recognized text. On machines with limited memory, use
+`--workers 1` or `--workers 2`; `OPENBAND_OCR_THREADS` defaults to one per worker.
+Downloads reserve disk space for rendering, and the queue checkpoints every ten
+documents. Failed recognition remains reviewable and is retried on the next run.
+Financial retries reuse extracted text and rebuild geometric tables on statement
+pages while retaining the notes and original page positions. Image-only
+remuneration PDFs use OCR without repeating native table extraction; a complete
+OCR schedule with a reconciled printed footer can validate before geometric
+extraction.
+For memory-related OCR failures, `python -m tools.retry_alberta_ocr` caches each
+recognition result before loading the large financial dataset for merging. It
+retries unresolved extraction/OCR errors and contradictory validation flags on
+quarantined records. Successful pages survive a later
+page failure, while numerically ambiguous pages remain withheld if their
+independent cross-check fails.
+
+Windows can also use its installed English OCR language engine through the optional
+[WinOCR bindings](https://pypi.org/project/winocr/). With Python 3.12, install
+`requirements-windows-ocr.txt` and set `OPENBAND_OCR_ENGINE=windows` before running
+the same retry command. Word coordinates preserve financial rows. Pages containing
+ambiguous three-digit decimal separators are cross-checked with RapidOCR instead
+of guessing whether the source printed a comma. That cross-check runs in a
+separate process because loading ONNX alongside the Windows OCR runtime can
+crash on some machines. The backend is recorded on the
+filing, and its cache is separate from the default OCR cache. A reconciled
+operations statement allows OCR to stop after two additional selected pages;
+unresolved statements continue through the bounded page selection.
 
 ## Interpretation and review
 
 Source URLs, listing pages, document titles, retrieval dates, PDF hashes, parser status, and identity/year checks travel with each indexed filing. Source labels, selected fiscal-year columns, and page references accompany financial values. A known revised PDF cannot inherit remuneration rows from a different URL or hash.
+
+When an explicit PDF cover shows that ISC interchanged its remuneration and
+financial-statement labels, the parser uses the document's actual type and retains
+`listedDocType`, `listedDocumentTitle`, and the original URL. Alternative table
+extraction strategies are validated separately. Numeric names, plural footer
+totals, merged columns, implausible amounts, and unreconciled rows cannot qualify
+as newly recovered remuneration. Missing names or own-source pay figures are not
+filled with guesses. The remuneration review report includes Alberta's
+`manual_review` status as well as the legacy `pending_manual_review` status.
+
+Samson's split-funding tables use the printed remuneration and expense subtotals,
+without adding federal/own-source funding splits twice. Every expense component,
+funding split and footer column must reconcile. The printed `Chief/Councillor`
+role is preserved. Pre-extracted native text can validate these tables even when
+PDF geometry reconstruction fails. Quarantined records are excluded from validated
+coverage counts.
 
 Financial-position and cash-flow fields are extracted only from explicit statement labels. Missing values remain null. Net financial assets are distinct from total assets. Assets versus liabilities plus accumulated surplus is checked when all three are reported; legitimate alternative presentations remain reviewable at the source. Unexplained differences block publication.
 
@@ -58,6 +104,8 @@ Logos require a visual review and exact local-asset hash in `manual_overrides/al
 ## Coverage and limitations
 
 The October 2, 2026 repair pass is documented in `alberta-fix-report.md`.
+The subsequent parser recovery is detailed in `alberta-parser-recovery-report.md`
+and its JSON companion, including each originally unresolved source document.
 It rechecked all individual ISC disclosure listings, restored ISC-listed reserve
 areas for 47 profiles, verified 15 additional logos, corrected official website
 links, and recovered four Tthebatthie remuneration years. Missing disclosure
