@@ -1,15 +1,7 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-03T16:40:42Z",
+  "generated": "2026-10-04T17:03:35Z",
   "items": [
-    {
-      "bandId": 438,
-      "communityName": "Alexander",
-      "sourceName": "Alexander official website",
-      "url": "https://www.alexanderfn.com/",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
     {
       "bandId": 438,
       "communityName": "Alexander",
@@ -193,104 +185,6 @@
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
     },
     {
-      "bandId": 435,
-      "communityName": "Blood",
-      "sourceName": "Blood official website",
-      "url": "https://mail.bloodtribe.org/owa",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: URLError: <urlopen error [Errno -5] No address associated with hostname>"
-    },
-    {
-      "bandId": 435,
-      "communityName": "Blood",
-      "sourceName": "Blood official website",
-      "url": "https://outlook.office365.com/",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 417: Expectation Failed"
-    },
-    {
-      "bandId": 435,
-      "communityName": "Blood",
-      "sourceName": "Blood official website",
-      "url": "https://bloodtribe.org/wp-content/uploads/2026/09/HUDRLDRI-Policies.pdf",
-      "extractionMethod": "pdf_text",
-      "detectedTitle": "HOUSING UNIT DISPUTE",
-      "detectedDate": null,
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 435,
-      "communityName": "Blood",
-      "sourceName": "Blood official website",
-      "url": "https://bloodtribe.org/wp-content/uploads/2026/04/Opioids-Info-Poster-1-scaled.png",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": "Click here for locations",
-      "detectedDate": "2026-08-31",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 435,
-      "communityName": "Blood",
-      "sourceName": "Blood official website",
-      "url": "https://bloodtribe.org/wp-content/uploads/2025/04/Mar-4-2025-Updated-Opioid-Pamphlet-DRAFT_Page_4-1.png",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": "Click here for information",
-      "detectedDate": "2026-08-31",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 435,
-      "communityName": "Blood",
-      "sourceName": "Blood official website",
-      "url": "https://mail.bloodtribe.org/owa",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: URLError: <urlopen error [Errno -5] No address associated with hostname>"
-    },
-    {
-      "bandId": 435,
-      "communityName": "Blood",
-      "sourceName": "Blood official website",
-      "url": "https://outlook.office365.com/",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 417: Expectation Failed"
-    },
-    {
-      "bandId": 435,
-      "communityName": "Blood",
-      "sourceName": "Blood official website",
-      "url": "https://bloodtribe.org/wp-content/uploads/2026/09/HUDRLDRI-Policies.pdf",
-      "extractionMethod": "pdf_text",
-      "detectedTitle": "HOUSING UNIT DISPUTE",
-      "detectedDate": null,
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 435,
-      "communityName": "Blood",
-      "sourceName": "Blood official website",
-      "url": "https://bloodtribe.org/wp-content/uploads/2026/04/Opioids-Info-Poster-1-scaled.png",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": "Click here for locations",
-      "detectedDate": "2026-08-31",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 435,
-      "communityName": "Blood",
-      "sourceName": "Blood official website",
-      "url": "https://bloodtribe.org/wp-content/uploads/2025/04/Mar-4-2025-Updated-Opioid-Pamphlet-DRAFT_Page_4-1.png",
-      "extractionMethod": "image_ocr",
-      "detectedTitle": "Click here for information",
-      "detectedDate": "2026-08-31",
-      "status": "manual_review",
-      "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
       "bandId": 470,
       "communityName": "Chipewyan Prairie First Nation",
       "sourceName": "Chipewyan Prairie First Nation official website",
@@ -307,7 +201,7 @@
       "sourceName": "Chipewyan Prairie First Nation official website",
       "url": "https://cpfn.ca/assets/uploads/Notice-of-Band-Meeting-of-the-Electors.pdf",
       "extractionMethod": "pdf_ocr",
-      "detectedTitle": "ensure that my concerns are also heard should a meeting take place before an appeal",
+      "detectedTitle": "Election fraud.",
       "detectedDate": null,
       "status": "manual_review",
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
@@ -322,6 +216,38 @@
       "detectedDate": null,
       "status": "manual_review",
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
+    },
+    {
+      "bandId": 448,
+      "communityName": "Dene Tha'",
+      "sourceName": "Dene Tha' official website",
+      "url": "https://denetha.ca/community",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 500: Internal Server Error"
+    },
+    {
+      "bandId": 448,
+      "communityName": "Dene Tha'",
+      "sourceName": "Dene Tha' official website",
+      "url": "https://denetha.ca/education/community-school",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 500: Internal Server Error"
+    },
+    {
+      "bandId": 448,
+      "communityName": "Dene Tha'",
+      "sourceName": "Dene Tha' official website",
+      "url": "https://denetha.ca/author/marcnapil",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 500: Internal Server Error"
+    },
+    {
+      "bandId": 448,
+      "communityName": "Dene Tha'",
+      "sourceName": "Dene Tha' official website",
+      "url": "https://denetha.ca/department/economic-development",
+      "status": "detail_unverified",
+      "reason": "detail fetch failed: HTTPError: HTTP Error 500: Internal Server Error"
     },
     {
       "bandId": 450,
@@ -340,7 +266,7 @@
       "sourceName": "Driftpile Cree Nation official website",
       "url": "https://dcn450.com/wp-content/uploads/2025/01/DCN-Election-Results-YouTube-Thumbnail-300x169.png",
       "extractionMethod": "image_ocr",
-      "detectedTitle": "Election 2sacnomne",
+      "detectedTitle": null,
       "detectedDate": null,
       "status": "manual_review",
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
@@ -373,7 +299,7 @@
       "sourceName": "Driftpile Cree Nation official website",
       "url": "https://dcn450.com/wp-content/uploads/2025/01/DCN-Election-Results-YouTube-Thumbnail-300x169.png",
       "extractionMethod": "image_ocr",
-      "detectedTitle": "Election 2sacnomne",
+      "detectedTitle": null,
       "detectedDate": null,
       "status": "manual_review",
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
@@ -502,7 +428,7 @@
       "bandId": 443,
       "communityName": "Ermineskin Tribe",
       "sourceName": "Ermineskin Tribe official website",
-      "url": "https://ermineskin.ca/wp-content/uploads/2026/10/833346846_122159364747008644_3020832260126763879_n-814x1024.jpg",
+      "url": "https://ermineskin.ca/wp-content/uploads/2026/10/837040550_1415168370041570_9136493293821627418_n-576x1024.jpg",
       "extractionMethod": "image_ocr",
       "detectedTitle": ".path{fill:none;stroke:#333;stroke-miterlimit:10;stroke-width:1.5px;}",
       "detectedDate": null,
@@ -513,7 +439,7 @@
       "bandId": 443,
       "communityName": "Ermineskin Tribe",
       "sourceName": "Ermineskin Tribe official website",
-      "url": "https://ermineskin.ca/wp-content/uploads/2026/10/833093964_1476398020985729_7230470675577514890_n-669x1024.png",
+      "url": "https://ermineskin.ca/wp-content/uploads/2026/10/833346846_122159364747008644_3020832260126763879_n-814x1024.jpg",
       "extractionMethod": "image_ocr",
       "detectedTitle": ".path{fill:none;stroke:#333;stroke-miterlimit:10;stroke-width:1.5px;}",
       "detectedDate": null,
@@ -535,7 +461,7 @@
       "bandId": 443,
       "communityName": "Ermineskin Tribe",
       "sourceName": "Ermineskin Tribe official website",
-      "url": "https://ermineskin.ca/wp-content/uploads/2026/10/833346846_122159364747008644_3020832260126763879_n-814x1024.jpg",
+      "url": "https://ermineskin.ca/wp-content/uploads/2026/10/837040550_1415168370041570_9136493293821627418_n-576x1024.jpg",
       "extractionMethod": "image_ocr",
       "detectedTitle": ".path{fill:none;stroke:#333;stroke-miterlimit:10;stroke-width:1.5px;}",
       "detectedDate": null,
@@ -546,7 +472,7 @@
       "bandId": 443,
       "communityName": "Ermineskin Tribe",
       "sourceName": "Ermineskin Tribe official website",
-      "url": "https://ermineskin.ca/wp-content/uploads/2026/10/833093964_1476398020985729_7230470675577514890_n-669x1024.png",
+      "url": "https://ermineskin.ca/wp-content/uploads/2026/10/833346846_122159364747008644_3020832260126763879_n-814x1024.jpg",
       "extractionMethod": "image_ocr",
       "detectedTitle": ".path{fill:none;stroke:#333;stroke-miterlimit:10;stroke-width:1.5px;}",
       "detectedDate": null,
@@ -615,7 +541,7 @@
       "sourceName": "Fort McMurray #468 First Nation official website",
       "url": "https://www.fmfn468.com/media/jeshbath/community-pillars-v4.png?rmode=max&width=657&height=658",
       "extractionMethod": "image_ocr",
-      "detectedTitle": null,
+      "detectedTitle": "Culture ¥, ‘ ‘",
       "detectedDate": null,
       "status": "manual_review",
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
@@ -1075,74 +1001,10 @@
       "sourceName": "Saddle Lake Cree Nation official website",
       "url": "https://slcn125.ca/wp-content/uploads/2026/08/BUS-FORM-2026-2027-SL-TO-SCHOOLS.pdf",
       "extractionMethod": "pdf_ocr",
-      "detectedTitle": "* LAST SCHOOL ATTENDED",
+      "detectedTitle": "📄 Open / Download Full PDF Document",
       "detectedDate": null,
       "status": "manual_review",
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/governance",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/governance",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/governance",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/governance",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/samson-celebration-powwow-initiation-aug-2026",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/temporary-closure-for-2nd-3rd-floors-of-cta-building-july-23-24-2026",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/nipisihkopahk-acimowin-newsletter-may2026",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/after-school-care-program-with-samson-head-start",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 444,
@@ -1156,9 +1018,9 @@
       "bandId": 444,
       "communityName": "Samson",
       "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/nipisihkopahk-acimowin-newsletter-may2026",
+      "url": "https://samsoncree.com/imunify-bot-check",
       "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://samsoncree.com/imunify-bot-check"
     },
     {
       "bandId": 444,
@@ -1191,38 +1053,6 @@
       "url": "https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsamsoncree.com%2Fsocial-media-and-online-gaming-safety-july-2026%2F&title=Social+media+and+Online+Gaming+Safety+July.+2026&summary=&source=SCN",
       "status": "detail_unverified",
       "reason": "detail fetch failed: PermissionError: robots.txt disallows https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsamsoncree.com%2Fsocial-media-and-online-gaming-safety-july-2026%2F&title=Social+media+and+Online+Gaming+Safety+July.+2026&summary=&source=SCN"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/samson-celebration-powwow-initiation-aug-2026",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/temporary-closure-for-2nd-3rd-floors-of-cta-building-july-23-24-2026",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/nipisihkopahk-acimowin-newsletter-may2026",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/after-school-care-program-with-samson-head-start",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 444,
@@ -1269,70 +1099,6 @@
       "bandId": 444,
       "communityName": "Samson",
       "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/governance",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/governance",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/governance",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/governance",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/samson-celebration-powwow-initiation-aug-2026",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/temporary-closure-for-2nd-3rd-floors-of-cta-building-july-23-24-2026",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/nipisihkopahk-acimowin-newsletter-may2026",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/after-school-care-program-with-samson-head-start",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
       "url": "https://samsoncree.com/scn-elders-community-engagement-sept-25-2026",
       "status": "detail_unverified",
       "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
@@ -1341,9 +1107,9 @@
       "bandId": 444,
       "communityName": "Samson",
       "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/nipisihkopahk-acimowin-newsletter-may2026",
+      "url": "https://samsoncree.com/imunify-bot-check",
       "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
+      "reason": "detail fetch failed: PermissionError: robots.txt disallows https://samsoncree.com/imunify-bot-check"
     },
     {
       "bandId": 444,
@@ -1376,38 +1142,6 @@
       "url": "https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsamsoncree.com%2Fsocial-media-and-online-gaming-safety-july-2026%2F&title=Social+media+and+Online+Gaming+Safety+July.+2026&summary=&source=SCN",
       "status": "detail_unverified",
       "reason": "detail fetch failed: PermissionError: robots.txt disallows https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsamsoncree.com%2Fsocial-media-and-online-gaming-safety-july-2026%2F&title=Social+media+and+Online+Gaming+Safety+July.+2026&summary=&source=SCN"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/samson-celebration-powwow-initiation-aug-2026",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/temporary-closure-for-2nd-3rd-floors-of-cta-building-july-23-24-2026",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/nipisihkopahk-acimowin-newsletter-may2026",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "bandId": 444,
-      "communityName": "Samson",
-      "sourceName": "Samson official website",
-      "url": "https://samsoncree.com/after-school-care-program-with-samson-head-start",
-      "status": "detail_unverified",
-      "reason": "detail fetch failed: HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 444,
@@ -1686,7 +1420,7 @@
       "sourceName": "Tallcree Tribal Government official website",
       "url": "https://www.tallcree.ca/wp-content/uploads/2026/09/Blood-Quantum-Statement-September-2026-2.pdf",
       "extractionMethod": "pdf_ocr",
-      "detectedTitle": "Blood Quantum Statement",
+      "detectedTitle": "It is recommended by legal council that those First Nation Members entering the US",
       "detectedDate": null,
       "status": "manual_review",
       "reason": "Document lacks a clear news title, publication date, or relevant update context"
@@ -2000,7 +1734,7 @@
         "source-backed"
       ],
       "bandId": 463,
-      "discoveredAt": "2026-10-03T16:31:47Z",
+      "discoveredAt": "2026-10-04T16:54:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2027,7 +1761,7 @@
         "source-backed"
       ],
       "bandId": 463,
-      "discoveredAt": "2026-10-03T16:31:47Z",
+      "discoveredAt": "2026-10-04T16:54:34Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2054,7 +1788,7 @@
         "source-backed"
       ],
       "bandId": 463,
-      "discoveredAt": "2026-10-03T16:32:57Z",
+      "discoveredAt": "2026-10-04T16:55:31Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_text",
@@ -2083,7 +1817,7 @@
         "source-backed"
       ],
       "bandId": 473,
-      "discoveredAt": "2026-10-03T16:31:43Z",
+      "discoveredAt": "2026-10-04T16:54:51Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2112,7 +1846,7 @@
         "source-backed"
       ],
       "bandId": 473,
-      "discoveredAt": "2026-10-03T16:31:43Z",
+      "discoveredAt": "2026-10-04T16:54:51Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2141,7 +1875,7 @@
         "source-backed"
       ],
       "bandId": 473,
-      "discoveredAt": "2026-10-03T16:31:43Z",
+      "discoveredAt": "2026-10-04T16:54:51Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -2170,7 +1904,7 @@
         "source-backed"
       ],
       "bandId": 473,
-      "discoveredAt": "2026-10-03T16:31:43Z",
+      "discoveredAt": "2026-10-04T16:54:51Z",
       "communityConfidence": 0.98,
       "dateSource": "article:published_time",
       "extractionMethod": "html",
@@ -2178,250 +1912,6 @@
       "thumbnail": "https://bearspawfirstnation.ca/wp-content/uploads/2026/07/Screenshot-2026-07-06-at-3.36.55-PM.jpg",
       "detailVerified": true,
       "reviewReason": "Title does not clearly describe a supported community update"
-    },
-    {
-      "id": "blood-2026-10-03-289eb64929",
-      "storyKey": "435-2026-10-03-blood-tribe-webmail",
-      "title": "Blood Tribe Webmail",
-      "communityName": "Blood",
-      "communityAliases": [
-        "Blood Tribe",
-        "Kainai Nation"
-      ],
-      "provinceTerritory": "AB",
-      "category": "Infrastructure",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Blood official website",
-      "publishedAt": "2026-10-03",
-      "datePrecision": "day",
-      "url": "https://mail.bloodtribe.org/owa",
-      "summary": "Skip to content Menu Governance Blood Tribe Chief & Council Bylaws Kainayssini Administration Directory Departments Emergency Contacts Opioid Response Events News Jobs Search for: Search Button Quick Links: Blood Tribe Chief & Council Entities Contact Us Facebook Instagram YouTube TikTok Open Search Window Blood Tribe Webmail BT Office 365 Email Immediate Notices 10 / 01 : Public Notice – Scheduled Water Main Shut Of.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 435,
-      "discoveredAt": "2026-10-03T16:31:44Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://bloodtribe.org/",
-      "thumbnail": "https://bloodtribe.org/wp-content/uploads/2023/05/header_logo.png",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "blood-2026-10-03-c9905ea09b",
-      "storyKey": "435-2026-10-03-bt-office-365-email",
-      "title": "BT Office 365 Email",
-      "communityName": "Blood",
-      "communityAliases": [
-        "Blood Tribe",
-        "Kainai Nation"
-      ],
-      "provinceTerritory": "AB",
-      "category": "Infrastructure",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Blood official website",
-      "publishedAt": "2026-10-03",
-      "datePrecision": "day",
-      "url": "https://outlook.office365.com/",
-      "summary": "Skip to content Menu Governance Blood Tribe Chief & Council Bylaws Kainayssini Administration Directory Departments Emergency Contacts Opioid Response Events News Jobs Search for: Search Button Quick Links: Blood Tribe Chief & Council Entities Contact Us Facebook Instagram YouTube TikTok Open Search Window Blood Tribe Webmail BT Office 365 Email Immediate Notices 10 / 01 : Public Notice – Scheduled Water Main Shut Of.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 435,
-      "discoveredAt": "2026-10-03T16:31:44Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://bloodtribe.org/",
-      "thumbnail": "https://bloodtribe.org/wp-content/uploads/2023/05/header_logo.png",
-      "reviewReason": "Source URL is a homepage or archive rather than a dated article"
-    },
-    {
-      "id": "blood-2026-10-02-be3cb2473b",
-      "storyKey": "435-2026-10-02-blood-tribe-administration",
-      "title": "Blood Tribe Administration",
-      "communityName": "Blood",
-      "communityAliases": [
-        "Blood Tribe",
-        "Kainai Nation"
-      ],
-      "provinceTerritory": "AB",
-      "category": "Governance",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Blood official website",
-      "publishedAt": "2026-10-02",
-      "datePrecision": "day",
-      "url": "https://bloodtribe.org/category/blood-tribe-administration",
-      "summary": "Community Notice – Voter Requirements for Alberta October 19 Referendum October 2, 2026 | Blood Tribe Administration , Blood Tribe Chief & Council , News , Public Notice , Town News , Tribal Government | Communications Get your ID ready before voting in the Alberta Referendum – October 19th. Blood Tribe Membership ... Read More → Community Notice – Voter Requirements for Alberta October 19 Referendum.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 435,
-      "discoveredAt": "2026-10-03T16:31:56Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://bloodtribe.org/category/news",
-      "thumbnail": "https://bloodtribe.org/wp-content/uploads/2026/10/Referendum-Campaign-Website-banner-—-2172-×-724-—-Review-draft-350x250.png",
-      "detailVerified": true,
-      "reviewReason": "Source URL is a homepage or archive rather than a dated article"
-    },
-    {
-      "id": "blood-2026-10-02-df7f7ad2da",
-      "storyKey": "435-2026-10-02-blood-tribe-chief-and-council",
-      "title": "Blood Tribe Chief & Council",
-      "communityName": "Blood",
-      "communityAliases": [
-        "Blood Tribe",
-        "Kainai Nation"
-      ],
-      "provinceTerritory": "AB",
-      "category": "Governance",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Blood official website",
-      "publishedAt": "2026-10-02",
-      "datePrecision": "day",
-      "url": "https://bloodtribe.org/category/blood-tribe-chief-council",
-      "summary": "Community Notice – Voter Requirements for Alberta October 19 Referendum October 2, 2026 | Blood Tribe Administration , Blood Tribe Chief & Council , News , Public Notice , Town News , Tribal Government | Communications Get your ID ready before voting in the Alberta Referendum – October 19th. Blood Tribe Membership ... Read More → Community Notice – Voter Requirements for Alberta October 19 Referendum.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 435,
-      "discoveredAt": "2026-10-03T16:31:56Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://bloodtribe.org/category/news",
-      "thumbnail": "https://bloodtribe.org/wp-content/uploads/2026/10/Referendum-Campaign-Website-banner-—-2172-×-724-—-Review-draft-350x250.png",
-      "detailVerified": true,
-      "reviewReason": "Source URL is a homepage or archive rather than a dated article"
-    },
-    {
-      "id": "blood-2026-10-03-289eb64929",
-      "storyKey": "435-2026-10-03-blood-tribe-webmail",
-      "title": "Blood Tribe Webmail",
-      "communityName": "Blood",
-      "communityAliases": [
-        "Blood Tribe",
-        "Kainai Nation"
-      ],
-      "provinceTerritory": "AB",
-      "category": "Infrastructure",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Blood official website",
-      "publishedAt": "2026-10-03",
-      "datePrecision": "day",
-      "url": "https://mail.bloodtribe.org/owa",
-      "summary": "Skip to content Menu Governance Blood Tribe Chief & Council Bylaws Kainayssini Administration Directory Departments Emergency Contacts Opioid Response Events News Jobs Search for: Search Button Quick Links: Blood Tribe Chief & Council Entities Contact Us Facebook Instagram YouTube TikTok Open Search Window Blood Tribe Webmail BT Office 365 Email Immediate Notices 10 / 01 : Public Notice – Scheduled Water Main Shut Of.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 435,
-      "discoveredAt": "2026-10-03T16:31:48Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://bloodtribe.org/",
-      "thumbnail": "https://bloodtribe.org/wp-content/uploads/2023/05/header_logo.png",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "blood-2026-10-03-c9905ea09b",
-      "storyKey": "435-2026-10-03-bt-office-365-email",
-      "title": "BT Office 365 Email",
-      "communityName": "Blood",
-      "communityAliases": [
-        "Blood Tribe",
-        "Kainai Nation"
-      ],
-      "provinceTerritory": "AB",
-      "category": "Infrastructure",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Blood official website",
-      "publishedAt": "2026-10-03",
-      "datePrecision": "day",
-      "url": "https://outlook.office365.com/",
-      "summary": "Skip to content Menu Governance Blood Tribe Chief & Council Bylaws Kainayssini Administration Directory Departments Emergency Contacts Opioid Response Events News Jobs Search for: Search Button Quick Links: Blood Tribe Chief & Council Entities Contact Us Facebook Instagram YouTube TikTok Open Search Window Blood Tribe Webmail BT Office 365 Email Immediate Notices 10 / 01 : Public Notice – Scheduled Water Main Shut Of.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 435,
-      "discoveredAt": "2026-10-03T16:31:48Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://bloodtribe.org/",
-      "thumbnail": "https://bloodtribe.org/wp-content/uploads/2023/05/header_logo.png",
-      "reviewReason": "Source URL is a homepage or archive rather than a dated article"
-    },
-    {
-      "id": "blood-2026-10-02-be3cb2473b",
-      "storyKey": "435-2026-10-02-blood-tribe-administration",
-      "title": "Blood Tribe Administration",
-      "communityName": "Blood",
-      "communityAliases": [
-        "Blood Tribe",
-        "Kainai Nation"
-      ],
-      "provinceTerritory": "AB",
-      "category": "Governance",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Blood official website",
-      "publishedAt": "2026-10-02",
-      "datePrecision": "day",
-      "url": "https://bloodtribe.org/category/blood-tribe-administration",
-      "summary": "Community Notice – Voter Requirements for Alberta October 19 Referendum October 2, 2026 | Blood Tribe Administration , Blood Tribe Chief & Council , News , Public Notice , Town News , Tribal Government | Communications Get your ID ready before voting in the Alberta Referendum – October 19th. Blood Tribe Membership ... Read More → Community Notice – Voter Requirements for Alberta October 19 Referendum.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 435,
-      "discoveredAt": "2026-10-03T16:31:59Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://bloodtribe.org/category/news",
-      "thumbnail": "https://bloodtribe.org/wp-content/uploads/2026/10/Referendum-Campaign-Website-banner-—-2172-×-724-—-Review-draft-350x250.png",
-      "detailVerified": true,
-      "reviewReason": "Source URL is a homepage or archive rather than a dated article"
-    },
-    {
-      "id": "blood-2026-10-02-df7f7ad2da",
-      "storyKey": "435-2026-10-02-blood-tribe-chief-and-council",
-      "title": "Blood Tribe Chief & Council",
-      "communityName": "Blood",
-      "communityAliases": [
-        "Blood Tribe",
-        "Kainai Nation"
-      ],
-      "provinceTerritory": "AB",
-      "category": "Governance",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Blood official website",
-      "publishedAt": "2026-10-02",
-      "datePrecision": "day",
-      "url": "https://bloodtribe.org/category/blood-tribe-chief-council",
-      "summary": "Community Notice – Voter Requirements for Alberta October 19 Referendum October 2, 2026 | Blood Tribe Administration , Blood Tribe Chief & Council , News , Public Notice , Town News , Tribal Government | Communications Get your ID ready before voting in the Alberta Referendum – October 19th. Blood Tribe Membership ... Read More → Community Notice – Voter Requirements for Alberta October 19 Referendum.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 435,
-      "discoveredAt": "2026-10-03T16:31:59Z",
-      "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://bloodtribe.org/category/news",
-      "thumbnail": "https://bloodtribe.org/wp-content/uploads/2026/10/Referendum-Campaign-Website-banner-—-2172-×-724-—-Review-draft-350x250.png",
-      "detailVerified": true,
-      "reviewReason": "Source URL is a homepage or archive rather than a dated article"
     },
     {
       "id": "chipewyan-prairie-first-nation-2026-07-21-dd7d660d1f",
@@ -2442,7 +1932,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-03T16:32:15Z",
+      "discoveredAt": "2026-10-04T16:54:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2468,7 +1958,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-03T16:32:15Z",
+      "discoveredAt": "2026-10-04T16:54:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2494,7 +1984,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-03T16:32:15Z",
+      "discoveredAt": "2026-10-04T16:54:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2520,7 +2010,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-03T16:32:15Z",
+      "discoveredAt": "2026-10-04T16:54:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2546,7 +2036,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-03T16:32:15Z",
+      "discoveredAt": "2026-10-04T16:54:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2572,7 +2062,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-03T16:32:15Z",
+      "discoveredAt": "2026-10-04T16:54:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2598,7 +2088,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-03T16:32:15Z",
+      "discoveredAt": "2026-10-04T16:54:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2624,7 +2114,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-03T16:32:15Z",
+      "discoveredAt": "2026-10-04T16:54:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2650,7 +2140,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-03T16:32:16Z",
+      "discoveredAt": "2026-10-04T16:54:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2676,7 +2166,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-03T16:32:16Z",
+      "discoveredAt": "2026-10-04T16:54:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2702,7 +2192,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-03T16:32:16Z",
+      "discoveredAt": "2026-10-04T16:54:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2728,7 +2218,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-03T16:32:16Z",
+      "discoveredAt": "2026-10-04T16:54:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2754,7 +2244,7 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-03T16:32:17Z",
+      "discoveredAt": "2026-10-04T16:54:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2780,13 +2270,92 @@
         "source-backed"
       ],
       "bandId": 470,
-      "discoveredAt": "2026-10-03T16:32:33Z",
+      "discoveredAt": "2026-10-04T16:54:50Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_text",
       "sourcePage": "https://www.cpfn.ca/latest-news/bylaw-updates-july-2026",
       "detailVerified": false,
       "reviewReason": "Publication date could not be verified on the detail page"
+    },
+    {
+      "id": "dene-tha-2026-10-17-fa8061c7cb",
+      "storyKey": "448-2026-10-17-close-menu",
+      "title": "Close Menu",
+      "communityName": "Dene Tha'",
+      "communityAliases": [],
+      "provinceTerritory": "AB",
+      "category": "Infrastructure",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Dene Tha' official website",
+      "publishedAt": "2026-10-17",
+      "datePrecision": "day",
+      "url": "https://denetha.ca/category/dene-tha-news",
+      "summary": "No Comments Ovintiv Road Closure Notice Effective October 17th, 2026 – 12:01am MST OVINTIV SHEKILIE ROAD– ZAMA AREA Be advised that effective October 17th, 2026 @ 12:01am MST, the Shekilie road will… Chateh Meander River Bushe River info@denetha.ca 877-336-3842 (Toll Free) © Dene Tha’ First Nation 2025 Close Menu Community News Calendar About Our History Our History Gallery Gallery Programs & Services Lands Infrastru.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 448,
+      "discoveredAt": "2026-10-04T16:55:53Z",
+      "communityConfidence": 0.98,
+      "dateSource": "unstructured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://denetha.ca/category/dene-tha-news",
+      "reviewReason": "Date appears to be a future event date, not a publication date"
+    },
+    {
+      "id": "dene-tha-2026-10-17-c38f6b8b40",
+      "storyKey": "448-2026-10-17-dtfn-admin",
+      "title": "DTFN Admin",
+      "communityName": "Dene Tha'",
+      "communityAliases": [],
+      "provinceTerritory": "AB",
+      "category": "Infrastructure",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Dene Tha' official website",
+      "publishedAt": "2026-10-17",
+      "datePrecision": "day",
+      "url": "https://denetha.ca/author/marcnapil",
+      "summary": "Road Closure Notice General News Road Closure Notice Ovintiv Road Closure Notice Effective October 17th, 2026 – 12:01am MST OVINTIV SHEKILIE ROAD– ZAMA… DTFN Admin September 28, 2026.",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 448,
+      "discoveredAt": "2026-10-04T16:55:22Z",
+      "communityConfidence": 0.98,
+      "dateSource": "structured-listing",
+      "extractionMethod": "html",
+      "sourcePage": "https://denetha.ca/",
+      "reviewReason": "Date appears to be a future event date, not a publication date"
+    },
+    {
+      "id": "dene-tha-2026-09-25-39d6ad1389",
+      "storyKey": "448-2026-09-25-brighter-future-support-worker",
+      "title": "Brighter Future Support Worker - Dene Tha' First Nation",
+      "communityName": "Dene Tha'",
+      "communityAliases": [],
+      "provinceTerritory": "AB",
+      "category": "Healthcare",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Dene Tha' official website",
+      "publishedAt": "2026-09-25",
+      "datePrecision": "day",
+      "url": "https://denetha.ca/job-postings/brighter-future-support-worker",
+      "summary": "Employment Opportunity Brighter Future Support Worker Dene Tha’ First Nation’s Health Department is recruiting a Brighter Future Support Worker for the community. Chateh, AB. The primary goal of the BF...",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 448,
+      "discoveredAt": "2026-10-04T16:55:22Z",
+      "communityConfidence": 0.98,
+      "dateSource": "json-ld:datePublished",
+      "extractionMethod": "html",
+      "sourcePage": "https://denetha.ca/",
+      "detailVerified": true,
+      "reviewReason": "Title does not clearly describe a supported community update"
     },
     {
       "id": "duncan-s-first-nation-2025-06-19-2aa35bed5d",
@@ -2807,7 +2376,7 @@
         "source-backed"
       ],
       "bandId": 451,
-      "discoveredAt": "2026-10-03T16:33:24Z",
+      "discoveredAt": "2026-10-04T16:55:16Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2833,7 +2402,7 @@
         "source-backed"
       ],
       "bandId": 451,
-      "discoveredAt": "2026-10-03T16:33:24Z",
+      "discoveredAt": "2026-10-04T16:55:16Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2859,7 +2428,7 @@
         "source-backed"
       ],
       "bandId": 451,
-      "discoveredAt": "2026-10-03T16:33:24Z",
+      "discoveredAt": "2026-10-04T16:55:16Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2885,7 +2454,7 @@
         "source-backed"
       ],
       "bandId": 451,
-      "discoveredAt": "2026-10-03T16:33:24Z",
+      "discoveredAt": "2026-10-04T16:55:16Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -2911,7 +2480,7 @@
         "source-backed"
       ],
       "bandId": 451,
-      "discoveredAt": "2026-10-03T16:33:28Z",
+      "discoveredAt": "2026-10-04T16:55:20Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_text",
@@ -2938,7 +2507,7 @@
         "source-backed"
       ],
       "bandId": 451,
-      "discoveredAt": "2026-10-03T16:33:29Z",
+      "discoveredAt": "2026-10-04T16:55:22Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_ocr",
@@ -2965,7 +2534,7 @@
         "source-backed"
       ],
       "bandId": 451,
-      "discoveredAt": "2026-10-03T16:33:30Z",
+      "discoveredAt": "2026-10-04T16:55:22Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_text",
@@ -2992,7 +2561,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-10-03T16:33:33Z",
+      "discoveredAt": "2026-10-04T16:55:31Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3020,7 +2589,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-10-03T16:34:02Z",
+      "discoveredAt": "2026-10-04T16:56:01Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3046,7 +2615,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-10-03T16:33:33Z",
+      "discoveredAt": "2026-10-04T16:55:32Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3074,7 +2643,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-10-03T16:33:33Z",
+      "discoveredAt": "2026-10-04T16:55:32Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3102,7 +2671,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-10-03T16:33:33Z",
+      "discoveredAt": "2026-10-04T16:55:32Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3130,7 +2699,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-10-03T16:33:33Z",
+      "discoveredAt": "2026-10-04T16:55:32Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3158,7 +2727,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-10-03T16:33:33Z",
+      "discoveredAt": "2026-10-04T16:55:32Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3186,7 +2755,7 @@
         "source-backed"
       ],
       "bandId": 440,
-      "discoveredAt": "2026-10-03T16:34:02Z",
+      "discoveredAt": "2026-10-04T16:56:01Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3194,8 +2763,8 @@
       "reviewReason": "Title does not clearly describe a supported community update"
     },
     {
-      "id": "ermineskin-tribe-2026-10-02-689844cb77",
-      "storyKey": "443-2026-10-02-newsletters",
+      "id": "ermineskin-tribe-2026-10-04-aeb35ed443",
+      "storyKey": "443-2026-10-04-newsletters",
       "title": "Newsletters",
       "communityName": "Ermineskin Tribe",
       "communityAliases": [
@@ -3205,7 +2774,7 @@
       "category": "Healthcare",
       "sourceType": "Official First Nation Website",
       "sourceName": "Ermineskin Tribe official website",
-      "publishedAt": "2026-10-02",
+      "publishedAt": "2026-10-04",
       "datePrecision": "day",
       "url": "https://ermineskin.ca/newsletters",
       "summary": "Subscribe our newsletter by email. The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
@@ -3214,17 +2783,18 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-10-03T16:33:41Z",
+      "discoveredAt": "2026-10-04T16:55:44Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://ermineskin.ca/",
+      "thumbnail": "https://ermineskin.ca/wp-content/uploads/2019/04/qw.jpg",
       "detailVerified": true,
       "reviewReason": "Title identifies navigation, a directory, or an evergreen section"
     },
     {
-      "id": "ermineskin-tribe-2026-10-02-a4929acfa1",
-      "storyKey": "443-2026-10-02-job-opportunities",
+      "id": "ermineskin-tribe-2026-10-04-ecb8ae8502",
+      "storyKey": "443-2026-10-04-job-opportunities",
       "title": "Job Opportunities",
       "communityName": "Ermineskin Tribe",
       "communityAliases": [
@@ -3234,7 +2804,7 @@
       "category": "Healthcare",
       "sourceType": "Official First Nation Website",
       "sourceName": "Ermineskin Tribe official website",
-      "publishedAt": "2026-10-02",
+      "publishedAt": "2026-10-04",
       "datePrecision": "day",
       "url": "https://ermineskin.ca/job-opportunities",
       "summary": "as of September 16th, 2026 The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
@@ -3243,17 +2813,18 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-10-03T16:33:41Z",
+      "discoveredAt": "2026-10-04T16:55:44Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://ermineskin.ca/",
+      "thumbnail": "https://ermineskin.ca/wp-content/uploads/2019/04/qw.jpg",
       "detailVerified": true,
       "reviewReason": "Employment posting belongs in Jobs & Employment"
     },
     {
-      "id": "ermineskin-tribe-2026-10-02-e3d16f7b95",
-      "storyKey": "443-2026-10-02-emergency-contacts",
+      "id": "ermineskin-tribe-2026-10-04-f46baf6337",
+      "storyKey": "443-2026-10-04-emergency-contacts",
       "title": "Emergency Contacts",
       "communityName": "Ermineskin Tribe",
       "communityAliases": [
@@ -3263,7 +2834,7 @@
       "category": "Healthcare",
       "sourceType": "Official First Nation Website",
       "sourceName": "Ermineskin Tribe official website",
-      "publishedAt": "2026-10-02",
+      "publishedAt": "2026-10-04",
       "datePrecision": "day",
       "url": "https://ermineskin.ca/ermergency-contact",
       "summary": "The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
@@ -3272,17 +2843,18 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-10-03T16:33:41Z",
+      "discoveredAt": "2026-10-04T16:55:44Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://ermineskin.ca/",
+      "thumbnail": "https://ermineskin.ca/wp-content/uploads/2019/04/qw.jpg",
       "detailVerified": false,
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "ermineskin-tribe-2026-10-02-a58e9954bc",
-      "storyKey": "443-2026-10-02-more-news",
+      "id": "ermineskin-tribe-2026-10-04-3c7fdecfdd",
+      "storyKey": "443-2026-10-04-more-news",
       "title": "More News",
       "communityName": "Ermineskin Tribe",
       "communityAliases": [
@@ -3292,7 +2864,7 @@
       "category": "Healthcare",
       "sourceType": "Official First Nation Website",
       "sourceName": "Ermineskin Tribe official website",
-      "publishedAt": "2026-10-02",
+      "publishedAt": "2026-10-04",
       "datePrecision": "day",
       "url": "https://ermineskin.ca/news",
       "summary": "The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
@@ -3301,17 +2873,18 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-10-03T16:33:41Z",
+      "discoveredAt": "2026-10-04T16:55:44Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://ermineskin.ca/",
+      "thumbnail": "https://ermineskin.ca/wp-content/uploads/2019/04/qw.jpg",
       "detailVerified": false,
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "ermineskin-tribe-2026-10-02-ca977cd214",
-      "storyKey": "443-2026-10-02-more-updates",
+      "id": "ermineskin-tribe-2026-10-04-73b9a3789e",
+      "storyKey": "443-2026-10-04-more-updates",
       "title": "More Updates",
       "communityName": "Ermineskin Tribe",
       "communityAliases": [
@@ -3321,7 +2894,7 @@
       "category": "Healthcare",
       "sourceType": "Official First Nation Website",
       "sourceName": "Ermineskin Tribe official website",
-      "publishedAt": "2026-10-02",
+      "publishedAt": "2026-10-04",
       "datePrecision": "day",
       "url": "https://ermineskin.ca/eventsc",
       "summary": "The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
@@ -3330,17 +2903,18 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-10-03T16:33:41Z",
+      "discoveredAt": "2026-10-04T16:55:44Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://ermineskin.ca/",
+      "thumbnail": "https://ermineskin.ca/wp-content/uploads/2019/04/qw.jpg",
       "detailVerified": false,
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "ermineskin-tribe-2026-10-02-689844cb77",
-      "storyKey": "443-2026-10-02-newsletters",
+      "id": "ermineskin-tribe-2026-10-04-aeb35ed443",
+      "storyKey": "443-2026-10-04-newsletters",
       "title": "Newsletters",
       "communityName": "Ermineskin Tribe",
       "communityAliases": [
@@ -3350,7 +2924,7 @@
       "category": "Healthcare",
       "sourceType": "Official First Nation Website",
       "sourceName": "Ermineskin Tribe official website",
-      "publishedAt": "2026-10-02",
+      "publishedAt": "2026-10-04",
       "datePrecision": "day",
       "url": "https://ermineskin.ca/newsletters",
       "summary": "Subscribe our newsletter by email. The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
@@ -3359,17 +2933,18 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-10-03T16:33:41Z",
+      "discoveredAt": "2026-10-04T16:55:45Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://ermineskin.ca/",
+      "thumbnail": "https://ermineskin.ca/wp-content/uploads/2019/04/qw.jpg",
       "detailVerified": true,
       "reviewReason": "Title identifies navigation, a directory, or an evergreen section"
     },
     {
-      "id": "ermineskin-tribe-2026-10-02-a4929acfa1",
-      "storyKey": "443-2026-10-02-job-opportunities",
+      "id": "ermineskin-tribe-2026-10-04-ecb8ae8502",
+      "storyKey": "443-2026-10-04-job-opportunities",
       "title": "Job Opportunities",
       "communityName": "Ermineskin Tribe",
       "communityAliases": [
@@ -3379,7 +2954,7 @@
       "category": "Healthcare",
       "sourceType": "Official First Nation Website",
       "sourceName": "Ermineskin Tribe official website",
-      "publishedAt": "2026-10-02",
+      "publishedAt": "2026-10-04",
       "datePrecision": "day",
       "url": "https://ermineskin.ca/job-opportunities",
       "summary": "as of September 16th, 2026 The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
@@ -3388,17 +2963,18 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-10-03T16:33:41Z",
+      "discoveredAt": "2026-10-04T16:55:45Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://ermineskin.ca/",
+      "thumbnail": "https://ermineskin.ca/wp-content/uploads/2019/04/qw.jpg",
       "detailVerified": true,
       "reviewReason": "Employment posting belongs in Jobs & Employment"
     },
     {
-      "id": "ermineskin-tribe-2026-10-02-e3d16f7b95",
-      "storyKey": "443-2026-10-02-emergency-contacts",
+      "id": "ermineskin-tribe-2026-10-04-f46baf6337",
+      "storyKey": "443-2026-10-04-emergency-contacts",
       "title": "Emergency Contacts",
       "communityName": "Ermineskin Tribe",
       "communityAliases": [
@@ -3408,7 +2984,7 @@
       "category": "Healthcare",
       "sourceType": "Official First Nation Website",
       "sourceName": "Ermineskin Tribe official website",
-      "publishedAt": "2026-10-02",
+      "publishedAt": "2026-10-04",
       "datePrecision": "day",
       "url": "https://ermineskin.ca/ermergency-contact",
       "summary": "The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
@@ -3417,17 +2993,18 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-10-03T16:33:41Z",
+      "discoveredAt": "2026-10-04T16:55:45Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://ermineskin.ca/",
+      "thumbnail": "https://ermineskin.ca/wp-content/uploads/2019/04/qw.jpg",
       "detailVerified": false,
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "ermineskin-tribe-2026-10-02-a58e9954bc",
-      "storyKey": "443-2026-10-02-more-news",
+      "id": "ermineskin-tribe-2026-10-04-3c7fdecfdd",
+      "storyKey": "443-2026-10-04-more-news",
       "title": "More News",
       "communityName": "Ermineskin Tribe",
       "communityAliases": [
@@ -3437,7 +3014,7 @@
       "category": "Healthcare",
       "sourceType": "Official First Nation Website",
       "sourceName": "Ermineskin Tribe official website",
-      "publishedAt": "2026-10-02",
+      "publishedAt": "2026-10-04",
       "datePrecision": "day",
       "url": "https://ermineskin.ca/news",
       "summary": "The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
@@ -3446,17 +3023,18 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-10-03T16:33:41Z",
+      "discoveredAt": "2026-10-04T16:55:45Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://ermineskin.ca/",
+      "thumbnail": "https://ermineskin.ca/wp-content/uploads/2019/04/qw.jpg",
       "detailVerified": false,
       "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
-      "id": "ermineskin-tribe-2026-10-02-ca977cd214",
-      "storyKey": "443-2026-10-02-more-updates",
+      "id": "ermineskin-tribe-2026-10-04-73b9a3789e",
+      "storyKey": "443-2026-10-04-more-updates",
       "title": "More Updates",
       "communityName": "Ermineskin Tribe",
       "communityAliases": [
@@ -3466,7 +3044,7 @@
       "category": "Healthcare",
       "sourceType": "Official First Nation Website",
       "sourceName": "Ermineskin Tribe official website",
-      "publishedAt": "2026-10-02",
+      "publishedAt": "2026-10-04",
       "datePrecision": "day",
       "url": "https://ermineskin.ca/eventsc",
       "summary": "The Ermineskin Cree Nation (Reserve #138) is one member of the Four Nations of Maskwacis, Alberta – located in Central Alberta about fifty miles south of Edmonton on Highway 2A, halfway between the towns of Ponoka and Wetaskiwin. The Ermineskin Cree Nations land base is approximately 25’000 acres. This area is traditionally known as the Bear Hills or Maskwacheesihk.",
@@ -3475,11 +3053,12 @@
         "source-backed"
       ],
       "bandId": 443,
-      "discoveredAt": "2026-10-03T16:33:41Z",
+      "discoveredAt": "2026-10-04T16:55:45Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
       "sourcePage": "https://ermineskin.ca/",
+      "thumbnail": "https://ermineskin.ca/wp-content/uploads/2019/04/qw.jpg",
       "detailVerified": false,
       "reviewReason": "Publication date could not be verified on the detail page"
     },
@@ -3502,7 +3081,7 @@
         "source-backed"
       ],
       "bandId": 467,
-      "discoveredAt": "2026-10-03T16:33:39Z",
+      "discoveredAt": "2026-10-04T16:56:31Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3528,7 +3107,7 @@
         "source-backed"
       ],
       "bandId": 467,
-      "discoveredAt": "2026-10-03T16:33:39Z",
+      "discoveredAt": "2026-10-04T16:56:31Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3558,7 +3137,7 @@
         "source-backed"
       ],
       "bandId": 475,
-      "discoveredAt": "2026-10-03T16:35:30Z",
+      "discoveredAt": "2026-10-04T16:57:41Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3585,7 +3164,7 @@
         "source-backed"
       ],
       "bandId": 447,
-      "discoveredAt": "2026-10-03T16:35:42Z",
+      "discoveredAt": "2026-10-04T16:57:54Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3613,7 +3192,7 @@
         "source-backed"
       ],
       "bandId": 461,
-      "discoveredAt": "2026-10-03T16:36:13Z",
+      "discoveredAt": "2026-10-04T16:58:26Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3641,7 +3220,7 @@
         "source-backed"
       ],
       "bandId": 461,
-      "discoveredAt": "2026-10-03T16:36:14Z",
+      "discoveredAt": "2026-10-04T16:58:26Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3668,7 +3247,7 @@
         "source-backed"
       ],
       "bandId": 461,
-      "discoveredAt": "2026-10-03T16:36:14Z",
+      "discoveredAt": "2026-10-04T16:58:26Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3696,7 +3275,7 @@
         "source-backed"
       ],
       "bandId": 461,
-      "discoveredAt": "2026-10-03T16:36:14Z",
+      "discoveredAt": "2026-10-04T16:58:26Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -3726,7 +3305,7 @@
         "source-backed"
       ],
       "bandId": 442,
-      "discoveredAt": "2026-10-03T16:35:51Z",
+      "discoveredAt": "2026-10-04T16:58:06Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3754,7 +3333,7 @@
         "source-backed"
       ],
       "bandId": 442,
-      "discoveredAt": "2026-10-03T16:35:51Z",
+      "discoveredAt": "2026-10-04T16:58:06Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3783,7 +3362,7 @@
         "source-backed"
       ],
       "bandId": 442,
-      "discoveredAt": "2026-10-03T16:35:51Z",
+      "discoveredAt": "2026-10-04T16:58:06Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3811,7 +3390,7 @@
         "source-backed"
       ],
       "bandId": 442,
-      "discoveredAt": "2026-10-03T16:35:51Z",
+      "discoveredAt": "2026-10-04T16:58:06Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3839,7 +3418,7 @@
         "source-backed"
       ],
       "bandId": 442,
-      "discoveredAt": "2026-10-03T16:35:51Z",
+      "discoveredAt": "2026-10-04T16:58:06Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3867,7 +3446,7 @@
         "source-backed"
       ],
       "bandId": 442,
-      "discoveredAt": "2026-10-03T16:35:51Z",
+      "discoveredAt": "2026-10-04T16:58:06Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3895,7 +3474,7 @@
         "source-backed"
       ],
       "bandId": 442,
-      "discoveredAt": "2026-10-03T16:35:51Z",
+      "discoveredAt": "2026-10-04T16:58:06Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3923,7 +3502,7 @@
         "source-backed"
       ],
       "bandId": 442,
-      "discoveredAt": "2026-10-03T16:35:51Z",
+      "discoveredAt": "2026-10-04T16:58:06Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -3951,7 +3530,7 @@
         "source-backed"
       ],
       "bandId": 442,
-      "discoveredAt": "2026-10-03T16:36:32Z",
+      "discoveredAt": "2026-10-04T16:58:43Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "pdf_text",
@@ -3978,7 +3557,7 @@
         "source-backed"
       ],
       "bandId": 478,
-      "discoveredAt": "2026-10-03T16:36:09Z",
+      "discoveredAt": "2026-10-04T16:58:31Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4005,7 +3584,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-03T16:36:16Z",
+      "discoveredAt": "2026-10-04T16:58:43Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -4033,7 +3612,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-03T16:36:16Z",
+      "discoveredAt": "2026-10-04T16:58:43Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -4061,7 +3640,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-03T16:36:16Z",
+      "discoveredAt": "2026-10-04T16:58:43Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -4089,7 +3668,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-03T16:36:16Z",
+      "discoveredAt": "2026-10-04T16:58:43Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -4117,7 +3696,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-03T16:36:16Z",
+      "discoveredAt": "2026-10-04T16:58:43Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -4145,7 +3724,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-03T16:36:16Z",
+      "discoveredAt": "2026-10-04T16:58:43Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -4173,7 +3752,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-03T16:36:09Z",
+      "discoveredAt": "2026-10-04T16:58:33Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -4201,7 +3780,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-03T16:36:16Z",
+      "discoveredAt": "2026-10-04T16:58:43Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -4229,7 +3808,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-03T16:36:16Z",
+      "discoveredAt": "2026-10-04T16:58:43Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -4257,7 +3836,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-03T16:36:16Z",
+      "discoveredAt": "2026-10-04T16:58:43Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -4285,7 +3864,7 @@
         "source-backed"
       ],
       "bandId": 436,
-      "discoveredAt": "2026-10-03T16:36:16Z",
+      "discoveredAt": "2026-10-04T16:58:43Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -4313,7 +3892,7 @@
         "source-backed"
       ],
       "bandId": 462,
-      "discoveredAt": "2026-10-03T16:36:25Z",
+      "discoveredAt": "2026-10-04T16:58:39Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4342,7 +3921,7 @@
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-03T16:36:56Z",
+      "discoveredAt": "2026-10-04T16:59:07Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4363,14 +3942,14 @@
       "sourceName": "Samson official website",
       "publishedAt": "2026-09-25",
       "datePrecision": "day",
-      "url": "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&osid=1&passive=1209600&service=mail&flowName=WebLiteSignIn&flowEntry=ServiceLogin&dsh=S-837244364%3A1791045423586568",
+      "url": "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&osid=1&passive=1209600&service=mail&flowName=WebLiteSignIn&flowEntry=ServiceLogin&dsh=S-935537859%3A1791133154244089",
       "summary": "Gmail is email that’s intuitive, efficient, and useful. 15 GB of storage, less spam, and mobile access.",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-03T16:36:56Z",
+      "discoveredAt": "2026-10-04T16:59:07Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4398,7 +3977,7 @@
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-03T16:36:58Z",
+      "discoveredAt": "2026-10-04T16:59:08Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -4426,7 +4005,7 @@
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-03T16:36:58Z",
+      "discoveredAt": "2026-10-04T16:59:08Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -4454,7 +4033,7 @@
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-03T16:36:58Z",
+      "discoveredAt": "2026-10-04T16:59:08Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -4473,26 +4052,27 @@
       "category": "Culture & Language",
       "sourceType": "Official First Nation Website",
       "sourceName": "Samson official website",
-      "publishedAt": "2026-07-22",
+      "publishedAt": "2026-07-21",
       "datePrecision": "day",
       "url": "https://samsoncree.com/samson-celebration-powwow-initiation-aug-2026",
-      "summary": "Stay Safe Online & Level Up Your Digital Skills! July 22, 2026 at HBMC Classroom 1 2:30 PM Learn how to: – Stay safe on social media – Protect your personal information – Recognize online scams and cyberbullying – Practice safe online gaming habits Attend in person or online and receive a $25 gift card! For more information: comms@samsoncree.com 780-585-3793 ext. 103 Categories: 2026 , July 2026-07-21T11:29:10-04:00.",
+      "summary": "SCN Celebrations Initiation Powwow!August 6, 2026 from 1:00-3:00PM at the Maskwacis Bear Park!Initiation for Samson community Members!Open to all ages, Tiny tot to Golden AgesWe will provide: Elders, protocol, giveaway, drum/song. We would like to support you to be part of the powwow circle.Scan the QR code or go to ww.samsonheadstart.com to register! Registration is also",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-03T16:36:58Z",
+      "discoveredAt": "2026-10-04T16:59:08Z",
       "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
+      "dateSource": "article:published_time",
       "extractionMethod": "html",
       "sourcePage": "https://samsoncree.com/social-media-and-online-gaming-safety-july-2026",
-      "reviewReason": "Publication date could not be verified on the detail page"
+      "detailVerified": true,
+      "reviewReason": "Title does not clearly describe a supported community update"
     },
     {
       "id": "samson-2026-07-22-8945218c86",
       "storyKey": "444-2026-07-22-next-next-post-temporary-closure-for-2nd-and-3rd-floors-of-cta-building-july-23-",
-      "title": "Next Next post: Temporary Closure for 2nd & 3rd Floors of CTA Building July 23 & 24, 2026",
+      "title": "Temporary Closure for 2nd & 3rd Floors of CTA Building July 23 & 24, 2026 - SCN",
       "communityName": "Samson",
       "communityAliases": [
         "Samson Cree Nation"
@@ -4501,20 +4081,21 @@
       "category": "Emergencies",
       "sourceType": "Official First Nation Website",
       "sourceName": "Samson official website",
-      "publishedAt": "2026-07-22",
+      "publishedAt": "2026-07-23",
       "datePrecision": "day",
       "url": "https://samsoncree.com/temporary-closure-for-2nd-3rd-floors-of-cta-building-july-23-24-2026",
-      "summary": "Stay Safe Online & Level Up Your Digital Skills! July 22, 2026 at HBMC Classroom 1 2:30 PM Learn how to: – Stay safe on social media – Protect your personal information – Recognize online scams and cyberbullying – Practice safe online gaming habits Attend in person or online and receive a $25 gift card! For more information: comms@samsoncree.com 780-585-3793 ext. 103 Categories: 2026 , July 2026-07-21T11:29:10-04:00.",
+      "summary": "Please be advised that some Samson Cree Nation departments are currently transitioning back to the Band Office. Due to an ongoing air conditioning issue and the current heat warning, staff located on the 2nd and 3rd floors of the Band Office will be temporarily relocated to the 1st floor/basement or working remotely for July 23",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-03T16:36:58Z",
+      "discoveredAt": "2026-10-04T16:59:08Z",
       "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
+      "dateSource": "article:published_time",
       "extractionMethod": "html",
       "sourcePage": "https://samsoncree.com/social-media-and-online-gaming-safety-july-2026",
+      "detailVerified": true,
       "reviewReason": "Title does not clearly describe a supported community update"
     },
     {
@@ -4538,7 +4119,7 @@
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-03T16:36:57Z",
+      "discoveredAt": "2026-10-04T16:59:11Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4559,14 +4140,14 @@
       "sourceName": "Samson official website",
       "publishedAt": "2026-09-25",
       "datePrecision": "day",
-      "url": "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&osid=1&passive=1209600&service=mail&flowName=WebLiteSignIn&flowEntry=ServiceLogin&dsh=S-2130219416%3A1791045423749807",
+      "url": "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&osid=1&passive=1209600&service=mail&flowName=WebLiteSignIn&flowEntry=ServiceLogin&dsh=S-49652174%3A1791133157935463",
       "summary": "Gmail is email that’s intuitive, efficient, and useful. 15 GB of storage, less spam, and mobile access.",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-03T16:36:57Z",
+      "discoveredAt": "2026-10-04T16:59:11Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4594,7 +4175,7 @@
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-03T16:36:59Z",
+      "discoveredAt": "2026-10-04T16:59:12Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -4622,7 +4203,7 @@
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-03T16:36:59Z",
+      "discoveredAt": "2026-10-04T16:59:12Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -4650,7 +4231,7 @@
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-03T16:36:59Z",
+      "discoveredAt": "2026-10-04T16:59:12Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -4669,26 +4250,27 @@
       "category": "Culture & Language",
       "sourceType": "Official First Nation Website",
       "sourceName": "Samson official website",
-      "publishedAt": "2026-07-22",
+      "publishedAt": "2026-07-21",
       "datePrecision": "day",
       "url": "https://samsoncree.com/samson-celebration-powwow-initiation-aug-2026",
-      "summary": "Stay Safe Online & Level Up Your Digital Skills! July 22, 2026 at HBMC Classroom 1 2:30 PM Learn how to: – Stay safe on social media – Protect your personal information – Recognize online scams and cyberbullying – Practice safe online gaming habits Attend in person or online and receive a $25 gift card! For more information: comms@samsoncree.com 780-585-3793 ext. 103 Categories: 2026 , July 2026-07-21T11:29:10-04:00.",
+      "summary": "SCN Celebrations Initiation Powwow!August 6, 2026 from 1:00-3:00PM at the Maskwacis Bear Park!Initiation for Samson community Members!Open to all ages, Tiny tot to Golden AgesWe will provide: Elders, protocol, giveaway, drum/song. We would like to support you to be part of the powwow circle.Scan the QR code or go to ww.samsonheadstart.com to register! Registration is also",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-03T16:36:59Z",
+      "discoveredAt": "2026-10-04T16:59:12Z",
       "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
+      "dateSource": "article:published_time",
       "extractionMethod": "html",
       "sourcePage": "https://samsoncree.com/social-media-and-online-gaming-safety-july-2026",
-      "reviewReason": "Publication date could not be verified on the detail page"
+      "detailVerified": true,
+      "reviewReason": "Title does not clearly describe a supported community update"
     },
     {
       "id": "samson-2026-07-22-8945218c86",
       "storyKey": "444-2026-07-22-next-next-post-temporary-closure-for-2nd-and-3rd-floors-of-cta-building-july-23-",
-      "title": "Next Next post: Temporary Closure for 2nd & 3rd Floors of CTA Building July 23 & 24, 2026",
+      "title": "Temporary Closure for 2nd & 3rd Floors of CTA Building July 23 & 24, 2026 - SCN",
       "communityName": "Samson",
       "communityAliases": [
         "Samson Cree Nation"
@@ -4697,20 +4279,21 @@
       "category": "Emergencies",
       "sourceType": "Official First Nation Website",
       "sourceName": "Samson official website",
-      "publishedAt": "2026-07-22",
+      "publishedAt": "2026-07-23",
       "datePrecision": "day",
       "url": "https://samsoncree.com/temporary-closure-for-2nd-3rd-floors-of-cta-building-july-23-24-2026",
-      "summary": "Stay Safe Online & Level Up Your Digital Skills! July 22, 2026 at HBMC Classroom 1 2:30 PM Learn how to: – Stay safe on social media – Protect your personal information – Recognize online scams and cyberbullying – Practice safe online gaming habits Attend in person or online and receive a $25 gift card! For more information: comms@samsoncree.com 780-585-3793 ext. 103 Categories: 2026 , July 2026-07-21T11:29:10-04:00.",
+      "summary": "Please be advised that some Samson Cree Nation departments are currently transitioning back to the Band Office. Due to an ongoing air conditioning issue and the current heat warning, staff located on the 2nd and 3rd floors of the Band Office will be temporarily relocated to the 1st floor/basement or working remotely for July 23",
       "tags": [
         "community-update",
         "source-backed"
       ],
       "bandId": 444,
-      "discoveredAt": "2026-10-03T16:36:59Z",
+      "discoveredAt": "2026-10-04T16:59:12Z",
       "communityConfidence": 0.98,
-      "dateSource": "structured-listing",
+      "dateSource": "article:published_time",
       "extractionMethod": "html",
       "sourcePage": "https://samsoncree.com/social-media-and-online-gaming-safety-july-2026",
+      "detailVerified": true,
       "reviewReason": "Title does not clearly describe a supported community update"
     },
     {
@@ -4732,7 +4315,7 @@
         "source-backed"
       ],
       "bandId": 430,
-      "discoveredAt": "2026-10-03T16:37:02Z",
+      "discoveredAt": "2026-10-04T16:59:17Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4758,7 +4341,7 @@
         "source-backed"
       ],
       "bandId": 430,
-      "discoveredAt": "2026-10-03T16:37:02Z",
+      "discoveredAt": "2026-10-04T16:59:17Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4784,7 +4367,7 @@
         "source-backed"
       ],
       "bandId": 430,
-      "discoveredAt": "2026-10-03T16:37:08Z",
+      "discoveredAt": "2026-10-04T16:59:18Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4810,7 +4393,7 @@
         "source-backed"
       ],
       "bandId": 430,
-      "discoveredAt": "2026-10-03T16:37:08Z",
+      "discoveredAt": "2026-10-04T16:59:18Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4836,7 +4419,7 @@
         "source-backed"
       ],
       "bandId": 455,
-      "discoveredAt": "2026-10-03T16:37:02Z",
+      "discoveredAt": "2026-10-04T16:59:24Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4862,7 +4445,7 @@
         "source-backed"
       ],
       "bandId": 455,
-      "discoveredAt": "2026-10-03T16:37:02Z",
+      "discoveredAt": "2026-10-04T16:59:24Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -4879,7 +4462,7 @@
       "category": "Governance",
       "sourceType": "Official First Nation Website",
       "sourceName": "Sucker Creek official website",
-      "publishedAt": "2026-10-03",
+      "publishedAt": "2026-10-04",
       "datePrecision": "day",
       "url": "https://scfn.ca/events",
       "summary": "Treaty 8 Territory · Box 65, Enilda Alberta, Canada Nehiyaw People · Treaty 8 Territory Heart of Alberta",
@@ -4888,169 +4471,13 @@
         "source-backed"
       ],
       "bandId": 456,
-      "discoveredAt": "2026-10-03T16:37:18Z",
+      "discoveredAt": "2026-10-04T16:59:59Z",
       "communityConfidence": 0.98,
       "dateSource": "time:datetime",
       "extractionMethod": "html",
       "sourcePage": "https://scfn.ca/",
       "detailVerified": true,
       "reviewReason": "Title does not clearly describe a supported community update"
-    },
-    {
-      "id": "swan-river-first-nation-2025-04-01-fd3efec31e",
-      "storyKey": "457-2025-04-01-newsletter-april-2025",
-      "title": "Newsletter April 2025",
-      "communityName": "Swan River First Nation",
-      "communityAliases": [],
-      "provinceTerritory": "AB",
-      "category": "Healthcare",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Swan River First Nation official website",
-      "publishedAt": "2025-04-01",
-      "datePrecision": "month",
-      "url": "https://srfn.ca/wp-content/uploads/2025/04/April-2025-Newletter.pdf",
-      "summary": "Health Centre Honouring Life Child Care Centre Land & Environment Stewardship Decolonize Contact News Our Monthly Newsletter and News related to Swan River Newsletter April 2025 Newsletter March 2025 Newsletter March 2024 Health Centre Newsletter March 2024 Newsletter – February 2024 Newsletter Jan 2023 Contact PO Box 270 Kinuso Alberta T0G 1K0 780-775-3536 Hours Mon to Fri: 8:30-4:30 Lunch: 12pm-1pm Quick links Depa.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 457,
-      "discoveredAt": "2026-10-03T16:38:59Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://srfn.ca/news",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "swan-river-first-nation-2025-04-01-6edab837a7",
-      "storyKey": "457-2025-04-01-newsletter-march-2025",
-      "title": "Newsletter March 2025",
-      "communityName": "Swan River First Nation",
-      "communityAliases": [],
-      "provinceTerritory": "AB",
-      "category": "Healthcare",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Swan River First Nation official website",
-      "publishedAt": "2025-04-01",
-      "datePrecision": "month",
-      "url": "https://srfn.ca/wp-content/uploads/2025/04/March-2025-Newsletter.pdf",
-      "summary": "Honouring Life Child Care Centre Land & Environment Stewardship Decolonize Contact News Our Monthly Newsletter and News related to Swan River Newsletter April 2025 Newsletter March 2025 Newsletter March 2024 Health Centre Newsletter March 2024 Newsletter – February 2024 Newsletter Jan 2023 Contact PO Box 270 Kinuso Alberta T0G 1K0 780-775-3536 Hours Mon to Fri: 8:30-4:30 Lunch: 12pm-1pm Quick links Departments Land &.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 457,
-      "discoveredAt": "2026-10-03T16:38:59Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://srfn.ca/news",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "swan-river-first-nation-2025-04-01-20223891bc",
-      "storyKey": "457-2025-04-01-newsletter-march-2024",
-      "title": "Newsletter March 2024",
-      "communityName": "Swan River First Nation",
-      "communityAliases": [],
-      "provinceTerritory": "AB",
-      "category": "Healthcare",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Swan River First Nation official website",
-      "publishedAt": "2025-04-01",
-      "datePrecision": "month",
-      "url": "https://srfn.ca/wp-content/uploads/2024/03/Newsletter-March-2024.pdf",
-      "summary": "Child Care Centre Land & Environment Stewardship Decolonize Contact News Our Monthly Newsletter and News related to Swan River Newsletter April 2025 Newsletter March 2025 Newsletter March 2024 Health Centre Newsletter March 2024 Newsletter – February 2024 Newsletter Jan 2023 Contact PO Box 270 Kinuso Alberta T0G 1K0 780-775-3536 Hours Mon to Fri: 8:30-4:30 Lunch: 12pm-1pm Quick links Departments Land & Environment St.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 457,
-      "discoveredAt": "2026-10-03T16:38:59Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://srfn.ca/news",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "swan-river-first-nation-2025-04-01-aaef6919e7",
-      "storyKey": "457-2025-04-01-health-centre-newsletter-march-2024",
-      "title": "Health Centre Newsletter March 2024",
-      "communityName": "Swan River First Nation",
-      "communityAliases": [],
-      "provinceTerritory": "AB",
-      "category": "Healthcare",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Swan River First Nation official website",
-      "publishedAt": "2025-04-01",
-      "datePrecision": "month",
-      "url": "https://srfn.ca/wp-content/uploads/2024/03/Health-Centre-Newsletter-March-2024.pdf",
-      "summary": "Land & Environment Stewardship Decolonize Contact News Our Monthly Newsletter and News related to Swan River Newsletter April 2025 Newsletter March 2025 Newsletter March 2024 Health Centre Newsletter March 2024 Newsletter – February 2024 Newsletter Jan 2023 Contact PO Box 270 Kinuso Alberta T0G 1K0 780-775-3536 Hours Mon to Fri: 8:30-4:30 Lunch: 12pm-1pm Quick links Departments Land & Environment Stewardship Leadersh.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 457,
-      "discoveredAt": "2026-10-03T16:38:59Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://srfn.ca/news",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "swan-river-first-nation-2025-04-01-fe7abf2176",
-      "storyKey": "457-2025-04-01-newsletter-february-2024",
-      "title": "Newsletter – February 2024",
-      "communityName": "Swan River First Nation",
-      "communityAliases": [],
-      "provinceTerritory": "AB",
-      "category": "Healthcare",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Swan River First Nation official website",
-      "publishedAt": "2025-04-01",
-      "datePrecision": "month",
-      "url": "https://srfn.ca/wp-content/uploads/2024/03/Newsletter-February-2024.pdf",
-      "summary": "Decolonize Contact News Our Monthly Newsletter and News related to Swan River Newsletter April 2025 Newsletter March 2025 Newsletter March 2024 Health Centre Newsletter March 2024 Newsletter – February 2024 Newsletter Jan 2023 Contact PO Box 270 Kinuso Alberta T0G 1K0 780-775-3536 Hours Mon to Fri: 8:30-4:30 Lunch: 12pm-1pm Quick links Departments Land & Environment Stewardship Leadership About Community Profile Fina.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 457,
-      "discoveredAt": "2026-10-03T16:38:59Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://srfn.ca/news",
-      "reviewReason": "Publication date could not be verified on the detail page"
-    },
-    {
-      "id": "swan-river-first-nation-2025-04-01-2e9984ed7a",
-      "storyKey": "457-2025-04-01-newsletter-jan-2023",
-      "title": "Newsletter Jan 2023",
-      "communityName": "Swan River First Nation",
-      "communityAliases": [],
-      "provinceTerritory": "AB",
-      "category": "Healthcare",
-      "sourceType": "Official First Nation Website",
-      "sourceName": "Swan River First Nation official website",
-      "publishedAt": "2025-04-01",
-      "datePrecision": "month",
-      "url": "https://srfn.ca/wp-content/uploads/2024/03/Newsletter-Jan-2024.pdf",
-      "summary": "Contact News Our Monthly Newsletter and News related to Swan River Newsletter April 2025 Newsletter March 2025 Newsletter March 2024 Health Centre Newsletter March 2024 Newsletter – February 2024 Newsletter Jan 2023 Contact PO Box 270 Kinuso Alberta T0G 1K0 780-775-3536 Hours Mon to Fri: 8:30-4:30 Lunch: 12pm-1pm Quick links Departments Land & Environment Stewardship Leadership About Community Profile Finance and Adm.",
-      "tags": [
-        "community-update",
-        "source-backed"
-      ],
-      "bandId": 457,
-      "discoveredAt": "2026-10-03T16:38:59Z",
-      "communityConfidence": 0.98,
-      "dateSource": "unstructured-listing",
-      "extractionMethod": "html",
-      "sourcePage": "https://srfn.ca/news",
-      "reviewReason": "Publication date could not be verified on the detail page"
     },
     {
       "id": "swan-river-first-nation-2026-10-19-79afa96525",
@@ -5071,7 +4498,7 @@
         "source-backed"
       ],
       "bandId": 457,
-      "discoveredAt": "2026-10-03T16:39:41Z",
+      "discoveredAt": "2026-10-04T17:02:08Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "image_ocr",
@@ -5100,7 +4527,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:32Z",
+      "discoveredAt": "2026-10-04T17:01:01Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5129,7 +4556,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:30Z",
+      "discoveredAt": "2026-10-04T17:01:01Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5158,7 +4585,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:30Z",
+      "discoveredAt": "2026-10-04T17:01:01Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5187,7 +4614,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:30Z",
+      "discoveredAt": "2026-10-04T17:01:01Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -5216,7 +4643,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:30Z",
+      "discoveredAt": "2026-10-04T17:01:01Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5245,7 +4672,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:30Z",
+      "discoveredAt": "2026-10-04T17:01:01Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5274,7 +4701,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:30Z",
+      "discoveredAt": "2026-10-04T17:01:01Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5303,7 +4730,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:30Z",
+      "discoveredAt": "2026-10-04T17:01:01Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5332,7 +4759,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:30Z",
+      "discoveredAt": "2026-10-04T17:01:01Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -5361,7 +4788,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:30Z",
+      "discoveredAt": "2026-10-04T17:01:01Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5390,7 +4817,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:30Z",
+      "discoveredAt": "2026-10-04T17:01:01Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5419,7 +4846,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:30Z",
+      "discoveredAt": "2026-10-04T17:01:01Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5448,7 +4875,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:30Z",
+      "discoveredAt": "2026-10-04T17:01:01Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -5477,7 +4904,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:49Z",
+      "discoveredAt": "2026-10-04T17:01:07Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5506,7 +4933,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:49Z",
+      "discoveredAt": "2026-10-04T17:01:07Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5535,7 +4962,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:49Z",
+      "discoveredAt": "2026-10-04T17:01:07Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5564,7 +4991,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:49Z",
+      "discoveredAt": "2026-10-04T17:01:07Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -5593,7 +5020,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:49Z",
+      "discoveredAt": "2026-10-04T17:01:07Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5622,7 +5049,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:49Z",
+      "discoveredAt": "2026-10-04T17:01:07Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5651,7 +5078,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:49Z",
+      "discoveredAt": "2026-10-04T17:01:07Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5680,7 +5107,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:49Z",
+      "discoveredAt": "2026-10-04T17:01:07Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5709,7 +5136,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:49Z",
+      "discoveredAt": "2026-10-04T17:01:07Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -5738,7 +5165,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:49Z",
+      "discoveredAt": "2026-10-04T17:01:07Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5767,7 +5194,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:49Z",
+      "discoveredAt": "2026-10-04T17:01:07Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5796,7 +5223,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:49Z",
+      "discoveredAt": "2026-10-04T17:01:07Z",
       "communityConfidence": 0.98,
       "dateSource": "unstructured-listing",
       "extractionMethod": "html",
@@ -5825,7 +5252,7 @@
         "source-backed"
       ],
       "bandId": 432,
-      "discoveredAt": "2026-10-03T16:38:49Z",
+      "discoveredAt": "2026-10-04T17:01:07Z",
       "communityConfidence": 0.98,
       "dateSource": "structured-listing",
       "extractionMethod": "html",
@@ -5835,8 +5262,8 @@
     }
   ],
   "summary": {
-    "manualReview": 341,
+    "manualReview": 299,
     "mediaExtracted": 11,
-    "sourceFailures": 27
+    "sourceFailures": 28
   }
 }
