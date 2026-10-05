@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-04T17:39:15Z",
+  "generated": "2026-10-05T21:11:26Z",
   "trackedCommunityCount": 117,
   "configuredSourceCount": 51,
   "communities": [
@@ -3434,9 +3434,9 @@
       ],
       "candidatesFound": 0,
       "reviewItems": 1,
-      "status": "unavailable",
+      "status": "checked",
       "warnings": [
-        "treatysix-careers: fetch failed: HTTP Error 429: Too Many Requests"
+        "treatysix-careers: no candidate job links detected"
       ]
     },
     {
@@ -3498,9 +3498,10 @@
         "438"
       ],
       "candidatesFound": 0,
-      "reviewItems": 3,
+      "reviewItems": 0,
       "status": "checked",
       "warnings": [
+        "community-site-438: employment page fetch failed: HTTP Error 429: Too Many Requests",
         "community-site-438: no candidate job links detected"
       ]
     },
@@ -3694,7 +3695,7 @@
       "communityIds": [
         "440"
       ],
-      "candidatesFound": 1,
+      "candidatesFound": 2,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3877,10 +3878,12 @@
       "communityIds": [
         "453"
       ],
-      "candidatesFound": 1,
+      "candidatesFound": 0,
       "reviewItems": 3,
       "status": "checked",
-      "warnings": []
+      "warnings": [
+        "community-site-453: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "community-site-461",
@@ -3958,7 +3961,7 @@
         "436"
       ],
       "candidatesFound": 0,
-      "reviewItems": 2,
+      "reviewItems": 1,
       "status": "checked",
       "warnings": [
         "community-site-436: no candidate job links detected"
