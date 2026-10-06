@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-05T21:11:26Z",
+  "generated": "2026-10-06T18:58:56Z",
   "trackedCommunityCount": 117,
   "configuredSourceCount": 51,
   "communities": [
@@ -3498,10 +3498,9 @@
         "438"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
+      "reviewItems": 3,
       "status": "checked",
       "warnings": [
-        "community-site-438: employment page fetch failed: HTTP Error 429: Too Many Requests",
         "community-site-438: no candidate job links detected"
       ]
     },
@@ -3572,7 +3571,7 @@
       "communityIds": [
         "460"
       ],
-      "candidatesFound": 7,
+      "candidatesFound": 8,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -3585,11 +3584,15 @@
       "communityIds": [
         "458"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "candidatesFound": 2,
+      "reviewItems": 0,
+      "status": "checked",
       "warnings": [
-        "community-site-458: fetch failed: HTTP Error 429: Too Many Requests"
+        "community-site-458: employment page fetch failed: HTTP Error 429: Too Many Requests",
+        "community-site-458: employment page fetch failed: HTTP Error 429: Too Many Requests",
+        "community-site-458: employment page fetch failed: HTTP Error 429: Too Many Requests",
+        "community-site-458: detail fetch failed: HTTP Error 429: Too Many Requests",
+        "community-site-458: detail fetch failed: HTTP Error 429: Too Many Requests"
       ]
     },
     {
@@ -3657,9 +3660,7 @@
       "candidatesFound": 8,
       "reviewItems": 1,
       "status": "checked",
-      "warnings": [
-        "community-site-448: detail fetch failed: HTTP Error 500: Internal Server Error"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-450",
@@ -3708,7 +3709,7 @@
       "communityIds": [
         "443"
       ],
-      "candidatesFound": 8,
+      "candidatesFound": 9,
       "reviewItems": 3,
       "status": "checked",
       "warnings": [
@@ -3878,12 +3879,10 @@
       "communityIds": [
         "453"
       ],
-      "candidatesFound": 0,
+      "candidatesFound": 1,
       "reviewItems": 3,
       "status": "checked",
-      "warnings": [
-        "community-site-453: no candidate job links detected"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-461",
@@ -3988,7 +3987,7 @@
       "communityIds": [
         "444"
       ],
-      "candidatesFound": 16,
+      "candidatesFound": 17,
       "reviewItems": 3,
       "status": "checked",
       "warnings": [
