@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-05T21:22:55Z",
-  "before": 111,
-  "after": 113,
-  "newCandidates": 224,
+  "generated": "2026-10-06T19:10:08Z",
+  "before": 113,
+  "after": 120,
+  "newCandidates": 277,
   "sourceRuns": [
     {
       "bandId": 438,
@@ -79,7 +79,7 @@
       "sourceUrl": "https://beaverlakecreenation.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 14,
+      "eventsFound": 6,
       "pagesChecked": 6,
       "mediaChecked": 2
     },
@@ -102,9 +102,9 @@
       "sourceUrl": "https://www.bloodtribe.org/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 10,
+      "eventsFound": 40,
       "pagesChecked": 6,
-      "mediaChecked": 2
+      "mediaChecked": 3
     },
     {
       "bandId": 435,
@@ -113,9 +113,9 @@
       "sourceUrl": "https://bloodtribe.org/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 5,
+      "eventsFound": 30,
       "pagesChecked": 6,
-      "mediaChecked": 2
+      "mediaChecked": 3
     },
     {
       "bandId": 433,
@@ -226,7 +226,7 @@
       "status": "ok",
       "eventsFound": 10,
       "pagesChecked": 6,
-      "mediaChecked": 3
+      "mediaChecked": 2
     },
     {
       "bandId": 443,
@@ -237,7 +237,7 @@
       "status": "ok",
       "eventsFound": 10,
       "pagesChecked": 6,
-      "mediaChecked": 3
+      "mediaChecked": 2
     },
     {
       "bandId": 467,
@@ -278,10 +278,11 @@
       "sourceName": "Frog Lake official website",
       "sourceUrl": "https://www.froglake.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
+      "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 1,
-      "mediaChecked": 1
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 475,
@@ -436,7 +437,7 @@
       "sourceType": "Official First Nation Website",
       "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 3,
+      "pagesChecked": 0,
       "mediaChecked": 0,
       "error": "HTTP Error 429: Too Many Requests"
     },
@@ -592,7 +593,7 @@
       "sourceUrl": "https://www.tsuutina.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 32,
+      "eventsFound": 35,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -603,7 +604,7 @@
       "sourceUrl": "https://tsuutina.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 32,
+      "eventsFound": 35,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -699,7 +700,7 @@
   ],
   "reviewCount": 8,
   "statusCounts": {
-    "failed": 9,
-    "ok": 53
+    "failed": 10,
+    "ok": 52
   }
 }
