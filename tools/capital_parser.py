@@ -423,6 +423,7 @@ def is_primary_operations_page(text):
         re.match(r"^(?:consolidated\s+)?statement of\b", line, re.I)
         and OPERATIONS_RE.search(line)
         and "," not in line
+        and not re.search(r"\.{2,}|\s\d{1,3}\s*$", line)
         and not re.search(r"by program|by segment|schedule\s*[-\d]|notes to", line, re.I)
         for line in lines
     )

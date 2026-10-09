@@ -68,10 +68,20 @@ def lines_from_words(words):
 
 def is_statement(page):
     text = page["text"]
+    # Some auditors place the date caption beside a two-line statement title.
+    # Remove only that caption for title detection; original text/word boxes
+    # remain the evidence used for amounts and page references.
+    title_lines = [re.sub(r"\s+(?:for the year ended|as at)\b.*$", "", clean_text(line), flags=re.I)
+                   for line in text.splitlines()[:8] if line.strip()]
+    title_lines = [re.sub(r"\s+(?:March|April|June|September|December)\s+\d{1,2}(?:,?\s+20\d{2})?$", "", line, flags=re.I)
+                   for line in title_lines]
+    detection_text = "\n".join(title_lines + [a + " " + b for a, b in zip(title_lines, title_lines[1:])])
     header = "\n".join(text.splitlines()[:8])
-    return is_primary_operations_page(text) or bool(
-        POSITION_RE.search(header) and not re.search(r"contents|notes to", header, re.I)
-    )
+    position_title = any(re.fullmatch(
+        r"(?:consolidated\s+)?statement of financial position(?:\s*\(continued\))?",
+        clean_text(line), re.I) for line in detection_text.splitlines())
+    return is_primary_operations_page(text) or is_primary_operations_page(detection_text) or bool(
+        position_title and not re.search(r"contents|notes to", header, re.I))
 
 
 def column_layout(page, fiscal_year):
@@ -79,16 +89,23 @@ def column_layout(page, fiscal_year):
     lines = lines_from_words(page.get("words", []))
     for line in lines:
         years = [w for w in line if re.fullmatch(r"20\d{2}", w["text"])]
-        others = " ".join(w["text"] for w in line if w not in years)
-        if len(years) < 2 or line[0]["top"] > 180 or others.strip() not in ("", "Schedules", "Notes"):
+        if len(years) < 2 or line[0]["top"] > 240:
+            continue
+        spacing = min(b["x1"]-a["x1"] for a, b in zip(years, years[1:]))
+        others = [w for w in line if w not in years]
+        # A date caption can share the year-heading baseline if it stays entirely
+        # to the left of the numeric columns. Table-of-contents rows cannot pass.
+        if spacing < 30 or any(w["x1"] >= years[0]["x0"]-spacing*.1
+                              and not re.fullmatch(r"\$|budget|actual|schedules?|notes?|\(?unaudited\)?|\(?audited\)?", w["text"], re.I)
+                              for w in others):
             continue
         if expected_fiscal_year(fiscal_year) not in {w["text"] for w in years}:
             return [], "year_header_mismatch"
         columns = []
         for year in years:
             nearby = [w["text"].lower() for row in lines for w in row
-                      if 0 < w["top"] - year["top"] < 17
-                      and abs(w["x1"] - year["x1"]) < 15]
+                      if -17 < w["top"] - year["top"] < 17
+                      and abs(w["x1"] - year["x1"]) < 28]
             role = "budget" if "budget" in nearby else "actual"
             columns.append({"year": int(year["text"]), "right": year["x1"],
                             "top": year["top"], "role": role,
@@ -96,6 +113,14 @@ def column_layout(page, fiscal_year):
         actual = [c["year"] for c in columns if c["role"] == "actual"]
         if len(set(actual)) != len(actual):
             return [], "ambiguous_actual_columns"
+        # Some statements print an unnumbered budget column before the two
+        # actual years. Its explicit label supplies a discard-only column.
+        for row in lines:
+            for word in row:
+                if (word["text"].lower() == "budget" and abs(word["top"]-years[0]["top"]) < 20
+                        and all(abs(word["x1"]-c["right"]) > 28 for c in columns)):
+                    columns.append({"year": None, "right": word["x1"], "top": years[0]["top"],
+                                    "role": "budget", "unaudited": True})
         return columns, None
     return [], "missing_explicit_year_columns"
 
@@ -113,6 +138,8 @@ def project_page(page, fiscal_year, target_year):
     rows, projected = [], []
     header = "\n".join(page["text"].splitlines()[:3])
     header = re.sub(r"(?:As at|For the year ended).*", "", header, flags=re.I)
+    header = re.sub(r"(statement of)\s*\n\s*", r"\1 ", header, flags=re.I)
+    header = re.sub(r"\s+March\s+31\s*$", "", header, flags=re.I)
     projected.extend([header, str(target_year)])
     section = None
     revenue_parent = None
@@ -130,6 +157,10 @@ def project_page(page, fiscal_year, target_year):
                 if word["text"] != "$":
                     label_words.append(word)
         label = clean_text(" ".join(w["text"] for w in label_words))
+        if re.fullmatch(r"[A-Za-z -]+", label) and re.search(r"(?:[A-Za-z] ){5}", label):
+            compact = re.sub(r"\s", "", label).upper()
+            label = {"FINANCIALASSETS": "Financial assets", "LIABILITIES": "Liabilities",
+                     "NON-FINANCIALASSETS": "Non-financial assets"}.get(compact, label)
         if re.fullmatch(r"\(?Note\s+\d+\)?", label, re.I):
             continue
         label = re.sub(r"\(Note\s+\d+\)", "", label, flags=re.I).strip()
@@ -192,11 +223,29 @@ def project_page(page, fiscal_year, target_year):
 def read_pdf(raw, document):
     if pdfplumber is None:
         raise RuntimeError("pdfplumber is required")
+    # PDFium obtains narrative pages without laying out every vector object in
+    # large audited reports. Retain pdfplumber's exact word geometry on primary
+    # statements, where actual-column selection depends on it.
+    try:
+        import pypdfium2
+    except ImportError:
+        pypdfium2 = None
+    native_texts = None
+    if pypdfium2 is not None:
+        native_texts = []
+        with pypdfium2.PdfDocument(raw) as fast_pdf:
+            for fast_page in fast_pdf:
+                with closing(fast_page):
+                    with closing(fast_page.get_textpage()) as textpage:
+                        native_texts.append(textpage.get_text_range())
     with pdfplumber.open(io.BytesIO(raw)) as pdf:
         pages = []
         for number, page in enumerate(pdf.pages, 1):
-            entry = {"page": number, "text": page.extract_text(x_tolerance=1, y_tolerance=3) or ""}
+            entry = {"page": number, "text": native_texts[number-1] if native_texts is not None
+                     else page.extract_text(x_tolerance=1, y_tolerance=3) or ""}
             if is_statement(entry):
+                if native_texts is not None:
+                    entry["text"] = page.extract_text(x_tolerance=1, y_tolerance=3) or ""
                 entry["words"] = [{k: w[k] for k in ("text", "x0", "x1", "top", "bottom")}
                                   for w in page.extract_words(x_tolerance=1, y_tolerance=3)]
             pages.append(entry)
@@ -210,14 +259,15 @@ def identity_issues(document, pages):
         issues.append("source_band_identifier_mismatch")
     if query.get("fy", [document["fiscalYear"]])[0] != document["fiscalYear"]:
         issues.append("source_fiscal_year_mismatch")
-    title = " ".join(p["text"] for p in pages[:2]).casefold()
-    if clean_text(document["bandName"]).casefold() not in clean_text(title):
+    title = " ".join(p["text"] for p in pages[:6]).casefold()
+    compact_name = re.sub(r"\W", "", document["bandName"]).casefold()
+    if compact_name not in re.sub(r"\W", "", title):
         issues.append("document_identity_unconfirmed")
-    if not any(re.search(r"independent auditor.s report", p["text"], re.I) for p in pages):
+    if not any(re.search(r"independent auditors?[\u2019']?s?\s+report", p["text"], re.I) for p in pages):
         issues.append("auditor_report_unconfirmed")
     if not re.fullmatch(r"[0-9a-f]{64}", document.get("sha256", "")):
         issues.append("missing_document_hash")
-    if any(re.search(r"(?:US|U\.S\.|USD)\s*(?:dollars|\$)|United States dollars", p["text"], re.I) for p in pages if is_statement(p)):
+    if any(re.search(r"\b(?:US|U\.S\.|USD)\s*(?:dollars|\$)|\bUnited States dollars", p["text"], re.I) for p in pages if is_statement(p)):
         issues.append("unsupported_currency")
     return issues
 
