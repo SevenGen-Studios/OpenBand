@@ -1,8 +1,8 @@
 {
   "generatedFrom": "2026-10-09T07:21:00+00:00",
-  "manualReviewCount": 277,
+  "manualReviewCount": 278,
   "reasonCounts": {
-    "implausibly small remuneration values appear in money columns": 4,
+    "implausibly small remuneration values appear in money columns": 5,
     "month values appear in money columns": 2,
     "month values appear in money columns; implausibly small remuneration values appear in money columns": 8,
     "no Chief row in a small parsed filing": 1,
@@ -1085,6 +1085,20 @@
         "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+      ]
+    },
+    {
+      "bandId": 443,
+      "band": "Ermineskin Tribe",
+      "province": "AB",
+      "year": "2014-2015",
+      "reason": "implausibly small remuneration values appear in money columns",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=443&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "No clear Chief and Council remuneration table found",
+        "Parsed via free local OCR fallback",
+        "Quarantined parsed rows: implausibly small remuneration values appear in money columns",
+        "Sanitized parsed rows: removed 12, fixed totals 0"
       ]
     },
     {
