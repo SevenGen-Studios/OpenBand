@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Bandy research financial observation",
+  "description": "A source-backed observation. machine_checked means automated checks passed, not independently audited extraction or production approval.",
+  "type": "object",
+  "required": ["recordId", "bandId", "bandName", "fiscalYear", "metric", "dimension", "value", "currency", "unit", "sourceDocument", "sourceDocumentSha256", "sourceFiscalYear", "sourcePage", "sourceReferences", "extractionBasis", "comparative", "validationStatus", "validationFlags", "parser"],
+  "properties": {
+    "recordId": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "bandId": {"type": "string", "pattern": "^[0-9]+$"},
+    "bandName": {"type": "string", "minLength": 1},
+    "fiscalYear": {"type": "string", "pattern": "^20[0-9]{2}-20[0-9]{2}$"},
+    "metric": {"type": "string", "minLength": 1},
+    "dimension": {"type": "string"},
+    "value": {"type": "number"},
+    "currency": {"const": "CAD"},
+    "unit": {"const": "dollars"},
+    "sourceDocument": {"type": "string", "format": "uri"},
+    "sourceDocumentSha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "sourceFiscalYear": {"type": "string", "pattern": "^20[0-9]{2}-20[0-9]{2}$"},
+    "sourcePage": {"type": ["integer", "null"], "minimum": 1},
+    "sourceReferences": {"type": "array", "items": {
+      "type": "object",
+      "required": ["pdfPage", "sourceLabel", "rawText", "rawValue", "selectedYear", "selectedColumn", "yearValidated", "bbox"],
+      "properties": {
+        "pdfPage": {"type": "integer", "minimum": 1},
+        "sourceLabel": {"type": "string"},
+        "rawText": {"type": "string"},
+        "rawValue": {"type": ["string", "null"]},
+        "selectedYear": {"type": "integer", "minimum": 2000},
+        "selectedColumn": {"const": "actual"},
+        "yearValidated": {"const": true},
+        "bbox": {"type": "array", "items": {"type": "number"}, "minItems": 4, "maxItems": 4}
+      }
+    }},
+    "extractionBasis": {"enum": ["reported", "section_total", "derived_sum", "identified_components_only"]},
+    "comparative": {"type": "boolean"},
+    "validationStatus": {"enum": ["machine_checked", "manual_review"]},
+    "validationFlags": {"type": "array", "items": {"type": "string"}},
+    "parser": {"type": "string"}
+  },
+  "allOf": [{
+    "if": {"properties": {"validationStatus": {"const": "machine_checked"}}},
+    "then": {"properties": {"sourcePage": {"type": "integer", "minimum": 1}, "sourceReferences": {"minItems": 1}, "validationFlags": {"maxItems": 0}}}
+  }],
+  "additionalProperties": false
+}

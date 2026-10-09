@@ -1,0 +1,649 @@
+{
+  "documentCount": 3,
+  "recordCount": 382,
+  "checkedRecordCount": 377,
+  "reviewRecordCount": 5,
+  "noteCount": 37,
+  "entityCount": 20,
+  "coverage": [
+    {
+      "bandId": "362",
+      "fiscalYear": "2023-2024",
+      "extracted": [
+        "accountsPayable",
+        "accountsReceivable",
+        "accumulatedSurplus",
+        "annualSurplusDeficit",
+        "bankIndebtedness",
+        "businessInvestments",
+        "businessRevenue",
+        "capitalLeaseObligations",
+        "cash",
+        "currentCapitalLeaseObligations",
+        "currentPortionLongTermDebt",
+        "deferredRevenue",
+        "governmentRevenue",
+        "investmentIncome",
+        "jointVentureInvestments",
+        "longTermDebt",
+        "netFinancialAssetsDebt",
+        "ownSourceRevenue",
+        "portfolioInvestments",
+        "programExpenses",
+        "restrictedCash",
+        "tangibleCapitalAssets",
+        "totalAssets",
+        "totalExpenses",
+        "totalFinancialAssets",
+        "totalLiabilities",
+        "totalNonFinancialAssets",
+        "totalRevenue"
+      ],
+      "additionalMetrics": [
+        "bankIndebtedness",
+        "businessInvestments",
+        "capitalLeaseObligations",
+        "currentCapitalLeaseObligations",
+        "currentPortionLongTermDebt",
+        "jointVentureInvestments",
+        "portfolioInvestments",
+        "programExpenses",
+        "totalNonFinancialAssets"
+      ],
+      "unavailable": [
+        "administrativeExpenses",
+        "assetRetirementObligations",
+        "contaminatedSiteLiability",
+        "guaranteedInvestmentCertificates",
+        "investments",
+        "loansPayable",
+        "saskatchewanGovernmentRevenue",
+        "termLoansSubjectToRefinancing"
+      ],
+      "manualReview": []
+    },
+    {
+      "bandId": "362",
+      "fiscalYear": "2024-2025",
+      "extracted": [
+        "accountsPayable",
+        "accountsReceivable",
+        "accumulatedSurplus",
+        "annualSurplusDeficit",
+        "bankIndebtedness",
+        "businessInvestments",
+        "businessRevenue",
+        "capitalLeaseObligations",
+        "cash",
+        "currentCapitalLeaseObligations",
+        "currentPortionLongTermDebt",
+        "deferredRevenue",
+        "governmentRevenue",
+        "investmentIncome",
+        "jointVentureInvestments",
+        "longTermDebt",
+        "netFinancialAssetsDebt",
+        "ownSourceRevenue",
+        "portfolioInvestments",
+        "programExpenses",
+        "restrictedCash",
+        "tangibleCapitalAssets",
+        "totalAssets",
+        "totalExpenses",
+        "totalFinancialAssets",
+        "totalLiabilities",
+        "totalNonFinancialAssets",
+        "totalRevenue"
+      ],
+      "additionalMetrics": [
+        "bankIndebtedness",
+        "businessInvestments",
+        "capitalLeaseObligations",
+        "currentCapitalLeaseObligations",
+        "currentPortionLongTermDebt",
+        "jointVentureInvestments",
+        "portfolioInvestments",
+        "programExpenses",
+        "totalNonFinancialAssets"
+      ],
+      "unavailable": [
+        "administrativeExpenses",
+        "assetRetirementObligations",
+        "contaminatedSiteLiability",
+        "guaranteedInvestmentCertificates",
+        "investments",
+        "loansPayable",
+        "saskatchewanGovernmentRevenue",
+        "termLoansSubjectToRefinancing"
+      ],
+      "manualReview": [
+        {
+          "metric": "annualSurplusDeficit",
+          "dimension": "",
+          "value": 132134851,
+          "flags": [
+            "major_year_over_year_change"
+          ]
+        },
+        {
+          "metric": "totalFinancialAssets",
+          "dimension": "",
+          "value": 184737261,
+          "flags": [
+            "major_year_over_year_change"
+          ]
+        },
+        {
+          "metric": "currentPortionLongTermDebt",
+          "dimension": "",
+          "value": 15715196,
+          "flags": [
+            "major_year_over_year_change"
+          ]
+        },
+        {
+          "metric": "accumulatedSurplus",
+          "dimension": "",
+          "value": 197675254,
+          "flags": [
+            "major_year_over_year_change"
+          ]
+        },
+        {
+          "metric": "totalAssets",
+          "dimension": "",
+          "value": 305403860,
+          "flags": [
+            "component_requires_review"
+          ]
+        }
+      ]
+    },
+    {
+      "bandId": "391",
+      "fiscalYear": "2023-2024",
+      "extracted": [
+        "accountsPayable",
+        "accountsReceivable",
+        "accumulatedSurplus",
+        "annualSurplusDeficit",
+        "assetRetirementObligations",
+        "bankIndebtedness",
+        "businessInvestments",
+        "businessRevenue",
+        "cash",
+        "currentCapitalLeaseObligations",
+        "currentPortionLongTermDebt",
+        "deferredRevenue",
+        "governmentRevenue",
+        "investmentIncome",
+        "longTermDebt",
+        "netFinancialAssetsDebt",
+        "ownSourceRevenue",
+        "programExpenses",
+        "restrictedCash",
+        "tangibleCapitalAssets",
+        "termLoansSubjectToRefinancing",
+        "totalAssets",
+        "totalExpenses",
+        "totalFinancialAssets",
+        "totalLiabilities",
+        "totalNonFinancialAssets",
+        "totalRevenue"
+      ],
+      "additionalMetrics": [
+        "assetRetirementObligations",
+        "bankIndebtedness",
+        "businessInvestments",
+        "currentCapitalLeaseObligations",
+        "currentPortionLongTermDebt",
+        "programExpenses",
+        "termLoansSubjectToRefinancing",
+        "totalNonFinancialAssets"
+      ],
+      "unavailable": [
+        "administrativeExpenses",
+        "capitalLeaseObligations",
+        "contaminatedSiteLiability",
+        "guaranteedInvestmentCertificates",
+        "investments",
+        "jointVentureInvestments",
+        "loansPayable",
+        "portfolioInvestments",
+        "saskatchewanGovernmentRevenue"
+      ],
+      "manualReview": []
+    },
+    {
+      "bandId": "391",
+      "fiscalYear": "2024-2025",
+      "extracted": [
+        "accountsPayable",
+        "accountsReceivable",
+        "accumulatedSurplus",
+        "annualSurplusDeficit",
+        "assetRetirementObligations",
+        "bankIndebtedness",
+        "businessInvestments",
+        "businessRevenue",
+        "cash",
+        "currentCapitalLeaseObligations",
+        "currentPortionLongTermDebt",
+        "deferredRevenue",
+        "governmentRevenue",
+        "investmentIncome",
+        "longTermDebt",
+        "netFinancialAssetsDebt",
+        "ownSourceRevenue",
+        "programExpenses",
+        "restrictedCash",
+        "tangibleCapitalAssets",
+        "termLoansSubjectToRefinancing",
+        "totalAssets",
+        "totalExpenses",
+        "totalFinancialAssets",
+        "totalLiabilities",
+        "totalNonFinancialAssets",
+        "totalRevenue"
+      ],
+      "additionalMetrics": [
+        "assetRetirementObligations",
+        "bankIndebtedness",
+        "businessInvestments",
+        "currentCapitalLeaseObligations",
+        "currentPortionLongTermDebt",
+        "programExpenses",
+        "termLoansSubjectToRefinancing",
+        "totalNonFinancialAssets"
+      ],
+      "unavailable": [
+        "administrativeExpenses",
+        "capitalLeaseObligations",
+        "contaminatedSiteLiability",
+        "guaranteedInvestmentCertificates",
+        "investments",
+        "jointVentureInvestments",
+        "loansPayable",
+        "portfolioInvestments",
+        "saskatchewanGovernmentRevenue"
+      ],
+      "manualReview": []
+    },
+    {
+      "bandId": "377",
+      "fiscalYear": "2023-2024",
+      "extracted": [
+        "accountsPayable",
+        "accountsReceivable",
+        "accumulatedSurplus",
+        "annualSurplusDeficit",
+        "assetRetirementObligations",
+        "cash",
+        "contaminatedSiteLiability",
+        "currentPortionLongTermDebt",
+        "deferredRevenue",
+        "governmentRevenue",
+        "guaranteedInvestmentCertificates",
+        "investmentIncome",
+        "investments",
+        "loansPayable",
+        "longTermDebt",
+        "netFinancialAssetsDebt",
+        "ownSourceRevenue",
+        "programExpenses",
+        "restrictedCash",
+        "tangibleCapitalAssets",
+        "totalAssets",
+        "totalExpenses",
+        "totalFinancialAssets",
+        "totalLiabilities",
+        "totalNonFinancialAssets",
+        "totalRevenue"
+      ],
+      "additionalMetrics": [
+        "assetRetirementObligations",
+        "contaminatedSiteLiability",
+        "currentPortionLongTermDebt",
+        "guaranteedInvestmentCertificates",
+        "loansPayable",
+        "programExpenses",
+        "totalNonFinancialAssets"
+      ],
+      "unavailable": [
+        "administrativeExpenses",
+        "bankIndebtedness",
+        "businessInvestments",
+        "businessRevenue",
+        "capitalLeaseObligations",
+        "currentCapitalLeaseObligations",
+        "jointVentureInvestments",
+        "portfolioInvestments",
+        "saskatchewanGovernmentRevenue",
+        "termLoansSubjectToRefinancing"
+      ],
+      "manualReview": []
+    },
+    {
+      "bandId": "377",
+      "fiscalYear": "2024-2025",
+      "extracted": [
+        "accountsPayable",
+        "accountsReceivable",
+        "accumulatedSurplus",
+        "annualSurplusDeficit",
+        "assetRetirementObligations",
+        "cash",
+        "contaminatedSiteLiability",
+        "currentPortionLongTermDebt",
+        "deferredRevenue",
+        "governmentRevenue",
+        "guaranteedInvestmentCertificates",
+        "investmentIncome",
+        "investments",
+        "loansPayable",
+        "longTermDebt",
+        "netFinancialAssetsDebt",
+        "ownSourceRevenue",
+        "programExpenses",
+        "restrictedCash",
+        "tangibleCapitalAssets",
+        "totalAssets",
+        "totalExpenses",
+        "totalFinancialAssets",
+        "totalLiabilities",
+        "totalNonFinancialAssets",
+        "totalRevenue"
+      ],
+      "additionalMetrics": [
+        "assetRetirementObligations",
+        "contaminatedSiteLiability",
+        "currentPortionLongTermDebt",
+        "guaranteedInvestmentCertificates",
+        "loansPayable",
+        "programExpenses",
+        "totalNonFinancialAssets"
+      ],
+      "unavailable": [
+        "administrativeExpenses",
+        "bankIndebtedness",
+        "businessInvestments",
+        "businessRevenue",
+        "capitalLeaseObligations",
+        "currentCapitalLeaseObligations",
+        "jointVentureInvestments",
+        "portfolioInvestments",
+        "saskatchewanGovernmentRevenue",
+        "termLoansSubjectToRefinancing"
+      ],
+      "manualReview": []
+    }
+  ],
+  "checks": [
+    {
+      "bandId": "362",
+      "fiscalYear": "2024-2025",
+      "check": "revenueComponent_sum",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "362",
+      "fiscalYear": "2024-2025",
+      "check": "expenseProgram_sum",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "362",
+      "fiscalYear": "2024-2025",
+      "check": "annual_result",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "362",
+      "fiscalYear": "2024-2025",
+      "check": "net_financial_assets",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "362",
+      "fiscalYear": "2024-2025",
+      "check": "accumulated_surplus",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "362",
+      "fiscalYear": "2024-2025",
+      "check": "balance_sheet",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "362",
+      "fiscalYear": "2023-2024",
+      "check": "revenueComponent_sum",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "362",
+      "fiscalYear": "2023-2024",
+      "check": "expenseProgram_sum",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "362",
+      "fiscalYear": "2023-2024",
+      "check": "annual_result",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "362",
+      "fiscalYear": "2023-2024",
+      "check": "net_financial_assets",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "362",
+      "fiscalYear": "2023-2024",
+      "check": "accumulated_surplus",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "362",
+      "fiscalYear": "2023-2024",
+      "check": "balance_sheet",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "391",
+      "fiscalYear": "2024-2025",
+      "check": "revenueComponent_sum",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "391",
+      "fiscalYear": "2024-2025",
+      "check": "expenseProgram_sum",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "391",
+      "fiscalYear": "2024-2025",
+      "check": "annual_result",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "391",
+      "fiscalYear": "2024-2025",
+      "check": "net_financial_assets",
+      "status": "passed",
+      "difference": 0.0
+    },
+    {
+      "bandId": "391",
+      "fiscalYear": "2024-2025",
+      "check": "accumulated_surplus",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "391",
+      "fiscalYear": "2024-2025",
+      "check": "balance_sheet",
+      "status": "passed",
+      "difference": 0.0
+    },
+    {
+      "bandId": "391",
+      "fiscalYear": "2023-2024",
+      "check": "revenueComponent_sum",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "391",
+      "fiscalYear": "2023-2024",
+      "check": "expenseProgram_sum",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "391",
+      "fiscalYear": "2023-2024",
+      "check": "annual_result",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "391",
+      "fiscalYear": "2023-2024",
+      "check": "net_financial_assets",
+      "status": "passed",
+      "difference": 0.0
+    },
+    {
+      "bandId": "391",
+      "fiscalYear": "2023-2024",
+      "check": "accumulated_surplus",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "391",
+      "fiscalYear": "2023-2024",
+      "check": "balance_sheet",
+      "status": "passed",
+      "difference": 0.0
+    },
+    {
+      "bandId": "377",
+      "fiscalYear": "2024-2025",
+      "check": "revenueComponent_sum",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "377",
+      "fiscalYear": "2024-2025",
+      "check": "expenseProgram_sum",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "377",
+      "fiscalYear": "2024-2025",
+      "check": "annual_result",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "377",
+      "fiscalYear": "2024-2025",
+      "check": "net_financial_assets",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "377",
+      "fiscalYear": "2024-2025",
+      "check": "accumulated_surplus",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "377",
+      "fiscalYear": "2024-2025",
+      "check": "balance_sheet",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "377",
+      "fiscalYear": "2023-2024",
+      "check": "revenueComponent_sum",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "377",
+      "fiscalYear": "2023-2024",
+      "check": "expenseProgram_sum",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "377",
+      "fiscalYear": "2023-2024",
+      "check": "annual_result",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "377",
+      "fiscalYear": "2023-2024",
+      "check": "net_financial_assets",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "377",
+      "fiscalYear": "2023-2024",
+      "check": "accumulated_surplus",
+      "status": "passed",
+      "difference": 0
+    },
+    {
+      "bandId": "377",
+      "fiscalYear": "2023-2024",
+      "check": "balance_sheet",
+      "status": "passed",
+      "difference": 0
+    }
+  ],
+  "documentIssues": [
+    {
+      "362:2024-2025": [],
+      "362:2023-2024": []
+    },
+    {
+      "391:2024-2025": [],
+      "391:2023-2024": []
+    },
+    {
+      "377:2024-2025": [],
+      "377:2023-2024": []
+    }
+  ]
+}

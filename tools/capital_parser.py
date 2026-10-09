@@ -186,6 +186,13 @@ def rounded(value):
 def line_parts(line):
     line = re.sub(r"\((?:note|schedule)[^)]*\)", "", line, flags=re.I)
     matches = list(MONEY_RE.finditer(line))
+    # Numbers embedded in legal names are part of the label even when a
+    # wrapped line has no monetary cells (e.g. the 1907 Specific Claim Trust).
+    label_numbers = list(re.finditer(r"\bTreaty\s+\d+\b|\b\d{4}\s+Specific Claim\b", line, re.I))
+    matches = [match for match in matches if not any(
+        span.start() <= match.start() + len(match.group(0)) - len(match.group(0).lstrip()) < span.end()
+        for span in label_numbers
+    )]
     program_label = re.match(r'^(?:Covid[ -]?19|C-92)\b', line, re.I)
     if program_label:
         matches = [match for match in matches if match.start() >= program_label.end()]
@@ -1196,20 +1203,33 @@ def extended_statement_fields(page_texts, fiscal_year=None):
     cash_flow = statement_page_records(page_texts, re.compile(r"statement(?:s)? of cash flows?", re.I))
     patterns = {
         "cash": r"^(?:cash|cash and cash equivalents|cash resources)$",
-        "investments": r"^investments$",
+        "investments": r"^(?:investments|marketable securities)$",
+        "portfolioInvestments": r"^portfolio investments$",
+        "guaranteedInvestmentCertificates": r"^guaranteed investment certificates?$",
+        "businessInvestments": r"^investments? in (?:Nation business entities|partnerships and (?:government )?business entities)$",
+        "jointVentureInvestments": r"^investment in .+ joint venture$",
         "accountsReceivable": r"^(?:accounts|amounts) receivable$",
         "restrictedCash": r"^restricted cash(?: and cash equivalents)?$",
         "otherFinancialAssets": r"^other financial assets$",
         "totalFinancialAssets": r"^total financial assets$",
+        "totalNonFinancialAssets": r"^total non.financial assets$",
         "totalAssets": r"^total assets$",
         "tangibleCapitalAssets": r"^tangible capital assets$",
-        "accountsPayable": r"^accounts payable(?: and accrued liabilities)?$",
+        "accountsPayable": r"^accounts payable(?: and (?:accrued liabilities|accruals))?$",
         "deferredRevenue": r"^deferred revenue$",
         "longTermDebt": r"^long.term debt$",
+        "currentPortionLongTermDebt": r"^current portion of long.term debt$",
+        "termLoansSubjectToRefinancing": r"^current portion of term loans subject to refinancing$",
+        "loansPayable": r"^(?:claim loan|loans? payable|bank loans?)$",
+        "bankIndebtedness": r"^bank indebtedness$",
+        "capitalLeaseObligations": r"^capital lease obligations$",
+        "currentCapitalLeaseObligations": r"^current portion of capital lease obligations$",
+        "assetRetirementObligations": r"^asset retirement obligations?$",
+        "contaminatedSiteLiability": r"^liability for contaminated site$",
         "otherLiabilities": r"^other liabilities$",
-        "totalLiabilities": r"^total liabilities$",
+        "totalLiabilities": r"^total (?:financial )?liabilities$",
         "accumulatedSurplus": r"^accumulated (?:surplus|deficit|surplus \(deficit\))$",
-        "netFinancialAssetsDebt": r"^net (?:financial assets|debt)(?: \(debt\)| \(net financial assets\))?$",
+        "netFinancialAssetsDebt": r"^net (?:financial assets|debt)(?: \((?:net )?debt\)| \(net financial assets\))?$",
     }
     cash_patterns = {
         "operatingCashFlow": r"^(?:cash|net cash) (?:provided by|from|used in)(?: \(used in\))? operating activities$",
