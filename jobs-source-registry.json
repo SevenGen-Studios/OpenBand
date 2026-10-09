@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-08T19:20:57Z",
+  "generated": "2026-10-09T18:53:40Z",
   "trackedCommunityCount": 117,
   "configuredSourceCount": 51,
   "communities": [
@@ -3433,10 +3433,10 @@
         "434"
       ],
       "candidatesFound": 0,
-      "reviewItems": 2,
-      "status": "checked",
+      "reviewItems": 1,
+      "status": "unavailable",
       "warnings": [
-        "treatysix-careers: no candidate job links detected"
+        "treatysix-careers: fetch failed: HTTP Error 429: Too Many Requests"
       ]
     },
     {
@@ -3498,10 +3498,9 @@
         "438"
       ],
       "candidatesFound": 0,
-      "reviewItems": 0,
+      "reviewItems": 3,
       "status": "checked",
       "warnings": [
-        "community-site-438: employment page fetch failed: HTTP Error 429: Too Many Requests",
         "community-site-438: no candidate job links detected"
       ]
     },
@@ -3654,10 +3653,12 @@
       "communityIds": [
         "448"
       ],
-      "candidatesFound": 8,
+      "candidatesFound": 0,
       "reviewItems": 1,
-      "status": "checked",
-      "warnings": []
+      "status": "unavailable",
+      "warnings": [
+        "community-site-448: fetch failed: The read operation timed out"
+      ]
     },
     {
       "sourceId": "community-site-450",
@@ -3693,12 +3694,10 @@
       "communityIds": [
         "440"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "community-site-440: fetch failed: The read operation timed out"
-      ]
+      "candidatesFound": 2,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "community-site-443",
@@ -3708,7 +3707,7 @@
       "communityIds": [
         "443"
       ],
-      "candidatesFound": 9,
+      "candidatesFound": 8,
       "reviewItems": 3,
       "status": "checked",
       "warnings": [
