@@ -1,0 +1,48 @@
+{
+  "sourceUrl": "https://data.sac-isc.gc.ca/geomatics/rest/services/ILRS_PRD/ERIP_E_NRCan/MapServer/26/query?where=CPC_CODE+IN+%28%27SK%27%2C%27AB%27%29&outFields=ADMIN_LAND_ID%2CSHORT_NAME%2CENAME%2CCPC_CODE%2CFIRST_NATIONS&returnGeometry=true&outSR=4326&f=geojson&resultRecordCount=2000",
+  "retrievedAt": "2026-10-09T06:49:09.162656+00:00",
+  "sourceSha256": "fbf1f24cf6f9a0ae22cc6782bd74b6961d4c27e7e9895cc448ab1dfd956559c3",
+  "sourceFeatureCount": 978,
+  "displaySimplificationDegrees": 0.0001,
+  "repairs": [
+    {
+      "reserveId": "06609",
+      "name": "CHITEK LAKE INDIAN RESERVE NO. 191",
+      "relativePlanarAreaChange": 0.0,
+      "method": "GEOS make_valid linework; preserve source parcel and ownership"
+    },
+    {
+      "reserveId": "06636",
+      "name": "SIKSIKA INDIAN RESERVE NO. 146",
+      "relativePlanarAreaChange": 3.0258489832470185e-16,
+      "method": "GEOS make_valid linework; preserve source parcel and ownership"
+    },
+    {
+      "reserveId": "06639",
+      "name": "TSUU T'INA NATION NO. 145",
+      "relativePlanarAreaChange": 7.235178110803095e-16,
+      "method": "GEOS make_valid linework; preserve source parcel and ownership"
+    },
+    {
+      "reserveId": "06645",
+      "name": "BLOOD NO. 148",
+      "relativePlanarAreaChange": 6.424621098063962e-16,
+      "method": "GEOS make_valid linework; preserve source parcel and ownership"
+    },
+    {
+      "reserveId": "06547",
+      "name": "SHESHEEP INDIAN RESERVE NO. 74A",
+      "relativePlanarAreaChange": 4.0127903922126763e-16,
+      "method": "GEOS make_valid linework; preserve source parcel and ownership"
+    },
+    {
+      "reserveId": "09155",
+      "name": "BEARDY'S & OKEMASIS INDIAN RESERVE NO. 96 & 97-A",
+      "relativePlanarAreaChange": 1.4724064897686733e-16,
+      "method": "GEOS make_valid linework; preserve source parcel and ownership"
+    }
+  ],
+  "blocked": [],
+  "outputSha256": "02f1c93f6a547c6694fa02f522743c13335ce79234d4654d2f654f4f4996f4fc",
+  "featureCount": 978
+}

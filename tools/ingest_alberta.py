@@ -37,7 +37,7 @@ BASE = 'https://services.sac-isc.gc.ca/fnp/main/Search/'
 COUNT_SOURCE = 'https://www.alberta.ca/first-nations-relations'
 TREATY_SOURCE = 'https://www.sac-isc.gc.ca/eng/1595274954300/1595274980122'
 ROSTER_PATH = ROOT / 'alberta-nations.json'
-PARSER_REVISION = 'alberta-20261003-v27'
+PARSER_REVISION = 'alberta-20261009-v28'
 
 def now():
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
@@ -355,6 +355,7 @@ def reviewed_remuneration(band, filing, digest):
     """Apply a complete visual transcription only to the exact reviewed PDF."""
     from tools.parser_quality import validate_people
     reviews = read(ROOT / 'tools/alberta-source-cache/remuneration-reviews.json', {}).get('reviews', [])
+    reviews += read(ROOT / 'manual_overrides/audit-remuneration-reviews.json', {}).get('reviews', [])
     review = next((item for item in reviews if str(item['bandId']) == str(band['id'])
                    and item['year'] == filing['year'] and item['sha256'] == digest
                    and canonical_url(item['sourcePdf']) == canonical_url(filing['href'])), None)
@@ -371,7 +372,7 @@ def reviewed_remuneration(band, filing, digest):
         if abs(actual-total) > 5:
             raise ValueError('Reviewed schedule failed a reported column total')
     result = {'people': checked['people'], 'parse_status': 'parsed', 'parse_confidence': 'high',
-              'manual_review_required': False, 'warnings': [], 'sourceTotal': review.get('sourceTotal'),
+              'manual_review_required': False, 'warnings': review.get('warnings', []), 'sourceTotal': review.get('sourceTotal'),
               'manualSourceReview': {key: value for key, value in review.items() if key != 'people'},
               'parse_stages': [{'stage': 'reviewed_original_pdf', 'status': 'complete_rows_reconciled', 'warnings': []}]}
     if review.get('sourceTotal') is not None:

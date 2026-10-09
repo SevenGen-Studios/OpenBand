@@ -87,7 +87,7 @@ def election_prerender(band: dict, records: list[dict]) -> str:
         if band.get('province') == 'AB':
             governance = band.get('leadership') or {}
             return ('<section class="election-card"><h3>Elections &amp; Leadership</h3>'
-                    '<p>Current ISC-listed appointments and term dates are shown in the Nation overview when verified. '
+                    '<p>ISC-listed appointments are shown in the Nation overview with the source check date; confirm current officeholders with ISC. '
                     'Appointment dates are not treated as election dates; historical remuneration stays separate.</p>'
                     + (f'<a href="{html.escape(governance["sourceUrl"], quote=True)}">ISC governance source</a>' if governance.get('sourceUrl') else '<p>Current leadership source not yet verified.</p>') + '</section>')
         return ""

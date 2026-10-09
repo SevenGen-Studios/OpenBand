@@ -1,0 +1,739 @@
+{
+  "generatedAt": "2026-10-09T07:29:46+00:00",
+  "baselinePythonTests": 325,
+  "pythonTests": 340,
+  "pythonResult": "PASS",
+  "nodeSuites": [
+    "test_provinces.js",
+    "test_missing_filing_years.js",
+    "test_directory_map.js",
+    "test_data_loading.js"
+  ],
+  "nodeResult": "PASS",
+  "browserScenarioCount": 41,
+  "browserResult": "PASS",
+  "browserScenarios": [
+    {
+      "mobile": false,
+      "route": "/",
+      "stats": [
+        "117",
+        "796"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/alberta/",
+      "stats": [
+        "48",
+        "229"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/saskatchewan/",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/browse/?province=AB",
+      "stats": [
+        "48",
+        "229"
+      ],
+      "count": "48 communities shown",
+      "markers": 47,
+      "overflow": false,
+      "profile": "",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/browse/?province=SK",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "69 communities shown",
+      "markers": 69,
+      "overflow": false,
+      "profile": "",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/first-nations/tthebatthie-denesuline-nation/",
+      "stats": [
+        "48",
+        "229"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Tthebatthie Denesųłiné Nation",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/first-nations/athabasca-chipewyan-first-nation/",
+      "stats": [
+        "48",
+        "229"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Athabasca Chipewyan First Nation",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/first-nations/carry-the-kettle-nakoda-nation/?tab=remuneration&year=2020-2021",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Carry the Kettle Nakoda Nation",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/first-nations/cote-first-nation/?tab=remuneration&year=2020-2021",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Cote First Nation",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/first-nations/standing-buffalo-dakota-nation/?tab=remuneration&year=2016-2017",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Standing Buffalo Dakota Nation",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/news/",
+      "stats": [
+        "117",
+        "796"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/first-nations/cote-first-nation/?tab=remuneration&year=2022-2023",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Cote First Nation",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/first-nations/kahkewistahaw-first-nation/?tab=remuneration&year=2025-2026",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Kahkewistahaw First Nation",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/first-nations/pheasant-rump-nakota-nation/?tab=remuneration&year=2025-2026",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Pheasant Rump Nakota Nation",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/first-nations/white-bear-first-nations/?tab=remuneration&year=2025-2026",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "White Bear First Nations",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/first-nations/keeseekoose-first-nation/?tab=capital&year=2013-2014",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Keeseekoose First Nation",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/first-nations/pheasant-rump-nakota-nation/?tab=capital&year=2025-2026",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Pheasant Rump Nakota Nation",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/first-nations/white-bear-first-nations/?tab=capital&year=2025-2026",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "White Bear First Nations",
+      "errors": ""
+    },
+    {
+      "mobile": false,
+      "route": "/first-nations/montana/",
+      "stats": [
+        "48",
+        "229"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "MontanaM",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/",
+      "stats": [
+        "117",
+        "796"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/alberta/",
+      "stats": [
+        "48",
+        "229"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/saskatchewan/",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/browse/?province=AB",
+      "stats": [
+        "48",
+        "229"
+      ],
+      "count": "48 communities shown",
+      "markers": 47,
+      "overflow": false,
+      "profile": "",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/browse/?province=SK",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "69 communities shown",
+      "markers": 69,
+      "overflow": false,
+      "profile": "",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/first-nations/tthebatthie-denesuline-nation/",
+      "stats": [
+        "48",
+        "229"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Tthebatthie Denesųłiné Nation",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/first-nations/athabasca-chipewyan-first-nation/",
+      "stats": [
+        "48",
+        "229"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Athabasca Chipewyan First Nation",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/first-nations/carry-the-kettle-nakoda-nation/?tab=remuneration&year=2020-2021",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Carry the Kettle Nakoda Nation",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/first-nations/cote-first-nation/?tab=remuneration&year=2020-2021",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Cote First Nation",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/first-nations/standing-buffalo-dakota-nation/?tab=remuneration&year=2016-2017",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Standing Buffalo Dakota Nation",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/news/",
+      "stats": [
+        "117",
+        "796"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/first-nations/cote-first-nation/?tab=remuneration&year=2022-2023",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Cote First Nation",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/first-nations/kahkewistahaw-first-nation/?tab=remuneration&year=2025-2026",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Kahkewistahaw First Nation",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/first-nations/pheasant-rump-nakota-nation/?tab=remuneration&year=2025-2026",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Pheasant Rump Nakota Nation",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/first-nations/white-bear-first-nations/?tab=remuneration&year=2025-2026",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "White Bear First Nations",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/first-nations/keeseekoose-first-nation/?tab=capital&year=2013-2014",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Keeseekoose First Nation",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/first-nations/pheasant-rump-nakota-nation/?tab=capital&year=2025-2026",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "Pheasant Rump Nakota Nation",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/first-nations/white-bear-first-nations/?tab=capital&year=2025-2026",
+      "stats": [
+        "69",
+        "567"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "White Bear First Nations",
+      "errors": ""
+    },
+    {
+      "mobile": true,
+      "route": "/first-nations/montana/",
+      "stats": [
+        "48",
+        "229"
+      ],
+      "count": "0 communities",
+      "markers": 0,
+      "overflow": false,
+      "profile": "MontanaM",
+      "errors": ""
+    },
+    {
+      "failure": "data.json",
+      "message": "Some records could not be loaded: community records (HTTP 503). Reload to retry. Missing results may reflect a loading failure."
+    },
+    {
+      "failure": "map-data.json",
+      "message": "Some records could not be loaded: map (HTTP 503). Reload to retry. Missing results may reflect a loading failure."
+    },
+    {
+      "failure": "capital-data.json",
+      "message": "Some records could not be loaded: capital (HTTP 503). Reload to retry. Missing results may reflect a loading failure."
+    }
+  ],
+  "productionObservation": "Read-only browser check before edits: home 117/786, Alberta 48/226, Saskatchewan 69/560; Alberta browse 48 results / 47 sourced markers; no JavaScript exceptions.",
+  "staticBuildProfiles": 117,
+  "productionDeployment": false,
+  "dataPreservation": {
+    "identitiesAndProvincesUnchanged": true,
+    "existingPublishableFinancialSummariesUnchanged": true,
+    "newFinancialSummaries": [
+      {
+        "bandId": "340",
+        "year": "2015-2016",
+        "status": "FIXED"
+      },
+      {
+        "bandId": "346",
+        "year": "2020-2021",
+        "status": "FIXED"
+      },
+      {
+        "bandId": "348",
+        "year": "2018-2019",
+        "status": "FIXED"
+      },
+      {
+        "bandId": "351",
+        "year": "2017-2018",
+        "status": "FIXED"
+      },
+      {
+        "bandId": "356",
+        "year": "2020-2021",
+        "status": "FIXED"
+      },
+      {
+        "bandId": "358",
+        "year": "2020-2021",
+        "status": "FIXED"
+      },
+      {
+        "bandId": "361",
+        "year": "2018-2019",
+        "status": "FIXED"
+      },
+      {
+        "bandId": "365",
+        "year": "2025-2026",
+        "status": "FIXED"
+      },
+      {
+        "bandId": "366",
+        "year": "2013-2014",
+        "status": "FIXED"
+      },
+      {
+        "bandId": "367",
+        "year": "2013-2014",
+        "status": "FIXED"
+      },
+      {
+        "bandId": "383",
+        "year": "2017-2018",
+        "status": "FIXED"
+      },
+      {
+        "bandId": "390",
+        "year": "2017-2018",
+        "status": "FIXED"
+      },
+      {
+        "bandId": "393",
+        "year": "2013-2014",
+        "status": "FIXED"
+      },
+      {
+        "bandId": "395",
+        "year": "2021-2022",
+        "status": "FIXED"
+      },
+      {
+        "bandId": "395",
+        "year": "2020-2021",
+        "status": "FIXED"
+      },
+      {
+        "bandId": "395",
+        "year": "2019-2020",
+        "status": "FIXED"
+      },
+      {
+        "bandId": "409",
+        "year": "2025-2026",
+        "status": "FIXED"
+      }
+    ],
+    "newSourceDocuments": [
+      {
+        "bandId": "366",
+        "year": "2022-2023",
+        "document": "Audited consolidated financial statements"
+      },
+      {
+        "bandId": "366",
+        "year": "2022-2023",
+        "document": "Schedule of Remuneration and Expenses"
+      },
+      {
+        "bandId": "362",
+        "year": "2025-2026",
+        "document": "Audited consolidated financial statements"
+      },
+      {
+        "bandId": "362",
+        "year": "2025-2026",
+        "document": "Schedule of Remuneration and Expenses"
+      },
+      {
+        "bandId": "409",
+        "year": "2025-2026",
+        "document": "Audited consolidated financial statements"
+      },
+      {
+        "bandId": "409",
+        "year": "2025-2026",
+        "document": "Schedule of Remuneration and Expenses"
+      },
+      {
+        "bandId": "365",
+        "year": "2025-2026",
+        "document": "Audited consolidated financial statements"
+      },
+      {
+        "bandId": "365",
+        "year": "2025-2026",
+        "document": "Schedule of Remuneration and Expenses"
+      }
+    ],
+    "recoveredExistingRemuneration": [
+      {
+        "bandId": "378",
+        "year": "2020-2021"
+      },
+      {
+        "bandId": "366",
+        "year": "2020-2021"
+      },
+      {
+        "bandId": "386",
+        "year": "2016-2017"
+      },
+      {
+        "bandId": "445",
+        "year": "2014-2015"
+      },
+      {
+        "bandId": "446",
+        "year": "2014-2015"
+      },
+      {
+        "bandId": "446",
+        "year": "2015-2016"
+      }
+    ],
+    "existingMapMetadataUnchanged": true
+  },
+  "limitations": [
+    "Browser sampling covered major routes, not all 117 profiles interactively; every generated profile received static link checks.",
+    "No standalone lint/typecheck/bundler configuration exists; Python compilation and JavaScript syntax checks cover changed code.",
+    "Analytics D1 production access and authenticated dashboards were not exercised."
+  ],
+  "consoleAudit": [
+    {
+      "route": "/",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedResources": []
+    },
+    {
+      "route": "/alberta/",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedResources": []
+    },
+    {
+      "route": "/saskatchewan/",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedResources": []
+    },
+    {
+      "route": "/browse/?province=AB",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedResources": []
+    },
+    {
+      "route": "/first-nations/keeseekoose-first-nation/?tab=capital&year=2013-2014",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedResources": []
+    },
+    {
+      "route": "/news/",
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedResources": []
+    }
+  ],
+  "staticChecks": {
+    "changedFilesScanned": 174,
+    "pythonFilesCompiled": 22,
+    "jsonGeojsonFilesValidated": 19,
+    "validDisplayParcels": 978,
+    "mapRecordsWithExistingParcelIds": 116,
+    "highConfidenceCredentialSignatureMatches": 0,
+    "gitDiffCheck": "PASS",
+    "allClientJavaScriptSyntax": "PASS"
+  }
+}

@@ -2016,7 +2016,8 @@ def save_summary(capital_data, band, filing, summary):
     restored = False
     for field, review in existing.get('fieldReviews', {}).items():
         reference = review.get('sourceReference', {})
-        if (field in {'totalAssets', 'totalLiabilities', 'totalFinancialAssets', 'totalNonFinancialAssets',
+        if (field in {'totalRevenue', 'totalExpenses', 'annualSurplusDeficit',
+                      'totalAssets', 'totalLiabilities', 'totalFinancialAssets', 'totalNonFinancialAssets',
                       'netFinancialAssetsDebt', 'accumulatedSurplus', 'capitalAssets'}
                 and review.get('sourceSha256') == summary.get('sha256')
                 and summary.get('sha256') and reference.get('fiscalYear') == filing['year']):

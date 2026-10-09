@@ -205,3 +205,5 @@ body[data-view="gateway"] .main{display:none}body[data-view="gateway"] footer{ma
 @media(max-width:760px){.province-switcher{margin-left:auto}.province-switcher a{min-width:31px;height:27px}.hero-region-switcher{font-size:11px;gap:8px}}
 .nav-home{color:rgba(255,255,255,.74);text-decoration:none;font-size:13px;padding:7px 10px;border-radius:8px;margin-right:auto;white-space:nowrap}.nav-home:hover{background:rgba(255,255,255,.12);color:#fff}
 @media(max-width:760px){.nav-home{font-size:12px;padding:7px 8px}.nav-home{margin-right:auto}}
+
+#dataLoadStatus:not([hidden]){position:fixed;bottom:0;left:0;right:0;z-index:10000;padding:12px 20px;background:#fff4e5;color:#573900;border-top:2px solid #ad6a10;font-size:14px}

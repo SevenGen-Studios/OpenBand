@@ -1,6 +1,6 @@
 # Alberta coverage audit
 
-Generated 2026-10-03T23:35:24+00:00
+Generated 2026-10-09T07:10:01+00:00
 
 - expectedNations: 48
 - addedNations: 48

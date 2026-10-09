@@ -9,6 +9,9 @@ on:
       - admin/**
       - analytics-worker/**
       - assets/**
+      - map-data.json
+      - public/reserve-boundaries.geojson
+      - manual_overrides/**
       - data.json
       - community-enterprise.json
       - news-data.json
@@ -23,6 +26,9 @@ on:
       - admin/**
       - analytics-worker/**
       - assets/**
+      - map-data.json
+      - public/reserve-boundaries.geojson
+      - manual_overrides/**
       - data.json
       - community-enterprise.json
       - news-data.json
@@ -66,6 +72,18 @@ jobs:
 
       - name: Run site and analytics tests
         run: python -m unittest discover -s tests -v
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run browser logic regression tests
+        run: |
+          node tests/test_provinces.js
+          node tests/test_missing_filing_years.js
+          node tests/test_directory_map.js
+          node tests/test_data_loading.js
 
       - name: Commit generated routes
         if: github.event_name != 'pull_request'

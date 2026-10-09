@@ -64,6 +64,15 @@ Deficit of revenues over expenses 5,000 (12,000) (5,000)'''
             parser.save_summary(capital, {'id': '462', 'name': 'Saddle Lake'}, {'year': '2018-2019'}, summary)
             self.assertEqual(summary['accumulatedSurplus'], expected)
 
+    def test_reviewed_headline_fields_require_same_pdf_and_fiscal_year(self):
+        for field in ('totalRevenue','totalExpenses','annualSurplusDeficit'):
+            review={'value':100,'sourceSha256':'checked-source','sourceReference':{'fiscalYear':'2024-2025','pdfPage':7}}
+            for digest,year,expected in [('checked-source','2024-2025',100),('changed-source','2024-2025',None),('checked-source','2023-2024',None)]:
+                capital={'bands':{'409':{'years':{year:{'fieldReviews':{field:review}}}}}}
+                summary={'sha256':digest,field:None}
+                parser.save_summary(capital,{'id':'409','name':'Example'},{'year':year},summary)
+                self.assertEqual(summary[field],expected)
+
     def test_piikani_undernoted_gain_reconciles_final_surplus(self):
         text = (Path(__file__).parent / 'fixtures' / 'ab_436_2021_operations.txt').read_text(encoding='utf8')
         result = parser.parse_page_texts([text], fiscal_year='2020-2021')

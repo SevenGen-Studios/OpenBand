@@ -13,6 +13,7 @@ if str(ROOT) not in sys.path:
 import run_scraper
 from tools import parser_quality
 from tools.reparse_suspicious import filing_problems
+from tools.ingest_alberta import bounded_parse
 
 
 def is_remuneration(filing):
@@ -68,11 +69,16 @@ def main():
                 "parse_status": filing.get("parse_status"),
                 "people": len(filing.get("people") or []),
         }
-        result = run_scraper._extract_remuneration_rows_enhanced(filing.get("href"))
-        validation = parser_quality.validate_people(result.get("people") or [])
+        if filing.get('people') and not filing.get('manual_review_required'):
+            outcomes.append({'band':band_name,'year':year,'status':'verified_fixed','before':before})
+            print(f'{label}: preserved existing parsed rows',flush=True)
+            continue
+        identity = {key: band[key] for key in ('id','name','officialName','aliases') if key in band}
+        _, _, result, _ = bounded_parse((identity,dict(filing),True))
+        validation = parser_quality.validate_people(result.get("people") or [],source_total=result.get('sourceTotal'),strict=True)
         people = validation.get("people") or []
         problems = filing_problems(people)
-        if validation.get("manual_review_required") or problems:
+        if result.get('manual_review_required') or result.get('verificationStatus') != 'automated_validated' or validation.get("manual_review_required") or problems:
             reasons = list(dict.fromkeys(
                 (result.get("warnings") or [])
                 + (validation.get("warnings") or [])
@@ -89,6 +95,7 @@ def main():
             })
             continue
 
+        filing.update(result)
         filing["people"] = people
         filing["posted"] = True
         filing["parse_status"] = result.get("parse_status", "ok_selected_reparse")

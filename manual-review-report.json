@@ -1,12 +1,12 @@
 {
-  "generatedFrom": "2026-10-02T05:55:12+00:00",
-  "manualReviewCount": 284,
+  "generatedFrom": "2026-10-09T07:21:00+00:00",
+  "manualReviewCount": 277,
   "reasonCounts": {
     "implausibly small remuneration values appear in money columns": 4,
     "month values appear in money columns": 2,
     "month values appear in money columns; implausibly small remuneration values appear in money columns": 8,
-    "no Chief row in a small parsed filing": 4,
-    "no reliable official rows remain after validation": 55,
+    "no Chief row in a small parsed filing": 1,
+    "no reliable official rows remain after validation": 51,
     "parser confidence is low": 211
   },
   "filings": [
@@ -210,20 +210,6 @@
         "No clear Chief and Council remuneration table found",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 445,
-      "band": "Beaver First Nation",
-      "province": "AB",
-      "year": "2014-2015",
-      "reason": "no Chief row in a small parsed filing",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=445&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Multiple candidate Chief and Council tables found",
-        "No Chief row detected",
-        "Quarantined parsed rows: no Chief row in a small parsed filing",
-        "Sanitized parsed rows: removed 7, fixed totals 0"
       ]
     },
     {
@@ -797,20 +783,6 @@
       ]
     },
     {
-      "bandId": 378,
-      "band": "Carry the Kettle Nakoda Nation",
-      "province": "SK",
-      "year": "2020-2021",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=378&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "No clear Chief and Council remuneration table found",
-        "Local OCR text contained no reliable official rows",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted",
-        "Preserved pending parse status from previous data.json snapshot"
-      ]
-    },
-    {
       "bandId": 401,
       "band": "Clearwater River Dene Nation",
       "province": "SK",
@@ -899,20 +871,6 @@
         "No clear Chief and Council remuneration table found",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 366,
-      "band": "Cote First Nation",
-      "province": "SK",
-      "year": "2020-2021",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=366&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "No clear Chief and Council remuneration table found",
-        "Local OCR text contained no reliable official rows",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted",
-        "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {
@@ -1206,20 +1164,6 @@
         "No clear Chief and Council remuneration table found",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 351,
-      "band": "Fond du Lac Denesuline First Nation",
-      "province": "SK",
-      "year": "2017-2018",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=351&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "No clear Chief and Council remuneration table found",
-        "Local OCR text contained no reliable official rows",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted",
-        "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {
@@ -3723,20 +3667,6 @@
       ]
     },
     {
-      "bandId": 386,
-      "band": "Standing Buffalo Dakota Nation",
-      "province": "SK",
-      "year": "2016-2017",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=386&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "No clear Chief and Council remuneration table found",
-        "Local OCR text contained no reliable official rows",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted",
-        "Preserved pending parse status from previous data.json snapshot"
-      ]
-    },
-    {
       "bandId": 455,
       "band": "Sturgeon Lake Cree Nation",
       "province": "AB",
@@ -4112,34 +4042,6 @@
         "No clear Chief and Council remuneration table found",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 446,
-      "band": "Tallcree Tribal Government",
-      "province": "AB",
-      "year": "2014-2015",
-      "reason": "no Chief row in a small parsed filing",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=446&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Multiple candidate Chief and Council tables found",
-        "No Chief row detected",
-        "Quarantined parsed rows: no Chief row in a small parsed filing",
-        "Sanitized parsed rows: removed 5, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 446,
-      "band": "Tallcree Tribal Government",
-      "province": "AB",
-      "year": "2015-2016",
-      "reason": "no Chief row in a small parsed filing",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=446&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Multiple candidate Chief and Council tables found",
-        "No Chief row detected",
-        "Quarantined parsed rows: no Chief row in a small parsed filing",
-        "Sanitized parsed rows: removed 5, fixed totals 0"
       ]
     },
     {

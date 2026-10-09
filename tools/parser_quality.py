@@ -214,7 +214,7 @@ def validate_people(people, source_total=None, table_quality=None, strict=False)
         elif TOTAL_NAME_RE.search(name):
             severe.append(f"Row {index}: possible footer total parsed as official")
         elif len(re.sub(r'[^A-Za-z]', '', name)) < 3 or re.search(
-                r'\b(year ended|schedule of|number of months)\b', name, re.I):
+                r'\b(year ended|schedule of|number of months)\b|^(?:title|position|months?)\b', name, re.I):
             severe.append(f"Row {index}: official name is a number or document heading")
         elif strict and (len(name) > 80 or re.search(r'\d|\bname of individual\b', name, re.I)):
             severe.append(f"Row {index}: official name contains merged columns or a table heading")

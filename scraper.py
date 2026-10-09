@@ -582,6 +582,26 @@ def metric_for_result(result):
     return "still_pending"
 
 
+FILING_RESULT_FIELDS = (
+    'people', 'parse_status', 'warnings', 'parse_confidence',
+    'manual_review_required', 'parse_stages', 'sourceTotal', 'manualSourceReview',
+    'sha256', 'byteSize', 'httpStatus', 'retrievedAt', 'lastChecked', 'reparsed',
+    'verificationStatus', 'sourceVerificationStatus', 'documentChecks',
+    'parserRevision', 'extractionMethod', 'ocrStatus', 'ocrEngine', 'ocrWarnings',
+    'ocrFinancialColumnPages', 'manual_override', 'override_source',
+)
+
+
+def reuse_filing_result(filing, prior):
+    """Preserve reviewed rows together with the document that supports them."""
+    from copy import deepcopy
+    for field in FILING_RESULT_FIELDS:
+        if field in prior:
+            filing[field] = deepcopy(prior[field])
+    if prior.get('href'):
+        filing['href'] = prior['href']
+
+
 def main():
     print(f"OpenBand scraper starting - {utc_now()}")
     print(f"Scraping {len(BANDS)} bands...\n")
@@ -626,27 +646,11 @@ def main():
                 )
                 prior = successful.get(existing_key)
                 if prior:
-                    for key in (
-                        "people",
-                        "parse_status",
-                        "warnings",
-                        "parse_confidence",
-                        "manual_review_required",
-                        "parse_stages",
-                    ):
-                        if key in prior:
-                            enriched_filing[key] = prior[key]
+                    reuse_filing_result(enriched_filing, prior)
                     parse_metrics["reused_success"] += 1
                 else:
                     parsed = extract_remuneration_rows(enriched_filing.get("href"))
-                    for key in (
-                        "people",
-                        "parse_status",
-                        "warnings",
-                        "parse_confidence",
-                        "manual_review_required",
-                        "parse_stages",
-                    ):
+                    for key in FILING_RESULT_FIELDS:
                         if key in parsed:
                             enriched_filing[key] = parsed[key]
                     parse_metrics[metric_for_result(parsed)] += 1

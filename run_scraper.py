@@ -355,7 +355,7 @@ def _column_key(text):
         return "creditCard"
     if re.search(r"\b(total\s+paid|totals?)$|^totals?\b", t) and "remuneration" not in t:
         return "total"
-    if re.search(r"\b(other|benefits?|incentives?|comps?|compensation|vacation)\b", t):
+    if re.search(r"\b(other|proxy\s+responsibilities|benefits?|incentives?|comps?|compensation|vacation)\b", t):
         return "otherPayments"
     if re.search(r"\b(remuneration|salary|honou?raria|wages?)\b", t):
         return "remuneration"
@@ -489,6 +489,12 @@ def _assign_text_money_values(amounts, header_hint=""):
     """Map flattened text values using the wording of the visible PDF header."""
     amounts = [amount for amount in amounts if amount is not None]
     hint = _clean_cell(header_hint).lower()
+
+    # Remuneration | Other Remuneration | Expenses | Total (Cote 2020-2021).
+    if ('other remuneration' in hint and 'expense' in hint and 'total' in hint
+            and 'salary' not in hint and 'subtotal' not in hint and len(amounts) == 4):
+        return {'remuneration': amounts[0], 'travel': None, 'expenses': amounts[2],
+                'creditCard': None, 'otherPayments': amounts[1], 'total': amounts[3]}
 
     # Remuneration | Expenses | Contract. Contract billings are reported as
     # other payments, not as reimbursed travel/expenses.
@@ -670,7 +676,10 @@ def _parse_keyword_table_row(row, column_map, header_hint):
             cell_amounts = _amounts_in_cell(cells[idx])
             value = sum(cell_amounts) if key == "otherPayments" and cell_amounts else amounts_by_col.get(idx)
             if value is not None:
-                mapped_money[key] = value
+                if key in {'travel', 'expenses', 'otherPayments'}:
+                    mapped_money[key] = (mapped_money[key] or 0) + value
+                else:
+                    mapped_money[key] = value
 
     if mapped_money["remuneration"] is not None or sum(1 for value in mapped_money.values() if value is not None) >= 2:
         if mapped_money["total"] is None:
@@ -687,7 +696,7 @@ def _parse_keyword_table_row(row, column_map, header_hint):
             if value <= 24 and idx <= numeric_cols[0] + 1:
                 continue
             money_amounts.append(value)
-        money = _assign_money_values(money_amounts, header_hint)
+        money = _assign_text_money_values(money_amounts, header_hint)
 
     if not any(money.get(key) for key in ["remuneration", "travel", "expenses", "creditCard", "otherPayments", "total"]):
         return None
@@ -719,6 +728,8 @@ def _parse_amount(value):
 def _looks_like_person_name(value, allow_role_word=False):
     text = scraper.clean_person_name(value).replace("\u2019", "'")
     if not text or _PROJECT_LINE_RE.search(text):
+        return False
+    if re.match(r'^(?:title|position|number|months?|name of individual)\b', text, re.I):
         return False
     prohibited = r"\b(total|travel|expense|payment|salary|wage)\b"
     if not allow_role_word:

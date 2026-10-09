@@ -26,6 +26,22 @@ def is_remuneration(filing):
     return "remuneration" in key(filing.get("docType"))
 
 
+def reviewed_source_protected(filing):
+    review = filing.get('manualSourceReview') or {}
+    return bool(review.get('completeSchedule') and review.get('identityAndYearConfirmed')
+                and filing.get('sha256') and filing['sha256']==review.get('sha256')
+                and filing.get('year')==review.get('year')
+                and filing.get('href')==review.get('sourcePdf'))
+
+
+def target_filing(band, year):
+    candidates = [filing for filing in band.get('filings',[])
+                  if filing.get('year')==year and is_remuneration(filing)]
+    # Prefer a reviewed source over an obsolete Not posted placeholder.
+    return next((filing for filing in candidates if reviewed_source_protected(filing)),
+                candidates[0] if candidates else None)
+
+
 def normalize_row(row):
     if isinstance(row, dict):
         person = dict(row)
@@ -79,43 +95,37 @@ def apply_record(data, record):
 
     applied = 0
     for year, status_values in (record.get("filingStatuses") or {}).items():
-        target_filing = None
-        for filing in target_band.get("filings", []):
-            if filing.get("year") == year and is_remuneration(filing):
-                target_filing = filing
-                break
-        if target_filing is None:
+        selected_filing = target_filing(target_band, year)
+        if selected_filing is None or reviewed_source_protected(selected_filing):
             continue
-        target_filing["people"] = []
-        target_filing["parse_status"] = status_values["parse_status"]
-        target_filing["parse_confidence"] = status_values.get("parse_confidence", "high")
-        target_filing["manual_review_required"] = status_values.get(
+        target = selected_filing
+        target["people"] = []
+        target["parse_status"] = status_values["parse_status"]
+        target["parse_confidence"] = status_values.get("parse_confidence", "high")
+        target["manual_review_required"] = status_values.get(
             "manual_review_required", False
         )
-        target_filing["warnings"] = status_values.get("warnings", [])
-        target_filing["manual_override"] = True
-        target_filing["override_source"] = record.get("source") or "manual_overrides"
+        target["warnings"] = status_values.get("warnings", [])
+        target["manual_override"] = True
+        target["override_source"] = record.get("source") or "manual_overrides"
         applied += 1
 
     for year, rows in (record.get("filings") or {}).items():
-        target_filing = None
-        for filing in target_band.get("filings", []):
-            if filing.get("year") == year and is_remuneration(filing):
-                target_filing = filing
-                break
-        if target_filing is None:
+        selected_filing = target_filing(target_band, year)
+        if selected_filing is None or reviewed_source_protected(selected_filing):
             continue
+        target = selected_filing
 
         people = [normalize_row(row) for row in rows]
         validation = parser_quality.validate_people(people)
-        target_filing["people"] = validation["people"]
-        target_filing["parse_status"] = record.get("status") or "manual_override"
-        target_filing["parse_confidence"] = "manual_reviewed"
-        target_filing["manual_review_required"] = False
-        target_filing["manual_override"] = True
-        target_filing["override_source"] = record.get("source") or "manual_overrides"
+        target["people"] = validation["people"]
+        target["parse_status"] = record.get("status") or "manual_override"
+        target["parse_confidence"] = "manual_reviewed"
+        target["manual_review_required"] = False
+        target["manual_override"] = True
+        target["override_source"] = record.get("source") or "manual_overrides"
         warnings = []
-        existing_warnings = [] if record.get("replaceWarnings") else target_filing.get("warnings", [])
+        existing_warnings = [] if record.get("replaceWarnings") else target.get("warnings", [])
         for warning in existing_warnings:
             if warning:
                 warnings.append(warning)
@@ -125,7 +135,7 @@ def apply_record(data, record):
         for warning in validation["warnings"]:
             if warning not in warnings:
                 warnings.append(warning)
-        target_filing["warnings"] = warnings
+        target["warnings"] = warnings
         applied += 1
     return applied
 

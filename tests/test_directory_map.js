@@ -10,7 +10,7 @@ let mapOptions, tileOptions;
 const mapStub = {on:()=>{}, createPane:()=>({style:{}})};
 const addable = {addTo:()=>addable};
 const setup = vm.createContext({
-  directoryMap:null, directoryLayer:null, reserveLandData:null,
+  directoryMap:null, directoryLayer:null, reserveLandData:null, dataLoadErrors:{},
   el:()=>({}), fitDirectoryMap:()=>{},
   window:{L:{map:(id,options)=>{mapOptions=options;return mapStub;},
     tileLayer:(url,options)=>{tileOptions=options;return addable;},
@@ -30,11 +30,12 @@ const context = vm.createContext({
   selectedProvince: () => province, el: id => fields[id],
   directoryMap: {fitBounds: bounds => {lastBounds = JSON.parse(JSON.stringify(bounds));}},
   window: {L:{latLngBounds: points => ({pad: () => points})}},
-  setView:()=>{}, setDocumentMeta:()=>{}, loadCapitalData:async()=>{}, loadMapData:async()=>{},
+  setView:()=>{}, setDocumentMeta:()=>{}, loadCapitalData:()=>new Promise(()=>{}), loadMapData:async()=>{},
   updateProvinceUI:()=>{}, renderDirectory:()=>{if(ready)renders++;},
   loadLeaflet:async()=>{}, ensureDirectoryMap:()=>{ready=true;},
   loadReserveLandData:()=>new Promise(resolve=>{finishBoundaries=resolve;}),
-  renderReserveLandLayer:()=>{}, console
+  renderReserveLandLayer:()=>{}, renderProvinceFinance:()=>{}, renderDataLoadStatus:()=>{},
+  dataLoadErrors:{}, document:{body:{dataset:{view:'directory'}}}, console
 });
 vm.runInContext(extracted, context);
 context.fitDirectoryMap();

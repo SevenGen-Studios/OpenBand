@@ -1,5 +1,6 @@
 import json
 import html
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -196,8 +197,11 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_shared_assets_and_route_restoration_hooks(self):
         profile = (ROOT / "first-nations" / "keeseekoose-first-nation" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/assets/openband.css?v=20260911b"', profile)
-        self.assertIn('src="/assets/openband.js?v=20261002"', profile)
+        root = (ROOT / 'index.html').read_text(encoding='utf-8')
+        for asset in ('openband.css','openband.js'):
+            reference = re.search(r'/assets/'+re.escape(asset)+r'\?v=[a-z0-9]+',root)
+            self.assertIsNotNone(reference)
+            self.assertIn(reference[0],profile)
         self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
@@ -363,7 +367,11 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("maxZoom:16", javascript)
         self.assertIn("touchZoom:true", javascript)
         self.assertIn("RESERVE_LAND_URL", javascript)
-        self.assertIn("CPC_CODE%20IN%20%28%27SK%27%2C%27AB%27%29", javascript)
+        self.assertIn("'/public/reserve-boundaries.geojson'", javascript)
+        snapshot=json.loads((ROOT/'public/reserve-boundaries.geojson').read_text(encoding='utf-8'))
+        self.assertEqual(snapshot['type'],'FeatureCollection')
+        self.assertTrue(snapshot['sourceUrl'].startswith('https://data.sac-isc.gc.ca/'))
+        self.assertEqual({f['properties']['CPC_CODE'] for f in snapshot['features']},{'SK','AB'})
         self.assertIn("function renderReserveLandLayer", javascript)
         self.assertIn("function clearReserveLandLayer", javascript)
         self.assertIn("function usesTwoTapMapNavigation", javascript)

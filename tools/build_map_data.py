@@ -213,6 +213,25 @@ def reserve_land_totals(bands: list[dict], reserve_lands: dict) -> dict[int, dic
     return totals
 
 
+def boundary_ids(band, record, features):
+    """Join stable ISC reserve numbers before using exact administrative owners."""
+    if band.get('sharedIscIdentity'):
+        return []
+    numbers = {str(row['number']).lstrip('0') for row in band.get('reserves', []) if row.get('number')}
+    owners = {normalized_owner(owner) for owner in record.get('reserveOwnerNames', [])}
+    result = set()
+    for feature in features:
+        properties = feature.get('properties') or feature.get('attributes') or {}
+        number = properties.get('ADMIN_LAND_ID')
+        if number is None:
+            continue
+        if str(number).lstrip('0') in numbers or owners & {
+            normalized_owner(owner) for owner in str(properties.get('FIRST_NATIONS') or '').split(',')
+        }:
+            result.add(str(number))
+    return sorted(result)
+
+
 def build_map_data(
     bands: list[dict], locations: dict, relations: dict, reserve_lands: Optional[dict] = None
 ) -> dict:
@@ -278,6 +297,9 @@ def build_map_data(
                 "reserveOwnerNames": RESERVE_OWNER_ALIASES.get(band_id, [band.get('officialName') or band['name']]) if not band.get('sharedIscIdentity') else [],
                 "reserveLandSourceUrl": RESERVE_LAND_URL.rsplit("/query", 1)[0],
             })
+            community['reserveLandIds'] = boundary_ids(band, community, reserve_lands.get('features', []))
+            community['reserveBoundarySourceUrl'] = RESERVE_LAND_URL.rsplit('/query', 1)[0]
+            community['reserveBoundaryCheckedAt'] = date.today().isoformat()
         communities.append(community)
 
     return {

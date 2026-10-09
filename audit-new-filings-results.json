@@ -1,0 +1,204 @@
+{
+  "generated": "2026-10-09T06:55:30+00:00",
+  "write": true,
+  "outcomes": [
+    {
+      "bandId": "366",
+      "name": "Cote First Nation",
+      "province": "SK",
+      "year": "2022-2023",
+      "document": "Audited consolidated financial statements",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=366&FY=2022-2023&DOC=Audited consolidated financial statements&lang=eng",
+      "before": "pending_manual_review",
+      "status": "NEEDS MANUAL REVIEW",
+      "parserStatus": "manual_review",
+      "sha256": "0c0ae45f914131fa9d9a86c452f228e78747ec64a9b6a80aed673ad1207c7ccf",
+      "checkedAt": "2026-10-09T06:55:20+00:00",
+      "warnings": [
+        "OCR recovery requires reported revenue and expense totals",
+        "Reported annual result does not reconcile exactly",
+        "Total revenue was not extracted",
+        "Revenue breakdown is incomplete",
+        "Revenue, expenses, and annual surplus do not reconcile"
+      ],
+      "people": 0,
+      "documentChecks": {
+        "identityAndYearConfirmed": true,
+        "warnings": []
+      }
+    },
+    {
+      "bandId": "366",
+      "name": "Cote First Nation",
+      "province": "SK",
+      "year": "2022-2023",
+      "document": "Schedule of Remuneration and Expenses",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=366&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "before": "pending_manual_review",
+      "status": "NEEDS MANUAL REVIEW",
+      "parserStatus": "manual_review",
+      "sha256": "4dad79fa942a31f1c32313831d2855de346abfb37eecbf6c6e608fa3221856ef",
+      "checkedAt": "2026-10-09T06:55:20+00:00",
+      "warnings": [
+        "Parsed from PDF text fallback",
+        "Totals do not reconcile for many rows",
+        "Row 1: total does not equal remuneration + travel/expenses + other",
+        "Row 3: total does not equal remuneration + travel/expenses + other",
+        "Row 4: total does not equal remuneration + travel/expenses + other",
+        "Row 5: total does not equal remuneration + travel/expenses + other",
+        "Row 8: total does not equal remuneration + travel/expenses + other",
+        "Row 10: total does not equal remuneration + travel/expenses + other",
+        "Row 11: total does not equal remuneration + travel/expenses + other",
+        "Row 13: total does not equal remuneration + travel/expenses + other",
+        "Row 14: total does not equal remuneration + travel/expenses + other",
+        "Row 15: total does not equal remuneration + travel/expenses + other",
+        "Row 16: total does not equal remuneration + travel/expenses + other",
+        "Row 19: total does not equal remuneration + travel/expenses + other",
+        "Row 20: total does not equal remuneration + travel/expenses + other",
+        "Local text output failed validation; trying free local OCR",
+        "OCR deferred; rerun with --ocr or review original PDF",
+        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+      ],
+      "people": 0,
+      "documentChecks": {
+        "identityAndYearConfirmed": true,
+        "warnings": []
+      }
+    },
+    {
+      "bandId": "362",
+      "name": "Kahkewistahaw First Nation",
+      "province": "SK",
+      "year": "2025-2026",
+      "document": "Audited consolidated financial statements",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=362&FY=2025-2026&DOC=Audited consolidated financial statements&lang=eng",
+      "before": "pending_manual_review",
+      "status": "NEEDS MANUAL REVIEW",
+      "parserStatus": "manual_review",
+      "sha256": "03f4358f65e15829636c32e8faa4f8d3c5e1de5c5ab11759dd746f21f4b00a0d",
+      "checkedAt": "2026-10-09T06:55:22+00:00",
+      "warnings": [
+        "Recovery requires a reported final annual result",
+        "New extraction requires a reported final surplus for validation",
+        "Annual surplus or deficit was not extracted"
+      ],
+      "people": 0,
+      "documentChecks": {
+        "identityAndYearConfirmed": true,
+        "warnings": []
+      }
+    },
+    {
+      "bandId": "362",
+      "name": "Kahkewistahaw First Nation",
+      "province": "SK",
+      "year": "2025-2026",
+      "document": "Schedule of Remuneration and Expenses",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=362&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "before": "pending_manual_review",
+      "status": "NEEDS MANUAL REVIEW",
+      "parserStatus": "ok_pdf_keyword_table",
+      "sha256": "7c3d736fed8d604a3aad7296714eeeae10a243b77c5c83e6040d52903acce8f8",
+      "checkedAt": "2026-10-09T06:55:24+00:00",
+      "warnings": [
+        "Parsed from keyword-aware PDF table extraction",
+        "Coordinate-aware pdfplumber table extraction was validated before publication",
+        "Multiple candidate Chief and Council tables found",
+        "Row 1: remuneration missing for apparent full-year official",
+        "Row 2: remuneration missing for apparent full-year official",
+        "Row 3: remuneration missing for apparent full-year official",
+        "Row 4: remuneration missing for apparent full-year official",
+        "Row 5: remuneration missing for apparent full-year official"
+      ],
+      "people": 5,
+      "documentChecks": {
+        "identityAndYearConfirmed": true,
+        "warnings": []
+      }
+    },
+    {
+      "bandId": "409",
+      "name": "Pheasant Rump Nakota Nation",
+      "province": "SK",
+      "year": "2025-2026",
+      "document": "Audited consolidated financial statements",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=409&FY=2025-2026&DOC=Audited consolidated financial statements&lang=eng",
+      "before": "pending_manual_review",
+      "status": "FIXED",
+      "parserStatus": "parsed",
+      "sha256": "6544ac931c2c7a4c2d386ecf6d066f559bc24174145af1e693f36f1b964124f0",
+      "checkedAt": "2026-10-09T06:55:26+00:00",
+      "warnings": [],
+      "people": 0,
+      "documentChecks": {
+        "identityAndYearConfirmed": true,
+        "warnings": []
+      }
+    },
+    {
+      "bandId": "409",
+      "name": "Pheasant Rump Nakota Nation",
+      "province": "SK",
+      "year": "2025-2026",
+      "document": "Schedule of Remuneration and Expenses",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=409&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "before": "pending_manual_review",
+      "status": "NEEDS MANUAL REVIEW",
+      "parserStatus": "manual_review",
+      "sha256": "492b2a8686daf616fdf65b091fa3ff987337daa5d8686212cbdaf23754d1ba1e",
+      "checkedAt": "2026-10-09T06:55:27+00:00",
+      "warnings": [
+        "OCR deferred; rerun with --ocr or review original PDF",
+        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+      ],
+      "people": 0,
+      "documentChecks": {
+        "identityAndYearConfirmed": true,
+        "warnings": []
+      }
+    },
+    {
+      "bandId": "365",
+      "name": "White Bear First Nations",
+      "province": "SK",
+      "year": "2025-2026",
+      "document": "Audited consolidated financial statements",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=365&FY=2025-2026&DOC=Audited consolidated financial statements&lang=eng",
+      "before": "pending_manual_review",
+      "status": "FIXED",
+      "parserStatus": "parsed",
+      "sha256": "1127f92f6cef6cc1ff4ce5e471d1398b1b13e4dccee3b2aa421fa065689dd63b",
+      "checkedAt": "2026-10-09T06:55:28+00:00",
+      "warnings": [],
+      "people": 0,
+      "documentChecks": {
+        "identityAndYearConfirmed": true,
+        "warnings": []
+      }
+    },
+    {
+      "bandId": "365",
+      "name": "White Bear First Nations",
+      "province": "SK",
+      "year": "2025-2026",
+      "document": "Schedule of Remuneration and Expenses",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=365&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "before": "pending_manual_review",
+      "status": "NEEDS MANUAL REVIEW",
+      "parserStatus": "manual_review",
+      "sha256": "9d74dadcdaf225bbbde817ef09f5963e0ae8165f2aa111433ceb0e41f841787f",
+      "checkedAt": "2026-10-09T06:55:30+00:00",
+      "warnings": [
+        "Parsed from PDF text fallback",
+        "Printed schedule footer was not reconciled"
+      ],
+      "people": 0,
+      "documentChecks": {
+        "identityAndYearConfirmed": true,
+        "warnings": [
+          "Printed schedule footer was not reconciled"
+        ]
+      }
+    }
+  ]
+}
