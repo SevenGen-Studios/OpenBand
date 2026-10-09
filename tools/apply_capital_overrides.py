@@ -3,6 +3,7 @@
 import json
 import sys
 import tempfile
+from copy import deepcopy
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,18 +30,30 @@ def apply_override(capital_data, payload):
     band_record["name"] = payload["band"]
 
     applied = 0
-    for fiscal_year, raw_summary in payload.get("years", {}).items():
-        summary = dict(raw_summary)
+    entries = [(year, summary, False) for year, summary in payload.get("years", {}).items()]
+    entries += [(year, patch, True) for year, patch in payload.get("patches", {}).items()]
+    for fiscal_year, raw_summary, is_patch in entries:
+        if is_patch:
+            existing = band_record.get("years", {}).get(fiscal_year)
+            if not existing:
+                raise ValueError(f"{payload['band']} {fiscal_year}: no existing summary to patch")
+            summary = deepcopy(existing)
+            summary.update(raw_summary)
+            summary["manual_override"] = True
+        else:
+            summary = dict(raw_summary)
         summary.setdefault("fiscalYear", fiscal_year)
         summary.setdefault("parser", "manual_official_pdf_v1")
-        summary["manualVerified"] = True
-        summary["verified"] = True
+        if not is_patch:
+            summary["manualVerified"] = True
+            summary["verified"] = True
         validation = capital_parser.validate_summary(summary)
         if not validation["publishable"]:
             reasons = "; ".join(validation["warnings"])
             raise ValueError(f"{payload['band']} {fiscal_year}: {reasons}")
         summary.update(validation)
-        summary["extractionCompleteness"] = "complete"
+        if not is_patch:
+            summary["extractionCompleteness"] = "complete"
         band_record.setdefault("years", {})[fiscal_year] = summary
         applied += 1
     return applied

@@ -469,6 +469,27 @@ def sanitize_filing(filing):
     if not people:
         return 0, 0, 0
 
+    # Source-reviewed overrides can contain legitimate zero payments and
+    # independently rounded reported totals. Generic repair heuristics must
+    # not rewrite those values or remove source-listed officials.
+    if (
+        filing.get("manual_override")
+        and filing.get("parse_confidence") == "manual_reviewed"
+        and re.fullmatch(r"\d{4}-\d{4}", str(filing.get("year") or ""))
+        and all(
+            isinstance(person.get("sourceReference"), dict)
+            and person["sourceReference"].get("yearValidated") is True
+            and re.fullmatch(
+                r"[a-f0-9]{64}",
+                person["sourceReference"].get("sourceDocumentSha256") or "",
+            )
+            and person["sourceReference"].get("selectedYear")
+            == int(str(filing.get("year", "0000-0000"))[-4:])
+            for person in people
+        )
+    ):
+        return len(people), 0, 0
+
     cleaned_people = []
     removed = 0
     fixed = 0

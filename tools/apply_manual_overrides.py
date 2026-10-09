@@ -129,6 +129,9 @@ def apply_record(data, record):
         for warning in existing_warnings:
             if warning:
                 warnings.append(warning)
+        for warning in record.get("warnings") or []:
+            if warning and warning not in warnings:
+                warnings.append(warning)
         note = f"Manual override applied from {record.get('source') or 'manual_overrides'}"
         if note not in warnings:
             warnings.append(note)
