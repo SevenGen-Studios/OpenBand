@@ -9,7 +9,9 @@ OpenBand formats:
 """
 
 import json
+import re
 import sys
+from copy import deepcopy
 from pathlib import Path
 
 try:
@@ -40,6 +42,23 @@ def target_filing(band, year):
     # Prefer a reviewed source over an obsolete Not posted placeholder.
     return next((filing for filing in candidates if reviewed_source_protected(filing)),
                 candidates[0] if candidates else None)
+
+
+def attach_source_review(filing, record, year):
+    review = (record.get("sourceReviews") or {}).get(year)
+    if review is None:
+        return
+    if (
+        not isinstance(review, dict)
+        or review.get("year") != year
+        or review.get("sourcePdf") != filing.get("href")
+        or not re.fullmatch(r"[a-f0-9]{64}", review.get("sha256") or "")
+        or review.get("identityAndYearConfirmed") is not True
+        or review.get("completeSchedule") is not True
+    ):
+        raise ValueError(f"{record.get('band')} {year}: source review identity/provenance mismatch")
+    filing["sha256"] = review["sha256"]
+    filing["manualSourceReview"] = deepcopy(review)
 
 
 def normalize_row(row):
@@ -108,6 +127,9 @@ def apply_record(data, record):
         target["warnings"] = status_values.get("warnings", [])
         target["manual_override"] = True
         target["override_source"] = record.get("source") or "manual_overrides"
+        if status_values.get("sourceReview") is not None:
+            target["source_review"] = deepcopy(status_values["sourceReview"])
+        attach_source_review(target, record, year)
         applied += 1
 
     for year, rows in (record.get("filings") or {}).items():
@@ -139,6 +161,7 @@ def apply_record(data, record):
             if warning not in warnings:
                 warnings.append(warning)
         target["warnings"] = warnings
+        attach_source_review(target, record, year)
         applied += 1
     return applied
 
