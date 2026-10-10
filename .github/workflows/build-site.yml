@@ -86,6 +86,7 @@ jobs:
           node tests/test_missing_filing_years.js
           node tests/test_directory_map.js
           node tests/test_data_loading.js
+          node tests/test_recent_updates.js
 
       - name: Commit generated routes
         if: github.event_name != 'pull_request'
