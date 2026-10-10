@@ -1,12 +1,12 @@
 {
   "generatedFrom": "2026-10-09T07:21:00+00:00",
-  "manualReviewCount": 278,
+  "manualReviewCount": 280,
   "reasonCounts": {
     "implausibly small remuneration values appear in money columns": 5,
     "month values appear in money columns": 2,
     "month values appear in money columns; implausibly small remuneration values appear in money columns": 8,
     "no Chief row in a small parsed filing": 1,
-    "no reliable official rows remain after validation": 51,
+    "no reliable official rows remain after validation": 53,
     "parser confidence is low": 211
   },
   "filings": [
@@ -871,6 +871,28 @@
         "No clear Chief and Council remuneration table found",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+      ]
+    },
+    {
+      "bandId": 361,
+      "band": "Cowessess First Nation",
+      "province": "SK",
+      "year": "2019-2020",
+      "reason": "no reliable official rows remain after validation",
+      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=361&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "Original source subtotals exceed the salary and other-remuneration components by $685. Source values are preserved for review; a reliable combined total is not published."
+      ]
+    },
+    {
+      "bandId": 361,
+      "band": "Cowessess First Nation",
+      "province": "SK",
+      "year": "2022-2023",
+      "reason": "no reliable official rows remain after validation",
+      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=361&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "Original source subtotals exceed the salary and other-remuneration components by $10,610. Source values are preserved for review; a reliable combined total is not published."
       ]
     },
     {

@@ -2,17 +2,17 @@ generated: 2026-10-09T07:21:00+00:00
 bands: 117
 error_count: 0
 bands with parsed remuneration: 108
-parsed remuneration filings: 795
-posted remuneration filings still pending: 281
+parsed remuneration filings: 793
+posted remuneration filings still pending: 283
 
 pending by fiscal year:
   2025-2026: 3 pending, 12 parsed
   2024-2025: 4 pending, 56 parsed
   2023-2024: 4 pending, 68 parsed
-  2022-2023: 5 pending, 77 parsed
+  2022-2023: 6 pending, 76 parsed
   2021-2022: 9 pending, 76 parsed
   2020-2021: 16 pending, 71 parsed
-  2019-2020: 12 pending, 84 parsed
+  2019-2020: 13 pending, 83 parsed
   2018-2019: 31 pending, 64 parsed
   2017-2018: 24 pending, 78 parsed
   2016-2017: 31 pending, 73 parsed
@@ -23,7 +23,7 @@ pending by fiscal year:
 pending by parse status:
   pending_openai_opt_in: 143
   manual_review: 117
-  pending_manual_review: 18
+  pending_manual_review: 20
   not_required: 2
   not_applicable_wrong_document: 1
 
@@ -32,6 +32,8 @@ expected SK names missing: 0
 first pending examples:
   PENDING: Carry the Kettle Nakoda Nation 2013-2014 (pending_openai_opt_in)
   PENDING: Carry the Kettle Nakoda Nation 2014-2015 (pending_openai_opt_in)
+  PENDING: Cowessess First Nation 2019-2020 (pending_manual_review)
+  PENDING: Cowessess First Nation 2022-2023 (pending_manual_review)
   PENDING: Cote First Nation 2013-2014 (pending_openai_opt_in)
   PENDING: George Gordon First Nation 2013-2014 (pending_openai_opt_in)
   PENDING: George Gordon First Nation 2014-2015 (pending_openai_opt_in)
@@ -68,5 +70,3 @@ first pending examples:
   PENDING: Red Earth Cree Nation 2013-2014 (pending_manual_review)
   PENDING: Red Earth Cree Nation 2019-2020 (pending_openai_opt_in)
   PENDING: Red Earth Cree Nation 2020-2021 (pending_openai_opt_in)
-  PENDING: Red Pheasant Cree Nation 2013-2014 (pending_openai_opt_in)
-  PENDING: Red Pheasant Cree Nation 2014-2015 (pending_openai_opt_in)
