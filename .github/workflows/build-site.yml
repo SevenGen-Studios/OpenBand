@@ -42,8 +42,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: openband-v2-site-build-v2
-  cancel-in-progress: true
+  group: openband-v2-data-writers
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -52,6 +52,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.ref || github.ref_name }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
