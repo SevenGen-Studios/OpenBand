@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-09T18:53:40Z",
+  "generated": "2026-10-10T17:56:20Z",
   "trackedCommunityCount": 117,
   "configuredSourceCount": 51,
   "communities": [
@@ -3432,12 +3432,10 @@
         "444",
         "434"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "treatysix-careers: fetch failed: HTTP Error 429: Too Many Requests"
-      ]
+      "candidatesFound": 1,
+      "reviewItems": 2,
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "treaty7-job-opportunities",
@@ -3653,12 +3651,10 @@
       "communityIds": [
         "448"
       ],
-      "candidatesFound": 0,
+      "candidatesFound": 6,
       "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "community-site-448: fetch failed: The read operation timed out"
-      ]
+      "status": "checked",
+      "warnings": []
     },
     {
       "sourceId": "community-site-450",
@@ -3710,9 +3706,7 @@
       "candidatesFound": 8,
       "reviewItems": 3,
       "status": "checked",
-      "warnings": [
-        "community-site-443: detail fetch failed: HTTP Error 429: Too Many Requests"
-      ]
+      "warnings": []
     },
     {
       "sourceId": "community-site-467",
@@ -3750,9 +3744,9 @@
       ],
       "candidatesFound": 0,
       "reviewItems": 1,
-      "status": "unavailable",
+      "status": "checked",
       "warnings": [
-        "community-site-465: fetch failed: HTTP Error 429: Too Many Requests"
+        "community-site-465: no candidate job links detected"
       ]
     },
     {
@@ -3932,10 +3926,10 @@
         "441"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 3,
+      "status": "checked",
       "warnings": [
-        "community-site-441: fetch failed: HTTP Error 429: Too Many Requests"
+        "community-site-441: no candidate job links detected"
       ]
     },
     {
@@ -3946,7 +3940,7 @@
       "communityIds": [
         "478"
       ],
-      "candidatesFound": 6,
+      "candidatesFound": 5,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
