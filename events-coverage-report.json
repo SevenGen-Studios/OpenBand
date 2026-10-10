@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-09T19:08:10Z",
-  "before": 128,
-  "after": 129,
-  "newCandidates": 283,
+  "generated": "2026-10-10T18:08:27Z",
+  "before": 129,
+  "after": 133,
+  "newCandidates": 351,
   "sourceRuns": [
     {
       "bandId": 438,
@@ -91,7 +91,7 @@
       "sourceType": "Official First Nation Website",
       "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 1,
+      "pagesChecked": 0,
       "mediaChecked": 0,
       "error": "HTTP Error 429: Too Many Requests"
     },
@@ -102,9 +102,9 @@
       "sourceUrl": "https://www.bloodtribe.org/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 1,
-      "mediaChecked": 0
+      "eventsFound": 37,
+      "pagesChecked": 6,
+      "mediaChecked": 3
     },
     {
       "bandId": 435,
@@ -113,9 +113,9 @@
       "sourceUrl": "https://bloodtribe.org/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 1,
-      "mediaChecked": 0
+      "eventsFound": 27,
+      "pagesChecked": 6,
+      "mediaChecked": 3
     },
     {
       "bandId": 433,
@@ -225,7 +225,7 @@
       "status": "ok",
       "eventsFound": 7,
       "pagesChecked": 6,
-      "mediaChecked": 2
+      "mediaChecked": 3
     },
     {
       "bandId": 443,
@@ -236,7 +236,7 @@
       "status": "ok",
       "eventsFound": 7,
       "pagesChecked": 6,
-      "mediaChecked": 2
+      "mediaChecked": 3
     },
     {
       "bandId": 467,
@@ -277,10 +277,11 @@
       "sourceName": "Frog Lake official website",
       "sourceUrl": "https://www.froglake.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
+      "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 1,
-      "mediaChecked": 1
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "HTTP Error 429: Too Many Requests"
     },
     {
       "bandId": 475,
@@ -435,7 +436,7 @@
       "sourceType": "Official First Nation Website",
       "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 1,
+      "pagesChecked": 0,
       "mediaChecked": 0,
       "error": "HTTP Error 429: Too Many Requests"
     },
@@ -514,7 +515,7 @@
       "sourceUrl": "https://www.siksikanation.com/index.html",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 23,
+      "eventsFound": 25,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -525,7 +526,7 @@
       "sourceUrl": "https://siksikanation.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 23,
+      "eventsFound": 25,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -698,7 +699,7 @@
   ],
   "reviewCount": 8,
   "statusCounts": {
-    "failed": 8,
-    "ok": 54
+    "failed": 9,
+    "ok": 53
   }
 }
