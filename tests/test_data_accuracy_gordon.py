@@ -1,6 +1,7 @@
 import copy
 import hashlib
 import json
+import re
 import unittest
 from pathlib import Path
 
@@ -53,6 +54,12 @@ class FurtherSourceReviewTests(unittest.TestCase):
         queue=json.loads((EVIDENCE/'remaining-review-queue.json').read_text())
         self.assertEqual(queue['count'],len(queue['filings']))
         self.assertEqual(queue['count'],498)
+
+    def test_generated_pages_share_the_current_application_version(self):
+        pattern=r'<script src="(/assets/openband\.js\?v=[^\"]+)"'
+        expected=re.search(pattern,(ROOT/'index.html').read_text()).group(1)
+        for relative in ['saskatchewan/index.html','alberta/index.html','first-nations/day-star-first-nation/index.html']:
+            self.assertEqual(re.search(pattern,(ROOT/relative).read_text()).group(1),expected,relative)
 
 
 if __name__=='__main__':unittest.main()
