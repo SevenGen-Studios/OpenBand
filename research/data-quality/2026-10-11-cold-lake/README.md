@@ -1,0 +1,1 @@
+Cold Lake 2025–2026: preserved original parser output and official PDF. Reviewed all ten officials and both payer sections. Honoraria combined by person; pension under Other; Travel Allowance and Travel / Other Payments under Travel / Expenses. No printed total: component sums derived. Source schedule is unaudited.
