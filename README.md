@@ -153,8 +153,8 @@ the curated logo fields when an incremental ISC scraper run rebuilds
 ## Analytics
 
 The public site includes a centralized, production-only analytics service in
-`assets/analytics.ts` with the compiled browser asset in
-`assets/analytics.js`. It lazy-loads GA4, tracks static-route changes, batches
+`assets/analytics.js`. This file and `assets/analytics-admin.js` are the canonical
+browser sources; unused, outdated TypeScript copies have been removed. It lazy-loads GA4, tracks static-route changes, batches
 internal events, retries failed submissions, respects Do Not Track, and avoids
 arbitrary search text.
 

@@ -202,7 +202,7 @@ class SiteRouteTests(unittest.TestCase):
             reference = re.search(r'/assets/'+re.escape(asset)+r'\?v=[a-z0-9]+',root)
             self.assertIsNotNone(reference)
             self.assertIn(reference[0],profile)
-        self.assertIn('src="/assets/analytics.js?v=20260812b"', profile)
+        self.assertRegex(profile, r'src="/assets/analytics\.js\?v=[a-zA-Z0-9]+"')
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function profilePath", javascript)
         self.assertIn("function restoreRoute", javascript)

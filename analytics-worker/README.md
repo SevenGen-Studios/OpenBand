@@ -96,3 +96,56 @@ Check `GET /health` after deployment. The event endpoint accepts batches at
 `GET /v1/dashboard?days=30` with an `Authorization: Bearer ...` header.
 The protected financial-intelligence endpoint is
 `GET /v1/intelligence?section=overview` with the same authorization header.
+
+## Growth reporting and operations (tracking version 2)
+
+The admin home now reads the published news, jobs, and events coverage reports,
+shows their generation times, review queues, source failures, and freshness,
+and checks the analytics health endpoint. A healthy HTTP response alone does
+not prove event ingestion; inspect the dashboard's last receipt and version-2
+session count. Reports older than 48 hours need a freshness review.
+
+The authenticated dashboard adds equal-length previous-period comparisons,
+useful outcome sessions, visible-page engagement, search failures, event errors,
+first-page campaign attribution, refresh, JSON export, and sign-out. “Today” and
+daily date labels use Saskatchewan time; period comparisons use rolling 7/30/90/365
+day windows. The current day is partial. Outcome events count distinct sessions
+and can overlap; this is not an ordered funnel. Source clicks and application
+clicks are intent signals, not proof of successful loading or application.
+
+Browser session IDs rotate after 30 minutes without recorded activity. Visible
+engagement is recorded in incremental blocks, and anonymous IDs remain estimates:
+blocked storage, tab separation, browser restrictions, and retries affect counts.
+Admin routes and Do Not Track are excluded. Query strings allow only band/year/
+province; acquisition keeps validated utm_source/utm_medium/utm_campaign values.
+Job searches keep a matched/unmatched flag rather than typed search text.
+Retries are at least once; this release does not introduce event deduplication.
+
+### Release order
+
+1. Deploy `analytics-worker/src/index.ts` with the **existing** D1 binding, hash
+   salt, and administrator token. No database migration is required. Keep the
+   salt stable. Verify `/health` and authenticated `/v1/dashboard?days=7`;
+   the response must contain `growth`. Health now supports the allowed origins.
+2. Publish the frontend via the repository's normal Pages build. Verify the
+   tracking asset uses version `20261011a` and the admin home loads its reports.
+3. In GA4's web stream, review Enhanced Measurement history-based page views:
+   manual route pageviews are already sent by OpenBand, so disable the overlapping
+   history change collection to avoid double counting. `send_page_view:false`
+   alone does not disable Enhanced Measurement history tracking. See
+   https://developers.google.com/analytics/devguides/collection/ga4/views.
+4. Confirm source open, CSV download, successful citation copy, profile share,
+   and job application click in GA4 DebugView and the internal action report.
+   Test an unmatched search; inspect the failed-search count. Verify recent event
+   receipts, then compare the next complete 7-day period to its predecessor.
+
+New engagement and campaign fields are prospective. Historical data is not
+backfilled; averages use version-2 sessions only. If the frontend ships first,
+the dashboard explicitly reports that the Worker needs the growth update while
+existing reporting remains available. Production verification requires an
+administrator sign-in and Cloudflare deployment access.
+
+Run `node tests/test_analytics_runtime.js` from the repository root, and
+`python -m unittest discover -s tests -p 'test_analytics*.py'`. Reporting tests
+execute the dashboard SQL against SQLite, including equal-length boundaries,
+distinct outcome sessions, and ISO timestamp handling.
