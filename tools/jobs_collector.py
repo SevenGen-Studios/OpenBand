@@ -226,6 +226,86 @@ class AnchorCollector(HTMLParser):
             self.current = None
 
 
+class JobCardCollector(HTMLParser):
+    """Read explicit careers cards whose link text is only 'View opportunity'."""
+    VOID = {'meta', 'img', 'br', 'hr', 'input', 'link', 'source', 'wbr', 'area', 'base', 'embed', 'param', 'col'}
+
+    def __init__(self):
+        super().__init__()
+        self.stack = []
+        self.card = None
+        self.cards = []
+        self.company_depth = None
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if 'fl-post-grid-post' in attrs.get('class', '').split():
+            self.card = {'depth': len(self.stack), 'employerParts': []}
+        if self.card is not None:
+            if tag == 'meta':
+                if attrs.get('itemprop') == 'mainEntityOfPage':
+                    self.card.update(title=attrs.get('content', ''), url=attrs.get('itemid', ''))
+                elif attrs.get('itemprop') == 'datePublished':
+                    self.card['postedDate'] = attrs.get('content')
+            if 'company_name' in attrs.get('class', '').split():
+                self.company_depth = len(self.stack)
+        if tag not in self.VOID:
+            self.stack.append(tag)
+
+    def handle_data(self, data):
+        if self.card is not None and self.company_depth is not None:
+            self.card['employerParts'].append(data)
+
+    def handle_endtag(self, tag):
+        if tag not in self.stack:
+            return
+        index = len(self.stack) - 1 - self.stack[::-1].index(tag)
+        self.stack = self.stack[:index]
+        if self.company_depth is not None and len(self.stack) <= self.company_depth:
+            self.company_depth = None
+        if self.card is not None and len(self.stack) <= self.card['depth']:
+            if self.card.get('title') and self.card.get('url'):
+                self.cards.append({'title': clean_text(self.card['title']), 'url': self.card['url'],
+                                   'postedDate': self.card.get('postedDate'),
+                                   'employer': clean_text(' '.join(self.card['employerParts']))})
+            self.card = None
+
+
+def career_card_candidates(markup, source, today):
+    parser = JobCardCollector()
+    parser.feed(markup)
+    host = urllib.parse.urlsplit(source['url']).netloc.lower().removeprefix('www.')
+    rows, warnings = [], []
+    for index, card in enumerate(parser.cards):
+        url = urllib.parse.urljoin(source['url'], card['url'])
+        if urllib.parse.urlsplit(url).scheme != 'https' or urllib.parse.urlsplit(url).netloc.lower().removeprefix('www.') != host:
+            continue
+        if re.search(r'\b(?:general|application)\b', card['title'], re.I):
+            continue
+        detail, issues = inspect_candidate_page(url, today) if index < 4 else ({}, [])
+        warnings.extend(issues)
+        status = detail.get('status', 'Pending verification')
+        posted = parse_date(card.get('postedDate'))
+        # An undated deadline is not an 'Open' deadline. Require a recent explicit
+        # job card and its accepting application form before showing Date unavailable.
+        if (status == 'Pending verification' and source.get('publishCurrentCards') and source.get('verifiedOfficialSource')
+                and posted and 0 <= (today - posted).days <= 90
+                and detail.get('acceptingApplications')
+                and card['title'].casefold() in detail.get('detailText', '').casefold()):
+            status = 'Date unavailable'
+        ids = [str(value) for value in source.get('communityIds', [])]
+        rows.append(normalize_listing({'title': card['title'], 'employer': card['employer'] or source['name'],
+            'communityId': ids[0] if len(ids) == 1 else '',
+            'communityName': (source.get('communityNames') or [''])[0] if len(ids) == 1 else '',
+            'firstNationIds': ids if len(ids) > 1 else [], 'sourceId': source['id'],
+            'sourceName': source['name'], 'sourceUrl': url, 'postedDate': card.get('postedDate'),
+            'closingDate': detail.get('closingDate'), 'status': status, 'lastChecked': today.isoformat(),
+            'verifiedOfficialSource': bool(source.get('verifiedOfficialSource')),
+            'extractionConfidence': 'high' if status in PUBLIC_STATUSES | {'Closed'} else 'low',
+            'description': 'Listed on the official careers board. Confirm availability and application details with the employer.'}, today))
+    return rows, warnings
+
+
 def configured_sources(root: Path, province: str | None = None) -> list[dict]:
     """Merge curated boards with ISC-listed community sites and verified Facebook pages."""
     curated = read_json(root / "jobs-sources.json", {"sources": []}).get("sources", [])
@@ -480,6 +560,7 @@ def inspect_candidate_page(url: str, today: date) -> tuple[dict, list[str]]:
         "postedDate": posted,
         "status": status,
         "detailText": text,
+        "acceptingApplications": bool(re.search(r'<form\b', markup, re.I) and re.search(r'\bApply Now\b', text, re.I)),
     }, []
 
 
@@ -520,7 +601,8 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
                 warnings.append(f"{source['id']}: employment page fetch failed: {page_error}")
                 continue
             pages.append((page_url, page_markup, True))
-    candidates = []
+    candidates, card_warnings = career_card_candidates(markup, source, today) if source.get('parser') == 'job_cards' else ([], [])
+    warnings.extend(card_warnings)
     review_items = []
     seen = set()
     media_urls = []
@@ -531,6 +613,10 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
         for anchor in parser.anchors:
             title = clean_text(anchor["text"])
             href = urllib.parse.urljoin(page_url, anchor["href"])
+            if source.get('sameHostOnly') and urllib.parse.urlsplit(href).netloc.lower().removeprefix('www.') != urllib.parse.urlsplit(source['url']).netloc.lower().removeprefix('www.'):
+                continue
+            if title.casefold() in {value.casefold() for value in source.get('excludeLinkTitles', [])}:
+                continue
             suffix = Path(urllib.parse.urlsplit(href).path).suffix.lower()
             media_hint = f"{title} {href}"
             if suffix in MEDIA_SUFFIXES and (employment_context or JOB_WORDS.search(media_hint)):
@@ -592,9 +678,10 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
     return candidates, warnings, page_text(markup), review_items
 
 
-def source_coverage(source: dict, tracked_ids: set[str]) -> set[str]:
+def source_coverage(source: dict, tracked_ids: set[str], province_by_id=None) -> set[str]:
     if source.get("coversAllTrackedCommunities"):
-        return set(tracked_ids)
+        province = str(source.get('province') or '').upper()
+        return {value for value in tracked_ids if not province or (province_by_id or {}).get(value) == province}
     return {clean_text(value) for value in source.get("communityIds", []) if clean_text(value) in tracked_ids}
 
 
@@ -618,6 +705,29 @@ def expand_verified_batches(overrides: dict) -> list[dict]:
     return rows
 
 
+def source_check_metadata(source, runs, today):
+    run = runs.get(source['id'], {})
+    if run.get('url') != source['url']:
+        return {'checkStatus': 'not_checked', 'lastChecked': None, 'lastAttempted': None}
+    checked = parse_date(run.get('lastChecked'))
+    fresh = checked is not None and 0 <= (today - checked).days <= 21
+    status = 'unavailable' if run.get('status') == 'unavailable' else 'checked' if fresh else 'stale' if checked else 'not_checked'
+    return {'checkStatus': status, 'lastChecked': checked.isoformat() if checked and checked <= today else None,
+            'lastAttempted': run.get('lastAttempted')}
+
+
+def community_coverage_status(sources, has_listings):
+    if has_listings:
+        return 'active_listings'
+    if not sources:
+        return 'no_verified_sources'
+    if any(source['checkStatus'] == 'checked' for source in sources):
+        return 'sources_checked_no_active_listing'
+    if any(source['checkStatus'] == 'unavailable' for source in sources):
+        return 'sources_unavailable'
+    return 'sources_not_checked'
+
+
 def collect(
     root: Path,
     today: date,
@@ -632,6 +742,14 @@ def collect(
     candidates = [dict(row) for row in previous.get("listings", []) if not row.get("manualOverride")]
     source_texts = {}
     review_items = []
+    registry_before = read_json(root / 'jobs-source-registry.json', {})
+    prior_runs = []
+    for run in registry_before.get('sourceRuns', []):
+        prior = dict(run)
+        prior.setdefault('lastAttempted', str(registry_before.get('generated') or '')[:10] or None)
+        prior.setdefault('lastChecked', prior['lastAttempted'] if prior.get('status') == 'checked' else None)
+        prior_runs.append(prior)
+    runs_by_id = {run['sourceId']: run for run in prior_runs}
     source_runs = []
     if not offline:
         with ThreadPoolExecutor(max_workers=6) as executor:
@@ -642,6 +760,8 @@ def collect(
             warnings.extend(source_warnings)
             review_items.extend(source_review)
             source_runs.append({
+                "lastAttempted": today.isoformat(),
+                "lastChecked": today.isoformat() if source_text else runs_by_id.get(source["id"], {}).get("lastChecked") if runs_by_id.get(source["id"], {}).get("url") == source["url"] else None,
                 "sourceId": source["id"],
                 "sourceName": source["name"],
                 "url": source["url"],
@@ -654,6 +774,8 @@ def collect(
             })
             if source_text:
                 source_texts[source["id"]] = source_text
+
+    runs_by_id.update({run["sourceId"]: run for run in source_runs})
 
     by_id = {}
     by_discovery = {}
@@ -714,15 +836,18 @@ def collect(
     # Source coverage must include Nations whose map coordinates are unknown.
     for band in read_json(root / "data.json", {"bands": []}).get("bands", []):
         tracked.setdefault(str(band['id']), band)
+    province_by_id = {str(band['id']): str(band.get('province') or '').upper()
+                      for band in read_json(root / 'data.json', {'bands': []}).get('bands', [])}
     coverage_sources = {community_id: [] for community_id in tracked}
     for source in all_sources:
-        for community_id in source_coverage(source, set(tracked)):
+        for community_id in source_coverage(source, set(tracked), province_by_id):
             coverage_sources[community_id].append({
                 "id": source["id"],
                 "name": source["name"],
                 "url": source["url"],
                 "sourceType": source.get("sourceType"),
                 "direct": len(source.get("communityIds", [])) == 1,
+                **source_check_metadata(source, runs_by_id, today),
             })
     data["communityCoverage"] = [
         {
@@ -733,17 +858,18 @@ def collect(
                 row for row in public
                 if str(row.get("communityId")) == community_id or community_id in row.get("firstNationIds", [])
             ]),
-            "status": "active_listings" if any(
-                str(row.get("communityId")) == community_id or community_id in row.get("firstNationIds", [])
-                for row in public
-            ) else "sources_checked_no_active_listing" if coverage_sources[community_id] else "no_verified_sources",
+            "checkedSourceCount": sum(source['checkStatus'] == 'checked' for source in coverage_sources[community_id]),
+            "lastChecked": max((source['lastChecked'] for source in coverage_sources[community_id] if source['lastChecked']), default=None),
+            "status": community_coverage_status(coverage_sources[community_id], any(
+                str(row.get('communityId')) == community_id or community_id in row.get('firstNationIds', []) for row in public)),
         }
         for community_id in sorted(tracked, key=lambda value: tracked[value].get("name", ""))
     ]
     report = {
         "generated": data["generated"],
         "sourcesConfigured": len(all_sources),
-        "sourcesChecked": 0 if offline else len(sources),
+        "sourcesChecked": len(source_runs),
+        "sourcesSuccessfullyChecked": sum(run["status"] == "checked" for run in source_runs),
         "verifiedActiveListings": len([row for row in active if row.get("verifiedOfficialSource")]),
         "communitiesWithListings": data["communityCount"],
         "pendingVerification": len([row for row in listings if row["status"] == "Pending verification"]),
@@ -774,7 +900,7 @@ def collect(
         "schemaVersion": 1,
         "generated": data["generated"],
         "trackedCommunityCount": len(tracked),
-        "configuredSourceCount": len(sources),
+        "configuredSourceCount": len(all_sources),
         "communities": [
             {
                 "communityId": community_id,
@@ -785,7 +911,8 @@ def collect(
             }
             for community_id in sorted(tracked, key=lambda value: tracked[value].get("name", ""))
         ],
-        "sourceRuns": source_runs,
+        "sourceRuns": list(runs_by_id.values()),
+        "sourceRunHistory": merge_review_history(registry_before.get('sourceRunHistory', []), prior_runs + source_runs),
     }
     return data, report
 

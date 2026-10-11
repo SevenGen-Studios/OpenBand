@@ -1,0 +1,1 @@
+Six complete schedules reviewed against official PDFs. Both payer sections combined by official. Federal fund columns contain dashes (zero); no extra Other amounts disclosed. Mixed Chief/Councillor periods retained separately and summed once, never counted twice. All totals derived from disclosed components. Source schedules unaudited. Original data/PDFs retained.
