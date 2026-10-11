@@ -117,7 +117,8 @@ class SiteRouteTests(unittest.TestCase):
         for relative in ["browse/index.html", "news/index.html", "admin/index.html", "admin/analytics/index.html", "admin/intelligence/index.html", "robots.txt", "sitemap.xml", "map-data.json", "contacts-data.json", "jobs-data.json", "jobs-schema.json", "jobs-sources.json", "jobs-overrides.json", "jobs-coverage-report.json", "assets/favicon.svg", "assets/openband-social.png", "assets/analytics.js", "assets/analytics-config.js", "assets/intelligence-admin.js", "assets/intelligence-admin.css", "community-enterprise.json"]:
             self.assertTrue((ROOT / relative).is_file(), relative)
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
-        self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 5)
+        manifest = json.loads((ROOT / "seo-page-manifest.json").read_text())
+        self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 5 + len(manifest))
         for province, code in [("saskatchewan", "SK"), ("alberta", "AB")]:
             page = ROOT / province / "index.html"
             self.assertTrue(page.exists())
@@ -165,7 +166,7 @@ class SiteRouteTests(unittest.TestCase):
         for page in pages:
             with self.subTest(page=page):
                 markup = page.read_text(encoding="utf-8")
-                self.assertIn("<footer>", markup)
+                self.assertRegex(markup, r"<footer(?:\s[^>]*)?>")
                 self.assertIn("&copy; <span data-current-year>2026</span> OpenBand. All rights reserved.", markup)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("document.querySelectorAll('[data-current-year]')", javascript)

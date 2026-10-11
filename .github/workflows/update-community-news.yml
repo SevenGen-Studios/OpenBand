@@ -111,7 +111,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add news-data.json news-sources.json news-discovery-cache.json news-review-queue.json news-coverage-report.json news first-nations sitemap.xml robots.txt
+          git add news-data.json news-sources.json news-discovery-cache.json news-review-queue.json news-coverage-report.json news first-nations saskatchewan alberta financials methodology about seo-page-manifest.json sitemap.xml robots.txt
           if git diff --cached --quiet; then
             echo "No news changes to commit"
             exit 0
