@@ -26,12 +26,13 @@ vm.runInContext(lines.filter(line=>['const dataLoadErrors=', 'function renderDat
   assert.equal(context.validMapPoint({latitude:91,longitude:-110}),false);
   assert.equal(context.validMapPoint({latitude:54,longitude:-110}),true);
   const nodes={srcNote:{innerHTML:''},sTotal:{nextElementSibling:{}},sRemun:{},sExp:{},sOther:{},sCount:{}};
-  Object.assign(context,{el:id=>nodes[id],getFilingStatus:()=>({label:'Parsed'}),
+  Object.assign(context,{el:id=>nodes[id],getFilingStatus:()=>({label:'Parsed'}),isManualReview:()=>true,escAttr:String,
     getSourceLinks:()=>({pdf:'https://example.org/source.pdf'}),methodName:()=> 'source review',
     esc:value=>String(value).replaceAll('<','&lt;').replaceAll('>','&gt;'),formatMoney:String,
     currentFiling:()=>({manualSourceReview:{totalMethod:'sum_of_reported_components'}})});
   context.renderNote({warnings:['Printed total differs by $1. <script>'],parse_status:'parsed'},{});
-  assert.match(nodes.srcNote.innerHTML,/Printed total differs by \$1/);
+  assert.match(nodes.srcNote.innerHTML,/Needs source review/);
+  assert.ok(!nodes.srcNote.innerHTML.includes('Printed total differs'),'Detailed parser warnings remain in data, without overcrowding the source note');
   assert.ok(!nodes.srcNote.innerHTML.includes('<script>'),'Source notes must be escaped');
   context.renderSummary({total:100,remuneration:80,travelExpenses:20,other:0,officials:1});
   assert.equal(nodes.sTotal.nextElementSibling.textContent,'Sum of reported components');
