@@ -9,6 +9,11 @@ import unicodedata
 from pathlib import Path
 from urllib.parse import quote
 
+try:
+    from tools.seo_records import publish as publish_records, profile_archive, financial_markup, safe_url
+except ModuleNotFoundError:
+    from seo_records import publish as publish_records, profile_archive, financial_markup, safe_url
+
 
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = "https://openband.ca"
@@ -548,6 +553,9 @@ def build() -> None:
     bands = sorted(data.get("bands", []), key=lambda item: item["name"])
     base = (ROOT / "index.html").read_text(encoding="utf-8")
     base = base.replace('<a class="logo" href="/">Open<em>Band</em></a>', '<a class="logo" href="/">Open<em>Band</em></a><a class="nav-home" id="homeLink" href="/">Home</a>', 1)
+    contacts = json.loads((ROOT / "contacts-data.json").read_text(encoding="utf-8"))
+    capital = json.loads((ROOT / "capital-data.json").read_text(encoding="utf-8"))
+    seo_manifest, financial_records = publish_records(ROOT, bands, capital, slugify)
     slugs = [slugify(band["name"]) for band in bands]
     if len(slugs) != len(set(slugs)):
         raise RuntimeError("Community slugs are not unique")
@@ -558,8 +566,11 @@ def build() -> None:
     profile_root = ROOT / "first-nations"
     profile_root.mkdir(parents=True, exist_ok=True)
 
-    write_page(ROOT / "saskatchewan" / "index.html", provincial_landing(base, "SK", "Saskatchewan"))
-    write_page(ROOT / "alberta" / "index.html", provincial_landing(base, "AB", "Alberta"))
+    for code, province in [('SK', 'Saskatchewan'), ('AB', 'Alberta')]:
+        landing = provincial_landing(base, code, province)
+        listing = '<section class="seo-province-directory" data-record-province="' + code + '"><h2>' + province + ' First Nations financial records</h2><p>Browse Nation profiles and fiscal-year financial statements, remuneration schedules, and original sources.</p><ul class="record-directory">' + ''.join(f'<li><a href="/first-nations/{slugify(band["name"])}/">{html.escape(band["name"])}</a></li>' for band in bands if band.get('province') == code) + '</ul><p><a href="/financials/">How to read First Nations financial records</a></p></section>'
+        landing = landing.replace('<footer>', listing + '<footer>', 1)
+        write_page(ROOT / province.lower() / 'index.html', landing)
 
     for band in bands:
         slug = slugify(band["name"])
@@ -595,6 +606,26 @@ def build() -> None:
             ),
             1,
         )
+        contact = next((row for row in contacts.get('contacts', []) if str(row.get('nation_id')) == str(band['id'])), {})
+        website = safe_url(contact.get('website_url'))
+        region = {'SK': 'Saskatchewan', 'AB': 'Alberta'}.get(band.get('province'), 'Canada')
+        facts = f'<section><h2>About {html.escape(band["name"])}</h2><p>{html.escape(band["name"])} is a First Nation in {region}. ' + (html.escape(band['treaty']) + ' is listed in the current source records.' if band.get('treaty') else '') + '</p>'
+        if website:
+            facts += f'<p><a href="{html.escape(website, quote=True)}">Nation website listed by ISC</a>' + (f' · contact source checked {html.escape(str(contact["last_verified"]))}' if contact.get('last_verified') else '') + '</p>'
+        if contact.get('source_url') and safe_url(contact['source_url']):
+            facts += f'<p><a href="{html.escape(contact["source_url"], quote=True)}">Verify community information with ISC</a></p>'
+        facts += '</section>'
+        page = page.replace('</dl>', '</dl>' + facts, 1)
+        records = financial_records[str(band['id'])]
+        archive = profile_archive(band, records, slugify)
+        page = page.replace('</div>\n<footer>', archive + '</div>\n<footer>', 1)
+        if archive not in page:
+            page = page.replace('<footer>', archive + '<footer>', 1)
+        latest_financial = next(((year, row['financial']) for year, row in records.items() if 'financial' in row), None)
+        if latest_financial:
+            year, summary = latest_financial
+            page = page.replace('</dl>', '</dl>' + financial_markup(summary, year), 1)
+        page = page.replace('</head>', '<script type="application/ld+json" id="openbandBreadcrumbs">' + json.dumps({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": ORIGIN + "/"}, {"@type": "ListItem", "position": 2, "name": "First Nations", "item": ORIGIN + "/first-nations/"}, {"@type": "ListItem", "position": 3, "name": band['name'], "item": ORIGIN + path}]}, ensure_ascii=False).replace('<', '\\u003c') + '</script></head>', 1)
         job_schemas = job_posting_schema(band, jobs.get("listings", []))
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
@@ -646,10 +677,12 @@ def build() -> None:
     news_page = news_page.replace('<div class="news-grid" id="newsGrid"></div>', news_prerender(news.get("articles", [])), 1)
     write_page(ROOT / "news" / "index.html", news_page)
 
-    lastmod = str(data.get("generated") or "")[:10]
     paths = ["/", "/saskatchewan/", "/alberta/", "/browse/", "/news/"] + [f"/first-nations/{slug}/" for slug in slugs]
+    paths.extend(seo_manifest)
+    def lastmod_markup(path):
+        return "<lastmod>" + seo_manifest[path]["lastmod"] + "</lastmod>" if path in seo_manifest else ""
     urls = "".join(
-        f"<url><loc>{ORIGIN}{path}</loc>{f'<lastmod>{lastmod}</lastmod>' if lastmod else ''}</url>"
+        f"<url><loc>{ORIGIN}{path}</loc>{lastmod_markup(path)}</url>"
         for path in paths
     )
     (ROOT / "sitemap.xml").write_text(
