@@ -44,6 +44,9 @@ jobs:
           python tools/apply_manual_overrides.py data.json
           python tools/sanitize_data.py data.json
 
+      - name: Rebuild static profile routes
+        run: python tools/build_site.py
+
       - name: Verify source-reviewed corrections survive sanitization
         run: python -m unittest discover -s tests -p 'test_data_accuracy*.py'
 
@@ -65,9 +68,6 @@ jobs:
         run: |
           python tools/audit_data.py | tee audit-results.txt
           python tools/manual_review_report.py
-
-      - name: Rebuild static profile routes
-        run: python tools/build_site.py
 
       - name: Commit sanitized data
         uses: stefanzweifel/git-auto-commit-action@v5
