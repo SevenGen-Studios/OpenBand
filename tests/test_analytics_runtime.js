@@ -8,7 +8,7 @@ function client({blocked=false,path='/',dnt='0'}={}){
 }
 (async()=>{
  const c=client({blocked:true});c.service.trackSearch('anything',0);await c.service.flush();assert.equal(c.sent.length,1,'blocked storage must not break collection');const event=c.sent[0].events[0];assert.equal(event.page,'/?year=2025');assert.equal(event.referrer,'https://example.com');assert.equal(event.parameters.utm_source,'newsletter');assert.equal(event.parameters.tracking_version,2);assert(!JSON.stringify(event).includes('private'));
- const normal=client();await normal.service.flush();const first=normal.sent[0].events[0].session_id;normal.advance(31*60*1000);normal.service.trackDownload('csv');await normal.service.flush();assert.notEqual(normal.sent[1].events[0].session_id,first,'idle session expires');
+ const normal=client();await normal.service.flush();const first=normal.sent[0].events[0].session_id;normal.advance(31*60*1000);normal.service.trackDownload('csv');await normal.service.flush();assert.notEqual(normal.sent[1].events[0].session_id,first,'idle session expires');assert.equal(normal.sent[1].events[0].event,'page_view','resumed session has landing attribution');assert.equal(normal.sent[1].events[1].event,'statement_downloaded');
  for(const options of [{path:'/admin/analytics/'},{dnt:'1'}]){const disabled=client(options);disabled.service.trackSearch('x',1);await disabled.service.flush();assert.equal(disabled.sent.length,0)}
  const concurrent=client();await Promise.all([concurrent.service.flush(),concurrent.service.flush()]);assert.equal(concurrent.sent.length,1,'parallel flush must not duplicate submissions');
  console.log('Analytics runtime tests passed: blocked storage, safe URLs, campaign capture, session expiry, privacy controls, concurrent flush.');
