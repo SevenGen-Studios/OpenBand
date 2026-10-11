@@ -28,6 +28,11 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 
+try:
+    from community_history import merge_review_history
+except ImportError:
+    from tools.community_history import merge_review_history
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "data.json"
 NEWS_PATH = ROOT / "news-data.json"
@@ -1954,6 +1959,7 @@ def run(args):
         invalid_existing_removed,
         source_runs,
     )
+    review = merge_review_history(load_json(REVIEW_PATH, {}).get("items", []), review)
     review_output = {
         "schemaVersion": 1,
         "generated": iso_now(),

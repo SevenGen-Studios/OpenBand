@@ -16,7 +16,7 @@ on:
           - AB
           - SK
           - ALL
-        default: AB
+        default: ALL
   schedule:
     - cron: "23 12 * * *"
 
@@ -35,6 +35,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
 
       - name: Preserve current news data
         run: cp news-data.json news-data.before.json
@@ -61,8 +63,8 @@ jobs:
           if [ "${{ github.event.inputs.pilot_only || 'false' }}" = "true" ]; then
             ARGS+=(--pilot)
           fi
-          if [ "${{ github.event.inputs.province || 'AB' }}" != "ALL" ]; then
-            ARGS+=(--province "${{ github.event.inputs.province || 'AB' }}")
+          if [ "${{ github.event.inputs.province || 'ALL' }}" != "ALL" ]; then
+            ARGS+=(--province "${{ github.event.inputs.province || 'ALL' }}")
           fi
           python tools/news_discovery.py "${ARGS[@]}"
 

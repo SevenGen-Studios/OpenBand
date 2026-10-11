@@ -236,7 +236,7 @@ class EventExtractionTests(unittest.TestCase):
             "extractionMethod": "html",
         }
         with patch("tools.events_discovery.utc_today", return_value=date(2030, 1, 1)):
-            self.assertEqual(merge_events([], [item], date(2026, 8, 13)), [item])
+            self.assertEqual(merge_events([], [item], date(2026, 8, 13)), [{**item, "status": "Upcoming"}])
             self.assertTrue(is_publishable_event(item, date(2026, 8, 13)))
             self.assertFalse(is_publishable_event(item))
             self.assertEqual(merge_events([], [item]), [])

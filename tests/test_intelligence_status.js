@@ -1,0 +1,18 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const vm=require('node:vm');
+const source=fs.readFileSync('assets/openband.js','utf8');
+const context=vm.createContext({Date});
+vm.runInContext(source.split('\n').filter(line=>['intelligenceDay','intelligenceToday','currentEventStatus','effectiveJobStatus'].some(name=>line.startsWith(`function ${name}(`))).join('\n'),context);
+assert.equal(context.currentEventStatus({startDate:'2026-10-01',status:'Upcoming'},'2026-10-11'),'Recently held');
+assert.equal(context.currentEventStatus({startDate:'2026-09-01',endDate:'2026-10-15'},'2026-10-11'),'Ongoing');
+assert.equal(context.currentEventStatus({startDate:'2026-09-01'},'2026-10-11'),null);
+assert.equal(context.currentEventStatus({startDate:'2026-02-30'},'2026-10-11'),null);
+const job={title:'Health Nurse',status:'Open',verifiedOfficialSource:true,lastChecked:'2026-10-11',closingDate:'2026-10-11'};
+assert.equal(context.effectiveJobStatus(job,'2026-10-11'),'Closing soon');
+assert.equal(context.effectiveJobStatus(job,'2026-10-12'),'Closed','Yesterday closes immediately, without a timezone/noon grace day');
+assert.equal(context.effectiveJobStatus({...job,status:'Closed',closingDate:'2027-01-01'},'2026-10-11'),'Closed');
+assert.equal(context.effectiveJobStatus({...job,status:'Pending verification',closingDate:'2027-01-01'},'2026-10-11'),'Pending verification');
+assert.equal(context.effectiveJobStatus({...job,lastChecked:'2026-08-01',closingDate:'2027-01-01'},'2026-10-11'),'Pending verification');
+assert.equal(context.effectiveJobStatus({...job,title:'Job board'},'2026-10-11'),'Pending verification');
+console.log('Live event and job status boundaries, freshness, and verification gates passed.');

@@ -15,7 +15,7 @@ on:
           - AB
           - SK
           - ALL
-        default: AB
+        default: ALL
   schedule:
     - cron: "41 13 * * *"
 
@@ -34,6 +34,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
 
       - name: Preserve current events data
         run: cp events-data.json events-data.before.json
@@ -59,8 +61,8 @@ jobs:
           ARGS=()
           if [ -n "${{ github.event.inputs.band_id }}" ]; then
             ARGS+=(--band-id "${{ github.event.inputs.band_id }}")
-          elif [ "${{ github.event.inputs.province || 'AB' }}" != "ALL" ]; then
-            ARGS+=(--province "${{ github.event.inputs.province || 'AB' }}")
+          elif [ "${{ github.event.inputs.province || 'ALL' }}" != "ALL" ]; then
+            ARGS+=(--province "${{ github.event.inputs.province || 'ALL' }}")
           fi
           python tools/events_discovery.py "${ARGS[@]}"
 

@@ -23,13 +23,18 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 
+try:
+    from community_history import merge_review_history
+except ImportError:
+    from tools.community_history import merge_review_history
+
 ROOT = Path(__file__).resolve().parents[1]
 ACTIVE_STATUSES = {"Open", "Closing soon"}
 PUBLIC_STATUSES = ACTIVE_STATUSES | {"Date unavailable"}
 JOB_WORDS = re.compile(
     r"\b(job|career|position|worker|manager|director|coordinator|teacher|nurse|"
     r"clerk|accountant|receptionist|janitor|maintenance|employment|officer|"
-    r"counsellor|educator|peacekeeper|support)\b",
+    r"counsellor|educator|peacekeeper|support|lead|analyst|assistant|operator)\b",
     re.IGNORECASE,
 )
 GENERIC_LINK_TITLES = re.compile(
@@ -72,7 +77,7 @@ def slug(value: str) -> str:
 
 
 def clean_job_title(value: str) -> str:
-    title = clean_text(value)
+    title = re.sub(r"^job title\s*:\s*", "", clean_text(value), flags=re.I)
     title = re.sub(r"^.*?\bis hiring!?\s*(?:position)?\s*[:\-]\s*", "", title, flags=re.I)
     title = re.sub(r"\s*[\-(–—]\s*(?:apply by|deadline to apply|open until filled)\b.*$", "", title, flags=re.I)
     title = re.sub(r"\s*\((?:apply by|deadline|open until filled)\b.*\)\s*$", "", title, flags=re.I)
@@ -92,17 +97,15 @@ def effective_status(record: dict, today: date) -> str:
     closing = parse_date(record.get("closingDate"))
     checked = parse_date(record.get("lastChecked"))
     stated = clean_text(record.get("status"))
-    if closing:
-        if closing < today:
-            return "Closed"
-        if closing <= today + timedelta(days=7):
-            return "Closing soon"
-        return "Open"
-    if stated == "Closed":
+    if stated == "Closed" or closing and closing < today:
         return "Closed"
-    if stated in ACTIVE_STATUSES:
-        return stated if checked and checked >= today - timedelta(days=21) else "Pending verification"
-    if stated == "Date unavailable" and checked and checked >= today - timedelta(days=21):
+    if stated == "Pending verification":
+        return stated
+    if not checked or checked > today or checked < today - timedelta(days=21):
+        return "Pending verification"
+    if closing:
+        return "Closing soon" if closing <= today + timedelta(days=7) else "Open"
+    if stated in PUBLIC_STATUSES:
         return stated
     return "Pending verification"
 
@@ -162,6 +165,7 @@ def normalize_listing(raw: dict, today: date) -> dict:
         "extractionConfidence": clean_text(raw.get("extractionConfidence")) or "low",
         "verifiedOfficialSource": bool(raw.get("verifiedOfficialSource")),
         "manualOverride": bool(raw.get("manualOverride")),
+        **({"sourceVerification": raw["sourceVerification"]} if raw.get("sourceVerification") else {}),
     }
     record["id"] = record["id"] or stable_id(record)
     record["status"] = effective_status(record, today)
@@ -170,6 +174,8 @@ def normalize_listing(raw: dict, today: date) -> dict:
 
 def validation_warnings(record: dict) -> list[str]:
     warnings = []
+    if GENERIC_LINK_TITLES.fullmatch(record.get("title") or "") or re.match(r"^(?:job board|attn\s*:|https?://|with local job opportunities|position\.)", record.get("title") or "", re.I):
+        warnings.append("A specific job title has not been verified")
     for field in ("title", "employer", "sourceUrl"):
         if not record.get(field):
             warnings.append(f"Missing {field}")
@@ -362,14 +368,18 @@ def extract_document_text(url: str) -> tuple[str, str, str | None]:
 def title_from_document(text: str) -> str:
     generic = re.compile(r"^(job|employment|career)\s+(posting|opportunity|notice)s?$", re.IGNORECASE)
     candidates = []
-    for raw_line in text.splitlines()[:80]:
+    lines = text.splitlines()[:80]
+    for index, raw_line in enumerate(lines):
         line = clean_text(raw_line).strip("-|:•")
         if not 6 <= len(line) <= 130 or generic.match(line) or GENERIC_LINK_TITLES.match(line):
             continue
         if re.search(r"\b(closing|deadline|salary|applications?|qualifications?|responsibilities)\b", line, re.I):
             continue
         if JOB_WORDS.search(line):
-            score = 2 if re.search(r"\b(manager|director|coordinator|teacher|nurse|worker|clerk|officer|assistant|operator)\b", line, re.I) else 1
+            if len(line.split()) > 12 or "reports directly" in line.lower():
+                continue
+            heading = any(generic.match(clean_text(previous)) for previous in lines[max(0,index-2):index])
+            score = (3 if heading else 0) + (2 if re.search(r"\b(manager|director|coordinator|teacher|nurse|worker|clerk|officer|assistant|operator|lead|analyst)\b", line, re.I) else 1)
             candidates.append((score, -len(line), line))
     if not candidates:
         return ""
@@ -619,7 +629,7 @@ def collect(
     overrides = read_json(root / "jobs-overrides.json", {})
     previous = read_json(root / "jobs-data.json", {"listings": []})
     warnings = []
-    candidates = []
+    candidates = [dict(row) for row in previous.get("listings", []) if not row.get("manualOverride")]
     source_texts = {}
     review_items = []
     source_runs = []
@@ -644,18 +654,6 @@ def collect(
             })
             if source_text:
                 source_texts[source["id"]] = source_text
-        if province:
-            roster = read_json(root / "data.json", {"bands": []}).get("bands", [])
-            province_by_id = {
-                str(row.get("id")): str(row.get("province") or "").upper()
-                for row in roster
-            }
-            candidates.extend(
-                row for row in previous.get("listings", [])
-                if province_by_id.get(str(row.get("communityId"))) != province.upper()
-            )
-    else:
-        candidates.extend(row for row in previous.get("listings", []) if not row.get("manualOverride"))
 
     by_id = {}
     by_discovery = {}
@@ -769,7 +767,7 @@ def collect(
             "sourceWarnings": len(warnings),
         },
         "pendingCandidates": pending_rows,
-        "documentReviews": review_items,
+        "documentReviews": merge_review_history(read_json(root / "jobs-review-queue.json", {}).get("documentReviews", []), review_items),
         "sourceWarnings": warnings,
     }
     report["_sourceRegistry"] = {

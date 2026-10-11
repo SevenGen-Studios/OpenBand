@@ -50,6 +50,11 @@ except ImportError:  # Imported as tools.events_discovery in tests.
     )
 
 
+try:
+    from community_history import merge_review_history
+except ImportError:
+    from tools.community_history import merge_review_history
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "data.json"
 NEWS_PATH = ROOT / "news-data.json"
@@ -742,11 +747,12 @@ def merge_events(existing: list[dict], candidates: list[dict], today: date | Non
         start = str(item.get("startDate") or "")
         url = canonical_url(item.get("sourceUrl"))
         if not (
-            minimum <= start <= maximum
+            start <= maximum and str(item.get("endDate") or start) >= minimum
             and url.startswith("https://")
             and is_publishable_event(item, today)
         ):
             continue
+        item = {**item, "status": event_status(start, item.get("endDate"), today)}
         identity = event_identity_title(item.get("title"))
         key = f"{item.get('bandId')}|{start}|{identity}"
         duplicate = next((
@@ -808,6 +814,8 @@ def is_publishable_event(item: dict, today: date | None = None) -> bool:
     if re.search(r"/(?:category|tag|author|page|about|news-posts|whats-new)(?:/|$)", path):
         return False
     if any(key in query for key in ("category=", "offset=", "page=")):
+        return False
+    if re.search(r"/events/\d{4}-\d{2}-\d{2}$", path):
         return False
     if path.endswith(("/events", "/calendar", "/events.html", "/announcements")) and method == "html-page":
         return False
@@ -937,6 +945,10 @@ def run(args):
             run_row["error"] = clean_text(error)[:300]
         runs.append(run_row)
 
+    for item in current.get("events", []):
+        if not is_publishable_event(item, today):
+            review.append({"status": "held_for_review", "reviewReason": "Existing event failed current source quality checks", "originalRecord": item})
+    review = merge_review_history(load_json(REVIEW_PATH, {}).get("items", []), review)
     merged = merge_events(current.get("events", []), candidates, today)
     frontend_sources = [
         {"bandId": row["bandId"], "communityName": row["communityName"], "sources": [{key: source.get(key) for key in ("type", "name", "url", "status") if source.get(key) is not None} for source in row.get("sources", [])]}

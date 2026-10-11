@@ -11,7 +11,7 @@ on:
           - AB
           - SK
           - ALL
-        default: AB
+        default: ALL
   schedule:
     - cron: "20 13 * * *"
 
@@ -19,7 +19,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: openband-jobs-update
+  group: openband-v2-data-writers
   cancel-in-progress: false
 
 jobs:
@@ -28,6 +28,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -37,10 +39,10 @@ jobs:
           sudo apt-get install -y --no-install-recommends poppler-utils tesseract-ocr
       - name: Collect and validate public opportunities
         run: |
-          if [ "${{ github.event.inputs.province || 'AB' }}" = "ALL" ]; then
+          if [ "${{ github.event.inputs.province || 'ALL' }}" = "ALL" ]; then
             python tools/jobs_collector.py
           else
-            python tools/jobs_collector.py --province "${{ github.event.inputs.province || 'AB' }}"
+            python tools/jobs_collector.py --province "${{ github.event.inputs.province || 'ALL' }}"
           fi
       - name: Test employment pipeline
         run: python -m unittest tests.test_jobs_pipeline -v
