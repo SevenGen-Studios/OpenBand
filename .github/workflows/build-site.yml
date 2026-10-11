@@ -82,6 +82,7 @@ jobs:
 
       - name: Run browser logic regression tests
         run: |
+          node tests/test_analytics_runtime.js
           node tests/test_provinces.js
           node tests/test_missing_filing_years.js
           node tests/test_directory_map.js
