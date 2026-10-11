@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-10T17:56:20Z",
+  "generated": "2026-10-11T18:09:24Z",
   "trackedCommunityCount": 117,
   "configuredSourceCount": 51,
   "communities": [
@@ -3432,10 +3432,12 @@
         "444",
         "434"
       ],
-      "candidatesFound": 1,
-      "reviewItems": 2,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "treatysix-careers: fetch failed: HTTP Error 429: Too Many Requests"
+      ]
     },
     {
       "sourceId": "treaty7-job-opportunities",
@@ -3597,10 +3599,12 @@
       "communityIds": [
         "435"
       ],
-      "candidatesFound": 9,
-      "reviewItems": 3,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "unavailable",
+      "warnings": [
+        "community-site-435: no candidate job links detected"
+      ]
     },
     {
       "sourceId": "community-site-433",
@@ -3744,9 +3748,9 @@
       ],
       "candidatesFound": 0,
       "reviewItems": 1,
-      "status": "checked",
+      "status": "unavailable",
       "warnings": [
-        "community-site-465: no candidate job links detected"
+        "community-site-465: fetch failed: HTTP Error 429: Too Many Requests"
       ]
     },
     {
@@ -3817,7 +3821,7 @@
       ],
       "candidatesFound": 0,
       "reviewItems": 0,
-      "status": "checked",
+      "status": "unavailable",
       "warnings": [
         "community-site-466: no candidate job links detected"
       ]
@@ -3926,10 +3930,10 @@
         "441"
       ],
       "candidatesFound": 0,
-      "reviewItems": 3,
-      "status": "checked",
+      "reviewItems": 1,
+      "status": "unavailable",
       "warnings": [
-        "community-site-441: no candidate job links detected"
+        "community-site-441: fetch failed: HTTP Error 429: Too Many Requests"
       ]
     },
     {
