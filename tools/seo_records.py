@@ -166,6 +166,17 @@ def publish(root: Path, bands, capital, slugify):
         for year, record in years.items():
             path = record_path(band, year, slugify)
             pages[path] = annual_page(band, year, record, years, slugify)
+        archive_path = f'/first-nations/{slugify(band["name"])}/financials/'
+        pages[archive_path] = shell(
+            f'{band["name"]} Financial Records by Fiscal Year | OpenBand',
+            f'Browse {band["name"]} financial statements and remuneration schedules by fiscal year, with original ISC source documents.',
+            archive_path,
+            f'<h1>{esc(band["name"])} financial records by fiscal year</h1>'
+            f'<p><a href="/first-nations/{slugify(band["name"])}/">Return to the community profile</a></p>'
+            + profile_archive(band, years, slugify),
+            breadcrumbs=[('Home', '/'), ('First Nations', '/first-nations/'),
+                         (band['name'], f'/first-nations/{slugify(band["name"])}/'),
+                         ('Financial records', archive_path)])
     grouped = ''
     for code, province in PROVINCES.items():
         rows = [b for b in bands if b.get('province') == code]

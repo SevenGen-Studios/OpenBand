@@ -9,7 +9,7 @@ function applyProvinceContext(province){
   const name=OpenBandProvinces.names[code],title=document.getElementById('heroTitle'),intro=document.getElementById('heroIntro'),searchLabel=document.querySelector('label[for="si"]'),hint=document.getElementById('heroHint'),browse=document.getElementById('heroBrowse'),homeBrowse=document.getElementById('homeBrowse'),navHome=document.getElementById('homeLink'),navBrowse=document.querySelector('#primaryNav>a[href^="/browse/"]'),overviewBrowse=document.querySelector('#provinceOverview .text-link'),howLink=document.getElementById('howLink'),homeTitle=document.getElementById('homeIntroTitle'),homeCopy=document.getElementById('homeIntroCopy');
   if(navHome)navHome.href=code?OpenBandProvinces.routeFor(code):'/';
   if(title)title.textContent=name?'First Nations Public Financial Records':'OpenBand';
-  if(intro)intro.textContent=name?`Search ${name} First Nations to review public filings, financial records, and original ISC source documents.`:'Find First Nations audited financial statements, Chief and Council remuneration, and original source documents in Saskatchewan and Alberta.';
+  if(intro)intro.textContent=name?`Search ${name} First Nations to review public filings, financial records, and original ISC source documents.`:'Choose a province to search First Nations public financial records and original source documents.';
   if(searchLabel)searchLabel.textContent=`Search ${name||'First Nations'}`;
   if(hint)hint.textContent=name?`${name} First Nations · FNFTA public filings · Source: Indigenous Services Canada`:'Public FNFTA records organized by province';
   if(browse){browse.href=code?`/browse/?province=${code}`:'/browse/';browse.textContent=name?`Browse ${name} First Nations`:'Browse all First Nations'}
