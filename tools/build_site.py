@@ -10,9 +10,9 @@ from pathlib import Path
 from urllib.parse import quote
 
 try:
-    from tools.seo_records import publish as publish_records, profile_archive, financial_markup, safe_url
+    from tools.seo_records import publish as publish_records, financial_markup, safe_url
 except ModuleNotFoundError:
-    from seo_records import publish as publish_records, profile_archive, financial_markup, safe_url
+    from seo_records import publish as publish_records, financial_markup, safe_url
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -568,8 +568,6 @@ def build() -> None:
 
     for code, province in [('SK', 'Saskatchewan'), ('AB', 'Alberta')]:
         landing = provincial_landing(base, code, province)
-        listing = '<section class="seo-province-directory" data-record-province="' + code + '"><h2>' + province + ' First Nations financial records</h2><p>Browse Nation profiles and fiscal-year financial statements, remuneration schedules, and original sources.</p><ul class="record-directory">' + ''.join(f'<li><a href="/first-nations/{slugify(band["name"])}/">{html.escape(band["name"])}</a></li>' for band in bands if band.get('province') == code) + '</ul><p><a href="/financials/">How to read First Nations financial records</a></p></section>'
-        landing = landing.replace('<footer>', listing + '<footer>', 1)
         write_page(ROOT / province.lower() / 'index.html', landing)
 
     for band in bands:
@@ -617,10 +615,10 @@ def build() -> None:
         facts += '</section>'
         page = page.replace('</dl>', '</dl>' + facts, 1)
         records = financial_records[str(band['id'])]
-        archive = profile_archive(band, records, slugify)
-        page = page.replace('</div>\n<footer>', archive + '</div>\n<footer>', 1)
-        if archive not in page:
-            page = page.replace('<footer>', archive + '<footer>', 1)
+        # Keep fiscal-year discovery on its own page, reached by the compact
+        # footer link, rather than adding another section to the profile UI.
+        page = page.replace('id="financialRecordsLink" href="/financials/"',
+                            f'id="financialRecordsLink" href="{path}financials/"', 1)
         latest_financial = next(((year, row['financial']) for year, row in records.items() if 'financial' in row), None)
         if latest_financial:
             year, summary = latest_financial

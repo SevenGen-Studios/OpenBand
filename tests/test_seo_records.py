@@ -1,4 +1,5 @@
 import json
+import re
 import tempfile
 import unittest
 import xml.etree.ElementTree as ET
@@ -91,13 +92,57 @@ class SeoRecordsTests(unittest.TestCase):
                     if href.startswith('/'):
                         target = ROOT/urlsplit(href).path.strip('/')/'index.html'
                         self.assertTrue(target.is_file(), href)
-                if '/financials/' in path and path.startswith('/first-nations/'):
+                if re.fullmatch(r'/first-nations/[^/]+/financials/\d{4}-\d{4}/', path):
                     self.assertTrue(doc.xpath('//dl[@class="record-metrics"]|//tbody/tr'))
         sitemap = ET.parse(ROOT/'sitemap.xml')
         ns = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
         locations = [node.text for node in sitemap.findall('s:url/s:loc', ns)]
         self.assertEqual(len(locations), len(set(locations)))
         self.assertTrue({ORIGIN+path for path in manifest}.issubset(locations))
+
+    def test_archives_keep_years_discoverable_without_changing_profile_layout(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            manifest, _ = publish(root, [self.band], self.capital, slugify)
+            archive = '/first-nations/test-first-nation/financials/'
+            self.assertIn(archive, manifest)
+            doc = html.parse(str(root / archive.strip('/') / 'index.html'))
+            self.assertIn(archive + '2023-2024/', doc.xpath('//a/@href'))
+            self.assertIn('/first-nations/test-first-nation/', doc.xpath('//a/@href'))
+
+    def test_application_pages_keep_original_styles_and_compact_seo_links(self):
+        pages = [ROOT / 'index.html', ROOT / 'saskatchewan/index.html',
+                 ROOT / 'alberta/index.html', ROOT / 'browse/index.html', ROOT / 'news/index.html']
+        pages.extend((ROOT / 'first-nations').glob('*/index.html'))
+        for page in pages:
+            with self.subTest(page=page):
+                doc = html.parse(str(page))
+                self.assertFalse(doc.xpath('//link[contains(@href,"records.css")]'))
+                self.assertFalse(doc.xpath('//section[@class="seo-province-directory" or @class="seo-profile-links"]'))
+                nav = doc.xpath('//*[@id="primaryNav"]/a/@href')
+                self.assertNotIn('/first-nations/', nav)
+                self.assertNotIn('/financials/', nav)
+                self.assertEqual(doc.xpath('//*[@id="primaryNav"]/a[contains(@href,"/browse/")]/text()'), ['Browse'])
+                self.assertEqual(doc.xpath('//footer/*[1]/@class'), ['fl'])
+                footer_links = doc.xpath('//footer/p[@class="footer-links"]/a/@href')
+                self.assertEqual(len(footer_links), 3)
+                for href in footer_links:
+                    self.assertTrue((ROOT / href.strip('/') / 'index.html').is_file(), href)
+
+    def test_all_public_internal_link_targets_resolve(self):
+        pages = [ROOT / 'index.html', ROOT / 'saskatchewan/index.html', ROOT / 'alberta/index.html',
+                 ROOT / 'browse/index.html', ROOT / 'news/index.html', ROOT / 'financials/index.html',
+                 ROOT / 'methodology/index.html', ROOT / 'about/index.html']
+        pages.extend((ROOT / 'first-nations').glob('**/index.html'))
+        for page in pages:
+            doc = html.parse(str(page))
+            for href in doc.xpath('//a/@href'):
+                if href.startswith('/') and not href.startswith('//'):
+                    with self.subTest(page=page, href=href):
+                        target = ROOT / urlsplit(href).path.lstrip('/')
+                        if target.is_dir():
+                            target /= 'index.html'
+                        self.assertTrue(target.is_file(), href)
 
     def test_schema_cannot_break_out_of_script(self):
         self.band['name'] = '</script><img src=x onerror=alert(1)>'
