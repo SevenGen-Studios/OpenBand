@@ -218,3 +218,55 @@ body[data-view="gateway"] .main{display:none}body[data-view="gateway"] footer{ma
 .expense-chart-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 12px;margin:0 0 1rem}.expense-legend-item{display:inline-flex;align-items:center;gap:6px;padding:4px 2px;border:0;background:transparent;color:var(--muted);font:inherit;font-size:11px;line-height:1.35;text-align:left;cursor:pointer;max-width:100%;border-radius:4px}.expense-legend-swatch{width:9px;height:9px;border-radius:50%;flex-shrink:0}.expense-legend-item:hover{color:var(--text)}.expense-legend-item:focus-visible{outline:2px solid var(--green);outline-offset:2px}@media(max-width:480px){.expense-chart-legend{justify-content:flex-start;gap:4px 10px}.expense-legend-item{font-size:10.5px;padding:5px 2px}}
 
 .footer-links{font-size:11.5px}
+/* Mobile refinement only: keep the existing components, hierarchy and palette. */
+@media(min-width:761px) and (max-width:900px){
+  nav{padding-inline:1rem;gap:.5rem}
+  .nav-r{gap:0;min-width:0}.nav-r>a{padding:7px 8px;font-size:12px}
+  .nav-home{padding:7px 8px;font-size:12px}
+}
+@media(max-width:760px){
+  input:not([type=checkbox]):not([type=radio]),select,textarea,#si,.year-row select,.sortw select,.job-controls input,.job-controls select,.map-controls input,.map-controls select,.directory-controls input,.directory-controls select{font-size:16px;max-width:100%;min-width:0}
+  .sbtn,.small-btn,.isc-btn,.pill,.chip,.nav-toggle,.map-mode-btn,.map-controls .small-btn,.job-controls .small-btn{min-height:44px}
+  .nav-r{top:100%;max-height:calc(100dvh - 58px);overflow-y:auto;overscroll-behavior:contain}
+  .nav-r>a,.province-switcher a{min-height:44px;display:flex;align-items:center;justify-content:center}
+  .nav-r>a{justify-content:flex-start}
+  .section-head>div,.source-row>div,.project-row-top>*{min-width:0}
+  .section-head h2,.section-head h3,.ci h2,.source-type,.project-row h4,.news-card h3,.profile-event-item h4,.job-card h4{overflow-wrap:anywhere}
+  .profile-header-contact .band-office-source{white-space:normal;flex-wrap:wrap}
+  .profile-header-contact .band-office-grid>div{max-width:100%;flex-wrap:wrap}
+  .profile-header-contact .band-office-grid dd{min-width:0;max-width:100%}
+  .source-row{gap:.5rem .75rem}.source-link{min-height:44px;display:inline-flex;align-items:center;justify-self:start}
+  .tw,.comparison-scroll,.filing-overview{overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+  .filing-overview{scroll-padding-inline:.85rem}
+  .year-row select{min-height:44px}.year-row{gap:6px}
+  .profile-tab{min-height:48px}.profile-tabs{scroll-margin-top:70px}
+  body[data-view="home"]>.hero{overflow:visible;z-index:2}
+  #acl{max-height:min(280px,40dvh);overscroll-behavior:contain;scroll-padding-block:5px}
+  .aci{min-height:48px;padding:10px 12px}.aci-copy>span:first-child{overflow-wrap:anywhere}
+  .expense-program-head,.expense-line{gap:8px}.expense-program-head h4,.expense-line>span{min-width:0;overflow-wrap:anywhere}
+  .expense-category>summary,.expense-legend-item,.expense-dialog-close,.expense-adjustments button,.revenue-year-head,.project-record-details>summary,.map-list-fallback>summary{min-height:44px}
+  .news-card-actions,.job-actions{gap:8px}
+  .project-sources a{overflow-wrap:anywhere;min-width:0;min-height:32px}
+  .capital-context{gap:.65rem;min-width:0}.capital-context p{overflow-wrap:anywhere}
+  .overview-card,.capital-card,.sc{min-width:0}
+  footer{padding:1.75rem 1rem;overflow-wrap:anywhere}
+  [id$="Panel"],.directory-group,#how{scroll-margin-top:72px}
+}
+@media(max-width:430px){
+  .filing-overview{margin-inline:-.75rem;padding-inline:.75rem;scroll-padding-inline:.75rem}
+  .capital-primary .capital-card:not(:last-child),.secondary-metric,.sc{padding:.8rem}
+  .capital-primary .capital-card:not(:last-child) .value,.secondary-metric .value,.sc-val{font-size:13px;white-space:nowrap;overflow-wrap:normal;font-variant-numeric:tabular-nums}
+  .capital-primary .capital-card:last-child .value{white-space:nowrap;font-variant-numeric:tabular-nums}
+  .tf{gap:8px;flex-wrap:wrap}.tft{font-size:13px}
+  .capital-context{grid-template-columns:minmax(0,1fr)}.confidence-label{justify-self:start;white-space:normal}
+  .expense-category>summary{gap:8px}.expense-category-body{padding:.7rem}
+}
+@media(max-width:600px){
+  .directory-map-shell{min-height:0}.directory-map{height:clamp(340px,58svh,480px);min-height:340px}
+  .map-legend-mobile summary,.map-legend-menu .map-legend-item{min-height:44px}
+  .map-toolbar{gap:.5rem}.map-controls{gap:8px}
+}
+@media(max-width:360px){
+  .capital-primary .capital-card:not(:last-child),.secondary-metric,.sc{padding:.6rem .45rem}
+  .capital-primary .capital-card:not(:last-child) .value,.secondary-metric .value,.sc-val{font-size:11.5px}
+}

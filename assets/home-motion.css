@@ -21,3 +21,4 @@
 .motion-toggle[hidden]{display:none}
 @media(max-width:760px){.hero-feather:nth-child(2),.hero-feather:nth-child(3){display:none}.hero-feather{width:60px;height:60px}.hero-feather:nth-child(4){left:48%}.hero-feather:nth-child(5){left:85%}.hero-motion-toggle{right:8px;bottom:6px}}
 @media(prefers-reduced-motion:reduce){.hero-feathers,.motion-toggle{display:none}.hero-feather,.hero-feather img{animation:none}.recent-motion-group[aria-hidden="true"]{display:none}#recentList.recent-motion{scrollbar-width:thin}}
+@media(max-width:760px){.motion-toggle{width:44px;height:44px;flex-basis:44px}#recentSection>.section-head{grid-template-columns:minmax(0,1fr) 44px}.hero-motion-toggle{right:8px;bottom:6px}}

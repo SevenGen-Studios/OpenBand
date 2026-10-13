@@ -26,3 +26,13 @@ body[data-view="gateway"]:has(.hero[data-preview-province="AB"])>nav{background:
 @media(max-width:1000px){.province-ghost{font-size:44px}}
 @media(max-width:700px){.province-ghost{font-size:26px;top:18%}.province-flag-link{width:86%;top:32%}.province-flag-link.standby{left:120%}.province-carousel-bottom{bottom:7%;left:7%;right:7%;align-items:flex-start;flex-direction:column;gap:14px}.hero .province-carousel-name{font-size:22px;margin-bottom:10px}.province-enter{font-size:16px}.province-carousel-controls{gap:8px}.province-carousel-controls button{width:42px;height:42px}.province-carousel-count{margin-left:6px}}
 @media(prefers-reduced-motion:reduce){.province-flag-link,body[data-view="gateway"]>.hero{transition:none}}
+@media(max-width:700px){
+  body[data-view="gateway"]>.hero,body[data-page="home"]:not([data-view])>.hero{min-height:460px}
+  .province-carousel-controls button{width:44px;height:44px}
+  .province-enter{min-height:44px;display:inline-flex;align-items:center}
+}
+@media(max-width:700px) and (max-height:600px){
+  body[data-view="gateway"]>.hero,body[data-page="home"]:not([data-view])>.hero{min-height:380px}
+  .province-ghost{top:8%}.province-flag-link{top:23%;width:74%}
+  .province-carousel-bottom{bottom:5%;gap:8px}
+}
