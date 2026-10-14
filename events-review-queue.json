@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-12T22:07:17Z",
+  "generated": "2026-10-13T20:20:18Z",
   "items": [
     {
       "bandId": 473,
@@ -337,6 +337,57 @@
         "confidence": 0.9,
         "discoveredAt": "2026-08-14T05:53:19Z",
         "startTime": "7:00PM"
+      }
+    },
+    {
+      "bandId": 361,
+      "communityName": "Cowessess First Nation",
+      "sourceUrl": "https://i0.wp.com/cowessessfn.com/wp-content/uploads/2026/06/CFN-Notice-featureimage.jpg?resize=495%2C396&ssl=1",
+      "reason": "media extraction failed: HTTP Error 404: Not Found"
+    },
+    {
+      "status": "held_for_review",
+      "reviewReason": "Existing event failed current source quality checks",
+      "originalRecord": {
+        "id": "wood-mountain-first-nation-2026-09-12-d934063cfa",
+        "communityName": "Wood Mountain First Nation",
+        "communityAliases": [],
+        "bandId": 388,
+        "provinceTerritory": "SK",
+        "title": "Results - WMLFN Legacy Trust Ratification Vote",
+        "category": "Governance & Meetings",
+        "startDate": "2026-09-12",
+        "status": "Recently held",
+        "description": "Sep 12, 2026 Wood Mountain Lakota First Nation PO Box 1792 Assiniboia, SK S0H0B0 Canada To Whom It May Concern: The following election results are certified by Simply Voting to have been securely processed and accurately tabulated by our independently managed service. Respectfully yours, Brian Lack President Simply Voting Inc. Results - WMLFN Legacy Trust Ratification Vote Start: 2026-07-09 18:00:00 America/Edmonton ",
+        "sourceUrl": "https://static1.squarespace.com/static/681a3f1e1023425e48148ac3/t/6aa60d6289b1db3008ff9d34/1789267299061/Wood+Mountain+Lakota+FN+Results.Simply+Voting.pdf",
+        "sourceName": "Wood Mountain First Nation official website",
+        "sourceType": "Official First Nation Website",
+        "extractionMethod": "pdftotext",
+        "confidence": 0.98,
+        "discoveredAt": "2026-09-13T17:05:44Z"
+      }
+    },
+    {
+      "status": "held_for_review",
+      "reviewReason": "Existing event failed current source quality checks",
+      "originalRecord": {
+        "id": "wood-mountain-first-nation-2026-09-12-d7c1240e54",
+        "communityName": "Wood Mountain First Nation",
+        "communityAliases": [],
+        "bandId": 388,
+        "provinceTerritory": "SK",
+        "title": "Sep 12 Annual General Meeting Saturday, September 12, 2026 10:30 a.m. 2:30 p.m. Google Calendar ICS Agenda will be posted after August 18th. View",
+        "category": "Governance & Meetings",
+        "startDate": "2026-09-12",
+        "status": "Recently held",
+        "description": "Sep 12 Annual General Meeting Saturday, September 12, 2026 10:30 a.m. 2:30 p.m. Google Calendar ICS Agenda will be posted after August 18th. View Event →",
+        "sourceUrl": "https://www.woodmountainlakotafn.ca/calendar/annual-general-meeting-1",
+        "sourceName": "Wood Mountain First Nation official website",
+        "sourceType": "Official First Nation Website",
+        "extractionMethod": "html",
+        "confidence": 0.98,
+        "discoveredAt": "2026-08-14T03:42:39Z",
+        "startTime": "10:30 AM"
       }
     }
   ]

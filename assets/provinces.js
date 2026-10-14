@@ -5,7 +5,8 @@
   const totals={SK:74,AB:48};
   const routes={SK:'/saskatchewan/',AB:'/alberta/'};
   function normalize(value){return String(value||'').replace(/[’‘']/g,'').replace(/&/g,' and ').replace(/[łŁ]/g,'l').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
-  function matches(band,query){const q=normalize(query);return !q||[band.name,band.officialName,band.id,band.iscBandNumber,...(band.aliases||[])].some(value=>normalize(value).includes(q))}
+  function searchForms(value){return [normalize(value),normalize(String(value||'').replace(/[’‘']/g,' '))]}
+  function matches(band,query){const queries=searchForms(query);return !queries[0]||[band.name,band.officialName,band.id,band.iscBandNumber,...(band.aliases||[])].some(value=>searchForms(value).some(candidate=>queries.some(q=>candidate.includes(q))))}
   function inProvince(band,province){return !province||band.province===province}
   function fromPath(path){const value=String(path||'').toLowerCase();if(/^\/saskatchewan(?:\/|$)/.test(value)||/^\/sk(?:\/|$)/.test(value))return'SK';if(/^\/alberta(?:\/|$)/.test(value)||/^\/ab(?:\/|$)/.test(value))return'AB';return''}
   function routeFor(province){return routes[province]||'/'}
