@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-14T18:26:01Z",
-  "before": 115,
-  "after": 121,
-  "newCandidates": 561,
+  "generated": "2026-10-15T18:11:21Z",
+  "before": 121,
+  "after": 128,
+  "newCandidates": 456,
   "sourceRuns": [
     {
       "bandId": 361,
@@ -281,7 +281,7 @@
       "sourceUrl": "https://onionlake.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 46,
+      "eventsFound": 27,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -292,7 +292,7 @@
       "sourceUrl": "https://www.onionlake.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 65,
+      "eventsFound": 27,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -325,7 +325,7 @@
       "sourceUrl": "https://pbcn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 6,
+      "eventsFound": 7,
       "pagesChecked": 6,
       "mediaChecked": 0
     },
@@ -403,7 +403,7 @@
       "sourceUrl": "https://www.whitecapdakota.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 0,
+      "eventsFound": 2,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -772,7 +772,7 @@
       "sourceUrl": "https://acfn.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 12,
+      "eventsFound": 13,
       "pagesChecked": 6,
       "mediaChecked": 2
     },
@@ -839,7 +839,7 @@
       "sourceUrl": "https://www.bloodtribe.org/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 59,
+      "eventsFound": 60,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -850,7 +850,7 @@
       "sourceUrl": "https://bloodtribe.org/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 44,
+      "eventsFound": 46,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -904,11 +904,10 @@
       "sourceName": "Dene Tha' official website",
       "sourceUrl": "https://www.denetha.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
-      "eventsFound": 0,
-      "pagesChecked": 2,
-      "mediaChecked": 0,
-      "error": "HTTP Error 500: Internal Server Error"
+      "status": "ok",
+      "eventsFound": 5,
+      "pagesChecked": 6,
+      "mediaChecked": 0
     },
     {
       "bandId": 450,
@@ -961,7 +960,7 @@
       "sourceUrl": "https://www.ermineskin.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 5,
+      "eventsFound": 9,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -972,7 +971,7 @@
       "sourceUrl": "https://ermineskin.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 5,
+      "eventsFound": 9,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1253,7 +1252,7 @@
       "sourceUrl": "https://www.siksikanation.com/index.html",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 29,
+      "eventsFound": 35,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1264,7 +1263,7 @@
       "sourceUrl": "https://siksikanation.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 29,
+      "eventsFound": 35,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1329,10 +1328,11 @@
       "sourceName": "Tsuut'ina Nation official website",
       "sourceUrl": "https://www.tsuutina.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 40,
-      "pagesChecked": 6,
-      "mediaChecked": 3
+      "status": "failed",
+      "eventsFound": 0,
+      "pagesChecked": 5,
+      "mediaChecked": 0,
+      "error": "The read operation timed out"
     },
     {
       "bandId": 432,
@@ -1340,10 +1340,11 @@
       "sourceName": "Tsuut'ina Nation official website",
       "sourceUrl": "https://tsuutina.com/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 40,
-      "pagesChecked": 6,
-      "mediaChecked": 3
+      "status": "failed",
+      "eventsFound": 0,
+      "pagesChecked": 5,
+      "mediaChecked": 0,
+      "error": "The read operation timed out"
     },
     {
       "bandId": 477,
@@ -1446,10 +1447,10 @@
       "mediaChecked": 0
     }
   ],
-  "reviewCount": 28,
+  "reviewCount": 30,
   "statusCounts": {
     "authorized_api_required": 9,
-    "failed": 21,
-    "ok": 99
+    "failed": 22,
+    "ok": 98
   }
 }
