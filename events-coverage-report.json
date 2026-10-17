@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-16T17:57:24Z",
-  "before": 128,
+  "generated": "2026-10-17T16:53:36Z",
+  "before": 132,
   "after": 132,
-  "newCandidates": 541,
+  "newCandidates": 537,
   "sourceRuns": [
     {
       "bandId": 361,
@@ -112,10 +112,11 @@
       "sourceName": "Kinistin Saulteaux Nation official website",
       "sourceUrl": "https://www.kinistin.sk.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
+      "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 3,
-      "mediaChecked": 1
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "<urlopen error timed out>"
     },
     {
       "bandId": 341,
@@ -324,7 +325,7 @@
       "sourceUrl": "https://pbcn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 7,
+      "eventsFound": 9,
       "pagesChecked": 6,
       "mediaChecked": 0
     },
@@ -838,7 +839,7 @@
       "sourceUrl": "https://www.bloodtribe.org/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 58,
+      "eventsFound": 56,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -849,7 +850,7 @@
       "sourceUrl": "https://bloodtribe.org/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 45,
+      "eventsFound": 42,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -959,7 +960,7 @@
       "sourceUrl": "https://www.ermineskin.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 4,
+      "eventsFound": 7,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -970,7 +971,7 @@
       "sourceUrl": "https://ermineskin.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 4,
+      "eventsFound": 7,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1126,7 +1127,7 @@
       "sourceUrl": "https://mikisewcree.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 41,
+      "eventsFound": 42,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1204,10 +1205,11 @@
       "sourceName": "Saddle Lake Cree Nation official website",
       "sourceUrl": "https://slcn125.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
+      "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 2
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "The read operation timed out"
     },
     {
       "bandId": 444,
@@ -1215,11 +1217,10 @@
       "sourceName": "Samson official website",
       "sourceUrl": "https://www.samsoncree.com/",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
+      "status": "ok",
       "eventsFound": 0,
       "pagesChecked": 1,
-      "mediaChecked": 0,
-      "error": "The read operation timed out"
+      "mediaChecked": 0
     },
     {
       "bandId": 444,
@@ -1227,11 +1228,10 @@
       "sourceName": "Samson official website",
       "sourceUrl": "https://samsoncree.com/",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
+      "status": "ok",
       "eventsFound": 0,
       "pagesChecked": 1,
-      "mediaChecked": 0,
-      "error": "The read operation timed out"
+      "mediaChecked": 0
     },
     {
       "bandId": 454,
@@ -1251,7 +1251,7 @@
       "sourceUrl": "https://www.siksikanation.com/index.html",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 42,
+      "eventsFound": 38,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1262,7 +1262,7 @@
       "sourceUrl": "https://siksikanation.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 42,
+      "eventsFound": 38,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1444,7 +1444,7 @@
       "mediaChecked": 0
     }
   ],
-  "reviewCount": 35,
+  "reviewCount": 39,
   "statusCounts": {
     "authorized_api_required": 9,
     "failed": 19,
