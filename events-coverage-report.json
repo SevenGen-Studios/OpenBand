@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-20T18:23:48Z",
-  "before": 134,
-  "after": 133,
-  "newCandidates": 497,
+  "generated": "2026-10-21T18:29:43Z",
+  "before": 133,
+  "after": 137,
+  "newCandidates": 503,
   "sourceRuns": [
     {
       "bandId": 361,
@@ -12,7 +12,7 @@
       "sourceUrl": "https://cowessessfn.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 4,
+      "eventsFound": 7,
       "pagesChecked": 6,
       "mediaChecked": 1
     },
@@ -34,7 +34,7 @@
       "sourceUrl": "https://cowessessfn.com/entities/cowessess-ventures/",
       "sourceType": "Economic Development Organization",
       "status": "ok",
-      "eventsFound": 3,
+      "eventsFound": 5,
       "pagesChecked": 6,
       "mediaChecked": 1
     },
@@ -45,7 +45,7 @@
       "sourceUrl": "https://cowessessfn.com/news/paradise-radio/",
       "sourceType": "Community Website",
       "status": "ok",
-      "eventsFound": 3,
+      "eventsFound": 5,
       "pagesChecked": 6,
       "mediaChecked": 1
     },
@@ -268,10 +268,11 @@
       "sourceName": "Ochapowace First Nation official website",
       "sourceUrl": "https://ochapowace.com/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
+      "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 2,
-      "mediaChecked": 0
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "HTTP Error 503: Service Unavailable"
     },
     {
       "bandId": 344,
@@ -280,7 +281,7 @@
       "sourceUrl": "https://onionlake.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 27,
+      "eventsFound": 17,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -291,7 +292,7 @@
       "sourceUrl": "https://www.onionlake.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 27,
+      "eventsFound": 10,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -827,7 +828,7 @@
       "sourceType": "Official First Nation Website",
       "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 0,
+      "pagesChecked": 2,
       "mediaChecked": 0,
       "error": "HTTP Error 429: Too Many Requests"
     },
@@ -838,7 +839,7 @@
       "sourceUrl": "https://www.bloodtribe.org/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 48,
+      "eventsFound": 61,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -849,7 +850,7 @@
       "sourceUrl": "https://bloodtribe.org/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 38,
+      "eventsFound": 46,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -959,9 +960,9 @@
       "sourceUrl": "https://www.ermineskin.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 10,
+      "eventsFound": 9,
       "pagesChecked": 6,
-      "mediaChecked": 1
+      "mediaChecked": 2
     },
     {
       "bandId": 443,
@@ -970,9 +971,9 @@
       "sourceUrl": "https://ermineskin.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 10,
+      "eventsFound": 9,
       "pagesChecked": 6,
-      "mediaChecked": 1
+      "mediaChecked": 2
     },
     {
       "bandId": 467,
@@ -1017,7 +1018,7 @@
       "eventsFound": 0,
       "pagesChecked": 0,
       "mediaChecked": 0,
-      "error": "HTTP Error 429: Too Many Requests"
+      "error": "HTTP Error 404: Not Found"
     },
     {
       "bandId": 475,
@@ -1070,11 +1071,10 @@
       "sourceName": "Kehewin Cree Nation official website",
       "sourceUrl": "https://www.kehewincree.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
+      "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "error": "<urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1016)>"
+      "pagesChecked": 1,
+      "mediaChecked": 0
     },
     {
       "bandId": 447,
@@ -1127,7 +1127,7 @@
       "sourceUrl": "https://mikisewcree.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 42,
+      "eventsFound": 41,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1171,11 +1171,10 @@
       "sourceName": "Paul official website",
       "sourceUrl": "https://www.paulfirstnation.com/",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
+      "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "error": "HTTP Error 429: Too Many Requests"
+      "pagesChecked": 5,
+      "mediaChecked": 0
     },
     {
       "bandId": 478,
@@ -1329,7 +1328,7 @@
       "sourceUrl": "https://www.tsuutina.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 40,
+      "eventsFound": 44,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1340,7 +1339,7 @@
       "sourceUrl": "https://tsuutina.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 40,
+      "eventsFound": 44,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1448,7 +1447,7 @@
   "reviewCount": 52,
   "statusCounts": {
     "authorized_api_required": 9,
-    "failed": 20,
-    "ok": 100
+    "failed": 19,
+    "ok": 101
   }
 }
