@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-21T18:29:43Z",
-  "before": 133,
-  "after": 137,
-  "newCandidates": 503,
+  "generated": "2026-10-22T18:23:09Z",
+  "before": 137,
+  "after": 136,
+  "newCandidates": 580,
   "sourceRuns": [
     {
       "bandId": 361,
@@ -12,7 +12,7 @@
       "sourceUrl": "https://cowessessfn.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 7,
+      "eventsFound": 9,
       "pagesChecked": 6,
       "mediaChecked": 1
     },
@@ -34,7 +34,7 @@
       "sourceUrl": "https://cowessessfn.com/entities/cowessess-ventures/",
       "sourceType": "Economic Development Organization",
       "status": "ok",
-      "eventsFound": 5,
+      "eventsFound": 6,
       "pagesChecked": 6,
       "mediaChecked": 1
     },
@@ -45,7 +45,7 @@
       "sourceUrl": "https://cowessessfn.com/news/paradise-radio/",
       "sourceType": "Community Website",
       "status": "ok",
-      "eventsFound": 5,
+      "eventsFound": 6,
       "pagesChecked": 6,
       "mediaChecked": 1
     },
@@ -268,11 +268,10 @@
       "sourceName": "Ochapowace First Nation official website",
       "sourceUrl": "https://ochapowace.com/",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
+      "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "error": "HTTP Error 503: Service Unavailable"
+      "pagesChecked": 2,
+      "mediaChecked": 0
     },
     {
       "bandId": 344,
@@ -281,7 +280,7 @@
       "sourceUrl": "https://onionlake.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 17,
+      "eventsFound": 38,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -292,7 +291,7 @@
       "sourceUrl": "https://www.onionlake.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 10,
+      "eventsFound": 52,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -325,7 +324,7 @@
       "sourceUrl": "https://pbcn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 8,
+      "eventsFound": 9,
       "pagesChecked": 6,
       "mediaChecked": 0
     },
@@ -729,7 +728,7 @@
       "eventsFound": 0,
       "pagesChecked": 0,
       "mediaChecked": 0,
-      "error": "<urlopen error [Errno 111] Connection refused>"
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1016)>"
     },
     {
       "bandId": 393,
@@ -839,7 +838,7 @@
       "sourceUrl": "https://www.bloodtribe.org/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 61,
+      "eventsFound": 74,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -850,7 +849,7 @@
       "sourceUrl": "https://bloodtribe.org/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 46,
+      "eventsFound": 58,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -960,7 +959,7 @@
       "sourceUrl": "https://www.ermineskin.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 9,
+      "eventsFound": 7,
       "pagesChecked": 6,
       "mediaChecked": 2
     },
@@ -971,7 +970,7 @@
       "sourceUrl": "https://ermineskin.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 9,
+      "eventsFound": 7,
       "pagesChecked": 6,
       "mediaChecked": 2
     },
@@ -1127,7 +1126,7 @@
       "sourceUrl": "https://mikisewcree.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 41,
+      "eventsFound": 42,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1251,7 +1250,7 @@
       "sourceUrl": "https://www.siksikanation.com/index.html",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 28,
+      "eventsFound": 22,
       "pagesChecked": 6,
       "mediaChecked": 1
     },
@@ -1262,7 +1261,7 @@
       "sourceUrl": "https://siksikanation.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 30,
+      "eventsFound": 23,
       "pagesChecked": 6,
       "mediaChecked": 2
     },
@@ -1444,10 +1443,10 @@
       "mediaChecked": 0
     }
   ],
-  "reviewCount": 52,
+  "reviewCount": 59,
   "statusCounts": {
     "authorized_api_required": 9,
-    "failed": 19,
-    "ok": 101
+    "failed": 18,
+    "ok": 102
   }
 }
