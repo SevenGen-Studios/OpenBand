@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-22T17:35:26Z",
+  "generated": "2026-10-23T17:28:12Z",
   "scope": "Saskatchewan and Alberta First Nations community updates",
   "sourceTypes": [
     "Traditional News",
@@ -21,6 +21,33 @@
     "communitySources lists every Saskatchewan First Nation tracked by OpenBand so source discovery can expand without creating unverified article cards."
   ],
   "articles": [
+    {
+      "id": "sweetgrass-first-nation-2026-10-23-d7011d8119",
+      "storyKey": "348-2026-10-23-2026-10-23-23-oct-good-food-box-deliveries-2026-10-23t10-00-00-10-00am-2026-10-2",
+      "title": "2026-10-23 23 Oct Good Food Box Deliveries 2026-10-23T10:00:00 10:00AM - 2026-10-23T15:00:00 03:00PM Sweetgrass First Nation",
+      "communityName": "Sweetgrass First Nation",
+      "communityAliases": [],
+      "provinceTerritory": "SK",
+      "category": "Community Events",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Sweetgrass First Nation official website",
+      "publishedAt": "2026-10-23",
+      "datePrecision": "day",
+      "url": "https://sweetgrassfirstnation.ca/events.html?EventID=757",
+      "summary": "Discover the vibrant Events hosted by Sweetgrass First Nation, celebrating our culture, traditions, and community. Our events bring together our community members and showcase the richness and diversity of our Indigenous heritage. Learn about our festival",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 348,
+      "discoveredAt": "2026-10-23T17:18:00Z",
+      "communityConfidence": 0.98,
+      "dateSource": "time:datetime",
+      "extractionMethod": "html",
+      "sourcePage": "https://sweetgrassfirstnation.ca/",
+      "thumbnail": "https://sweetgrassfirstnation.ca/images/screenshot.jpg",
+      "detailVerified": true
+    },
     {
       "id": "george-gordon-first-nation-2026-10-22-f5b1b18111",
       "storyKey": "391-2026-10-22-help-keep-our-community-healthy-message-from-george-gordon-health-services",
@@ -72,6 +99,33 @@
       "dateSource": "document-published-label",
       "extractionMethod": "pdf_text",
       "sourcePage": "https://www.thunderchild.ca/",
+      "detailVerified": true
+    },
+    {
+      "id": "kahkewistahaw-first-nation-2026-10-22-2f3b36b801",
+      "storyKey": "362-2026-10-22-kahkewistahaw-landfill-reclamation-project-complete-www-kfn72-com",
+      "title": "KAHKEWISTAHAW LANDFILL RECLAMATION – PROJECT COMPLETE! - www.kfn72.com",
+      "communityName": "Kahkewistahaw First Nation",
+      "communityAliases": [],
+      "provinceTerritory": "SK",
+      "category": "Other",
+      "sourceType": "Official First Nation Website",
+      "sourceName": "Kahkewistahaw First Nation official website",
+      "publishedAt": "2026-10-22",
+      "datePrecision": "day",
+      "url": "https://www.kfn72.com/news/kahkewistahaw-landfill-reclamation-project-complete",
+      "summary": "Kahkewistahaw Lands Department is pleased to announce that the KAHKEWISTAHAW LANDFILL RECLAMATION – PROJECT COMPLETE! Kahkewistahaw First Nation Community, We are pleased to share that the Kahkewistahaw Landfill reclamation project is now complete! The attached photos show the significant transformation of the area as it begins a new chapter of recovery and regeneration. 🌿 As […]",
+      "tags": [
+        "community-update",
+        "source-backed"
+      ],
+      "bandId": 362,
+      "discoveredAt": "2026-10-23T17:17:29Z",
+      "communityConfidence": 0.98,
+      "dateSource": "article:published_time",
+      "extractionMethod": "article-metadata",
+      "sourcePage": "https://www.kfn72.com/",
+      "thumbnail": "https://www.kfn72.com/wp-content/uploads/2026/10/Before-Overview-Spring-2026.jpg",
       "detailVerified": true
     },
     {
@@ -2777,7 +2831,14 @@
       "dateSource": "document-published-label",
       "extractionMethod": "pdf_ocr",
       "sourcePage": "https://www.paulfirstnation.com/",
-      "detailVerified": true
+      "detailVerified": true,
+      "alternateSources": [
+        {
+          "sourceName": "Paul official website",
+          "sourceType": "Official First Nation Website",
+          "url": "https://www.paulfirstnation.com/_files/ugd/c7a733_475ca748e0d74a1689d2112cafdb2a08.pdf"
+        }
+      ]
     },
     {
       "id": "ermineskin-tribe-2026-09-30-68e7bba4ab",
