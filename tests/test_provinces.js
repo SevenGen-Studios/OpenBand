@@ -8,6 +8,22 @@ assert.equal(data.filter(b=>P.inProvince(b,'AB')&&b.treaty==='Treaty 7').length,
 assert.equal(data.filter(b=>P.matches(b,'Goodfish')).length,1);
 assert.equal(data.filter(b=>P.matches(b,"Smith's Landing")).length,1);
 assert.equal(data.filter(b=>P.matches(b,'462')).length,2);
+// Common spelling/punctuation variants must resolve against the real directory.
+for(const query of ['Beardys & Okemasis', 'Beardy’s & Okemasis’', 'Beardys and Okemasis']){
+ const matches=data.filter(b=>P.inProvince(b,'SK')&&P.matches(b,query));
+ assert.equal(matches.length,1,query);assert.equal(matches[0].id,369);
+}
+for(const query of ['OChiese', 'O’Chiese', "O'Chiese", 'O Chiese']){
+ const matches=data.filter(b=>P.inProvince(b,'AB')&&P.matches(b,query));
+ assert.equal(matches.length,1,query);assert.equal(matches[0].name,"O'Chiese");
+}
+assert.equal(data.filter(b=>P.inProvince(b,'AB')&&P.matches(b,'Beardys & Okemasis')).length,0);
+assert.equal(P.matches({name:'Cowessess First Nation'},'unrelated nation'),false);
+for(const [query,name] of [['Tsuut ina',"Tsuut'ina Nation"],['Kapawe no',"Kapawe'no First Nation"],["Duncan s First Nation","Duncan's First Nation"],["Smith s Landing","Tthebatthie Denesųłiné Nation"]]){
+ const matches=data.filter(b=>P.matches(b,query));assert.equal(matches.length,1,query);assert.equal(matches[0].name,name);
+}
+assert.equal(P.matches({name:'O Chiese'},"O'Chiese"),true);
+
 assert.equal(P.fromPath('/saskatchewan/'),'SK');
 assert.equal(P.fromPath('/sk'),'SK');
 assert.equal(P.fromPath('/alberta/index.html'),'AB');
