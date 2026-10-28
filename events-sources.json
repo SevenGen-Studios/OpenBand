@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-27T18:56:10Z",
+  "generated": "2026-10-28T16:33:30Z",
   "notes": "Event discovery sources are derived from the verified News registry. Add event-specific calendars here when found.",
   "communities": [
     {
@@ -3706,6 +3706,17 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile"
+        },
+        {
+          "type": "School or Health Organization",
+          "name": "Saddle Lake Post Secondary — Saddle Lake Education Authority",
+          "url": "https://www.slps.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "Saddle Lake Education Authority identification and public program contact details at https://www.slps.ca/news",
+          "lastVerified": "2026-10-28"
         },
         {
           "type": "Government Source",

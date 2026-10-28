@@ -28,6 +28,23 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class NewsDiscoveryTests(unittest.TestCase):
+    def test_calendar_time_is_not_a_news_publication_date(self):
+        row = {'id': 'calendar', 'bandId': 462, 'title': 'Business Trust Workshop', 'url': 'https://example.test/events/trust-workshop', 'publishedAt': '2026-10-21', 'dateSource': 'time:datetime'}
+        self.assertIn('Calendar date', candidate_review_reason(row, date(2026, 10, 28), .82))
+        retained, removed = prune_invalid_generated_articles([row], date(2026, 10, 28))
+        self.assertEqual(retained, [])
+        self.assertEqual(len(removed), 1)
+
+    def test_duplicate_existing_identifiers_consolidate_without_losing_source_links(self):
+        first = {'id': 'same-story', 'bandId': 443, 'title': 'Community Recreation Gathering', 'publishedAt': '2026-10-21', 'url': 'https://example.test/story', 'sourceType': 'Traditional News'}
+        second = {**first, 'publishedAt': '2026-10-22', 'url': 'https://example.test/story-2'}
+        retained, removed = prune_invalid_generated_articles([first, second], date(2026, 10, 28))
+        self.assertEqual(len(retained), 1)
+        self.assertEqual(len(removed), 1)
+        self.assertEqual(retained[0]['alternateSources'][0]['url'], second['url'])
+        separate, _ = prune_invalid_generated_articles([first, {**second, 'bandId': 462}], date(2026, 10, 28))
+        self.assertEqual(len(separate), 2)
+
     def setUp(self):
         self.community = {
             "bandId": 361,

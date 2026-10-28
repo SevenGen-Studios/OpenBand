@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-10-28",
+  "trackedCommunities": 117,
+  "byProvince": {
+    "AB": {
+      "tracked": 48,
+      "withNewsLast90Days": 14,
+      "withPublicJobs": 21,
+      "withEvents": 12
+    },
+    "SK": {
+      "tracked": 69,
+      "withNewsLast90Days": 16,
+      "withPublicJobs": 28,
+      "withEvents": 3
+    }
+  },
+  "news": {
+    "records": 447,
+    "generated": "2026-10-28T16:24:32Z",
+    "reviewHistoryRecords": 4763,
+    "topReviewReasons": {
+      "Publication date could not be verified on the detail page": 2103,
+      "Title does not clearly describe a supported community update": 1010,
+      "Date appears to be a future event date, not a publication date": 464,
+      "Document lacks a clear news title, publication date, or relevant update context": 281,
+      "Source URL is a homepage or archive rather than a dated article": 244,
+      "Title identifies navigation, a directory, or an evergreen section": 155,
+      "Original source URL is not HTTPS": 117,
+      "detail URL did not return HTML": 100
+    }
+  },
+  "jobs": {
+    "public": 51,
+    "verifiedActive": 43,
+    "pending": 521,
+    "generated": "2026-10-28T16:27:30Z"
+  },
+  "events": {
+    "records": 130,
+    "generated": "2026-10-28T16:34:02Z"
+  },
+  "problems": [],
+  "limitations": [
+    "Review history counts include previously held and resolved candidates; they are not a publication backlog count.",
+    "No listed updates does not establish that a community has no opportunities or events.",
+    "Facebook discovery requires authorized platform access; source restrictions are not bypassed."
+  ]
+}

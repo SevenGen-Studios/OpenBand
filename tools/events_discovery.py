@@ -387,9 +387,16 @@ class EventPageParser(HTMLParser):
         self.in_json = False
         self.json_parts = []
         self.ignored_depth = 0
+        self.headings = []
+        self.heading_offsets = []
+        self.heading_parts = None
+        self.heading_start = None
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == 'h1':
+            self.heading_parts = []
+            self.heading_start = len(self.parts)
         classes = " ".join(attrs.get("class", "").split()).lower()
         block = tag in self.BLOCKS or (tag == "div" and any(word in classes for word in ("event", "calendar", "notice", "card", "post")))
         node = {"tag": tag, "block": block, "start": len(self.parts), "anchors": [], "images": []}
@@ -425,10 +432,16 @@ class EventPageParser(HTMLParser):
         value = clean_text(data)
         if value:
             self.parts.append(value)
+            if self.heading_parts is not None:
+                self.heading_parts.append(value)
             if self.in_title:
                 self.page_title = clean_text(f"{self.page_title} {value}")
 
     def handle_endtag(self, tag):
+        if tag == 'h1' and self.heading_parts is not None:
+            self.headings.append(clean_text(' '.join(self.heading_parts)))
+            self.heading_offsets.append(self.heading_start)
+            self.heading_parts = None
         if tag == "title":
             self.in_title = False
         if tag == "script" and self.in_json:
@@ -511,11 +524,23 @@ def extract_html_events(html: str, page_url: str, community: dict, source: dict,
     follow = []
     media = []
     seen = {item["sourceUrl"] for item in events}
+    dated_detail = re.search(r'/events?/(20\d{2}-\d{2}-\d{2})(?:[-/]|$)', urllib.parse.urlsplit(page_url).path)
+    if dated_detail and not events:
+        title, offset = next(((heading, offset) for heading, offset in zip(parser.headings, parser.heading_offsets) if heading.lower() not in GENERIC_TITLES), ('', 0))
+        context = re.split(r'\bPrevious(?:\s+Previous)?\b', clean_text(' '.join(parser.parts[offset:])), maxsplit=1)[0]
+        dates = {start for start, _ in event_dates(context, today)}
+        if title and dated_detail.group(1) in dates and is_event_text(title, context):
+            item = normalized_event(community, source, title=title, context=context, url=page_url, start=dated_detail.group(1), method='html-calendar-detail')
+            events.append(item)
+            seen.add(item['sourceUrl'])
     for row in parser.anchor_rows():
         url = canonical_url(urllib.parse.urljoin(page_url, row["href"]))
         combined = clean_text(f"{row['title']} {row['context']}")
-        if FOLLOW_LINK_WORDS.search(combined) and url.startswith("http"):
+        dated_event_link = re.search(r'/events?/20\d{2}-\d{2}-\d{2}', urllib.parse.urlsplit(url).path)
+        if (FOLLOW_LINK_WORDS.search(combined) or dated_event_link) and url.startswith("http"):
             follow.append(url)
+        if dated_detail or normalized_text(row['title']) in GENERIC_TITLES or re.match(r'^(?:back to all|previous|next)\b', row['title'], re.I):
+            continue
         if re.search(r"\.(?:pdf|png|jpe?g)(?:$|\?)", url, re.I) and is_event_text(row["title"], row["context"]):
             media.append(url)
         if not is_event_text(row["title"], row["context"]):
@@ -533,7 +558,10 @@ def extract_html_events(html: str, page_url: str, community: dict, source: dict,
         start, end = choose_event_date(parser.page_title, parser.page_text, today)
         if start and canonical_url(page_url) not in seen:
             events.append(normalized_event(community, source, title=parser.page_title, context=parser.page_text, url=page_url, start=start, end=end, method="html-page"))
-    return events, list(dict.fromkeys(follow)), list(dict.fromkeys(media))
+    def calendar_priority(url):
+        match = re.search(r'/events?/(20\d{2}-\d{2}-\d{2})', urllib.parse.urlsplit(url).path)
+        return match.group(1) if match else ''
+    return events, sorted(dict.fromkeys(follow), key=calendar_priority, reverse=True), list(dict.fromkeys(media))
 
 
 def shared_aliases_for_community(community: dict) -> list[str]:
@@ -823,7 +851,7 @@ def is_publishable_event(item: dict, today: date | None = None) -> bool:
         return True
     if method == "meta-api":
         return is_event_text(title, description) and bool(event_dates(description))
-    if method.startswith("ocr") or method in {"pdftotext", "html", "html-page", "shared-index"}:
+    if method.startswith("ocr") or method in {"pdftotext", "html", "html-page", "html-calendar-detail", "shared-index"}:
         expected_start, _ = choose_event_date(title, description, today)
         if not expected_start or expected_start != str(item.get("startDate") or ""):
             return False
@@ -832,6 +860,9 @@ def is_publishable_event(item: dict, today: date | None = None) -> bool:
         if not explicit_event_dates(f"{title} {description}"):
             return False
     explicit_date = bool(re.search(r"\b(?:event date|date|when|starts?|runs?|join us)\s*[:\-]?\s*", description, re.I))
+    if method == 'html-calendar-detail':
+        dated = re.search(r'/events?/(20\d{2}-\d{2}-\d{2})(?:[-/]|$)', path)
+        return bool(dated and dated.group(1) == item.get('startDate') and explicit_date and is_event_text(title, description))
     title_has_event = bool(EVENT_WORDS.search(title))
     return title_has_event and (explicit_date or bool(event_dates(title)))
 
@@ -964,7 +995,7 @@ def run(args):
     write_json(EVENTS_PATH, output)
     write_json(REGISTRY_PATH, registry)
     write_json(REVIEW_PATH, {"schemaVersion": 1, "generated": iso_now(), "items": review})
-    write_json(REPORT_PATH, {"schemaVersion": 1, "generated": iso_now(), "before": len(current.get("events", [])), "after": len(merged), "newCandidates": len(candidates), "sourceRuns": runs, "reviewCount": len(review), "statusCounts": dict(sorted({status: sum(row["status"] == status for row in runs) for status in {row["status"] for row in runs}}.items()))})
+    write_json(REPORT_PATH, {"schemaVersion": 1, "generated": iso_now(), "scanScope": {"communityIds": [str(row['bandId']) for row in communities], "communitiesScanned": len(communities), "fullScan": len(communities) == len(registry.get('communities', []))}, "before": len(current.get("events", [])), "after": len(merged), "newCandidates": len(candidates), "sourceRuns": runs, "reviewCount": len(review), "statusCounts": dict(sorted({status: sum(row["status"] == status for row in runs) for status in {row["status"] for row in runs}}.items()))})
     print(json.dumps(output["coverage"], indent=2))
 
 

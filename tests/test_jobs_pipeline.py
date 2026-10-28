@@ -14,6 +14,8 @@ from tools.jobs_collector import (
     listing_key,
     normalize_listing,
     title_from_document,
+    refresh_pending_documents,
+    retain_manual_check,
 )
 
 
@@ -62,6 +64,46 @@ class JobsPipelineTests(unittest.TestCase):
 
     def test_ocr_does_not_publish_generic_job_summary_heading(self):
         self.assertEqual(title_from_document("JOB OPPORTUNITY\nJob Summary\nOpen until filled"), "")
+
+    def test_original_ochapowace_pdf_labels_take_priority_over_competition_code(self):
+        text = """Selection Process:26-10-F&A-Accounts Payable Clerk-IND (F/T)
+Position: ACCOUNTS PAYABLE CLERK Status: Permanent, Full-Time
+JOB SUMMARY
+Application Deadline: WEDNESDAY NOVEMBER 4, 2026"""
+        self.assertEqual(title_from_document(text), 'ACCOUNTS PAYABLE CLERK')
+        self.assertEqual(extract_labeled_date(text, ('deadline',)), '2026-11-04')
+
+    def test_time_and_weekday_in_actual_administrative_assistant_deadline(self):
+        self.assertEqual(title_from_document('Position: COMMUNITY HEALTH REPRESENTATIVE (CHR)\nStatus:TERM, Full-Time (2 MONTHS)\nto the position'), 'COMMUNITY HEALTH REPRESENTATIVE (CHR)')
+        self.assertEqual(extract_labeled_date('Application Deadline: 4:30pm Thursday October 29, 2026', ('deadline',)), '2026-10-29')
+        self.assertEqual(extract_labeled_date('Closing date: Fri, 30 Oct. 2026', ('closing',)), '2026-10-30')
+        self.assertEqual(extract_labeled_date('Apply by Oct 30th, 2026', ('apply by',)), '2026-10-30')
+
+    def test_missing_ambiguous_and_unrelated_dates_stay_unverified(self):
+        for text in ['Deadline: October 29', 'Posted October 28, 2026. Deadline unavailable', 'Deadline: October 30, 2026. Deadline: November 1, 2026', 'Closing: 11/02/26']:
+            self.assertIsNone(extract_labeled_date(text, ('deadline', 'closing')))
+        self.assertEqual(title_from_document('Position: Community Nurse\nPosition: Housing Manager'), '')
+
+    def test_document_refresh_corrects_same_record_without_relabeling_other_communities_or_manual_work(self):
+        old = {'id': 'original', 'title': 'wrong header', 'sourceUrl': 'https://example.test/job.pdf', 'communityId': '1', 'status': 'Pending verification'}
+        new = {**old, 'id': 'new', 'title': 'Accounts Payable Clerk', 'employer': 'Nation', 'verifiedOfficialSource': True, 'extractionConfidence': 'high', 'status': 'Closing soon'}
+        corrected = refresh_pending_documents([old], [new])[0]
+        self.assertEqual(corrected['id'], 'original')
+        self.assertEqual(corrected['title'], 'Accounts Payable Clerk')
+        self.assertEqual(refresh_pending_documents([{**old, 'manualOverride': True}], [new])[0]['title'], 'wrong header')
+        self.assertEqual(refresh_pending_documents([{**old, 'communityId': '2'}], [new])[0]['title'], 'wrong header')
+        self.assertEqual(refresh_pending_documents([old], [new, {**new, 'title': 'Other Clerk'}])[0]['title'], 'wrong header')
+
+    def test_email_addresses_and_duties_are_not_document_titles(self):
+        self.assertEqual(title_from_document('By Email: employment@example.test\nLead the development, implementation and ongoing evaluation'), '')
+
+    def test_partial_manual_refresh_retains_actual_prior_check_but_never_invents_a_new_check(self):
+        raw = {'id': 'manual', 'title': 'Housing Manager', 'employer': 'Nation', 'sourceUrl': 'https://example.test/job', 'sourceId': 'source', 'communityId': '1', 'status': 'Open', 'lastChecked': '2026-08-01', 'closingDate': '2026-11-01', 'manualOverride': True, 'verifiedOfficialSource': True}
+        previous = normalize_listing({**raw, 'lastChecked': '2026-10-27'}, date(2026, 10, 28))
+        kept = retain_manual_check(raw, previous, date(2026, 10, 28))
+        self.assertEqual(kept['lastChecked'], '2026-10-27')
+        self.assertEqual(retain_manual_check({**raw, 'sourceUrl': 'https://other.test/job'}, previous, date(2026, 10, 28))['lastChecked'], '2026-08-01')
+        self.assertEqual(effective_status(kept, date(2026, 12, 1)), 'Closed')
 
     def test_job_title_deadline_suffixes_normalize_for_deduplication(self):
         first = {"title": "Sports & Recreation Coordinator (Apply by August 14)", "employer": "Piapot First Nation", "communityId": "385"}

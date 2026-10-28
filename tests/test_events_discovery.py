@@ -29,6 +29,33 @@ SOURCE = {
 
 
 class EventDateTests(unittest.TestCase):
+    def test_dated_calendar_detail_uses_actual_heading_not_previous_event_or_back_link(self):
+        html = '''<a href="/events">Back to All Events</a><h1>Business Trust Workshop</h1>
+        <p>Wednesday, October 21, 2026. Trust Update Workshop at the Youth Centre.</p>
+        <a href="/events/2026-10-01-health-fair">Previous October 1 Health Fair</a>'''
+        rows, _, _ = extract_html_events(html, 'https://example.test/events/2026-10-21-business-trust', COMMUNITY, SOURCE, date(2026, 10, 28))
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]['title'], 'Business Trust Workshop')
+        self.assertEqual(rows[0]['startDate'], '2026-10-21')
+        self.assertNotIn('Health Fair', rows[0]['description'])
+
+    def test_calendar_url_without_matching_source_date_cannot_invent_event(self):
+        rows, _, _ = extract_html_events('<h1>Business Trust Workshop</h1><p>Date to be announced.</p>', 'https://example.test/events/2026-10-21-business-trust', COMMUNITY, SOURCE, date(2026, 10, 28))
+        self.assertEqual(rows, [])
+
+    def test_recent_calendar_details_are_checked_before_generic_archive_links(self):
+        html = '<a href="/news">News</a><a href="/events/2026-08-01-old">Earlier gathering</a><a href="/events/2026-10-21-trust">Trust workshop</a>'
+        _, follow, _ = extract_html_events(html, 'https://example.test/', COMMUNITY, SOURCE, date(2026, 10, 28))
+        self.assertEqual(follow[0], 'https://example.test/events/2026-10-21-trust')
+
+    def test_named_trust_workshop_can_publish_from_matching_dated_calendar_without_renaming_title(self):
+        html = '<nav>' + 'Navigation links ' * 100 + '</nav><h1>Onihcikiskowapowin Business Trust</h1><p>Date: October 21, 2026. The Trust is hosting a Trust Update/Workshop at the Youth Centre.</p>'
+        rows, _, _ = extract_html_events(html, 'https://example.test/events/2026-10-21-business-trust', COMMUNITY, SOURCE, date(2026, 10, 28))
+        self.assertEqual(len(rows), 1)
+        self.assertTrue(is_publishable_event(rows[0], date(2026, 10, 28)))
+        self.assertEqual(rows[0]['title'], 'Onihcikiskowapowin Business Trust')
+        self.assertNotIn('Navigation links', rows[0]['description'])
+
     def test_explicit_date_range(self):
         self.assertEqual(
             event_dates("Annual Powwow August 21-23, 2026", date(2026, 8, 13)),

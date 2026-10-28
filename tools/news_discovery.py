@@ -1122,7 +1122,8 @@ def merge_articles(existing, candidates):
                 current.get("publishedAt") == candidate.get("publishedAt")
                 and titles_match(current.get("title"), candidate.get("title"))
             )
-            if same_url or close_story:
+            same_identity = bool(current.get('id')) and current.get('id') == candidate.get('id') and titles_match(current.get('title'), candidate.get('title'))
+            if same_url or close_story or same_identity:
                 duplicate_index = index
                 break
         if duplicate_index is None:
@@ -1162,14 +1163,28 @@ def merge_articles(existing, candidates):
     return merged, accepted
 
 
+def calendar_date_without_publication(item):
+    return bool(re.search(r'/(?:events?|calendar)(?:/|$)', urllib.parse.urlsplit(item.get('url') or '').path, re.I)
+                and item.get('dateSource') == 'time:datetime')
+
+
 def prune_invalid_generated_articles(articles, today):
     """Remove machine rows that cannot meet the current publication safeguards."""
     retained = []
     removed = []
     today_text = today.isoformat()
+    existing_ids = {}
     for item in articles:
         reason = None
-        if item.get("discoveredAt") and str(item.get("publishedAt") or "") > today_text:
+        identity = (str(item.get('bandId')), item.get('id'))
+        previous_index = existing_ids.get(identity) if item.get('id') else None
+        if previous_index is not None and titles_match(retained[previous_index].get('title'), item.get('title')):
+            combined, _ = merge_articles([retained[previous_index]], [item])
+            retained[previous_index] = combined[0]
+            reason = 'Duplicate article identifier consolidated; alternate source retained'
+        elif calendar_date_without_publication(item):
+            reason = 'Calendar date is not a verified news publication date'
+        elif item.get("discoveredAt") and str(item.get("publishedAt") or "") > today_text:
             reason = "Future event date was previously stored as publication date"
         elif item.get("discoveredAt") and employment_item(
             item.get("title"), item.get("url")
@@ -1206,11 +1221,14 @@ def prune_invalid_generated_articles(articles, today):
                 }
             )
             continue
+        existing_ids[identity] = len(retained)
         retained.append(item)
     return retained, removed
 
 
 def candidate_review_reason(item, today, confidence_threshold):
+    if calendar_date_without_publication(item):
+        return 'Calendar date is not a verified news publication date'
     if str(item.get("publishedAt") or "") > today.isoformat():
         return "Date appears to be a future event date, not a publication date"
     if not canonical_url(item.get("url")).startswith("https://"):
@@ -1960,6 +1978,7 @@ def run(args):
         source_runs,
     )
     review = merge_review_history(load_json(REVIEW_PATH, {}).get("items", []), review)
+    report['scanScope'] = {'communityIds': [str(row['bandId']) for row in communities], 'communitiesScanned': len(communities), 'fullScan': len(communities) == len(registry.get('communities', []))}
     review_output = {
         "schemaVersion": 1,
         "generated": iso_now(),

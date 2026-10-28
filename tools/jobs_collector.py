@@ -9,6 +9,7 @@ candidate automatically when its source configuration explicitly permits it.
 from __future__ import annotations
 
 import argparse
+import io
 import hashlib
 import json
 import shutil
@@ -34,7 +35,7 @@ PUBLIC_STATUSES = ACTIVE_STATUSES | {"Date unavailable"}
 JOB_WORDS = re.compile(
     r"\b(job|career|position|worker|manager|director|coordinator|teacher|nurse|"
     r"clerk|accountant|receptionist|janitor|maintenance|employment|officer|"
-    r"counsellor|educator|peacekeeper|support|lead|analyst|assistant|operator)\b",
+    r"counsellor|educator|peacekeeper|support|lead|analyst|assistant|operator|representative)\b",
     re.IGNORECASE,
 )
 GENERIC_LINK_TITLES = re.compile(
@@ -59,6 +60,8 @@ MONTHS = {
         ("", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
     )
 }
+MONTHS.update({name[:3]: number for name, number in list(MONTHS.items()) if name})
+MONTHS['sept'] = 9
 
 
 def read_json(path: Path, default):
@@ -174,7 +177,7 @@ def normalize_listing(raw: dict, today: date) -> dict:
 
 def validation_warnings(record: dict) -> list[str]:
     warnings = []
-    if GENERIC_LINK_TITLES.fullmatch(record.get("title") or "") or re.match(r"^(?:job board|attn\s*:|https?://|with local job opportunities|position\.)", record.get("title") or "", re.I):
+    if GENERIC_LINK_TITLES.fullmatch(record.get("title") or "") or re.match(r"^(?:job board|attn\s*:|https?://|with local job opportunities|to the position\b|position\.)", record.get("title") or "", re.I):
         warnings.append("A specific job title has not been verified")
     for field in ("title", "employer", "sourceUrl"):
         if not record.get(field):
@@ -425,6 +428,15 @@ def extract_document_text(url: str) -> tuple[str, str, str | None]:
                 text = run_text_command(["pdftotext", "-layout", str(pdf_path), "-"])
                 if len(clean_text(text)) >= 80:
                     return text, "pdf_text", None
+            # Born-digital PDFs still work on machines without the Poppler CLI.
+            try:
+                import pdfplumber
+                with pdfplumber.open(io.BytesIO(payload)) as pdf:
+                    text = "\n".join(page.extract_text() or "" for page in pdf.pages[:20])
+                if len(clean_text(text)) >= 80:
+                    return text, "pdf_text", None
+            except Exception:
+                pass
             if not shutil.which("pdftoppm") or not shutil.which("tesseract"):
                 return "", "ocr_unavailable", "PDF has no usable text and OCR tools are unavailable"
             prefix = Path(directory) / "page"
@@ -449,6 +461,20 @@ def title_from_document(text: str) -> str:
     generic = re.compile(r"^(job|employment|career)\s+(posting|opportunity|notice)s?$", re.IGNORECASE)
     candidates = []
     lines = text.splitlines()[:80]
+    explicit = []
+    for index, raw_line in enumerate(lines):
+        match = re.match(r'^\s*(?:position|job title|position title)\s*:\s*(.*)', raw_line, re.I)
+        if not match:
+            continue
+        title = match.group(1).strip() or (clean_text(lines[index + 1]) if index + 1 < len(lines) else '')
+        title = re.split(r'\s+Status\s*:', title, flags=re.I)[0]
+        title = clean_job_title(title)
+        if 6 <= len(title) <= 130 and JOB_WORDS.search(title) and not GENERIC_LINK_TITLES.fullmatch(title):
+            explicit.append(title)
+    if len(set(explicit)) == 1:
+        return explicit[0]
+    if len(set(explicit)) > 1:
+        return ''  # A multi-role poster needs review rather than picking one arbitrarily.
     for index, raw_line in enumerate(lines):
         line = clean_text(raw_line).strip("-|:•")
         if not 6 <= len(line) <= 130 or generic.match(line) or GENERIC_LINK_TITLES.match(line):
@@ -456,7 +482,9 @@ def title_from_document(text: str) -> str:
         if re.search(r"\b(closing|deadline|salary|applications?|qualifications?|responsibilities)\b", line, re.I):
             continue
         if JOB_WORDS.search(line):
-            if len(line.split()) > 12 or "reports directly" in line.lower():
+            if (len(line.split()) > 12 or "reports directly" in line.lower() or '@' in line
+                or re.search(r'^(?:by email|attn|selection process|lead the|please|must|responsible|perform|maintain|provide)\b', line, re.I)
+                or re.search(r'[.;,]\s', line)):
                 continue
             heading = any(generic.match(clean_text(previous)) for previous in lines[max(0,index-2):index])
             score = (3 if heading else 0) + (2 if re.search(r"\b(manager|director|coordinator|teacher|nurse|worker|clerk|officer|assistant|operator|lead|analyst)\b", line, re.I) else 1)
@@ -493,7 +521,10 @@ def document_candidate(url: str, source: dict, today: date) -> tuple[dict | None
         "reason": error or ("No reliable job title detected" if not title else "Closing status requires verification"),
         "textSnippet": clean_text(text)[:700] or None,
     }
-    if not title:
+    employment_evidence = re.search(r'\b(?:job\s+(?:posting|opportunit\w*|vacanc\w*)|employment\s+opportunit\w*|position\s*:|application\s+deadline|apply\s+by|closing\s+date|open\s+until\s+filled)\b', text or '', re.I)
+    if not title or not employment_evidence:
+        if not employment_evidence:
+            review['reason'] = 'Document does not clearly identify an employment posting'
         return None, review
     candidate = normalize_listing({
         "title": title,
@@ -522,23 +553,31 @@ def page_text(markup: str) -> str:
 
 def extract_labeled_date(text: str, labels: tuple[str, ...]) -> str | None:
     label_pattern = "|".join(re.escape(label) for label in labels)
+    weekday = r'(?:Mon(?:day)?|Tue(?:sday)?|Wed(?:nesday)?|Thu(?:rsday)?|Fri(?:day)?|Sat(?:urday)?|Sun(?:day)?)\.?[,]?\s+'
+    clock = r'(?:at\s+)?(?:\d{1,2}:\d{2}\s*(?:a\.?m\.?|p\.?m\.?)|noon)\s+(?:on\s+)?'
+    prefix = rf'\b(?:{label_pattern})\b\s*(?:date)?\s*[:\-]?\s*(?:(?:{weekday}|{clock})){{0,2}}'
     patterns = (
-        rf"(?:{label_pattern})\s*(?:date)?\s*[:\-]?\s*([A-Z][a-z]+)\s+(\d{{1,2}})(?:st|nd|rd|th)?,?\s+(20\d{{2}})",
-        rf"(?:{label_pattern})\s*(?:date)?\s*[:\-]?\s*(20\d{{2}})[-/](\d{{1,2}})[-/](\d{{1,2}})",
+        rf"{prefix}([A-Z][a-z]+)\.?\s+(\d{{1,2}})(?:st|nd|rd|th)?,?\s+(20\d{{2}})",
+        rf"{prefix}(20\d{{2}})[-/](\d{{1,2}})[-/](\d{{1,2}})",
+        rf"{prefix}(\d{{1,2}})(?:st|nd|rd|th)?\s+([A-Z][a-z]+)\.?[,]?\s+(20\d{{2}})",
     )
+    found = set()
     for index, pattern in enumerate(patterns):
-        match = re.search(pattern, text, re.IGNORECASE)
-        if not match:
-            continue
-        try:
-            if index == 0:
-                month, day, year = match.groups()
-                return date(int(year), MONTHS[month.lower()], int(day)).isoformat()
-            year, month, day = match.groups()
-            return date(int(year), int(month), int(day)).isoformat()
-        except (KeyError, ValueError):
-            continue
-    return None
+        for match in re.finditer(pattern, text, re.IGNORECASE):
+            try:
+                if index == 0:
+                    month, day, year = match.groups()
+                    value = date(int(year), MONTHS[month.lower()], int(day))
+                elif index == 1:
+                    year, month, day = match.groups()
+                    value = date(int(year), int(month), int(day))
+                else:
+                    day, month, year = match.groups()
+                    value = date(int(year), MONTHS[month.lower()], int(day))
+                found.add(value.isoformat())
+            except (KeyError, ValueError):
+                continue
+    return next(iter(found)) if len(found) == 1 else None
 
 
 def inspect_candidate_page(url: str, today: date) -> tuple[dict, list[str]]:
@@ -728,14 +767,56 @@ def community_coverage_status(sources, has_listings):
     return 'sources_not_checked'
 
 
+def refresh_pending_documents(previous: list[dict], discovered: list[dict]) -> list[dict]:
+    """Correct a held row only with a uniquely matched, freshly checked official document."""
+    def identity(row):
+        return (row.get('sourceUrl'), str(row.get('communityId') or ''), tuple(sorted(map(str, row.get('firstNationIds') or []))))
+    fresh = {}
+    for row in discovered:
+        if (row.get('verifiedOfficialSource') and row.get('extractionConfidence') == 'high'
+            and row.get('status') in PUBLIC_STATUSES | {'Closed'}
+            and Path(urllib.parse.urlsplit(row.get('sourceUrl') or '').path).suffix.lower() in MEDIA_SUFFIXES
+            and not validation_warnings(row)):
+            fresh.setdefault(identity(row), []).append(row)
+    result = []
+    for old in previous:
+        matches = fresh.get(identity(old), [])
+        if not old.get('manualOverride') and (old.get('status') == 'Pending verification' or validation_warnings(old)) and len(matches) == 1:
+            result.append({**matches[0], 'id': old.get('id') or matches[0]['id']})
+        else:
+            result.append(old)
+    return result
+
+
+def retain_manual_check(raw: dict, previous: dict | None, today: date) -> dict:
+    refreshed = dict(raw)
+    if not previous or not previous.get('manualOverride'):
+        return refreshed
+    normalized = normalize_listing(raw, today)
+    fields = ['title', 'employer', 'sourceUrl', 'applicationUrl', 'sourceId', 'communityId', 'firstNationIds', 'closingDate', 'postedDate']
+    if any(normalized.get(key) != previous.get(key) for key in fields):
+        return refreshed
+    checked = parse_date(previous.get('lastChecked'))
+    original = parse_date(refreshed.get('lastChecked'))
+    if checked and checked <= today and (not original or original < checked):
+        refreshed['lastChecked'] = checked.isoformat()
+    return refreshed
+
+
 def collect(
     root: Path,
     today: date,
     offline: bool = False,
     province: str | None = None,
+    source_ids: list[str] | None = None,
 ) -> tuple[dict, dict]:
     all_sources = configured_sources(root)
     sources = configured_sources(root, province)
+    if source_ids:
+        requested = set(source_ids)
+        if requested - {source['id'] for source in sources}:
+            raise ValueError('Unknown source requested for this province')
+        sources = [source for source in sources if source['id'] in requested]
     overrides = read_json(root / "jobs-overrides.json", {})
     previous = read_json(root / "jobs-data.json", {"listings": []})
     warnings = []
@@ -756,6 +837,7 @@ def collect(
             scan_results = executor.map(lambda source: fetch_source(source, today), sources)
         for source, result in zip(sources, scan_results):
             found, source_warnings, source_text, source_review = result
+            candidates = refresh_pending_documents(candidates, found)
             candidates.extend(found)
             warnings.extend(source_warnings)
             review_items.extend(source_review)
@@ -783,8 +865,10 @@ def collect(
     suppressed = {str(value) for value in overrides.get("suppressIds", [])}
     corrections = overrides.get("corrections", {})
     manual_rows = []
+    previous_manual = {row.get('id'): row for row in previous.get('listings', []) if row.get('manualOverride')}
     for raw in expand_verified_batches(overrides):
-        refreshed = dict(raw)
+        key = raw.get('id') or stable_id(raw)
+        refreshed = retain_manual_check(raw, previous_manual.get(key), today)
         if not offline and listing_is_confirmed_on_source(refreshed, source_texts):
             refreshed["lastChecked"] = today.isoformat()
         manual_rows.append(refreshed)
@@ -928,9 +1012,10 @@ def main() -> None:
     parser.add_argument("--root", type=Path, default=ROOT)
     parser.add_argument("--offline", action="store_true")
     parser.add_argument("--province", choices=["AB", "SK"], default=None)
+    parser.add_argument("--source-id", action="append", default=[])
     parser.add_argument("--today", type=date.fromisoformat, default=date.today())
     args = parser.parse_args()
-    data, report = collect(args.root, args.today, args.offline, args.province)
+    data, report = collect(args.root, args.today, args.offline, args.province, args.source_id)
     review_queue = report.pop("_reviewQueue")
     source_registry = report.pop("_sourceRegistry")
     write_json(args.root / "jobs-data.json", data)
