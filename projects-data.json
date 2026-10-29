@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-27",
+  "generatedAt": "2026-10-29",
   "sourceAudit": {
     "reviewedAt": "2026-08-11",
     "communityCount": 69,
@@ -102,12 +102,12 @@
       ],
       "category": "Renewable Energy",
       "name": "Mino Giizis Solar Energy Facility",
-      "description": "A solar farm near Lajord co-owned equally by Neoen and the Anishinabek Power Alliance of Zagime Anishinabek, Cote, Kinistin Saulteaux and The Key First Nations.",
+      "description": "A planned solar farm near Lajord, southeast of Regina, co-owned equally by Neoen and Anishinabek Power Alliance, the partnership of Zagime Anishinabek, Cote, Kinistin Saulteaux and The Key First Nations. A 25-year SaskPower power purchase agreement is signed; operation is expected in 2028. Saskatchewan lists environmental ministerial approval on July 29, 2026; this does not establish that construction has begun.",
       "status": "Planned",
-      "statusAsOf": "2026-01-14",
+      "statusAsOf": "2026-10-29",
       "expectedCompletionDate": "2028",
       "unitsCapacity": "157 MWp / 100 MWac; expected annual output for approximately 30,000 homes; 50% First Nations ownership",
-      "lastVerifiedAt": "2026-08-11",
+      "lastVerifiedAt": "2026-10-29",
       "sources": [
         {
           "name": "SaskPower",
@@ -118,6 +118,56 @@
           "name": "Neoen Canada",
           "url": "https://canada.neoen.com/mino-giizis-solar/",
           "checkedAt": "2026-08-11"
+        },
+        {
+          "name": "SaskPower — Mino Giizis Solar Project",
+          "url": "https://saskpower.com/our-power-future/infrastructure-projects/construction-projects/planning-and-construction-projects/mino-giizis-solar-project",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Neoen — power purchase agreement and expected operation",
+          "url": "https://canada.neoen.com/neoen-signs-a-25-year-ppa-with-saskpower-for-its-157-mwp-100-mwac-mino-giizis-solar-energy-facility/non-classe/",
+          "publishedAt": "2026-01-14"
+        },
+        {
+          "name": "Government of Saskatchewan — environmental assessment approvals",
+          "url": "https://www.saskatchewan.ca/Business/Environmental-Protection-and-Sustainability/Environmental-Assessment/Environmental-Assessment-Projects",
+          "checkedAt": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "id": "seven-stars-wind",
+      "firstNationIds": [
+        "361",
+        "391",
+        "362",
+        "383",
+        "365"
+      ],
+      "category": "Renewable Energy",
+      "name": "Seven Stars Wind Energy Project",
+      "description": "A planned wind project southeast of Weyburn involving Enbridge and Six Nations Energy Development LP: Cowessess, George Gordon, Kahkewistahaw, Pasqua and White Bear First Nations, together with Métis Nation–Saskatchewan. SaskPower states the consortium will own at least 30% once operating. Enbridge reports environmental and municipal approvals but says a final investment decision is still required before construction. Timeline sources differ: Enbridge lists 2029 in service, while SaskPower lists late 2028.",
+      "status": "Planned",
+      "statusAsOf": "2026-10-29",
+      "expectedCompletionDate": "2029",
+      "unitsCapacity": "200 MW; at least 30% Indigenous consortium ownership once operating (SaskPower)",
+      "lastVerifiedAt": "2026-10-29",
+      "sources": [
+        {
+          "name": "Enbridge — project overview and 2029 in-service target",
+          "url": "https://www.enbridge.com/Projects-and-Infrastructure/Projects/Seven-Stars-Energy-Project",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "SaskPower — partners, ownership and late-2028 estimate",
+          "url": "https://www.saskpower.com/our-power-future/infrastructure-projects/construction-projects/planning-and-construction-projects/seven-stars-wind-energy-project",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "name": "Enbridge — approvals and final investment decision requirement",
+          "url": "https://www.enbridge.com/projects-and-infrastructure/public-awareness/seven-stars-rm-griffin-and-saskatchewan-provincial-approvals",
+          "checkedAt": "2026-10-29"
         }
       ]
     },
@@ -492,16 +542,16 @@
         "374"
       ],
       "category": "Renewable Energy",
-      "name": "Rose Valley Wind",
-      "description": "A First Nations-majority-owned wind project near Assiniboia with 28 turbines, new and upgraded access roads, underground cabling, a substation, and supporting infrastructure.",
+      "name": "Rose Valley Wind Project",
+      "description": "A 200 MW wind project near Assiniboia, co-owned by Potentia Renewables and M-Squared Renewables, the partnership of Meadow Lake Tribal Council's nine Nations and Mistawasis Nêhiyawak. M-Squared owns 51%. Construction began in June 2026, with operation expected in late 2027 under a 30-year SaskPower power purchase agreement.",
       "status": "Under Construction",
       "statusAsOf": "2026-06-15",
       "funding": [
         "Canada Infrastructure Bank: $128 million project loan",
         "Canada Infrastructure Bank: $36.4 million Indigenous equity loan"
       ],
-      "unitsCapacity": "28 turbines; up to 210 MW",
-      "lastVerifiedAt": "2026-08-10",
+      "unitsCapacity": "200 MW contracted capacity (SaskPower); 28 turbines and up to 210 MW reported by Canada Infrastructure Bank; 51% First Nations ownership",
+      "lastVerifiedAt": "2026-10-29",
       "sources": [
         {
           "name": "Canada Infrastructure Bank",
@@ -512,8 +562,19 @@
           "name": "Meadow Lake Tribal Council — member Nations",
           "url": "https://www.mltc.net/about/",
           "checkedAt": "2026-08-10"
+        },
+        {
+          "name": "SaskPower — construction announcement",
+          "url": "https://www.saskpower.com/about-us/media-information/news-releases/2026/construction-on-200-mw-rose-valley-wind-project-now-underway",
+          "publishedAt": "2026-06-15"
+        },
+        {
+          "name": "SaskPower — Rose Valley Wind Project",
+          "url": "https://www.saskpower.com/our-power-future/infrastructure-projects/construction-projects/planning-and-construction-projects/rose-valley-wind-project",
+          "checkedAt": "2026-10-29"
         }
-      ]
+      ],
+      "expectedCompletionDate": "2027"
     },
     {
       "id": "spaha-multi-purpose-health-facility",
