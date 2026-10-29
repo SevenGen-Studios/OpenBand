@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-10-28T19:21:52Z",
+  "generated": "2026-10-29T19:27:31Z",
   "scanScope": {
     "communityIds": [
       "378",
@@ -124,9 +124,9 @@
     "communitiesScanned": 117,
     "fullScan": true
   },
-  "before": 130,
+  "before": 131,
   "after": 131,
-  "newCandidates": 491,
+  "newCandidates": 490,
   "sourceRuns": [
     {
       "bandId": 361,
@@ -235,10 +235,11 @@
       "sourceName": "Kinistin Saulteaux Nation official website",
       "sourceUrl": "https://www.kinistin.sk.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "ok",
+      "status": "failed",
       "eventsFound": 0,
-      "pagesChecked": 3,
-      "mediaChecked": 1
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "error": "<urlopen error timed out>"
     },
     {
       "bandId": 341,
@@ -447,7 +448,7 @@
       "sourceUrl": "https://pbcn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 7,
+      "eventsFound": 5,
       "pagesChecked": 6,
       "mediaChecked": 0
     },
@@ -536,7 +537,7 @@
       "sourceUrl": "https://www.woodmountainlakotafn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 9,
+      "eventsFound": 11,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -950,7 +951,7 @@
       "sourceType": "Official First Nation Website",
       "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 6,
+      "pagesChecked": 5,
       "mediaChecked": 3
     },
     {
@@ -960,7 +961,7 @@
       "sourceUrl": "https://www.bloodtribe.org/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 49,
+      "eventsFound": 52,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -971,7 +972,7 @@
       "sourceUrl": "https://bloodtribe.org/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 53,
+      "eventsFound": 44,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1025,11 +1026,10 @@
       "sourceName": "Dene Tha' official website",
       "sourceUrl": "https://www.denetha.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "failed",
-      "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "error": "HTTP Error 500: Internal Server Error"
+      "status": "ok",
+      "eventsFound": 11,
+      "pagesChecked": 6,
+      "mediaChecked": 0
     },
     {
       "bandId": 450,
@@ -1071,7 +1071,7 @@
       "sourceUrl": "https://enochnation.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 5,
+      "eventsFound": 3,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1082,9 +1082,9 @@
       "sourceUrl": "https://www.ermineskin.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 2,
+      "eventsFound": 5,
       "pagesChecked": 6,
-      "mediaChecked": 1
+      "mediaChecked": 3
     },
     {
       "bandId": 443,
@@ -1093,9 +1093,9 @@
       "sourceUrl": "https://ermineskin.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 2,
+      "eventsFound": 5,
       "pagesChecked": 6,
-      "mediaChecked": 1
+      "mediaChecked": 3
     },
     {
       "bandId": 467,
@@ -1315,7 +1315,7 @@
       "sourceUrl": "https://piikanination.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 13,
+      "eventsFound": 12,
       "pagesChecked": 6,
       "mediaChecked": 3
     },
@@ -1363,7 +1363,7 @@
       "eventsFound": 0,
       "pagesChecked": 1,
       "mediaChecked": 0,
-      "error": "<urlopen error _ssl.c:999: The handshake operation timed out>"
+      "error": "The read operation timed out"
     },
     {
       "bandId": 454,
@@ -1383,9 +1383,9 @@
       "sourceUrl": "https://www.siksikanation.com/index.html",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 22,
+      "eventsFound": 18,
       "pagesChecked": 6,
-      "mediaChecked": 1
+      "mediaChecked": 2
     },
     {
       "bandId": 430,
@@ -1394,7 +1394,7 @@
       "sourceUrl": "https://siksikanation.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 23,
+      "eventsFound": 18,
       "pagesChecked": 6,
       "mediaChecked": 2
     },
@@ -1576,7 +1576,7 @@
       "mediaChecked": 0
     }
   ],
-  "reviewCount": 88,
+  "reviewCount": 91,
   "statusCounts": {
     "authorized_api_required": 9,
     "failed": 17,
