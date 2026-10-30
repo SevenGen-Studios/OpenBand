@@ -8,6 +8,7 @@ or completion. Existing public-source project records are never overwritten.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import io
 import json
 import re
@@ -114,7 +115,13 @@ def canonical_project_name(value: str) -> str:
 
 def disclosure_key(name: str) -> str:
     value = canonical_project_name(name).lower()
+    # Funding/source wrappers do not distinguish a project mentioned again in
+    # the segment narrative of the same Nation's same annual audit.
+    value = re.sub(r"^(?:(?:isc|inac|sal|capital(?: funding)?|capital projects?)\s*[-:]\s*)+", "", value)
+    value = re.sub(r"\s+q[a-z0-9]{3}$", "", value)
+    value = re.sub(r"(?:\s+(?:-\s*)?\(?(?:isc|inac|sal)\)?)+$", "", value)
     value = re.sub(r"\s+project$", "", value)
+    value = re.sub(r"\b(?:renovations|upgrades)\b", lambda match: match.group(0)[:-1], value)
     replacements = {"elementary school": "elementary school repairs"}
     return slugify(replacements.get(value, value))
 
@@ -179,7 +186,8 @@ def _amount_indexes(page_text: str, fiscal_year: str, value_count: int) -> tuple
 
 def _split_label_values(line: str) -> tuple[str, list[int | None]]:
     protected = re.sub(r"\(Note\s+(\d+)\)", r"(Note_\1)", line, flags=re.I)
-    tokens = re.sub(r"\$\s+", "$", protected).split()
+    # Dollar symbols are column decorations, including "$ -" for nil.
+    tokens = protected.replace("$", "").split()
     value_tokens: list[str] = []
     while tokens and re.fullmatch(MONEY, tokens[-1]):
         value_tokens.append(tokens.pop())
@@ -351,14 +359,16 @@ def add_disclosure(records: dict[str, dict], *, band_id: str, band_name: str,
         if amount is not None and amount >= 0:
             record["amounts"][amount_type] = amount
     reference = {"pdfPage": page, "table": table}
-    if reference not in record["sourceReferences"]:
+    if not any(ref["pdfPage"] == page and ref["table"] == table for ref in record["sourceReferences"]):
         record["sourceReferences"].append(reference)
 
 
 def parse_project_disclosures(page_texts: list[str], *, band_id: str,
                               band_name: str, fiscal_year: str,
                               source_url: str) -> list[dict]:
-    records: dict[str, dict] = {}
+    records = {disclosure_key(row["name"]): row for row in parse_named_schedule_projects(
+        page_texts, band_id=band_id, band_name=band_name,
+        fiscal_year=fiscal_year, source_url=source_url)}
     for page_number, page_text in enumerate(page_texts, 1):
         raw_lines = [re.sub(r"\s+", " ", line).strip() for line in page_text.splitlines() if line.strip()]
         lines: list[str] = []
@@ -389,7 +399,7 @@ def parse_project_disclosures(page_texts: list[str], *, band_id: str,
                     page=page_number,
                     table="Restricted cash",
                     name=restricted.group(1),
-                    amounts={"restrictedCash": parse_money(restricted.group(2))},
+                    amounts={"restrictedCash": parse_money(restricted.group(3 if _year_column_order(page_text, fiscal_year) == "comparative_first" else 2))},
                 )
                 continue
 
@@ -439,6 +449,85 @@ def parse_project_disclosures(page_texts: list[str], *, band_id: str,
     return sorted(records.values(), key=lambda row: (row["category"], row["name"]))
 
 
+# Require both an identified physical asset and an explicit project activity.
+# Generic program names, asset classes and operating costs are not projects.
+PROJECT_ASSET = re.compile(
+    r"\b(?:school|water|wastewater|sewage|lagoon|sps|lpw|road|bridge|culvert|"
+    r"drainage|subdivision|housing|homes?|admin(?:istration)? building|shelter|lot servicing|health cent(?:re|er)|"
+    r"community cent(?:re|er)|arena|fire hall|transfer station|landfill|"
+    r"broadband|fibre|fiber|solar|wind farm)\b", re.I)
+PROJECT_ACTIVITY = re.compile(
+    r"\b(?:new|construction|construct|project|upgrade[sd]?|renovations?|"
+    r"replacement|expansion|improvements?|repairs|assessment|"
+    r"rehabilitation|development|retrofit|installation|study|feasibility|purchase)\b", re.I)
+PROJECT_NAMED_ASSET = re.compile(
+    r"\b(?:water treatment plant|sewage pumping station|solid waste transfer station|"
+    r"core area drainage|core area subdivision|waste transfer station|rapid housing|solar power|lot servicing)\b", re.I)
+
+
+def specific_infrastructure_label(label: str) -> str | None:
+    label = re.sub(r"\s+\(?Q[A-Z0-9]{3}\)?$", "", label).strip()
+    if "$" in label or re.search(r"\d{1,3},\d{3}", label):
+        return None
+    # Trailing numbers may be part of a name (e.g. Housing - Year 2),
+    # rather than financial columns. Do not publish a truncated label.
+    if re.search(r"\b(?:year|phase|no|number)\s*[.#-]?$", label, re.I):
+        return None
+    if re.search(r"\b(?:O&M|operations?|maintenance|salaries|amortization|total|"
+                 r"insurance|utilities|supplies|revenue|expenses?)\b", label, re.I):
+        return None
+    if PROJECT_ASSET.search(label) and (PROJECT_ACTIVITY.search(label) or PROJECT_NAMED_ASSET.search(label)):
+        return label
+    return None
+
+
+def parse_named_schedule_projects(page_texts: list[str], *, band_id: str,
+                                  band_name: str, fiscal_year: str,
+                                  source_url: str) -> list[dict]:
+    """Recover named assets from deferred-funding notes, without guessing columns.
+
+    These layouts vary widely (including signed releases and transfers). Keep
+    the original row as evidence but leave amounts empty until column meaning
+    can be established. A statement merely mentioning deferred revenue is not
+    a deferred-funding note.
+    """
+    records: dict[str, dict] = {}
+    project_codes: dict[str, str] = {}
+    for page_number, text in enumerate(page_texts, 1):
+        active = False
+        for raw in text.splitlines():
+            line = re.sub(r"\s+", " ", raw).strip()
+            heading = re.match(r"^(?:\d+[.)]\s*)?deferred (?:revenue|contributions?|funding)(?:\s*[-,(]?\s*continued\)?)?\s*$", line, re.I)
+            if heading:
+                active = True
+                continue
+            if re.match(r"^\d+[.)]\s+[A-Za-z]", line):
+                active = False
+            if not active:
+                continue
+            label, values = _split_label_values(line)
+            # A financial row, not narrative or a year header.
+            if len(values) < 2 or len(values) > 6:
+                continue
+            name = specific_infrastructure_label(label)
+            if not name:
+                continue
+            # AT/CT identifiers name individual capital projects. Q-codes
+            # identify funding programs and must never merge distinct assets.
+            codes = re.findall(r"\b(?:AT|CT)[A-Z0-9]{3}\b", name)
+            if len(codes) == 1:
+                name = project_codes.setdefault(codes[0], name)
+            add_disclosure(records, band_id=band_id, band_name=band_name,
+                           fiscal_year=fiscal_year, source_url=source_url,
+                           page=page_number, table="Deferred revenue", name=name)
+            record = records[disclosure_key(name)]
+            reference = {"pdfPage": page_number, "table": "Deferred revenue", "originalText": line}
+            if reference not in record["sourceReferences"]:
+                record["sourceReferences"] = [ref for ref in record["sourceReferences"] if ref.get("originalText") or ref["pdfPage"] != page_number]
+                record["sourceReferences"].append(reference)
+    return list(records.values())
+
+
 def normalized_pdf_url(url: str) -> str:
     parts = urllib.parse.urlsplit(url)
     query = urllib.parse.urlencode(urllib.parse.parse_qsl(parts.query, keep_blank_values=True))
@@ -465,27 +554,43 @@ def extract_one(task: dict) -> dict:
     try:
         import pdfplumber
 
-        data = fetch_pdf(task["sourceUrl"])
+        cache_dir = task.get("cacheDir")
+        cache_path = (Path(cache_dir) / (hashlib.sha256(task["sourceUrl"].encode()).hexdigest() + ".pdf")) if cache_dir else None
+        if cache_path and cache_path.exists():
+            data = cache_path.read_bytes()
+        else:
+            data = fetch_pdf(task["sourceUrl"])
+            if cache_path:
+                cache_path.parent.mkdir(parents=True, exist_ok=True)
+                cache_path.write_bytes(data)
         with pdfplumber.open(io.BytesIO(data)) as pdf:
             pages = [page.extract_text(x_tolerance=2, y_tolerance=3) or "" for page in pdf.pages]
-        rows = parse_project_disclosures(
-            pages,
-            band_id=task["bandId"],
-            band_name=task["bandName"],
-            fiscal_year=task["fiscalYear"],
-            source_url=task["sourceUrl"],
-        )
-        leads = parse_audit_research_leads(
-            pages,
-            band_id=task["bandId"],
-            band_name=task["bandName"],
-            fiscal_year=task["fiscalYear"],
-            source_url=task["sourceUrl"],
-        )
-        status = "extracted" if rows or leads else "no_disclosures"
-        return {**task, "status": status, "records": rows, "researchLeads": leads}
+        return extract_text_records(task, pages)
     except Exception as exc:  # pragma: no cover - network behavior
         return {**task, "status": "failed", "reason": str(exc), "records": [], "researchLeads": []}
+
+
+def extract_text_records(task: dict, pages: list[str]) -> dict:
+    """Parse extracted PDF text, keeping unreadable documents unresolved."""
+    if not any(len(re.sub(r"\s", "", page)) >= 100 for page in pages):
+        return {**task, "status": "needs_ocr", "reason": "No usable PDF text; not evidence of no projects",
+                "records": [], "researchLeads": []}
+    rows = parse_project_disclosures(
+        pages,
+        band_id=task["bandId"],
+        band_name=task["bandName"],
+        fiscal_year=task["fiscalYear"],
+        source_url=task["sourceUrl"],
+    )
+    leads = parse_audit_research_leads(
+        pages,
+        band_id=task["bandId"],
+        band_name=task["bandName"],
+        fiscal_year=task["fiscalYear"],
+        source_url=task["sourceUrl"],
+    )
+    status = "extracted" if rows or leads else "no_disclosures"
+    return {**task, "status": status, "records": rows, "researchLeads": leads}
 
 
 def scan_tasks(
@@ -493,6 +598,7 @@ def scan_tasks(
     all_years: bool,
     province: str | None = None,
     province_by_band: dict[str, str] | None = None,
+    roster: dict | None = None,
 ) -> list[dict]:
     tasks = []
     for band_id, band in capital.get("bands", {}).items():
@@ -511,7 +617,30 @@ def scan_tasks(
                 "fiscalYear": fiscal_year,
                 "sourceUrl": row["sourceUrl"],
             })
-    return tasks
+    # A failed financial-summary extraction does not make a posted audit
+    # ineligible for project-name extraction. Non-statements remain excluded.
+    by_key = {(task["bandId"], task["fiscalYear"]): task for task in tasks}
+    for band in (roster or {}).get("bands", []):
+        band_id = str(band["id"])
+        if province and str(band.get("province", "")).upper() != province.upper():
+            continue
+        for filing in band.get("filings", []):
+            year = str(filing.get("year", ""))
+            excluded = capital.get("bands", {}).get(band_id, {}).get("years", {}).get(year, {}).get("parseStatus") == "not_applicable"
+            if (not excluded and filing.get("posted") and filing.get("href")
+                    and "audited" in filing.get("docType", "").lower()
+                    and "financial statement" in filing.get("docType", "").lower()):
+                by_key.setdefault((band_id, year), {
+                    "bandId": band_id, "bandName": band["name"],
+                    "fiscalYear": year, "sourceUrl": filing["href"],
+                })
+    if not all_years:
+        latest = {}
+        for task in by_key.values():
+            if task["fiscalYear"] > latest.get(task["bandId"], {}).get("fiscalYear", ""):
+                latest[task["bandId"]] = task
+        return sorted(latest.values(), key=lambda row: (row["bandId"], row["fiscalYear"]))
+    return sorted(by_key.values(), key=lambda row: (row["bandId"], -int(row["fiscalYear"][:4])))
 
 
 def main() -> None:
@@ -523,6 +652,7 @@ def main() -> None:
     parser.add_argument("--all-years", action="store_true")
     parser.add_argument("--province", choices=["AB", "SK", "ALL"], default="ALL")
     parser.add_argument("--data", default=str(ROOT / "data.json"))
+    parser.add_argument("--cache-dir", help="Optional local PDF cache; never committed")
     parser.add_argument("--workers", type=int, default=3)
     parser.add_argument("--limit", type=int, default=0)
     args = parser.parse_args()
@@ -540,10 +670,14 @@ def main() -> None:
         args.all_years,
         None if args.province == "ALL" else args.province,
         province_by_band,
+        roster,
     )
     if args.limit:
         tasks = tasks[: args.limit]
 
+    for task in tasks:
+        if args.cache_dir:
+            task["cacheDir"] = args.cache_dir
     results = []
     with ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
         futures = {pool.submit(extract_one, task): task for task in tasks}
@@ -552,11 +686,12 @@ def main() -> None:
             results.append(result)
             print(
                 f"{result['bandName']} {result['fiscalYear']}: {result['status']} "
-                f"({len(result['records'])} disclosures, {len(result.get('researchLeads', []))} research leads)"
+                f"({len(result['records'])} disclosures, {len(result.get('researchLeads', []))} research leads)",
+                flush=True,
             )
 
     previous = projects.get("financialDisclosures", [])
-    scanned = {(row["bandId"], row["fiscalYear"]) for row in results if row["status"] != "failed"}
+    scanned = {(row["bandId"], row["fiscalYear"]) for row in results if row["status"] in {"extracted", "no_disclosures"}}
     preserved = [
         row for row in previous
         if not any((str(band_id), str(row.get("fiscalYear"))) in scanned for band_id in row.get("firstNationIds", []))
@@ -569,9 +704,8 @@ def main() -> None:
     extracted_leads = [lead for result in results for lead in result.get("researchLeads", [])]
     scanned_years: dict[str, list[str]] = {}
     for result in results:
-        if result["status"] != "failed":
+        if result["status"] in {"extracted", "no_disclosures"}:
             scanned_years.setdefault(str(result["bandId"]), []).append(str(result["fiscalYear"]))
-    add_cross_year_analysis(extracted_leads, scanned_years)
     research_path = Path(args.research_leads)
     research_payload = (
         json.loads(research_path.read_text(encoding="utf-8"))
@@ -585,6 +719,12 @@ def main() -> None:
         or not any((str(band_id), str(row.get("fiscalYear"))) in scanned for band_id in row.get("firstNationIds", []))
     ]
     leads_by_id = {row["id"]: row for row in [*extracted_leads, *preserved_leads]}
+    # Include preserved years when annotating an incremental/latest-year run.
+    completed_bands = {band_id for band_id, _ in scanned}
+    add_cross_year_analysis([
+        row for row in leads_by_id.values()
+        if any(str(band_id) in completed_bands for band_id in row.get("firstNationIds", []))
+    ], scanned_years)
     research_payload["auditResearchLeads"] = sorted(
         leads_by_id.values(), key=lambda row: (str(row.get("fiscalYear", "")), row.get("originalLabel", "")), reverse=True
     )
@@ -607,19 +747,32 @@ def main() -> None:
         "recordsExtracted": len(extracted),
         "researchLeadsGenerated": len(extracted_leads),
         "failures": sum(row["status"] == "failed" for row in results),
+        "documentsNeedingOcr": sum(row["status"] == "needs_ocr" for row in results),
     }
     projects["generatedAt"] = date.today().isoformat()
     projects_path.write_text(json.dumps(projects, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     research_path.write_text(json.dumps(research_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
+    coverage = {}
+    for province in ("AB", "SK"):
+        provincial_results = [row for row in results if province_by_band.get(row["bandId"]) == province]
+        coverage[province] = {
+            "documentsAttempted": len(provincial_results),
+            "documentsWithProjectDisclosures": sum(bool(row["records"]) for row in provincial_results),
+            "recordsExtracted": sum(len(row["records"]) for row in provincial_results),
+            "documentsNeedingOcr": sum(row["status"] == "needs_ocr" for row in provincial_results),
+            "failures": sum(row["status"] == "failed" for row in provincial_results),
+        }
     report = {
         "generatedAt": date.today().isoformat(),
-        "mode": "all-years" if args.all_years else "latest-publishable-year",
+        "mode": "all-years" if args.all_years else "latest-available-audit",
+        "province": args.province,
+        "coverageByProvince": coverage,
         "documentsAttempted": len(results),
         "recordsExtracted": len(extracted),
         "researchLeadsGenerated": len(extracted_leads),
         "results": sorted(({
-            key: value for key, value in row.items() if key not in {"records", "researchLeads"}
+            key: value for key, value in row.items() if key not in {"records", "researchLeads", "cacheDir"}
         } | {
             "recordsExtracted": len(row.get("records", [])),
             "researchLeadsGenerated": len(row.get("researchLeads", [])),

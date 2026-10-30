@@ -1,4 +1,8 @@
 import unittest
+import json
+import tempfile
+from pathlib import Path
+from unittest.mock import patch, MagicMock
 
 from tools.project_disclosure_extractor import (
     add_cross_year_analysis,
@@ -6,6 +10,9 @@ from tools.project_disclosure_extractor import (
     parse_audit_research_leads,
     parse_project_disclosures,
     scan_tasks,
+    extract_one,
+    disclosure_key,
+    main,
 )
 
 
@@ -182,6 +189,122 @@ Capital Projects 9,574,913 6,297,679
             source_url=SOURCE,
         )
         self.assertEqual(rows, [])
+
+    def test_alberta_deferred_schedule_recovers_named_assets_only(self):
+        rows = parse_project_disclosures([
+            "8. Deferred revenue\n"
+            "Capital Projects: Road Upgrade - ISC 278,678 300,000 (330,084) 248,594\n"
+            "Solar Power - ISC 477,326 162,900 (477,328) 162,898\n"
+            "Housing - ISC 2,075,000 2,481,599 (1,174,099) 3,382,500\n"
+            "Elementary and Junior High School - ISC 861,251 5,505,117 (6,366,368) -\n"
+            "9. Accounts payable\nSchool construction 10,000 20,000"],
+            band_id="441", band_name="Paul", fiscal_year="2025-2026", source_url=SOURCE)
+        self.assertEqual({r["name"] for r in rows}, {"Capital Projects: Road Upgrade - ISC", "Solar Power - ISC"})
+        for row in rows:
+            self.assertEqual(row["amounts"], {})
+            self.assertTrue(row["sourceReferences"][0]["originalText"])
+            self.assertNotIn("status", row)
+
+    def test_saskatchewan_coded_rows_keep_source_evidence(self):
+        rows = parse_project_disclosures([
+            "11. Deferred revenue\n"
+            "School Renovations Project Q36Q 2,698,543 260,000 (1,740,917) 1,217,626\n"
+            "Water Supply Upgrade QA3R - 300,000 - 300,000\n"
+            "FN CFS - Capital Projects Q2C6 - 422,219 - 422,219\n"
+            "School operations Q28P 1,000 2,000 3,000 4,000"],
+            band_id="343", band_name="Mosquito", fiscal_year="2024-2025", source_url=SOURCE)
+        self.assertEqual({r["name"] for r in rows}, {"School Renovations Project", "Water Supply Upgrade"})
+        self.assertIn("Q36Q", rows[0]["sourceReferences"][0]["originalText"])
+
+    def test_incidental_deferred_revenue_does_not_open_a_project_table(self):
+        rows = parse_project_disclosures([
+            "Statement of Operations\nDeferred revenue - prior year 100 200\n"
+            "School renovation expenses 100 200\nNew school 100 200"],
+            band_id="441", band_name="Paul", fiscal_year="2025-2026", source_url=SOURCE)
+        self.assertEqual(rows, [])
+
+    def test_truncated_year_label_is_not_published(self):
+        rows = parse_project_disclosures([
+            "9. Deferred revenue\nISC - Housing construction - Year 2 100 200 300 400"],
+            band_id="354", band_name="Montreal Lake", fiscal_year="2024-2025", source_url=SOURCE)
+        self.assertEqual(rows, [])
+
+    def test_restricted_cash_uses_current_year_when_columns_are_reversed(self):
+        rows = parse_project_disclosures([
+            "Restricted cash\n2024 2025\nCapital project - New School 100 250"],
+            band_id="404", band_name="Big River", fiscal_year="2024-2025", source_url=SOURCE)
+        self.assertEqual(rows[0]["amounts"]["restrictedCash"], 250)
+
+    def test_posted_audits_are_independent_of_capital_parser_success(self):
+        roster = {"bands": [{"id": 441, "name": "Paul", "province": "AB", "filings": [
+            {"year": "2025-2026", "docType": "Audited consolidated financial statements", "posted": True, "href": SOURCE},
+            {"year": "2024-2025", "docType": "Schedule of Remuneration and Expenses", "posted": True, "href": SOURCE},
+            {"year": "2023-2024", "docType": "Audited consolidated financial statements", "posted": False, "href": SOURCE},
+        ]}]}
+        capital = {"bands": {"441": {"years": {"2025-2026": {"parseStatus": "error", "sourceUrl": SOURCE}}}}}
+        tasks = scan_tasks(capital, False, "AB", {"441": "AB"}, roster)
+        self.assertEqual(len(tasks), 1)
+        self.assertEqual(tasks[0]["fiscalYear"], "2025-2026")
+        self.assertEqual(scan_tasks(capital, True, "SK", {"441": "AB"}, roster), [])
+
+    def test_image_only_pdf_is_pending_ocr_not_a_successful_empty_scan(self):
+        pdf = MagicMock()
+        pdf.__enter__.return_value.pages = [MagicMock()]
+        pdf.__enter__.return_value.pages[0].extract_text.return_value = ""
+        with patch("tools.project_disclosure_extractor.fetch_pdf", return_value=b"%PDF"), patch("pdfplumber.open", return_value=pdf):
+            result = extract_one({"bandId": "441", "bandName": "Paul", "fiscalYear": "2025-2026", "sourceUrl": SOURCE})
+        self.assertEqual(result["status"], "needs_ocr")
+
+    def test_separate_dollar_symbols_and_nil_columns_do_not_corrupt_names(self):
+        rows = parse_project_disclosures([
+            "10. Deferred revenue\n"
+            "Rapid Housing - CMHC $ 1,661,281 $ - $ (162,521) $ 1,498,760"],
+            band_id="468", band_name="Fort McMurray", fiscal_year="2022-2023", source_url=SOURCE)
+        self.assertEqual([r["name"] for r in rows], ["Rapid Housing - CMHC"])
+        self.assertEqual(rows[0]["amounts"], {})
+
+    def test_project_code_merges_label_variants_but_program_code_does_not(self):
+        rows = parse_project_disclosures([
+            "7. Deferred revenue\n"
+            "Green Infrastructure - New School (AT315) 10 20 30 40\n"
+            "New School - AT315 (Q37U) 100 200 300 400\n"
+            "Lagoon Upgrade Q37U 10 20 30 40"],
+            band_id="348", band_name="Sweetgrass", fiscal_year="2025-2026", source_url=SOURCE)
+        self.assertEqual(len(rows), 2)
+        school = next(row for row in rows if row["category"] == "Education")
+        self.assertEqual(len(school["sourceReferences"]), 2)
+
+    def test_source_wrappers_merge_without_truncating_words(self):
+        self.assertEqual(disclosure_key("SAL - Lagoon Upgrades"), disclosure_key("lagoon upgrade"))
+        self.assertEqual(disclosure_key("Water disposal"), "water-disposal")
+
+    def test_ocr_pending_run_preserves_existing_records(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            existing = {"id": "441-old", "firstNationIds": ["441"], "fiscalYear": "2025-2026", "name": "New school"}
+            lead = {"id": "lead-441", "firstNationIds": ["441"], "fiscalYear": "2025-2026", "originalLabel": "Example LP"}
+            payloads = {
+                "capital": {"bands": {"441": {"years": {"2025-2026": {"parseStatus": "parsed", "sourceUrl": SOURCE}}}}},
+                "data": {"bands": [{"id": 441, "name": "Paul", "province": "AB"}]},
+                "projects": {"projects": [{"id": "curated-project"}], "financialDisclosures": [existing]},
+                "research-leads": {"auditResearchLeads": [lead]},
+            }
+            args = ["extractor"]
+            for key, payload in payloads.items():
+                path = root / (key + ".json")
+                path.write_text(json.dumps(payload))
+                args.extend(["--" + key, str(path)])
+            args.extend(["--report", str(root / "report.json")])
+            def pending(task):
+                return dict(task, status="needs_ocr", records=[], researchLeads=[])
+            with patch("sys.argv", args), patch("tools.project_disclosure_extractor.extract_one", side_effect=pending):
+                main()
+            result = json.loads((root / "projects.json").read_text())
+            self.assertEqual(result["financialDisclosures"], [existing])
+            self.assertEqual(result["projects"], [{"id": "curated-project"}])
+            self.assertEqual(result["financialDisclosureAudit"]["documentsNeedingOcr"], 1)
+            research = json.loads((root / "research-leads.json").read_text())
+            self.assertEqual(research["auditResearchLeads"], [lead])
 
     def test_scan_includes_manual_review_documents_but_not_non_statements(self):
         capital = {"bands": {"404": {"name": "Big River First Nation", "years": {
