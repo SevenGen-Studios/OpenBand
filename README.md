@@ -30,6 +30,7 @@ Alberta source reconciliation, update commands, review rules, and known gaps are
 - `first-nation-logos.json` - verified local logo paths, original source URLs, and review status for every tracked Nation
 - `public/first-nation-logos/` - optimized SVG/WebP logo assets served locally by OpenBand
 - `projects-data.json` - source-linked housing and infrastructure projects shown on community profiles
+- `tools/project_disclosure_extractor.py` - audit project-name extraction for both provinces; see [coverage and refresh instructions](docs/project-disclosures.md)
 - `audit-results.txt` - latest coverage and parser-health report
 - `scraper.py` - restored core scraper
 - `run_scraper.py` - compatibility launcher with parser fallbacks
