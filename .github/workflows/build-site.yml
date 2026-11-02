@@ -90,6 +90,7 @@ jobs:
         run: |
           node tests/test_analytics_runtime.js
           node tests/test_provinces.js
+          node tests/test_manitoba.js
           node tests/test_missing_filing_years.js
           node tests/test_directory_map.js
           node tests/test_data_loading.js
@@ -102,4 +103,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Build permanent OpenBand profile routes"
-          file_pattern: assets/analytics-config.js first-nations browse news saskatchewan alberta financials methodology about seo-page-manifest.json sitemap.xml robots.txt .nojekyll
+          file_pattern: assets/analytics-config.js first-nations browse news saskatchewan alberta manitoba financials methodology about seo-page-manifest.json sitemap.xml robots.txt .nojekyll

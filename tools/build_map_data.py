@@ -127,7 +127,7 @@ def fetch_reserve_lands() -> dict:
     return request_json(
         RESERVE_LAND_URL,
         {
-            "where": "CPC_CODE IN ('SK','AB')",
+            "where": "CPC_CODE IN ('SK','AB','MB')",
             "outFields": "OBJECTID,ADMIN_LAND_ID,SHORT_NAME,FIRST_NATIONS",
             "returnGeometry": "true",
             # Statistics Canada Lambert is an equal-area projection in metres.

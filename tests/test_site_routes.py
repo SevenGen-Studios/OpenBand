@@ -109,7 +109,7 @@ class SiteRouteTests(unittest.TestCase):
         script = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         profile_loader = script[script.index("async function ensureProfileData"):script.index("async function loadData")]
         capital_wrapper = script[script.index("const renderCommunityCapitalBeforeEnterprise"):script.index("function enterprisePortfolioCard")]
-        self.assertIn("selectedBand()?.province==='AB'?loadEnterpriseData():Promise.resolve()", profile_loader)
+        self.assertIn("['AB','MB'].includes(selectedBand()?.province)?loadEnterpriseData():Promise.resolve()", profile_loader)
         self.assertNotIn("appendEnterprisePreview", capital_wrapper)
         self.assertIn("route.page==='enterprise'?'capital':route.tab", script)
 
@@ -118,7 +118,7 @@ class SiteRouteTests(unittest.TestCase):
             self.assertTrue((ROOT / relative).is_file(), relative)
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
         manifest = json.loads((ROOT / "seo-page-manifest.json").read_text())
-        self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 5 + len(manifest))
+        self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 6 + len(manifest))
         for province, code in [("saskatchewan", "SK"), ("alberta", "AB")]:
             page = ROOT / province / "index.html"
             self.assertTrue(page.exists())
@@ -350,7 +350,7 @@ class SiteRouteTests(unittest.TestCase):
             self.assertGreaterEqual(row["latitude"], 48.5)
             self.assertLessEqual(row["latitude"], 60.5)
             self.assertGreaterEqual(row["longitude"], -120.5)
-            self.assertLessEqual(row["longitude"], -100.5)
+            self.assertLessEqual(row["longitude"], -88.0)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function renderDirectoryMap", javascript)
         self.assertIn('class="map-legend-mobile"', javascript)
@@ -372,7 +372,7 @@ class SiteRouteTests(unittest.TestCase):
         snapshot=json.loads((ROOT/'public/reserve-boundaries.geojson').read_text(encoding='utf-8'))
         self.assertEqual(snapshot['type'],'FeatureCollection')
         self.assertTrue(snapshot['sourceUrl'].startswith('https://data.sac-isc.gc.ca/'))
-        self.assertEqual({f['properties']['CPC_CODE'] for f in snapshot['features']},{'SK','AB'})
+        self.assertEqual({f['properties']['CPC_CODE'] for f in snapshot['features']},{'SK','AB','MB'})
         self.assertIn("function renderReserveLandLayer", javascript)
         self.assertIn("function clearReserveLandLayer", javascript)
         self.assertIn("function usesTwoTapMapNavigation", javascript)

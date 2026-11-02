@@ -191,7 +191,7 @@ Application Deadline: WEDNESDAY NOVEMBER 4, 2026"""
         data, report = collect(ROOT, date(2026, 8, 11), offline=True)
         self.assertEqual(len(data["communityCoverage"]), len(json.loads((ROOT / "data.json").read_text(encoding="utf-8"))["bands"]))
         self.assertEqual(report["trackedCommunities"], len(data["communityCoverage"]))
-        self.assertEqual(report["communitiesWithSourceCoverage"], len(data["communityCoverage"]))
+        self.assertEqual(report["communitiesWithSourceCoverage"], sum(bool(row["sources"]) for row in data["communityCoverage"]))
         sk_ids = {str(b["id"]) for b in json.loads((ROOT / "data.json").read_text(encoding="utf-8"))["bands"] if b["province"] == "SK"}
         self.assertTrue(all(row["sources"] for row in data["communityCoverage"] if str(row["communityId"]) in sk_ids))
 

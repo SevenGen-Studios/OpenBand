@@ -443,6 +443,9 @@ def current_year_column(page_text, fiscal_year=None):
     report_dates = []
     label_count = len(re.findall(r'\bactual\b', header, re.I))
     for line in page_text.splitlines()[:14]:
+        # Some official PDFs space year-header digits (2 0 2 4). Normalize
+        # only this local header candidate; never rewrite monetary rows.
+        line = re.sub(r'(?<!\d)(2)[ \t]+(0)[ \t]+(\d)[ \t]+(\d)(?!\d)', r'\1\2\3\4', line)
         date_pattern = (
             r'^\s*(?:(?:for\s+the\s+)?year\s+ended|as\s+at)\s+'
             r'(?:[A-Za-z]+\s*\d{1,2}|\d{1,2}\s*[A-Za-z]+)\s*,?\s*20\d{2}\b')
@@ -1281,6 +1284,7 @@ def identified_revenue_fields(rows):
     patterns = {
         'iscRevenue': r'indigenous services|indian and northern|aboriginal affairs|\bisc\b|\binac\b|\baandc\b',
         'federalGovernmentRevenue': r'indigenous services|indian and northern|aboriginal affairs|\bisc\b|\binac\b|\baandc\b|government of canada|^federal government|health canada|canada mortgage|employment and social development canada|crown.indigenous relations',
+        'manitobaGovernmentRevenue': r'(?:government|province) of manitoba|^manitoba (?:health|education|government)',
         'albertaGovernmentRevenue': r'(?:government|province) of alberta|^alberta (?:health|education|government)',
         'taxationRevenue': r'^(?:property )?tax(?:ation|es)?(?: revenue)?$',
         'rentalLeaseRevenue': r'rental|rental income|lease revenue|lease income',
@@ -1288,7 +1292,7 @@ def identified_revenue_fields(rows):
         'businessRevenue': r'business income|business revenue|earnings from.*(?:enterprise|partnership)|gaming revenue|oil and gas revenue',
         'otherRevenue': r'^other (?:income|revenue)$',
         'ownSourceRevenue': r'^(?:own.source revenue)$|taxation|rental income|lease (?:income|revenue)|investment income|interest income|dividend income|business (?:income|revenue)|gaming revenue|oil and gas revenue',
-        'governmentRevenue': r'indigenous services|indian and northern|aboriginal affairs|\bisc\b|\binac\b|\baandc\b|government of|province of|^federal government|health canada|canada mortgage|employment and social development canada|crown.indigenous relations|^alberta (?:health|education|government)|^other government',
+        'governmentRevenue': r'indigenous services|indian and northern|aboriginal affairs|\bisc\b|\binac\b|\baandc\b|government of|province of|^federal government|health canada|canada mortgage|employment and social development canada|crown.indigenous relations|^(?:alberta|manitoba) (?:health|education|government)|^other government',
         'otherGovernmentRevenue': r'^other government (?:revenue|funding|transfers)$',
     }
     values = {}

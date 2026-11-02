@@ -10,9 +10,9 @@ from pathlib import Path
 from urllib.parse import quote
 
 try:
-    from tools.seo_records import publish as publish_records, financial_markup, safe_url
+    from tools.seo_records import publish as publish_records, financial_markup, safe_url, PROVINCES
 except ModuleNotFoundError:
-    from seo_records import publish as publish_records, financial_markup, safe_url
+    from seo_records import publish as publish_records, financial_markup, safe_url, PROVINCES
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -89,7 +89,7 @@ def election_prerender(band: dict, records: list[dict]) -> str:
         if str(record.get("firstNationId")) == str(band["id"]) and record.get("elected") and record.get("electionDate")
     ]
     if not winners:
-        if band.get('province') == 'AB':
+        if band.get('province') in ('AB','MB'):
             governance = band.get('leadership') or {}
             return ('<section class="election-card"><h3>Elections &amp; Leadership</h3>'
                     '<p>ISC-listed appointments are shown in the Nation overview with the source check date; confirm current officeholders with ISC. '
@@ -518,10 +518,12 @@ def provincial_landing(base: str, code: str, name: str) -> str:
         1,
     )
     page = page.replace(
-        '<script src="/assets/openband.js?v=20261002" defer></script>',
-        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261002" defer></script>',
+        '<script src="/assets/openband.js?v=20261101mb3" defer></script>',
+        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261101mb3" defer></script>',
         1,
     )
+    if code == 'MB':
+        page = page.replace('<p id="albertaCoverageLink"><a href="/alberta-coverage-report.html">Alberta source coverage and review report</a></p>', '<p id="albertaCoverageLink" hidden></p>')
     return page
 
 
@@ -566,7 +568,7 @@ def build() -> None:
     profile_root = ROOT / "first-nations"
     profile_root.mkdir(parents=True, exist_ok=True)
 
-    for code, province in [('SK', 'Saskatchewan'), ('AB', 'Alberta')]:
+    for code, province in PROVINCES.items():
         landing = provincial_landing(base, code, province)
         write_page(ROOT / province.lower() / 'index.html', landing)
 
@@ -606,7 +608,7 @@ def build() -> None:
         )
         contact = next((row for row in contacts.get('contacts', []) if str(row.get('nation_id')) == str(band['id'])), {})
         website = safe_url(contact.get('website_url'))
-        region = {'SK': 'Saskatchewan', 'AB': 'Alberta'}.get(band.get('province'), 'Canada')
+        region = PROVINCES.get(band.get('province'), 'Canada')
         facts = f'<section><h2>About {html.escape(band["name"])}</h2><p>{html.escape(band["name"])} is a First Nation in {region}. ' + (html.escape(band['treaty']) + ' is listed in the current source records.' if band.get('treaty') else '') + '</p>'
         if website:
             facts += f'<p><a href="{html.escape(website, quote=True)}">Nation website listed by ISC</a>' + (f' · contact source checked {html.escape(str(contact["last_verified"]))}' if contact.get('last_verified') else '') + '</p>'
@@ -628,8 +630,8 @@ def build() -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20261002" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261002" defer></script>',
+            '<script src="/assets/openband.js?v=20261101mb3" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261101mb3" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)
@@ -639,8 +641,8 @@ def build() -> None:
             legacy_enterprise_redirect(band),
         )
 
-    directory_title = "Explore Saskatchewan and Alberta First Nations | OpenBand"
-    directory_description = "Explore Saskatchewan and Alberta First Nations on an interactive map with red First Nation and reserve land boundaries, organized by Treaty and tribal-council affiliation."
+    directory_title = "Explore Saskatchewan, Alberta and Manitoba First Nations | OpenBand"
+    directory_description = "Explore Saskatchewan, Alberta and Manitoba First Nations on an interactive map with red First Nation and reserve land boundaries, organized by Treaty and tribal-council affiliation."
     directory = set_meta(
         base,
         title=directory_title,
@@ -675,7 +677,7 @@ def build() -> None:
     news_page = news_page.replace('<div class="news-grid" id="newsGrid"></div>', news_prerender(news.get("articles", [])), 1)
     write_page(ROOT / "news" / "index.html", news_page)
 
-    paths = ["/", "/saskatchewan/", "/alberta/", "/browse/", "/news/"] + [f"/first-nations/{slug}/" for slug in slugs]
+    paths = ["/", *[f"/{name.lower()}/" for name in PROVINCES.values()], "/browse/", "/news/"] + [f"/first-nations/{slug}/" for slug in slugs]
     paths.extend(seo_manifest)
     def lastmod_markup(path):
         return "<lastmod>" + seo_manifest[path]["lastmod"] + "</lastmod>" if path in seo_manifest else ""

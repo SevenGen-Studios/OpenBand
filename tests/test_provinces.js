@@ -22,3 +22,5 @@ assert.equal(subtotal.reporting,1);assert.equal(subtotal.fields.totalRevenue.tot
 assert.equal(subtotal.fields.totalAssets.total,null);assert.equal(subtotal.fields.totalAssets.reporting,0);
 assert.equal(P.aggregate(bands,capital,'AB','2025-2026').fields.totalRevenue.total,null);
 console.log('Province routes, aliases, treaties, fiscal years, null values and duplicate-source checks passed.');
+assert.equal(P.fromPath('/manitoba/'),'MB');
+assert.equal(P.routeFor('MB'),'/manitoba/');

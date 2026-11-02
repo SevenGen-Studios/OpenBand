@@ -2,7 +2,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const vm=require('node:vm');
 const source=fs.readFileSync('assets/openband.js','utf8');
-const functions=['remFilings','auditedFilings','auditedFilingsByYear','isManualReview','getFilingStatus','isReliableParsed','filingScore','disclosureYears','remFilingsByYear','bestYear','directoryStatus','capitalYearsForBand','getCapitalSummary','getCapitalAvailableYears','capitalYearStatus','getCapitalParsedYears','getCapitalDisplayYear','capitalYearControlMarkup','renderCommunityCapital'];
+const functions=['hasCheckedDisclosureCoverage','remFilings','auditedFilings','auditedFilingsByYear','isManualReview','getFilingStatus','isReliableParsed','filingScore','disclosureYears','remFilingsByYear','bestYear','directoryStatus','capitalYearsForBand','getCapitalSummary','getCapitalAvailableYears','capitalYearStatus','getCapitalParsedYears','getCapitalDisplayYear','capitalYearControlMarkup','renderCommunityCapital'];
 const panel={dataset:{},innerHTML:''};
 const context=vm.createContext({capitalData:{bands:{}},curCapitalYear:'2025-2026',curYear:null,
     hasRows:f=>Boolean(f?.people?.length),esc:String,escAttr:String,
@@ -31,3 +31,10 @@ for(const band of bands){
     for(let start=2014;start<new Date().getFullYear();start++)assert(years.some(f=>f.year===`${start}-${start+1}`),band.name);
 }
 console.log('Missing Alberta years show Not posted while source filings, review flags and Saskatchewan coverage remain intact.');
+
+context.band={id:261,province:'MB',discoveryStatus:'checked',filings:[]};
+assert.equal(context.capitalYearStatus(context.band,'2025-2026'),'Not posted');
+assert.equal(context.getFilingStatus(context.remFilingsByYear(context.band)[0]).label,'Not posted');
+context.band.discoveryStatus='error';
+assert.equal(context.remFilingsByYear(context.band).length,0,'Failed Manitoba listings cannot become unposted disclosures');
+assert.equal(context.capitalYearStatus(context.band,'2025-2026'),'unavailable');
