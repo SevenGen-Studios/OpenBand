@@ -1,6 +1,7 @@
 /* Decorative motion stays separate from profile, financial and routing logic. */
 (() => {
   'use strict';
+  const mobile = matchMedia('(max-width: 760px)');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
   function pauseButton(label, onChange) {
@@ -25,19 +26,25 @@
     let paused = false;
     let visible = false;
     const layer = document.createElement('div');
-    layer.className = 'hero-feathers';
+    // Set data-hero-season="spring" on <html> to restore the original artwork.
+    const season = document.documentElement.dataset.heroSeason === 'spring' ? 'spring' : 'winter';
+    layer.className = 'hero-seasonal';
+    layer.dataset.season = season;
     layer.setAttribute('aria-hidden', 'true');
     // Fixed lanes and staggered starts keep the background sparse and predictable.
-    const feathers = [
+    const particles = season === 'winter' ? [
+      [5, 18, 29, -9, .28], [22, 13, 35, -24, .22],
+      [47, 11, 32, -4, .16], [77, 20, 31, -19, .25], [91, 15, 27, -13, .24]
+    ] : [
       [5, 84, 28, -9, .45], [22, 66, 34, -24, .3],
       [47, 58, 31, -4, .18], [77, 90, 30, -19, .4], [91, 70, 26, -13, .38]
     ];
-    for (const [left, size, duration, delay, opacity] of feathers) {
+    for (const [left, size, duration, delay, opacity] of particles) {
       const feather = document.createElement('span');
-      feather.className = 'hero-feather';
+      feather.className = 'hero-particle';
       feather.style.cssText = `--left:${left}%;--size:${size}px;--duration:${duration}s;--delay:${delay}s;--opacity:${opacity}`;
       const artwork = document.createElement('img');
-      artwork.src = '/assets/hero-feathers.webp';
+      artwork.src = season === 'winter' ? '/assets/hero-snowflake.svg' : '/assets/hero-feathers.webp';
       artwork.alt = '';
       artwork.width = artwork.height = 625;
       artwork.decoding = 'async';
@@ -70,7 +77,10 @@
   let paused = false;
   let hovered = false;
   let focused = false;
-  const canMove = () => group && period > 0 && visible && !paused && !hovered && !focused && !document.hidden && !reducedMotion.matches;
+  let manipulating = false;
+  let pointerHeld = false;
+  let resumeTimer = 0;
+  const canMove = () => group && period > 0 && visible && !paused && !hovered && !focused && !manipulating && !document.hidden && !reducedMotion.matches;
 
   function tick(time) {
     frame = 0;
@@ -137,16 +147,46 @@
   new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }).observe(list);
   list.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') { hovered = true; sync(); } });
   list.addEventListener('pointerleave', () => { hovered = false; sync(); });
-  list.addEventListener('pointerdown', event => { if (event.pointerType !== 'mouse') control.setPaused(true); });
+  function resumeAfterManipulation() {
+    clearTimeout(resumeTimer);
+    if (pointerHeld) return;
+    // Let native swipe momentum finish, then continue from the user's position.
+    resumeTimer = setTimeout(() => { manipulating = false; sync(); }, 240);
+  }
+  list.addEventListener('pointerdown', event => {
+    if (event.pointerType === 'mouse') return;
+    pointerHeld = true;
+    manipulating = true;
+    clearTimeout(resumeTimer);
+    sync();
+  });
+  const releasePointer = () => {
+    if (!manipulating) return;
+    pointerHeld = false;
+    resumeAfterManipulation();
+  };
+  window.addEventListener('pointerup', releasePointer);
+  window.addEventListener('pointercancel', releasePointer);
+  list.addEventListener('scroll', () => {
+    if (manipulating && !pointerHeld) resumeAfterManipulation();
+  }, {passive:true});
   list.addEventListener('focusin', event => {
-    focused = true;
+    focused = !mobile.matches || event.target.matches(':focus-visible');
     if (event.target.matches(':focus-visible')) {
       event.target.closest('.recent-item')?.scrollIntoView({block:'nearest', inline:'nearest', behavior:'instant'});
     }
     sync();
   });
-  list.addEventListener('focusout', () => queueMicrotask(() => { focused = list.contains(document.activeElement); sync(); }));
-  document.addEventListener('visibilitychange', sync);
+  list.addEventListener('focusout', () => queueMicrotask(() => { focused = list.contains(document.activeElement) && (!mobile.matches || document.activeElement.matches(':focus-visible')); sync(); }));
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { pointerHeld = false; manipulating = false; clearTimeout(resumeTimer); }
+    sync();
+  });
+  mobile.addEventListener('change', () => {
+    hovered = false;
+    focused = list.contains(document.activeElement) && (!mobile.matches || document.activeElement.matches(':focus-visible'));
+    sync();
+  });
   reducedMotion.addEventListener('change', sizeLoop);
   enhance();
 })();

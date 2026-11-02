@@ -19,11 +19,11 @@ class HomeMotionTests(unittest.TestCase):
                      'first-nations/mistawasis-nehiyawak/index.html']:
             with self.subTest(page=name):
                 page = (ROOT / name).read_text(encoding="utf-8")
-                self.assertEqual(page.count('/assets/home-motion.js?v=20260903a'), 1)
-                self.assertEqual(page.count('/assets/home-motion.css?v=20260903a'), 1)
+                self.assertEqual(page.count('/assets/home-motion.js?v=20261102winter1'), 1)
+                self.assertEqual(page.count('/assets/home-motion.css?v=20261102winter1'), 1)
 
     def test_assets_exist(self):
-        for name in ['hero-feathers.webp', 'motion-pause.svg', 'motion-play.svg',
+        for name in ['hero-snowflake.svg', 'hero-feathers.webp', 'motion-pause.svg', 'motion-play.svg',
                      'motion-icons-LICENSE']:
             self.assertTrue((ROOT / 'assets' / name).is_file())
 
@@ -36,7 +36,7 @@ class HomeMotionTests(unittest.TestCase):
         self.assertIn("matchMedia('(prefers-reduced-motion: reduce)')", self.script)
         self.assertIn("reducedMotion.addEventListener('change', sizeLoop)", self.script)
         self.assertIn('@media(prefers-reduced-motion:reduce)', self.css)
-        self.assertIn('.hero-feather,.hero-feather img{animation:none}', self.css)
+        self.assertIn('.hero-particle,.hero-particle img{animation:none}', self.css)
 
     def test_duplicate_cards_are_not_repeated_to_screen_readers(self):
         self.assertIn("clone.setAttribute('aria-hidden', 'true')", self.script)
@@ -56,6 +56,21 @@ class HomeMotionTests(unittest.TestCase):
         self.assertIn('(position + elapsed * .028) % period', self.script)
         self.assertIn('Math.ceil(list.clientWidth / period) + 1', self.script)
         self.assertIn('gap:8px;padding:4px', self.css)
+
+    def test_mobile_controls_are_focus_reveal_only_and_touch_does_not_latch_pause(self):
+        self.assertIn('clip-path:inset(50%)', self.css)
+        self.assertIn('.motion-toggle:focus-visible{width:44px', self.css)
+        self.assertIn('grid-template-columns:minmax(0,1fr);position:relative', self.css)
+        self.assertNotIn('control.setPaused(true)', self.script)
+        self.assertIn("window.addEventListener('pointerup', releasePointer)", self.script)
+        self.assertIn("window.addEventListener('pointercancel', releasePointer)", self.script)
+
+    def test_runtime_touch_keyboard_and_motion_preferences(self):
+        import shutil, subprocess
+        node=shutil.which('node')
+        if not node:self.skipTest('Node.js required for motion interaction tests')
+        result=subprocess.run([node,'tests/test_home_motion_runtime.js'],cwd=ROOT,capture_output=True,text=True)
+        self.assertEqual(result.returncode,0,result.stdout+result.stderr)
 
     def test_no_extra_data_requests_or_financial_logic(self):
         for fragment in ['fetch(', 'localStorage', 'capitalData', 'bandsData']:

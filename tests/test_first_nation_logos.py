@@ -97,5 +97,50 @@ class FirstNationLogoTests(unittest.TestCase):
             self.assertEqual(previous[key], current[key])
 
 
+class ManitobaLogoReviewTests(unittest.TestCase):
+    def test_protected_logos_metadata_and_assets_are_unchanged(self):
+        import hashlib
+        from tools.manitoba_logos import digest
+        baseline=json.loads((ROOT/'manual_overrides/manitoba-logo-baseline.json').read_text())
+        data=json.loads((ROOT/'data.json').read_text())
+        ids={str(b['id']) for b in data['bands'] if b.get('province')!='MB'}
+        registry=json.loads((ROOT/'first-nation-logos.json').read_text())
+        report=json.loads((ROOT/'first-nation-logo-report.json').read_text())
+        self.assertEqual(baseline['registry'],digest([r for r in registry['logos'] if str(r['nation_id']) in ids]))
+        self.assertEqual(baseline['report'],digest([r for r in report if str(r['nation_id']) in ids]))
+        for url,sha in baseline['assets'].items():
+            self.assertEqual(sha,hashlib.sha256((ROOT/url.lstrip('/')).read_bytes()).hexdigest())
+
+    def test_every_verified_manitoba_asset_has_visual_and_hash_evidence(self):
+        import hashlib
+        from tools.manitoba_logos import digest
+        reviews=json.loads((ROOT/'manual_overrides/manitoba-logo-reviews.json').read_text())
+        approved={str(r['nation_id']):r for r in reviews['approvals']}
+        data=json.loads((ROOT/'data.json').read_text())
+        ids={str(b['id']) for b in data['bands'] if b.get('province')=='MB'}
+        self.assertEqual(ids,{str(r['nation_id']) for r in reviews['nation_searches']})
+        self.assertEqual(len(ids),63)
+        registry=json.loads((ROOT/'first-nation-logos.json').read_text())
+        for logo in registry['logos']:
+            key=str(logo['nation_id'])
+            if key not in ids or not logo['logo_verified']:continue
+            review=approved[key]
+            self.assertIs(review['visually_verified'],True)
+            self.assertEqual(logo['visual_review']['review_sha256'],digest(review))
+            self.assertEqual(logo['source_sha256'],review['source_sha256'])
+            self.assertEqual(logo['sha256'],hashlib.sha256((ROOT/logo['logo_url'].lstrip('/')).read_bytes()).hexdigest())
+
+    def test_review_rejects_automatic_or_changed_assets_and_wrong_nation(self):
+        from tools.manitoba_logos import approved_review
+        import hashlib
+        review={'nation_id':295,'nation_name':'Dakota Tipi','visually_verified':True,
+                'verification_note':'Visually inspected mark','identity_evidence':['Official Nation site'],
+                'source_sha256':hashlib.sha256(b'original').hexdigest()}
+        band={'id':295,'name':'Dakota Tipi','province':'MB'}
+        self.assertTrue(approved_review(review,band,b'original'))
+        for changed,b,payload in [(dict(review,visually_verified=False),band,b'original'),(review,band,b'changed'),(review,dict(band,id=296),b'original'),(review,dict(band,province='SK'),b'original')]:
+            with self.assertRaises(ValueError):approved_review(changed,b,payload)
+
+
 if __name__ == "__main__":
     unittest.main()

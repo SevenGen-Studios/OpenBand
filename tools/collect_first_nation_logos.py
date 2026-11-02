@@ -385,8 +385,9 @@ def main() -> int:
     sources, _ = site_sources()
     records = []
     report = []
+    previous_reports = {str(r['nation_id']):r for r in json.loads((ROOT / 'first-nation-logo-report.json').read_text())} if (ROOT / 'first-nation-logo-report.json').exists() else {}
     existing = {}
-    if REGISTRY_PATH.exists() and selected_ids:
+    if REGISTRY_PATH.exists():
         existing_data = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
         existing = {str(row["nation_id"]): row for row in existing_data.get("logos", [])}
 
@@ -395,11 +396,13 @@ def main() -> int:
         if selected_ids and band_id not in selected_ids:
             if band_id in existing:
                 records.append(existing[band_id])
+                if band_id in previous_reports:report.append(previous_reports[band_id])
             continue
-        if band.get('province') == 'AB':
-            # Alberta marks have a separate visual review/hash gate. Scheduled
+        if band.get('province') in {'AB', 'MB'}:
+            # Alberta and Manitoba marks have separate visual review/hash gates. Scheduled
             # generic site discovery must not overwrite that reviewed registry.
             records.append(existing.get(band_id) or unverified_record(band, band.get('website'), 'Official First Nation website', 'Awaiting visual logo review'))
+            if band_id in previous_reports:report.append(previous_reports[band_id])
             continue
         source = sources.get(band_id)
         if band_id in REJECTED_AUTOMATIC_IDS:
