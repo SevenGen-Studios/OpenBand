@@ -13,7 +13,7 @@ NODE = shutil.which('node')
 class RemunerationDefaultTests(unittest.TestCase):
     def test_year_selection_and_route_restoration(self):
         source = (ROOT / 'assets/openband.js').read_text(encoding='utf-8')
-        names = ['remFilings', 'isManualReview', 'getFilingStatus', 'isReliableParsed',
+        names = ['hasCheckedDisclosureCoverage', 'remFilings', 'isManualReview', 'getFilingStatus', 'isReliableParsed',
                  'filingScore', 'remFilingsByYear', 'bestYear', 'switchProfileTab']
         functions = '\n'.join(line for line in source.splitlines()
                               if any(line.startswith(f'function {name}(') or
