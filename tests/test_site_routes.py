@@ -118,7 +118,7 @@ class SiteRouteTests(unittest.TestCase):
             self.assertTrue((ROOT / relative).is_file(), relative)
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
         manifest = json.loads((ROOT / "seo-page-manifest.json").read_text())
-        self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 5 + len(manifest))
+        self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 6 + len(manifest))
         for province, code in [("saskatchewan", "SK"), ("alberta", "AB")]:
             page = ROOT / province / "index.html"
             self.assertTrue(page.exists())
