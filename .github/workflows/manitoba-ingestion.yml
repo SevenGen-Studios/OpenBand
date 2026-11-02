@@ -1,0 +1,86 @@
+name: Manitoba ingestion review artifact
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: Maximum documents in this review batch
+        required: true
+        default: '40'
+      ocr:
+        description: Retry unresolved documents using free local OCR
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: manitoba-ingestion-review
+  cancel-in-progress: false
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install shared parsing and free OCR dependencies
+        run: |
+          python -m pip install -r requirements.txt Pillow
+          sudo apt-get update && sudo apt-get install -y poppler-utils
+      - uses: actions/cache@v4
+        with:
+          path: .openband-ocr/manitoba
+          key: manitoba-documents-${{ github.run_id }}
+          restore-keys: manitoba-documents-
+      - name: Refresh source pages and discover disclosures
+        run: |
+          python -m tools.manitoba_baseline
+          python -m tools.refresh_manitoba_roster --refresh
+          python -m tools.ingest_manitoba --integrate-roster --discover --workers 2
+      - name: Extract bounded batch
+        env:
+          BATCH_LIMIT: ${{ inputs.limit }}
+          RETRY_OCR: ${{ inputs.ocr }}
+          OPENBAND_OCR_ENGINE: rapidocr
+          OPENBAND_OCR_THREADS: '1'
+        run: |
+          if [ "$RETRY_OCR" = "true" ]; then
+            python -m tools.ingest_manitoba --parse --ocr --retry --limit "$BATCH_LIMIT" --workers 1
+          else
+            python -m tools.ingest_manitoba --parse --limit "$BATCH_LIMIT" --workers 2
+          fi
+      - name: Validate and generate review pages
+        run: |
+          python -m tools.merge_manitoba_enrichment
+          python -m tools.audit_manitoba
+          python tools/build_site.py
+          python -m tools.manitoba_baseline
+          python -m unittest discover -s tests
+          for test in tests/*.js; do node "$test"; done
+      - name: Upload review artifact; never commit or deploy
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: manitoba-ingestion-review
+          path: |
+            manitoba-*.json
+            manitoba-*.md
+            MANITOBA.md
+            data.json
+            capital-data.json
+            member-counts.json
+            map-data.json
+            contacts-data.json
+            first-nation-logos.json
+            first-nation-logo-report.json
+            community-enterprise.json
+            first-nations/
+            manitoba/
+            sitemap.xml
+            public/disclosure-sources/
+            public/reserve-boundaries.geojson
+            manitoba-boundary-validation.json

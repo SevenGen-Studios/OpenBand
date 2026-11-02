@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "generated": "2026-11-02T05:04:55+00:00",
+  "findings": [
+    {
+      "bandId": 293,
+      "year": "2022-2023",
+      "sha256": "75a79d4aae9b6dc6e7fd1a1b41418e9e844b88a7390352e8e6c2b16cc866f5ac",
+      "pdfPage": 1,
+      "status": "withheld",
+      "reason": "Rendered schedule explicitly labels reimbursed expenses as part of other remuneration; do not add the overlapping columns. Salary is shown as dashes and Note 1 is not included in this one-page PDF. OCR also substitutes periods for thousands separators. No guessed component values were published."
+    },
+    {
+      "bandId": 295,
+      "year": "2017-2018",
+      "sourceFormat": "docx",
+      "status": "withheld",
+      "reason": "Original Word file contains only a small EMF-embedded bitmap of a four-row schedule. Financial columns are blank; no Nation identity or fiscal-year heading is present in that image. Blank amounts are not published as zero. The embedded bitmap was decoded and visually inspected; this is not a missing download."
+    }
+  ]
+}

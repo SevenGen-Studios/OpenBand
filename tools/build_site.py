@@ -89,7 +89,7 @@ def election_prerender(band: dict, records: list[dict]) -> str:
         if str(record.get("firstNationId")) == str(band["id"]) and record.get("elected") and record.get("electionDate")
     ]
     if not winners:
-        if band.get('province') == 'AB':
+        if band.get('province') in ('AB','MB'):
             governance = band.get('leadership') or {}
             return ('<section class="election-card"><h3>Elections &amp; Leadership</h3>'
                     '<p>ISC-listed appointments are shown in the Nation overview with the source check date; confirm current officeholders with ISC. '
@@ -518,13 +518,12 @@ def provincial_landing(base: str, code: str, name: str) -> str:
         1,
     )
     page = page.replace(
-        '<script src="/assets/openband.js?v=20261002" defer></script>',
-        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261002" defer></script>',
+        '<script src="/assets/openband.js?v=20261101mb3" defer></script>',
+        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261101mb3" defer></script>',
         1,
     )
     if code == 'MB':
         page = page.replace('<p id="albertaCoverageLink"><a href="/alberta-coverage-report.html">Alberta source coverage and review report</a></p>', '<p id="albertaCoverageLink" hidden></p>')
-        page = page.replace('<strong id="coverageCount">Loading</strong>', '<strong id="coverageCount">0 indexed</strong>')
     return page
 
 
@@ -631,8 +630,8 @@ def build() -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20261002" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261002" defer></script>',
+            '<script src="/assets/openband.js?v=20261101mb3" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261101mb3" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)

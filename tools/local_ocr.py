@@ -8,6 +8,8 @@ enabled implicitly by this module.
 """
 
 import os
+import json
+import sys
 import re
 import shutil
 import subprocess
@@ -59,12 +61,17 @@ def availability(engine=None):
     missing = []
     requested = engine or os.getenv('OPENBAND_OCR_ENGINE', '').strip().lower()
     pdftoppm = _binary("OPENBAND_PDFTOPPM_BIN", "pdftoppm")
-    tesseract = None if requested in ('windows', 'rapidocr') else _binary("OPENBAND_TESSERACT_BIN", "tesseract")
+    tesseract = None if requested in ('windows', 'rapidocr', 'vision') else _binary("OPENBAND_TESSERACT_BIN", "tesseract")
     if not pdftoppm:
         missing.append("pdftoppm")
     rapidocr = False
     windows = False
-    if requested == 'windows':
+    vision = False
+    if requested == 'vision':
+        binary=Path(os.getenv('OPENBAND_VISION_OCR_BIN', str(Path(__file__).resolve().parents[1]/'.openband-ocr/bin/vision-ocr')))
+        vision=sys.platform=='darwin' and binary.is_file()
+        if not vision:missing.append('compiled optional macOS Vision helper')
+    elif requested == 'windows':
         try:
             import winocr  # noqa: F401
             windows = True
@@ -88,6 +95,7 @@ def availability(engine=None):
         "tesseract": tesseract,
         "rapidocr": rapidocr,
         "windows": windows,
+        "vision": vision,
         "missing": missing,
     }
 
@@ -213,6 +221,14 @@ def _rapidocr_text(image, return_metadata=False):
     return result if return_metadata else result['text']
 
 
+def _vision_text(image, return_metadata=False):
+    binary=os.getenv('OPENBAND_VISION_OCR_BIN', str(Path(__file__).resolve().parents[1]/'.openband-ocr/bin/vision-ocr'))
+    args=[binary,str(image)]
+    result=subprocess.run(args,capture_output=True,text=True,timeout=90,check=True)
+    cells=json.loads(result.stdout)
+    return coordinate_lines([(cell['box'],cell['text']) for cell in cells],align_financial_columns=True,return_metadata=return_metadata)
+
+
 def _windows_text(image):
     """Read a local image with Windows OCR and preserve the word coordinates."""
     import asyncio
@@ -286,6 +302,10 @@ def ocr_pdf_bytes(pdf_bytes, max_pages=None, dpi=None, timeout=None, page_number
                             [tools['tesseract'], str(image), 'stdout', '--psm', '6'],
                             capture_output=True, text=True, timeout=timeout, check=True)
                         pages[page_number - 1] = recognized.stdout or ''
+                    elif tools.get('vision'):
+                        recognized=_vision_text(image,return_metadata=True)
+                        pages[page_number-1]=recognized['text']
+                        if recognized['financialColumnsAligned']:aligned_pages.append(page_number)
                     elif tools.get('windows'):
                         pages[page_number - 1] = _windows_text(image)
                         # Financial PDFs normally print whole dollars or cents.
@@ -309,7 +329,7 @@ def ocr_pdf_bytes(pdf_bytes, max_pages=None, dpi=None, timeout=None, page_number
                         'warnings': [], 'pages': pages, 'page_count': len(processed),
                         'page_numbers': processed,
                         'financialColumnPages': aligned_pages,
-                        'engine': 'windows_with_rapidocr_crosscheck' if tools.get('windows') else
+                        'engine': 'macos_vision' if tools.get('vision') else 'windows_with_rapidocr_crosscheck' if tools.get('windows') else
                                   'tesseract' if tools['tesseract'] else 'rapidocr'}
 
             rendered = subprocess.run(
@@ -357,6 +377,8 @@ def ocr_pdf_bytes(pdf_bytes, max_pages=None, dpi=None, timeout=None, page_number
                             "pages": pages,
                         }
                     pages.append(recognized.stdout or "")
+                elif tools.get('vision'):
+                    pages.append(_vision_text(image))
                 elif tools.get('windows'):
                     text = _windows_text(image)
                     pages.append(_rapidocr_text_isolated(image) if re.search(r'\b\d{1,3}\.\d{3}\b', text) else text)

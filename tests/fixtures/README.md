@@ -27,3 +27,7 @@ Source: [ISC audited statement](https://services.sac-isc.gc.ca/fnp/main/Search/D
 
 `ab_446_2022_ocr_boxes.json` preserves RapidOCR cell positions from Tallcree's 2021–2022 statement on PDF page 9. The page was visually checked against the source: schedule indices must remain separate from year columns, the actual investment income is $46, and C-92 Capacity Funding is a printed expense of $79,227. Revenue $26,129,301 less expenses $25,790,087 and reported other expenses $1,050,007 equals the $710,793 final deficit.
 Source: [ISC audited statement](https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=446&FY=2021-2022&DOC=Audited%20consolidated%20financial%20statements&lang=eng).
+
+## Manitoba spaced-year operations header
+
+`mb_269_2024_operations.txt` is native text from physical PDF page 8 of ISC band 269 (Peguis), 2023–2024 audited statements. Source: https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=269&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng . Original SHA-256: `163def98abeb4cb7faecf140e26ff308c2adf05db297bf31355735a3f99e1af8`. The year header spaces individual digits; amounts are unchanged. Expected current-year reported revenue 98,035,859, expenses 96,705,359 and annual surplus 1,330,500 reconcile exactly.

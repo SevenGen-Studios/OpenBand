@@ -13,20 +13,9 @@ from urllib.request import urlopen
 from tools.build_map_data import RESERVE_LAND_URL
 
 
-def build():
+def validated_display_features(source, report):
     from shapely.geometry import shape, mapping, MultiPolygon
     from shapely import make_valid
-    parameters = {'where': "CPC_CODE IN ('SK','AB')", 'outFields': 'ADMIN_LAND_ID,SHORT_NAME,ENAME,CPC_CODE,FIRST_NATIONS',
-                  'returnGeometry':'true','outSR':'4326','f':'geojson','resultRecordCount':'2000'}
-    url = RESERVE_LAND_URL+'?'+urlencode(parameters)
-    with urlopen(url,timeout=45) as response:
-        payload=response.read()
-    source=json.loads(payload)
-    if source.get('type') != 'FeatureCollection' or source.get('exceededTransferLimit') or not source.get('features'):
-        raise ValueError('Complete non-empty ISC GeoJSON is required')
-    report={'sourceUrl':url,'retrievedAt':datetime.now(timezone.utc).isoformat(),
-            'sourceSha256':hashlib.sha256(payload).hexdigest(),'sourceFeatureCount':len(source['features']),
-            'displaySimplificationDegrees':0.0001,'repairs':[], 'blocked':[]}
     features=[]
     for feature in source['features']:
         geometry=shape(feature['geometry'])
@@ -51,6 +40,25 @@ def build():
         features.append(dict(feature,geometry=mapping(simplified)))
     if report['blocked']:
         raise ValueError('Source geometries need manual review; existing snapshot was preserved')
+    return features
+
+
+
+def build():
+    from shapely.geometry import shape, mapping, MultiPolygon
+    from shapely import make_valid
+    parameters = {'where': "CPC_CODE IN ('SK','AB','MB')", 'outFields': 'ADMIN_LAND_ID,SHORT_NAME,ENAME,CPC_CODE,FIRST_NATIONS',
+                  'returnGeometry':'true','outSR':'4326','f':'geojson','resultRecordCount':'2000'}
+    url = RESERVE_LAND_URL+'?'+urlencode(parameters)
+    with urlopen(url,timeout=45) as response:
+        payload=response.read()
+    source=json.loads(payload)
+    if source.get('type') != 'FeatureCollection' or source.get('exceededTransferLimit') or not source.get('features'):
+        raise ValueError('Complete non-empty ISC GeoJSON is required')
+    report={'sourceUrl':url,'retrievedAt':datetime.now(timezone.utc).isoformat(),
+            'sourceSha256':hashlib.sha256(payload).hexdigest(),'sourceFeatureCount':len(source['features']),
+            'displaySimplificationDegrees':0.0001,'repairs':[], 'blocked':[]}
+    features=validated_display_features(source,report)
     result={'type':'FeatureCollection','sourceUrl':url,'retrievedAt':report['retrievedAt'],
             'displayOnly':True,'features':features}
     output=Path('public/reserve-boundaries.geojson')

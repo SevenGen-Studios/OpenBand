@@ -1,0 +1,84 @@
+{
+  "generated": "2026-11-02T05:54:24+00:00",
+  "attempted": 5,
+  "recovered": 0,
+  "records": [
+    {
+      "nationId": 266,
+      "year": "2016-2017",
+      "url": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=266&FY=2016-2017&DOC=Audited consolidated financial statements&lang=eng",
+      "recovered": false,
+      "warnings": [
+        "Revenue rows do not reconcile exactly to the reported total",
+        "Expense rows do not reconcile exactly to the reported total",
+        "Expense categories do not reconcile to total expenses",
+        "An expense row was extracted from the wrong fiscal-year column",
+        "A reported total was extracted from the wrong fiscal-year column",
+        "Debt summary was not extracted"
+      ]
+    },
+    {
+      "nationId": 287,
+      "year": "2018-2019",
+      "url": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2018-2019&DOC=Audited consolidated financial statements&lang=eng",
+      "recovered": false,
+      "warnings": [
+        "Recovery requires a reported final annual result",
+        "Revenue rows do not reconcile exactly to the reported total",
+        "Revenue breakdown is incomplete",
+        "Expense breakdown is incomplete",
+        "Revenue categories do not reconcile to total revenue",
+        "New extraction requires a reported final surplus for validation",
+        "Annual surplus or deficit was not extracted",
+        "Capital spending was not extracted",
+        "Debt summary was not extracted"
+      ]
+    },
+    {
+      "nationId": 278,
+      "year": "2020-2021",
+      "url": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=278&FY=2020-2021&DOC=Audited consolidated financial statements&lang=eng",
+      "recovered": false,
+      "warnings": [
+        "OCR recovery requires reported revenue and expense totals",
+        "Revenue rows do not reconcile exactly to the reported total",
+        "Reported annual result does not reconcile exactly",
+        "Total expenses were not extracted",
+        "Expense breakdown is incomplete",
+        "Revenue categories do not reconcile to total revenue",
+        "Revenue, expenses, and annual surplus do not reconcile"
+      ]
+    },
+    {
+      "nationId": 278,
+      "year": "2021-2022",
+      "url": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=278&FY=2021-2022&DOC=Audited consolidated financial statements&lang=eng",
+      "recovered": false,
+      "warnings": [
+        "OCR recovery requires reported revenue and expense totals",
+        "Revenue rows do not reconcile exactly to the reported total",
+        "Reported annual result does not reconcile exactly",
+        "Total expenses were not extracted",
+        "Expense breakdown is incomplete",
+        "Revenue categories do not reconcile to total revenue",
+        "Revenue, expenses, and annual surplus do not reconcile"
+      ]
+    },
+    {
+      "nationId": 278,
+      "year": "2023-2024",
+      "url": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=278&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng",
+      "recovered": false,
+      "warnings": [
+        "Recovery requires a reported final annual result",
+        "OCR recovery requires reported revenue and expense totals",
+        "Total revenue was not extracted",
+        "Total expenses were not extracted",
+        "Revenue breakdown is incomplete",
+        "Expense breakdown is incomplete",
+        "New extraction requires a reported final surplus for validation",
+        "Annual surplus or deficit was not extracted"
+      ]
+    }
+  ]
+}

@@ -38,6 +38,12 @@ COUNT_SOURCE = 'https://www.alberta.ca/first-nations-relations'
 TREATY_SOURCE = 'https://www.sac-isc.gc.ca/eng/1595274954300/1595274980122'
 ROSTER_PATH = ROOT / 'alberta-nations.json'
 PARSER_REVISION = 'alberta-20261009-v28'
+PROVINCE = 'AB'
+SOURCE_CACHE = ROOT / 'tools/alberta-source-cache'
+WORKER_SCRIPT = Path(__file__).resolve()
+TASK_FILTER = lambda band, filing: True
+NATIVE_TIMEOUT = 45
+NON_PDF_ADAPTER = None
 
 def now():
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
@@ -130,7 +136,7 @@ def parse_filings(payload, band_id):
         if not re.fullmatch(r'20\d{2}-20\d{2}', year):
             continue
         start, end = map(int, year.split('-'))
-        if end != start + 1 or not 2014 <= start <= 2025:
+        if end != start + 1 or not 2014 <= start <= datetime.now(timezone.utc).year:
             continue
         href = row[1]['href']
         if not href or received.lower() in ('not yet posted', '', '-', 'n/a'):
@@ -244,7 +250,7 @@ def integrate_profiles(data, bands):
     members = read(ROOT / 'member-counts.json')
     contacts = read(ROOT / 'contacts-data.json')
     maps = read(ROOT / 'map-data.json')
-    locations = read(ROOT / 'tools/alberta-source-cache/isc-locations.json', {'features': []})
+    locations = read(SOURCE_CACHE / 'isc-locations.json', {'features': []})
     location_by_id = {str(f['properties']['BAND_NUMBER']): f for f in locations['features']}
     for band in bands:
         bid = str(band['id'])
@@ -261,7 +267,7 @@ def integrate_profiles(data, bands):
             lon, lat = location['geometry']['coordinates']
             previous = next((c for c in maps['communities'] if str(c['id']) == bid), {})
             maps['communities'] = [c for c in maps['communities'] if str(c['id']) != bid]
-            maps['communities'].append({**previous, 'id': band['id'], 'name': band['name'], 'province': 'AB',
+            maps['communities'].append({**previous, 'id': band['id'], 'name': band['name'], 'province': PROVINCE,
                                        'latitude': lat, 'longitude': lon, 'treaty': band.get('treaty'),
                                        'tribalCouncil': band.get('tribalCouncil'),
                                        'tribalCouncilSourceUrl': page_url('FNMain', band['iscBandNumber']),
@@ -280,7 +286,7 @@ def update_reserve_areas(bands, maps):
     by_id = {str(b['id']): b for b in bands}
     for community in maps['communities']:
         band = by_id.get(str(community['id']))
-        if not band or band.get('province') != 'AB' or band.get('sharedIscIdentity'):
+        if not band or band.get('province') != PROVINCE or band.get('sharedIscIdentity'):
             continue
         reserves = {r['number']: r for r in band.get('reserves', [])}
         if not reserves:
@@ -354,8 +360,9 @@ def document_type_from_cover(pages):
 def reviewed_remuneration(band, filing, digest):
     """Apply a complete visual transcription only to the exact reviewed PDF."""
     from tools.parser_quality import validate_people
-    reviews = read(ROOT / 'tools/alberta-source-cache/remuneration-reviews.json', {}).get('reviews', [])
-    reviews += read(ROOT / 'manual_overrides/audit-remuneration-reviews.json', {}).get('reviews', [])
+    reviews = read(SOURCE_CACHE / 'remuneration-reviews.json', {}).get('reviews', [])
+    if PROVINCE == 'AB':
+        reviews += read(ROOT / 'manual_overrides/audit-remuneration-reviews.json', {}).get('reviews', [])
     review = next((item for item in reviews if str(item['bandId']) == str(band['id'])
                    and item['year'] == filing['year'] and item['sha256'] == digest
                    and canonical_url(item['sourcePdf']) == canonical_url(filing['href'])), None)
@@ -373,7 +380,7 @@ def reviewed_remuneration(band, filing, digest):
             raise ValueError('Reviewed schedule failed a reported column total')
     result = {'people': checked['people'], 'parse_status': 'parsed', 'parse_confidence': 'high',
               'manual_review_required': False, 'warnings': review.get('warnings', []), 'sourceTotal': review.get('sourceTotal'),
-              'manualSourceReview': {key: value for key, value in review.items() if key != 'people'},
+              'manualSourceReview': {**{key: value for key, value in review.items() if key != 'people'},'reviewContentSha256':hashlib.sha256(json.dumps(review,sort_keys=True,separators=(',',':')).encode()).hexdigest()},
               'parse_stages': [{'stage': 'reviewed_original_pdf', 'status': 'complete_rows_reconciled', 'warnings': []}]}
     if review.get('sourceTotal') is not None:
         result['sourceTotal'] = review['sourceTotal']
@@ -410,11 +417,14 @@ def parse_one(task):
     from tools import capital_parser
     import run_scraper
     import pdfplumber
-    update, summary = {'parserRevision': PARSER_REVISION}, None
+    update, summary = {'parserRevision': PARSER_REVISION, 'ocrRequested': bool(ocr), 'ocrRequestedEngine':os.getenv('OPENBAND_OCR_ENGINE','')}, None
     recognized = None
     try:
         payload = download(filing['href'])
         if not payload.lstrip().startswith(b'%PDF-'):
+            if NON_PDF_ADAPTER is not None:
+                update.update(NON_PDF_ADAPTER(band,filing,payload))
+                return str(band['id']),filing['href'],update,None
             raise ValueError('Source did not return a PDF')
         update.update({'sha256': hashlib.sha256(payload).hexdigest(), 'byteSize': len(payload),
                        'verificationStatus': 'pdf_retrieved', 'lastChecked': now(), 'httpStatus': 200})
@@ -435,6 +445,7 @@ def parse_one(task):
             with pdfplumber.open(io.BytesIO(payload)) as pdf:
                 pages = [p.extract_text(x_tolerance=1, y_tolerance=3) or '' for p in pdf.pages]
         native_pages = pages
+        update.update(nativePageCount=len(pages),nativeTextCharacters=sum(len(p.strip()) for p in pages),requiresOcr=sum(len(p.strip()) for p in pages)<100)
         issues = document_identity(pages, band, filing)
         actual_type = document_type_from_cover(pages)
         if actual_type and actual_type != filing['docType']:
@@ -501,6 +512,8 @@ def parse_one(task):
                                      r'net (?:assets|debt)|accumulated surplus)', heading, re.I):
                             hinted.add(index + 1)
                     selected = {number for number in hinted if number <= len(pages)}
+            if ocr_variant == 'vision':
+                ocr_variant += ':financial-columns-v1'
             if ocr_variant == 'rapidocr':
                 ocr_variant += ':financial-columns-v3'
             ocr_key = hashlib.sha256((update['sha256'] + repr(sorted(selected)) +
@@ -514,7 +527,7 @@ def parse_one(task):
                 if capital_parser.is_audited_statement(filing):
                     stop_when = lambda recognized_pages: capital_parser.parse_page_texts(
                         [run_scraper.local_ocr.normalize_ocr_headings(p) for p in recognized_pages],
-                        filing['href'], filing['year'], require_reported_totals=os.getenv('OPENBAND_OCR_ENGINE')=='rapidocr').get('publishable', False)
+                        filing['href'], filing['year'], require_reported_totals=os.getenv('OPENBAND_OCR_ENGINE') in ('rapidocr','vision')).get('publishable', False)
                 recognized = run_scraper.local_ocr.ocr_pdf_bytes(
                     payload, page_numbers=sorted(selected), stop_when=stop_when, extra_pages=2)
                 if recognized.get('status') == 'ok_ocr_text':
@@ -557,7 +570,7 @@ def parse_one(task):
                 summary['warnings'] = list(dict.fromkeys(summary.get('warnings', []) + recognized['warnings']))
             summary['requiresReportedTotals'] = True
             summary.update(capital_parser.validate_summary(summary))
-            if recognized and recognized.get('engine') == 'rapidocr':
+            if recognized and recognized.get('engine') in ('rapidocr','macos_vision'):
                 aligned = set(recognized.get('financialColumnPages', []))
                 references = summary.get('sourceReferences', {})
                 # Optional balance-sheet and cash-flow figures may be absent.
@@ -630,16 +643,26 @@ def bounded_parse(task):
     if output.exists():
         try:
             cached = read(output)
-            reusable = not ocr or cached[2].get('ocrStatus') == 'ok_ocr_text'
+            identity_inputs = read(source)[0] if source.exists() else None
+            def identity_names(record):
+                return set([record.get('name'),record.get('officialName')]+record.get('aliases',[]))-{None,''}
+            identity_compatible = identity_inputs == band or bool(identity_inputs and str(identity_inputs.get('id'))==str(band.get('id')) and cached[2].get('documentChecks',{}).get('identityAndYearConfirmed') and identity_names(identity_inputs).issubset(identity_names(band)))
+            reusable = identity_compatible and (not ocr or cached[2].get('ocrStatus') == 'ok_ocr_text')
             requested_engine = os.getenv('OPENBAND_OCR_ENGINE', '')
             if ocr and requested_engine == 'windows':
                 reusable = reusable and str(cached[2].get('ocrEngine', '')).startswith('windows')
+            if ocr and requested_engine == 'vision':
+                reusable = reusable and cached[2].get('ocrEngine') == 'macos_vision'
             if ocr and requested_engine == 'rapidocr':
                 reusable = reusable and cached[2].get('ocrEngine') == 'rapidocr'
             if ocr and cached[2].get('ocrStatus') == 'not_required_native_text':
-                reusable = bool(cached[3] and cached[3].get('publishable')
+                reusable = reusable and bool(cached[3] and cached[3].get('publishable')
                                 and cached[3].get('requiresReportedTotals')
                                 and cached[2].get('documentChecks', {}).get('identityAndYearConfirmed'))
+            if 'remuneration' in filing.get('docType','').lower() and cached[2].get('sha256'):
+                reviewed = reviewed_remuneration(band,filing,cached[2]['sha256'])
+                if reviewed and cached[2].get('manualSourceReview') != reviewed['manualSourceReview']:
+                    reusable = False
             if cached[2].get('people'):
                 from tools.parser_quality import validate_people
                 reusable = reusable and not validate_people(
@@ -652,8 +675,8 @@ def bounded_parse(task):
     write(source, task)
     started = time.time()
     try:
-        subprocess.run([sys.executable, str(Path(__file__).resolve()), '--task', str(source), '--result', str(output)],
-                       timeout=180 if ocr else 45, check=True, capture_output=True,
+        subprocess.run([sys.executable, str(WORKER_SCRIPT), '--task', str(source), '--result', str(output)],
+                       timeout=180 if ocr else NATIVE_TIMEOUT, check=True, capture_output=True,
                        text=True, encoding='utf-8', errors='replace')
         return read(output)
     except Exception as error:
@@ -672,7 +695,7 @@ def bounded_parse(task):
         warning = f'Bounded extraction stopped: {type(error).__name__}'
         if detail:
             warning += ': ' + detail
-        return str(band['id']), filing['href'], {'parse_status': 'manual_review', 'warnings': [warning], 'lastChecked': now(), 'verificationStatus': 'parse_timeout_or_error'}, None
+        return str(band['id']), filing['href'], {'parse_status': 'manual_review', 'warnings': [warning], 'lastChecked': now(), 'verificationStatus': 'parse_timeout_or_error', 'ocrRequested': bool(ocr), 'ocrRequestedEngine':os.getenv('OPENBAND_OCR_ENGINE','')}, None
 
 
 def should_preserve_remuneration(filing, update):
@@ -696,11 +719,12 @@ def should_preserve_remuneration(filing, update):
 
 
 def parse_documents(limit=0, workers=3, ocr=False, retry=False, reparse=False, document_type='all'):
-    from tools.capital_parser import save_summary
+    from tools.capital_parser import save_summary, is_audited_statement
     data, capital = read(ROOT / 'data.json'), read(ROOT / 'capital-data.json')
     tasks = [({key: deepcopy(band[key]) for key in ('id', 'name', 'officialName', 'aliases') if key in band},
-              deepcopy(filing), ocr) for band in data['bands'] if band.get('province') == 'AB'
+              deepcopy(filing), ocr) for band in data['bands'] if band.get('province') == PROVINCE
              for filing in band.get('filings', []) if filing.get('posted') and filing.get('href')
+             and TASK_FILTER(band, filing)
              and (document_type=='all' or document_type in filing['docType'].lower())
              and (reparse or not filing.get('lastChecked') or retry and filing.get('verificationStatus') != 'automated_validated')]
     tasks.sort(key=lambda t: (t[1]['year'], t[0]['name']), reverse=True)
@@ -720,10 +744,18 @@ def parse_documents(limit=0, workers=3, ocr=False, retry=False, reparse=False, d
                           'warnings': [f'Worker result unavailable: {type(error).__name__}: {error}'],
                           'lastChecked': now()}
             filing = filings[bid, url]
+            if PROVINCE == 'MB':
+                history = list(filing.get('ocrAttemptHistory',[]))
+                for attempt in (filing,update):
+                    status = attempt.get('ocrStatus')
+                    if status and status not in ('not_required_native_text','not_required_reviewed_source'):
+                        item = {key:attempt.get(key) for key in ('sha256','lastChecked','ocrStatus','ocrEngine')}
+                        if item not in history:history.append(item)
+                if history:filing['ocrAttemptHistory']=history
             existing = None
-            if summary:
+            if summary is not None or (PROVINCE != 'AB' and is_audited_statement(filing)):
                 existing = capital.get('bands', {}).get(bid, {}).get('years', {}).get(filing['year'])
-            preserve_capital = bool(existing and existing.get('publishable') and not summary.get('publishable'))
+            preserve_capital = bool(existing and existing.get('publishable') and not (summary or {}).get('publishable'))
             preserve_remuneration = should_preserve_remuneration(filing, update)
             preserve_verified = preserve_capital or preserve_remuneration
             if preserve_verified:
