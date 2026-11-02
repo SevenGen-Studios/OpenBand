@@ -17,11 +17,16 @@ except ModuleNotFoundError:  # Direct execution from the tools directory.
 
 def source_row_map(summary):
     rows = {}
+    duplicates = set()
     for row in summary.get("sourceExpenseRows") or []:
-        label = str(row.get("label") or "").strip().lower()
+        label = str(row.get("label") or row.get("sourceLabel") or "").strip().lower()
         amount = parse_money(row.get("amount"))
         if label and amount is not None:
+            if label in rows:
+                duplicates.add(label)
             rows[label] = amount
+    for label in duplicates:
+        rows.pop(label, None)
     return rows
 
 
@@ -43,6 +48,10 @@ def select_safe_details(existing, parsed):
             or not nearly_equal(reported, expected, tolerance=0.001)
         ):
             continue
+        schedule = dict(schedule)
+        parent = next(row for row in existing.get("sourceExpenseRows", [])
+                      if str(row.get("label") or row.get("sourceLabel") or "").strip().lower() == label.lower())
+        schedule["category"] = parent.get("category", schedule.get("category"))
         selected_schedules.append(schedule)
         selected_labels.add(label)
 
@@ -51,6 +60,8 @@ def select_safe_details(existing, parsed):
         for row in parsed.get("expenseDetails") or []
         if row.get("sourceLabel") in selected_labels
     ]
+    parents = {row["sourceLabel"]: row.get("category") for row in selected_schedules}
+    selected_details = [{**row, "category": parents[row["sourceLabel"]]} for row in selected_details]
     return selected_details, selected_schedules
 
 

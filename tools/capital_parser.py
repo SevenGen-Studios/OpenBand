@@ -32,6 +32,11 @@ try:
 except ImportError:  # pragma: no cover
     pdfplumber = None
 
+try:
+    from tools.capital_classification import classify, reviewed_row
+except ModuleNotFoundError:
+    from capital_classification import classify, reviewed_row
+
 
 _openai_blocked_reason = None
 
@@ -305,51 +310,23 @@ def normalize_category(label):
 
 
 def broad_revenue_category(label):
-    low = label.lower()
-    if re.search(r"settlement|land claim", low):
-        return "Settlement and claim revenue"
-    if re.search(
-        r"indigenous services|government|\bcmhc\b|canada mortgage|"
-        r"canadian heritage|province|tribal council|health.*authority|"
-        r"child.*family|first nations and inuit health|sitag",
-        low,
-    ):
-        return "Government funding and transfers"
-    if re.search(r"tax(?:ation|es)?|property tax|local revenue|levy", low):
-        return "Taxation and local revenue"
-    if re.search(r"\brent|\blease|property (?:income|management)", low):
-        return "Rental and property income"
-    if re.search(r"donation|sponsor|fundrais|contribution", low):
-        return "Donations or contributions"
-    if re.search(r"trust|investment income|interest|dividend", low):
-        return "Investment income"
-    if re.search(
-        r"business|enterprise|limited partnership|\blp\b|holdings?|"
-        r"store|retail|gaming|bingo|casino|sales|royalt|farming|"
-        r"earnings? (?:from|in) (?:g?be|investment)",
-        low,
-    ):
-        return "Business and enterprise revenue"
-    if re.search(r"program|service|administration fee|management fee|tuition", low):
-        return "Program and service revenue"
-    if re.search(r"other revenue|insurance proceeds?|gain on", low):
-        return "Other revenue"
-    return "Unclassified"
+    return classify(normalize_category(label), "revenue")["category"]
 
 
 def revenue_subcategory(label, category):
     low = label.lower()
-    if "trust" in low:
-        return "Trust distribution"
-    if re.search(r"limited partnership|\blp\b", low):
-        return "Limited partnership earnings"
-    if re.search(r"store|retail|gaming|bingo|casino|sales", low):
-        return "Operating revenue"
-    if re.search(r"interest|dividend|investment", low):
+    if category == "Business and enterprise revenue":
+        if re.search(r"limited partnership|\blp\b", low):
+            return "Limited partnership earnings"
+        if re.search(r"earnings?|income from government business|gain.*business|business trust", low):
+            return "Business earnings"
+        if re.search(r"store|retail|gaming|bingo|casino|sales", low):
+            return "Operating revenue"
+    if category == "Investment income" and re.search(r"interest|dividend|investment", low):
         return "Investment return"
-    if re.search(r"rent|lease|property", low):
+    if category == "Rental and property income":
         return "Property income"
-    if re.search(r"administration fee|management fee|service", low):
+    if category == "Program and service revenue":
         return "Service fees"
     if category == "Settlement and claim revenue":
         return "Settlement or claim proceeds"
@@ -357,35 +334,7 @@ def revenue_subcategory(label, category):
 
 
 def broad_expense_category(label):
-    low = label.lower()
-    if re.search(r"\bland claims?\b", low):
-        return "Land Claims"
-    mappings = [
-        (r"housing|\bcmhc\b", "Housing"),
-        (r"education|school|post[- ]secondary|training", "Education"),
-        (r"health", "Health"),
-        (
-            r"infrastructure|public works|community development|capital|"
-            r"facilit(?:y|ies) maintenance|operations?\s*(?:&|and)\s*maintenance",
-            "Infrastructure / public works",
-        ),
-        (
-            r"economic|land management|band development|first nation owned|"
-            r"retail operations|commercial enterprises?",
-            "Economic development",
-        ),
-        (r"social|child|family|income assistance|community based services", "Social programs"),
-        (
-            r"government (?:support|services)|administration|band government|"
-            r"registration(?: and)? membership|membership|lands and memberships|"
-            r"reserves? (?:and|&) trusts?",
-            "Administration",
-        ),
-    ]
-    for pattern, category in mappings:
-        if re.search(pattern, low):
-            return category
-    return "Operations"
+    return classify(normalize_category(label), "expense")["category"]
 
 
 def is_prohibited_expense_label(label):
@@ -594,6 +543,7 @@ def parse_section_rows(
 ):
     rows = []
     active = False
+    pending_business_label = ""
     for page_index, page_text in enumerate(page_texts):
         page_number = (
             page_numbers[page_index]
@@ -610,6 +560,16 @@ def parse_section_rows(
             if not active:
                 continue
             label, values = line_parts(line)
+            if section == "revenue" and not values and re.match(
+                r"^(?:Income|Earnings|Loss) from government business enterprises?\s*-", line, re.I
+            ):
+                pending_business_label = line
+                continue
+            if pending_business_label:
+                if label and values and not re.match(r"^total\b", label, re.I):
+                    label = pending_business_label + " " + label
+                pending_business_label = ""
+
             if not label or not values or SKIP_LINE_RE.search(label):
                 continue
             if re.fullmatch(r"page\)?", label, re.I):
@@ -986,20 +946,26 @@ def aggregate_categories(rows):
     totals = {}
     source_rows = []
     for row in rows:
+        row = dict(row)
+        reference = row.get("sourceReference") or {}
+        section = reference.get("section")
+        if section in {"revenue", "expenses"} and not row.get("classificationReview"):
+            proposal = classify(row.get("sourceLabel") or row.get("label"),
+                                "revenue" if section == "revenue" else "expense",
+                                reference=reference, row=row)
+            row["classificationReview"] = {
+                **proposal, "status": "verified" if reviewed_row(row) else (
+                    "pending_source_review" if proposal["reviewRequired"] else "automated_proposal"),
+                "proposedCategory": proposal["category"],
+            }
         category = row["category"]
         totals[category] = totals.get(category, 0) + (parse_money(row["amount"]) or 0)
-        source_rows.append(
-            {
-                "label": row["sourceLabel"],
-                "category": category,
-                "amount": row["amount"],
-                **(
-                    {"sourceReference": row["sourceReference"]}
-                    if row.get("sourceReference")
-                    else {}
-                ),
-            }
-        )
+        # Preserve all evidence and review fields when converting parser rows.
+        source = dict(row)
+        source["label"] = row.get("sourceLabel") or row.get("label") or ""
+        source.pop("sourceLabel", None)
+        source_rows.append(source)
+
     return (
         [
             {"category": category, "amount": rounded(amount)}
@@ -1127,6 +1093,14 @@ def validate_summary(summary):
             severe.append("An expense row came from a non-expense statement section")
         if reference and reference.get("yearValidated") is False:
             severe.append("An expense row was extracted from the wrong fiscal-year column")
+    for row in summary.get("sourceRevenueRows") or []:
+        reference = row.get("sourceReference") or {}
+        if reference.get("section") and reference["section"] != "revenue":
+            severe.append("A revenue row came from a non-revenue statement section")
+        if reference.get("yearValidated") is False:
+            severe.append("A revenue row was extracted from the wrong fiscal-year column")
+        if re.search(r"budget|prior|previous", str(reference.get("selectedColumn", "")), re.I):
+            severe.append("A revenue row was extracted from a non-actual column")
     for reference in source_references.values():
         if reference and reference.get("yearValidated") is False:
             severe.append("A reported total was extracted from the wrong fiscal-year column")
@@ -1156,6 +1130,16 @@ def validate_summary(summary):
         warnings.append("Capital spending was not extracted")
     if summary.get("debt") is None:
         warnings.append("Debt summary was not extracted")
+
+    for kind, key in (("revenue", "sourceRevenueRows"), ("expense", "sourceExpenseRows")):
+        for row in summary.get(key) or []:
+            if reviewed_row(row) or is_verified_summary(summary):
+                continue
+            proposal = classify(row.get("label") or row.get("sourceLabel"), kind,
+                                reference=row.get("sourceReference"), row=row)
+            if proposal["reviewRequired"] or proposal["category"] != row.get("category"):
+                warnings.append("Classification requires source review: " +
+                                str(row.get("label") or row.get("sourceLabel") or "[missing label]"))
 
     severe = list(dict.fromkeys(severe))
     warnings = [warning for warning in dict.fromkeys(warnings) if warning not in severe]

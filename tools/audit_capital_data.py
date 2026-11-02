@@ -8,6 +8,7 @@ from pathlib import Path
 try:
     from tools.capital_parser import (
         aggregate_categories,
+        is_verified_summary,
         broad_expense_category,
         broad_revenue_category,
         nearly_equal,
@@ -19,6 +20,7 @@ try:
 except ModuleNotFoundError:  # Direct execution from tools/.
     from capital_parser import (
         aggregate_categories,
+        is_verified_summary,
         broad_expense_category,
         broad_revenue_category,
         nearly_equal,
@@ -36,25 +38,23 @@ def normalized_rows(rows, category_fn):
         amount = parse_money(row.get("amount"))
         if not label or amount is None:
             continue
-        normalized.append(
-            {
-                "sourceLabel": label,
-                "category": category_fn(label),
-                "amount": row.get("amount"),
-                **(
-                    {"sourceReference": row["sourceReference"]}
-                    if row.get("sourceReference")
-                    else {}
-                ),
-            }
-        )
+        # An existing category is a stored decision, not permission to remap it.
+        # Verified category corrections use the separate evidence-gated audit.
+        normalized.append({**deepcopy(row), "sourceLabel": label,
+                           "category": row.get("category") or category_fn(label)})
+
     return normalized
 
 
 def safely_rebuild_breakdown(summary, source_key, total_key, category_fn):
-    rows = normalized_rows(summary.get(source_key), category_fn)
+    if is_verified_summary(summary):
+        return False
+    raw_rows = summary.get(source_key) or []
+    rows = normalized_rows(raw_rows, category_fn)
+    if len(rows) != len(raw_rows):
+        return False  # Never omit unreadable source rows to force a reconciliation.
     total = parse_money(summary.get(total_key))
-    if not rows or total is None or not nearly_equal(sum_rows(rows), total):
+    if not rows or total is None or not nearly_equal(sum_rows(rows), total, tolerance=0):
         return False
     breakdown, source_rows = aggregate_categories(rows)
     target = "revenueBreakdown" if source_key == "sourceRevenueRows" else "expenseBreakdown"

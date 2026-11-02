@@ -1,0 +1,42 @@
+name: Audit Community Capital classifications
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - capital-data.json
+      - data.json
+      - 'capital_overrides/**'
+      - 'tools/*capital*.py'
+  pull_request:
+    paths:
+      - capital-data.json
+      - data.json
+      - 'capital_overrides/**'
+      - 'tools/*capital*.py'
+      - 'tests/*capital*'
+      - '.github/workflows/capital-classification-audit.yml'
+permissions:
+  contents: read
+jobs:
+  classification-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run capital regression tests
+        run: python -m unittest discover -s tests -p 'test_*capital*.py'
+      - name: Run frontend regression
+        run: |
+          node tests/test_capital_spending.js
+          node tests/test_capital_classification.js
+      - name: Generate read-only classification review queue
+        run: |
+          mkdir -p classification-audit
+          python -m tools.audit_capital_classification --report classification-audit/current.json --markdown classification-audit/current.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: capital-classification-review
+          path: classification-audit/
