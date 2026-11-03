@@ -280,3 +280,6 @@ footer{padding-bottom:calc(1.25rem + env(safe-area-inset-bottom,0px))}
 
 /* Keep navigation clear of the notch when viewport-fit=cover is active. */
 @media(max-width:760px){nav{padding-top:calc(.45rem + env(safe-area-inset-top,0px));padding-left:max(1rem,env(safe-area-inset-left,0px));padding-right:max(1rem,env(safe-area-inset-right,0px))}}
+
+/* Safari can sample the body canvas beneath its bottom toolbar. */
+body[data-view="gateway"],body[data-page="home"]:not([data-view]){background:#18170f}
