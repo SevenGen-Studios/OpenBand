@@ -6,7 +6,7 @@ from pathlib import Path
 from unittest.mock import patch
 from tools import ingest_alberta as engine
 from tools.ingest_manitoba import merge_band,safe_write,ROOT,SOURCE_CACHE
-from tools.manitoba_baseline import verify
+from tools.manitoba_baseline import verify,snapshot
 
 class ManitobaPipelineTests(unittest.TestCase):
     def test_verified_roster_and_non_signatories(self):
@@ -18,8 +18,15 @@ class ManitobaPipelineTests(unittest.TestCase):
         self.assertEqual(sum(n['treatyVerificationStatus']=='non_signatory' for n in roster),5)
         self.assertTrue(all(-103<n['location']['longitude']<-88 and 48<n['location']['latitude']<61 for n in roster))
 
-    def test_protected_records_unchanged(self):
-        verify(json.loads((SOURCE_CACHE/'protected-baseline.json').read_text()))
+    def test_protected_financial_and_profile_records_unchanged(self):
+        # News is now explicitly maintained across SK/AB/MB; jobs also has its
+        # own scheduled writer. Those mutable feeds have dedicated integrity
+        # tests and are not immutable Manitoba financial-integration fixtures.
+        expected=json.loads((SOURCE_CACHE/'protected-baseline.json').read_text())
+        actual=snapshot()
+        for name in ('news-data.json','jobs-data.json'):
+            expected['files'].pop(name,None);actual['files'].pop(name,None)
+        self.assertEqual(expected,actual)
 
     def test_reject_cross_province_collision(self):
         data={'bands':[{'id':261,'province':'SK','name':'Protected'}]}

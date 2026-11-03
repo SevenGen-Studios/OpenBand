@@ -14,6 +14,7 @@ import shutil
 import subprocess
 import tempfile
 import time
+import threading
 import unicodedata
 import urllib.error
 import urllib.parse
@@ -21,7 +22,7 @@ import urllib.request
 import urllib.robotparser
 import xml.etree.ElementTree as ET
 from collections import Counter
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timedelta, timezone
 from difflib import SequenceMatcher
 from html.parser import HTMLParser
@@ -32,6 +33,11 @@ try:
     from community_history import merge_review_history
 except ImportError:
     from tools.community_history import merge_review_history
+
+try:
+    from community_updates import association_allowed, calendar_url, error_status, feed_links, page_diagnostic, quality_metrics, track_changes, merge_update_reviews
+except ImportError:
+    from tools.community_updates import association_allowed, calendar_url, error_status, feed_links, page_diagnostic, quality_metrics, track_changes, merge_update_reviews
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "data.json"
@@ -56,6 +62,7 @@ SOURCE_TYPES = [
     "Government Source",
 ]
 PILOT_BAND_IDS = {406, 371, 395, 361, 352}
+PROVINCIAL_PILOTS={"SK":PILOT_BAND_IDS,"AB":{430,443,462,447,448},"MB":{264,290,313,261,293}}
 OFFICIAL_SOURCE_TYPES = {
     "Official First Nation Website",
     "Community Website",
@@ -179,7 +186,7 @@ MONTHS = {
     "dec": 12,
 }
 
-PROVINCE_NAMES = {"SK": "Saskatchewan", "AB": "Alberta"}
+PROVINCE_NAMES = {"SK": "Saskatchewan", "AB": "Alberta", "MB": "Manitoba"}
 
 
 def province_name(value):
@@ -202,10 +209,12 @@ def load_json(path, default):
 
 
 def write_json(path, value):
-    path.write_text(
-        json.dumps(value, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
+    path=Path(path)
+    path.parent.mkdir(parents=True,exist_ok=True)
+    with tempfile.NamedTemporaryFile(mode='w',encoding='utf-8',dir=path.parent,prefix=path.name+'.',suffix='.tmp',delete=False) as handle:
+        temporary=Path(handle.name)
+        json.dump(value,handle,ensure_ascii=False,indent=2);handle.write('\n')
+    temporary.replace(path)
 
 
 def clean_text(value):
@@ -237,7 +246,7 @@ def canonical_url(value):
     if path != "/":
         path = path.rstrip("/")
     return urllib.parse.urlunsplit(
-        (parts.scheme.lower(), parts.netloc.lower(), path, urllib.parse.urlencode(query), "")
+        (parts.scheme.lower(), parts.netloc.lower(), path, urllib.parse.urlencode(sorted(query)), "")
     )
 
 
@@ -277,30 +286,32 @@ def parse_date_text(value):
     return None, None
 
 
-def classify_category(value):
-    text = normalized_text(value)
+def classify_category(value, context=""):
+    # Classify the local title first; page menus/footers must never override it.
     rules = [
-        ("Elections", r"\belection|ballot|candidate|nomination\b"),
-        ("Financial", r"\bfinancial|audit|budget|remuneration\b"),
-        ("Infrastructure", r"\binfrastructure|construction|public works|water|road|capital\b"),
-        ("Housing", r"\bhousing|cmhc|home repair\b"),
-        ("Healthcare", r"\bhealth|clinic|wellness|medical|safety\b"),
-        ("Education", r"\bschool|education|student|scholarship|tuition\b"),
-        ("Business & Economic Development", r"\bbusiness|economic|venture|investment\b"),
-        ("Employment", r"\bemployment|career|job|hiring|training\b"),
-        ("Funding & Grants", r"\bfunding|grant|investment announcement\b"),
-        ("Land Claims", r"\bland claim|specific claim|settlement claim\b"),
-        ("Treaties", r"\btreaty|entitlement|tle\b"),
-        ("Environment", r"\benvironment|climate|wildlife|forestry\b"),
-        ("Culture & Language", r"\bculture|language|traditional|elder|powwow\b"),
-        ("Justice", r"\bjustice|police|tribunal|court\b"),
-        ("Emergencies", r"\bemergency|evacuation|wildfire|boil water|closure\b"),
-        ("Governance", r"\bgovernance|chief|council|agm|annual general meeting\b"),
-        ("Community Events", r"\bevent|meeting|homecoming|sports|recreation|agenda\b"),
+        ("Emergencies", r"\b(emergency|evacuation|wildfire|boil water|shelter in place|urgent closure)\b"),
+        ("Elections", r"\b(election|ballot|candidate|nomination|voter|referendum)\b"),
+        ("Employment", r"\b(employment|career|job|hiring|positions available)\b"),
+        ("Community Events", r"\b(halloween|homecoming|gathering|celebration|festival|parade|knitting|crafts|community event|sports day|bingo)\b"),
+        ("Financial", r"\b(financial|audit|budget|remuneration)\b"),
+        ("Housing", r"\b(housing|cmhc|home repair)\b"),
+        ("Infrastructure", r"\b(infrastructure|construction|public works|water plant|road|capital project)\b"),
+        ("Healthcare", r"\b(health|clinic|wellness|medical|vaccination|screening|hospital)\b"),
+        ("Education", r"\b(school|education|student|scholarship|tuition)\b"),
+        ("Business & Economic Development", r"\b(business|economic|venture|investment|partnership)\b"),
+        ("Funding & Grants", r"\b(funding|grant)\b"),
+        ("Land Claims", r"\b(land claim|specific claim|settlement claim)\b"),
+        ("Treaties", r"\b(treaty|entitlement|tle)\b"),
+        ("Environment", r"\b(environment|climate|wildlife|forestry)\b"),
+        ("Culture & Language", r"\b(culture|language|traditional|elder|powwow)\b"),
+        ("Justice", r"\b(justice|police|tribunal|court)\b"),
+        ("Governance", r"\b(governance|chief|council|agm|annual general meeting)\b"),
+        ("Community Events", r"\b(event|meeting|sports|recreation|agenda)\b"),
     ]
-    for category, pattern in rules:
-        if re.search(pattern, text):
-            return category
+    for local in (value, context):
+        for category, pattern in rules:
+            if re.search(pattern, normalized_text(local)):
+                return category
     return "Other"
 
 
@@ -317,16 +328,20 @@ def source_confidence(source):
 def source_is_monitorable(source):
     return (
         source.get("monitor", True)
-        and source.get("status") in {"verified", "baseline"}
+        and source.get("status") in {"verified", "baseline", "candidate"}
         and source.get("adapter") in {"html", "rss", "facebook"}
     )
 
 
 class Fetcher:
+    _robots_cache = {}
+    _origin_locks = {}
+    _lock = threading.Lock()
+    _last_by_origin = {}
     def __init__(self, delay=0.35, timeout=25):
         self.delay = delay
         self.timeout = timeout
-        self.robots = {}
+        self.robots = self._robots_cache
         self.last_request = 0.0
 
     def _pace(self):
@@ -352,24 +367,42 @@ class Fetcher:
                 self.last_request = time.monotonic()
                 parser.parse(robots_text.splitlines())
                 self.robots[origin] = parser
-            except Exception:
-                self.robots[origin] = None
+            except urllib.error.HTTPError as error:
+                if error.code in {404,410}:self.robots[origin] = None
+                else:raise PermissionError(f'robots.txt unavailable ({error.code}); scan withheld') from error
+            except Exception as error:
+                raise PermissionError(f'robots.txt could not be checked: {error}') from error
         parser = self.robots[origin]
         return True if parser is None else parser.can_fetch(USER_AGENT, url)
 
     def get(self, url, headers=None, respect_robots=True):
         if respect_robots and not self.allowed(url):
             raise PermissionError(f"robots.txt disallows {url}")
-        request_headers = {"User-Agent": USER_AGENT, "Accept": "*/*"}
-        request_headers.update(headers or {})
-        request = urllib.request.Request(url, headers=request_headers)
-        self._pace()
-        with urllib.request.urlopen(request, timeout=self.timeout) as response:
-            body = response.read()
-            final_url = response.geturl()
-            content_type = response.headers.get_content_type()
-        self.last_request = time.monotonic()
-        return body, final_url, content_type
+        origin=urllib.parse.urlsplit(url).netloc.lower()
+        with self._lock:
+            lock=self._origin_locks.setdefault(origin,threading.RLock())
+        fetcher=self
+        class CheckedRedirect(urllib.request.HTTPRedirectHandler):
+            def redirect_request(self,req,fp,code,msg,headers,newurl):
+                host=(urllib.parse.urlsplit(newurl).hostname or '').lower()
+                if respect_robots and host.endswith(('facebook.com','instagram.com')):
+                    raise PermissionError('Redirect requires authorized platform API')
+                if respect_robots and not fetcher.allowed(newurl):
+                    raise PermissionError(f'robots.txt disallows redirected URL {newurl}')
+                return super().redirect_request(req,fp,code,msg,headers,newurl)
+        with lock:
+            wait=self.delay-(time.monotonic()-self._last_by_origin.get(origin,0))
+            if wait>0:time.sleep(wait)
+            request_headers={"User-Agent":USER_AGENT,"Accept":"*/*"};request_headers.update(headers or {})
+            request=urllib.request.Request(url,headers=request_headers)
+            try:
+                with urllib.request.build_opener(CheckedRedirect()).open(request,timeout=self.timeout) as response:
+                    body=response.read(8*1024*1024+1)
+                    if len(body)>8*1024*1024:raise ValueError('Source exceeds 8 MB extraction limit')
+                    final_url=response.geturl();content_type=response.headers.get_content_type()
+            finally:self._last_by_origin[origin]=time.monotonic()
+        self.last_request=time.monotonic()
+        return body,final_url,content_type
 
 
 def item_summary(title, block_text, source_name):
@@ -415,7 +448,7 @@ def normalized_candidate(
         "communityName": community["communityName"],
         "communityAliases": community.get("aliases") or [],
         "provinceTerritory": community.get("provinceTerritory", "SK"),
-        "category": classify_category(f"{title} {summary}"),
+        "category": classify_category(title, summary),
         "sourceType": source_type,
         "sourceName": source.get("name") or community["communityName"],
         "publishedAt": published,
@@ -429,6 +462,7 @@ def normalized_candidate(
         "dateSource": date_source or "source-metadata",
         "extractionMethod": extraction_method,
     }
+    item["associationScope"] = "explicit-community-mention" if source.get("requiresCommunityMention") else "community-source"
     if source_page:
         item["sourcePage"] = canonical_url(source_page)
     if thumbnail and str(thumbnail).startswith("http"):
@@ -450,6 +484,7 @@ class CommunityHTMLParser(HTMLParser):
         self.anchors = []
         self.active_anchor = None
         self.default_image = None
+        self.ignored_depth = 0
         self.images = []
 
     def handle_starttag(self, tag, attrs):
@@ -470,7 +505,8 @@ class CommunityHTMLParser(HTMLParser):
             "anchors": [],
             "image": None,
         }
-        self.stack.append(node)
+        if tag in {"script", "style", "noscript", "svg"}:self.ignored_depth += 1
+        if tag not in {"img", "meta", "link", "br", "hr", "input", "source", "wbr"}:self.stack.append(node)
         if is_block:
             self.blocks.append(node)
         if tag == "meta" and attrs.get("property") == "og:image":
@@ -502,11 +538,13 @@ class CommunityHTMLParser(HTMLParser):
         self.handle_endtag(tag)
 
     def handle_data(self, data):
+        if self.ignored_depth:return
         text = clean_text(data)
         if text:
             self.parts.append(text)
 
     def handle_endtag(self, tag):
+        if tag in {"script", "style", "noscript", "svg"}:self.ignored_depth=max(0,self.ignored_depth-1)
         if tag == "a" and self.active_anchor is not None:
             self.active_anchor["end"] = len(self.parts)
             self.active_anchor = None
@@ -578,7 +616,8 @@ class ArticleMetadataParser(HTMLParser):
         elif tag == "link" and "canonical" in str(attrs.get("rel", "")).lower():
             self.canonical = attrs.get("href", "")
         elif tag == "time" and attrs.get("datetime"):
-            self.times.append(attrs["datetime"])
+            if not re.search(r"updated|startDate|endDate", " ".join(str(attrs.get(k,"")) for k in ("class","itemprop")), re.I):
+                self.times.append(attrs["datetime"])
         elif tag in {"title", "h1", "p"}:
             self._capture = tag
         elif tag == "script" and attrs.get("type", "").lower() == "application/ld+json":
@@ -644,7 +683,9 @@ def article_page_metadata(markup, page_url):
         for row in records
         if row.get("datePublished")
     )
-    date_sources.extend((value, "time:datetime") for value in parser.times)
+    event_page = calendar_url(page_url) or any("Event" in str(row.get("@type", "")) for row in records)
+    if not event_page:
+        date_sources.extend((value, "time:datetime") for value in parser.times)
     for raw_date, source in date_sources:
         published, precision = parse_date_text(raw_date)
         if published:
@@ -837,6 +878,7 @@ def employment_item(title, url=""):
     path = urllib.parse.urlsplit(str(url or "")).path
     return bool(
         EMPLOYMENT_PATTERNS.search(title or "")
+        or re.search(r"\b(?:(?:full|part)[- ]time|term)\s+(?:employment\s+)?(?:opportunity|position)\b",title or "",re.I)
         or re.search(r"/(?:jobs?|careers?|employment)(?:[-/]|$)", path, re.I)
     )
 
@@ -864,6 +906,7 @@ def extract_html_candidates(html, page_url, community, source):
         published, precision = parse_date_text(block_text or title)
         if not published:
             published, precision = parse_date_text(title)
+        if not association_allowed(community, source, title, block_text):continue
         if not published or not is_supported_update(title, block_text):
             continue
 
@@ -904,12 +947,15 @@ def xml_text(node, names):
 
 def extract_feed_candidates(xml_bytes, feed_url, community, source):
     root = ET.fromstring(xml_bytes)
+    channel_title=xml_text(root,['channel/title','{*}title'])
+    if re.search(r'^(?:comments? (?:on|for)|responses? to)',channel_title,re.I):return []
     entries = list(root.findall(".//item"))
     if not entries:
         entries = list(root.findall(".//{*}entry"))
     candidates = []
     for entry in entries:
         title = xml_text(entry, ["title", "{*}title"])
+        if re.match(r"^comment on\b|^reply to\b",title,re.I):continue
         link = xml_text(entry, ["link", "{*}link"])
         if not link:
             link_node = entry.find("{*}link")
@@ -920,13 +966,14 @@ def extract_feed_candidates(xml_bytes, feed_url, community, source):
         )
         raw_date = xml_text(
             entry,
-            ["pubDate", "published", "updated", "{*}published", "{*}updated"],
+            ["pubDate", "published", "{*}published"],
         )
         try:
             parsed = email.utils.parsedate_to_datetime(raw_date)
             published = parsed.date().isoformat()
         except (TypeError, ValueError, OverflowError):
             published, _ = parse_date_text(raw_date)
+        if not association_allowed(community, source, title, summary):continue
         if not title or not link or not published or not is_supported_update(title, summary):
             continue
         candidates.append(
@@ -939,8 +986,12 @@ def extract_feed_candidates(xml_bytes, feed_url, community, source):
                 ),
                 url=urllib.parse.urljoin(feed_url, link),
                 published=published,
+                date_source="feed:published",
+                extraction_method="rss-atom",
+                source_page=feed_url,
             )
         )
+        candidates[-1]['sourceContentSha256']=hashlib.sha256(xml_bytes).hexdigest()
     return candidates
 
 
@@ -1058,11 +1109,14 @@ def discover_gdelt_batch(fetcher, communities):
                     f"{community['communityName']}."
                 ),
                 url=original_url,
-                published=published,
+                published=None,
                 date_precision=precision,
                 thumbnail=article.get("socialimage"),
+                date_source="discovery-index",
+                extraction_method="gdelt-discovery",
             )
         )
+        candidates[-1]["indexSeenAt"]=article.get("seendate")
     return candidates
 
 
@@ -1103,6 +1157,8 @@ def communities_for_targeted_search(communities, articles, *, limit, pilot, curs
 
 
 def titles_match(left, right):
+    left_numbers=re.findall(r'\b\d+\b',normalized_text(left));right_numbers=re.findall(r'\b\d+\b',normalized_text(right))
+    if left_numbers and right_numbers and left_numbers!=right_numbers:return False
     return SequenceMatcher(
         None, normalized_text(left), normalized_text(right)
     ).ratio() >= 0.84
@@ -1132,10 +1188,13 @@ def merge_articles(existing, candidates):
             continue
 
         current = merged[duplicate_index]
+        candidate = dict(candidate)
+        candidate['id'] = current.get('id') or candidate.get('id')
+        candidate['discoveredAt'] = current.get('discoveredAt') or candidate.get('discoveredAt')
         alternate = list(current.get("alternateSources") or [])
         current_rank = AUTHORITATIVE_RANK.get(current.get("sourceType"), 0)
         candidate_rank = AUTHORITATIVE_RANK.get(candidate.get("sourceType"), 0)
-        if candidate_rank > current_rank:
+        if candidate_rank > current_rank or (candidate_rank == current_rank and same_url):
             candidate["alternateSources"] = alternate + [
                 {
                     "sourceName": current.get("sourceName"),
@@ -1164,8 +1223,7 @@ def merge_articles(existing, candidates):
 
 
 def calendar_date_without_publication(item):
-    return bool(re.search(r'/(?:events?|calendar)(?:/|$)', urllib.parse.urlsplit(item.get('url') or '').path, re.I)
-                and item.get('dateSource') == 'time:datetime')
+    return calendar_url(item.get('url')) and item.get('dateSource') in {'time:datetime','structured-listing','unstructured-listing'}
 
 
 def prune_invalid_generated_articles(articles, today):
@@ -1182,6 +1240,8 @@ def prune_invalid_generated_articles(articles, today):
             combined, _ = merge_articles([retained[previous_index]], [item])
             retained[previous_index] = combined[0]
             reason = 'Duplicate article identifier consolidated; alternate source retained'
+        elif re.match(r'^comment on\b|^reply to\b',clean_text(item.get('title')),re.I):
+            reason='Reader comment was previously stored as a publisher announcement'
         elif calendar_date_without_publication(item):
             reason = 'Calendar date is not a verified news publication date'
         elif item.get("discoveredAt") and str(item.get("publishedAt") or "") > today_text:
@@ -1227,6 +1287,8 @@ def prune_invalid_generated_articles(articles, today):
 
 
 def candidate_review_reason(item, today, confidence_threshold):
+    if not item.get("publishedAt") or item.get("dateSource")=="discovery-index":return "Publisher publication date is not independently verified"
+    if re.match(r"^comment on\b|^reply to\b",clean_text(item.get("title")),re.I):return "Reader comment is not a publisher announcement"
     if calendar_date_without_publication(item):
         return 'Calendar date is not a verified news publication date'
     if str(item.get("publishedAt") or "") > today.isoformat():
@@ -1379,14 +1441,26 @@ def ensure_registry(data, news, registry):
                     "type": "Official First Nation Website",
                     "name": f"{band['name']} official website",
                     "url": contact_url,
-                    "status": "verified",
+                    "status": "candidate",
                     "adapter": "html",
                     "monitor": True,
                     "official": True,
-                    "sourceOrigin": "ISC First Nation profile",
+                    "sourceOrigin": "ISC-listed website; working news coverage not yet established",
                 }
             )
             known_urls.add(contact_url)
+        # Reuse source identity evidence from the separately reviewed Manitoba branding research.
+        logo_reviews = load_json(ROOT / 'manual_overrides/manitoba-logo-reviews.json', {}).get('approvals', [])
+        for evidence in logo_reviews:
+            if str(evidence.get('nation_id')) != band_id:continue
+            url=canonical_url(evidence.get('page_url'))
+            if not url.startswith('https://') or url in known_urls:continue
+            shared=evidence.get('source_kind')!='Official First Nation website'
+            sources.append({'type':'Tribal Council' if shared else 'Official First Nation Website',
+                            'name':f"{band['name']} attributable community source",'url':url,'status':'candidate',
+                            'adapter':'html','monitor':True,'official':not shared,'requiresCommunityMention':shared,
+                            'sourceOrigin':'Visually reviewed Nation identity/source evidence; news availability requires a successful scan'})
+            known_urls.add(url)
         for source in old.get("sources") or []:
             url = canonical_url(source.get("url"))
             if not url or url in known_urls:
@@ -1442,6 +1516,22 @@ def ensure_registry(data, news, registry):
                 ),
             }
         )
+    from collections import defaultdict
+    hosts=defaultdict(set)
+    for row in rows:
+        for source in row['sources']:
+            if source.get('adapter')!='static':hosts[(urllib.parse.urlsplit(source.get('url','')).hostname or '').removeprefix('www.')].add(str(row['bandId']))
+    for row in rows:
+        for source in row['sources']:
+            host=(urllib.parse.urlsplit(source.get('url','')).hostname or '').removeprefix('www.')
+            if host in {'ktc.ca','irtc.ca','swampycree.com','pimaki.ca','fourarrowsrha.org'}:
+                source['requiresCommunityMention']=True
+                if source.get('type')=='Official First Nation Website':
+                    source.update(type='School or Health Organization' if host=='fourarrowsrha.org' else 'Tribal Council' if host!='pimaki.ca' else 'Community Website',official=False,associationConfidence=.9)
+            if len(hosts[(urllib.parse.urlsplit(source.get('url','')).hostname or '').removeprefix('www.')])>1:
+                source['requiresCommunityMention']=True
+                host=(urllib.parse.urlsplit(source.get('url','')).hostname or '').removeprefix('www.')
+                source['associationCommunityNames']=[r['communityName'] for r in rows if str(r['bandId']) in hosts[host]]
     return {
         "schemaVersion": 1,
         "generated": registry.get("generated") or iso_now(),
@@ -1477,7 +1567,7 @@ def registry_for_frontend(registry):
             public_sources.append(
                 {
                     key: source.get(key)
-                    for key in ("type", "name", "url", "status")
+                    for key in ("type", "name", "url", "status", "lastScanStatus", "lastCheckedAt", "lastSuccessfulScanAt")
                     if source.get(key) is not None
                 }
             )
@@ -1585,12 +1675,16 @@ def enrich_html_candidate(fetcher, item):
         return item, f"detail fetch failed: {type(error).__name__}: {error}"
     if "html" not in content_type:
         return item, "detail URL did not return HTML"
+    if not same_host(item['url'],final_url):return item,'Detail redirect changed publisher; source review required'
     metadata = article_page_metadata(body.decode("utf-8", errors="replace"), final_url)
+    if metadata.get('canonical') and not same_host(final_url,metadata['canonical']):return item,'Canonical URL changed publisher; source review required'
     detail_title = clean_text(metadata.get("title"))
     if detail_title and titles_match(detail_title, item.get("title")):
         item["title"] = detail_title[:180]
     elif detail_title and normalized_text(item.get("title")) in normalized_text(detail_title):
         item["title"] = detail_title[:180]
+    if detail_title and not (titles_match(detail_title,item.get('title')) or normalized_text(item.get('title')) in normalized_text(detail_title)):
+        return item,'Detail title does not match the listed announcement'
     if metadata.get("summary") and len(metadata["summary"]) >= 35:
         item["summary"] = metadata["summary"][:420]
     if metadata.get("published"):
@@ -1642,6 +1736,7 @@ def detail_candidates_from_page(
             body, final_url, content_type = fetcher.get(url)
             if "html" not in content_type:
                 continue
+            if not same_host(page_url,final_url):raise ValueError("Detail redirect changed publisher")
             metadata = article_page_metadata(
                 body.decode("utf-8", errors="replace"), final_url
             )
@@ -1656,10 +1751,11 @@ def detail_candidates_from_page(
             })
             continue
         detail_title = clean_text(metadata.get("title")) or title
-        if not metadata.get("published") or not is_supported_update(
-            detail_title, metadata.get("summary")
-        ):
+        if not association_allowed(community, source, detail_title, metadata.get("summary", "")):continue
+        if not metadata.get("published"):
+            review.append({'bandId':community['bandId'],'communityName':community['communityName'],'url':url,'status':'missing_publication_date','reason':'Detail page lacks an explicit source publication date'})
             continue
+        if not is_supported_update(detail_title,metadata.get('summary')):continue
         item = normalized_candidate(
             community,
             source,
@@ -1737,86 +1833,62 @@ def media_candidate(fetcher, community, source, media):
 
 def scan_source(community, source, args, access_token):
     fetcher = Fetcher(delay=args.delay, timeout=args.timeout)
-    candidates = []
-    review = []
-    failures = []
-    checked_urls = []
-    adapter = source.get("adapter")
-    try:
-        if adapter == "facebook":
-            if not access_token:
-                return [], [{
-                    "bandId": community["bandId"],
-                    "communityName": community["communityName"],
-                    "sourceName": source.get("name"),
-                    "url": source.get("url"),
-                    "status": "authorized_api_required",
-                    "reason": "Facebook posts require an authorized Meta API token",
-                }], [], [source.get("url")]
-            rows = discover_meta_posts(fetcher, community, source, access_token)
-            return rows, review, failures, [source.get("url")]
-        pages = []
-        for url in discovery_urls(source):
-            if not url:
+    candidates=[];review=[];failures=[];checked_urls=[]
+    def issue(url,status,reason):
+        review.append({'bandId':community['bandId'],'communityName':community['communityName'],
+                       'sourceName':source.get('name'),'url':url,'status':status,'reason':reason})
+    if source.get('adapter')=='facebook':
+        if not access_token or not (source.get('metaPageId') or source.get('pageHandle')):
+            issue(source.get('url'),'authorized_api_required','Facebook requires both an authorized Meta API token and a mapped page ID/handle')
+            return [],review,[],[]
+        try:return discover_meta_posts(fetcher,community,source,access_token),[],[],[source['url']]
+        except Exception as error:return [],[],[{'url':source.get('url'),'reason':f'{type(error).__name__}: {error}','status':error_status(error)}],[]
+    queue=list(discovery_urls(source));visited=set();media=[];seen=set();detail_budget=getattr(args,'max_details_per_source',6)
+    max_pages=getattr(args,'max_pages_per_source',6)
+    while queue and len(visited)<max_pages:
+        url=canonical_url(queue.pop(0))
+        if not url or url in visited:continue
+        visited.add(url)
+        try:
+            body,final_url,content_type=fetcher.get(url)
+            if source.get('adapter')=='rss' or 'xml' in content_type or body.lstrip().startswith((b'<?xml',b'<rss',b'<feed')):
+                candidates.extend(extract_feed_candidates(body,final_url,community,source));checked_urls.append(final_url);continue
+            if 'html' not in content_type:
+                issue(final_url,'unsupported_content_type',content_type);continue
+            markup=body.decode('utf-8',errors='replace')
+            diagnostic=page_diagnostic(markup,final_url,community,source)
+            if diagnostic:
+                issue(final_url,diagnostic,'Source did not provide an identity-confirmed readable community page')
+                # Explicit feeds may work even when the visible application needs JavaScript.
+                if diagnostic=='javascript_required':queue[0:0]=feed_links(markup,final_url)
                 continue
-            body, final_url, content_type = fetcher.get(url)
             checked_urls.append(final_url)
-            if adapter == "rss" or "xml" in content_type:
-                candidates.extend(extract_feed_candidates(body, final_url, community, source))
-                continue
-            if "html" not in content_type:
-                continue
-            markup = body.decode("utf-8", errors="replace")
-            pages.append((final_url, markup))
-            for update_url in discovered_update_pages(markup, final_url):
-                try:
-                    update_body, update_final, update_type = fetcher.get(update_url)
-                    checked_urls.append(update_final)
-                    if "html" in update_type:
-                        pages.append((update_final, update_body.decode("utf-8", errors="replace")))
-                except Exception as error:
-                    failures.append({"url": update_url, "reason": f"update page: {type(error).__name__}: {error}"})
-        media = []
-        seen_candidate_urls = {candidate["url"] for candidate in candidates}
-        detail_budget = 12
-        for page_url, markup in pages:
-            candidates.extend(extract_html_candidates(markup, page_url, community, source))
-            media.extend(discovered_media(markup, page_url))
-            recovered, detail_review, consumed = detail_candidates_from_page(
-                fetcher,
-                markup,
-                page_url,
-                community,
-                source,
-                seen_candidate_urls,
-                detail_budget,
-            )
-            detail_budget = max(0, detail_budget - consumed)
-            candidates.extend(recovered)
-            review.extend(detail_review)
-            seen_candidate_urls.update(candidate["url"] for candidate in candidates)
-        enriched = []
-        for item in list({candidate["url"]: candidate for candidate in candidates}.values())[:16]:
-            detailed, warning = enrich_html_candidate(fetcher, item)
-            if warning:
-                review.append({
-                    "bandId": community["bandId"],
-                    "communityName": community["communityName"],
-                    "sourceName": source.get("name"),
-                    "url": item.get("url"),
-                    "status": "detail_unverified",
-                    "reason": warning,
-                })
-            enriched.append(detailed)
-        candidates = enriched
-        for media_item in list({item["url"]: item for item in media}.values())[:3]:
-            item, document_review = media_candidate(fetcher, community, source, media_item)
-            review.append(document_review)
-            if item:
-                candidates.append(item)
-    except Exception as error:
-        failures.append({"url": source.get("url"), "reason": f"{type(error).__name__}: {error}"})
-    return candidates, review, failures, checked_urls
+            source.update(lastCheckedAt=iso_now(),lastSuccessfulScanAt=iso_now(),lastScanStatus='checked')
+            if source.get('status')=='candidate':source['status']='verified'
+            feeds=feed_links(markup,final_url)
+            updates=discovered_update_pages(markup,final_url)
+            source["discoveryUrls"]=list(dict.fromkeys([*(source.get("discoveryUrls") or []),*feeds,*updates]))[:8]
+            queue[0:0]=[u for u in feeds if u not in visited and u not in queue]
+            queue.extend(u for u in updates if u not in visited and u not in queue)
+            found=extract_html_candidates(markup,final_url,community,source)
+            media.extend(discovered_media(markup,final_url))
+            recovered,detail_review,consumed=detail_candidates_from_page(fetcher,markup,final_url,community,source,seen,detail_budget)
+            detail_budget=max(0,detail_budget-consumed);review.extend(detail_review)
+            for item in found:
+                if item['url'] in seen:continue
+                if detail_budget<=0:
+                    candidates.append(item);seen.add(item['url']);continue
+                detail_budget-=1
+                detailed,warning=enrich_html_candidate(fetcher,item)
+                if warning:issue(item['url'],'detail_unverified',warning)
+                candidates.append(detailed);seen.add(item['url'])
+            candidates.extend(recovered);seen.update(item['url'] for item in recovered)
+        except Exception as error:
+            failures.append({'url':url,'reason':f'{type(error).__name__}: {error}','status':error_status(error)})
+    for item in list({r['url']:r for r in media}.values())[:getattr(args,'max_media_per_source',2)]:
+        candidate,detail=media_candidate(fetcher,community,source,item);review.append(detail)
+        if candidate and association_allowed(community,source,candidate['title'],candidate.get('summary','')):candidates.append(candidate)
+    return candidates,review,failures,checked_urls
 
 
 def run(args):
@@ -1839,10 +1911,11 @@ def run(args):
 
     communities = registry.get("communities", [])
     if args.pilot:
+        pilot_ids=PROVINCIAL_PILOTS.get(str(args.province or "SK").upper(),PILOT_BAND_IDS)
         communities = [
             community
             for community in communities
-            if int(community["bandId"]) in PILOT_BAND_IDS
+            if str(community["bandId"]) in {str(value) for value in pilot_ids}
         ]
     if args.band_id:
         requested = {str(value) for value in args.band_id}
@@ -1851,7 +1924,7 @@ def run(args):
             for community in communities
             if str(community["bandId"]) in requested
         ]
-    if args.province:
+    if args.province and args.province.upper() != "ALL":
         requested_province = args.province.upper()
         communities = [
             community for community in communities
@@ -1864,12 +1937,14 @@ def run(args):
         for source in community.get("sources") or []
         if source_is_monitorable(source)
     ]
-    with ThreadPoolExecutor(max_workers=max(1, args.workers)) as executor:
-        scan_results = executor.map(
-            lambda row: scan_source(row[0], row[1], args, access_token),
-            scan_inputs,
-        )
-    for (community, source), result in zip(scan_inputs, scan_results):
+    scan_results=[];completed_inputs=[]
+    with ThreadPoolExecutor(max_workers=max(1,args.workers)) as executor:
+        futures={executor.submit(scan_source,c,source,args,access_token):(c,source) for c,source in scan_inputs}
+        for future in as_completed(futures):
+            community,source=futures[future];result=future.result()
+            scan_results.append(result);completed_inputs.append((community,source))
+            print(f"[{len(scan_results)}/{len(scan_inputs)}] {community['bandId']} {source.get('url')}: pages={len(result[3])} candidates={len(result[0])} errors={len(result[2])}",flush=True)
+    for (community, source), result in zip(completed_inputs, scan_results):
         found, source_review, source_failures, checked_urls = result
         candidates.extend(found)
         review.extend(source_review)
@@ -1884,6 +1959,8 @@ def run(args):
                     "reason": failure.get("reason"),
                 }
             )
+        source['lastCheckedAt']=iso_now()
+        source['lastScanStatus']=('partial' if source_failures else 'checked') if checked_urls else (source_review[0].get('status','unavailable') if source_review else source_failures[0].get('status','unavailable') if source_failures else 'unavailable')
         source_runs.append(
             {
                 "bandId": community["bandId"],
@@ -1894,7 +1971,8 @@ def run(args):
                 "pagesChecked": len(checked_urls),
                 "candidatesFound": len(found),
                 "reviewItems": len(source_review),
-                "status": "checked" if checked_urls else "unavailable",
+                "status": ("partial" if source_failures else "checked") if checked_urls else (source_review[0].get('status','unavailable') if source_review else source_failures[0].get('status','unavailable') if source_failures else 'unavailable'),
+                "errors":len(source_failures),
             }
         )
 
@@ -1910,7 +1988,14 @@ def run(args):
             if index and args.search_delay > 0:
                 time.sleep(args.search_delay)
             try:
-                candidates.extend(discover_gdelt_batch(fetcher, community_batch))
+                for candidate in discover_gdelt_batch(fetcher, community_batch)[:10]:
+                    detailed,warning=enrich_html_candidate(fetcher,candidate)
+                    if warning:review.append({'bandId':candidate['bandId'],'url':candidate['url'],'status':'search_detail_unverified','reason':warning})
+                    if detailed.get('detailVerified'):
+                        identity=next(c for c in community_batch if c['bandId']==detailed['bandId'])
+                        detailed['id']=candidate_id(identity,detailed['publishedAt'],detailed['title'])
+                        detailed['storyKey']=f"{identity['bandId']}-{detailed['publishedAt']}-{slugify(detailed['title'])[:80]}"
+                    candidates.append(detailed)
             except Exception as error:
                 for community in community_batch:
                     failures.append(
@@ -1931,11 +2016,10 @@ def run(args):
     }
     cached_urls = set(cache.get("seenUrls") or {})
     for item in candidates:
-        if item.get("publishedAt", "") < cutoff:
+        if item.get("publishedAt") and item["publishedAt"] < cutoff:
             continue
         item_url = canonical_url(item.get("url"))
-        if item_url in cached_urls and item_url in existing_urls:
-            continue
+        # Seen URLs must still be compared: the publisher may have corrected the announcement.
         review_reason = candidate_review_reason(
             item, today, args.confidence_threshold
         )
@@ -1945,11 +2029,20 @@ def run(args):
             continue
         acceptable.append(item)
 
-    original_before = list(news.get("articles") or [])
+    original_before = json.loads(json.dumps(news.get("articles") or []))
     before, invalid_existing_removed = prune_invalid_generated_articles(
         original_before, today
     )
+    for removed in invalid_existing_removed:
+        originals=[r for r in original_before if r.get('url')==removed.get('url') and str(r.get('bandId'))==str(removed.get('bandId'))]
+        review.append({**removed,'status':'historical_record_held','originalRecord':originals[0] if originals else None})
+    before=json.loads(json.dumps(before))
+    # Correct classifications from local record titles; do not borrow page chrome.
+    for record in before:
+        if record.get('extractionMethod') and record.get('categorySource')!='manual':
+            record['category']=classify_category(record.get('title'),record.get('summary',''))
     merged, accepted = merge_articles(before, acceptable)
+    changes = track_changes(original_before, merged, iso_now())
     for item in merged:
         url = canonical_url(item.get("url"))
         if url:
@@ -1961,7 +2054,7 @@ def run(args):
         {
             "schemaVersion": 1,
             "generated": iso_now(),
-            "scope": "Saskatchewan and Alberta First Nations community updates",
+            "scope": "Saskatchewan, Alberta and Manitoba First Nations community updates",
             "sourceTypes": SOURCE_TYPES,
             "articles": merged,
             "communitySources": registry_for_frontend(registry),
@@ -1977,7 +2070,10 @@ def run(args):
         invalid_existing_removed,
         source_runs,
     )
-    review = merge_review_history(load_json(REVIEW_PATH, {}).get("items", []), review)
+    report["recordChanges"] = changes
+    report["duplicatesSuppressed"] = max(0,len(acceptable)-len(accepted))
+    report["quality"] = quality_metrics(registry, merged, source_runs, review, today)
+    review = merge_update_reviews(load_json(REVIEW_PATH, {}).get("items", []), review, iso_now())
     report['scanScope'] = {'communityIds': [str(row['bandId']) for row in communities], 'communitiesScanned': len(communities), 'fullScan': len(communities) == len(registry.get('communities', []))}
     review_output = {
         "schemaVersion": 1,
@@ -2008,7 +2104,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--pilot", action="store_true")
     parser.add_argument("--band-id", action="append")
-    parser.add_argument("--province", choices=["SK", "AB", "sk", "ab"])
+    parser.add_argument("--province", type=str.upper, choices=["SK", "AB", "MB", "ALL"])
     parser.add_argument("--lookback-days", type=int, default=550)
     parser.add_argument("--confidence-threshold", type=float, default=0.82)
     parser.add_argument("--delay", type=float, default=0.35)
@@ -2017,6 +2113,9 @@ def parse_args():
     parser.add_argument("--search-delay", type=float, default=6.0)
     parser.add_argument("--skip-search", action="store_true")
     parser.add_argument("--workers", type=int, default=6)
+    parser.add_argument("--max-pages-per-source",type=int,default=6)
+    parser.add_argument("--max-details-per-source",type=int,default=6)
+    parser.add_argument("--max-media-per-source",type=int,default=2)
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()
 

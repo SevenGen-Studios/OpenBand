@@ -14,6 +14,7 @@ import re
 import subprocess
 import tempfile
 import urllib.parse
+import xml.etree.ElementTree as ET
 from datetime import date, datetime, timedelta, timezone
 from html.parser import HTMLParser
 from pathlib import Path
@@ -32,6 +33,8 @@ try:
         source_confidence,
         source_is_monitorable,
         write_json,
+        extract_feed_candidates,
+        employment_item,
     )
 except ImportError:  # Imported as tools.events_discovery in tests.
     from tools.news_discovery import (
@@ -47,6 +50,8 @@ except ImportError:  # Imported as tools.events_discovery in tests.
         source_confidence,
         source_is_monitorable,
         write_json,
+        extract_feed_candidates,
+        employment_item,
     )
 
 
@@ -54,6 +59,14 @@ try:
     from community_history import merge_review_history
 except ImportError:
     from tools.community_history import merge_review_history
+
+try:
+    from community_updates import association_allowed, feed_links, page_diagnostic, error_status, quality_metrics, track_changes, icalendar_records, merge_update_reviews
+except ImportError:
+    from tools.community_updates import association_allowed, feed_links, page_diagnostic, error_status, quality_metrics, track_changes, icalendar_records, merge_update_reviews
+from collections import Counter
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from difflib import SequenceMatcher
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "data.json"
@@ -91,6 +104,7 @@ SHARED_EVENT_INDEXES = [
         "associationConfidence": 0.9,
         "provinceTerritory": "AB",
     },
+    {"name":"Manitoba Powwow Calendar","type":"Regional Event Index","url":"https://calendar.powwows.com/events/categories/pow-wows-in-manitoba/","associationConfidence":0.9,"provinceTerritory":"MB"},
     {
         "name": "Windspeaker Powwow Calendar",
         "type": "Indigenous Media Event Index",
@@ -166,9 +180,12 @@ def utc_today() -> date:
     return datetime.now(timezone.utc).date()
 
 
-def event_category(value: str) -> str:
+def event_category(value: str, context: str = "") -> str:
     text = normalized_text(value)
     rules = [
+        (r"\b(emergency|evacuation|wildfire)\b", "Emergency Information"),
+        (r"\b(voter|referendum|ballot|nomination|election)\b", "Governance & Meetings"),
+        (r"\b(halloween|homecoming|community celebration|gathering|knitting|crafts)\b", "Community Event"),
         (r"pow ?wow|wacipi|round dance|feast|ceremony|culture|language|land based", "Culture & Language"),
         (r"treaty day", "Treaty Days"),
         (r"health|clinic|screening|wellness|healing", "Health & Wellness"),
@@ -178,9 +195,9 @@ def event_category(value: str) -> str:
         (r"election|vote|annual general meeting|agm|community meeting|council", "Governance & Meetings"),
         (r"emergency|evacuation|wildfire", "Emergency Information"),
     ]
-    for pattern, category in rules:
-        if re.search(pattern, text):
-            return category
+    for local in (text, normalized_text(context)):
+        for pattern, category in rules:
+            if re.search(pattern, local):return category
     return "Community Event"
 
 
@@ -198,11 +215,32 @@ def infer_yearless_date(month: int, day: int, today: date) -> date | None:
     return min(viable, key=lambda value: (value < today, abs((value - today).days))) if viable else None
 
 
+def event_text_content(value):
+    text=clean_text(value)
+    if re.match(r'^insert_link\b',text):
+        text=re.sub(r'^insert_link\s+','',text)
+        text=re.split(r'\s+today\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)',text,maxsplit=1,flags=re.I)[0]
+    return text
+
+
+def explicit_written_ranges(value):
+    month=r'(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)'
+    pattern=re.compile(month+r'\s+(\d{1,2})(?:,?\s+(20\d{2}))?\s*(?:-|–|—|to)\s*'+month+r'\s+(\d{1,2}),?\s+(20\d{2})',re.I)
+    rows=[]
+    for match in pattern.finditer(clean_text(value)):
+        m1,d1,y1,m2,d2,y2=match.groups();m1=MONTHS[m1[:3].lower()];m2=MONTHS[m2[:3].lower()]
+        try:
+            end=date(int(y2),m2,int(d2));start=date(int(y1) if y1 else int(y2)-(m1>m2),m1,int(d1))
+            if end>=start:rows.append((start.isoformat(),end.isoformat()))
+        except ValueError:continue
+    return rows
+
+
 def event_dates(value: str, today: date | None = None) -> list[tuple[str, str | None]]:
     """Return unique event date ranges found in text, including yearless flyers."""
     today = today or utc_today()
-    rows = []
-    seen = set()
+    rows = explicit_written_ranges(value)
+    seen = set(rows)
     for match in MONTH_RE.finditer(clean_text(value)):
         month_name, start_day, end_day, year = match.groups()
         month = MONTHS[month_name[:3].lower()]
@@ -227,9 +265,9 @@ def event_dates(value: str, today: date | None = None) -> list[tuple[str, str | 
 
 def explicit_event_dates(value: str) -> list[tuple[str, str | None]]:
     """Return source dates that state a year, excluding publication timestamps."""
-    text = clean_text(value)
-    rows = []
-    seen = set()
+    text = event_text_content(value)
+    rows = explicit_written_ranges(text)
+    seen = set(rows)
     for match in MONTH_RE.finditer(text):
         month_name, start_day, end_day, year = match.groups()
         if not year:
@@ -263,8 +301,10 @@ def explicit_event_dates(value: str) -> list[tuple[str, str | None]]:
         if (parsed, None) not in seen:
             seen.add((parsed, None))
             rows.append((parsed, None))
-    for token in re.findall(r"\b20\d{2}[-/]\d{1,2}[-/]\d{1,2}\b", text):
-        parsed, _ = parse_date_text(token)
+    for match in re.finditer(r"\b20\d{2}[-/]\d{1,2}[-/]\d{1,2}\b", text):
+        prefix=text[max(0,match.start()-24):match.start()]
+        if re.search(r'\b(?:posted|published|updated)\s*(?:on)?\s*[:\-]?\s*$',prefix,re.I):continue
+        parsed, _ = parse_date_text(match.group())
         if parsed and (parsed, None) not in seen:
             seen.add((parsed, None))
             rows.append((parsed, None))
@@ -272,6 +312,7 @@ def explicit_event_dates(value: str) -> list[tuple[str, str | None]]:
 
 
 def choose_event_date(title: str, context: str, today: date | None = None):
+    title=event_text_content(title);context=event_text_content(context)
     today = today or utc_today()
     minimum = today - timedelta(days=EVENT_WINDOW_PAST_DAYS)
     maximum = today + timedelta(days=EVENT_WINDOW_FUTURE_DAYS)
@@ -284,6 +325,11 @@ def choose_event_date(title: str, context: str, today: date | None = None):
     if title_explicit:
         return first_viable(title_explicit) or (None, None)
     if context_explicit:
+        title_yearless=[m for m in MONTH_RE.finditer(clean_text(title)) if not m.group(4)]
+        if title_yearless:
+            target={f"{MONTHS[m.group(1)[:3].lower()]:02d}-{int(m.group(2)):02d}" for m in title_yearless}
+            matching=[r for r in context_explicit if r[0][5:] in target]
+            return first_viable(matching) or (None,None)
         return first_viable(context_explicit) or (None, None)
 
     selected = first_viable(event_dates(title, today)) or first_viable(event_dates(context, today))
@@ -318,6 +364,7 @@ def event_location(value: str) -> str | None:
 
 def is_event_text(title: str, context: str = "") -> bool:
     text = clean_text(f"{title} {context}")
+    if employment_item(title) and not re.search(r"\b(?:job|career) fair\b",title,re.I):return False
     return bool(EVENT_WORDS.search(text)) and not bool(NON_EVENT_WORDS.search(text))
 
 
@@ -330,6 +377,8 @@ def event_id(community: dict, start: str, title: str) -> str:
 
 def event_title(title: str, context: str) -> str:
     title = clean_text(title)
+    title=re.sub(r'^(?:insert_link|link|today)\s+','',title)
+    title=re.split(r'\s+today\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)',title,maxsplit=1,flags=re.I)[0]
     if normalized_text(title) not in GENERIC_TITLES and 6 <= len(title) <= 150:
         return title
     context = clean_text(context)
@@ -347,7 +396,7 @@ def normalized_event(community: dict, source: dict, *, title: str, context: str,
         "bandId": community["bandId"],
         "provinceTerritory": community.get("provinceTerritory", "SK"),
         "title": title,
-        "category": event_category(f"{title} {context}"),
+        "category": event_category(title, context),
         "startDate": start,
         "status": event_status(start, end),
         "description": clean_text(context)[:420],
@@ -490,31 +539,76 @@ def jsonld_objects(value):
         yield value
 
 
+def structured_event_fields(item, source):
+    fields={}
+    for key,target in [('startDate','startTime'),('endDate','endTime')]:
+        raw=str(item.get(key) or '')
+        match=re.search(r'T(\d{2}:\d{2})(?::\d{2})?(Z|[+-]\d{2}:?\d{2})?',raw)
+        if match:
+            fields[target]=match.group(1)
+            if match.group(2):fields[target+'Offset']=match.group(2)
+    if item.get('datePublished'):
+        published,_=parse_date_text(item['datePublished'])
+        if published:fields.update(publishedAt=published,publicationDateSource='json-ld:datePublished')
+    location=item.get('location') or {}
+    if isinstance(location,list):location=location[0] if location else {}
+    if isinstance(location,dict):
+        address=location.get('address') or {}
+        if isinstance(address,dict):address=', '.join(str(address[k]) for k in ('streetAddress','addressLocality','addressRegion','postalCode') if address.get(k))
+        fields['location']=', '.join(str(v) for v in (location.get('name'),address) if v)[:250]
+    elif isinstance(location,str):fields['location']=clean_text(location)[:250]
+    status=str(item.get('eventStatus') or '')
+    if 'Cancelled' in status:fields['eventStatus']='cancelled'
+    elif 'Postponed' in status:fields['eventStatus']='postponed'
+    if item.get('@id'):fields['sourceUid']=str(item['@id'])
+    return {k:v for k,v in fields.items() if v}
+
+
 def extract_jsonld_events(parser: EventPageParser, page_url: str, community: dict, source: dict) -> list[dict]:
-    rows = []
+    rows=[]
     for script in parser.json_scripts:
-        try:
-            payload = json.loads(script)
-        except json.JSONDecodeError:
-            continue
+        try:payload=json.loads(script)
+        except json.JSONDecodeError:continue
         for item in jsonld_objects(payload):
-            types = item.get("@type") or []
-            types = [types] if isinstance(types, str) else types
-            if not any(str(value).lower() == "event" for value in types):
-                continue
-            start, _ = parse_date_text(item.get("startDate"))
-            end, _ = parse_date_text(item.get("endDate"))
-            title = clean_text(item.get("name"))
-            context = clean_text(f"{item.get('description', '')} {item.get('startDate', '')}")
-            if not start or not title or not is_event_text(title, context):
-                continue
-            location = item.get("location") or {}
-            if isinstance(location, dict):
-                context = clean_text(f"{context} Location: {location.get('name', '')}")
-            image = item.get("image")
-            image = image[0] if isinstance(image, list) and image else image
-            rows.append(normalized_event(community, source, title=title, context=context, url=item.get("url") or page_url, start=start, end=end, image=image, method="json-ld"))
+            types=item.get('@type') or [];types=[types] if isinstance(types,str) else types
+            if not any(str(t).lower()=='event' for t in types):continue
+            start,_=parse_date_text(item.get('startDate'));end,_=parse_date_text(item.get('endDate'))
+            title=clean_text(item.get('name'));context=clean_text(item.get('description',''))
+            if not start or not title or not association_allowed(community,source,title,context):continue
+            image=item.get('image');image=image[0] if isinstance(image,list) and image else image
+            if isinstance(image,dict):image=image.get('url')
+            row=normalized_event(community,source,title=title,context=context,url=urllib.parse.urljoin(page_url,item.get('url') or page_url),start=start,end=end,image=image,method='json-ld')
+            row.update(structured_event_fields(item,source));row['dateSource']='json-ld:startDate';rows.append(row)
     return rows
+
+
+def extract_ical_events(payload,page_url,community,source):
+    objects,rejected=icalendar_records(payload);rows=[]
+    def field(obj,key):return obj.get(key,{}).get('value','')
+    for obj in objects:
+        raw=field(obj,'DTSTART');match=re.fullmatch(r'(20\d{2})(\d{2})(\d{2})(?:T(\d{2})(\d{2})(?:\d{2})?(Z)?)?',raw)
+        if not match:rejected.append({'reason':'Calendar event lacks a valid explicit DTSTART','url':page_url});continue
+        try:start=date(*map(int,match.group(1,2,3))).isoformat()
+        except ValueError:continue
+        title=field(obj,'SUMMARY');context=field(obj,'DESCRIPTION');end=None;raw_end=field(obj,'DTEND')
+        end_match=re.match(r'^(20\d{2})(\d{2})(\d{2})',raw_end)
+        if end_match:
+            try:
+                value=date(*map(int,end_match.groups()))
+                if len(raw_end)==8:value-=timedelta(days=1)
+                end=value.isoformat()
+            except ValueError:pass
+        if not title or not association_allowed(community,source,title,context):continue
+        row=normalized_event(community,source,title=title,context=context,url=field(obj,'URL') or page_url,start=start,end=end,method='icalendar')
+        row['sourceUid']=field(obj,'UID') or row['id'];row['dateSource']='icalendar:DTSTART'
+        if match.group(4):row['startTime']=f'{match.group(4)}:{match.group(5)}'
+        tz=obj.get('DTSTART',{}).get('params',{}).get('TZID')
+        if tz:row['timeZone']=tz
+        if match.group(6):row['startTimeOffset']='Z'
+        if field(obj,'LOCATION'):row['location']=clean_text(field(obj,'LOCATION'))[:250]
+        if field(obj,'STATUS').upper()=='CANCELLED':row['eventStatus']='cancelled'
+        rows.append(row)
+    return rows,rejected
 
 
 def extract_html_events(html: str, page_url: str, community: dict, source: dict, today: date | None = None):
@@ -537,12 +631,13 @@ def extract_html_events(html: str, page_url: str, community: dict, source: dict,
         url = canonical_url(urllib.parse.urljoin(page_url, row["href"]))
         combined = clean_text(f"{row['title']} {row['context']}")
         dated_event_link = re.search(r'/events?/20\d{2}-\d{2}-\d{2}', urllib.parse.urlsplit(url).path)
-        if (FOLLOW_LINK_WORDS.search(combined) or dated_event_link) and url.startswith("http"):
+        if (FOLLOW_LINK_WORDS.search(combined) or dated_event_link or urllib.parse.urlsplit(url).path.lower().endswith(".ics")) and url.startswith("http"):
             follow.append(url)
         if dated_detail or normalized_text(row['title']) in GENERIC_TITLES or re.match(r'^(?:back to all|previous|next)\b', row['title'], re.I):
             continue
         if re.search(r"\.(?:pdf|png|jpe?g)(?:$|\?)", url, re.I) and is_event_text(row["title"], row["context"]):
             media.append(url)
+        if not association_allowed(community,source,row["title"],row["context"]):continue
         if not is_event_text(row["title"], row["context"]):
             continue
         start, end = choose_event_date(row["title"], row["context"], today)
@@ -554,7 +649,7 @@ def extract_html_events(html: str, page_url: str, community: dict, source: dict,
         combined = clean_text(f"{image['alt']} {image['context'] or ''}")
         if is_event_text(image["alt"], combined):
             media.append(canonical_url(urllib.parse.urljoin(page_url, image["src"])))
-    if not events and is_event_text(parser.page_title, parser.page_text):
+    if not events and association_allowed(community,source,parser.page_title,parser.page_text) and is_event_text(parser.page_title, parser.page_text):
         start, end = choose_event_date(parser.page_title, parser.page_text, today)
         if start and canonical_url(page_url) not in seen:
             events.append(normalized_event(community, source, title=parser.page_title, context=parser.page_text, url=page_url, start=start, end=end, method="html-page"))
@@ -741,10 +836,14 @@ def source_registry(data: dict, news: dict, events_registry: dict) -> dict:
     for community in merged.get("communities", []):
         override = event_rows.get(str(community["bandId"]), {})
         if override.get("sources"):
-            known = {canonical_url(source.get("url")) for source in community.get("sources", [])}
+            known = {canonical_url(source.get("url")):source for source in community.get("sources", [])}
             for source in override["sources"]:
                 if canonical_url(source.get("url")) not in known:
                     community.setdefault("sources", []).append(source)
+                else:
+                    preserved={k:v for k,v in known[canonical_url(source.get('url'))].items() if k in {'requiresCommunityMention','associationCommunityNames'}}
+                    known[canonical_url(source.get('url'))].update(source)
+                    known[canonical_url(source.get('url'))].update(preserved)
     return {
         "schemaVersion": 1,
         "generated": iso_now(),
@@ -765,13 +864,15 @@ def event_identity_title(value: str) -> str:
     return clean_text(title)
 
 
-def merge_events(existing: list[dict], candidates: list[dict], today: date | None = None):
+def merge_events(existing: list[dict], candidates: list[dict], today: date | None = None, stats=None):
     today = today or utc_today()
     minimum = (today - timedelta(days=EVENT_WINDOW_PAST_DAYS)).isoformat()
     maximum = (today + timedelta(days=EVENT_WINDOW_FUTURE_DAYS)).isoformat()
     rows = []
     by_key = {}
+    withdrawn=[r for r in candidates if r.get('eventStatus') in {'cancelled','postponed'} and float(r.get('confidence') or 0)>=.82]
     for item in [*existing, *candidates]:
+        if any(str(w.get('bandId'))==str(item.get('bandId')) and canonical_url(w.get('sourceUrl'))==canonical_url(item.get('sourceUrl')) and (w.get('sourceUid') and w.get('sourceUid')==item.get('sourceUid') or event_identity_title(w.get('title'))==event_identity_title(item.get('title'))) for w in withdrawn):continue
         start = str(item.get("startDate") or "")
         url = canonical_url(item.get("sourceUrl"))
         if not (
@@ -787,26 +888,26 @@ def merge_events(existing: list[dict], candidates: list[dict], today: date | Non
             old_key for old_key, old in by_key.items()
             if old.get("bandId") == item.get("bandId")
             and (
-                old.get("sourceUrl") == url
+                (old.get("sourceUid") and old.get("sourceUid")==item.get("sourceUid"))
+                or (old.get("sourceUrl") == url and old.get("startDate")==start and (
+                    event_identity_title(old.get('title'))==identity
+                    or SequenceMatcher(None,event_identity_title(old.get('title')),identity).ratio()>=.84
+                ))
                 or (
                     old.get("startDate") == start
                     and event_identity_title(old.get("title")) == identity
                 )
-                or (
-                    old.get("startDate") == start
-                    and old.get("category") == item.get("category")
-                    and "shared-index" in {
-                        old.get("extractionMethod"),
-                        item.get("extractionMethod"),
-                    }
-                )
+
             )
         ), None)
         if duplicate:
+            if stats is not None:stats["duplicatesSuppressed"]=stats.get("duplicatesSuppressed",0)+1
             old = by_key[duplicate]
             item_quality = (bool(item.get("endDate")), float(item.get("confidence") or 0))
             old_quality = (bool(old.get("endDate")), float(old.get("confidence") or 0))
-            if item_quality > old_quality:
+            if item_quality >= old_quality:
+                item['id']=old.get('id') or item.get('id')
+                item['discoveredAt']=old.get('discoveredAt') or item.get('discoveredAt')
                 by_key[duplicate] = item
         else:
             by_key[key] = item
@@ -828,6 +929,12 @@ def is_publishable_event(item: dict, today: date | None = None) -> bool:
     start_year = str(item.get("startDate") or "")[:4]
     if source_years and start_year not in source_years:
         return False
+    try:
+        start=date.fromisoformat(str(item.get('startDate') or ''))
+        end=date.fromisoformat(str(item.get('endDate') or item.get('startDate') or ''))
+        if end<start:return False
+    except ValueError:return False
+    if item.get('eventStatus') in {'cancelled','postponed'}:return False
     if not title or len(title) < 6 or len(title) > 165:
         return False
     if normalized_title in GENERIC_TITLES or normalized_title in {
@@ -837,6 +944,7 @@ def is_publishable_event(item: dict, today: date | None = None) -> bool:
         return False
     if NON_EVENT_WORDS.search(f"{title} {description}"):
         return False
+    if employment_item(title,url) and not re.search(r"\b(?:job|career) fair\b",title,re.I):return False
     if any(token in f"{title} {description}" for token in ("{ --", "grid-template", "googleanalytics", "monsterinsights", "function(", "var mi_")):
         return False
     if re.search(r"/(?:category|tag|author|page|about|news-posts|whats-new)(?:/|$)", path):
@@ -847,16 +955,17 @@ def is_publishable_event(item: dict, today: date | None = None) -> bool:
         return False
     if path.endswith(("/events", "/calendar", "/events.html", "/announcements")) and method == "html-page":
         return False
-    if method == "json-ld":
+    if method in {"json-ld","icalendar"}:
         return True
+    if path in {'','/events','/calendar','/events.html','/announcements'} and not re.search(r'(?:eventid|event_id)=',query):return False
     if method == "meta-api":
-        return is_event_text(title, description) and bool(event_dates(description))
+        return is_event_text(title, description) and bool(explicit_event_dates(description))
     if method.startswith("ocr") or method in {"pdftotext", "html", "html-page", "html-calendar-detail", "shared-index"}:
         expected_start, _ = choose_event_date(title, description, today)
         if not expected_start or expected_start != str(item.get("startDate") or ""):
             return False
         if method.startswith("ocr") or method == "pdftotext":
-            return is_event_text(title, description)
+            return is_event_text(title, description) and bool(explicit_event_dates(f"{title} {description}"))
         if not explicit_event_dates(f"{title} {description}"):
             return False
     explicit_date = bool(re.search(r"\b(?:event date|date|when|starts?|runs?|join us)\s*[:\-]?\s*", description, re.I))
@@ -865,6 +974,76 @@ def is_publishable_event(item: dict, today: date | None = None) -> bool:
         return bool(dated and dated.group(1) == item.get('startDate') and explicit_date and is_event_text(title, description))
     title_has_event = bool(EVENT_WORDS.search(title))
     return title_has_event and (explicit_date or bool(event_dates(title)))
+
+
+def scan_event_source(community,source,args,token,today):
+    fetcher=Fetcher(delay=args.delay,timeout=args.timeout)
+    run_row={'bandId':community['bandId'],'communityName':community['communityName'],'sourceName':source.get('name'),
+             'sourceUrl':source.get('url'),'sourceType':source.get('type'),'status':'ok','eventsFound':0,'pagesChecked':0,'mediaChecked':0,'errors':[]}
+    found=[];review=[]
+    def issue(url,status,reason):review.append({'bandId':community['bandId'],'communityName':community['communityName'],'sourceUrl':url,'status':status,'reason':reason})
+    if source.get('adapter')=='facebook':
+        if not token or not (source.get('metaPageId') or source.get('pageHandle')):
+            run_row['status']='authorized_api_required';issue(source.get('url'),'authorized_api_required','Facebook requires an authorized Meta API token and mapped page ID/handle')
+        else:
+            try:found=discover_meta_events(fetcher,community,source,token,today)
+            except Exception as error:run_row.update(status=error_status(error),error=str(error)[:300])
+        run_row['eventsFound']=len(found);return found,review,run_row
+    queue=[source.get('url'),*(source.get('discoveryUrls') or [])];visited=set();media=[]
+    while queue and len(visited)<args.max_pages_per_source:
+        url=canonical_url(queue.pop(0))
+        if not url or url in visited:continue
+        visited.add(url)
+        try:
+            body,final_url,typ=fetcher.get(url)
+            if 'calendar' in typ or final_url.lower().split('?')[0].endswith('.ics'):
+                items,problems=extract_ical_events(body,final_url,community,source);found.extend(items)
+                for problem in problems:issue(final_url,'calendar_review',problem['reason'])
+                run_row['pagesChecked']+=1;continue
+            if source.get('adapter')=='rss' or 'xml' in typ or body.lstrip().startswith((b'<?xml',b'<rss',b'<feed')):
+                root=ET.fromstring(body)
+                for entry in root.findall('.//item') or root.findall('.//{*}entry'):
+                    def text(tag):return clean_text(entry.findtext(tag) or entry.findtext('{*}'+tag))
+                    title=text('title');context=re.sub(r'<[^>]+>',' ',text('description') or text('summary') or text('content'))
+                    link=text('link');link_node=entry.find('{*}link')
+                    if not link and link_node is not None:link=link_node.get('href','')
+                    if not link or not is_event_text(title,context) or not association_allowed(community,source,title,context):continue
+                    start,end=choose_event_date(title,context,today)
+                    if not start:continue
+                    row=normalized_event(community,source,title=title,context=context,url=urllib.parse.urljoin(final_url,link),start=start,end=end,method='html')
+                    row['dateSource']='explicit-event-text'
+                    if text('guid') or text('id'):row['sourceUid']=text('guid') or text('id')
+                    published,_=parse_date_text(text('published') or text('pubDate'))
+                    if published:row.update(publishedAt=published,publicationDateSource='feed:published')
+                    found.append(row)
+                run_row['pagesChecked']+=1;continue
+            if 'html' not in typ:issue(final_url,'unsupported_content_type',typ);continue
+            markup=body.decode('utf-8',errors='replace');diagnostic=page_diagnostic(markup,final_url,community,source)
+            if diagnostic:
+                issue(final_url,diagnostic,'Source is not an identity-confirmed readable community page')
+                if diagnostic=='javascript_required':queue[0:0]=feed_links(markup,final_url)
+                continue
+            run_row['pagesChecked']+=1
+            page_events,links,page_media=extract_html_events(markup,final_url,community,source,today)
+            found.extend(page_events);media.extend(page_media)
+            for link in feed_links(markup,final_url)+links:
+                if (urllib.parse.urlsplit(link).hostname or '').removeprefix('www.')==(urllib.parse.urlsplit(final_url).hostname or '').removeprefix('www.') and link not in visited and link not in queue:queue.append(link)
+        except Exception as error:
+            run_row['errors'].append({'url':url,'status':error_status(error),'reason':str(error)[:300]})
+    for url in list(dict.fromkeys(media))[:args.max_media_per_source]:
+        run_row['mediaChecked']+=1
+        try:
+            item=extract_media_event(fetcher,url,community,source,today)
+            if item and association_allowed(community,source,item['title'],item.get('description','')):found.append(item)
+        except Exception as error:issue(url,'media_extraction_failed',str(error)[:300])
+    if run_row['errors']:run_row['status']='partial' if run_row['pagesChecked'] else run_row['errors'][0]['status']
+    elif not run_row['pagesChecked']:run_row['status']=review[0]['status'] if review else 'unavailable'
+    run_row['eventsFound']=len(found)
+    source.update(lastCheckedAt=iso_now(),lastScanStatus=run_row['status'])
+    if run_row['pagesChecked']:
+        source['lastSuccessfulScanAt']=iso_now()
+        if source.get('status')=='candidate':source['status']='verified'
+    return found,review,run_row
 
 
 def run(args):
@@ -882,58 +1061,19 @@ def run(args):
     if args.band_id:
         selected = {str(value) for value in args.band_id}
         communities = [row for row in communities if str(row.get("bandId")) in selected]
-    if args.province:
+    if args.province and args.province.upper() != "ALL":
         requested_province = args.province.upper()
         communities = [
             row for row in communities
             if str(row.get("provinceTerritory", "SK")).upper() == requested_province
         ]
 
-    for community in communities:
-        for source in community.get("sources") or []:
-            if not source_is_monitorable(source):
-                continue
-            run_row = {"bandId": community["bandId"], "communityName": community["communityName"], "sourceName": source.get("name"), "sourceUrl": source.get("url"), "sourceType": source.get("type"), "status": "ok", "eventsFound": 0, "pagesChecked": 0, "mediaChecked": 0}
-            found = []
-            try:
-                if source.get("adapter") == "facebook":
-                    if not token:
-                        run_row["status"] = "authorized_api_required"
-                    else:
-                        found.extend(discover_meta_events(fetcher, community, source, token, today))
-                else:
-                    queue = [source.get("url"), *(source.get("discoveryUrls") or [])]
-                    visited = set()
-                    media = []
-                    while queue and len(visited) < args.max_pages_per_source:
-                        url = canonical_url(queue.pop(0))
-                        if not url or url in visited:
-                            continue
-                        visited.add(url)
-                        body, final_url, content_type = fetcher.get(url)
-                        run_row["pagesChecked"] += 1
-                        if "html" not in content_type:
-                            continue
-                        page_events, links, page_media = extract_html_events(body.decode("utf-8", errors="replace"), final_url, community, source, today)
-                        found.extend(page_events)
-                        media.extend(page_media)
-                        for link in links:
-                            if urllib.parse.urlsplit(link).netloc == urllib.parse.urlsplit(final_url).netloc and link not in visited:
-                                queue.append(link)
-                    for media_url in list(dict.fromkeys(media))[:args.max_media_per_source]:
-                        run_row["mediaChecked"] += 1
-                        try:
-                            item = extract_media_event(fetcher, media_url, community, source, today)
-                            if item:
-                                found.append(item)
-                        except Exception as error:
-                            review.append({"bandId": community["bandId"], "communityName": community["communityName"], "sourceUrl": media_url, "reason": f"media extraction failed: {error}"})
-                run_row["eventsFound"] = len(found)
-                candidates.extend(found)
-            except Exception as error:
-                run_row["status"] = "failed"
-                run_row["error"] = clean_text(error)[:300]
-            runs.append(run_row)
+    inputs=[(community,source) for community in communities for source in community.get('sources',[]) if source_is_monitorable(source)]
+    with ThreadPoolExecutor(max_workers=max(1,getattr(args,'workers',6))) as executor:
+        futures={executor.submit(scan_event_source,c,source,args,token,today):(c,source) for c,source in inputs}
+        for future in as_completed(futures):
+            found,issues,run_row=future.result();candidates.extend(found);review.extend(issues);runs.append(run_row)
+            print(f"[{len(runs)}/{len(inputs)}] {run_row['bandId']} {run_row['sourceUrl']}: {run_row['status']} events={len(found)}",flush=True)
 
     for source in SHARED_EVENT_INDEXES:
         source_province = source.get("provinceTerritory")
@@ -972,17 +1112,29 @@ def run(args):
             run_row["eventsFound"] = len(found)
             candidates.extend(found)
         except Exception as error:
-            run_row["status"] = "failed"
+            run_row["status"] = error_status(error)
             run_row["error"] = clean_text(error)[:300]
         runs.append(run_row)
 
+    for candidate in candidates:
+        if not is_publishable_event(candidate,today):
+            review.append({'bandId':candidate.get('bandId'),'status':'held_for_review','reason':'Candidate lacks unambiguous event date/identity or has invalid/cancelled source data','originalRecord':candidate})
     for item in current.get("events", []):
         if not is_publishable_event(item, today):
             review.append({"status": "held_for_review", "reviewReason": "Existing event failed current source quality checks", "originalRecord": item})
-    review = merge_review_history(load_json(REVIEW_PATH, {}).get("items", []), review)
-    merged = merge_events(current.get("events", []), candidates, today)
+    review = merge_update_reviews(load_json(REVIEW_PATH, {}).get("items", []), review, iso_now())
+    merge_stats={}
+    merged = merge_events(current.get("events", []), candidates, today,merge_stats)
+    changes=track_changes(current.get('events',[]),merged,iso_now(),'events')
+    archive={str(r.get('id')):r for r in current.get('archivedEvents',[])}
+    minimum=(today-timedelta(days=EVENT_WINDOW_PAST_DAYS)).isoformat()
+    for item in current.get('events',[]):
+        if str(item.get('endDate') or item.get('startDate') or '')<minimum and is_publishable_event(item,today):
+            archive[str(item['id'])]={**item,'status':'Expired','archivedAt':iso_now()}
+    for item in candidates:
+        if item.get('eventStatus') in {'cancelled','postponed'}:archive[str(item['id'])]={**item,'status':item['eventStatus'].title(),'archivedAt':iso_now()}
     frontend_sources = [
-        {"bandId": row["bandId"], "communityName": row["communityName"], "sources": [{key: source.get(key) for key in ("type", "name", "url", "status") if source.get(key) is not None} for source in row.get("sources", [])]}
+        {"bandId": row["bandId"], "communityName": row["communityName"], "sources": [{key: source.get(key) for key in ("type", "name", "url", "status", "lastScanStatus", "lastCheckedAt", "lastSuccessfulScanAt") if source.get(key) is not None} for source in row.get("sources", [])]}
         for row in registry.get("communities", [])
     ]
     output = {
@@ -990,19 +1142,26 @@ def run(args):
         "generated": iso_now(),
         "coverage": {"trackedCommunities": len(data.get("bands", [])), "communitiesWithEvents": len({str(item.get("bandId")) for item in merged}), "events": len(merged), "upcoming": sum(item.get("status") in {"Upcoming", "Ongoing"} for item in merged)},
         "events": merged,
+        "archivedEvents":list(archive.values()),
         "communitySources": frontend_sources,
     }
-    write_json(EVENTS_PATH, output)
-    write_json(REGISTRY_PATH, registry)
-    write_json(REVIEW_PATH, {"schemaVersion": 1, "generated": iso_now(), "items": review})
-    write_json(REPORT_PATH, {"schemaVersion": 1, "generated": iso_now(), "scanScope": {"communityIds": [str(row['bandId']) for row in communities], "communitiesScanned": len(communities), "fullScan": len(communities) == len(registry.get('communities', []))}, "before": len(current.get("events", [])), "after": len(merged), "newCandidates": len(candidates), "sourceRuns": runs, "reviewCount": len(review), "statusCounts": dict(sorted({status: sum(row["status"] == status for row in runs) for status in {row["status"] for row in runs}}.items()))})
+    report={"schemaVersion":2,"generated":iso_now(),"scanScope":{"communityIds":[str(r['bandId']) for r in communities],"communitiesScanned":len(communities),"fullScan":len(communities)==len(registry.get('communities',[]))},
+            'before':len(current.get('events',[])),'after':len(merged),'newCandidates':len(candidates),'sourceRuns':runs,'reviewCount':len(review),
+            'statusCounts':dict(Counter(r['status'] for r in runs)),'recordChanges':changes,'duplicatesSuppressed':merge_stats.get('duplicatesSuppressed',0),'expiredArchived':len(archive),
+            'quality':quality_metrics(registry,merged,runs,review,today,'events')}
+    if not getattr(args,'dry_run',False):
+        write_json(EVENTS_PATH,output);write_json(REGISTRY_PATH,registry)
+        write_json(REVIEW_PATH,{'schemaVersion':1,'generated':iso_now(),'items':review});write_json(REPORT_PATH,report)
     print(json.dumps(output["coverage"], indent=2))
+    return report
 
 
 def parse_args():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--band-id", action="append", default=[])
-    parser.add_argument("--province", choices=["SK", "AB", "sk", "ab"])
+    parser.add_argument("--province", type=str.upper, choices=["SK", "AB", "MB", "ALL"])
+    parser.add_argument("--workers",type=int,default=6)
+    parser.add_argument("--dry-run",action="store_true")
     parser.add_argument("--delay", type=float, default=0.3)
     parser.add_argument("--timeout", type=int, default=25)
     parser.add_argument("--max-pages-per-source", type=int, default=6)

@@ -1,0 +1,17 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const source=fs.readFileSync('assets/openband.js','utf8');
+const names=['articleMatchesCommunity','eventMatchesCommunity','intelligenceDay','currentEventStatus','communitySourceDiagnostic'];
+const funcs=source.split('\n').filter(l=>names.some(n=>l.startsWith(`function ${n}(`))).join('\n');
+const c=vm.createContext({normalizeCommunityName:s=>String(s||'').toLowerCase(),intelligenceToday:()=> '2026-11-02'});vm.runInContext(funcs,c);
+assert.equal(c.articleMatchesCommunity({bandId:295,communityName:'Shared Name'},{id:284,name:'Shared Name'}),false,'Explicit different band IDs must never fall back to a similar name');
+assert.equal(c.articleMatchesCommunity({bandId:295,communityName:'Dakota Tipi'},{id:'295',name:'Dakota Tipi'}),true);
+assert.equal(c.articleMatchesCommunity({communityName:'Legacy Name'},{id:295,name:'Legacy Name'}),true);
+assert.equal(c.currentEventStatus({startDate:'2026-11-10',eventStatus:'cancelled'}),null);
+assert.equal(c.currentEventStatus({startDate:'2026-09-01'}),null);
+assert.equal(c.currentEventStatus({startDate:'2026-11-10'}),'Upcoming');
+assert.match(c.communitySourceDiagnostic({sources:[{lastScanStatus:'tls_error'}]}),/unavailable/);
+assert.match(c.communitySourceDiagnostic({sources:[{lastScanStatus:'authorized_api_required'}]}),/authorized API/);
+assert.equal(c.communitySourceDiagnostic({sources:[{lastScanStatus:'tls_error'},{lastScanStatus:'checked'}]}),'');
+assert.match(source,/communityId=new URL\(location.href\).searchParams.get\('community'\)/);
+assert.match(source,/&community=/);
+console.log('Community update frontend: authoritative IDs, cancelled/expired events, honest source states and community routes passed');

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-11-01T18:34:34Z",
+  "generated": "2026-11-03T03:22:14Z",
   "notes": "Event discovery sources are derived from the verified News registry. Add event-specific calendars here when found.",
   "communities": [
     {
@@ -48,7 +48,10 @@
           "discoveryUrls": [
             "https://cowessessfn.com/",
             "https://cowessessfn.com/news/"
-          ]
+          ],
+          "lastCheckedAt": "2026-11-03T03:22:30Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:30Z",
+          "lastScanStatus": "ok"
         },
         {
           "type": "Facebook",
@@ -59,7 +62,15 @@
           "pageHandle": "cowessessfn",
           "monitor": true,
           "official": true,
-          "associationConfidence": 1.0
+          "associationConfidence": 1.0,
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:18:45Z",
+          "lastScanStatus": "authorized_api_required",
+          "associationCommunityNames": [
+            "Cowessess First Nation",
+            "Muskoday First Nation",
+            "Ahtahkakoop Cree Nation"
+          ]
         },
         {
           "type": "Economic Development Organization",
@@ -69,7 +80,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "associationConfidence": 0.96
+          "associationConfidence": 0.96,
+          "lastCheckedAt": "2026-11-03T03:22:28Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:28Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://cowessessfn.com/feed/",
+            "https://cowessessfn.com/comments/feed/",
+            "https://cowessessfn.com/news",
+            "https://cowessessfn.com/news/newspapers",
+            "https://cowessessfn.com/news/paradise-radio",
+            "https://cowessessfn.com/category/events"
+          ]
         },
         {
           "type": "Community Website",
@@ -79,7 +101,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "associationConfidence": 0.96
+          "associationConfidence": 0.96,
+          "lastCheckedAt": "2026-11-03T03:22:26Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:26Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://cowessessfn.com/feed/",
+            "https://cowessessfn.com/comments/feed/",
+            "https://cowessessfn.com/news",
+            "https://cowessessfn.com/news/newspapers",
+            "https://cowessessfn.com/category/events",
+            "https://cowessessfn.com/news/paradise-radio?s="
+          ]
         },
         {
           "type": "Government Source",
@@ -112,7 +145,18 @@
           "status": "verified",
           "adapter": "html",
           "monitor": true,
-          "official": true
+          "official": true,
+          "lastCheckedAt": "2026-11-03T03:22:17Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:17Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://cotefirstnation.ca/feed/",
+            "https://cotefirstnation.ca/comments/feed/",
+            "https://cotefirstnation.ca/elementor-6148",
+            "https://cotefirstnation.ca/notice-to-cote-first-nation-membership-electoral-officer-tribunal-members",
+            "https://cotefirstnation.ca/office-closure-notice-on-call-list-for-2025",
+            "https://cotefirstnation.ca/elementor-7723"
+          ]
         },
         {
           "type": "Government Source",
@@ -155,7 +199,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:14Z",
+          "lastScanStatus": "dns_error"
         }
       ],
       "discoveryQueries": [
@@ -189,7 +235,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:16Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:16Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://ggfn.ca/feed/",
+            "https://ggfn.ca/comments/feed/",
+            "https://ggfn.ca/news-events-2",
+            "https://ggfn.ca/category/community-news",
+            "https://ggfn.ca/notice-regarding-horses-running-at-large",
+            "https://ggfn.ca/education-coordinator-announcement"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -223,7 +280,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:18Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:18Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.kfn72.com/feed/",
+            "https://www.kfn72.com/comments/feed/",
+            "https://www.kfn72.com/sample-page/feed/",
+            "https://www.kfn72.com/events",
+            "https://www.kfn72.com/news-updates",
+            "https://www.kfn72.com/news/kahkewistahaw-landfill-reclamation-project-complete"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -257,7 +325,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:16Z",
+          "lastScanStatus": "robots_blocked"
         }
       ],
       "discoveryQueries": [
@@ -291,7 +361,16 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:18Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:18Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.kinistin.sk.ca/feed/",
+            "https://www.kinistin.sk.ca/comments/feed/",
+            "https://www.kinistin.sk.ca/services",
+            "https://www.kinistin.sk.ca/agricultural-benefits-claim-announcement"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -349,7 +428,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:24Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:24Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://luckymancree.com/feed/",
+            "https://luckymancree.com/comments/feed/",
+            "https://luckymancree.com/events/?ical=1",
+            "https://luckymancree.com/1176-2",
+            "https://luckymancree.com/wp-content/uploads/2024/06/FINAL-NOTICE-2024-LUCKY-MAN13170.docx"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -397,7 +486,9 @@
           "status": "verified",
           "adapter": "html",
           "monitor": true,
-          "official": true
+          "official": true,
+          "lastCheckedAt": "2026-11-03T03:22:18Z",
+          "lastScanStatus": "tls_error"
         },
         {
           "type": "Government Source",
@@ -416,7 +507,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:18Z",
+          "lastScanStatus": "tls_error"
         }
       ],
       "discoveryQueries": [
@@ -448,7 +541,10 @@
           "discoveryUrls": [
             "https://muskodayfn.ca/",
             "https://muskodayfn.ca/news-posts/"
-          ]
+          ],
+          "lastCheckedAt": "2026-11-03T03:22:27Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:27Z",
+          "lastScanStatus": "ok"
         },
         {
           "type": "School or Health Organization",
@@ -462,7 +558,10 @@
           "discoveryUrls": [
             "https://www.mfncs.org/",
             "https://www.mfncs.org/newsletters"
-          ]
+          ],
+          "lastCheckedAt": "2026-11-03T03:22:21Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:21Z",
+          "lastScanStatus": "ok"
         },
         {
           "type": "Facebook",
@@ -473,7 +572,15 @@
           "pageHandle": "MCHCFacebook",
           "monitor": true,
           "official": true,
-          "associationConfidence": 0.96
+          "associationConfidence": 0.96,
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:18:45Z",
+          "lastScanStatus": "authorized_api_required",
+          "associationCommunityNames": [
+            "Cowessess First Nation",
+            "Muskoday First Nation",
+            "Ahtahkakoop Cree Nation"
+          ]
         },
         {
           "type": "Facebook",
@@ -484,7 +591,15 @@
           "pageHandle": "MuskodayFireDepartment",
           "monitor": true,
           "official": true,
-          "associationConfidence": 0.96
+          "associationConfidence": 0.96,
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:18:45Z",
+          "lastScanStatus": "authorized_api_required",
+          "associationCommunityNames": [
+            "Cowessess First Nation",
+            "Muskoday First Nation",
+            "Ahtahkakoop Cree Nation"
+          ]
         },
         {
           "type": "Facebook",
@@ -495,7 +610,15 @@
           "metaPageId": "100063922874799",
           "monitor": true,
           "official": true,
-          "associationConfidence": 0.96
+          "associationConfidence": 0.96,
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:18:45Z",
+          "lastScanStatus": "authorized_api_required",
+          "associationCommunityNames": [
+            "Cowessess First Nation",
+            "Muskoday First Nation",
+            "Ahtahkakoop Cree Nation"
+          ]
         },
         {
           "type": "Facebook",
@@ -506,7 +629,15 @@
           "pageHandle": "changingdirectionsmfn2017",
           "monitor": true,
           "official": true,
-          "associationConfidence": 0.96
+          "associationConfidence": 0.96,
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:18:45Z",
+          "lastScanStatus": "authorized_api_required",
+          "associationCommunityNames": [
+            "Cowessess First Nation",
+            "Muskoday First Nation",
+            "Ahtahkakoop Cree Nation"
+          ]
         },
         {
           "type": "Facebook",
@@ -517,7 +648,15 @@
           "pageHandle": "MFNCS",
           "monitor": true,
           "official": true,
-          "associationConfidence": 0.96
+          "associationConfidence": 0.96,
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:18:45Z",
+          "lastScanStatus": "authorized_api_required",
+          "associationCommunityNames": [
+            "Cowessess First Nation",
+            "Muskoday First Nation",
+            "Ahtahkakoop Cree Nation"
+          ]
         },
         {
           "type": "Facebook",
@@ -528,7 +667,15 @@
           "pageHandle": "MuskodayEldersClub",
           "monitor": true,
           "official": true,
-          "associationConfidence": 0.94
+          "associationConfidence": 0.94,
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:18:45Z",
+          "lastScanStatus": "authorized_api_required",
+          "associationCommunityNames": [
+            "Cowessess First Nation",
+            "Muskoday First Nation",
+            "Ahtahkakoop Cree Nation"
+          ]
         },
         {
           "type": "Facebook",
@@ -539,7 +686,15 @@
           "pageHandle": "MuskodayGardening",
           "monitor": true,
           "official": true,
-          "associationConfidence": 0.94
+          "associationConfidence": 0.94,
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:18:45Z",
+          "lastScanStatus": "authorized_api_required",
+          "associationCommunityNames": [
+            "Cowessess First Nation",
+            "Muskoday First Nation",
+            "Ahtahkakoop Cree Nation"
+          ]
         },
         {
           "type": "Tribal Council",
@@ -568,7 +723,19 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:32Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:32Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://muskodayfn.ca/feed/",
+            "https://muskodayfn.ca/comments/feed/",
+            "https://muskodayfn.ca?ical=1",
+            "https://muskodayfn.ca/news-posts",
+            "https://muskodayfn.ca/events/category/mfn-community-meeting",
+            "https://muskodayfn.ca/events/category/employment",
+            "https://muskodayfn.ca/events/category/mfn-employment"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -602,7 +769,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:25Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:25Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://ochapowace.com/news/rss",
+            "https://ochapowace.com/news/call-out-to-nation-citizens-law-development-ad-hoc-working-group",
+            "https://ochapowace.com/news/location-change---citizen-engagement",
+            "https://ochapowace.com/news/kakisiwew-ochapowace-communique-the-big-game-hunting-on-ochapowace-lands",
+            "https://ochapowace.com/news"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -626,7 +803,19 @@
           "status": "verified",
           "adapter": "html",
           "monitor": true,
-          "official": true
+          "official": true,
+          "lastCheckedAt": "2026-11-03T03:22:29Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:29Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://onionlake.ca/feed/",
+            "https://onionlake.ca/comments/feed/",
+            "https://onionlake.ca/sample-page/feed/",
+            "https://onionlake.ca/news",
+            "https://onionlake.ca/events",
+            "https://onionlake.ca/events/computer-training-program-november-2-13-2026",
+            "https://onionlake.ca/events/introduction-to-hand-games-for-youth-november-2-6-2026"
+          ]
         },
         {
           "type": "Government Source",
@@ -645,7 +834,19 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:31Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:31Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://onionlake.ca/feed/",
+            "https://onionlake.ca/comments/feed/",
+            "https://onionlake.ca/sample-page/feed/",
+            "https://onionlake.ca/news",
+            "https://onionlake.ca/events",
+            "https://onionlake.ca/events/computer-training-program-november-2-13-2026",
+            "https://onionlake.ca/events/introduction-to-hand-games-for-youth-november-2-6-2026"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -679,7 +880,20 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:30Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:30Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.pasquafn.ca/news-events",
+            "https://www.pasquafn.ca/news-events/newsletter",
+            "https://www.pasquafn.ca/fileadmin/user_upload/Notice_-_Accepting_COLA_Applications_2026.docx",
+            "https://www.pasquafn.ca/news-events?cHash=c51eafb69806e4470865d8cabbd5c03c&tx_news_pi1%5B%40widget_0%5D%5BcurrentPage%5D=2",
+            "https://www.pasquafn.ca/news-events?cHash=ec22f08effd22420d88272199e130fa8&tx_news_pi1%5B%40widget_0%5D%5BcurrentPage%5D=3",
+            "https://www.pasquafn.ca/news-events?L=",
+            "https://www.pasquafn.ca/news-events/newsletter?L=",
+            "https://www.pasquafn.ca/news-events/newsletter/news-events"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -713,7 +927,16 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:30Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:30Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://peepeekisis.com/feed/",
+            "https://peepeekisis.com/comments/feed/",
+            "https://peepeekisis.com/community-dashboard/peepeekisis-news",
+            "https://peepeekisis.com/social-media-and-links"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -771,7 +994,20 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:31Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:31Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://pbcn.ca/news.html",
+            "https://pbcn.ca/news/details/join_us_to_share_your_feedback.html",
+            "https://pbcn.ca/news/details/traditional_knowledge__land_use_mapping_interviews.html",
+            "https://pbcn.ca/news/details/community_notice43.html",
+            "https://pbcn.ca/news/details/wildfire_update_for_sandy_bay_and_southend.html",
+            "https://pbcn.ca/news.html?page_link=byelection_results",
+            "https://pbcn.ca/news.html?page_link=newsletters",
+            "https://pbcn.ca/news.html?page_link=communications__media"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -829,7 +1065,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:30Z",
+          "lastScanStatus": "javascript_required"
         }
       ],
       "discoveryQueries": [
@@ -911,7 +1149,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:30Z",
+          "lastScanStatus": "access_restricted"
         }
       ],
       "discoveryQueries": [
@@ -969,7 +1209,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:32Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:32Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://sweetgrassfirstnation.ca/news.html",
+            "https://sweetgrassfirstnation.ca/events.html",
+            "https://sweetgrassfirstnation.ca/news.html?NewsID=87",
+            "https://sweetgrassfirstnation.ca/news.html?NewsID=86",
+            "https://sweetgrassfirstnation.ca/news.html?NewsID=81"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -1003,7 +1253,14 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:37Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:37Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://keyband.com/feed/",
+            "https://keyband.com/news"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -1037,7 +1294,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:32Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:32Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.thunderchild.ca/news.html",
+            "https://www.thunderchild.ca/events.html",
+            "https://www.thunderchild.ca/news.html?NewsID=133",
+            "https://www.thunderchild.ca/news.html?NewsID=132",
+            "https://www.thunderchild.ca/news.html?NewsID=131"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -1119,7 +1386,14 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:36Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:36Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://whitebearfirstnation.com/feed/",
+            "https://whitebearfirstnation.com/comments/feed/"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -1143,7 +1417,20 @@
           "status": "verified",
           "adapter": "html",
           "monitor": true,
-          "official": true
+          "official": true,
+          "lastCheckedAt": "2026-11-03T03:22:34Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:34Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.whitecapdakota.com/our-community/community-newsletter",
+            "https://www.whitecapdakota.com/news",
+            "https://www.whitecapdakota.com/news/posts/it-support-technician",
+            "https://www.whitecapdakota.com/news/job-postings",
+            "https://www.whitecapdakota.com/our-community/community-newsletter/dakota-dunes-casino",
+            "https://www.whitecapdakota.com/our-community/community-newsletter/dakota-dunes-golf-links",
+            "https://www.whitecapdakota.com/our-community/community-newsletter/dakota-dunes-hotel",
+            "https://www.whitecapdakota.com/news/posts/assistant-general-manager-dakota-dunes-thermal-spa"
+          ]
         },
         {
           "type": "Government Source",
@@ -1186,7 +1473,19 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:35Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:35Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.woodmountainlakotafn.ca/gen-announcements",
+            "https://www.woodmountainlakotafn.ca/gen-announcements/2026-hans-peterson-award-recipient",
+            "https://www.woodmountainlakotafn.ca/gen-announcements/update-wmlfn-legacy-trust-amendment",
+            "https://www.woodmountainlakotafn.ca/gen-announcements/7ws4r4glso22oa1ed6qv3jj9j4m213",
+            "https://www.woodmountainlakotafn.ca/gen-announcements?format=rss",
+            "https://www.woodmountainlakotafn.ca/gen-announcements/category/WMLFN",
+            "https://www.woodmountainlakotafn.ca/gen-announcements?author=65b7e21464db2c01ecca9ff0"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -1241,7 +1540,10 @@
           "official": true,
           "discoveryUrls": [
             "https://www.ahtahkakoop.com/"
-          ]
+          ],
+          "lastCheckedAt": "2026-11-03T03:22:33Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:33Z",
+          "lastScanStatus": "partial"
         },
         {
           "type": "Facebook",
@@ -1252,7 +1554,15 @@
           "pageHandle": "ahtahkakoopcreenation",
           "monitor": true,
           "official": true,
-          "associationConfidence": 1.0
+          "associationConfidence": 1.0,
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:18:45Z",
+          "lastScanStatus": "authorized_api_required",
+          "associationCommunityNames": [
+            "Cowessess First Nation",
+            "Muskoday First Nation",
+            "Ahtahkakoop Cree Nation"
+          ]
         },
         {
           "type": "Community Website",
@@ -1262,7 +1572,16 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "associationConfidence": 0.94
+          "associationConfidence": 0.94,
+          "lastCheckedAt": "2026-11-03T03:22:35Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:35Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.ahtahkakoop.ca/event-calendar.html",
+            "https://www.ahtahkakoop.ca/news.html",
+            "https://www.ahtahkakoop.ca/news/christmas-gift-distribution",
+            "https://www.ahtahkakoop.ca/news/september-15th-20269076520"
+          ]
         },
         {
           "type": "Government Source",
@@ -1281,7 +1600,16 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:36Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:36Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.ahtahkakoop.ca/event-calendar.html",
+            "https://www.ahtahkakoop.ca/news.html",
+            "https://www.ahtahkakoop.ca/news/christmas-gift-distribution",
+            "https://www.ahtahkakoop.ca/news/september-15th-20269076520"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -1339,7 +1667,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:36Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:36Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.brdn.ca/news-events",
+            "https://www.brdn.ca/events/aa-meetings",
+            "https://www.brdn.ca/events/craft-night",
+            "https://www.brdn.ca/news-events/calendar",
+            "https://www.brdn.ca/events.ics",
+            "https://www.brdn.ca/events/aa-meetings/event.ics"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -1373,7 +1712,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:35Z",
+          "lastScanStatus": "not_found"
         }
       ],
       "discoveryQueries": [
@@ -1431,7 +1772,15 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:38Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:38Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://chcn.ca/feed/",
+            "https://chcn.ca/comments/feed/",
+            "https://chcn.ca/news-and-events"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -1465,7 +1814,11 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:39Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:39Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": []
         }
       ],
       "discoveryQueries": [
@@ -1499,7 +1852,15 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:37Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:37Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.fishinglakefirstnation.com/blog-feed.xml",
+            "https://www.fishinglakefirstnation.com/blog",
+            "https://www.fishinglakefirstnation.com/post/community-development-urban-events-2025-2025"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -1531,7 +1892,10 @@
           "discoveryUrls": [
             "https://www.flyingdust.net/",
             "https://www.flyingdust.net/newsletters.html"
-          ]
+          ],
+          "lastCheckedAt": "2026-11-03T03:22:38Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:38Z",
+          "lastScanStatus": "ok"
         },
         {
           "type": "Tribal Council",
@@ -1623,7 +1987,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:38Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:38Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://llrib.com/feed/",
+            "https://llrib.com/comments/feed/",
+            "https://llrib.com/updates",
+            "https://llrib.com/notice-of-community-meetings",
+            "https://llrib.com/category/announcements",
+            "https://llrib.com/category/events"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -1657,7 +2032,14 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:45Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:45Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://littlepine.ca/feed/",
+            "https://littlepine.ca/comments/feed/"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -1715,7 +2097,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:48Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:48Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://mlcn.ca/feed/",
+            "https://mlcn.ca/comments/feed/",
+            "https://mlcn.ca/home/feed/",
+            "https://mlcn.ca/community-events",
+            "https://mlcn.ca/wapahki-newsletter"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -1749,7 +2141,13 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:42Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:42Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.moosomin.ca/careers_events.html"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -1783,7 +2181,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:40Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:40Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://mosquitofn.ca/community/newsletter.html",
+            "https://mosquitofn.ca/events.html",
+            "https://mosquitofn.ca/news.html",
+            "https://mosquitofn.ca/events.html?EventID=950",
+            "https://mosquitofn.ca/mrws/filedriver/News_letter_February_2023.docx"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -1807,7 +2215,17 @@
           "status": "verified",
           "adapter": "html",
           "monitor": true,
-          "official": true
+          "official": true,
+          "lastCheckedAt": "2026-11-03T03:22:42Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:42Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://muscowpetung.com/feed/",
+            "https://muscowpetung.com/comments/feed/",
+            "https://muscowpetung.com/news-updates",
+            "https://muscowpetung.com/updates",
+            "https://muscowpetung.com/newsletter"
+          ]
         },
         {
           "type": "Government Source",
@@ -1826,7 +2244,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:45Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:45Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://muscowpetung.com/feed/",
+            "https://muscowpetung.com/comments/feed/",
+            "https://muscowpetung.com/news-updates",
+            "https://muscowpetung.com/updates",
+            "https://muscowpetung.com/newsletter"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -1850,7 +2278,17 @@
           "status": "verified",
           "adapter": "html",
           "monitor": true,
-          "official": true
+          "official": true,
+          "lastCheckedAt": "2026-11-03T03:22:45Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:45Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://muskeglake.com/feed/",
+            "https://muskeglake.com/comments/feed/",
+            "https://muskeglake.com/covid-19-update",
+            "https://muskeglake.com/muskeg-lake-cree-nation-statement-on-downtown-event-and-entertainment-district-discussions",
+            "https://muskeglake.com/notice-of-ratification-vote-election-code-and-citizenship-code"
+          ]
         },
         {
           "type": "Government Source",
@@ -1869,7 +2307,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:47Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:47Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://muskeglake.com/feed/",
+            "https://muskeglake.com/comments/feed/",
+            "https://muskeglake.com/covid-19-update",
+            "https://muskeglake.com/muskeg-lake-cree-nation-statement-on-downtown-event-and-entertainment-district-discussions",
+            "https://muskeglake.com/notice-of-ratification-vote-election-code-and-citizenship-code"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -1903,7 +2351,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:42Z",
+          "lastScanStatus": "robots_blocked"
         }
       ],
       "discoveryQueries": [
@@ -1937,7 +2387,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:43Z",
+          "lastScanStatus": "tls_error"
         }
       ],
       "discoveryQueries": [
@@ -2043,7 +2495,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:02Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:02Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://piapotnation.com/feed/",
+            "https://piapotnation.com/comments/feed/",
+            "https://piapotnation.com/events/?ical=1",
+            "https://piapotnation.com/covid-19",
+            "https://piapotnation.com/news"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -2077,7 +2539,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:46Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:46Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.saulteauxfn.ca/news.html?NewsID=80",
+            "https://www.saulteauxfn.ca/news.html?NewsID=82",
+            "https://www.saulteauxfn.ca/news.html?NewsID=81",
+            "https://www.saulteauxfn.ca/news.html?NewsID=84",
+            "https://www.saulteauxfn.ca/news.html",
+            "https://www.saulteauxfn.ca/news.html?NewsID=83"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -2111,7 +2584,13 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:46Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:46Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.standingbuffalodakotanation.com/article-to-government"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -2193,7 +2672,13 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:54Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:54Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://riviere-au-tonnerre.ca/feed/"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -2251,7 +2736,11 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:50Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:50Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": []
         }
       ],
       "discoveryQueries": [
@@ -2285,7 +2774,14 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:49Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:49Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.fonddulac.ca/pages/community_calendar.html",
+            "https://www.fonddulac.ca/pages/media_events.html"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -2319,7 +2815,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:47Z",
+          "lastScanStatus": "tls_error"
         }
       ],
       "discoveryQueries": [
@@ -2353,7 +2851,15 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:50Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:50Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://kawacatoosefirstnation.ca/feed/",
+            "https://kawacatoosefirstnation.ca/comments/feed/",
+            "https://kawacatoosefirstnation.ca/updates"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -2404,7 +2910,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:50Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:50Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.alexanderfn.com/blog-feed.xml",
+            "https://www.alexanderfn.com/updates",
+            "https://www.alexanderfn.com/events",
+            "https://www.alexanderfn.com/post/notice-of-vote-proposed-2025-program-services-budget",
+            "https://www.alexanderfn.com/post/notice-re-illegal-activities"
+          ]
         },
         {
           "type": "Government Source",
@@ -2442,7 +2958,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:49Z",
+          "lastScanStatus": "tls_error"
         },
         {
           "type": "Government Source",
@@ -2476,7 +2994,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:57Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:57Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://acfn.com/in-the-news",
+            "https://acfn.com/news-and-events",
+            "https://acfn.com/news",
+            "https://acfn.com/events/2026-annual-general-meeting-fort-smith",
+            "https://acfn.com/events/2026-acfn-family-christmas-party-fort-mcmurray"
+          ]
         },
         {
           "type": "Government Source",
@@ -2512,7 +3040,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:50Z",
+          "lastScanStatus": "tls_error"
         },
         {
           "type": "Government Source",
@@ -2531,7 +3061,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:52Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:52Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://bearspawfirstnation.ca/feed/",
+            "https://bearspawfirstnation.ca/comments/feed/",
+            "https://bearspawfirstnation.ca/archive",
+            "https://bearspawfirstnation.ca/current-news/bearspaw-election-code-review",
+            "https://bearspawfirstnation.ca/2026/07/06/never-miss-an-update"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -2560,7 +3100,16 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:52Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:52Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.beaverfirstnation.com/events",
+            "https://www.beaverfirstnation.com/upcoming-events",
+            "https://www.beaverfirstnation.com/notices",
+            "https://www.beaverfirstnation.com/copy-of-notices"
+          ]
         },
         {
           "type": "Government Source",
@@ -2594,7 +3143,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:55Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:55Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://beaverlakecreenation.ca/feed/",
+            "https://beaverlakecreenation.ca/comments/feed/",
+            "https://beaverlakecreenation.ca/events/2025-pow-wow",
+            "https://beaverlakecreenation.ca/community",
+            "https://beaverlakecreenation.ca/news-and-media",
+            "https://beaverlakecreenation.ca/events"
+          ]
         },
         {
           "type": "Government Source",
@@ -2628,7 +3188,13 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:56Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:56Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.bigstone.ca/employment"
+          ]
         },
         {
           "type": "Government Source",
@@ -2665,7 +3231,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:00Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:00Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://bloodtribe.org/feed/",
+            "https://bloodtribe.org/comments/feed/",
+            "https://bloodtribe.org/blood-tribe-opioids-response-update-service-delivery",
+            "https://bloodtribe.org/category/events",
+            "https://bloodtribe.org/category/news",
+            "https://bloodtribe.org/blood-tribe-police-service-media-release-october-27-2026"
+          ]
         },
         {
           "type": "Government Source",
@@ -2684,7 +3261,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:59Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:59Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://bloodtribe.org/feed/",
+            "https://bloodtribe.org/comments/feed/",
+            "https://bloodtribe.org/blood-tribe-opioids-response-update-service-delivery",
+            "https://bloodtribe.org/category/events",
+            "https://bloodtribe.org/category/news",
+            "https://bloodtribe.org/blood-tribe-police-service-media-release-october-27-2026"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -2719,7 +3307,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:22:58Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:22:58Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.chiniki.com/events",
+            "https://www.chiniki.com/events/thanksgiving-gift-card-pick-up",
+            "https://www.chiniki.com/events/thanksgiving-gift-card-pick-up?format=ical",
+            "https://www.chiniki.com/events/infinity-health-grand-opening",
+            "https://www.chiniki.com/events/infinity-health-grand-opening?format=ical"
+          ]
         },
         {
           "type": "Government Source",
@@ -2757,7 +3355,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:00Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:00Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.cpfn.ca/latest-news",
+            "https://www.cpfn.ca/latest-news/bylaw-updates-july-2026",
+            "https://www.cpfn.ca/latest-news/notice-of-band-meeting-of-the-electors",
+            "https://www.cpfn.ca/latest-news/notice-of-ratification-vote",
+            "https://www.cpfn.ca/latest-news/2025-election-results"
+          ]
         },
         {
           "type": "Government Source",
@@ -2791,7 +3399,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:05Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:05Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://clfns.com/feed/",
+            "https://clfns.com/comments/feed/",
+            "https://clfns.com/news",
+            "https://clfns.com/announcements",
+            "https://clfns.com/events",
+            "https://clfns.com/media-requests"
+          ]
         },
         {
           "type": "Government Source",
@@ -2810,7 +3429,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:04Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:04Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://clfns.com/feed/",
+            "https://clfns.com/comments/feed/",
+            "https://clfns.com/news",
+            "https://clfns.com/announcements",
+            "https://clfns.com/events",
+            "https://clfns.com/media-requests"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -2835,7 +3465,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:29Z",
+          "lastScanStatus": "timeout"
         },
         {
           "type": "Government Source",
@@ -2869,7 +3501,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:00Z",
+          "lastScanStatus": "tls_error"
         },
         {
           "type": "Government Source",
@@ -2888,7 +3522,19 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:10Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:10Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://dcn450.com/feed/",
+            "https://dcn450.com/comments/feed/",
+            "https://dcn450.com/events/?ical=1",
+            "https://dcn450.com/engagement-and-event-coordinator",
+            "https://dcn450.com/community",
+            "https://dcn450.com/our-news",
+            "https://dcn450.com/news/dcn-election-results"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -2913,7 +3559,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:02Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:02Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.duncansfirstnation.com/healthcare",
+            "https://www.duncansfirstnation.com/news-events",
+            "https://www.duncansfirstnation.com/copy-of-early-childhood",
+            "https://www.duncansfirstnation.com/copy-of-news-1",
+            "https://www.duncansfirstnation.com/dfn-newsletter"
+          ]
         },
         {
           "type": "Government Source",
@@ -2947,7 +3603,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:06Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:06Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://enochnation.ca/announcements",
+            "https://enochnation.ca/category/news",
+            "https://enochnation.ca/category/announcements",
+            "https://enochnation.ca/events",
+            "https://enochnation.ca/category/kea-operations-updates"
+          ]
         },
         {
           "type": "Government Source",
@@ -2983,7 +3649,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:09Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:09Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://ermineskin.ca/feed/",
+            "https://ermineskin.ca/comments/feed/",
+            "https://ermineskin.ca/news",
+            "https://ermineskin.ca/covid-19-ecn-updates",
+            "https://ermineskin.ca/eventsc",
+            "https://ermineskin.ca/events-calendar"
+          ]
         },
         {
           "type": "Government Source",
@@ -3002,7 +3679,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:07Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:07Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://ermineskin.ca/feed/",
+            "https://ermineskin.ca/comments/feed/",
+            "https://ermineskin.ca/news",
+            "https://ermineskin.ca/covid-19-ecn-updates",
+            "https://ermineskin.ca/eventsc",
+            "https://ermineskin.ca/events-calendar"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -3027,7 +3715,19 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:10Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:10Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.fortmckay.com/feed/",
+            "https://www.fortmckay.com/comments/feed/",
+            "https://www.fortmckay.com/events/?ical=1",
+            "https://www.fortmckay.com/events",
+            "https://www.fortmckay.com/news",
+            "https://www.fortmckay.com/programs-services/events",
+            "https://www.fortmckay.com/news/red-river-current-newsletter-september-2026-edition"
+          ]
         },
         {
           "type": "Government Source",
@@ -3063,7 +3763,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:06Z",
+          "lastScanStatus": "robots_unavailable"
         },
         {
           "type": "Government Source",
@@ -3082,7 +3784,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:07Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:07Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.fmfn468.com/news-events",
+            "https://www.fmfn468.com/news-events/golf-tournament",
+            "https://www.fmfn468.com/news-events/photo-gallery",
+            "https://www.fmfn468.com/news-events/trade-shows",
+            "https://www.fmfn468.com/news-events/treaty-days"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -3111,7 +3823,13 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:09Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:09Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.froglake.ca/event-list"
+          ]
         },
         {
           "type": "Government Source",
@@ -3149,7 +3867,14 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:10Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:10Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.goodstoneynation.ca/feed/",
+            "https://www.goodstoneynation.ca/comments/feed/"
+          ]
         },
         {
           "type": "Government Source",
@@ -3195,7 +3920,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:11Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:11Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://heartlakefirstnation.com/feed/",
+            "https://heartlakefirstnation.com/comments/feed/",
+            "https://heartlakefirstnation.com/news-and-updates",
+            "https://heartlakefirstnation.com/news-and-updates/media-releases",
+            "https://heartlakefirstnation.com/news-and-updates/newsletter",
+            "https://heartlakefirstnation.com/news-and-updates/photo-gallery"
+          ]
         },
         {
           "type": "Government Source",
@@ -3229,7 +3965,11 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:12Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:12Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": []
         },
         {
           "type": "Government Source",
@@ -3263,7 +4003,11 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:11Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:11Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": []
         },
         {
           "type": "Government Source",
@@ -3306,7 +4050,11 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:11Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:11Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": []
         }
       ],
       "discoveryQueries": [
@@ -3331,7 +4079,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:14Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:14Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://lrrcn.ab.ca/feed/",
+            "https://lrrcn.ab.ca/comments/feed/",
+            "https://lrrcn.ab.ca/events",
+            "https://lrrcn.ab.ca/news",
+            "https://lrrcn.ab.ca/covid-19-updates",
+            "https://lrrcn.ab.ca/hwf-030-fire-updates"
+          ]
         },
         {
           "type": "Government Source",
@@ -3365,7 +4124,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:12Z",
+          "lastScanStatus": "javascript_required"
         },
         {
           "type": "Government Source",
@@ -3401,7 +4162,11 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:12Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:12Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": []
         },
         {
           "type": "Government Source",
@@ -3441,7 +4206,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:14Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:14Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.lubiconlakeband.ca/news",
+            "https://www.lubiconlakeband.ca/news/2024/8/28/proposed-bylaw-b25814",
+            "https://www.lubiconlakeband.ca/news/2021/11/3/ktc-eduaction-authority-report",
+            "https://www.lubiconlakeband.ca/news/2020/6/29/capital-project-build-options",
+            "https://www.lubiconlakeband.ca/news/2020/3/26/treaty-8-first-nations-of-alberta-resource-guide"
+          ]
         },
         {
           "type": "Government Source",
@@ -3479,7 +4254,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:17Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:17Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://mikisewcree.ca/feed",
+            "https://mikisewcree.ca/comments/feed",
+            "https://mikisewcree.ca/latest-news",
+            "https://mikisewcree.ca/newsletter",
+            "https://mikisewcree.ca/events-2",
+            "https://mikisewcree.ca/upcoming-events"
+          ]
         },
         {
           "type": "Government Source",
@@ -3515,7 +4301,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:15Z",
+          "lastScanStatus": "not_found"
         },
         {
           "type": "Government Source",
@@ -3534,7 +4322,15 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:17Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:17Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://montanafirstnation.com/feed/",
+            "https://montanafirstnation.com/comments/feed/",
+            "https://montanafirstnation.com/category/news"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -3563,7 +4359,15 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:16Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:16Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.ochiese.ca/news",
+            "https://www.ochiese.ca/events",
+            "https://www.ochiese.ca/newsletter"
+          ]
         },
         {
           "type": "Government Source",
@@ -3599,7 +4403,15 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:16Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:16Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.paulfirstnation.com/events",
+            "https://www.paulfirstnation.com/copy-of-events",
+            "https://www.paulfirstnation.com/community"
+          ]
         },
         {
           "type": "Government Source",
@@ -3637,7 +4449,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:19Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:19Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.ptfn.net/feed/",
+            "https://www.ptfn.net/comments/feed/",
+            "https://www.ptfn.net/sample-page/feed/",
+            "https://www.ptfn.net/announcements-news",
+            "https://www.ptfn.net/community-meeting-announcement",
+            "https://www.ptfn.net/notice-of-nomination-meetings"
+          ]
         },
         {
           "type": "Government Source",
@@ -3671,7 +4494,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:20Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:20Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://piikanination.com/news",
+            "https://piikanination.com/posts/2026-10-23_buffalo-treaty-signing",
+            "https://piikanination.com/posts/2026-10-20_community-update-referendum-question-not-approved",
+            "https://piikanination.com/posts/2026-10-15_elders-raffle-winners",
+            "https://piikanination.com/posts/2026-10-15_alberta-referendum-info-session"
+          ]
         },
         {
           "type": "Government Source",
@@ -3705,7 +4538,19 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:20Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:20Z",
+          "lastScanStatus": "partial",
+          "discoveryUrls": [
+            "https://slcn125.ca/feed/",
+            "https://slcn125.ca/comments/feed/",
+            "https://slcn125.ca/events/?ical=1",
+            "https://slcn125.ca/band-news",
+            "https://slcn125.ca/category/band-news-updates",
+            "https://slcn125.ca/slcn_event",
+            "https://slcn125.ca/slcn_newsletter/open-letter-to-chiefs-first-nations-citizens-elders-and-clan-mothers-our-nations-have-not-consented-protecting-our-tr"
+          ]
         },
         {
           "type": "School or Health Organization",
@@ -3716,7 +4561,20 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "Saddle Lake Education Authority identification and public program contact details at https://www.slps.ca/news",
-          "lastVerified": "2026-10-28"
+          "lastVerified": "2026-10-28",
+          "lastCheckedAt": "2026-11-03T03:23:20Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:20Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.slps.ca/events",
+            "https://www.slps.ca/news/2026-10-08-extended-application-fee-waiver-for-indigenous-students",
+            "https://www.slps.ca/news/2026-10-wildland-fire-fighting-training",
+            "https://www.slps.ca/news/2026-09-10-atco-indigenous-education-awards-program",
+            "https://www.slps.ca/events/2026-10-21-onihcikiskowapowin-business-trust",
+            "https://www.slps.ca/events/2026-10-21-onihcikiskowapowin-business-trust?format=ical",
+            "https://www.slps.ca/events/2026-10-01-health-harvest-fair",
+            "https://www.slps.ca/events/2026-10-01-health-harvest-fair?format=ical"
+          ]
         },
         {
           "type": "Government Source",
@@ -3752,7 +4610,15 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:23Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:23Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://samsoncree.com/feed/",
+            "https://samsoncree.com/comments/feed/",
+            "https://samsoncree.com/news"
+          ]
         },
         {
           "type": "Government Source",
@@ -3771,7 +4637,15 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:25Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:25Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://samsoncree.com/feed/",
+            "https://samsoncree.com/comments/feed/",
+            "https://samsoncree.com/news"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -3800,7 +4674,15 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:39Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:39Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://sawridgefirstnation.com/feed/",
+            "https://sawridgefirstnation.com/comments/feed/",
+            "https://sawridgefirstnation.com/category/news"
+          ]
         },
         {
           "type": "Government Source",
@@ -3834,7 +4716,19 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:26Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:26Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://siksikanation.com/feed/",
+            "https://siksikanation.com/comments/feed/",
+            "https://siksikanation.com/events/?ical=1",
+            "https://siksikanation.com/media",
+            "https://siksikanation.com/news",
+            "https://siksikanation.com/event/public-speaking-workshop-october-22-2026",
+            "https://siksikanation.com/event/snf-2026-community-survey-deadline-extension-september-8-2026"
+          ]
         },
         {
           "type": "Government Source",
@@ -3853,7 +4747,19 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:25Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:25Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://siksikanation.com/feed/",
+            "https://siksikanation.com/comments/feed/",
+            "https://siksikanation.com/events/?ical=1",
+            "https://siksikanation.com/media",
+            "https://siksikanation.com/news",
+            "https://siksikanation.com/event/public-speaking-workshop-october-22-2026",
+            "https://siksikanation.com/event/snf-2026-community-survey-deadline-extension-september-8-2026"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -3878,7 +4784,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:26Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:26Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.sturgeonlake.ca/feed/",
+            "https://www.sturgeonlake.ca/comments/feed/",
+            "https://www.sturgeonlake.ca/events/?ical=1",
+            "https://www.sturgeonlake.ca/news",
+            "https://www.sturgeonlake.ca/events"
+          ]
         },
         {
           "type": "Government Source",
@@ -3912,7 +4828,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:32Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:32Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://scfn.ca/feed/",
+            "https://scfn.ca/comments/feed/",
+            "https://scfn.ca/events/?ical=1",
+            "https://scfn.ca/events-news",
+            "https://scfn.ca/band-membership/membership-posting-oct-14-2026_page_1",
+            "https://scfn.ca/events"
+          ]
         },
         {
           "type": "Government Source",
@@ -3946,7 +4873,20 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:28Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:28Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.sunchildfirstnation.com/news-events",
+            "https://www.sunchildfirstnation.com/news-events/posts/post-name",
+            "https://www.sunchildfirstnation.com/news-events?c=&p=1",
+            "https://www.sunchildfirstnation.com/news-events?c=General",
+            "https://www.sunchildfirstnation.com/news-events?c=Project+Update",
+            "https://www.sunchildfirstnation.com/news-events?t=tag+one",
+            "https://www.sunchildfirstnation.com/news-events?t=environment",
+            "https://www.sunchildfirstnation.com/news-events?t=new+website"
+          ]
         },
         {
           "type": "Government Source",
@@ -3980,7 +4920,16 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:39Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:39Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://srfn.ca/feed/",
+            "https://srfn.ca/comments/feed/",
+            "https://srfn.ca/events/?ical=1",
+            "https://srfn.ca/news"
+          ]
         },
         {
           "type": "Government Source",
@@ -4014,7 +4963,17 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:34Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:34Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.tallcree.ca/feed/",
+            "https://www.tallcree.ca/comments/feed/",
+            "https://www.tallcree.ca/recreation-and-events",
+            "https://www.tallcree.ca/events-calendar",
+            "https://www.tallcree.ca/news"
+          ]
         },
         {
           "type": "Government Source",
@@ -4050,7 +5009,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:28Z",
+          "lastScanStatus": "tls_error"
         },
         {
           "type": "Government Source",
@@ -4069,7 +5030,18 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:31Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:31Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://tsuutina.com/events-calendar",
+            "https://tsuutina.com/news",
+            "https://tsuutina.com/da-hi-community-newsletter",
+            "https://tsuutina.com/public-relations-media",
+            "https://tsuutina.com/events/list?shortcode=588d7eac",
+            "https://tsuutina.com/old-agency-road-resident-notice"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -4101,7 +5073,13 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:31Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:31Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.slfn196.com/latest-news"
+          ]
         },
         {
           "type": "Government Source",
@@ -4146,7 +5124,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:31Z",
+          "lastScanStatus": "dns_error"
         },
         {
           "type": "Government Source",
@@ -4191,7 +5171,13 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:34Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:34Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.wfl128.ca/news-1"
+          ]
         },
         {
           "type": "Government Source",
@@ -4233,7 +5219,14 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "sourceOrigin": "ISC First Nation profile"
+          "sourceOrigin": "ISC First Nation profile",
+          "lastCheckedAt": "2026-11-03T03:23:36Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:36Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://woodlandcree.ca/feed",
+            "https://woodlandcree.ca/comments/feed"
+          ]
         },
         {
           "type": "Government Source",
@@ -4250,6 +5243,2758 @@
         "\"Woodland Cree First Nation\" community update",
         "site:facebook.com \"Woodland Cree First Nation\" announcement",
         "\"Woodland Cree First Nation\" Alberta funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 308,
+      "communityName": "Barren Lands",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 10",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Barren Lands official website",
+          "url": "https://www.ktc.ca/?page_id=160",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:23:34Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:34Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.ktc.ca/news",
+            "https://www.ktc.ca/news/national-day-for-truth-and-reconciliation-2025",
+            "https://www.ktc.ca/news/ikiskawasoot-she-carries-life-awareness-walk-wednesday-october-8th-2025",
+            "https://www.ktc.ca/press-release-documents",
+            "https://www.ktc.ca/news/indigenous-peoples-resilience-fund",
+            "https://www.ktc.ca/news/2025-ktc-23rd-annual-tribal-days",
+            "https://www.ktc.ca/news/news",
+            "https://www.ktc.ca/news/about"
+          ],
+          "associationCommunityNames": [
+            "Barren Lands",
+            "Bunibonibee Cree Nation",
+            "God's Lake First Nation",
+            "Manto Sipi Cree Nation",
+            "Northlands Denesuline First Nation",
+            "Sayisi Dene First Nation",
+            "Shamattawa First Nation",
+            "Tataskweyak Cree Nation",
+            "War Lake First Nation",
+            "York Factory First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=308&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Barren Lands\" announcement Manitoba",
+        "\"Barren Lands\" community update",
+        "site:facebook.com \"Barren Lands\" announcement",
+        "\"Barren Lands\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 266,
+      "communityName": "Berens River",
+      "aliases": [
+        "Berens River First Nation"
+      ],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Berens River official website",
+          "url": "https://www.berensriver.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:23:36Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:36Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.berensriver.ca/faq",
+            "https://www.berensriver.ca/announcements"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=266&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Berens River\" announcement Manitoba",
+        "\"Berens River\" community update",
+        "site:facebook.com \"Berens River\" announcement",
+        "\"Berens River\" Manitoba funding OR housing OR infrastructure",
+        "\"Berens River First Nation\" announcement Manitoba",
+        "\"Berens River First Nation\" community update",
+        "site:facebook.com \"Berens River First Nation\" announcement",
+        "\"Berens River First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 284,
+      "communityName": "Birdtail Sioux",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": null,
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Birdtail Sioux official website",
+          "url": "https://birdtailsioux.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:23:36Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:36Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://birdtailsioux.ca/feed/",
+            "https://birdtailsioux.ca/comments/feed/",
+            "https://birdtailsioux.ca/events/?ical=1",
+            "https://birdtailsioux.ca/events-list"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=284&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Birdtail Sioux\" announcement Manitoba",
+        "\"Birdtail Sioux\" community update",
+        "site:facebook.com \"Birdtail Sioux\" announcement",
+        "\"Birdtail Sioux\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 260,
+      "communityName": "Black River First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Black River First Nation official website",
+          "url": "https://www.black-river.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:23:37Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:37Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.black-river.ca/links/communitynews.htm",
+            "https://www.black-river.ca/links/announcements.htm"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=260&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Black River First Nation\" announcement Manitoba",
+        "\"Black River First Nation\" community update",
+        "site:facebook.com \"Black River First Nation\" announcement",
+        "\"Black River First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 267,
+      "communityName": "Bloodvein",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Bloodvein official website",
+          "url": "https://pimaki.ca/about-us/communities/bloodvein-river-first-nation",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:23:42Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:42Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://pimaki.ca/feed/",
+            "https://pimaki.ca/comments/feed/",
+            "https://pimaki.ca/news"
+          ],
+          "associationCommunityNames": [
+            "Bloodvein",
+            "Little Grand Rapids",
+            "Pauingassi First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=267&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Bloodvein\" announcement Manitoba",
+        "\"Bloodvein\" community update",
+        "site:facebook.com \"Bloodvein\" announcement",
+        "\"Bloodvein\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 261,
+      "communityName": "Brokenhead Ojibway Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 1",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Brokenhead Ojibway Nation official website",
+          "url": "https://brokenheadojibwaynation.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:23:39Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:39Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://brokenheadojibwaynation.ca/feed/",
+            "https://brokenheadojibwaynation.ca/news",
+            "https://brokenheadojibwaynation.ca/events",
+            "https://brokenheadojibwaynation.ca/community-update-land-settlement-claims-september-4-2025",
+            "https://brokenheadojibwaynation.ca/treaty-1-agricultural-benefits-claim-cows-and-ploughs-status-update",
+            "https://brokenheadojibwaynation.ca/notice-of-upcoming-road-closure-anishinaabe-way",
+            "https://brokenheadojibwaynation.ca/public-safety-notice-september-27-2025"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=261&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Brokenhead Ojibway Nation\" announcement Manitoba",
+        "\"Brokenhead Ojibway Nation\" community update",
+        "site:facebook.com \"Brokenhead Ojibway Nation\" announcement",
+        "\"Brokenhead Ojibway Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 265,
+      "communityName": "Buffalo Point First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 3",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Buffalo Point First Nation official website",
+          "url": "https://www.buffalopoint-firstnation.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:23:38Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:38Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": []
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=265&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Buffalo Point First Nation\" announcement Manitoba",
+        "\"Buffalo Point First Nation\" community update",
+        "site:facebook.com \"Buffalo Point First Nation\" announcement",
+        "\"Buffalo Point First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 301,
+      "communityName": "Bunibonibee Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Bunibonibee Cree Nation official website",
+          "url": "https://www.ktc.ca/?page_id=162",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:23:39Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:39Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.ktc.ca/news",
+            "https://www.ktc.ca/news/national-day-for-truth-and-reconciliation-2025",
+            "https://www.ktc.ca/news/ikiskawasoot-she-carries-life-awareness-walk-wednesday-october-8th-2025",
+            "https://www.ktc.ca/press-release-documents",
+            "https://www.ktc.ca/news/indigenous-peoples-resilience-fund",
+            "https://www.ktc.ca/news/2025-ktc-23rd-annual-tribal-days",
+            "https://www.ktc.ca/news/news",
+            "https://www.ktc.ca/news/about"
+          ],
+          "associationCommunityNames": [
+            "Barren Lands",
+            "Bunibonibee Cree Nation",
+            "God's Lake First Nation",
+            "Manto Sipi Cree Nation",
+            "Northlands Denesuline First Nation",
+            "Sayisi Dene First Nation",
+            "Shamattawa First Nation",
+            "Tataskweyak Cree Nation",
+            "War Lake First Nation",
+            "York Factory First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=301&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Bunibonibee Cree Nation\" announcement Manitoba",
+        "\"Bunibonibee Cree Nation\" community update",
+        "site:facebook.com \"Bunibonibee Cree Nation\" announcement",
+        "\"Bunibonibee Cree Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 289,
+      "communityName": "Canupawakpa Dakota First Nation",
+      "aliases": [
+        "Canupawakpa Dakota Nation"
+      ],
+      "provinceTerritory": "MB",
+      "treaty": null,
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Canupawakpa Dakota First Nation official website",
+          "url": "https://canupawakpanation.com/",
+          "status": "candidate",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:23:40Z",
+          "lastScanStatus": "source_identity_unconfirmed"
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=289&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Canupawakpa Dakota First Nation\" announcement Manitoba",
+        "\"Canupawakpa Dakota First Nation\" community update",
+        "site:facebook.com \"Canupawakpa Dakota First Nation\" announcement",
+        "\"Canupawakpa Dakota First Nation\" Manitoba funding OR housing OR infrastructure",
+        "\"Canupawakpa Dakota Nation\" announcement Manitoba",
+        "\"Canupawakpa Dakota Nation\" community update",
+        "site:facebook.com \"Canupawakpa Dakota Nation\" announcement",
+        "\"Canupawakpa Dakota Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 309,
+      "communityName": "Chemawawin Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Chemawawin Cree Nation official website",
+          "url": "https://swampycree.com/chemawawin-cree-nation",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:23:43Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:43Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://swampycree.com/feed/",
+            "https://swampycree.com/comments/feed/",
+            "https://swampycree.com/sctc-events"
+          ]
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Chemawawin Cree Nation attributable community source",
+          "url": "https://chemawawin.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "requiresCommunityMention": false,
+          "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
+          "lastCheckedAt": "2026-11-03T03:23:42Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:42Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://chemawawin.com/feed/",
+            "https://chemawawin.com/events",
+            "https://chemawawin.com/news"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=309&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Chemawawin Cree Nation\" announcement Manitoba",
+        "\"Chemawawin Cree Nation\" community update",
+        "site:facebook.com \"Chemawawin Cree Nation\" announcement",
+        "\"Chemawawin Cree Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 276,
+      "communityName": "Cross Lake Band of Indians",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=276&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Cross Lake Band of Indians\" announcement Manitoba",
+        "\"Cross Lake Band of Indians\" community update",
+        "site:facebook.com \"Cross Lake Band of Indians\" announcement",
+        "\"Cross Lake Band of Indians\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 288,
+      "communityName": "Dakota Plains",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": null,
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=288&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Dakota Plains\" announcement Manitoba",
+        "\"Dakota Plains\" community update",
+        "site:facebook.com \"Dakota Plains\" announcement",
+        "\"Dakota Plains\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 295,
+      "communityName": "Dakota Tipi",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": null,
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Dakota Tipi attributable community source",
+          "url": "https://dakotatipifirstnation.godaddysites.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "requiresCommunityMention": false,
+          "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
+          "lastCheckedAt": "2026-11-03T03:23:41Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:41Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": []
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=295&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Dakota Tipi\" announcement Manitoba",
+        "\"Dakota Tipi\" community update",
+        "site:facebook.com \"Dakota Tipi\" announcement",
+        "\"Dakota Tipi\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 316,
+      "communityName": "Dauphin River",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 2",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Dauphin River official website",
+          "url": "https://irtc.ca/dauphin-river-first-nation",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:23:42Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:42Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://irtc.ca/feed/",
+            "https://irtc.ca/comments/feed/",
+            "https://irtc.ca/events/?ical=1",
+            "https://irtc.ca/news-opportunities"
+          ],
+          "associationCommunityNames": [
+            "Dauphin River",
+            "Kinonjeoshtegon First Nation",
+            "Lake Manitoba",
+            "Lake St. Martin",
+            "Little Saskatchewan",
+            "Pinaymootang First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=316&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Dauphin River\" announcement Manitoba",
+        "\"Dauphin River\" community update",
+        "site:facebook.com \"Dauphin River\" announcement",
+        "\"Dauphin River\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 280,
+      "communityName": "Ebb and Flow",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 2",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Ebb and Flow attributable community source",
+          "url": "https://ebbandflowfn.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "requiresCommunityMention": false,
+          "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
+          "lastCheckedAt": "2026-11-03T03:23:43Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:43Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://ebbandflowfn.ca/feed/",
+            "https://ebbandflowfn.ca/comments/feed/",
+            "https://ebbandflowfn.ca/news",
+            "https://ebbandflowfn.ca/events-page"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=280&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Ebb and Flow\" announcement Manitoba",
+        "\"Ebb and Flow\" community update",
+        "site:facebook.com \"Ebb and Flow\" announcement",
+        "\"Ebb and Flow\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 264,
+      "communityName": "Fisher River",
+      "aliases": [
+        "Fisher River Cree Nation"
+      ],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Fisher River official website",
+          "url": "https://fisherriver.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:23:44Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:44Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://fisherriver.ca/feed/",
+            "https://fisherriver.ca/comments/feed/",
+            "https://fisherriver.ca/blog-elementor",
+            "https://fisherriver.ca/category/events",
+            "https://fisherriver.ca/sports-recreation-media-bingo",
+            "https://fisherriver.ca/shows/media-bingo"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=264&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Fisher River\" announcement Manitoba",
+        "\"Fisher River\" community update",
+        "site:facebook.com \"Fisher River\" announcement",
+        "\"Fisher River\" Manitoba funding OR housing OR infrastructure",
+        "\"Fisher River Cree Nation\" announcement Manitoba",
+        "\"Fisher River Cree Nation\" community update",
+        "site:facebook.com \"Fisher River Cree Nation\" announcement",
+        "\"Fisher River Cree Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 262,
+      "communityName": "Fort Alexander",
+      "aliases": [
+        "Sagkeeng First Nation"
+      ],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 1",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Fort Alexander official website",
+          "url": "https://www.sagkeeng.ca/",
+          "status": "candidate",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:23:43Z",
+          "lastScanStatus": "source_identity_unconfirmed"
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Fort Alexander attributable community source",
+          "url": "https://sagkeeng.ca/",
+          "status": "candidate",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "requiresCommunityMention": false,
+          "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
+          "lastCheckedAt": "2026-11-03T03:23:43Z",
+          "lastScanStatus": "source_identity_unconfirmed"
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=262&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Fort Alexander\" announcement Manitoba",
+        "\"Fort Alexander\" community update",
+        "site:facebook.com \"Fort Alexander\" announcement",
+        "\"Fort Alexander\" Manitoba funding OR housing OR infrastructure",
+        "\"Sagkeeng First Nation\" announcement Manitoba",
+        "\"Sagkeeng First Nation\" community update",
+        "site:facebook.com \"Sagkeeng First Nation\" announcement",
+        "\"Sagkeeng First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 305,
+      "communityName": "Fox Lake",
+      "aliases": [
+        "Fox Lake Cree Nation"
+      ],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Fox Lake official website",
+          "url": "https://www.foxlakecreenation.com/",
+          "status": "candidate",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:23:43Z",
+          "lastScanStatus": "tls_error"
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=305&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Fox Lake\" announcement Manitoba",
+        "\"Fox Lake\" community update",
+        "site:facebook.com \"Fox Lake\" announcement",
+        "\"Fox Lake\" Manitoba funding OR housing OR infrastructure",
+        "\"Fox Lake Cree Nation\" announcement Manitoba",
+        "\"Fox Lake Cree Nation\" community update",
+        "site:facebook.com \"Fox Lake Cree Nation\" announcement",
+        "\"Fox Lake Cree Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 294,
+      "communityName": "Gambler First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Gambler First Nation attributable community source",
+          "url": "https://www.gamblerfirstnation.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "requiresCommunityMention": false,
+          "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
+          "lastCheckedAt": "2026-11-03T03:23:47Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:47Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.gamblerfirstnation.ca/news-events/news",
+            "https://www.gamblerfirstnation.ca/news-events/downloads?catid%5B0%5D=&view=frontlist",
+            "https://www.gamblerfirstnation.ca/news-events/employment",
+            "https://www.gamblerfirstnation.ca/news-events/news/723-parent-support-group",
+            "https://www.gamblerfirstnation.ca/news-events/news?format=feed&type=rss",
+            "https://www.gamblerfirstnation.ca/news-events/news?format=feed&type=atom",
+            "https://www.gamblerfirstnation.ca/news-events/news/724-november-huddle-wednesdays"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=294&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Gambler First Nation\" announcement Manitoba",
+        "\"Gambler First Nation\" community update",
+        "site:facebook.com \"Gambler First Nation\" announcement",
+        "\"Gambler First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 297,
+      "communityName": "Garden Hill First Nations",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=297&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Garden Hill First Nations\" announcement Manitoba",
+        "\"Garden Hill First Nations\" community update",
+        "site:facebook.com \"Garden Hill First Nations\" announcement",
+        "\"Garden Hill First Nations\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 296,
+      "communityName": "God's Lake First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "God's Lake First Nation official website",
+          "url": "https://www.ktc.ca/?page_id=166",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:23:46Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:46Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.ktc.ca/news",
+            "https://www.ktc.ca/news/national-day-for-truth-and-reconciliation-2025",
+            "https://www.ktc.ca/news/ikiskawasoot-she-carries-life-awareness-walk-wednesday-october-8th-2025",
+            "https://www.ktc.ca/press-release-documents",
+            "https://www.ktc.ca/news/indigenous-peoples-resilience-fund",
+            "https://www.ktc.ca/news/2025-ktc-23rd-annual-tribal-days",
+            "https://www.ktc.ca/news/news",
+            "https://www.ktc.ca/news/about"
+          ],
+          "associationCommunityNames": [
+            "Barren Lands",
+            "Bunibonibee Cree Nation",
+            "God's Lake First Nation",
+            "Manto Sipi Cree Nation",
+            "Northlands Denesuline First Nation",
+            "Sayisi Dene First Nation",
+            "Shamattawa First Nation",
+            "Tataskweyak Cree Nation",
+            "War Lake First Nation",
+            "York Factory First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=296&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"God's Lake First Nation\" announcement Manitoba",
+        "\"God's Lake First Nation\" community update",
+        "site:facebook.com \"God's Lake First Nation\" announcement",
+        "\"God's Lake First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 263,
+      "communityName": "Hollow Water",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Hollow Water official website",
+          "url": "https://hollowwater.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:23:46Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:46Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://hollowwater.ca/feed/",
+            "https://hollowwater.ca/comments/feed/",
+            "https://hollowwater.ca/news-events"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=263&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Hollow Water\" announcement Manitoba",
+        "\"Hollow Water\" community update",
+        "site:facebook.com \"Hollow Water\" announcement",
+        "\"Hollow Water\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 286,
+      "communityName": "Keeseekoowenin",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 2",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=286&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Keeseekoowenin\" announcement Manitoba",
+        "\"Keeseekoowenin\" community update",
+        "site:facebook.com \"Keeseekoowenin\" announcement",
+        "\"Keeseekoowenin\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 268,
+      "communityName": "Kinonjeoshtegon First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Tribal Council",
+          "name": "Kinonjeoshtegon First Nation attributable community source",
+          "url": "https://irtc.ca/kinonjeoshtegon-first-nation",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": false,
+          "requiresCommunityMention": true,
+          "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
+          "lastCheckedAt": "2026-11-03T03:23:50Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:50Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://irtc.ca/feed/",
+            "https://irtc.ca/comments/feed/",
+            "https://irtc.ca/events/?ical=1",
+            "https://irtc.ca/news-opportunities"
+          ],
+          "associationCommunityNames": [
+            "Dauphin River",
+            "Kinonjeoshtegon First Nation",
+            "Lake Manitoba",
+            "Lake St. Martin",
+            "Little Saskatchewan",
+            "Pinaymootang First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=268&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Kinonjeoshtegon First Nation\" announcement Manitoba",
+        "\"Kinonjeoshtegon First Nation\" community update",
+        "site:facebook.com \"Kinonjeoshtegon First Nation\" announcement",
+        "\"Kinonjeoshtegon First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 271,
+      "communityName": "Lake Manitoba",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 2",
+      "sources": [
+        {
+          "type": "Tribal Council",
+          "name": "Lake Manitoba attributable community source",
+          "url": "https://irtc.ca/lake-manitoba-first-nation",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": false,
+          "requiresCommunityMention": true,
+          "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
+          "lastCheckedAt": "2026-11-03T03:23:51Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:51Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://irtc.ca/feed/",
+            "https://irtc.ca/comments/feed/",
+            "https://irtc.ca/events/?ical=1",
+            "https://irtc.ca/news-opportunities"
+          ],
+          "associationCommunityNames": [
+            "Dauphin River",
+            "Kinonjeoshtegon First Nation",
+            "Lake Manitoba",
+            "Lake St. Martin",
+            "Little Saskatchewan",
+            "Pinaymootang First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=271&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Lake Manitoba\" announcement Manitoba",
+        "\"Lake Manitoba\" community update",
+        "site:facebook.com \"Lake Manitoba\" announcement",
+        "\"Lake Manitoba\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 275,
+      "communityName": "Lake St. Martin",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 2",
+      "sources": [
+        {
+          "type": "Tribal Council",
+          "name": "Lake St. Martin attributable community source",
+          "url": "https://irtc.ca/lake-st-martin-first-nation",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": false,
+          "requiresCommunityMention": true,
+          "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
+          "lastCheckedAt": "2026-11-03T03:23:52Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:52Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://irtc.ca/feed/",
+            "https://irtc.ca/comments/feed/",
+            "https://irtc.ca/events/?ical=1",
+            "https://irtc.ca/news-opportunities"
+          ],
+          "associationCommunityNames": [
+            "Dauphin River",
+            "Kinonjeoshtegon First Nation",
+            "Lake Manitoba",
+            "Lake St. Martin",
+            "Little Saskatchewan",
+            "Pinaymootang First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=275&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Lake St. Martin\" announcement Manitoba",
+        "\"Lake St. Martin\" community update",
+        "site:facebook.com \"Lake St. Martin\" announcement",
+        "\"Lake St. Martin\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 270,
+      "communityName": "Little Grand Rapids",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Little Grand Rapids official website",
+          "url": "https://www.littlegrandrapidsfn.ca/",
+          "status": "candidate",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:23:54Z",
+          "lastScanStatus": "robots_unavailable"
+        },
+        {
+          "type": "Tribal Council",
+          "name": "Little Grand Rapids attributable community source",
+          "url": "https://pimaki.ca/about-us/communities/little-grand-rapids-first-nation",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": false,
+          "requiresCommunityMention": true,
+          "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
+          "lastCheckedAt": "2026-11-03T03:23:52Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:52Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://pimaki.ca/feed/",
+            "https://pimaki.ca/comments/feed/",
+            "https://pimaki.ca/news"
+          ],
+          "associationCommunityNames": [
+            "Bloodvein",
+            "Little Grand Rapids",
+            "Pauingassi First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=270&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Little Grand Rapids\" announcement Manitoba",
+        "\"Little Grand Rapids\" community update",
+        "site:facebook.com \"Little Grand Rapids\" announcement",
+        "\"Little Grand Rapids\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 274,
+      "communityName": "Little Saskatchewan",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 2",
+      "sources": [
+        {
+          "type": "Tribal Council",
+          "name": "Little Saskatchewan attributable community source",
+          "url": "https://irtc.ca/little-saskatchewan-first-nation",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": false,
+          "requiresCommunityMention": true,
+          "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
+          "lastCheckedAt": "2026-11-03T03:23:53Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:53Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://irtc.ca/feed/",
+            "https://irtc.ca/comments/feed/",
+            "https://irtc.ca/events/?ical=1",
+            "https://irtc.ca/news-opportunities"
+          ],
+          "associationCommunityNames": [
+            "Dauphin River",
+            "Kinonjeoshtegon First Nation",
+            "Lake Manitoba",
+            "Lake St. Martin",
+            "Little Saskatchewan",
+            "Pinaymootang First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=274&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Little Saskatchewan\" announcement Manitoba",
+        "\"Little Saskatchewan\" community update",
+        "site:facebook.com \"Little Saskatchewan\" announcement",
+        "\"Little Saskatchewan\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 287,
+      "communityName": "Long Plain",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 1",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Long Plain official website",
+          "url": "https://lpband.ca/",
+          "status": "candidate",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:23:51Z",
+          "lastScanStatus": "javascript_required"
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=287&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Long Plain\" announcement Manitoba",
+        "\"Long Plain\" community update",
+        "site:facebook.com \"Long Plain\" announcement",
+        "\"Long Plain\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 302,
+      "communityName": "Manto Sipi Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Manto Sipi Cree Nation official website",
+          "url": "https://www.ktc.ca/?page_id=168",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:23:53Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:53Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.ktc.ca/news",
+            "https://www.ktc.ca/news/national-day-for-truth-and-reconciliation-2025",
+            "https://www.ktc.ca/news/ikiskawasoot-she-carries-life-awareness-walk-wednesday-october-8th-2025",
+            "https://www.ktc.ca/press-release-documents",
+            "https://www.ktc.ca/news/indigenous-peoples-resilience-fund",
+            "https://www.ktc.ca/news/2025-ktc-23rd-annual-tribal-days",
+            "https://www.ktc.ca/news/news",
+            "https://www.ktc.ca/news/about"
+          ],
+          "associationCommunityNames": [
+            "Barren Lands",
+            "Bunibonibee Cree Nation",
+            "God's Lake First Nation",
+            "Manto Sipi Cree Nation",
+            "Northlands Denesuline First Nation",
+            "Sayisi Dene First Nation",
+            "Shamattawa First Nation",
+            "Tataskweyak Cree Nation",
+            "War Lake First Nation",
+            "York Factory First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=302&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Manto Sipi Cree Nation\" announcement Manitoba",
+        "\"Manto Sipi Cree Nation\" community update",
+        "site:facebook.com \"Manto Sipi Cree Nation\" announcement",
+        "\"Manto Sipi Cree Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 328,
+      "communityName": "Marcel Colomb First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=328&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Marcel Colomb First Nation\" announcement Manitoba",
+        "\"Marcel Colomb First Nation\" community update",
+        "site:facebook.com \"Marcel Colomb First Nation\" announcement",
+        "\"Marcel Colomb First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 311,
+      "communityName": "Mathias Colomb",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 6",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Mathias Colomb attributable community source",
+          "url": "https://mathiascolomb.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "requiresCommunityMention": false,
+          "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
+          "lastCheckedAt": "2026-11-03T03:23:53Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:53Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://mathiascolomb.ca/news",
+            "https://mathiascolomb.ca/events",
+            "https://mathiascolomb.ca/admin/news",
+            "https://mathiascolomb.ca/admin/events"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=311&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Mathias Colomb\" announcement Manitoba",
+        "\"Mathias Colomb\" community update",
+        "site:facebook.com \"Mathias Colomb\" announcement",
+        "\"Mathias Colomb\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 282,
+      "communityName": "Minegoziibe Anishinabe",
+      "aliases": [
+        "Pine Creek"
+      ],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Minegoziibe Anishinabe attributable community source",
+          "url": "https://pinecreekfirstnation.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "requiresCommunityMention": false,
+          "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
+          "lastCheckedAt": "2026-11-03T03:23:57Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:57Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://pinecreekfirstnation.com/feed/",
+            "https://pinecreekfirstnation.com/news",
+            "https://pinecreekfirstnation.com/event-directory",
+            "https://pinecreekfirstnation.com/news/minegoziibe-anishinabe-and-sustainable-long-term-wind-energy-for-manitobans",
+            "https://pinecreekfirstnation.com/news/elementor-4087",
+            "https://pinecreekfirstnation.com/news/feed/",
+            "https://pinecreekfirstnation.com/news/election-results"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=282&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Minegoziibe Anishinabe\" announcement Manitoba",
+        "\"Minegoziibe Anishinabe\" community update",
+        "site:facebook.com \"Minegoziibe Anishinabe\" announcement",
+        "\"Minegoziibe Anishinabe\" Manitoba funding OR housing OR infrastructure",
+        "\"Pine Creek\" announcement Manitoba",
+        "\"Pine Creek\" community update",
+        "site:facebook.com \"Pine Creek\" announcement",
+        "\"Pine Creek\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 310,
+      "communityName": "Misipawistik Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=310&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Misipawistik Cree Nation\" announcement Manitoba",
+        "\"Misipawistik Cree Nation\" community update",
+        "site:facebook.com \"Misipawistik Cree Nation\" announcement",
+        "\"Misipawistik Cree Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 312,
+      "communityName": "Mosakahiken Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=312&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Mosakahiken Cree Nation\" announcement Manitoba",
+        "\"Mosakahiken Cree Nation\" community update",
+        "site:facebook.com \"Mosakahiken Cree Nation\" announcement",
+        "\"Mosakahiken Cree Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 313,
+      "communityName": "Nisichawayasihk Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Nisichawayasihk Cree Nation official website",
+          "url": "https://www.ncncree.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:23:58Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:58Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.ncncree.com/events/?ical=1",
+            "https://www.ncncree.com/news",
+            "https://www.ncncree.com/news/coronavirus-updates",
+            "https://www.ncncree.com/events",
+            "https://www.ncncree.com/news/news-releases",
+            "https://www.ncncree.com/news/newsletters"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=313&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Nisichawayasihk Cree Nation\" announcement Manitoba",
+        "\"Nisichawayasihk Cree Nation\" community update",
+        "site:facebook.com \"Nisichawayasihk Cree Nation\" announcement",
+        "\"Nisichawayasihk Cree Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 317,
+      "communityName": "Northlands Denesuline First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 10",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Northlands Denesuline First Nation official website",
+          "url": "https://www.ktc.ca/?page_id=170",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:23:55Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:55Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.ktc.ca/news",
+            "https://www.ktc.ca/news/national-day-for-truth-and-reconciliation-2025",
+            "https://www.ktc.ca/news/ikiskawasoot-she-carries-life-awareness-walk-wednesday-october-8th-2025",
+            "https://www.ktc.ca/press-release-documents",
+            "https://www.ktc.ca/news/indigenous-peoples-resilience-fund",
+            "https://www.ktc.ca/news/2025-ktc-23rd-annual-tribal-days",
+            "https://www.ktc.ca/news/news",
+            "https://www.ktc.ca/news/about"
+          ],
+          "associationCommunityNames": [
+            "Barren Lands",
+            "Bunibonibee Cree Nation",
+            "God's Lake First Nation",
+            "Manto Sipi Cree Nation",
+            "Northlands Denesuline First Nation",
+            "Sayisi Dene First Nation",
+            "Shamattawa First Nation",
+            "Tataskweyak Cree Nation",
+            "War Lake First Nation",
+            "York Factory First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=317&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Northlands Denesuline First Nation\" announcement Manitoba",
+        "\"Northlands Denesuline First Nation\" community update",
+        "site:facebook.com \"Northlands Denesuline First Nation\" announcement",
+        "\"Northlands Denesuline First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 278,
+      "communityName": "Norway House Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Norway House Cree Nation official website",
+          "url": "https://www.nhcn.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:23:57Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:57Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://nhcn.ca/feed/",
+            "https://nhcn.ca/comments/feed/",
+            "https://nhcn.ca/community-news",
+            "https://nhcn.ca/norway-house-economic-development-group/news-events",
+            "https://nhcn.ca/events-meetings",
+            "https://nhcn.ca/category/community-news"
+          ]
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Norway House Cree Nation attributable community source",
+          "url": "https://nhcn.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "requiresCommunityMention": false,
+          "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
+          "lastCheckedAt": "2026-11-03T03:23:56Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:56Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://nhcn.ca/feed/",
+            "https://nhcn.ca/comments/feed/",
+            "https://nhcn.ca/community-news",
+            "https://nhcn.ca/norway-house-economic-development-group/news-events",
+            "https://nhcn.ca/events-meetings",
+            "https://nhcn.ca/category/community-news"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=278&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Norway House Cree Nation\" announcement Manitoba",
+        "\"Norway House Cree Nation\" community update",
+        "site:facebook.com \"Norway House Cree Nation\" announcement",
+        "\"Norway House Cree Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 279,
+      "communityName": "O-Chi-Chak-Ko-Sipi First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 2",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=279&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"O-Chi-Chak-Ko-Sipi First Nation\" announcement Manitoba",
+        "\"O-Chi-Chak-Ko-Sipi First Nation\" community update",
+        "site:facebook.com \"O-Chi-Chak-Ko-Sipi First Nation\" announcement",
+        "\"O-Chi-Chak-Ko-Sipi First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 318,
+      "communityName": "O-Pipon-Na-Piwin Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=318&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"O-Pipon-Na-Piwin Cree Nation\" announcement Manitoba",
+        "\"O-Pipon-Na-Piwin Cree Nation\" community update",
+        "site:facebook.com \"O-Pipon-Na-Piwin Cree Nation\" announcement",
+        "\"O-Pipon-Na-Piwin Cree Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 315,
+      "communityName": "Opaskwayak Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Opaskwayak Cree Nation official website",
+          "url": "https://opaskwayak.com/",
+          "status": "candidate",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:23:54Z",
+          "lastScanStatus": "tls_error"
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=315&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Opaskwayak Cree Nation\" announcement Manitoba",
+        "\"Opaskwayak Cree Nation\" community update",
+        "site:facebook.com \"Opaskwayak Cree Nation\" announcement",
+        "\"Opaskwayak Cree Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 327,
+      "communityName": "Pauingassi First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Pauingassi First Nation official website",
+          "url": "https://pimaki.ca/about-us/communities/pauingassi-first-nation",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:24:00Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:24:00Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://pimaki.ca/feed/",
+            "https://pimaki.ca/comments/feed/",
+            "https://pimaki.ca/news"
+          ],
+          "associationCommunityNames": [
+            "Bloodvein",
+            "Little Grand Rapids",
+            "Pauingassi First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=327&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Pauingassi First Nation\" announcement Manitoba",
+        "\"Pauingassi First Nation\" community update",
+        "site:facebook.com \"Pauingassi First Nation\" announcement",
+        "\"Pauingassi First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 269,
+      "communityName": "Peguis",
+      "aliases": [
+        "Peguis First Nation"
+      ],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 1",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Peguis official website",
+          "url": "https://www.peguisfirstnation.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:24:01Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:24:01Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://peguis.ca/index.php?format=feed&type=rss",
+            "https://peguis.ca/index.php?format=feed&type=atom",
+            "https://peguis.ca/index.php/departments/communications/in-the-media",
+            "https://peguis.ca/index.php/notices",
+            "https://peguis.ca/index.php/events",
+            "https://peguis.ca/index.php/events/events-past"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=269&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Peguis\" announcement Manitoba",
+        "\"Peguis\" community update",
+        "site:facebook.com \"Peguis\" announcement",
+        "\"Peguis\" Manitoba funding OR housing OR infrastructure",
+        "\"Peguis First Nation\" announcement Manitoba",
+        "\"Peguis First Nation\" community update",
+        "site:facebook.com \"Peguis First Nation\" announcement",
+        "\"Peguis First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 272,
+      "communityName": "Pinaymootang First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 2",
+      "sources": [
+        {
+          "type": "Tribal Council",
+          "name": "Pinaymootang First Nation attributable community source",
+          "url": "https://irtc.ca/pinaymootang-first-nation",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": false,
+          "requiresCommunityMention": true,
+          "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
+          "lastCheckedAt": "2026-11-03T03:23:58Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:23:58Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://irtc.ca/feed/",
+            "https://irtc.ca/comments/feed/",
+            "https://irtc.ca/events/?ical=1",
+            "https://irtc.ca/news-opportunities"
+          ],
+          "associationCommunityNames": [
+            "Dauphin River",
+            "Kinonjeoshtegon First Nation",
+            "Lake Manitoba",
+            "Lake St. Martin",
+            "Little Saskatchewan",
+            "Pinaymootang First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=272&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Pinaymootang First Nation\" announcement Manitoba",
+        "\"Pinaymootang First Nation\" community update",
+        "site:facebook.com \"Pinaymootang First Nation\" announcement",
+        "\"Pinaymootang First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 277,
+      "communityName": "Poplar River First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Poplar River First Nation official website",
+          "url": "https://www.prfn.ca/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:24:00Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:24:00Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.prfn.ca/news",
+            "https://www.prfn.ca/news?format=rss",
+            "https://www.prfn.ca/news?author=594979322cba5ec32c73d14c",
+            "https://www.prfn.ca/news/2023/4/18/lb5fygoxacgpqn4fdi8lcgk9zb4u49"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=277&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Poplar River First Nation\" announcement Manitoba",
+        "\"Poplar River First Nation\" community update",
+        "site:facebook.com \"Poplar River First Nation\" announcement",
+        "\"Poplar River First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 300,
+      "communityName": "Red Sucker Lake",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Red Sucker Lake official website",
+          "url": "https://fourarrowsrha.org/red-sucker-lake-first-nation",
+          "status": "candidate",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:23:58Z",
+          "lastScanStatus": "not_found",
+          "associationCommunityNames": [
+            "Red Sucker Lake",
+            "Wasagamack First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=300&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Red Sucker Lake\" announcement Manitoba",
+        "\"Red Sucker Lake\" community update",
+        "site:facebook.com \"Red Sucker Lake\" announcement",
+        "\"Red Sucker Lake\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 291,
+      "communityName": "Rolling River",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=291&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Rolling River\" announcement Manitoba",
+        "\"Rolling River\" community update",
+        "site:facebook.com \"Rolling River\" announcement",
+        "\"Rolling River\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 273,
+      "communityName": "Roseau River Anishinabe First Nation Government",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 1",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Roseau River Anishinabe First Nation Government official website",
+          "url": "https://www.rrafn.com/",
+          "status": "candidate",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:24:00Z",
+          "lastScanStatus": "source_identity_unconfirmed"
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=273&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Roseau River Anishinabe First Nation Government\" announcement Manitoba",
+        "\"Roseau River Anishinabe First Nation Government\" community update",
+        "site:facebook.com \"Roseau River Anishinabe First Nation Government\" announcement",
+        "\"Roseau River Anishinabe First Nation Government\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 283,
+      "communityName": "Sandy Bay",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 1",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Sandy Bay attributable community source",
+          "url": "https://sbofn.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "requiresCommunityMention": false,
+          "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
+          "lastCheckedAt": "2026-11-03T03:24:05Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:24:05Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://sbofn.com/feed/",
+            "https://sbofn.com/comments/feed/"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=283&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Sandy Bay\" announcement Manitoba",
+        "\"Sandy Bay\" community update",
+        "site:facebook.com \"Sandy Bay\" announcement",
+        "\"Sandy Bay\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 314,
+      "communityName": "Sapotaweyak Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=314&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Sapotaweyak Cree Nation\" announcement Manitoba",
+        "\"Sapotaweyak Cree Nation\" community update",
+        "site:facebook.com \"Sapotaweyak Cree Nation\" announcement",
+        "\"Sapotaweyak Cree Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 303,
+      "communityName": "Sayisi Dene First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Sayisi Dene First Nation official website",
+          "url": "https://www.ktc.ca/?page_id=172",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:24:02Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:24:02Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.ktc.ca/news",
+            "https://www.ktc.ca/news/national-day-for-truth-and-reconciliation-2025",
+            "https://www.ktc.ca/news/ikiskawasoot-she-carries-life-awareness-walk-wednesday-october-8th-2025",
+            "https://www.ktc.ca/press-release-documents",
+            "https://www.ktc.ca/news/indigenous-peoples-resilience-fund",
+            "https://www.ktc.ca/news/2025-ktc-23rd-annual-tribal-days",
+            "https://www.ktc.ca/news/news",
+            "https://www.ktc.ca/news/about"
+          ],
+          "associationCommunityNames": [
+            "Barren Lands",
+            "Bunibonibee Cree Nation",
+            "God's Lake First Nation",
+            "Manto Sipi Cree Nation",
+            "Northlands Denesuline First Nation",
+            "Sayisi Dene First Nation",
+            "Shamattawa First Nation",
+            "Tataskweyak Cree Nation",
+            "War Lake First Nation",
+            "York Factory First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=303&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Sayisi Dene First Nation\" announcement Manitoba",
+        "\"Sayisi Dene First Nation\" community update",
+        "site:facebook.com \"Sayisi Dene First Nation\" announcement",
+        "\"Sayisi Dene First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 307,
+      "communityName": "Shamattawa First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Shamattawa First Nation official website",
+          "url": "https://www.ktc.ca/?page_id=351",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:24:05Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:24:05Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.ktc.ca/news",
+            "https://www.ktc.ca/news/national-day-for-truth-and-reconciliation-2025",
+            "https://www.ktc.ca/news/ikiskawasoot-she-carries-life-awareness-walk-wednesday-october-8th-2025",
+            "https://www.ktc.ca/press-release-documents",
+            "https://www.ktc.ca/news/indigenous-peoples-resilience-fund",
+            "https://www.ktc.ca/news/2025-ktc-23rd-annual-tribal-days",
+            "https://www.ktc.ca/news/news",
+            "https://www.ktc.ca/news/about"
+          ],
+          "associationCommunityNames": [
+            "Barren Lands",
+            "Bunibonibee Cree Nation",
+            "God's Lake First Nation",
+            "Manto Sipi Cree Nation",
+            "Northlands Denesuline First Nation",
+            "Sayisi Dene First Nation",
+            "Shamattawa First Nation",
+            "Tataskweyak Cree Nation",
+            "War Lake First Nation",
+            "York Factory First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=307&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Shamattawa First Nation\" announcement Manitoba",
+        "\"Shamattawa First Nation\" community update",
+        "site:facebook.com \"Shamattawa First Nation\" announcement",
+        "\"Shamattawa First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 290,
+      "communityName": "Sioux Valley Dakota Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": null,
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Sioux Valley Dakota Nation official website",
+          "url": "https://svdngovernance.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:24:06Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:24:06Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://svdngovernance.com/feed/",
+            "https://svdngovernance.com/comments/feed/",
+            "https://svdngovernance.com/category/recent-news",
+            "https://svdngovernance.com/category/events",
+            "https://svdngovernance.com/category/governance-news",
+            "https://svdngovernance.com/recent-news/svdn-education-notice-partial-closure-for-gr-6-8-2026-11-02-03"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=290&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Sioux Valley Dakota Nation\" announcement Manitoba",
+        "\"Sioux Valley Dakota Nation\" community update",
+        "site:facebook.com \"Sioux Valley Dakota Nation\" announcement",
+        "\"Sioux Valley Dakota Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 281,
+      "communityName": "Skownan First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 2",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=281&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Skownan First Nation\" announcement Manitoba",
+        "\"Skownan First Nation\" community update",
+        "site:facebook.com \"Skownan First Nation\" announcement",
+        "\"Skownan First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 298,
+      "communityName": "St. Theresa Point",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "St. Theresa Point official website",
+          "url": "https://anishininewokimawin.org/st-theresa-point-first-nation",
+          "status": "candidate",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:24:02Z",
+          "lastScanStatus": "unrelated_or_parked_domain"
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=298&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"St. Theresa Point\" announcement Manitoba",
+        "\"St. Theresa Point\" community update",
+        "site:facebook.com \"St. Theresa Point\" announcement",
+        "\"St. Theresa Point\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 293,
+      "communityName": "Swan Lake First Nation",
+      "aliases": [
+        "Swan Lake"
+      ],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 1",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Swan Lake First Nation official website",
+          "url": "https://swanlakefirstnation.com/",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "lastCheckedAt": "2026-11-03T03:24:03Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:24:03Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://swanlakefirstnation.com/feed/",
+            "https://swanlakefirstnation.com/comments/feed/",
+            "https://swanlakefirstnation.com/category/community-news"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=293&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Swan Lake First Nation\" announcement Manitoba",
+        "\"Swan Lake First Nation\" community update",
+        "site:facebook.com \"Swan Lake First Nation\" announcement",
+        "\"Swan Lake First Nation\" Manitoba funding OR housing OR infrastructure",
+        "\"Swan Lake\" announcement Manitoba",
+        "\"Swan Lake\" community update",
+        "site:facebook.com \"Swan Lake\" announcement",
+        "\"Swan Lake\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 306,
+      "communityName": "Tataskweyak Cree Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Tataskweyak Cree Nation official website",
+          "url": "https://www.ktc.ca/?page_id=174",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:24:08Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:24:08Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.ktc.ca/news",
+            "https://www.ktc.ca/news/national-day-for-truth-and-reconciliation-2025",
+            "https://www.ktc.ca/news/ikiskawasoot-she-carries-life-awareness-walk-wednesday-october-8th-2025",
+            "https://www.ktc.ca/press-release-documents",
+            "https://www.ktc.ca/news/indigenous-peoples-resilience-fund",
+            "https://www.ktc.ca/news/2025-ktc-23rd-annual-tribal-days",
+            "https://www.ktc.ca/news/news",
+            "https://www.ktc.ca/news/about"
+          ],
+          "associationCommunityNames": [
+            "Barren Lands",
+            "Bunibonibee Cree Nation",
+            "God's Lake First Nation",
+            "Manto Sipi Cree Nation",
+            "Northlands Denesuline First Nation",
+            "Sayisi Dene First Nation",
+            "Shamattawa First Nation",
+            "Tataskweyak Cree Nation",
+            "War Lake First Nation",
+            "York Factory First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=306&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Tataskweyak Cree Nation\" announcement Manitoba",
+        "\"Tataskweyak Cree Nation\" community update",
+        "site:facebook.com \"Tataskweyak Cree Nation\" announcement",
+        "\"Tataskweyak Cree Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 292,
+      "communityName": "Tootinaowaziibeeng Treaty Reserve",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=292&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Tootinaowaziibeeng Treaty Reserve\" announcement Manitoba",
+        "\"Tootinaowaziibeeng Treaty Reserve\" community update",
+        "site:facebook.com \"Tootinaowaziibeeng Treaty Reserve\" announcement",
+        "\"Tootinaowaziibeeng Treaty Reserve\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 323,
+      "communityName": "War Lake First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "War Lake First Nation official website",
+          "url": "https://www.ktc.ca/?page_id=178",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:24:09Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:24:09Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.ktc.ca/news",
+            "https://www.ktc.ca/news/national-day-for-truth-and-reconciliation-2025",
+            "https://www.ktc.ca/news/ikiskawasoot-she-carries-life-awareness-walk-wednesday-october-8th-2025",
+            "https://www.ktc.ca/press-release-documents",
+            "https://www.ktc.ca/news/indigenous-peoples-resilience-fund",
+            "https://www.ktc.ca/news/2025-ktc-23rd-annual-tribal-days",
+            "https://www.ktc.ca/news/news",
+            "https://www.ktc.ca/news/about"
+          ],
+          "associationCommunityNames": [
+            "Barren Lands",
+            "Bunibonibee Cree Nation",
+            "God's Lake First Nation",
+            "Manto Sipi Cree Nation",
+            "Northlands Denesuline First Nation",
+            "Sayisi Dene First Nation",
+            "Shamattawa First Nation",
+            "Tataskweyak Cree Nation",
+            "War Lake First Nation",
+            "York Factory First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=323&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"War Lake First Nation\" announcement Manitoba",
+        "\"War Lake First Nation\" community update",
+        "site:facebook.com \"War Lake First Nation\" announcement",
+        "\"War Lake First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 299,
+      "communityName": "Wasagamack First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "Wasagamack First Nation official website",
+          "url": "https://fourarrowsrha.org/wasagamack-first-nation",
+          "status": "candidate",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:24:04Z",
+          "lastScanStatus": "not_found",
+          "associationCommunityNames": [
+            "Red Sucker Lake",
+            "Wasagamack First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=299&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Wasagamack First Nation\" announcement Manitoba",
+        "\"Wasagamack First Nation\" community update",
+        "site:facebook.com \"Wasagamack First Nation\" announcement",
+        "\"Wasagamack First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 285,
+      "communityName": "Waywayseecappo First Nation Treaty Four - 1874",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Tribal Council",
+          "name": "Waywayseecappo First Nation Treaty Four - 1874 attributable community source",
+          "url": "https://labrc.com/first-nation/waywayseecappo",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": false,
+          "requiresCommunityMention": true,
+          "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
+          "lastCheckedAt": "2026-11-03T03:24:07Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:24:07Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://labrc.com/feed/",
+            "https://labrc.com/events/?ical=1",
+            "https://labrc.com/news/press-notices",
+            "https://labrc.com/events",
+            "https://labrc.com/events?tribe_event_display=past",
+            "https://labrc.com/media"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=285&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Waywayseecappo First Nation Treaty Four - 1874\" announcement Manitoba",
+        "\"Waywayseecappo First Nation Treaty Four - 1874\" community update",
+        "site:facebook.com \"Waywayseecappo First Nation Treaty Four - 1874\" announcement",
+        "\"Waywayseecappo First Nation Treaty Four - 1874\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 324,
+      "communityName": "Wuskwi Sipihk First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 4",
+      "sources": [
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=324&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"Wuskwi Sipihk First Nation\" announcement Manitoba",
+        "\"Wuskwi Sipihk First Nation\" community update",
+        "site:facebook.com \"Wuskwi Sipihk First Nation\" announcement",
+        "\"Wuskwi Sipihk First Nation\" Manitoba funding OR housing OR infrastructure"
+      ]
+    },
+    {
+      "bandId": 304,
+      "communityName": "York Factory First Nation",
+      "aliases": [],
+      "provinceTerritory": "MB",
+      "treaty": "Treaty 5",
+      "sources": [
+        {
+          "type": "Official First Nation Website",
+          "name": "York Factory First Nation official website",
+          "url": "https://www.ktc.ca/?page_id=178",
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "ISC-listed website; working news coverage not yet established",
+          "requiresCommunityMention": true,
+          "lastCheckedAt": "2026-11-03T03:24:10Z",
+          "lastSuccessfulScanAt": "2026-11-03T03:24:10Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.ktc.ca/news",
+            "https://www.ktc.ca/news/national-day-for-truth-and-reconciliation-2025",
+            "https://www.ktc.ca/news/ikiskawasoot-she-carries-life-awareness-walk-wednesday-october-8th-2025",
+            "https://www.ktc.ca/press-release-documents",
+            "https://www.ktc.ca/news/indigenous-peoples-resilience-fund",
+            "https://www.ktc.ca/news/2025-ktc-23rd-annual-tribal-days",
+            "https://www.ktc.ca/news/news",
+            "https://www.ktc.ca/news/about"
+          ],
+          "associationCommunityNames": [
+            "Barren Lands",
+            "Bunibonibee Cree Nation",
+            "God's Lake First Nation",
+            "Manto Sipi Cree Nation",
+            "Northlands Denesuline First Nation",
+            "Sayisi Dene First Nation",
+            "Shamattawa First Nation",
+            "Tataskweyak Cree Nation",
+            "War Lake First Nation",
+            "York Factory First Nation"
+          ]
+        },
+        {
+          "type": "Government Source",
+          "name": "Indigenous Services Canada FNFTA filings",
+          "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/FederalFundingMain.aspx?BAND_NUMBER=304&lang=eng",
+          "status": "baseline",
+          "adapter": "static",
+          "monitor": false,
+          "official": true
+        }
+      ],
+      "discoveryQueries": [
+        "\"York Factory First Nation\" announcement Manitoba",
+        "\"York Factory First Nation\" community update",
+        "site:facebook.com \"York Factory First Nation\" announcement",
+        "\"York Factory First Nation\" Manitoba funding OR housing OR infrastructure"
       ]
     }
   ]
