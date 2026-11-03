@@ -7,7 +7,10 @@ import argparse
 import copy
 import hashlib
 import json
+import io
 from pathlib import Path
+
+from PIL import Image
 
 from tools.collect_first_nation_logos import ROOT, request_bytes, save_asset_payload
 
@@ -40,25 +43,56 @@ def approved_review(review, band, payload):
     return True
 
 
-def apply(asset_cache=None):
+def reviewed_image(review, payload):
+    """Extract a reviewed emblem without redrawing or recolouring its pixels."""
+    transform = review.get('asset_transform')
+    if not transform:
+        return payload, review['content_type']
+    if transform.get('pdf_page'):
+        from pypdf import PdfReader
+        page = PdfReader(io.BytesIO(payload)).pages[transform['pdf_page'] - 1]
+        payload = page.images[transform['pdf_image_index']].data
+    with Image.open(io.BytesIO(payload)) as original:
+        image = original.copy()
+        if transform.get('rotate'):
+            image = image.rotate(transform['rotate'], expand=True)
+        box = transform['crop']
+        if not (0 <= box[0] < box[2] <= image.width and 0 <= box[1] < box[3] <= image.height):
+            raise ValueError('Reviewed crop lies outside source image')
+        image = image.crop(box)
+        output = io.BytesIO()
+        image.save(output, 'PNG')
+    extracted = output.getvalue()
+    if hashlib.sha256(extracted).hexdigest() != transform['extracted_sha256']:
+        raise ValueError('Extracted emblem changed; repeat visual review')
+    return extracted, 'image/png'
+
+
+def apply(asset_cache=None, nation_ids=None):
     from tools.ingest_manitoba import dataset_lock
     with dataset_lock():
-        data = json.loads((ROOT / 'data.json').read_text())
+        data = json.loads((ROOT / 'data.json').read_text(encoding='utf-8'))
         original = digest(nonbranding(data))
-        registry = json.loads((ROOT / 'first-nation-logos.json').read_text())
-        report = json.loads((ROOT / 'first-nation-logo-report.json').read_text())
-        reviews = json.loads(REVIEW_PATH.read_text())
+        registry = json.loads((ROOT / 'first-nation-logos.json').read_text(encoding='utf-8'))
+        report = json.loads((ROOT / 'first-nation-logo-report.json').read_text(encoding='utf-8'))
+        reviews = json.loads(REVIEW_PATH.read_text(encoding='utf-8'))
         bands = {str(b['id']): b for b in data['bands']}
         logos = {str(r['nation_id']): r for r in registry['logos']}
         details = {str(r['nation_id']): r for r in report}
         for review in reviews['approvals']:
             key = str(review['nation_id']);band = bands[key]
+            if nation_ids and key not in nation_ids:
+                continue
             if asset_cache:
                 payload = (Path(asset_cache) / f'{key}.source').read_bytes()
             else:
                 payload, _, _ = request_bytes(review['asset_url'])
             approved_review(review, band, payload)
-            logo = save_asset_payload(band, review['page_url'], review['asset_url'], review['source_kind'], payload, review['content_type'])
+            image_payload, content_type = reviewed_image(review, payload)
+            logo = save_asset_payload(band, review['page_url'], review['asset_url'], review['source_kind'], image_payload, content_type)
+            logo['verified_at'] = review['reviewed_at']
+            if review.get('asset_transform'):
+                logo['asset_transform'] = review['asset_transform']
             logo.update(verification_note=review['verification_note'], source_sha256=review['source_sha256'],
                         source_page_sha256=review['page_sha256'], identity_evidence=review['identity_evidence'],
                         visual_review={'method':'Source asset visually inspected; Nation identity compared with the attributable source page',
@@ -73,17 +107,18 @@ def apply(asset_cache=None):
         if digest(nonbranding(data)) != original:
             raise ValueError('Unexpected nonbranding change; refusing dataset write')
         registry['logos'] = [logos[str(r['nation_id'])] for r in registry['logos']]
-        registry.update(verifiedCount=sum(bool(r['logo_verified']) for r in registry['logos']))
+        registry.update(verifiedCount=sum(bool(r['logo_verified']) for r in registry['logos']),
+                        generated=reviews['reviewed_at'])
         registry['unverifiedCount'] = registry['recordCount'] - registry['verifiedCount']
         for name, value in [('first-nation-logos.json',registry),('first-nation-logo-report.json',[details[str(r['nation_id'])] for r in report]),('data.json',data)]:
             target=ROOT/name;temporary=target.with_suffix(target.suffix+'.tmp')
-            temporary.write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n');temporary.replace(target)
+            temporary.write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');temporary.replace(target)
     return write_report()
 
 
 def write_report():
-    reviews = json.loads(REVIEW_PATH.read_text())
-    registry = json.loads((ROOT/'first-nation-logos.json').read_text())
+    reviews = json.loads(REVIEW_PATH.read_text(encoding='utf-8'))
+    registry = json.loads((ROOT/'first-nation-logos.json').read_text(encoding='utf-8'))
     searches = {str(r['nation_id']):r for r in reviews['nation_searches']}
     rows=[]
     for logo in registry['logos']:
@@ -95,18 +130,20 @@ def write_report():
                      'research':searches[key]})
     summary={'expectedNations':63,'verifiedLogos':sum(r['verified'] for r in rows),
              'remainingPlaceholders':sum(not r['verified'] for r in rows),'nations':rows}
-    (ROOT/'manitoba-logo-report.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
+    (ROOT/'manitoba-logo-report.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     lines=['# Manitoba logo review','',f"Verified: {summary['verifiedLogos']} / 63. Remaining placeholders: {summary['remainingPlaceholders']}.",
            '', 'Only visually inspected, identity-confirmed source assets are approved. Candidate rankings never confer verification.',
            '', '| Nation | Status | Source / remaining review |','|---|---|---|']
     for row in rows:
         note=f"[Source]({row['source']})" if row['verified'] else row['research']['finding']
         lines.append(f"| {row['nation_name']} | {'Verified' if row['verified'] else 'Placeholder'} | {note} |")
-    (ROOT/'manitoba-logo-report.md').write_text('\n'.join(lines)+'\n')
+    (ROOT/'manitoba-logo-report.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
     print(f"Manitoba: {summary['verifiedLogos']} verified / 63; {summary['remainingPlaceholders']} placeholders")
     return summary
 
 
 if __name__ == '__main__':
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--apply',action='store_true');parser.add_argument('--asset-cache');args=parser.parse_args()
-    apply(args.asset_cache) if args.apply else write_report()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--apply',action='store_true');parser.add_argument('--asset-cache')
+    parser.add_argument('--nation-id', action='append', help='Reapply only these reviewed Nation IDs')
+    args=parser.parse_args()
+    apply(args.asset_cache, set(args.nation_id or [])) if args.apply else write_report()

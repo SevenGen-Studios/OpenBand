@@ -98,6 +98,29 @@ class FirstNationLogoTests(unittest.TestCase):
 
 
 class ManitobaLogoReviewTests(unittest.TestCase):
+    def test_all_manitoba_profiles_have_verified_logos(self):
+        data=json.loads((ROOT/'data.json').read_text(encoding='utf-8'))
+        bands=[b for b in data['bands'] if b.get('province')=='MB']
+        self.assertEqual(len(bands),63)
+        self.assertTrue(all(b.get('logo_verified') and b.get('logo_url') for b in bands))
+
+    def test_reviewed_crop_rejects_changed_pixels_or_invalid_bounds(self):
+        import hashlib
+        import io
+        from PIL import Image
+        from tools.manitoba_logos import reviewed_image
+        source=io.BytesIO();Image.new('RGB',(100,100),'red').save(source,'PNG')
+        expected=io.BytesIO();Image.new('RGB',(40,40),'red').save(expected,'PNG')
+        review={'content_type':'image/png','asset_transform':{
+            'crop':[10,10,50,50], 'extracted_sha256':hashlib.sha256(expected.getvalue()).hexdigest()}}
+        payload,kind=reviewed_image(review,source.getvalue())
+        self.assertEqual(kind,'image/png')
+        self.assertEqual(payload,expected.getvalue())
+        review['asset_transform']['crop']=[10,10,51,50]
+        with self.assertRaises(ValueError):reviewed_image(review,source.getvalue())
+        review['asset_transform']['crop']=[-1,10,50,50]
+        with self.assertRaises(ValueError):reviewed_image(review,source.getvalue())
+
     def test_protected_logos_metadata_and_assets_are_unchanged(self):
         import hashlib
         from tools.manitoba_logos import digest
