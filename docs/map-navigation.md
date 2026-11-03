@@ -1,8 +1,10 @@
 # Directory map navigation
 
-The Browse map fits the selected province or territory's geographic envelope,
-with padding for the legend and zoom controls. Fractional zoom snapping (0.1)
-avoids losing a half-level when fitting a tall province. All 13 Canadian regions
+The Browse map starts at a 50 km metric scale, centred on the selected province
+or territory's geographic envelope. The starting zoom is calculated from centre
+latitude and the metric scale's 100px maximum width, with 0.1 zoom snapping.
+The closer starting view shows part of the province; the rest remains accessible
+by panning and zooming out. All 13 Canadian regions
 are selectable; indexed community coverage remains Saskatchewan, Alberta and
 Manitoba. Empty regions show the existing coverage message. With no region
 selected, the existing combined indexed-province overview is retained.
@@ -44,20 +46,25 @@ console.log(JSON.stringify(bounds));
   map's zoom/fade animation and inertia.
 - The camera only reframes when province or filters change. Background boundary
   loads and legend rendering preserve manual navigation. Reset map restores the
-  selected province while retaining the active community filters.
-- Valid community points belonging to the province's roster extend its envelope
-  where needed for cross-border locations. Search results fit independently,
+  selected province's 50 km starting view while retaining active community filters.
+- Valid community points belonging to the province's roster extend its navigable
+  envelope where needed for cross-border locations. Search results fit independently,
   with a maximum zoom of 8 for single-point matches.
 - Pan limits allow 12% geographic padding and soft dragging resistance. The
   current half-viewport is added in projected pixel space before setting Leaflet
   maxBounds. This avoids the old off-centre framing regression on wide screens.
   Limits update on zoom and resize; province changes clear old limits before
   animating. Zooming out is limited to 0.75 levels below the province's fitted
-  view, with a floor of 1 for northern territories.
-- Native Leaflet wheel zoom remains cursor-centred, with lower sensitivity,
-  0.1 zoom snapping and 0.25 zoom-button increments. Native pinch zoom and
+  view or starting zoom (whichever is lower), with a floor of 1 for northern territories.
+- Native Leaflet wheel zoom remains cursor-centred, with 80 wheel pixels per
+  zoom level (previously 180), 0.1 zoom snapping and full-level zoom-button increments.
+  Native pinch zoom and
   inertial dragging remain available. Canvas markers stay geographically
   anchored. Tiles retain a four-tile buffer and avoid intermediate zoom loads.
+- Hovered or focused community markers grow from 9px to 12px. Their reserve
+  parcels use an opaque dark-red 3.5px stroke, 45% red fill, and an 8px white
+  halo. Both geometry layers live below community markers, and both are removed
+  together on hover exit. Touch selection uses the same boundary highlight.
 - The map instance and tile layer persist when switching regions. Province
   selection updates the Browse URL and works with browser back/forward.
 
