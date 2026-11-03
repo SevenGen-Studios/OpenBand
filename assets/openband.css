@@ -274,6 +274,13 @@ body[data-view="gateway"] .main{display:none}body[data-view="gateway"] footer{ma
 }
 
 /* Paint Safari overscroll and the bottom browser area to match the footer. */
+.map-toolbar{flex-wrap:wrap}
+.map-navigation{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.map-navigation label{font-size:11px;font-weight:700;color:var(--muted)}
+.map-navigation select{max-width:240px;min-height:40px;border:1px solid var(--border2);background:var(--surface);color:var(--text);border-radius:6px;padding:0 8px;font:13px 'DM Sans',sans-serif}
+.map-navigation .small-btn{min-height:40px}
+.directory-map .leaflet-control-zoom a{width:36px;height:36px;line-height:36px}
+@media(max-width:600px){.map-navigation{width:100%}.map-navigation label{width:100%}.map-navigation select{min-width:0;flex:1;max-width:none;min-height:44px}.map-navigation .small-btn{min-height:44px}.directory-map .leaflet-control-zoom a{width:44px;height:44px;line-height:44px}}
 html{background:var(--text)}
 body{min-height:100dvh}
 footer{padding-bottom:calc(1.25rem + env(safe-area-inset-bottom,0px))}

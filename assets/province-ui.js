@@ -24,7 +24,7 @@ function applyProvinceContext(province){
 function updateProvinceUI(){
   const province=selectedProvince(),rows=provinceBands();
   const supplement=document.getElementById('mapSupplement');if(supplement)supplement.hidden=Boolean(province)&&province!=='SK';
-  const map=document.getElementById('directoryMap');if(map)map.setAttribute('aria-label',`Interactive map of ${provinceLabel()} First Nations`);
+  const map=document.getElementById('directoryMap');if(map)map.setAttribute('aria-label',province?`Interactive map of ${provinceLabel()} First Nations`:'Interactive map of First Nations');
   const overviewTitle=document.querySelector('#provinceOverview h2');if(overviewTitle)overviewTitle.textContent=`${provinceLabel()} Coverage`;
   const count=document.getElementById('coverageCount');
   count.textContent=province&&OpenBandProvinces.totals[province]?`${rows.length} of ${OpenBandProvinces.totals[province]}`:`${rows.length} indexed`;
@@ -32,7 +32,7 @@ function updateProvinceUI(){
   const source=document.getElementById('provinceCountSource');
   source.href=province==='SK'?'https://www.fsin.ca/sask-fn-listings':province==='MB'?'https://www.isc-sac.gc.ca/eng/1626886719453/1626886859809':province==='AB'?'https://www.alberta.ca/first-nations-relations':'https://www.saskatchewan.ca/-/media/news-release-backgrounders/2025/jun/lgs-2024-25-annual-report.pdf';
   source.hidden=!OpenBandProvinces.totals[province];source.textContent=province==='SK'?'Roster sources: 70 ISC band identities plus 5 FSIN-listed communities':'Province coverage source';
-  document.getElementById('directoryTitle').textContent=`Explore ${provinceLabel()} First Nations`;
+  document.getElementById('directoryTitle').textContent=province?`Explore ${provinceLabel()} First Nations`:'Explore First Nations';
   document.getElementById('albertaCoverageLink').hidden=Boolean(province)&&province!=='AB';
   document.getElementById('albertaCoverageLink').innerHTML='<a href="/alberta-coverage-report.html">Alberta source coverage and review report</a>'+(province==='AB'?' · Cross-border community: <a href="/first-nations/onion-lake-cree-nation/">'+nationNameMarkup(bandMap['Onion Lake Cree Nation'])+'</a> (existing Saskatchewan profile).':'');
   for(const [id,values,label] of [['treatyFilter',rows.map(b=>b.treaty),'All treaties'],['tribalCouncilFilter',rows.map(b=>directoryMapRecord(b)?.tribalCouncil||b.tribalCouncil||'No affiliation listed'),'All affiliations']]){const select=document.getElementById(id),previous=select.value;select.innerHTML=`<option value="">${label}</option>`+[...new Set(values.filter(Boolean))].sort().map(v=>`<option value="${escAttr(v)}">${esc(v)}</option>`).join('');select.value=values.includes(previous)?previous:'';}
