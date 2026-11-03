@@ -3,6 +3,7 @@
 Browser QA also verifies movement, the repeat boundary, interaction and mobile sizing.
 """
 import unittest
+import re
 from pathlib import Path
 
 
@@ -19,8 +20,8 @@ class HomeMotionTests(unittest.TestCase):
                      'first-nations/mistawasis-nehiyawak/index.html']:
             with self.subTest(page=name):
                 page = (ROOT / name).read_text(encoding="utf-8")
-                self.assertEqual(page.count('/assets/home-motion.js?v=20261102winter1'), 1)
-                self.assertEqual(page.count('/assets/home-motion.css?v=20261102winter1'), 1)
+                self.assertEqual(len(re.findall(r'/assets/home-motion\.js\?v=[^\"]+', page)), 1)
+                self.assertEqual(len(re.findall(r'/assets/home-motion\.css\?v=[^\"]+', page)), 1)
 
     def test_assets_exist(self):
         for name in ['hero-snowflake.svg', 'hero-feathers.webp', 'motion-pause.svg', 'motion-play.svg',
