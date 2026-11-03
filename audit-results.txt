@@ -1,35 +1,35 @@
 generated: 2026-11-02T02:28:28+00:00
-bands: 186
+bands: 180
 error_count: 0
 bands with parsed remuneration: 164
 parsed remuneration filings: 1146
-posted remuneration filings still pending: 529
+posted remuneration filings still pending: 520
 
 pending by fiscal year:
   2025-2026: 4 pending, 15 parsed
   2024-2025: 13 pending, 76 parsed
   2023-2024: 16 pending, 97 parsed
-  2022-2023: 18 pending, 115 parsed
-  2021-2022: 20 pending, 115 parsed
-  2020-2021: 34 pending, 107 parsed
-  2019-2020: 33 pending, 121 parsed
-  2018-2019: 59 pending, 97 parsed
-  2017-2018: 56 pending, 108 parsed
-  2016-2017: 64 pending, 103 parsed
-  2015-2016: 73 pending, 95 parsed
-  2014-2015: 91 pending, 79 parsed
+  2022-2023: 17 pending, 115 parsed
+  2021-2022: 19 pending, 115 parsed
+  2020-2021: 33 pending, 107 parsed
+  2019-2020: 32 pending, 121 parsed
+  2018-2019: 58 pending, 97 parsed
+  2017-2018: 55 pending, 108 parsed
+  2016-2017: 63 pending, 103 parsed
+  2015-2016: 72 pending, 95 parsed
+  2014-2015: 90 pending, 79 parsed
   2013-2014: 48 pending, 18 parsed
 
 pending by parse status:
   manual_review: 343
   pending_openai_opt_in: 143
   pending_manual_review: 30
-  pending: 9
   not_required: 2
   not_applicable_wrong_document: 1
   pending_review: 1
 
-expected SK names missing: 0
+expected SK names missing: 1
+  MISSING: Big Island Lake Cree Nation
 
 first pending examples:
   PENDING: Carry the Kettle Nakoda Nation 2013-2014 (pending_openai_opt_in)
@@ -72,3 +72,5 @@ first pending examples:
   PENDING: Red Earth Cree Nation 2013-2014 (pending_manual_review)
   PENDING: Red Earth Cree Nation 2019-2020 (pending_openai_opt_in)
   PENDING: Red Earth Cree Nation 2020-2021 (pending_openai_opt_in)
+
+Audit note: missing names are informational until the next successful scraper run updates data.json.
