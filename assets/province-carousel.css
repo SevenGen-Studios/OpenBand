@@ -1,5 +1,5 @@
 .province-carousel{display:none}
-body[data-view="gateway"]>.hero,body[data-page="home"]:not([data-view])>.hero{height:calc(100svh - 58px);min-height:540px;padding:0;background:#1b4d2e;transition:background-color 650ms cubic-bezier(.4,0,.2,1)}
+body[data-view="gateway"]>.hero,body[data-page="home"]:not([data-view])>.hero{height:calc(100svh - 58px);height:calc(100dvh - 58px);min-height:540px;padding:0;background:#1b4d2e;transition:background-color 650ms cubic-bezier(.4,0,.2,1)}
 body[data-view="gateway"]>.hero[data-preview-province="AB"]{background:#244d80}
 body[data-view="gateway"]>.hero>.hc,body[data-page="home"]:not([data-view])>.hero>.hc,body[data-view="gateway"] .hero-feathers,body[data-view="gateway"] .hero-motion-toggle{display:none}
 body[data-view="gateway"] .province-carousel,body[data-page="home"]:not([data-view]) .province-carousel{display:block}
