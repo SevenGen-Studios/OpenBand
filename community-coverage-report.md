@@ -22,6 +22,6 @@ Complete community-level inventory, source checks, and record changes: `communit
 | news | 42 | 17 | 512 | 0 |
 | events | 17 | 4 | 180 | 0 |
 | projects | 24 | 0 | 0 | 0 |
-| jobs | 62 | 1 | 0 | 10 |
+| jobs | 66 | 16 | 44 | 6 |
 
 Added job candidates include held and closed postings; only confirmed active jobs contribute to coverage above. Shared projects are counted once as records and separately as community associations.
