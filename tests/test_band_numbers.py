@@ -21,14 +21,15 @@ class BandNumberTests(unittest.TestCase):
     def test_complete_official_provincial_coverage(self):
         rosters = json.loads((RESEARCH / 'provincial-rosters.json').read_text(encoding='utf-8'))
         result = audit_rosters(self.bands, rosters)
-        self.assertTrue(result['completeOfficialCoverage'])
-        self.assertEqual({p: row['profileCount'] for p, row in result['provinces'].items()}, {'SK': 75, 'AB': 48, 'MB': 63})
+        self.assertFalse(result['completeOfficialCoverage'])
+        self.assertEqual([n['iscBandNumber'] for n in result['provinces']['SK']['missingOfficialNations']], [399])
+        self.assertEqual({p: row['profileCount'] for p, row in result['provinces'].items()}, {'SK': 69, 'AB': 48, 'MB': 63})
         self.assertEqual(result['provinces']['AB']['sharedAdministrations'][0]['iscBandNumber'], 471)
 
     def test_unknown_numbers_are_flagged_and_never_inferred(self):
         result = audit(self.bands, self.roster, self.reviewed)
-        self.assertEqual(result['verifiedCount'], 183)
-        self.assertEqual({row['id'] for row in result['unmatched']}, {'sk-big-bear', 'sk-chacachas', 'sk-young-chippewayan'})
+        self.assertEqual(result['verifiedCount'], 180)
+        self.assertEqual({row['id'] for row in result['unmatched']}, set())
         for band in self.bands:
             if not band.get('iscBandNumber'):
                 self.assertNotIn('nation-band-number', nation_name_markup(band))
@@ -37,7 +38,7 @@ class BandNumberTests(unittest.TestCase):
 
     def test_shared_identities_are_documented_without_copied_financials(self):
         result = audit(self.bands, self.roster, self.reviewed)
-        self.assertEqual({row['iscBandNumber'] for row in result['duplicates']}, {370, 462})
+        self.assertEqual({row['iscBandNumber'] for row in result['duplicates']}, {462})
         self.assertTrue(all(row['status'] == 'documented_shared_identity' for row in result['duplicates']))
         for band in self.bands:
             if band.get('sharedIscIdentity'):
@@ -46,7 +47,7 @@ class BandNumberTests(unittest.TestCase):
 
     def test_bad_mapping_cannot_pass(self):
         bands = copy.deepcopy(self.bands)
-        bands[0]['iscBandNumber'] = 399
+        bands[0]['iscBandNumber'] = bands[1]['iscBandNumber']
         result = audit(bands, self.roster, self.reviewed)
         self.assertTrue(any(row.get('id') == bands[0]['id'] for row in result['unmatched']))
         self.assertTrue(any(row['status'] == 'requires_verification' for row in result['duplicates']))

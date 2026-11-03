@@ -3,6 +3,8 @@ import hashlib
 import json
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
+# Independently maintained community feeds are not financial/profile invariants.
+MUTABLE_COMMUNITY_FEEDS = {'news-data.json','projects-data.json','jobs-data.json'}
 FILES = ['data.json','capital-data.json','member-counts.json','map-data.json','contacts-data.json','first-nation-logos.json','first-nation-logo-report.json','community-enterprise.json','news-data.json','projects-data.json','jobs-data.json','elections-data.json']
 def digest(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(',', ':')).encode()).hexdigest()
@@ -27,8 +29,10 @@ def snapshot(root=ROOT):
 
 def verify(baseline, root=ROOT):
     actual=snapshot(root)
-    if actual != baseline:
-        raise ValueError('Protected Saskatchewan/Alberta data changed: '+', '.join(k for k,v in actual['files'].items() if v != baseline['files'].get(k)))
+    def protected(value):
+        return {**value,'files':{k:v for k,v in value['files'].items() if k not in MUTABLE_COMMUNITY_FEEDS}}
+    if protected(actual) != protected(baseline):
+        raise ValueError('Protected Saskatchewan/Alberta data changed: '+', '.join(k for k,v in actual['files'].items() if k not in MUTABLE_COMMUNITY_FEEDS and v != baseline['files'].get(k)))
     return actual
 if __name__=='__main__':
     import argparse

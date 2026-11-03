@@ -54,7 +54,10 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run news pipeline tests
-        run: python -m unittest tests/test_news_integrity.py tests/test_news_discovery.py tests/test_community_updates_phase1.py -v
+        run: python -m unittest tests/test_news_integrity.py tests/test_news_discovery.py tests/test_community_updates_phase1.py tests/test_community_coverage_phase2.py -v
+
+      - name: Register reviewed community sources
+        run: python -m tools.register_community_sources
 
       - name: Discover community updates
         env:

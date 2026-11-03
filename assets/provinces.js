@@ -2,7 +2,7 @@
 (function(root){
   'use strict';
   const names={SK:'Saskatchewan',AB:'Alberta',MB:'Manitoba',BC:'British Columbia',ON:'Ontario',QC:'Quebec',NB:'New Brunswick',NS:'Nova Scotia',PE:'Prince Edward Island',NL:'Newfoundland and Labrador',YT:'Yukon',NT:'Northwest Territories',NU:'Nunavut'};
-  const totals={SK:75,AB:48,MB:63};
+  const totals={SK:69,AB:48,MB:63};
   const routes={SK:'/saskatchewan/',AB:'/alberta/',MB:'/manitoba/'};
   function normalize(value){return String(value||'').replace(/[łŁ]/g,'l').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
   function matches(band,query){const q=normalize(query);return !q||[band.name,band.officialName,band.id,band.iscBandNumber,...(band.aliases||[])].some(value=>normalize(value).includes(q))}

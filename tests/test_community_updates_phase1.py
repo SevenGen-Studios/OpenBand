@@ -17,7 +17,7 @@ class CommunityUpdatesPhase1Tests(unittest.TestCase):
 
     def test_every_identity_and_province_survives_registry_integration(self):
         data=news.load_json(news.DATA_PATH,{});rows=news.ensure_registry(data,{},{} )['communities']
-        self.assertEqual(len(rows),180)
+        self.assertEqual(len(rows),len(data["bands"]))
         self.assertEqual({str(r['bandId']) for r in rows},{str(b['id']) for b in data['bands']})
         for province,count in [('SK',69),('AB',48),('MB',63)]:self.assertEqual(sum(r['provinceTerritory']==province for r in rows),count)
         self.assertTrue(all('Manitoba' in ' '.join(r['discoveryQueries']) for r in rows if r['provinceTerritory']=='MB'))

@@ -1,0 +1,38 @@
+name: Monitor community research sources and coverage
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 15 * * 2"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: openband-v2-data-writers
+  cancel-in-progress: false
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - name: Test evidence, association and coverage rules
+        run: python -m unittest tests.test_community_coverage_phase2 -v
+      - name: Recheck reviewed sources without overwriting curated records
+        run: |
+          python -m tools.research_public_sources --refresh --limit 100
+          python -m tools.register_community_sources
+          python -m tools.community_coverage --baseline research/community-intelligence/phase2-2026-11-02/before
+      - name: Commit source diagnostics and coverage inventory
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Refresh community coverage and research source diagnostics"
+          file_pattern: community-coverage-report.json community-coverage-report.md community-coverage-report.csv news-sources.json events-sources.json jobs-sources.json research/community-intelligence/phase2-2026-11-02/source-checks.json research/community-intelligence/phase2-2026-11-02/evidence

@@ -19,8 +19,8 @@ for(const band of bands){
     assert.ok(!context.identitySourceUrl(band).includes('BAND_NUMBER='));
   }
 }
-assert.equal(provinces.matches(bands.find(b=>b.id===399),'399'),true);
-assert.equal(bands.filter(b=>provinces.matches(b,'370')).length,3);
+assert.equal(bands.some(b=>b.id===399),false);
+assert.equal(bands.filter(b=>provinces.matches(b,'370')).length,1);
 assert.equal(component.number({iscBandNumber:7}),'007');
 assert.equal(component.number({id:399}),'');
 assert.equal(component.number({iscBandNumber:'<399>'}),'');
@@ -32,4 +32,4 @@ vm.runInContext(source.split('\n').find(line=>line.startsWith('function renderPe
 context.renderPending(null,{name:'Newly listed community'});
 assert.match(nodes.pendingMsg.innerHTML,/No source-verified remuneration schedule/);
 assert.ok(!nodes.pendingMsg.innerHTML.includes('null'));
-console.log('All 186 name displays, numeric search, identity sources, escaping and unknown-number cases passed.');
+console.log('All 180 name displays, numeric search, identity sources, escaping and unknown-number cases passed.');

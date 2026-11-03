@@ -19,12 +19,12 @@ class ManitobaPipelineTests(unittest.TestCase):
         self.assertTrue(all(-103<n['location']['longitude']<-88 and 48<n['location']['latitude']<61 for n in roster))
 
     def test_protected_financial_and_profile_records_unchanged(self):
-        # News is now explicitly maintained across SK/AB/MB; jobs also has its
-        # own scheduled writer. Those mutable feeds have dedicated integrity
+        # News, jobs and projects are explicitly maintained across SK/AB/MB.
+        # Those mutable feeds have dedicated integrity and preservation
         # tests and are not immutable Manitoba financial-integration fixtures.
         expected=json.loads((SOURCE_CACHE/'protected-baseline.json').read_text())
         actual=snapshot()
-        for name in ('news-data.json','jobs-data.json'):
+        for name in ('news-data.json','jobs-data.json','projects-data.json'):
             expected['files'].pop(name,None);actual['files'].pop(name,None)
         self.assertEqual(expected,actual)
 

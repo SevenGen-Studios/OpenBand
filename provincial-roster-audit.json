@@ -1,38 +1,18 @@
 {
   "provinces": {
     "SK": {
-      "profileCount": 75,
+      "profileCount": 69,
       "officialRosterCount": 70,
-      "uniqueVerifiedBandNumbers": 70,
-      "missingOfficialNations": [],
-      "sharedAdministrations": [],
-      "regionalCommunities": [
+      "uniqueVerifiedBandNumbers": 69,
+      "missingOfficialNations": [
         {
-          "id": "sk-big-bear",
-          "name": "Big Bear Band",
-          "iscBandNumber": null
-        },
-        {
-          "id": "sk-chakastaypasin",
-          "name": "Chakastaypasin First Nation",
-          "iscBandNumber": 370
-        },
-        {
-          "id": "sk-chacachas",
-          "name": "Chacachas Treaty Nation",
-          "iscBandNumber": null
-        },
-        {
-          "id": "sk-peter-chapman",
-          "name": "Peter Chapman First Nation",
-          "iscBandNumber": 370
-        },
-        {
-          "id": "sk-young-chippewayan",
-          "name": "Young Chippewayan First Nation",
-          "iscBandNumber": null
+          "iscBandNumber": 399,
+          "officialName": "Big Island Lake Cree Nation",
+          "province": "SK"
         }
-      ]
+      ],
+      "sharedAdministrations": [],
+      "regionalCommunities": []
     },
     "AB": {
       "profileCount": 48,
@@ -63,5 +43,5 @@
       "regionalCommunities": []
     }
   },
-  "completeOfficialCoverage": true
+  "completeOfficialCoverage": false
 }

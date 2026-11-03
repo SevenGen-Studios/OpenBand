@@ -10,6 +10,7 @@ on:
         options:
           - AB
           - SK
+          - MB
           - ALL
         default: ALL
   schedule:
@@ -37,6 +38,10 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends poppler-utils tesseract-ocr
+          pip install pdfplumber==0.11.5 lxml
+      - name: Register reviewed community sources
+        run: python -m tools.register_community_sources
+
       - name: Collect and validate public opportunities
         run: |
           if [ "${{ github.event.inputs.province || 'ALL' }}" = "ALL" ]; then
@@ -45,7 +50,7 @@ jobs:
             python tools/jobs_collector.py --province "${{ github.event.inputs.province || 'ALL' }}"
           fi
       - name: Test employment pipeline
-        run: python -m unittest tests.test_jobs_pipeline -v
+        run: python -m unittest tests.test_jobs_pipeline tests.test_community_coverage_phase2 -v
       - name: Rebase generated changes onto latest main
         run: |
           git config pull.rebase true
@@ -53,13 +58,13 @@ jobs:
 
       - name: Commit verified data and review report
         run: |
-          if git diff --quiet -- jobs-data.json jobs-coverage-report.json jobs-review-queue.json jobs-source-registry.json; then
+          if git diff --quiet -- jobs-data.json jobs-coverage-report.json jobs-review-queue.json jobs-source-registry.json jobs-sources.json; then
             echo "No employment data changes"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add jobs-data.json jobs-coverage-report.json jobs-review-queue.json jobs-source-registry.json
+          git add jobs-data.json jobs-coverage-report.json jobs-review-queue.json jobs-source-registry.json jobs-sources.json
           git commit -m "Update community employment records"
           for attempt in 1 2 3; do
             git fetch origin main

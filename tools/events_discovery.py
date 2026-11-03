@@ -139,7 +139,7 @@ EVENT_WORDS = re.compile(
     r"open house|workshop|training|conference|forum|fair|clinic|screening|"
     r"tournament|relay race|races|rodeo|bingo|fundraiser|market|festival|parade|camp|youth day|"
     r"family day|language class|culture camp|land-based|sports day|information session|"
-    r"election day|vote|meeting|event)\b",
+    r"election day|vote|meeting|event|leadership program|lawmakers assembly)\b",
     re.I,
 )
 NON_EVENT_WORDS = re.compile(
@@ -611,7 +611,49 @@ def extract_ical_events(payload,page_url,community,source):
     return rows,rejected
 
 
+class EventerDetailsParser(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True); self.fields={}; self.capture=None; self.depth=0
+    def handle_starttag(self,tag,attrs):
+        a=dict(attrs); classes=a.get('class','').split()
+        if self.capture and tag not in {'br','img','hr','input','meta','link','source','wbr'}: self.depth+=1
+        elif tag=='h1' or any(k in classes for k in ('eventer-event-date','eventer-event-time','eventer-event-venue')):
+            self.capture='title' if tag=='h1' else next(k for k in classes if k in ('eventer-event-date','eventer-event-time','eventer-event-venue'))
+            self.depth=1
+    def handle_data(self,text):
+        if self.capture: self.fields.setdefault(self.capture,[]).append(text)
+    def handle_endtag(self,tag):
+        if self.capture:
+            self.depth-=1
+            if not self.depth:self.capture=None
+
+
+def extract_eventer_detail(markup,page_url,community,source):
+    occurrence=re.search(r'/eventer/[^/]+/edate/(20\d{2}-\d{2}-\d{2})/?$',urllib.parse.urlsplit(page_url).path)
+    if not occurrence:return None
+    p=EventerDetailsParser();p.feed(markup)
+    values={k:clean_text(' '.join(v)) for k,v in p.fields.items()}
+    title=values.get('title',''); written=values.get('eventer-event-date') or values.get('eventer-event-time','')
+    dates=[d for pair in explicit_event_dates(written) for d in pair if d]
+    if not title or occurrence.group(1) not in dates or not association_allowed(community,source,title,values.get('eventer-event-venue','')):return None
+    context='Date: '+written+'. '+values.get('eventer-event-time','')
+    row=normalized_event(community,source,title=title,context=context,url=page_url,start=occurrence.group(1),end=max(dates) if dates else None,method='eventer')
+    if values.get('eventer-event-venue'):row['location']=values['eventer-event-venue']
+    clocks=re.findall(r'\b(\d{1,2}:\d{2})\s*(AM|PM)\b',values.get('eventer-event-time',''),re.I)
+    if 'all day' in context.lower() or (len(clocks)==2 and clocks[0]==('12:00','AM') and clocks[1]==('11:59','PM')):
+        row['allDay']=True;row.pop('startTime',None)
+    if len(clocks)==2 and not ('12:00','AM')==clocks[0]:
+        def clock(pair):return datetime.strptime(' '.join(pair).upper(),'%I:%M %p').strftime('%H:%M')
+        row['startTime']=clock(clocks[0]);row['endTime']=clock(clocks[1])
+    if re.search(r'bead|poppy',title,re.I):row['category']='Culture & Language'
+    if re.search(r'\bcancell?ed\b',title,re.I):row['eventStatus']='cancelled'
+    elif re.search(r'\bpostponed\b',title,re.I):row['eventStatus']='postponed'
+    return row
+
+
 def extract_html_events(html: str, page_url: str, community: dict, source: dict, today: date | None = None):
+    eventer=extract_eventer_detail(html,page_url,community,source)
+    if eventer:return [eventer],[],[]
     parser = EventPageParser()
     parser.feed(html)
     events = extract_jsonld_events(parser, page_url, community, source)
@@ -630,7 +672,7 @@ def extract_html_events(html: str, page_url: str, community: dict, source: dict,
     for row in parser.anchor_rows():
         url = canonical_url(urllib.parse.urljoin(page_url, row["href"]))
         combined = clean_text(f"{row['title']} {row['context']}")
-        dated_event_link = re.search(r'/events?/20\d{2}-\d{2}-\d{2}', urllib.parse.urlsplit(url).path)
+        dated_event_link = re.search(r'/(?:events?/|eventer/[^/]+/edate/)20\d{2}-\d{2}-\d{2}', urllib.parse.urlsplit(url).path)
         if (FOLLOW_LINK_WORDS.search(combined) or dated_event_link or urllib.parse.urlsplit(url).path.lower().endswith(".ics")) and url.startswith("http"):
             follow.append(url)
         if dated_detail or normalized_text(row['title']) in GENERIC_TITLES or re.match(r'^(?:back to all|previous|next)\b', row['title'], re.I):
@@ -957,6 +999,9 @@ def is_publishable_event(item: dict, today: date | None = None) -> bool:
         return False
     if method in {"json-ld","icalendar"}:
         return True
+    if method=='eventer':
+        occurrence=re.search(r'/eventer/[^/]+/edate/(20\d{2}-\d{2}-\d{2})/?$',path)
+        return bool(occurrence and occurrence.group(1)==item.get('startDate') and any(d==item.get('startDate') for d,_ in explicit_event_dates(description)))
     if path in {'','/events','/calendar','/events.html','/announcements'} and not re.search(r'(?:eventid|event_id)=',query):return False
     if method == "meta-api":
         return is_event_text(title, description) and bool(explicit_event_dates(description))

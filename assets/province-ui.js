@@ -31,7 +31,7 @@ function updateProvinceUI(){
   document.getElementById('coverageLabel').textContent=` ${provinceLabel()} First Nations tracked`;
   const source=document.getElementById('provinceCountSource');
   source.href=province==='SK'?'https://www.fsin.ca/sask-fn-listings':province==='MB'?'https://www.isc-sac.gc.ca/eng/1626886719453/1626886859809':province==='AB'?'https://www.alberta.ca/first-nations-relations':'https://www.saskatchewan.ca/-/media/news-release-backgrounders/2025/jun/lgs-2024-25-annual-report.pdf';
-  source.hidden=!OpenBandProvinces.totals[province];source.textContent=province==='SK'?'Roster sources: 70 ISC band identities plus 5 FSIN-listed communities':'Province coverage source';
+  source.hidden=!OpenBandProvinces.totals[province];source.textContent=province==='SK'?'Saskatchewan directory: 69 profiles; recent additions withdrawn pending review':'Province coverage source';
   document.getElementById('directoryTitle').textContent=province?`Explore ${provinceLabel()} First Nations`:'Explore First Nations';
   document.getElementById('albertaCoverageLink').hidden=Boolean(province)&&province!=='AB';
   document.getElementById('albertaCoverageLink').innerHTML='<a href="/alberta-coverage-report.html">Alberta source coverage and review report</a>'+(province==='AB'?' · Cross-border community: <a href="/first-nations/onion-lake-cree-nation/">'+nationNameMarkup(bandMap['Onion Lake Cree Nation'])+'</a> (existing Saskatchewan profile).':'');

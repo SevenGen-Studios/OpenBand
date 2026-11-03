@@ -46,12 +46,7 @@ Alberta source reconciliation, update commands, review rules, and known gaps are
 
 ## Provincial roster and band numbers
 
-The directory has 186 profiles: 75 Saskatchewan, 48 Alberta, and 63 Manitoba.
-The live ISC provincial searches were reconciled on November 3, 2026. Saskatchewan
-includes all 70 ISC band identities plus five additional FSIN-listed communities.
-Alberta's Stoney umbrella (471) is linked through its three constituent Nations;
-Whitefish Lake #128 retains its documented shared identifier with Saddle Lake.
-See [SASKATCHEWAN.md](SASKATCHEWAN.md) for the additional Saskatchewan identities.
+The directory has 180 profiles: 69 Saskatchewan, 48 Alberta, and 63 Manitoba. Six recent Saskatchewan roster additions have been withdrawn pending review.
 
 `iscBandNumber` in `data.json` is the shared display field. The browser component
 in `assets/nation-name.js` and static counterpart in `tools/nation_name.py` use
@@ -60,9 +55,7 @@ contrast-preserving muted grey. Missing numbers are omitted and flagged for
 verification; application IDs are never displayed as substitute band numbers.
 
 Run `python tools/audit_provincial_rosters.py` to check completeness and
-`python tools/verify_band_numbers.py` to check mappings. The latter intentionally
-exits nonzero while the three unverified regional identities remain queued in
-`band-number-audit.json`. Source snapshots, reviewed mappings, and archived
+`python tools/verify_band_numbers.py` to check mappings. The mapping audit currently verifies all 180 published profiles. The completeness audit reports the withdrawn roster entry without adding it to the directory. Source snapshots, reviewed mappings, and archived
 preservation baselines are under `research/band-numbers/2026-11-03/`.
 
 ## Browse map data

@@ -521,7 +521,7 @@ def main() -> None:
     parser.add_argument("--research-leads", default=str(ROOT / "project-research-leads.json"))
     parser.add_argument("--report", default=str(ROOT / "project-disclosure-report.json"))
     parser.add_argument("--all-years", action="store_true")
-    parser.add_argument("--province", choices=["AB", "SK", "ALL"], default="ALL")
+    parser.add_argument("--province", choices=["AB", "SK", "MB", "ALL"], default="ALL")
     parser.add_argument("--data", default=str(ROOT / "data.json"))
     parser.add_argument("--workers", type=int, default=3)
     parser.add_argument("--limit", type=int, default=0)

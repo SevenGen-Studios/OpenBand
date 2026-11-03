@@ -19,7 +19,7 @@ except ModuleNotFoundError:
 
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = "https://openband.ca"
-PROVINCIAL_TOTAL = 75
+PROVINCIAL_TOTAL = 69
 
 
 def slugify(value: str) -> str:

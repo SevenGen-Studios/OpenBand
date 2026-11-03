@@ -1485,7 +1485,8 @@ def ensure_registry(data, news, registry):
             "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/"
             f"FederalFundingMain.aspx?BAND_NUMBER={isc_band_number}&lang=eng"
         )
-        if canonical_url(isc_url) not in known_urls:
+        sources = [s for s in sources if not ('FederalFundingMain.aspx?BAND_NUMBER=None' in s.get('url',''))]
+        if isc_band_number is not None and str(isc_band_number).isdigit() and canonical_url(isc_url) not in known_urls:
             sources.append(
                 {
                     "type": "Government Source",
@@ -1831,6 +1832,25 @@ def media_candidate(fetcher, community, source, media):
     return item, review
 
 
+def direct_article_candidate(markup, page_url, community, source):
+    """A registered announcement permalink is itself content, not just an index."""
+    parser = ArticleMetadataParser(); parser.feed(markup)
+    is_article = bool(parser.meta.get('article:published_time')) or any(
+        any(t in {'Article', 'NewsArticle', 'BlogPosting'} for t in (r.get('@type') if isinstance(r.get('@type'), list) else [r.get('@type')]))
+        for r in parser.json_ld_records())
+    if not is_article: return None
+    metadata = article_page_metadata(markup, page_url)
+    title = clean_text(metadata.get('title')); summary = metadata.get('summary', '')
+    if not metadata.get('published') or not is_supported_update(title, summary) or not association_allowed(community, source, title, summary): return None
+    target = metadata.get('canonical') or page_url
+    if not same_host(page_url, target): return None
+    row = normalized_candidate(community, source, title=title[:180], summary=item_summary(title, summary, source.get('name', 'Original source')),
+        url=target, published=metadata['published'], date_precision=metadata.get('datePrecision') or 'day',
+        date_source=metadata.get('dateSource'), extraction_method='article-metadata', source_page=page_url)
+    row['detailVerified'] = True
+    return row
+
+
 def scan_source(community, source, args, access_token):
     fetcher = Fetcher(delay=args.delay, timeout=args.timeout)
     candidates=[];review=[];failures=[];checked_urls=[]
@@ -1863,6 +1883,9 @@ def scan_source(community, source, args, access_token):
                 if diagnostic=='javascript_required':queue[0:0]=feed_links(markup,final_url)
                 continue
             checked_urls.append(final_url)
+            direct = direct_article_candidate(markup, final_url, community, source)
+            if direct and direct['url'] not in seen:
+                candidates.append(direct); seen.add(direct['url'])
             source.update(lastCheckedAt=iso_now(),lastSuccessfulScanAt=iso_now(),lastScanStatus='checked')
             if source.get('status')=='candidate':source['status']='verified'
             feeds=feed_links(markup,final_url)

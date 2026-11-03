@@ -43,7 +43,9 @@ class ProjectsIntegrityTests(unittest.TestCase):
             row for row in registry["communities"]
             if row.get("provinceTerritory", "SK") == "SK"
         ]
-        self.assertEqual(audit["communityCount"], len(audited_bands))
+        self.assertEqual(audit["communityCount"], len(audit["reviewedCommunityIds"]))
+        self.assertEqual(audit["registeredCommunityCount"], len(audited_bands))
+        self.assertEqual(set(audit["reviewedCommunityIds"]) | set(audit["additionalCommunitiesAwaitingResearch"]), {str(b["id"]) for b in audited_bands})
         self.assertEqual(len(audited_registry), len(audited_bands))
         self.assertEqual(
             {str(row["bandId"]) for row in audited_registry},

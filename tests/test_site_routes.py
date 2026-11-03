@@ -365,7 +365,7 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn("location.assign(profilePath(band.name))", javascript)
         self.assertNotIn("maxBounds:PRAIRIE_MAP_BOUNDS", javascript)
         self.assertIn("scrollWheelZoom:true", javascript)
-        self.assertIn("wheelPxPerZoomLevel:140", javascript)
+        self.assertIn("wheelPxPerZoomLevel:180", javascript)
         self.assertIn("radius:9", javascript)
         self.assertIn("maxZoom:16", javascript)
         self.assertIn("touchZoom:true", javascript)

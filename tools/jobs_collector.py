@@ -16,6 +16,7 @@ import shutil
 import subprocess
 import tempfile
 import re
+import threading
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
@@ -30,6 +31,18 @@ except ImportError:
     from tools.community_history import merge_review_history
 
 ROOT = Path(__file__).resolve().parents[1]
+_FETCHERS = threading.local()
+
+
+def public_fetcher():
+    # Reuse Phase 1's TLS, robots, redirect, request-size and pacing protections.
+    if not hasattr(_FETCHERS, 'value'):
+        try:
+            from tools.news_discovery import Fetcher
+        except ImportError:
+            from news_discovery import Fetcher
+        _FETCHERS.value = Fetcher(delay=.4, timeout=10)
+    return _FETCHERS.value
 ACTIVE_STATUSES = {"Open", "Closing soon"}
 PUBLIC_STATUSES = ACTIVE_STATUSES | {"Date unavailable"}
 JOB_WORDS = re.compile(
@@ -169,6 +182,8 @@ def normalize_listing(raw: dict, today: date) -> dict:
         "verifiedOfficialSource": bool(raw.get("verifiedOfficialSource")),
         "manualOverride": bool(raw.get("manualOverride")),
         **({"sourceVerification": raw["sourceVerification"]} if raw.get("sourceVerification") else {}),
+        **({"activeEvidence": raw["activeEvidence"]} if raw.get("activeEvidence") else {}),
+        **({"associationReview": raw["associationReview"]} if raw.get("associationReview") else {}),
     }
     record["id"] = record["id"] or stable_id(record)
     record["status"] = effective_status(record, today)
@@ -309,6 +324,69 @@ def career_card_candidates(markup, source, today):
     return rows, warnings
 
 
+class ScopedJobCards(HTMLParser):
+    """Keep each title, location, deadline and PDF together on shared job boards."""
+    def __init__(self):
+        super().__init__(convert_charrefs=True); self.cards=[]; self.depth=0; self.parts=[]
+    def handle_starttag(self, tag, attrs):
+        a=dict(attrs)
+        if tag == 'div' and (self.depth or 'job-item' in a.get('class','').split()):
+            self.depth += 1
+        if self.depth: self.parts.append(self.get_starttag_text())
+    def handle_endtag(self, tag):
+        if not self.depth: return
+        self.parts.append('</'+tag+'>')
+        if tag == 'div':
+            self.depth -= 1
+            if not self.depth: self.cards.append(''.join(self.parts)); self.parts=[]
+    def handle_data(self, text):
+        if self.depth: self.parts.append(text)
+
+
+def scoped_job_candidates(markup, source, today):
+    try:
+        from tools.community_updates import fold
+    except ImportError:
+        from community_updates import fold
+    parser=ScopedJobCards(); parser.feed(markup)
+    rows=[]; reviews=[]
+    for card in parser.cards[:source.get('maxDocuments',24)]:
+        title_match=re.search(r'<h3\b[^>]*>(.*?)</h3>',card,re.I|re.S)
+        title=page_text(title_match.group(1)) if title_match else ''
+        text=page_text(card); normalized=' '+fold(text)+' '
+        matches=[key for key,names in source.get('communityAliasesById',{}).items()
+                 if any(len(fold(name))>=8 and ' '+fold(name)+' ' in normalized for name in names)]
+        # A regional employer is not evidence of a job in every member Nation.
+        if len(matches)!=1 or not title: continue
+        p=AnchorCollector(); p.feed(card)
+        url=next((urllib.parse.urljoin(source['url'],a['href']) for a in p.anchors if urllib.parse.urlsplit(a['href']).path.lower().endswith('.pdf')),None)
+        if not url: continue
+        body,method,error=extract_document_text(url)
+        closing=extract_labeled_date(body,('closing','deadline','apply by','applications close'))
+        # The readable official board can independently state an exact card's
+        # deadline. Document access restrictions are kept visible, never bypassed.
+        board_open = bool(source.get('verifiedOfficialSource') and re.search(r'\bDeadline:\s*Open until Filled\b',text,re.I))
+        if not body or error:
+            reviews.append({'sourceId':source['id'],'sourceUrl':url,'status':'document_unavailable','reason':error or 'No document text'})
+            if not board_open: continue
+        status='Pending verification'
+        if CLOSED_WORDS.search(body): status='Closed'
+        elif closing: status=effective_status({'closingDate':closing,'lastChecked':today.isoformat()},today)
+        elif board_open: status='Open'
+        key=matches[0]
+        card_id=re.search(r'\bid=["\'](job-\d+)["\']',card)
+        source_url=source['url']+('#'+card_id.group(1) if card_id else '')
+        rows.append(normalize_listing({'title':title,'employer':source['name'],'communityId':key,
+            'communityName':source.get('communityNamesById',{}).get(key,''),'sourceId':source['id'],
+            'sourceName':source['name'],'sourceUrl':source_url,'applicationUrl':url,'location':text.split('Deadline:')[0].replace(title,'').replace('DOWNLOAD','').strip(),
+            'description':'The official MFNERC board lists this school posting and its deadline. Consult the original document for requirements.' + (' Linked PDF could not be checked automatically; confirm details with the employer.' if error or not body else ''),
+            'closingDate':closing,'lastChecked':today.isoformat(),'status':status,
+            'verifiedOfficialSource':bool(source.get('verifiedOfficialSource')),'extractionConfidence':'high',
+            'activeEvidence':{'kind':'deadline' if closing else 'open_until_filled','boardUrl':source_url,'documentUrl':url,'documentStatus':'unavailable' if error or not body else 'checked','checkedAt':today.isoformat()},
+        },today))
+    return rows,reviews
+
+
 def configured_sources(root: Path, province: str | None = None) -> list[dict]:
     """Merge curated boards with ISC-listed community sites and verified Facebook pages."""
     curated = read_json(root / "jobs-sources.json", {"sources": []}).get("sources", [])
@@ -383,25 +461,21 @@ def configured_sources(root: Path, province: str | None = None) -> list[dict]:
 
 
 def fetch_markup(url: str) -> tuple[str, str | None]:
-    request = urllib.request.Request(url, headers={"User-Agent": "OpenBandJobs/1.1 (+https://openband.ca)"})
     try:
-        with urllib.request.urlopen(request, timeout=8) as response:
-            content_type = response.headers.get_content_type()
-            if content_type not in {"text/html", "application/xhtml+xml"}:
-                return "", f"non-HTML source ({content_type})"
-            return response.read().decode("utf-8", errors="replace"), None
+        if (urllib.parse.urlsplit(url).hostname or '').endswith(('facebook.com', 'instagram.com')):
+            return '', 'authorized platform API required; HTML scraping withheld'
+        body, final, content_type = public_fetcher().get(url)
+        if content_type not in {"text/html", "application/xhtml+xml"}:
+            return "", f"non-HTML source ({content_type})"
+        return body.decode("utf-8", errors="replace"), None
     except Exception as exc:
         return "", str(exc)
 
 
 def fetch_binary(url: str) -> tuple[bytes, str, str | None]:
-    request = urllib.request.Request(url, headers={"User-Agent": "OpenBandJobs/1.1 (+https://openband.ca)"})
     try:
-        with urllib.request.urlopen(request, timeout=10) as response:
-            content = response.read(15 * 1024 * 1024 + 1)
-            if len(content) > 15 * 1024 * 1024:
-                return b"", "", "document exceeds 15 MB limit"
-            return content, response.headers.get_content_type(), None
+        body, final, content_type = public_fetcher().get(url)
+        return body, content_type, None
     except Exception as exc:
         return b"", "", str(exc)
 
@@ -548,14 +622,19 @@ def document_candidate(url: str, source: dict, today: date) -> tuple[dict | None
 
 
 def page_text(markup: str) -> str:
-    return clean_text(re.sub(r"<[^>]+>", " ", markup))
+    try:
+        from tools.community_updates import SourcePage
+    except ImportError:
+        from community_updates import SourcePage
+    p = SourcePage(''); p.feed(markup)
+    return clean_text(' '.join(p.text))
 
 
 def extract_labeled_date(text: str, labels: tuple[str, ...]) -> str | None:
     label_pattern = "|".join(re.escape(label) for label in labels)
     weekday = r'(?:Mon(?:day)?|Tue(?:sday)?|Wed(?:nesday)?|Thu(?:rsday)?|Fri(?:day)?|Sat(?:urday)?|Sun(?:day)?)\.?[,]?\s+'
     clock = r'(?:at\s+)?(?:\d{1,2}:\d{2}\s*(?:a\.?m\.?|p\.?m\.?)|noon)\s+(?:on\s+)?'
-    prefix = rf'\b(?:{label_pattern})\b\s*(?:date)?\s*[:\-]?\s*(?:(?:{weekday}|{clock})){{0,2}}'
+    prefix = rf'\b(?:{label_pattern})\b\s*(?:date)?\s*(?:for (?:resumes?|applications?))?\s*[:\-]?\s*(?:(?:{weekday}|{clock})){{0,2}}'
     patterns = (
         rf"{prefix}([A-Z][a-z]+)\.?\s+(\d{{1,2}})(?:st|nd|rd|th)?,?\s+(20\d{{2}})",
         rf"{prefix}(20\d{{2}})[-/](\d{{1,2}})[-/](\d{{1,2}})",
@@ -618,6 +697,35 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
             "reason": error,
         }]
         return [], [f"{source['id']}: fetch failed: {error}"], "", review
+    if source.get('parser') == 'scoped_job_cards':
+        rows,reviews=scoped_job_candidates(markup,source,today)
+        return rows, [], page_text(markup), reviews
+    if source.get('parser') == 'job_detail':
+        # A reviewed posting permalink is one vacancy, not a board. Its related
+        # links must never inherit this posting's community association.
+        text=page_text(markup)
+        try:
+            from tools.community_updates import SourcePage, fold
+        except ImportError:
+            from community_updates import SourcePage, fold
+        heading=SourcePage(source['url']);heading.feed(markup)
+        heading_text=fold(' '.join(heading.headings))
+        if (fold(source.get('jobTitle','')) not in heading_text
+            or not any(fold(n) in heading_text for n in source.get('communityNames',[]) if n)):
+            return [],['Job detail heading does not confirm the configured vacancy and community'],text,[]
+        closing=extract_labeled_date(text,('closing','deadline','apply by','applications close'))
+        status='Closed' if CLOSED_WORDS.search(text) else effective_status({'closingDate':closing,'lastChecked':today.isoformat()},today) if closing else 'Open' if OPEN_UNTIL_FILLED.search(text) else 'Pending verification'
+        title=source.get('jobTitle','')
+        if title.casefold() not in text.casefold():return [],['Configured job title not found'],text,[]
+        ids=list(map(str,source.get('communityIds',[])))
+        if len(ids)!=1:return [],['A job permalink requires one explicit community'],text,[]
+        row=normalize_listing({'title':title,'employer':source['name'],'communityId':ids[0],
+            'communityName':(source.get('communityNames') or [''])[0],'sourceId':source['id'],
+            'sourceName':source['name'],'sourceUrl':source['url'],'status':status,'closingDate':closing,
+            'lastChecked':today.isoformat(),'verifiedOfficialSource':bool(source.get('verifiedOfficialSource')),
+            'extractionConfidence':'high','description':'Official posting for the community named by the employer.',
+            'activeEvidence':{'kind':'deadline' if closing else 'open_until_filled','sourceUrl':source['url'],'checkedAt':today.isoformat()}},today)
+        return [row],[],text,[]
     root_parser = AnchorCollector()
     root_parser.feed(markup)
     pages = [(source["url"], markup, bool(source.get("parser") == "job_link_index"))]
@@ -677,8 +785,7 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
                 detail_budget -= 1
             warnings.extend(f"{source['id']}: {warning}" for warning in detail_warnings)
             detected_status = detail.get("status", "Pending verification")
-            if detected_status == "Pending verification" and source.get("autoPublish"):
-                detected_status = "Date unavailable"
+            # A configured board alone is never evidence that a posting is open.
             candidate = normalize_listing({
                 "title": title,
                 "employer": source["name"],
@@ -689,7 +796,7 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
                 "sourceId": source["id"],
                 "sourceUrl": href,
                 "sourceName": source["name"],
-                "description": "Candidate opportunity discovered on an official employment source. Details require verification.",
+                "description": "Official employment posting. Confirm requirements and current availability with the employer." if detected_status in PUBLIC_STATUSES else "Candidate opportunity discovered on an official employment source. Details require verification.",
                 "postedDate": detail.get("postedDate"),
                 "closingDate": detail.get("closingDate"),
                 "status": detected_status,
@@ -730,6 +837,8 @@ def listing_is_confirmed_on_source(record: dict, source_texts: dict[str, str]) -
     title = clean_text(record.get("title"))
     if not page_text or not title:
         return False
+    if record.get('activeEvidence', {}).get('kind') == 'open_until_filled' and not OPEN_UNTIL_FILLED.search(page_text):
+        return False
     normalized_page = slug(page_text)
     normalized_title = slug(re.sub(r"\b(job|employment)\s+opportunit(?:y|ies)\b", "", title, flags=re.I))
     return bool(normalized_title and normalized_title in normalized_page)
@@ -746,6 +855,8 @@ def expand_verified_batches(overrides: dict) -> list[dict]:
 
 def source_check_metadata(source, runs, today):
     run = runs.get(source['id'], {})
+    if source.get('sourceType') == 'verified_official_facebook':
+        return {'checkStatus':'authorized_api_required','lastChecked':None,'lastAttempted':run.get('lastAttempted')}
     if run.get('url') != source['url']:
         return {'checkStatus': 'not_checked', 'lastChecked': None, 'lastAttempted': None}
     checked = parse_date(run.get('lastChecked'))
@@ -798,6 +909,8 @@ def retain_manual_check(raw: dict, previous: dict | None, today: date) -> dict:
         return refreshed
     checked = parse_date(previous.get('lastChecked'))
     original = parse_date(refreshed.get('lastChecked'))
+    if previous.get('status') == 'Closed' and checked and (not original or original <= checked):
+        refreshed['status'] = 'Closed'
     if checked and checked <= today and (not original or original < checked):
         refreshed['lastChecked'] = checked.isoformat()
     return refreshed
@@ -869,6 +982,15 @@ def collect(
     for raw in expand_verified_batches(overrides):
         key = raw.get('id') or stable_id(raw)
         refreshed = retain_manual_check(raw, previous_manual.get(key), today)
+        closed_match = next((r for r in candidates if r.get('status') == 'Closed' and r.get('verifiedOfficialSource')
+            and r.get('extractionConfidence') == 'high' and str(r.get('communityId')) == str(refreshed.get('communityId'))
+            and r.get('sourceUrl','').rstrip('/') == str(refreshed.get('sourceUrl') or '').rstrip('/')
+            and slug(clean_job_title(r.get('title'))) == slug(clean_job_title(refreshed.get('title')))
+            and parse_date(r.get('lastChecked')) == today), None)
+        if closed_match:
+            # Fresh closure evidence from the same posting withdraws availability;
+            # manually reviewed salary, employer and application fields survive.
+            refreshed['status'] = 'Closed';refreshed['lastChecked'] = today.isoformat()
         if not offline and listing_is_confirmed_on_source(refreshed, source_texts):
             refreshed["lastChecked"] = today.isoformat()
         manual_rows.append(refreshed)
@@ -1011,7 +1133,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=ROOT)
     parser.add_argument("--offline", action="store_true")
-    parser.add_argument("--province", choices=["AB", "SK"], default=None)
+    parser.add_argument("--province", type=str.upper, choices=["AB", "SK", "MB"], default=None)
     parser.add_argument("--source-id", action="append", default=[])
     parser.add_argument("--today", type=date.fromisoformat, default=date.today())
     args = parser.parse_args()

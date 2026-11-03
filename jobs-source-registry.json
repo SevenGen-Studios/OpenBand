@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-11-02T22:29:16Z",
-  "trackedCommunityCount": 180,
-  "configuredSourceCount": 182,
+  "generated": "2026-11-03T08:43:33Z",
+  "trackedCommunityCount": 186,
+  "configuredSourceCount": 195,
   "communities": [
     {
       "communityId": "406",
@@ -29,14 +29,14 @@
           "lastAttempted": "2026-11-02"
         },
         {
-          "id": "community-facebook-406-181",
+          "id": "community-facebook-406-194",
           "name": "Ahtahkakoop Cree Nation official Facebook page",
           "url": "https://www.facebook.com/ahtahkakoopcreenation/",
           "sourceType": "verified_official_facebook",
           "direct": true,
-          "checkStatus": "checked",
-          "lastChecked": "2026-11-02",
-          "lastAttempted": "2026-11-02"
+          "checkStatus": "authorized_api_required",
+          "lastChecked": null,
+          "lastAttempted": null
         }
       ],
       "regionalSources": [
@@ -380,7 +380,18 @@
           "lastAttempted": "2026-11-02"
         }
       ],
-      "regionalSources": [],
+      "regionalSources": [
+        {
+          "id": "mfnerc-scoped-school-jobs",
+          "name": "Manitoba First Nations School System / MFNERC",
+          "url": "https://mfnerc.org/about-us/work-here/",
+          "sourceType": "first_nations_education_organization",
+          "direct": false,
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-02",
+          "lastAttempted": "2026-11-02"
+        }
+      ],
       "status": "direct_source_configured"
     },
     {
@@ -512,7 +523,18 @@
           "lastAttempted": "2026-11-02"
         }
       ],
-      "regionalSources": [],
+      "regionalSources": [
+        {
+          "id": "mfnerc-scoped-school-jobs",
+          "name": "Manitoba First Nations School System / MFNERC",
+          "url": "https://mfnerc.org/about-us/work-here/",
+          "sourceType": "first_nations_education_organization",
+          "direct": false,
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-02",
+          "lastAttempted": "2026-11-02"
+        }
+      ],
       "status": "direct_source_configured"
     },
     {
@@ -891,14 +913,14 @@
           "lastAttempted": "2026-11-02"
         },
         {
-          "id": "community-facebook-361-173",
+          "id": "community-facebook-361-186",
           "name": "Cowessess First Nation official Facebook page",
           "url": "https://www.facebook.com/cowessessfn",
           "sourceType": "verified_official_facebook",
           "direct": true,
-          "checkStatus": "checked",
-          "lastChecked": "2026-11-02",
-          "lastAttempted": "2026-11-02"
+          "checkStatus": "authorized_api_required",
+          "lastChecked": null,
+          "lastAttempted": null
         }
       ],
       "regionalSources": [
@@ -1046,6 +1068,16 @@
       "communityId": "448",
       "communityName": "Dene Tha'",
       "directSources": [
+        {
+          "id": "research-dene-tha-jobs",
+          "name": "Dene Tha’ First Nation",
+          "url": "https://denetha.ca/",
+          "sourceType": "official_first_nation",
+          "direct": true,
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-02",
+          "lastAttempted": "2026-11-02"
+        },
         {
           "id": "community-site-448",
           "name": "Dene Tha' official website",
@@ -1205,6 +1237,16 @@
       "communityName": "Fisher River",
       "directSources": [
         {
+          "id": "research-fisher-river-jobs",
+          "name": "Fisher River Cree Nation",
+          "url": "https://fisherriver.ca/opportunities/",
+          "sourceType": "official_first_nation",
+          "direct": true,
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-02",
+          "lastAttempted": "2026-11-02"
+        },
+        {
           "id": "community-site-264",
           "name": "Fisher River official website",
           "url": "https://fisherriver.ca/",
@@ -1339,6 +1381,16 @@
       "communityId": "262",
       "communityName": "Fort Alexander",
       "directSources": [
+        {
+          "id": "research-sagkeeng-jobs",
+          "name": "Sagkeeng Anicinabe Government",
+          "url": "https://sagkeeng.ca/category/employment-opportunities/",
+          "sourceType": "official_first_nation",
+          "direct": true,
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-02",
+          "lastAttempted": "2026-11-02"
+        },
         {
           "id": "community-site-262",
           "name": "Fort Alexander official website",
@@ -1857,7 +1909,18 @@
       "communityId": "286",
       "communityName": "Keeseekoowenin",
       "directSources": [],
-      "regionalSources": [],
+      "regionalSources": [
+        {
+          "id": "mfnerc-scoped-school-jobs",
+          "name": "Manitoba First Nations School System / MFNERC",
+          "url": "https://mfnerc.org/about-us/work-here/",
+          "sourceType": "first_nations_education_organization",
+          "direct": false,
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-02",
+          "lastAttempted": "2026-11-02"
+        }
+      ],
       "status": "regional_sources_only"
     },
     {
@@ -1932,7 +1995,18 @@
       "communityId": "268",
       "communityName": "Kinonjeoshtegon First Nation",
       "directSources": [],
-      "regionalSources": [],
+      "regionalSources": [
+        {
+          "id": "mfnerc-scoped-school-jobs",
+          "name": "Manitoba First Nations School System / MFNERC",
+          "url": "https://mfnerc.org/about-us/work-here/",
+          "sourceType": "first_nations_education_organization",
+          "direct": false,
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-02",
+          "lastAttempted": "2026-11-02"
+        }
+      ],
       "status": "regional_sources_only"
     },
     {
@@ -2005,7 +2079,18 @@
       "communityId": "275",
       "communityName": "Lake St. Martin",
       "directSources": [],
-      "regionalSources": [],
+      "regionalSources": [
+        {
+          "id": "mfnerc-scoped-school-jobs",
+          "name": "Manitoba First Nations School System / MFNERC",
+          "url": "https://mfnerc.org/about-us/work-here/",
+          "sourceType": "first_nations_education_organization",
+          "direct": false,
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-02",
+          "lastAttempted": "2026-11-02"
+        }
+      ],
       "status": "regional_sources_only"
     },
     {
@@ -2687,74 +2772,74 @@
           "lastAttempted": "2026-11-02"
         },
         {
-          "id": "community-facebook-371-174",
+          "id": "community-facebook-371-187",
           "name": "Muskoday First Nation official Facebook page",
           "url": "https://www.facebook.com/MCHCFacebook",
           "sourceType": "verified_official_facebook",
           "direct": true,
-          "checkStatus": "checked",
-          "lastChecked": "2026-11-02",
-          "lastAttempted": "2026-11-02"
+          "checkStatus": "authorized_api_required",
+          "lastChecked": null,
+          "lastAttempted": null
         },
         {
-          "id": "community-facebook-371-175",
+          "id": "community-facebook-371-188",
           "name": "Muskoday First Nation official Facebook page",
           "url": "https://www.facebook.com/MuskodayFireDepartment",
           "sourceType": "verified_official_facebook",
           "direct": true,
-          "checkStatus": "checked",
-          "lastChecked": "2026-11-02",
-          "lastAttempted": "2026-11-02"
+          "checkStatus": "authorized_api_required",
+          "lastChecked": null,
+          "lastAttempted": null
         },
         {
-          "id": "community-facebook-371-176",
+          "id": "community-facebook-371-189",
           "name": "Muskoday First Nation official Facebook page",
           "url": "https://www.facebook.com/profile.php?id=100063922874799",
           "sourceType": "verified_official_facebook",
           "direct": true,
-          "checkStatus": "checked",
-          "lastChecked": "2026-11-02",
-          "lastAttempted": "2026-11-02"
+          "checkStatus": "authorized_api_required",
+          "lastChecked": null,
+          "lastAttempted": null
         },
         {
-          "id": "community-facebook-371-177",
+          "id": "community-facebook-371-190",
           "name": "Muskoday First Nation official Facebook page",
           "url": "https://www.facebook.com/changingdirectionsmfn2017",
           "sourceType": "verified_official_facebook",
           "direct": true,
-          "checkStatus": "checked",
-          "lastChecked": "2026-11-02",
-          "lastAttempted": "2026-11-02"
+          "checkStatus": "authorized_api_required",
+          "lastChecked": null,
+          "lastAttempted": null
         },
         {
-          "id": "community-facebook-371-178",
+          "id": "community-facebook-371-191",
           "name": "Muskoday First Nation official Facebook page",
           "url": "https://www.facebook.com/MFNCS",
           "sourceType": "verified_official_facebook",
           "direct": true,
-          "checkStatus": "checked",
-          "lastChecked": "2026-11-02",
-          "lastAttempted": "2026-11-02"
+          "checkStatus": "authorized_api_required",
+          "lastChecked": null,
+          "lastAttempted": null
         },
         {
-          "id": "community-facebook-371-179",
+          "id": "community-facebook-371-192",
           "name": "Muskoday First Nation official Facebook page",
           "url": "https://www.facebook.com/MuskodayEldersClub",
           "sourceType": "verified_official_facebook",
           "direct": true,
-          "checkStatus": "checked",
-          "lastChecked": "2026-11-02",
-          "lastAttempted": "2026-11-02"
+          "checkStatus": "authorized_api_required",
+          "lastChecked": null,
+          "lastAttempted": null
         },
         {
-          "id": "community-facebook-371-180",
+          "id": "community-facebook-371-193",
           "name": "Muskoday First Nation official Facebook page",
           "url": "https://www.facebook.com/MuskodayGardening",
           "sourceType": "verified_official_facebook",
           "direct": true,
-          "checkStatus": "checked",
-          "lastChecked": "2026-11-02",
-          "lastAttempted": "2026-11-02"
+          "checkStatus": "authorized_api_required",
+          "lastChecked": null,
+          "lastAttempted": null
         }
       ],
       "regionalSources": [
@@ -2864,6 +2949,26 @@
       "communityName": "Nisichawayasihk Cree Nation",
       "directSources": [
         {
+          "id": "research-ncn-jobs",
+          "name": "Nisichawayasihk Cree Nation",
+          "url": "https://www.ncncree.com/business-and-economy/job-opportunities/",
+          "sourceType": "official_first_nation",
+          "direct": true,
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-02",
+          "lastAttempted": "2026-11-02"
+        },
+        {
+          "id": "research-mko-ncn-jobs",
+          "name": "Manitoba Keewatinowi Okimakanak",
+          "url": "https://mkonation.com/employment-opportunity-community-justice-worker-in-nisichawayasihk-cree-nation-term-march-2027/",
+          "sourceType": "tribal_council",
+          "direct": true,
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-02",
+          "lastAttempted": "2026-11-02"
+        },
+        {
           "id": "community-site-313",
           "name": "Nisichawayasihk Cree Nation official website",
           "url": "https://www.ncncree.com/",
@@ -2881,6 +2986,16 @@
       "communityId": "317",
       "communityName": "Northlands Denesuline First Nation",
       "directSources": [
+        {
+          "id": "research-mko-northlands-jobs",
+          "name": "Manitoba Keewatinowi Okimakanak",
+          "url": "https://mkonation.com/employment-opportunity-community-justice-worker-in-northlands-denesuline-first-nation-term-march-31-27/",
+          "sourceType": "tribal_council",
+          "direct": true,
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-02",
+          "lastAttempted": "2026-11-02"
+        },
         {
           "id": "community-site-317",
           "name": "Northlands Denesuline First Nation official website",
@@ -3173,6 +3288,16 @@
           "lastAttempted": "2026-11-02"
         },
         {
+          "id": "research-pasqua-jobs",
+          "name": "Pasqua First Nation",
+          "url": "https://www.pasquafn.ca/about-pasqua-first-nation/employment/",
+          "sourceType": "official_first_nation",
+          "direct": true,
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-02",
+          "lastAttempted": "2026-11-02"
+        },
+        {
           "id": "community-site-383",
           "name": "Pasqua First Nation official website",
           "url": "https://www.pasquafn.ca/",
@@ -3336,6 +3461,16 @@
       "communityId": "269",
       "communityName": "Peguis",
       "directSources": [
+        {
+          "id": "research-peguis-jobs",
+          "name": "Peguis First Nation",
+          "url": "https://peguis.ca/index.php/opportunities",
+          "sourceType": "official_first_nation",
+          "direct": true,
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-02",
+          "lastAttempted": "2026-11-02"
+        },
         {
           "id": "community-site-269",
           "name": "Peguis official website",
@@ -3684,13 +3819,34 @@
           "lastAttempted": "2026-11-02"
         }
       ],
-      "regionalSources": [],
+      "regionalSources": [
+        {
+          "id": "mfnerc-scoped-school-jobs",
+          "name": "Manitoba First Nations School System / MFNERC",
+          "url": "https://mfnerc.org/about-us/work-here/",
+          "sourceType": "first_nations_education_organization",
+          "direct": false,
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-02",
+          "lastAttempted": "2026-11-02"
+        }
+      ],
       "status": "direct_source_configured"
     },
     {
       "communityId": "462",
       "communityName": "Saddle Lake Cree Nation",
       "directSources": [
+        {
+          "id": "research-saddle-lake-jobs",
+          "name": "Saddle Lake Cree Nation",
+          "url": "https://slcn125.ca/jobs/",
+          "sourceType": "official_first_nation",
+          "direct": true,
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-02",
+          "lastAttempted": "2026-11-02"
+        },
         {
           "id": "community-site-462",
           "name": "Saddle Lake Cree Nation official website",
@@ -3880,7 +4036,18 @@
           "lastAttempted": "2026-11-02"
         }
       ],
-      "regionalSources": [],
+      "regionalSources": [
+        {
+          "id": "mfnerc-scoped-school-jobs",
+          "name": "Manitoba First Nations School System / MFNERC",
+          "url": "https://mfnerc.org/about-us/work-here/",
+          "sourceType": "first_nations_education_organization",
+          "direct": false,
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-02",
+          "lastAttempted": "2026-11-02"
+        }
+      ],
       "status": "direct_source_configured"
     },
     {
@@ -7921,6 +8088,162 @@
       "warnings": [
         "community-facebook-406-181: no candidate job links detected"
       ]
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-ncn-jobs",
+      "sourceName": "Nisichawayasihk Cree Nation",
+      "url": "https://www.ncncree.com/business-and-economy/job-opportunities/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "313"
+      ],
+      "candidatesFound": 159,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-fisher-river-jobs",
+      "sourceName": "Fisher River Cree Nation",
+      "url": "https://fisherriver.ca/opportunities/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "264"
+      ],
+      "candidatesFound": 10,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-sagkeeng-jobs",
+      "sourceName": "Sagkeeng Anicinabe Government",
+      "url": "https://sagkeeng.ca/category/employment-opportunities/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "262"
+      ],
+      "candidatesFound": 6,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-peguis-jobs",
+      "sourceName": "Peguis First Nation",
+      "url": "https://peguis.ca/index.php/opportunities",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "269"
+      ],
+      "candidatesFound": 17,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-pasqua-jobs",
+      "sourceName": "Pasqua First Nation",
+      "url": "https://www.pasquafn.ca/about-pasqua-first-nation/employment/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "383"
+      ],
+      "candidatesFound": 6,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-dene-tha-jobs",
+      "sourceName": "Dene Tha’ First Nation",
+      "url": "https://denetha.ca/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "448"
+      ],
+      "candidatesFound": 6,
+      "reviewItems": 1,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-saddle-lake-jobs",
+      "sourceName": "Saddle Lake Cree Nation",
+      "url": "https://slcn125.ca/jobs/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "462"
+      ],
+      "candidatesFound": 10,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-mko-northlands-jobs",
+      "sourceName": "Manitoba Keewatinowi Okimakanak",
+      "url": "https://mkonation.com/employment-opportunity-community-justice-worker-in-northlands-denesuline-first-nation-term-march-31-27/",
+      "sourceType": "tribal_council",
+      "communityIds": [
+        "317"
+      ],
+      "candidatesFound": 4,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-mko-ncn-jobs",
+      "sourceName": "Manitoba Keewatinowi Okimakanak",
+      "url": "https://mkonation.com/employment-opportunity-community-justice-worker-in-nisichawayasihk-cree-nation-term-march-2027/",
+      "sourceType": "tribal_council",
+      "communityIds": [
+        "313"
+      ],
+      "candidatesFound": 4,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "mfnerc-scoped-school-jobs",
+      "sourceName": "Manitoba First Nations School System / MFNERC",
+      "url": "https://mfnerc.org/about-us/work-here/",
+      "sourceType": "first_nations_education_organization",
+      "communityIds": [
+        "273",
+        "261",
+        "268",
+        "284",
+        "275",
+        "286",
+        "303"
+      ],
+      "candidatesFound": 17,
+      "reviewItems": 17,
+      "status": "checked",
+      "warnings": []
     }
   ],
   "sourceRunHistory": [
@@ -62537,6 +62860,183 @@
       "warnings": [
         "community-facebook-406-181: no candidate job links detected"
       ]
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-ncn-jobs",
+      "sourceName": "Nisichawayasihk Cree Nation",
+      "url": "https://www.ncncree.com/business-and-economy/job-opportunities/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "313"
+      ],
+      "candidatesFound": 159,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-fisher-river-jobs",
+      "sourceName": "Fisher River Cree Nation",
+      "url": "https://fisherriver.ca/opportunities/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "264"
+      ],
+      "candidatesFound": 10,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-sagkeeng-jobs",
+      "sourceName": "Sagkeeng Anicinabe Government",
+      "url": "https://sagkeeng.ca/category/employment-opportunities/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "262"
+      ],
+      "candidatesFound": 6,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-peguis-jobs",
+      "sourceName": "Peguis First Nation",
+      "url": "https://peguis.ca/index.php/opportunities",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "269"
+      ],
+      "candidatesFound": 17,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-pasqua-jobs",
+      "sourceName": "Pasqua First Nation",
+      "url": "https://www.pasquafn.ca/about-pasqua-first-nation/employment/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "383"
+      ],
+      "candidatesFound": 6,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-dene-tha-jobs",
+      "sourceName": "Dene Tha’ First Nation",
+      "url": "https://denetha.ca/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "448"
+      ],
+      "candidatesFound": 6,
+      "reviewItems": 1,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-saddle-lake-jobs",
+      "sourceName": "Saddle Lake Cree Nation",
+      "url": "https://slcn125.ca/jobs/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "462"
+      ],
+      "candidatesFound": 10,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-mko-northlands-jobs",
+      "sourceName": "Manitoba Keewatinowi Okimakanak",
+      "url": "https://mkonation.com/employment-opportunity-community-justice-worker-in-northlands-denesuline-first-nation-term-march-31-27/",
+      "sourceType": "tribal_council",
+      "communityIds": [
+        "317"
+      ],
+      "candidatesFound": 4,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "research-mko-ncn-jobs",
+      "sourceName": "Manitoba Keewatinowi Okimakanak",
+      "url": "https://mkonation.com/employment-opportunity-community-justice-worker-in-nisichawayasihk-cree-nation-term-march-2027/",
+      "sourceType": "tribal_council",
+      "communityIds": [
+        "313"
+      ],
+      "candidatesFound": 4,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "mfnerc-scoped-school-jobs",
+      "sourceName": "Manitoba First Nations School System / MFNERC",
+      "url": "https://mfnerc.org/about-us/work-here/",
+      "sourceType": "first_nations_education_organization",
+      "communityIds": [
+        "273",
+        "261",
+        "268",
+        "284",
+        "275",
+        "286",
+        "303"
+      ],
+      "candidatesFound": 0,
+      "reviewItems": 17,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-02",
+      "lastChecked": "2026-11-02",
+      "sourceId": "mfnerc-scoped-school-jobs",
+      "sourceName": "Manitoba First Nations School System / MFNERC",
+      "url": "https://mfnerc.org/about-us/work-here/",
+      "sourceType": "first_nations_education_organization",
+      "communityIds": [
+        "273",
+        "261",
+        "268",
+        "284",
+        "275",
+        "286",
+        "303"
+      ],
+      "candidatesFound": 17,
+      "reviewItems": 17,
+      "status": "checked",
+      "warnings": []
     }
   ]
 }
