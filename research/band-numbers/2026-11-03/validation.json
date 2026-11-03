@@ -29,5 +29,13 @@
     "onlyExistingRecordChange": "69 missing verified iscBandNumber fields populated",
     "capitalDataUnchanged": true
   },
-  "deployment": "local changes only"
+  "deployment": "local changes only",
+  "upstreamIntegration": {
+    "commit": "a8a029886128b83622ad93410f9d87e684bcc3ba",
+    "allUpstreamNationRecordsAndFinancialCorrectionsPreserved": true,
+    "generatedPagesRebuilt": true,
+    "pythonTestsPassed": 79,
+    "javascriptSuitesPassed": 14,
+    "sourceSnapshotHashesVerifiedInGitIndex": true
+  }
 }
