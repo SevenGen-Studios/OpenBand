@@ -277,3 +277,6 @@ html{background:var(--text)}
 body{min-height:100dvh}
 footer{padding-bottom:calc(1.25rem + env(safe-area-inset-bottom,0px))}
 @media(max-width:760px){footer{padding-bottom:calc(1.75rem + env(safe-area-inset-bottom,0px))}}
+
+/* Keep navigation clear of the notch when viewport-fit=cover is active. */
+@media(max-width:760px){nav{padding-top:calc(.45rem + env(safe-area-inset-top,0px));padding-left:max(1rem,env(safe-area-inset-left,0px));padding-right:max(1rem,env(safe-area-inset-right,0px))}}
