@@ -24,6 +24,9 @@
 .hero-seasonal[data-season="winter"] .hero-particle img{animation-duration:11s}
 @media(max-width:760px){
  .hero-particle:nth-child(2),.hero-particle:nth-child(3){display:none}
+ /* Winter keeps one additional lane on mobile; spring retains three. */
+ .hero-seasonal[data-season="winter"] .hero-particle:nth-child(2){display:block;left:28%}
+ .hero-seasonal[data-season="winter"] .hero-particle:nth-child(4){left:55%}
  .hero-seasonal[data-season="spring"] .hero-particle{width:60px;height:60px}
  .hero-particle:nth-child(4){left:48%}.hero-particle:nth-child(5){left:85%}
  #recentSection>.section-head{grid-template-columns:minmax(0,1fr);position:relative}
