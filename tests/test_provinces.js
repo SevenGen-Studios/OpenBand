@@ -3,7 +3,7 @@ const fs=require('node:fs');
 const P=require('../assets/provinces.js');
 const data=JSON.parse(fs.readFileSync('data.json','utf8')).bands;
 assert.equal(data.filter(b=>P.inProvince(b,'AB')).length,48);
-assert.equal(data.filter(b=>P.inProvince(b,'SK')).length,69);
+assert.equal(data.filter(b=>P.inProvince(b,'SK')).length,75);
 assert.equal(data.filter(b=>P.inProvince(b,'AB')&&b.treaty==='Treaty 7').length,7);
 assert.equal(data.filter(b=>P.matches(b,'Goodfish')).length,1);
 assert.equal(data.filter(b=>P.matches(b,"Smith's Landing")).length,1);

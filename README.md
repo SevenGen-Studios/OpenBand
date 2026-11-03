@@ -2,11 +2,11 @@
 
 OpenBand makes First Nations Financial Transparency Act filings easier to search, inspect, export, and verify.
 
-The public website supports Saskatchewan and Alberta First Nations, audited statements, and Chief and Council remuneration. Every displayed result stays connected to its original source filing. Alberta has complete roster coverage with explicitly incomplete disclosure and extraction coverage; see [the Alberta coverage audit](alberta-coverage-report.md).
+The public website supports Saskatchewan, Alberta, and Manitoba First Nations, audited statements, and Chief and Council remuneration. Every displayed result stays connected to its original source filing. Alberta has complete roster coverage with explicitly incomplete disclosure and extraction coverage; see [the Alberta coverage audit](alberta-coverage-report.md).
 
 ## Website Features
 
-- Search Saskatchewan and Alberta First Nations by name, alternate name, or ISC identifier; filter by province and treaty.
+- Search Saskatchewan, Alberta, and Manitoba First Nations by name, alternate name, or ISC identifier; filter by province and treaty.
 - Compare validated financial summaries within the same fiscal year, with field-specific coverage counts.
 - View Chief and Council remuneration rows by fiscal year.
 - Open the original Indigenous Services Canada FNFTA filing from each result.
@@ -43,6 +43,27 @@ Alberta source reconciliation, update commands, review rules, and known gaps are
 - `tools/contact_scraper.py` - refreshes Band Office contacts from ISC and verified official community sites
 - `tools/collect_first_nation_logos.py` - verifies, downloads, and optimizes official Nation logo assets
 - `tools/build_map_data.py` - refreshes the interactive Browse map from official ISC map services
+
+## Provincial roster and band numbers
+
+The directory has 186 profiles: 75 Saskatchewan, 48 Alberta, and 63 Manitoba.
+The live ISC provincial searches were reconciled on November 3, 2026. Saskatchewan
+includes all 70 ISC band identities plus five additional FSIN-listed communities.
+Alberta's Stoney umbrella (471) is linked through its three constituent Nations;
+Whitefish Lake #128 retains its documented shared identifier with Saddle Lake.
+See [SASKATCHEWAN.md](SASKATCHEWAN.md) for the additional Saskatchewan identities.
+
+`iscBandNumber` in `data.json` is the shared display field. The browser component
+in `assets/nation-name.js` and static counterpart in `tools/nation_name.py` use
+`assets/nation-name.css`. Numbers appear at 82.5% size, regular weight, in a
+contrast-preserving muted grey. Missing numbers are omitted and flagged for
+verification; application IDs are never displayed as substitute band numbers.
+
+Run `python tools/audit_provincial_rosters.py` to check completeness and
+`python tools/verify_band_numbers.py` to check mappings. The latter intentionally
+exits nonzero while the three unverified regional identities remain queued in
+`band-number-audit.json`. Source snapshots, reviewed mappings, and archived
+preservation baselines are under `research/band-numbers/2026-11-03/`.
 
 ## Browse map data
 

@@ -2,9 +2,10 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const vm=require('node:vm');
 const source=fs.readFileSync('assets/openband.js','utf8');
-const functions=['hasCheckedDisclosureCoverage','remFilings','auditedFilings','auditedFilingsByYear','isManualReview','getFilingStatus','isReliableParsed','filingScore','disclosureYears','remFilingsByYear','bestYear','directoryStatus','capitalYearsForBand','getCapitalSummary','getCapitalAvailableYears','capitalYearStatus','getCapitalParsedYears','getCapitalDisplayYear','capitalYearControlMarkup','renderCommunityCapital'];
+const functions=['identitySourceLabel','hasCheckedDisclosureCoverage','remFilings','auditedFilings','auditedFilingsByYear','isManualReview','getFilingStatus','isReliableParsed','filingScore','disclosureYears','remFilingsByYear','bestYear','directoryStatus','capitalYearsForBand','getCapitalSummary','getCapitalAvailableYears','capitalYearStatus','getCapitalParsedYears','getCapitalDisplayYear','capitalYearControlMarkup','renderCommunityCapital'];
 const panel={dataset:{},innerHTML:''};
 const context=vm.createContext({capitalData:{bands:{}},curCapitalYear:'2025-2026',curYear:null,
+    OpenBandNationName:require('../assets/nation-name.js'),
     hasRows:f=>Boolean(f?.people?.length),esc:String,escAttr:String,
     el:()=>panel,capitalMemberChip:()=>'',renderCapitalTrendSection:()=>'',
     getSourceLinks:()=>({profile:'https://example.test/filings'}),selectedBand:()=>context.band});

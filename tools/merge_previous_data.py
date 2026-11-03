@@ -56,7 +56,8 @@ def merge_band(previous_band, current_band):
             current_band[field] = previous_band[field]
     for field in ('iscBandNumber', 'officialName', 'aliases', 'sources', 'website', 'tribalCouncil',
                   'mainReserve', 'reserves', 'population', 'leadership', 'sharedIscIdentity',
-                  'relatedNationIds', 'identityNote', 'sourceErrors', 'discoveryStatus'):
+                  'relatedNationIds', 'identityNote', 'sourceErrors', 'discoveryStatus',
+                  'bandNumberVerificationStatus', 'rosterScope'):
         if field in previous_band:
             current_band.setdefault(field, previous_band[field])
 

@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from tools.nation_name import nation_name_markup
 from tools.build_site import ORIGIN, build, slugify  # noqa: E402
 
 
@@ -39,7 +40,7 @@ class SiteRouteTests(unittest.TestCase):
             self.assertIn(f"<title>{expected_title}</title>", markup)
             self.assertIn(f'{ORIGIN}/first-nations/{slugify(band["name"])}/', markup)
             self.assertIn(f'data-band-id="{band["id"]}"', markup)
-            expected_heading = html.escape(f"{band['name']} Financial Records")
+            expected_heading = nation_name_markup(band) + " Financial Records"
             self.assertIn(f"<h1>{expected_heading}</h1>", markup)
 
     def test_legacy_enterprise_routes_redirect_to_community_capital(self):
@@ -145,7 +146,7 @@ class SiteRouteTests(unittest.TestCase):
                 self.assertGreater(row["reserveHectares"], 0)
                 self.assertGreater(row["reserveParcelCount"], 0)
                 self.assertTrue(row["reserveOwnerNames"])
-                self.assertIn("data.sac-isc.gc.ca", row["reserveLandSourceUrl"])
+                self.assertRegex(row["reserveLandSourceUrl"], r"https://(?:data|services)\.sac-isc\.gc\.ca/")
 
     def test_admin_portal_links_operational_services_without_credentials(self):
         portal = (ROOT / "admin" / "index.html").read_text(encoding="utf-8")
@@ -343,7 +344,8 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn('class="map-list-fallback"', markup)
         map_data = json.loads((ROOT / "map-data.json").read_text(encoding="utf-8"))
         self.assertEqual(map_data["communityCount"] + len(map_data["missingLocations"]), len(self.data["bands"]))
-        self.assertEqual([r["id"] for r in map_data["missingLocations"]], ["ab-whitefish-lake-128"])
+        expected_missing = {"ab-whitefish-lake-128"} | {band["id"] for band in self.data["bands"] if band.get("rosterScope") == "regional_listing"}
+        self.assertEqual({r["id"] for r in map_data["missingLocations"]}, expected_missing)
         mapped_ids = {str(row["id"]) for row in map_data["communities"]}
         self.assertEqual(mapped_ids | {str(r["id"]) for r in map_data["missingLocations"]}, {str(row["id"]) for row in self.data["bands"]})
         for row in map_data["communities"]:
@@ -413,7 +415,9 @@ class SiteRouteTests(unittest.TestCase):
         elections = json.loads((ROOT / "elections-data.json").read_text(encoding="utf-8"))
         band_ids = {band["id"] for band in self.data["bands"] if band["province"] == "SK"}
         required = {"firstNationId", "firstNation", "electionDate", "candidateName", "position", "votesReceived", "elected", "sourceUrl"}
-        self.assertEqual({record["firstNationId"] for record in elections["records"]}, band_ids)
+        verified_ids = {record["firstNationId"] for record in elections["records"]}
+        self.assertEqual(verified_ids | set(elections["coverage"]["unverifiedNationIds"]), band_ids)
+        self.assertFalse(verified_ids & set(elections["coverage"]["unverifiedNationIds"]))
         record_keys = {
             (record["firstNationId"], record["electionDate"], record["candidateName"], record["position"])
             for record in elections["records"]
@@ -433,7 +437,7 @@ class SiteRouteTests(unittest.TestCase):
                     self.assertIsInstance(record["votesReceived"], int)
                     self.assertGreater(record["votesReceived"], 0)
 
-        for band_id in band_ids:
+        for band_id in verified_ids:
             latest_date = max(
                 record["electionDate"]
                 for record in elections["records"]

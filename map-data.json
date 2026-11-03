@@ -7,12 +7,37 @@
     "supplementalTribalCouncilRelationships": "https://www.fsin.ca/sask-fn-listings",
     "reserveLands": "https://data.sac-isc.gc.ca/geomatics/rest/services/ILRS_PRD/ERIP_E_NRCan/MapServer/26"
   },
-  "communityCount": 179,
+  "communityCount": 180,
   "missingLocations": [
     {
       "id": "ab-whitefish-lake-128",
       "name": "Whitefish Lake First Nation #128",
       "reason": "Distinct location not verified; shared ISC coordinates are not copied"
+    },
+    {
+      "id": "sk-big-bear",
+      "name": "Big Bear Band",
+      "reason": "Separate community location not verified; shared coordinates are not copied"
+    },
+    {
+      "id": "sk-chakastaypasin",
+      "name": "Chakastaypasin First Nation",
+      "reason": "Separate community location not verified; shared coordinates are not copied"
+    },
+    {
+      "id": "sk-chacachas",
+      "name": "Chacachas Treaty Nation",
+      "reason": "Separate community location not verified; shared coordinates are not copied"
+    },
+    {
+      "id": "sk-peter-chapman",
+      "name": "Peter Chapman First Nation",
+      "reason": "Separate community location not verified; shared coordinates are not copied"
+    },
+    {
+      "id": "sk-young-chippewayan",
+      "name": "Young Chippewayan First Nation",
+      "reason": "Separate community location not verified; shared coordinates are not copied"
     }
   ],
   "communities": [
@@ -5330,6 +5355,23 @@
       ],
       "reserveBoundarySourceUrl": "https://data.sac-isc.gc.ca/geomatics/rest/services/ILRS_PRD/ERIP_E_NRCan/MapServer/26",
       "reserveBoundaryCheckedAt": "2026-11-02T05:31:18+00:00"
+    },
+    {
+      "id": 399,
+      "name": "Big Island Lake Cree Nation",
+      "province": "SK",
+      "latitude": 54.4084430998261,
+      "longitude": -109.6268884206459,
+      "treaty": "Treaty 6",
+      "tribalCouncil": null,
+      "tribalCouncilSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FNMain.aspx?BAND_NUMBER=399&lang=eng",
+      "reserveOwnerNames": [
+        "Big Island Lake Cree Nation"
+      ],
+      "reserveHectares": 4700.1,
+      "reserveParcelCount": 1,
+      "reserveLandSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FNReserves.aspx?BAND_NUMBER=399&lang=eng",
+      "reserveAreaCheckedAt": "2026-11-03"
     }
   ]
 }

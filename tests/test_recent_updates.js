@@ -7,7 +7,7 @@ let bands=[];
 const context = vm.createContext({Date, provinceBands:()=>bands,
   remFilingsByYear:b=>b.filings, hasRows:f=>Boolean(f.people?.length),
   el:()=>list, document:{createElement:()=>({querySelector:()=>({})})},
-  nationLogoMarkup:()=>'', getFilingStatus:()=>({label:'Parsed'}),
+  nationLogoMarkup:()=>'', nationNameMarkup:require('../assets/nation-name.js').markup, getFilingStatus:()=>({label:'Parsed'}),
   esc:String, timeAgo:v=>v, pick:()=>{}});
 vm.runInContext(source.split('\n').filter(l=>['recentTimestamp','renderRecentlyUpdated'].some(n=>l.startsWith(`function ${n}(`))).join('\n'),context);
 assert.equal(context.recentTimestamp({}, {manualSourceReview:{reviewedAt:'2026-10-10'}}),'2026-10-10');

@@ -10,6 +10,7 @@ from collections import Counter
 from pathlib import Path
 
 EXPECTED_SK_BANDS = [
+    "Big Island Lake Cree Nation",
     "Ahtahkakoop Cree Nation",
     "Beardy's and Okemasis' Cree Nation",
     "Big River First Nation",

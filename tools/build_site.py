@@ -10,14 +10,16 @@ from pathlib import Path
 from urllib.parse import quote
 
 try:
+    from tools.nation_name import nation_name_markup, identity_source_url
     from tools.seo_records import publish as publish_records, financial_markup, safe_url, PROVINCES
 except ModuleNotFoundError:
+    from nation_name import nation_name_markup, identity_source_url
     from seo_records import publish as publish_records, financial_markup, safe_url, PROVINCES
 
 
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = "https://openband.ca"
-PROVINCIAL_TOTAL = 74
+PROVINCIAL_TOTAL = 75
 
 
 def slugify(value: str) -> str:
@@ -95,7 +97,8 @@ def election_prerender(band: dict, records: list[dict]) -> str:
                     '<p>ISC-listed appointments are shown in the Nation overview with the source check date; confirm current officeholders with ISC. '
                     'Appointment dates are not treated as election dates; historical remuneration stays separate.</p>'
                     + (f'<a href="{html.escape(governance["sourceUrl"], quote=True)}">ISC governance source</a>' if governance.get('sourceUrl') else '<p>Current leadership source not yet verified.</p>') + '</section>')
-        return ""
+        return ('<section class="election-card"><h3>Elections &amp; Leadership</h3>'
+                '<p>Source-verified election results are not yet indexed. ISC appointments, when available, are shown separately in the overview and are not treated as election results.</p></section>')
     latest_date = max(str(record["electionDate"]) for record in winners)
     winners = [record for record in winners if str(record["electionDate"]) == latest_date]
     source_url = winners[0].get("sourceUrl", "")
@@ -325,10 +328,9 @@ def profile_prerender(
     parsed = [filing for filing in filings if is_parsed(filing)]
     latest = filings[0].get("year") if filings else None
     latest_parsed = parsed[0].get("year") if parsed else None
-    isc_url = (
-        "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/"
-        f"FederalFundingMain.aspx?BAND_NUMBER={quote(str(band.get('iscBandNumber', band['id'])))}&amp;lang=eng"
-    )
+    isc_url = html.escape(identity_source_url(band), quote=True)
+    source_label = 'ISC filing profile' if band.get('iscBandNumber') else 'Community identity source'
+    identity_note = f'<p class="note">{html.escape(band["identityNote"])}</p>' if band.get('identityNote') else ''
     map_link = (
         '<p class="profile-prerender-map"><a class="small-btn community-map-link" '
         'href="/first-nations/waterhen-lake-first-nation/map/">Explore 3D map <span>Beta</span></a></p>'
@@ -336,15 +338,15 @@ def profile_prerender(
     )
     return (
         f'<div id="profilePrerender" class="profile-prerender">'
-        f'<div class="profile-prerender-title"><h1>{html.escape(band["name"])} Financial Records</h1>{nation_logo_markup(band, "profile", eager=True)}</div>'
+        f'<div class="profile-prerender-title"><h1>{nation_name_markup(band)} Financial Records</h1>{nation_logo_markup(band, "profile", eager=True)}</div>'
         "<p>Public FNFTA filing availability, parsed Chief and Council remuneration, "
         "audited financial statements, and original Indigenous Services Canada source documents.</p>"
         "<dl>"
         f"<div><dt>Latest fiscal year listed</dt><dd>{html.escape(latest or 'Not available')}</dd></div>"
         f"<div><dt>Latest parsed remuneration</dt><dd>{html.escape(latest_parsed or 'Pending extraction')}</dd></div>"
         f"<div><dt>Parsed years</dt><dd>{len(parsed)}</dd></div>"
-        f'<div><dt>Authoritative source</dt><dd><a href="{isc_url}">ISC filing profile</a></dd></div>'
-        f"</dl>{map_link}{election_prerender(band, election_records)}"
+        f'<div><dt>Authoritative source</dt><dd><a href="{isc_url}">{source_label}</a></dd></div>'
+        f"</dl>{identity_note}{map_link}{election_prerender(band, election_records)}"
         f"{projects_prerender(band, projects, verified_partnerships, financial_disclosures, unverified_projects)}"
         f"{jobs_prerender(band, jobs)}</div>"
     )
@@ -354,7 +356,7 @@ def directory_prerender(bands: list[dict], map_communities: list[dict]) -> str:
     map_by_id = {str(row.get("id")): row for row in map_communities}
     links = "".join(
         f'<a class="directory-community" href="/first-nations/{slugify(band["name"])}/">'
-        f'<span class="directory-community-main">{nation_logo_markup(band, "medium")}<span><strong>{html.escape(band["name"])}</strong>'
+        f'<span class="directory-community-main">{nation_logo_markup(band, "medium")}<span><strong>{nation_name_markup(band)}</strong>'
         f"<small>{html.escape(band.get('treaty') or 'Treaty not listed')} · "
         f"{html.escape(map_by_id.get(str(band.get('id')), {}).get('tribalCouncil') or 'No council affiliation listed in current sources')}</small></span></span></a>"
         for band in sorted(bands, key=lambda item: item["name"])
@@ -362,14 +364,15 @@ def directory_prerender(bands: list[dict], map_communities: list[dict]) -> str:
     return f'<div id="directoryList" class="directory-list static-directory-list">{links}</div>'
 
 
-def news_prerender(articles: list[dict]) -> str:
+def news_prerender(articles: list[dict], bands: list[dict] = ()) -> str:
+    by_name = {name: band for band in bands for name in [band["name"], band.get("officialName"), *band.get("aliases", [])] if name}
     cards = []
     for article in sorted(articles, key=lambda item: str(item.get("publishedAt", "")), reverse=True)[:12]:
         if not article.get("title") or not article.get("url"):
             continue
         cards.append(
             '<article class="news-card"><div class="news-card-body">'
-            f'<div class="news-meta">{html.escape(article.get("communityName") or "Saskatchewan First Nations")} · '
+            f'<div class="news-meta">{nation_name_markup(by_name.get(article.get("communityName"), {"name": article.get("communityName") or "Saskatchewan First Nations"}))} · '
             f'{html.escape(article.get("sourceName") or article.get("publication") or "Source")} · '
             f'{html.escape(article.get("publishedAt") or "Undated")}</div>'
             f'<h2>{html.escape(article["title"])}</h2>'
@@ -413,9 +416,9 @@ def enterprise_prerender(band: dict, enterprise: dict, map_communities: list[dic
         return (
             '<section id="enterprisePage" class="enterprise-page static-enterprise-page">'
             '<div class="enterprise-page-head">'
-            f'<a href="{back}">Back to {html.escape(band["name"])}</a>'
+            f'<a href="{back}">Back to {nation_name_markup(band)}</a>'
             '<span class="enterprise-kicker">Community Enterprise</span>'
-            f'<h1>{html.escape(band["name"])}</h1>'
+            f'<h1>{nation_name_markup(band)}</h1>'
             '<p>Publicly reported organizations, ownership interests, businesses and projects connected to this First Nation.</p>'
             '</div><section class="enterprise-section enterprise-empty-state">'
             '<h2>Enterprise data not yet verified</h2>'
@@ -463,9 +466,9 @@ def enterprise_prerender(band: dict, enterprise: dict, map_communities: list[dic
     return (
         '<section id="enterprisePage" class="enterprise-page static-enterprise-page">'
         '<div class="enterprise-page-head">'
-        f'<a href="{back}">Back to {html.escape(band["name"])}</a>'
+        f'<a href="{back}">Back to {nation_name_markup(band)}</a>'
         '<span class="enterprise-kicker">Community Enterprise</span>'
-        f'<h1>{html.escape(band["name"])}</h1>'
+        f'<h1>{nation_name_markup(band)}</h1>'
         '<p>Publicly reported organizations, ownership interests, businesses and projects connected to this First Nation.</p>'
         f'<div class="enterprise-tags">{industries}</div>'
         '</div><section class="enterprise-section enterprise-hero-summary"><div>'
@@ -482,7 +485,13 @@ def enterprise_prerender(band: dict, enterprise: dict, map_communities: list[dic
 
 def write_page(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(content, encoding="utf-8")
+    # Avoid reopening unchanged OneDrive files and unnecessary sync churn.
+    if path.exists() and path.read_text(encoding="utf-8") == content:
+        return
+    payload = content.encode("utf-8")
+    with path.open("r+b" if path.exists() else "wb") as handle:
+        handle.write(payload)
+        handle.truncate()
 
 
 def provincial_landing(base: str, code: str, name: str) -> str:
@@ -518,8 +527,8 @@ def provincial_landing(base: str, code: str, name: str) -> str:
         1,
     )
     page = page.replace(
-        '<script src="/assets/openband.js?v=20261102news1" defer></script>',
-        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261102news1" defer></script>',
+        '<script src="/assets/openband.js?v=20261103bands1" defer></script>',
+        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261103bands1" defer></script>',
         1,
     )
     if code == 'MB':
@@ -538,7 +547,7 @@ def legacy_enterprise_redirect(band: dict) -> str:
         f'<meta http-equiv="refresh" content="0; url={html.escape(target, quote=True)}">'
         f'<script>location.replace({json.dumps(target)});</script></head><body>'
         f'<p>Community enterprise is now included within the main public-records profile. '
-        f'<a href="{html.escape(target, quote=True)}">Continue to {html.escape(band["name"])}</a>.</p>'
+        f'<a href="{html.escape(target, quote=True)}">Continue to {nation_name_markup(band)}</a>.</p>'
         '<footer>&copy; <span data-current-year>2026</span> OpenBand. All rights reserved. A product of SevenGenStudios.</footer>'
         '<script>document.querySelector("[data-current-year]").textContent=new Date().getFullYear();</script>'
         '</body></html>'
@@ -609,11 +618,11 @@ def build() -> None:
         contact = next((row for row in contacts.get('contacts', []) if str(row.get('nation_id')) == str(band['id'])), {})
         website = safe_url(contact.get('website_url'))
         region = PROVINCES.get(band.get('province'), 'Canada')
-        facts = f'<section><h2>About {html.escape(band["name"])}</h2><p>{html.escape(band["name"])} is a First Nation in {region}. ' + (html.escape(band['treaty']) + ' is listed in the current source records.' if band.get('treaty') else '') + '</p>'
+        facts = f'<section><h2>About {nation_name_markup(band)}</h2><p>{nation_name_markup(band)} is a First Nation in {region}. ' + (html.escape(band['treaty']) + ' is listed in the current source records.' if band.get('treaty') else '') + '</p>'
         if website:
-            facts += f'<p><a href="{html.escape(website, quote=True)}">Nation website listed by ISC</a>' + (f' · contact source checked {html.escape(str(contact["last_verified"]))}' if contact.get('last_verified') else '') + '</p>'
+            facts += f'<p><a href="{html.escape(website, quote=True)}">Community website listed by source</a>' + (f' · contact source checked {html.escape(str(contact["last_verified"]))}' if contact.get('last_verified') else '') + '</p>'
         if contact.get('source_url') and safe_url(contact['source_url']):
-            facts += f'<p><a href="{html.escape(contact["source_url"], quote=True)}">Verify community information with ISC</a></p>'
+            facts += f'<p><a href="{html.escape(contact["source_url"], quote=True)}">Verify community contact source</a></p>'
         facts += '</section>'
         page = page.replace('</dl>', '</dl>' + facts, 1)
         records = financial_records[str(band['id'])]
@@ -630,8 +639,8 @@ def build() -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20261102news1" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261102news1" defer></script>',
+            '<script src="/assets/openband.js?v=20261103bands1" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261103bands1" defer></script>',
             1,
         )
         write_page(profile_root / slug / "index.html", page)
@@ -674,7 +683,7 @@ def build() -> None:
             "description": news_description,
         },
     ).replace('<body data-page="home">', '<body data-page="news">', 1)
-    news_page = news_page.replace('<div class="news-grid" id="newsGrid"></div>', news_prerender(news.get("articles", [])), 1)
+    news_page = news_page.replace('<div class="news-grid" id="newsGrid"></div>', news_prerender(news.get("articles", []), bands), 1)
     write_page(ROOT / "news" / "index.html", news_page)
 
     paths = ["/", *[f"/{name.lower()}/" for name in PROVINCES.values()], "/browse/", "/news/"] + [f"/first-nations/{slug}/" for slug in slugs]

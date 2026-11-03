@@ -32,6 +32,7 @@ except ImportError:
 
 
 BANDS = [
+    {"id": 399, "iscBandNumber": 399, "name": "Big Island Lake Cree Nation", "province": "SK", "treaty": "Treaty 6"},
     # Treaty 4 Nations
     {"id": 378, "name": "Carry the Kettle Nakoda Nation", "province": "SK", "treaty": "Treaty 4"},
     {"id": 361, "name": "Cowessess First Nation",          "province": "SK", "treaty": "Treaty 4"},
@@ -661,6 +662,7 @@ def main():
         results.append(
             {
                 "id": band["id"],
+                "iscBandNumber": band.get("iscBandNumber", band["id"]),
                 "name": band["name"],
                 "province": band["province"],
                 "treaty": band.get("treaty", ""),

@@ -1,0 +1,67 @@
+{
+  "provinces": {
+    "SK": {
+      "profileCount": 75,
+      "officialRosterCount": 70,
+      "uniqueVerifiedBandNumbers": 70,
+      "missingOfficialNations": [],
+      "sharedAdministrations": [],
+      "regionalCommunities": [
+        {
+          "id": "sk-big-bear",
+          "name": "Big Bear Band",
+          "iscBandNumber": null
+        },
+        {
+          "id": "sk-chakastaypasin",
+          "name": "Chakastaypasin First Nation",
+          "iscBandNumber": 370
+        },
+        {
+          "id": "sk-chacachas",
+          "name": "Chacachas Treaty Nation",
+          "iscBandNumber": null
+        },
+        {
+          "id": "sk-peter-chapman",
+          "name": "Peter Chapman First Nation",
+          "iscBandNumber": 370
+        },
+        {
+          "id": "sk-young-chippewayan",
+          "name": "Young Chippewayan First Nation",
+          "iscBandNumber": null
+        }
+      ]
+    },
+    "AB": {
+      "profileCount": 48,
+      "officialRosterCount": 48,
+      "uniqueVerifiedBandNumbers": 47,
+      "missingOfficialNations": [],
+      "sharedAdministrations": [
+        {
+          "iscBandNumber": 471,
+          "officialName": "Stoney",
+          "province": "AB",
+          "representedByNationIds": [
+            473,
+            433,
+            475
+          ],
+          "reason": "Shared Stoney administration; individual Nations have separate profiles and financial totals."
+        }
+      ],
+      "regionalCommunities": []
+    },
+    "MB": {
+      "profileCount": 63,
+      "officialRosterCount": 63,
+      "uniqueVerifiedBandNumbers": 63,
+      "missingOfficialNations": [],
+      "sharedAdministrations": [],
+      "regionalCommunities": []
+    }
+  },
+  "completeOfficialCoverage": true
+}
