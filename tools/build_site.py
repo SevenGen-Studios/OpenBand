@@ -533,8 +533,8 @@ def provincial_landing(base: str, code: str, name: str) -> str:
         1,
     )
     page = page.replace(
-        '<script src="/assets/openband.js?v=20261103map3" defer></script>',
-        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261103map3" defer></script>',
+        '<script src="/assets/openband.js?v=20261103election2" defer></script>',
+        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261103election2" defer></script>',
         1,
     )
     if code == 'MB':
@@ -647,14 +647,14 @@ def build() -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20261103map3" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261103map3" defer></script>',
+            '<script src="/assets/openband.js?v=20261103election2" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261103election2" defer></script>',
             1,
         )
         if str(band.get('iscBandNumber') or '') in history:
             page = page.replace('openband.css?v=20261103map1', 'openband.css?v=20261103history2')
-            page = page.replace('<script src="/assets/openband.js?v=20261103map3" defer></script>',
-                                '<script src="/assets/profile-history.js?v=20261103history2" defer></script><script src="/assets/openband.js?v=20261103history2" defer></script>')
+            page = page.replace('<script src="/assets/openband.js?v=20261103election2" defer></script>',
+                                '<script src="/assets/profile-history.js?v=20261103history2" defer></script><script src="/assets/openband.js?v=20261103election2" defer></script>')
         write_page(profile_root / slug / "index.html", page)
 
         write_page(
