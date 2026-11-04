@@ -122,7 +122,8 @@ def election_prerender(band: dict, records: list[dict]) -> str:
         parts.append(f"<div><h4>Councillors</h4><ul>{councillors}</ul></div>")
     return (
         '<section class="election-card"><div class="election-heading"><div>'
-        f'<h3>Elections &amp; Leadership</h3><p>Latest election — {html.escape(date_label)}</p></div>'
+        f'<h3>Elections &amp; Leadership</h3><p>Latest election — {html.escape(date_label)}</p>'
+        f'<p>Next possible election — {int(latest_date[:4]) + 4}</p></div>'
         f'<a href="{html.escape(source_url, quote=True)}" rel="noopener">{html.escape(source_name)} results</a></div>'
         f'<div class="election-results">{"".join(parts)}</div>'
         f'<div class="election-source"><strong>Source:</strong> <a href="{html.escape(source_url, quote=True)}" rel="noopener">{html.escape(source_name)}</a></div></section>'
