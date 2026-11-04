@@ -1,0 +1,13 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const context=vm.createContext({window:{}});
+vm.runInContext(fs.readFileSync('assets/profile-history.js','utf8'),context);
+const source=fs.readFileSync('assets/openband.js','utf8');
+vm.runInContext(source.split('\n').find(line=>line.startsWith('function historyOverviewMarkup(')),context);
+assert.match(context.historyOverviewMarkup({id:394,iscBandNumber:'394'}),/Brief History/);
+assert.equal(context.historyOverviewMarkup({id:394,iscBandNumber:'400'}),'');
+assert.equal(context.historyOverviewMarkup({id:394}),'','Internal ID must not substitute for verified ISC identity');
+assert.equal(context.historyOverviewMarkup({iscBandNumber:'403'}),'');
+assert.match(source,/electionOverviewMarkup\(band\)\}\$\{historyOverviewMarkup\(band\)\}/);
+context.window.OPENBAND_HISTORY=undefined;
+assert.equal(context.historyOverviewMarkup({iscBandNumber:'394'}),'','Missing optional history must not break profile rendering');
+console.log('Profile history runtime: scoped ISC identity, placement and missing-asset fallback passed');

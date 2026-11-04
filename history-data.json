@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "records": [
+    {
+      "band_number": "394",
+      "first_nation_name": "Canoe Lake Cree First Nation",
+      "historical_overview": [
+        {
+          "text": "Canoe Lake Cree First Nation is a Cree community in northwestern Saskatchewan whose land-based history predates Treaty 10. Hunting, fishing and trapping sustained community members across a broad traditional territory before and after treaty signing.",
+          "source_ids": [
+            "nation-history"
+          ]
+        },
+        {
+          "text": "On September 19, 1906, Chief John Iron and Headmen Baptiste Iron and Jerome Couilloneur signed Treaty 10 at Île-à-la-Crosse, according to the commissioner’s report, with the Crown’s commissioner, James Andrew Joseph McKenna.",
+          "source_ids": [
+            "treaty-text"
+          ]
+        },
+        {
+          "text": "The creation of the Primrose Lake Air Weapons Range in 1954 restricted access to approximately 75% of the Nation’s most productive traditional lands. A subsequent claim was settled in June 1997.",
+          "source_ids": [
+            "nation-history"
+          ]
+        },
+        {
+          "text": "These documented events describe part of the Nation’s treaty-era and later history; treaty records are not a complete account of its older Indigenous history or continuing Cree identity.",
+          "source_ids": []
+        }
+      ],
+      "treaty_number": "Treaty No. 10",
+      "treaty_signing_date": "1906-09-19",
+      "treaty_signing_location": "Île-à-la-Crosse, Saskatchewan",
+      "historical_chiefs": [
+        "John Iron"
+      ],
+      "historical_headmen": [
+        "Baptiste Iron",
+        "Jerome Couilloneur"
+      ],
+      "treaty_commissioner": "James Andrew Joseph McKenna",
+      "traditional_language": "Cree (Nêhiyaw)",
+      "traditional_territory": "Northwestern Saskatchewan",
+      "land_claim_settlement": "June 1997",
+      "fact_source_ids": {
+        "treaty_number": [
+          "treaty-text"
+        ],
+        "treaty_signing_date": [
+          "treaty-text"
+        ],
+        "treaty_signing_location": [
+          "treaty-text"
+        ],
+        "historical_chiefs": [
+          "treaty-text"
+        ],
+        "historical_headmen": [
+          "treaty-text"
+        ],
+        "treaty_commissioner": [
+          "otc-biographies"
+        ],
+        "traditional_language": [
+          "nation-history"
+        ],
+        "traditional_territory": [
+          "nation-history"
+        ],
+        "land_claim_settlement": [
+          "usask-history"
+        ]
+      },
+      "significant_historical_events": [
+        {
+          "date": "1954",
+          "title": "Primrose Lake Air Weapons Range",
+          "description": "The range’s establishment removed access to about three quarters of the Nation’s most productive traditional lands, disrupting land-based livelihoods.",
+          "source_ids": [
+            "usask-history"
+          ]
+        },
+        {
+          "date": "1975–1997",
+          "title": "Claim and settlement",
+          "description": "Canoe Lake submitted a claim in 1975 for the loss of traditional territory. Canada accepted it in 1995, and a settlement followed in June 1997.",
+          "source_ids": [
+            "usask-history"
+          ]
+        }
+      ],
+      "historical_connections": [
+        {
+          "name": "English River First Nation",
+          "entity_type": "present_day_first_nation",
+          "relationship_type": "shared_historical_treaty_relationship",
+          "description": "Chief William Apisis signed Treaty 10 at Île-à-la-Crosse on August 28, 1906. The English River and Canoe Lake bands participated in the same 1906 treaty process.",
+          "source_ids": [
+            "treaty-text",
+            "otc-biographies"
+          ],
+          "target_profile_id": "400",
+          "related_profiles": []
+        },
+        {
+          "name": "Clear Lake Band",
+          "entity_type": "historical_band",
+          "relationship_type": "shared_historical_treaty_relationship",
+          "description": "Chief Raphael Bedshi-Dekkge signed Treaty 10 in 1906 for the historical Clear Lake Band, another participant in the original negotiations. Later known as the Peter Pond Band, it divided in 1972 into Buffalo River and Turnor Lake, now Birch Narrows Dene Nation.",
+          "source_ids": [
+            "treaty-text-fr",
+            "birch-plan",
+            "buffalo-history"
+          ],
+          "target_profile_id": null,
+          "related_profiles": [
+            "403",
+            "398"
+          ]
+        }
+      ],
+      "connections_note": "These are shared historical treaty relationships. The historical Clear Lake Band is distinct from today’s Nations; these links do not imply common language, ancestry, governance or a political alliance.",
+      "historical_sources": [
+        {
+          "id": "treaty-text",
+          "title": "Treaty No. 10 and Reports of Commissioners",
+          "publisher": "Crown-Indigenous Relations and Northern Affairs Canada",
+          "url": "https://www.rcaanc-cirnac.gc.ca/eng/1100100028874/1581292941464",
+          "supports": "Treaty dates, signatories, commissioner, signing locations and the original bands’ participation.",
+          "locator": "1906 commissioner’s report and treaty signature blocks",
+          "verification_status": "checked",
+          "last_checked_date": "2026-11-03"
+        },
+        {
+          "id": "nation-history",
+          "title": "Our History",
+          "publisher": "Canoe Lake Cree First Nation",
+          "url": "https://www.canoelakefirstnation.com/about-us",
+          "supports": "Cree language and identity, traditional livelihoods, treaty leaders, Primrose Lake impacts and settlement.",
+          "locator": "Our History, paragraphs 2–4",
+          "verification_status": "checked",
+          "last_checked_date": "2026-11-03"
+        },
+        {
+          "id": "usask-history",
+          "title": "Canoe Lake First Nation",
+          "publisher": "University of Saskatchewan · Indigenous Saskatchewan Encyclopedia",
+          "url": "https://teaching.usask.ca/indigenoussk/import/canoe_lake_first_nation.php",
+          "supports": "1954 range impacts, the 1975 claim, acceptance in 1995 and June 1997 settlement.",
+          "locator": "Christian Thompson entry, paragraphs 2–3",
+          "verification_status": "checked",
+          "last_checked_date": "2026-11-03"
+        },
+        {
+          "id": "otc-biographies",
+          "title": "Historical Biographies",
+          "publisher": "Office of the Treaty Commissioner",
+          "url": "https://otc.ca/about/historical-biographies/",
+          "supports": "Chief John Iron, Chief William Apisis (spelled Apsis here), McKenna’s full name and Treaty 10 negotiations.",
+          "locator": "James Andrew Joseph McKenna and Treaty 10 biographies",
+          "verification_status": "checked",
+          "last_checked_date": "2026-11-03"
+        },
+        {
+          "id": "birch-plan",
+          "title": "Birch Narrows Dene Nation Community Plan",
+          "publisher": "Birch Narrows Dene Nation · hosted by Saskatchewan First Nations",
+          "url": "https://skfn.ca/wp-content/uploads/2023/01/2018-09-25-FINAL-BirchCDP-1.pdf",
+          "supports": "Clear Lake/Peter Pond band history, 1972 Turnor Lake recognition and the 1990 Birch Narrows name change.",
+          "locator": "Community History and timeline, printed pages 9–11",
+          "verification_status": "checked",
+          "last_checked_date": "2026-11-03"
+        },
+        {
+          "id": "otc-own-land",
+          "title": "In Their Own Land",
+          "publisher": "Office of the Treaty Commissioner",
+          "url": "https://www.otc.ca/public/uploads/resource_photo/In_Their_Own_Land1.pdf",
+          "supports": "Suggested further reading; not used to verify displayed claims.",
+          "locator": "PDF could not be retrieved during review",
+          "verification_status": "unavailable",
+          "last_checked_date": "2026-11-03"
+        },
+        {
+          "id": "treaty-text-fr",
+          "title": "Treaty No. 10 · French transcription",
+          "publisher": "Crown-Indigenous Relations and Northern Affairs Canada",
+          "url": "https://www.rcaanc-cirnac.gc.ca/fra/1100100028874/1581292941464",
+          "supports": "Full spelling of Raphael Bedshi-Dekkge in the Clear Lake signature block.",
+          "locator": "1906 signature blocks",
+          "verification_status": "checked",
+          "last_checked_date": "2026-11-03"
+        },
+        {
+          "id": "otc-gathering",
+          "title": "OTC at the Treaty 10 Gathering",
+          "publisher": "Office of the Treaty Commissioner",
+          "url": "https://otc.ca/otc-at-the-treaty-10-gathering/",
+          "supports": "Later account listing Canoe Lake as the signing location; differs from the contemporary report.",
+          "locator": "Treaty signing locations paragraph",
+          "verification_status": "checked",
+          "last_checked_date": "2026-11-03"
+        },
+        {
+          "id": "buffalo-history",
+          "title": "Buffalo River Dene First Nation",
+          "publisher": "University of Saskatchewan · Indigenous Saskatchewan Encyclopedia",
+          "url": "https://teaching.usask.ca/indigenoussk/import/buffalo_river_dene_first_nation.php",
+          "supports": "Peter Pond Band divided into Turnor Lake and Buffalo River in 1972.",
+          "locator": "Historical overview",
+          "verification_status": "checked",
+          "last_checked_date": "2026-11-03"
+        }
+      ],
+      "last_verified_date": "2026-11-03",
+      "verification_status": "verified",
+      "research_notes": [
+        {
+          "text": "Signing location: McKenna’s contemporary report places the Canoe Lake band’s September 19 signing at Île-à-la-Crosse. A later OTC account lists Canoe Lake. The location above follows the contemporary report; the date is consistent across these accounts.",
+          "source_ids": [
+            "treaty-text",
+            "otc-gathering"
+          ]
+        }
+      ]
+    }
+  ]
+}

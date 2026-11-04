@@ -12,9 +12,11 @@ from urllib.parse import quote
 try:
     from tools.nation_name import nation_name_markup, identity_source_url
     from tools.seo_records import publish as publish_records, financial_markup, safe_url, PROVINCES
+    from tools.profile_history import build_history
 except ModuleNotFoundError:
     from nation_name import nation_name_markup, identity_source_url
     from seo_records import publish as publish_records, financial_markup, safe_url, PROVINCES
+    from profile_history import build_history
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -323,6 +325,7 @@ def profile_prerender(
     financial_disclosures: list[dict],
     unverified_projects: list[dict],
     jobs: list[dict],
+    history_markup: str = '',
 ) -> str:
     filings = remuneration_filings(band)
     parsed = [filing for filing in filings if is_parsed(filing)]
@@ -347,6 +350,7 @@ def profile_prerender(
         f"<div><dt>Parsed years</dt><dd>{len(parsed)}</dd></div>"
         f'<div><dt>Authoritative source</dt><dd><a href="{isc_url}">{source_label}</a></dd></div>'
         f"</dl>{identity_note}{map_link}{election_prerender(band, election_records)}"
+        f"{history_markup}"
         f"{projects_prerender(band, projects, verified_partnerships, financial_disclosures, unverified_projects)}"
         f"{jobs_prerender(band, jobs)}</div>"
     )
@@ -562,6 +566,7 @@ def build() -> None:
     projects = json.loads((ROOT / "projects-data.json").read_text(encoding="utf-8"))
     jobs = json.loads((ROOT / "jobs-data.json").read_text(encoding="utf-8"))
     bands = sorted(data.get("bands", []), key=lambda item: item["name"])
+    history = build_history(ROOT, bands, slugify)
     base = (ROOT / "index.html").read_text(encoding="utf-8")
     base = base.replace('<a class="logo" href="/">Open<em>Band</em></a>', '<a class="logo" href="/">Open<em>Band</em></a><a class="nav-home" id="homeLink" href="/">Home</a>', 1)
     contacts = json.loads((ROOT / "contacts-data.json").read_text(encoding="utf-8"))
@@ -612,6 +617,7 @@ def build() -> None:
                 projects.get("financialDisclosures", []),
                 projects.get("unverifiedProjects", []),
                 jobs.get("listings", []),
+                history.get(str(band.get('iscBandNumber') or ''), ''),
             ),
             1,
         )
@@ -643,6 +649,10 @@ def build() -> None:
             f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261103map3" defer></script>',
             1,
         )
+        if str(band.get('iscBandNumber') or '') in history:
+            page = page.replace('openband.css?v=20261103map1', 'openband.css?v=20261103history1')
+            page = page.replace('<script src="/assets/openband.js?v=20261103map3" defer></script>',
+                                '<script src="/assets/profile-history.js?v=20261103history1" defer></script><script src="/assets/openband.js?v=20261103history1" defer></script>')
         write_page(profile_root / slug / "index.html", page)
 
         write_page(
