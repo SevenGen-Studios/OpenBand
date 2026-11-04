@@ -50,7 +50,7 @@ jobs:
             python tools/jobs_collector.py --province "${{ github.event.inputs.province || 'ALL' }}"
           fi
       - name: Test employment pipeline
-        run: python -m unittest tests.test_jobs_pipeline tests.test_community_coverage_phase2 -v
+        run: python -m unittest tests.test_jobs_pipeline tests.test_community_coverage_phase2 tests.test_coverage_expansion -v
       - name: Rebase generated changes onto latest main
         run: |
           git config pull.rebase true

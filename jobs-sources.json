@@ -769,7 +769,9 @@
       "scanMedia": true,
       "sameHostOnly": true,
       "parser": "job_link_index",
-      "researchSourceId": "ncn-jobs"
+      "researchSourceId": "ncn-jobs",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 12
     },
     {
       "id": "research-fisher-river-jobs",
@@ -788,7 +790,9 @@
       "scanMedia": true,
       "sameHostOnly": true,
       "parser": "job_link_index",
-      "researchSourceId": "fisher-river-jobs"
+      "researchSourceId": "fisher-river-jobs",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 12
     },
     {
       "id": "research-sagkeeng-jobs",
@@ -807,7 +811,9 @@
       "scanMedia": true,
       "sameHostOnly": true,
       "parser": "job_link_index",
-      "researchSourceId": "sagkeeng-jobs"
+      "researchSourceId": "sagkeeng-jobs",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 12
     },
     {
       "id": "research-peguis-jobs",
@@ -986,6 +992,67 @@
       "autoPublish": false,
       "maxDocuments": 40,
       "associationMode": "explicit_card_only"
+    },
+    {
+      "id": "research-dene-tha-careers",
+      "url": "https://denetha.ca/careers/",
+      "name": "Dene Tha’ First Nation",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "448"
+      ],
+      "communityNames": [
+        "Dene Tha'"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "career_table",
+      "researchSourceId": "dene-tha-careers"
+    },
+    {
+      "id": "research-bigstone-employment",
+      "url": "https://www.bigstone.ca/employment",
+      "name": "Bigstone Cree Nation",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "458"
+      ],
+      "communityNames": [
+        "Bigstone Cree Nation"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "job_link_index",
+      "researchSourceId": "bigstone-employment",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 12
+    },
+    {
+      "id": "research-siksika-careers",
+      "url": "https://siksikanation.com/careers/",
+      "name": "Siksika Nation",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "430"
+      ],
+      "communityNames": [
+        "Siksika Nation"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "job_link_index",
+      "researchSourceId": "siksika-careers",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 12
     }
   ]
 }

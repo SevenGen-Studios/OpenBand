@@ -24,8 +24,11 @@ def inventory(root, today, snapshot=None):
     news, events, jobs, projects = [load(n + '-data.json') for n in ('news', 'events', 'jobs', 'projects')]
     registries = {kind: load(kind + '-sources.json')['communities'] for kind in ('news', 'events')}
     jobs_registry = {str(r['communityId']): r for r in load('jobs-source-registry.json')['communities']}
-    research_path=root/'research/community-intelligence/phase2-2026-11-02/source-checks.json'
-    research_checks=json.loads(research_path.read_text()) if research_path.exists() and not snapshot else {}
+    try:
+        from tools.research_public_sources import source_checks
+    except ImportError:
+        from research_public_sources import source_checks
+    research_checks=source_checks(root) if not snapshot else {}
     cutoff = (today - timedelta(days=90)).isoformat()
     cutoff30 = (today - timedelta(days=30)).isoformat()
     result = []
@@ -125,7 +128,7 @@ def write_report(root, today, baseline):
     (root / 'community-coverage-report.md').write_text('\n'.join(lines) + '\n')
     with (root / 'community-coverage-report.csv').open('w') as f:
         fields = ['communityId', 'communityName', 'province', 'newsCount', 'latestNews', 'recentNews30', 'recentNews90', 'upcomingEvents', 'verifiedProjects', 'activeJobs', 'allFour', 'noVerifiedInformation', 'missingCategories']
-        w = csv.DictWriter(f, fields, extrasaction='ignore'); w.writeheader(); w.writerows(after['communities'])
+        w = csv.DictWriter(f, fields, extrasaction='ignore', lineterminator='\n'); w.writeheader(); w.writerows(after['communities'])
     return payload
 
 

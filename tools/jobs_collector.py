@@ -142,6 +142,16 @@ def discovery_key(record: dict) -> str:
     return "|".join([slug(title), source_identity, ",".join(value for value in associations if value)])
 
 
+def posting_key(record):
+    """A title suffix must not duplicate the same vacancy on the same permalink."""
+    url = urllib.parse.urlsplit(clean_text(record.get('sourceUrl')))
+    if not url.netloc or not url.path.strip('/'):
+        return None
+    title = re.sub(r"\s*[–—-]\s*(?:(?:term|full[ -]time|part[ -]time)\s+)?opportunity\s*$", '', clean_job_title(record.get('title')), flags=re.I)
+    associations = tuple(sorted({str(record.get('communityId') or '')} | set(map(str, record.get('firstNationIds') or []))))
+    return (url.netloc.lower().removeprefix('www.'), url.path.rstrip('/'), url.query, associations, slug(title))
+
+
 def stable_id(record: dict) -> str:
     key = listing_key(record)
     digest = hashlib.sha1(key.encode("utf-8")).hexdigest()[:10]
@@ -682,6 +692,47 @@ def inspect_candidate_page(url: str, today: date) -> tuple[dict, list[str]]:
     }, []
 
 
+def career_table_candidates(markup, source, today):
+    """Read vacancy deadlines from their own table cells, never adjacent jobs."""
+    from lxml import html
+    doc = html.fromstring(markup)
+    ids = list(map(str, source.get('communityIds', [])))
+    if len(ids) != 1 or not source.get('verifiedOfficialSource'):
+        return [], ['A career table requires one verified community employer']
+    rows = []
+    for table in doc.xpath('//table'):
+        headers = [re.sub(r'[^a-z]', '', cell.text_content().lower()) for cell in table.xpath('(.//tr)[1]/*')]
+        if not {'opportunity', 'postedon', 'closingdate'}.issubset(headers):
+            continue
+        for tr in table.xpath('(.//tr)[position()>1]'):
+            cells = tr.xpath('./td')
+            if len(cells) != len(headers):
+                continue
+            values = {key: clean_text(cell.text_content()) for key, cell in zip(headers, cells)}
+            link = cells[headers.index('opportunity')].xpath('.//a[@href]')
+            if not link or not values['opportunity']:
+                continue
+            url = urllib.parse.urljoin(source['url'], link[0].get('href'))
+            if urllib.parse.urlsplit(url).netloc.lower().removeprefix('www.') != urllib.parse.urlsplit(source['url']).netloc.lower().removeprefix('www.'):
+                continue
+            closing = parse_date(values['closingdate'])
+            posted = parse_date(values['postedon'])
+            # A blank deadline cannot borrow the next row's date or turn into
+            # an open-until-filled vacancy without the employer saying so.
+            open_ended = bool(OPEN_UNTIL_FILLED.search(values['closingdate']))
+            status = effective_status({'closingDate': closing.isoformat() if closing else None, 'lastChecked': today.isoformat()}, today) if closing else 'Open' if open_ended else 'Pending verification'
+            row = normalize_listing({'title': values['opportunity'], 'employer': source['name'],
+                'communityId': ids[0], 'communityName': (source.get('communityNames') or [''])[0],
+                'sourceId': source['id'], 'sourceName': source['name'], 'sourceUrl': url, 'applicationUrl': url,
+                'postedDate': posted.isoformat() if posted else None, 'closingDate': closing.isoformat() if closing else None,
+                'employmentType': values.get('type', ''), 'description': 'Official employer posting. ' + values.get('term', ''),
+                'status': status, 'lastChecked': today.isoformat(), 'verifiedOfficialSource': True,
+                'extractionConfidence': 'high', 'activeEvidence': {'kind': 'deadline' if closing else 'open_until_filled',
+                    'sourceUrl': source['url'], 'checkedAt': today.isoformat()} if closing or open_ended else None}, today)
+            rows.append(row)
+    return rows, []
+
+
 def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], list[str], str, list[dict]]:
     today = today or date.today()
     warnings = []
@@ -697,6 +748,9 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
             "reason": error,
         }]
         return [], [f"{source['id']}: fetch failed: {error}"], "", review
+    if source.get('parser') == 'career_table':
+        rows, warnings = career_table_candidates(markup, source, today)
+        return rows, warnings, page_text(markup), []
     if source.get('parser') == 'scoped_job_cards':
         rows,reviews=scoped_job_candidates(markup,source,today)
         return rows, [], page_text(markup), reviews
@@ -753,7 +807,7 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
     review_items = []
     seen = set()
     media_urls = []
-    detail_budget = 4
+    detail_budget = max(0, min(20, int(source.get("maxDetailPages", 4))))
     for page_url, page_markup, employment_context in pages:
         parser = AnchorCollector()
         parser.feed(page_markup)
@@ -814,7 +868,7 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
                 if employment_context or JOB_WORDS.search(hint):
                     if src not in media_urls:
                         media_urls.append(src)
-    for media_url in media_urls[:3]:
+    for media_url in media_urls[:max(0, min(20, int(source.get("maxMediaDocuments", 3))))]:
         candidate, review = document_candidate(media_url, source, today)
         review_items.append(review)
         if candidate:
@@ -974,6 +1028,7 @@ def collect(
 
     by_id = {}
     by_discovery = {}
+    by_posting = {}
     duplicate_count = 0
     suppressed = {str(value) for value in overrides.get("suppressIds", [])}
     corrections = overrides.get("corrections", {})
@@ -1005,8 +1060,7 @@ def collect(
             record["warnings"] = issues
         key = listing_key(record)
         source_key = discovery_key(record)
-        existing_key = by_discovery.get(source_key)
-        existing = by_id.get(key) or (by_id.get(existing_key) if existing_key else None)
+        existing = by_id.get(key) or by_id.get(by_discovery.get(source_key)) or by_id.get(by_posting.get(posting_key(record)))
         if existing:
             duplicate_count += 1
             if record.get("manualOverride") or not existing.get("manualOverride") and record.get("extractionConfidence") == "high":
@@ -1018,6 +1072,8 @@ def collect(
         else:
             by_id[key] = record
             by_discovery[source_key] = key
+        if posting_key(record):
+            by_posting[posting_key(record)] = listing_key(by_id.get(key) or existing or record)
 
     listings = sorted(by_id.values(), key=lambda row: (row.get("postedDate") or row.get("lastChecked") or "", row["title"]), reverse=True)
     active = [row for row in listings if row["status"] in ACTIVE_STATUSES]

@@ -67,7 +67,7 @@ def validate(entry, roster, checks, root, today):
     else: raise ValueError('Unknown dataset')
 
 
-def apply(root=ROOT, today=None):
+def apply(root=ROOT, today=None, report_path=None):
     today = today or date.today()
     roster = {str(b['id']) for b in json.loads((root / 'data.json').read_text())['bands']}
     entries = json.loads((root / 'community-enrichment.json').read_text())['records']
@@ -100,7 +100,7 @@ def apply(root=ROOT, today=None):
             data['articleCount' if kind == 'news' else 'eventCount'] = len(data[field])
         write_json(root / (kind + '-data.json'), data)
     write_json(root / 'jobs-overrides.json', overrides)
-    report_path=root / 'research/community-intelligence/phase2-2026-11-02/backfill-results.json'
+    report_path=report_path or root / 'research/community-intelligence/phase2-2026-11-02/backfill-results.json'
     previous=json.loads(report_path.read_text()) if report_path.exists() else {}
     history=previous.get('firstAppliedRecords') or previous.get('records') or []
     history_by_id={(r['kind'],r['id']):r for r in history}

@@ -12,8 +12,11 @@ ROOT = Path(__file__).resolve().parents[1]
 def register(root=ROOT):
     registry = json.loads((root / 'community-research-sources.json').read_text())
     roster = {str(b['id']): b for b in json.loads((root / 'data.json').read_text())['bands']}
-    checks_path = root / 'research/community-intelligence/phase2-2026-11-02/source-checks.json'
-    checks = json.loads(checks_path.read_text()) if checks_path.exists() else {}
+    try:
+        from tools.research_public_sources import source_checks
+    except ImportError:
+        from research_public_sources import source_checks
+    checks = source_checks(root)
     aliases = {'262': ['Sagkeeng', 'Sagkeeng Anicinabe Nation'], '273': ['Roseau River Anishinabe First Nation'],
                '343': ['Mosquito First Nation'], '313': ['NCN', 'Nisichawayasihk Cree Nation'], '384': ['Peepeekisis Cree Nation']}
     for source in registry['sources']:
@@ -39,12 +42,18 @@ def register(root=ROOT):
     path = root / 'jobs-sources.json'; payload = json.loads(path.read_text())
     for source in registry['sources']:
         if 'jobs' not in source['categories']: continue
-        if any(s['url'].rstrip('/') == source['url'].rstrip('/') and set(map(str,s.get('communityIds',[]))) == set(source['communityIds']) for s in payload['sources']): continue
+        configured = next((s for s in payload['sources'] if s['url'].rstrip('/') == source['url'].rstrip('/') and set(map(str,s.get('communityIds',[]))) == set(source['communityIds'])), None)
+        if configured:
+            if source.get('jobParser'): configured['parser'] = source['jobParser']
+            for key in ('maxDetailPages', 'maxMediaDocuments'):
+                if key in source: configured[key] = source[key]
+            continue
         payload['sources'].append({'id': 'research-' + source['id'], 'url': source['url'], 'name': source['name'],
             'sourceType': 'official_first_nation' if source['type'] == 'Official First Nation Website' else 'tribal_council',
             'communityIds': source['communityIds'], 'communityNames': [roster[i]['name'] for i in source['communityIds']],
             'verifiedOfficialSource': True, 'autoPublish': False, 'inspectDetails': True, 'scanMedia': True,
-            'sameHostOnly': True, 'parser': 'job_link_index', 'researchSourceId': source['id']})
+            'sameHostOnly': True, 'parser': source.get('jobParser', 'job_link_index'), 'researchSourceId': source['id'],
+            **{key: source[key] for key in ('maxDetailPages', 'maxMediaDocuments') if key in source}})
     write_json(path, payload)
 
 

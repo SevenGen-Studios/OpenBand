@@ -25,7 +25,7 @@ jobs:
           python-version: "3.11"
       - run: pip install -r requirements.txt
       - name: Test evidence, association and coverage rules
-        run: python -m unittest tests.test_community_coverage_phase2 -v
+        run: python -m unittest tests.test_community_coverage_phase2 tests.test_coverage_expansion -v
       - name: Recheck reviewed sources without overwriting curated records
         run: |
           python -m tools.research_public_sources --refresh --limit 100

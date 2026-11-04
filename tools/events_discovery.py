@@ -672,6 +672,10 @@ def extract_html_events(html: str, page_url: str, community: dict, source: dict,
     for row in parser.anchor_rows():
         url = canonical_url(urllib.parse.urljoin(page_url, row["href"]))
         combined = clean_text(f"{row['title']} {row['context']}")
+        # A month-view day link is navigation, not a separate event. Its
+        # surrounding cell may contain several unrelated dates and titles.
+        if re.search(r'/calendar/(?:day/)?20\d{2}-\d{2}-\d{2}/?$', urllib.parse.urlsplit(url).path) or re.match(r'^\d+\s+events?\b', row['title'], re.I):
+            continue
         dated_event_link = re.search(r'/(?:events?/|eventer/[^/]+/edate/)20\d{2}-\d{2}-\d{2}', urllib.parse.urlsplit(url).path)
         if (FOLLOW_LINK_WORDS.search(combined) or dated_event_link or urllib.parse.urlsplit(url).path.lower().endswith(".ics")) and url.startswith("http"):
             follow.append(url)
@@ -967,6 +971,8 @@ def is_publishable_event(item: dict, today: date | None = None) -> bool:
     normalized_title = normalized_text(title)
     path = urllib.parse.urlsplit(url).path.lower().rstrip("/")
     query = urllib.parse.urlsplit(url).query.lower()
+    if re.search(r'/calendar/(?:day/)?20\d{2}-\d{2}-\d{2}$', path) or re.match(r'^\d+\s+events?\b', title, re.I):
+        return False
     source_years = set(re.findall(r"(?<!\d)(20\d{2})(?!\d)", urllib.parse.unquote(url)))
     start_year = str(item.get("startDate") or "")[:4]
     if source_years and start_year not in source_years:

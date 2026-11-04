@@ -280,7 +280,9 @@
       "name": "Nisichawayasihk Cree Nation",
       "type": "Official First Nation Website",
       "requiresCommunityMention": false,
-      "verifiedAt": "2026-11-02"
+      "verifiedAt": "2026-11-02",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 12
     },
     {
       "id": "fisher-river-jobs",
@@ -294,7 +296,9 @@
       "name": "Fisher River Cree Nation",
       "type": "Official First Nation Website",
       "requiresCommunityMention": false,
-      "verifiedAt": "2026-11-02"
+      "verifiedAt": "2026-11-02",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 12
     },
     {
       "id": "sagkeeng-jobs",
@@ -308,7 +312,9 @@
       "name": "Sagkeeng Anicinabe Government",
       "type": "Official First Nation Website",
       "requiresCommunityMention": false,
-      "verifiedAt": "2026-11-02"
+      "verifiedAt": "2026-11-02",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 12
     },
     {
       "id": "peguis-jobs",
@@ -522,6 +528,205 @@
       "type": "Government Source",
       "requiresCommunityMention": true,
       "verifiedAt": "2026-11-02"
+    },
+    {
+      "id": "dene-tha-careers",
+      "url": "https://denetha.ca/careers/",
+      "communityIds": [
+        "448"
+      ],
+      "categories": [
+        "jobs"
+      ],
+      "name": "Dene Tha’ First Nation",
+      "type": "Official First Nation Website",
+      "requiresCommunityMention": false,
+      "verifiedAt": "2026-11-03",
+      "jobParser": "career_table"
+    },
+    {
+      "id": "siksika-home-maintenance",
+      "url": "https://siksikanation.com/basic-home-maintenance-workshop-november/",
+      "communityIds": [
+        "430"
+      ],
+      "categories": [
+        "news",
+        "events"
+      ],
+      "name": "Siksika Nation",
+      "type": "Official First Nation Website",
+      "requiresCommunityMention": false,
+      "verifiedAt": "2026-11-03"
+    },
+    {
+      "id": "sagkeeng-news-index",
+      "url": "https://sagkeeng.ca/news/",
+      "communityIds": [
+        "262"
+      ],
+      "categories": [
+        "news",
+        "events"
+      ],
+      "name": "Sagkeeng Anicinabe Government",
+      "type": "Official First Nation Website",
+      "requiresCommunityMention": false,
+      "verifiedAt": "2026-11-03"
+    },
+    {
+      "id": "ebb-flow-events",
+      "url": "https://ebbandflowfn.ca/events-page/",
+      "communityIds": [
+        "280"
+      ],
+      "categories": [
+        "news",
+        "events"
+      ],
+      "name": "Ebb and Flow First Nation",
+      "type": "Official First Nation Website",
+      "requiresCommunityMention": false,
+      "verifiedAt": "2026-11-03"
+    },
+    {
+      "id": "siksika-health-calendar",
+      "url": "https://siksikahealth.com/calendar/",
+      "communityIds": [
+        "430"
+      ],
+      "categories": [
+        "events"
+      ],
+      "name": "Siksika Health Services",
+      "type": "Official First Nation Website",
+      "requiresCommunityMention": false,
+      "verifiedAt": "2026-11-03",
+      "verificationNote": "Calendar explicitly identifies its programs as supporting Siksika Nation health and wellness."
+    },
+    {
+      "id": "bigstone-employment",
+      "url": "https://www.bigstone.ca/employment",
+      "communityIds": [
+        "458"
+      ],
+      "categories": [
+        "jobs"
+      ],
+      "name": "Bigstone Cree Nation",
+      "type": "Official First Nation Website",
+      "requiresCommunityMention": false,
+      "verifiedAt": "2026-11-03",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 12
+    },
+    {
+      "id": "siksika-careers",
+      "url": "https://siksikanation.com/careers/",
+      "communityIds": [
+        "430"
+      ],
+      "categories": [
+        "jobs"
+      ],
+      "name": "Siksika Nation",
+      "type": "Official First Nation Website",
+      "requiresCommunityMention": false,
+      "verifiedAt": "2026-11-03",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 12
+    },
+    {
+      "id": "coverage-project-backgrounder-1",
+      "url": "https://www.canada.ca/en/environment-climate-change/news/2025/12/47-first-nations-guardians-initiatives-20252026.html",
+      "communityIds": [
+        "260",
+        "286",
+        "309",
+        "312",
+        "313",
+        "328",
+        "351",
+        "352",
+        "359",
+        "451",
+        "467",
+        "470",
+        "477",
+        "ab-whitefish-lake-128"
+      ],
+      "categories": [
+        "projects"
+      ],
+      "name": "Government of Canada project backgrounder",
+      "type": "Government Source",
+      "requiresCommunityMention": true,
+      "verifiedAt": "2026-11-03"
+    },
+    {
+      "id": "coverage-project-backgrounder-2",
+      "url": "https://www.canada.ca/en/canada-water-agency/news/2026/09/canada-and-manitoba-renew-commitment-to-lake-winnipeg-as-canada-announces-over-28-million-for-freshwater-projects.html",
+      "communityIds": [
+        "262",
+        "263"
+      ],
+      "categories": [
+        "projects"
+      ],
+      "name": "Government of Canada project backgrounder",
+      "type": "Government Source",
+      "requiresCommunityMention": true,
+      "verifiedAt": "2026-11-03"
+    },
+    {
+      "id": "coverage-project-backgrounder-3",
+      "url": "https://www.canada.ca/en/natural-resources-canada/news/2026/03/government-of-canada-invests-in-strengthening-the-prairies-forest-sector.html",
+      "communityIds": [
+        "260",
+        "261",
+        "262",
+        "263",
+        "324",
+        "445"
+      ],
+      "categories": [
+        "projects"
+      ],
+      "name": "Government of Canada project backgrounder",
+      "type": "Government Source",
+      "requiresCommunityMention": true,
+      "verifiedAt": "2026-11-03"
+    },
+    {
+      "id": "coverage-project-backgrounder-4",
+      "url": "https://www.canada.ca/en/indigenous-services-canada/news/2026/10/waterhen-lake-first-nation-and-canada-celebrate-opening-of-new-temporary-school.html",
+      "communityIds": [
+        "402"
+      ],
+      "categories": [
+        "projects"
+      ],
+      "name": "Government of Canada project backgrounder",
+      "type": "Government Source",
+      "requiresCommunityMention": true,
+      "verifiedAt": "2026-11-03"
+    },
+    {
+      "id": "coverage-project-backgrounder-5",
+      "url": "https://www.canada.ca/en/indigenous-services-canada/news/2026/10/new-cree-nations-miyoyawin-centre-enhances-access-to-culturally-supportive-services.html",
+      "communityIds": [
+        "404",
+        "405",
+        "406",
+        "407"
+      ],
+      "categories": [
+        "projects"
+      ],
+      "name": "Government of Canada project backgrounder",
+      "type": "Government Source",
+      "requiresCommunityMention": true,
+      "verifiedAt": "2026-11-03"
     }
   ]
 }
