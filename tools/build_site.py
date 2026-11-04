@@ -98,9 +98,10 @@ def election_prerender(band: dict, records: list[dict]) -> str:
             return ('<section class="election-card"><h3>Elections &amp; Leadership</h3>'
                     '<p>ISC-listed appointments are shown in the Nation overview with the source check date; confirm current officeholders with ISC. '
                     'Appointment dates are not treated as election dates; historical remuneration stays separate.</p>'
+                    '<p>Next Election - Not available</p>'
                     + (f'<a href="{html.escape(governance["sourceUrl"], quote=True)}">ISC governance source</a>' if governance.get('sourceUrl') else '<p>Current leadership source not yet verified.</p>') + '</section>')
         return ('<section class="election-card"><h3>Elections &amp; Leadership</h3>'
-                '<p>Source-verified election results are not yet indexed. ISC appointments, when available, are shown separately in the overview and are not treated as election results.</p></section>')
+                '<p>Source-verified election results are not yet indexed. ISC appointments, when available, are shown separately in the overview and are not treated as election results.</p><p>Next Election - Not available</p></section>')
     latest_date = max(str(record["electionDate"]) for record in winners)
     winners = [record for record in winners if str(record["electionDate"]) == latest_date]
     source_url = winners[0].get("sourceUrl", "")
@@ -123,7 +124,7 @@ def election_prerender(band: dict, records: list[dict]) -> str:
     return (
         '<section class="election-card"><div class="election-heading"><div>'
         f'<h3>Elections &amp; Leadership</h3><p>Latest election — {html.escape(date_label)}</p>'
-        f'<p>Next possible election — {int(latest_date[:4]) + 4}</p></div>'
+        f'<p>Next Election - {int(latest_date[:4]) + 4}</p></div>'
         f'<a href="{html.escape(source_url, quote=True)}" rel="noopener">{html.escape(source_name)} results</a></div>'
         f'<div class="election-results">{"".join(parts)}</div>'
         f'<div class="election-source"><strong>Source:</strong> <a href="{html.escape(source_url, quote=True)}" rel="noopener">{html.escape(source_name)}</a></div></section>'
