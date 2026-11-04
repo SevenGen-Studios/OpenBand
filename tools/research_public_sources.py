@@ -72,10 +72,19 @@ def evidence_text(root, result):
     if result.get('contentType', '').startswith('image/'):
         import subprocess
         import tempfile
+        import shutil
         suffix = Path(urlsplit(result['url']).path).suffix or '.png'
         with tempfile.NamedTemporaryFile(suffix=suffix) as handle:
             handle.write(body); handle.flush()
-            return subprocess.check_output(['tesseract', handle.name, 'stdout'], stderr=subprocess.DEVNULL, timeout=45).decode()
+            if shutil.which('tesseract'):
+                return subprocess.check_output(['tesseract', handle.name, 'stdout'], stderr=subprocess.DEVNULL, timeout=45).decode()
+            # RapidOCR is already pinned for local document extraction. Poster
+            # text remains subject to the same manual evidence review gates.
+            try:
+                from tools.local_ocr import _rapidocr_text
+            except ImportError:
+                from local_ocr import _rapidocr_text
+            return _rapidocr_text(handle.name)
     if result.get('contentType') == 'application/pdf' or body.startswith(b'%PDF-'):
         import io
         import pdfplumber

@@ -8,13 +8,13 @@ try:
     from tools.community_updates import fold, track_changes
     from tools.news_discovery import write_json, canonical_url, article_page_metadata
     from tools.events_discovery import is_publishable_event, explicit_event_dates
-    from tools.jobs_collector import normalize_listing, validation_warnings
+    from tools.jobs_collector import normalize_listing, validation_warnings, OPEN_UNTIL_FILLED
     from tools.research_public_sources import evidence_text
 except ImportError:
     from community_updates import fold, track_changes
     from news_discovery import write_json, canonical_url, article_page_metadata
     from events_discovery import is_publishable_event, explicit_event_dates
-    from jobs_collector import normalize_listing, validation_warnings
+    from jobs_collector import normalize_listing, validation_warnings, OPEN_UNTIL_FILLED
     from research_public_sources import evidence_text
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -50,7 +50,7 @@ def validate(entry, roster, checks, root, today):
         if not record.get('activeEvidence') or not record.get('verifiedOfficialSource'): raise ValueError('No active listing evidence')
         normalized = normalize_listing(record, today)
         if validation_warnings(normalized): raise ValueError('Job fails publication gate')
-        if not record.get('closingDate') and 'open until filled' not in ' '.join(texts).lower():
+        if not record.get('closingDate') and not OPEN_UNTIL_FILLED.search(' '.join(texts)):
             raise ValueError('Undated jobs require explicit open-until-filled evidence')
     elif kind == 'news':
         if not record.get('publishedAt') or str(record['publishedAt']) > today.isoformat(): raise ValueError('Unverified publication date')
@@ -84,6 +84,7 @@ def apply(root=ROOT, today=None, report_path=None):
         urls = {canonical_url(e['url']) for e in entry['evidence']}
         row_ids = set(map(str, row.get('firstNationIds') or [row.get('bandId') or row.get('communityId')]))
         duplicate = next((r for r in rows if set(map(str, r.get('firstNationIds') or [r.get('bandId') or r.get('communityId')])) == row_ids
+                         and (kind != 'events' or (r.get('startDate'), r.get('endDate')) == (row.get('startDate'), row.get('endDate')))
                          and fold(r.get('name') or r.get('title')) == fold(row.get('name') or row.get('title'))
                          and urls.intersection({canonical_url(r.get('url') or r.get('sourceUrl') or '')} | {canonical_url(s['url']) for s in r.get('sources', [])})), None)
         if duplicate:

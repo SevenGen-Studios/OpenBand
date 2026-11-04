@@ -136,3 +136,60 @@ class CoverageExpansionTests(unittest.TestCase):
             self.assertEqual(sources[0]['parser'],'career_table')
             self.assertEqual(sources[0]['maxDetailPages'],12)
             self.assertEqual(sources[0]['customField'],'preserve')
+
+
+class BreadthPipelineTests(unittest.TestCase):
+    def test_explicit_employer_open_deadline_variants(self):
+        from tools.jobs_collector import OPEN_UNTIL_FILLED
+        for phrase in ['Open until filled', 'Until Suitable Candidate is Found',
+                       'Until a suitable candidate is found', 'Open Until Position is Filled']:
+            self.assertIsNotNone(OPEN_UNTIL_FILLED.search(phrase), phrase)
+        for phrase in ['Suitable candidates should apply', 'This position is filled',
+                       'Applications are welcome', 'Check back for future opportunities']:
+            self.assertIsNone(OPEN_UNTIL_FILLED.search(phrase), phrase)
+
+    def test_audit_meeting_is_an_event_but_report_is_not(self):
+        base = {'title':'Audit & program update community meeting',
+                'description':'Date: November 24, 2026. Public community meeting.',
+                'startDate':'2026-11-24', 'sourceUrl':'https://example.test/meetings/november',
+                'extractionMethod':'reviewed-source'}
+        self.assertTrue(is_publishable_event(base, date(2026,11,4)))
+        self.assertFalse(is_publishable_event({**base, 'title':'Annual audit report'}, date(2026,11,4)))
+        self.assertFalse(is_publishable_event({**base, 'description':'Audit report available for download.'}, date(2026,11,4)))
+
+    def test_image_evidence_uses_installed_ocr_fallback(self):
+        from tools.research_public_sources import evidence_text
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp); (root/'poster.gz').write_bytes(gzip.compress(b'image-fixture'))
+            check={'contentType':'image/png','evidencePath':'poster.gz','url':'https://example.test/poster.png'}
+            def read_image(path):
+                self.assertEqual(Path(path).read_bytes(), b'image-fixture')
+                return 'Public community meeting November 24, 2026'
+            with patch('shutil.which', return_value=None), patch('tools.local_ocr._rapidocr_text', side_effect=read_image):
+                self.assertIn('November 24, 2026', evidence_text(root, check))
+
+    def test_repeated_meeting_dates_are_distinct_and_exact_duplicate_is_suppressed(self):
+        import hashlib
+        from tools.apply_community_enrichment import apply
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp); checks=root/'research/community-intelligence/phase2-2026-11-02'; checks.mkdir(parents=True)
+            body=b'<p>Example First Nation community meetings November 24 and 25, 2026</p>'
+            (root/'proof.gz').write_bytes(gzip.compress(body))
+            proof={'url':'https://example.test/community-meetings','status':'checked','evidencePath':'proof.gz',
+                   'sha256':hashlib.sha256(body).hexdigest(),'lastSuccess':'2026-11-04T12:00:00Z',
+                   'contentType':'text/html','terms':['Example First Nation','community meetings']}
+            entries=[]
+            for id,day in [('first',24),('second',25),('duplicate',25)]:
+                record={'id':id,'bandId':1,'title':'Community meeting','startDate':f'2026-11-{day}',
+                        'description':f'Date: November {day}, 2026. Community meeting.',
+                        'sourceUrl':proof['url'],'extractionMethod':'reviewed-source'}
+                entries.append({'kind':'events','reviewStatus':'reviewed','record':record,'evidence':[proof],
+                                'communityEvidence':{'1':['Example First Nation']}})
+            fixtures={'data.json':{'bands':[{'id':1}]},'community-enrichment.json':{'records':entries},
+                      'news-data.json':{'articles':[]},'events-data.json':{'events':[]},
+                      'projects-data.json':{'projects':[]},'jobs-overrides.json':{'manualListings':[]}}
+            for name,payload in fixtures.items(): (root/name).write_text(json.dumps(payload))
+            (checks/'source-checks.json').write_text('{}')
+            result=apply(root, date(2026,11,4))
+            self.assertEqual([r['action'] for r in result], ['added','added','duplicate_suppressed'])
+            self.assertEqual([r['startDate'] for r in json.loads((root/'events-data.json').read_text())['events']], ['2026-11-24','2026-11-25'])

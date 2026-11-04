@@ -21,13 +21,16 @@ BEFORE=ROOT/'research/community-intelligence/phase2-2026-11-02/before'
 class ReviewedEvidenceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.entries=json.loads((ROOT/'community-enrichment.json').read_text())['records']
+        manifest=json.loads((ROOT/'community-enrichment.json').read_text())
+        cls.entries=manifest['records']
+        cls.review_day=max(TODAY,date.fromisoformat(manifest['reviewedAt']))
         cls.roster={str(b['id']) for b in json.loads((ROOT/'data.json').read_text())['bands']}
         cls.checks=json.loads((ROOT/'research/community-intelligence/phase2-2026-11-02/source-checks.json').read_text())
 
     def test_every_reviewed_assertion_is_supported_by_its_archived_primary_source(self):
         for entry in self.entries:
-            with self.subTest(id=entry['record']['id']):validate(entry,self.roster,self.checks,ROOT,TODAY)
+            with self.subTest(id=entry['record']['id']):
+                validate(entry,self.roster,self.checks,ROOT,self.review_day)
 
     def test_known_but_wrong_province_community_cannot_replace_reviewed_association(self):
         entry=copy.deepcopy(next(e for e in self.entries if e['record']['id']=='sayisi-dene-microgrid'))

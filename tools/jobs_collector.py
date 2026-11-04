@@ -59,7 +59,7 @@ CLOSED_WORDS = re.compile(
     r"\b(position filled|posting closed|applications? closed|no longer accepting|competition closed)\b",
     re.IGNORECASE,
 )
-OPEN_UNTIL_FILLED = re.compile(r"\b(open until filled|until (?:a suitable candidate is )?filled)\b", re.IGNORECASE)
+OPEN_UNTIL_FILLED = re.compile(r"\b(?:open until filled|until (?:the |a )?position is filled|until (?:a )?suitable candidate is found|until (?:a suitable candidate is )?filled)\b", re.IGNORECASE)
 EMPLOYMENT_PAGE_WORDS = re.compile(
     r"\b(job|jobs|career|careers|employment|opportunities|work with us|"
     r"vacancies|job postings|join our team)\b",

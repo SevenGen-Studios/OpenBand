@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-11-04T06:12:20Z",
+  "generated": "2026-11-04T19:35:02Z",
   "trackedCommunityCount": 180,
-  "configuredSourceCount": 195,
+  "configuredSourceCount": 199,
   "communities": [
     {
       "communityId": "406",
@@ -29,7 +29,7 @@
           "lastAttempted": "2026-11-03"
         },
         {
-          "id": "community-facebook-406-194",
+          "id": "community-facebook-406-198",
           "name": "Ahtahkakoop Cree Nation official Facebook page",
           "url": "https://www.facebook.com/ahtahkakoopcreenation/",
           "sourceType": "verified_official_facebook",
@@ -125,6 +125,16 @@
       "communityId": "463",
       "communityName": "Athabasca Chipewyan First Nation",
       "directSources": [
+        {
+          "id": "research-acfn-jobs",
+          "name": "Athabasca Chipewyan First Nation",
+          "url": "https://acfn.com/careers/",
+          "sourceType": "official_first_nation",
+          "direct": true,
+          "checkStatus": "not_checked",
+          "lastChecked": null,
+          "lastAttempted": null
+        },
         {
           "id": "community-site-463",
           "name": "Athabasca Chipewyan First Nation official website",
@@ -475,6 +485,16 @@
       "communityId": "435",
       "communityName": "Blood",
       "directSources": [
+        {
+          "id": "research-blood-jobs",
+          "name": "Blood Tribe",
+          "url": "https://bloodtribe.org/job-postings/",
+          "sourceType": "official_first_nation",
+          "direct": true,
+          "checkStatus": "not_checked",
+          "lastChecked": null,
+          "lastAttempted": null
+        },
         {
           "id": "community-site-435",
           "name": "Blood official website",
@@ -923,7 +943,7 @@
           "lastAttempted": "2026-11-03"
         },
         {
-          "id": "community-facebook-361-186",
+          "id": "community-facebook-361-190",
           "name": "Cowessess First Nation official Facebook page",
           "url": "https://www.facebook.com/cowessessfn",
           "sourceType": "verified_official_facebook",
@@ -2054,6 +2074,16 @@
           "lastAttempted": "2026-11-03"
         },
         {
+          "id": "research-llrib-jobs",
+          "name": "Lac La Ronge Indian Band",
+          "url": "https://llrib.com/llrib-jobs/",
+          "sourceType": "official_first_nation",
+          "direct": true,
+          "checkStatus": "not_checked",
+          "lastChecked": null,
+          "lastAttempted": null
+        },
+        {
           "id": "community-site-353",
           "name": "Lac La Ronge Indian Band official website",
           "url": "https://llrib.com",
@@ -2792,49 +2822,9 @@
           "lastAttempted": "2026-11-03"
         },
         {
-          "id": "community-facebook-371-187",
-          "name": "Muskoday First Nation official Facebook page",
-          "url": "https://www.facebook.com/MCHCFacebook",
-          "sourceType": "verified_official_facebook",
-          "direct": true,
-          "checkStatus": "authorized_api_required",
-          "lastChecked": null,
-          "lastAttempted": "2026-11-03"
-        },
-        {
-          "id": "community-facebook-371-188",
-          "name": "Muskoday First Nation official Facebook page",
-          "url": "https://www.facebook.com/MuskodayFireDepartment",
-          "sourceType": "verified_official_facebook",
-          "direct": true,
-          "checkStatus": "authorized_api_required",
-          "lastChecked": null,
-          "lastAttempted": "2026-11-03"
-        },
-        {
-          "id": "community-facebook-371-189",
-          "name": "Muskoday First Nation official Facebook page",
-          "url": "https://www.facebook.com/profile.php?id=100063922874799",
-          "sourceType": "verified_official_facebook",
-          "direct": true,
-          "checkStatus": "authorized_api_required",
-          "lastChecked": null,
-          "lastAttempted": "2026-11-03"
-        },
-        {
-          "id": "community-facebook-371-190",
-          "name": "Muskoday First Nation official Facebook page",
-          "url": "https://www.facebook.com/changingdirectionsmfn2017",
-          "sourceType": "verified_official_facebook",
-          "direct": true,
-          "checkStatus": "authorized_api_required",
-          "lastChecked": null,
-          "lastAttempted": "2026-11-03"
-        },
-        {
           "id": "community-facebook-371-191",
           "name": "Muskoday First Nation official Facebook page",
-          "url": "https://www.facebook.com/MFNCS",
+          "url": "https://www.facebook.com/MCHCFacebook",
           "sourceType": "verified_official_facebook",
           "direct": true,
           "checkStatus": "authorized_api_required",
@@ -2844,7 +2834,7 @@
         {
           "id": "community-facebook-371-192",
           "name": "Muskoday First Nation official Facebook page",
-          "url": "https://www.facebook.com/MuskodayEldersClub",
+          "url": "https://www.facebook.com/MuskodayFireDepartment",
           "sourceType": "verified_official_facebook",
           "direct": true,
           "checkStatus": "authorized_api_required",
@@ -2853,6 +2843,46 @@
         },
         {
           "id": "community-facebook-371-193",
+          "name": "Muskoday First Nation official Facebook page",
+          "url": "https://www.facebook.com/profile.php?id=100063922874799",
+          "sourceType": "verified_official_facebook",
+          "direct": true,
+          "checkStatus": "authorized_api_required",
+          "lastChecked": null,
+          "lastAttempted": null
+        },
+        {
+          "id": "community-facebook-371-194",
+          "name": "Muskoday First Nation official Facebook page",
+          "url": "https://www.facebook.com/changingdirectionsmfn2017",
+          "sourceType": "verified_official_facebook",
+          "direct": true,
+          "checkStatus": "authorized_api_required",
+          "lastChecked": null,
+          "lastAttempted": null
+        },
+        {
+          "id": "community-facebook-371-195",
+          "name": "Muskoday First Nation official Facebook page",
+          "url": "https://www.facebook.com/MFNCS",
+          "sourceType": "verified_official_facebook",
+          "direct": true,
+          "checkStatus": "authorized_api_required",
+          "lastChecked": null,
+          "lastAttempted": null
+        },
+        {
+          "id": "community-facebook-371-196",
+          "name": "Muskoday First Nation official Facebook page",
+          "url": "https://www.facebook.com/MuskodayEldersClub",
+          "sourceType": "verified_official_facebook",
+          "direct": true,
+          "checkStatus": "authorized_api_required",
+          "lastChecked": null,
+          "lastAttempted": null
+        },
+        {
+          "id": "community-facebook-371-197",
           "name": "Muskoday First Nation official Facebook page",
           "url": "https://www.facebook.com/MuskodayGardening",
           "sourceType": "verified_official_facebook",
@@ -3490,6 +3520,16 @@
           "checkStatus": "checked",
           "lastChecked": "2026-11-03",
           "lastAttempted": "2026-11-03"
+        },
+        {
+          "id": "research-peguis-cfs-jobs",
+          "name": "Peguis Child and Family Services",
+          "url": "https://www.peguiscfs.ca/employment",
+          "sourceType": "official_first_nation",
+          "direct": true,
+          "checkStatus": "not_checked",
+          "lastChecked": null,
+          "lastAttempted": null
         },
         {
           "id": "community-site-269",

@@ -1053,6 +1053,90 @@
       "researchSourceId": "siksika-careers",
       "maxDetailPages": 12,
       "maxMediaDocuments": 12
+    },
+    {
+      "id": "research-peguis-cfs-jobs",
+      "url": "https://www.peguiscfs.ca/employment",
+      "name": "Peguis Child and Family Services",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "269"
+      ],
+      "communityNames": [
+        "Peguis"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "job_link_index",
+      "researchSourceId": "peguis-cfs-jobs",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 8
+    },
+    {
+      "id": "research-llrib-jobs",
+      "url": "https://llrib.com/llrib-jobs/",
+      "name": "Lac La Ronge Indian Band",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "353"
+      ],
+      "communityNames": [
+        "Lac La Ronge Indian Band"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "job_link_index",
+      "researchSourceId": "llrib-jobs",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 8
+    },
+    {
+      "id": "research-acfn-jobs",
+      "url": "https://acfn.com/careers/",
+      "name": "Athabasca Chipewyan First Nation",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "463"
+      ],
+      "communityNames": [
+        "Athabasca Chipewyan First Nation"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "job_link_index",
+      "researchSourceId": "acfn-jobs",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 8
+    },
+    {
+      "id": "research-blood-jobs",
+      "url": "https://bloodtribe.org/job-postings/",
+      "name": "Blood Tribe",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "435"
+      ],
+      "communityNames": [
+        "Blood"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "job_link_index",
+      "researchSourceId": "blood-jobs",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 8
     }
   ]
 }

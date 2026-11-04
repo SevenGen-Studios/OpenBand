@@ -351,8 +351,8 @@ def profile_prerender(
         f"<div><dt>Latest parsed remuneration</dt><dd>{html.escape(latest_parsed or 'Pending extraction')}</dd></div>"
         f"<div><dt>Parsed years</dt><dd>{len(parsed)}</dd></div>"
         f'<div><dt>Authoritative source</dt><dd><a href="{isc_url}">{source_label}</a></dd></div>'
-        f"</dl>{identity_note}{map_link}{election_prerender(band, election_records)}"
-        f"{history_markup}"
+        f'</dl>{identity_note}{map_link}<div class="overview-context-grid">{election_prerender(band, election_records)}'
+        f"{history_markup}</div>"
         f"{projects_prerender(band, projects, verified_partnerships, financial_disclosures, unverified_projects)}"
         f"{jobs_prerender(band, jobs)}</div>"
     )
@@ -533,8 +533,8 @@ def provincial_landing(base: str, code: str, name: str) -> str:
         1,
     )
     page = page.replace(
-        '<script src="/assets/openband.js?v=20261103history3" defer></script>',
-        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261103history3" defer></script>',
+        '<script src="/assets/openband.js?v=20261104overview1" defer></script>',
+        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261104overview1" defer></script>',
         1,
     )
     if code == 'MB':
@@ -647,14 +647,13 @@ def build() -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20261103history3" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261103history3" defer></script>',
+            '<script src="/assets/openband.js?v=20261104overview1" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261104overview1" defer></script>',
             1,
         )
         if str(band['id']) in history:
-            page = page.replace('openband.css?v=20261103map1', 'openband.css?v=20261103history3')
-            page = page.replace('<script src="/assets/openband.js?v=20261103history3" defer></script>',
-                                '<script src="/assets/profile-history.js?v=20261103history3" defer></script><script src="/assets/openband.js?v=20261103history3" defer></script>')
+            page = page.replace('<script src="/assets/openband.js?v=20261104overview1" defer></script>',
+                                '<script src="/assets/profile-history.js?v=20261104overview1" defer></script><script src="/assets/openband.js?v=20261104overview1" defer></script>')
         write_page(profile_root / slug / "index.html", page)
 
         write_page(
