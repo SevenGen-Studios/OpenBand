@@ -61,9 +61,10 @@ console.log(JSON.stringify(bounds));
   Native pinch zoom and
   inertial dragging remain available. Canvas markers stay geographically
   anchored. Tiles retain a four-tile buffer and avoid intermediate zoom loads.
-- Hovered or focused community markers grow from 9px to 12px. Their reserve
-  parcels use an opaque dark-red 3.5px stroke, 45% red fill, and an 8px white
-  halo. Both geometry layers live below community markers, and both are removed
+- Community markers use a 6.5px radius, growing to 7.5px on hover or focus and
+  returning to their normal size on exit. Their reserve parcels use a 1.5px
+  dark-red stroke, 45% red fill, and a soft 4px white halo.
+  Both geometry layers live below community markers, and both are removed
   together on hover exit. Touch selection uses the same boundary highlight.
 - The map instance and tile layer persist when switching regions. Province
   selection updates the Browse URL and works with browser back/forward.

@@ -51,4 +51,4 @@ noteContext.renderNote({sourceFormat:'docx',originalSourceFile:'/public/disclosu
 assert.match(sourceNote.innerHTML,/source \(Word\)/);
 assert.match(sourceNote.innerHTML,/Download original Word file/);
 assert.match(sourceNote.innerHTML,/Practitioner qualification &lt;retained>/);
-assert.match(fs.readFileSync('index.html','utf8'),/openband\.js\?v=20261103map2/);
+assert.match(fs.readFileSync('index.html','utf8'),/openband\.js\?v=20261103map3/);
