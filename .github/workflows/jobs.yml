@@ -38,7 +38,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends poppler-utils tesseract-ocr
-          pip install pdfplumber==0.11.5 lxml
+          pip install -r requirements.txt
       - name: Register reviewed community sources
         run: python -m tools.register_community_sources
 

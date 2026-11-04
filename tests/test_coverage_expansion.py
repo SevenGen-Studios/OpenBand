@@ -193,3 +193,14 @@ class BreadthPipelineTests(unittest.TestCase):
             result=apply(root, date(2026,11,4))
             self.assertEqual([r['action'] for r in result], ['added','added','duplicate_suppressed'])
             self.assertEqual([r['startDate'] for r in json.loads((root/'events-data.json').read_text())['events']], ['2026-11-24','2026-11-25'])
+
+
+class ResearchOcrConsistencyTests(unittest.TestCase):
+    def test_pinned_engine_is_used_even_when_tesseract_is_installed(self):
+        from tools.research_public_sources import evidence_text
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp); (root/'poster.gz').write_bytes(gzip.compress(b'poster'))
+            check={'contentType':'image/png','evidencePath':'poster.gz','url':'https://example.test/poster.png'}
+            with patch('shutil.which', return_value='/usr/bin/tesseract'), patch('tools.local_ocr._rapidocr_text', return_value='reviewed poster text') as ocr, patch('subprocess.check_output') as command:
+                self.assertEqual(evidence_text(root, check), 'reviewed poster text')
+                ocr.assert_called_once(); command.assert_not_called()

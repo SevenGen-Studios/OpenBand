@@ -76,15 +76,19 @@ def evidence_text(root, result):
         suffix = Path(urlsplit(result['url']).path).suffix or '.png'
         with tempfile.NamedTemporaryFile(suffix=suffix) as handle:
             handle.write(body); handle.flush()
-            if shutil.which('tesseract'):
-                return subprocess.check_output(['tesseract', handle.name, 'stdout'], stderr=subprocess.DEVNULL, timeout=45).decode()
-            # RapidOCR is already pinned for local document extraction. Poster
-            # text remains subject to the same manual evidence review gates.
+            # Use the pinned engine consistently across developer machines and CI;
+            # reviewed evidence terms must not depend on the host's OCR defaults.
             try:
-                from tools.local_ocr import _rapidocr_text
+                try:
+                    from tools.local_ocr import _rapidocr_text
+                except ImportError:
+                    from local_ocr import _rapidocr_text
+                return _rapidocr_text(handle.name)
             except ImportError:
-                from local_ocr import _rapidocr_text
-            return _rapidocr_text(handle.name)
+                if not shutil.which('tesseract'):
+                    raise RuntimeError('Image evidence requires requirements.txt or Tesseract')
+                return subprocess.check_output(['tesseract', handle.name, 'stdout'], stderr=subprocess.DEVNULL, timeout=45).decode()
+
     if result.get('contentType') == 'application/pdf' or body.startswith(b'%PDF-'):
         import io
         import pdfplumber
