@@ -50,17 +50,13 @@ def render_history(record, bands, slugify):
         connections += f'<li><h5>{name} <span>{label}</span></h5><p>{escape(c["description"])}{citations(c["source_ids"])}</p>' + (f'<p class="history-related">Present-day profiles: {related}</p>' if related else '') + '</li>'
     verified = record.get('verification_status') == 'verified' and bool(record.get('last_verified_date')) and bool(used) and all(sources[i].get('verification_status') == 'checked' and sources[i].get('last_checked_date') for i in used)
     badge = f'<span class="history-verified" title="Cited sources checked {escape(record["last_verified_date"], quote=True)}">Sources Verified</span>' if verified else ''
-    source_list = ''
-    for s in sources.values():
-        status = 'Checked ' + s['last_checked_date'] if s['verification_status'] == 'checked' and s.get('last_checked_date') else 'Further reading · not verified'
-        source_list += f'<li><a href="{url(s["url"])}" target="_blank" rel="noopener">{escape(s["title"])}</a><span>{escape(s["publisher"])} · {escape(status)}</span><p>{escape(s["supports"])} {escape(s["locator"])}</p></li>'
     return (
         '<section class="history-card" aria-label="Brief History">'
         '<div class="history-heading"><h3><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v15M12 5C8 2 4 3 2 4v15c3-1 7-1 10 1 3-2 7-2 10-1V4c-2-1-6-2-10 1Z"/></svg>Brief History</h3>'
         f'{badge}</div><p class="history-overview">{overview}</p><dl class="history-facts">{primary}</dl>'
-        f'<details class="history-more"><summary>Read More <span>Leaders, territory &amp; historical events</span></summary><dl class="history-facts history-facts-secondary">{secondary}</dl>{events}{notes}</details>'
+        f'<details class="history-more"><summary>Read More <span>Leaders, territory, events &amp; historical connections</span></summary><dl class="history-facts history-facts-secondary">{secondary}</dl>{events}{notes}'
         f'<div class="history-connections"><h4>Historical Connections</h4><ul>{connections}</ul><p class="history-note">{escape(record["connections_note"])}</p></div>'
-        f'<details class="history-sources"><summary>View Sources <span>{len(used)} cited sources</span></summary><p class="history-note">Verification checks the cited documents, not a complete history of the Nation. Last reviewed {escape(record["last_verified_date"])}.</p><ol>{source_list}</ol></details></section>'
+        '</details></section>'
     )
 
 

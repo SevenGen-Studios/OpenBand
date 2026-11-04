@@ -33,7 +33,7 @@ class ProfileHistoryTests(unittest.TestCase):
             self.assertTrue(set(row['source_ids']) <= source_ids)
         markup = render_history(self.record, self.bands, slugify)
         self.assertIn('Sources Verified', markup)
-        self.assertIn('Further reading · not verified', markup)
+        self.assertNotIn('View Sources', markup)
         self.assertIn('Île-à-la-Crosse, Saskatchewan', markup)
         self.assertIn('A later OTC account lists Canoe Lake', markup)
 
@@ -56,7 +56,10 @@ class ProfileHistoryTests(unittest.TestCase):
         self.assertIn(markup, page)
         self.assertRegex(page, r'Elections &amp; Leadership[\s\S]*?</section><section class="history-card"')
         self.assertIn('<summary>Read More', markup)
-        self.assertIn('<summary>View Sources', markup)
+        self.assertNotIn('history-sources', markup)
+        expanded_content = markup.split('<details class="history-more">', 1)[1].split('</details>', 1)[0]
+        self.assertIn('Historical Connections', expanded_content)
+        self.assertNotIn('<details class="history-more" open', markup)
 
     def test_related_profiles_and_historical_band(self):
         markup = render_history(self.record, self.bands, slugify)

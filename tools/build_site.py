@@ -650,9 +650,9 @@ def build() -> None:
             1,
         )
         if str(band.get('iscBandNumber') or '') in history:
-            page = page.replace('openband.css?v=20261103map1', 'openband.css?v=20261103history1')
+            page = page.replace('openband.css?v=20261103map1', 'openband.css?v=20261103history2')
             page = page.replace('<script src="/assets/openband.js?v=20261103map3" defer></script>',
-                                '<script src="/assets/profile-history.js?v=20261103history1" defer></script><script src="/assets/openband.js?v=20261103history1" defer></script>')
+                                '<script src="/assets/profile-history.js?v=20261103history2" defer></script><script src="/assets/openband.js?v=20261103history2" defer></script>')
         write_page(profile_root / slug / "index.html", page)
 
         write_page(
