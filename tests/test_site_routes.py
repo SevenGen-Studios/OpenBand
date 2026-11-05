@@ -413,7 +413,7 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_election_records_are_complete_and_source_linked(self):
         elections = json.loads((ROOT / "elections-data.json").read_text(encoding="utf-8"))
-        band_ids = {band["id"] for band in self.data["bands"] if band["province"] == "SK"}
+        band_ids = {band["id"] for band in self.data["bands"]}
         required = {"firstNationId", "firstNation", "electionDate", "candidateName", "position", "votesReceived", "elected", "sourceUrl"}
         verified_ids = {record["firstNationId"] for record in elections["records"]}
         self.assertEqual(verified_ids | set(elections["coverage"]["unverifiedNationIds"]), band_ids)
