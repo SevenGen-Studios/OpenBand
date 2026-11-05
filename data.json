@@ -101173,7 +101173,7 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=460&FY=2017-2018&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "parsed",
+          "parse_status": "not_required",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=460&lang=eng",
           "sourceBandNumber": 460,
@@ -101204,7 +101204,7 @@
           },
           "nationId": 460,
           "parserRevision": "alberta-20261009-v28",
-          "technical_status": "manual_review",
+          "technical_status": "parsed",
           "ocrStatus": "ok_ocr_text",
           "ocrEngine": "rapidocr",
           "manual_review_required": false,
@@ -117584,11 +117584,11 @@
                 "expenses": 0,
                 "otherPayments": 5400
               },
-              "travelExpenses": 0,
+              "travelExpenses": 0.0,
               "other": 5400.0
             },
             {
-              "name": "Irvin Knott Jr.",
+              "name": "Irvin Knott Jr",
               "role": "Councillor",
               "months": 12,
               "remuneration": 79500,
@@ -117602,7 +117602,7 @@
                 "expenses": 0,
                 "otherPayments": 5400
               },
-              "travelExpenses": 0,
+              "travelExpenses": 0.0,
               "other": 5400.0
             },
             {
@@ -117620,7 +117620,7 @@
                 "expenses": 0,
                 "otherPayments": 5400
               },
-              "travelExpenses": 0,
+              "travelExpenses": 0.0,
               "other": 5400.0
             }
           ],
@@ -117635,7 +117635,8 @@
           "lastChecked": "2026-11-05T05:00:27+00:00",
           "httpStatus": 200,
           "warnings": [
-            "The source prints salary and honoraria/other separately; the row total is their sum. No schedule footer is printed. Note 2 explicitly states there were no travel reimbursements."
+            "The source prints salary and honoraria/other separately; the row total is their sum. No schedule footer is printed. Note 2 explicitly states there were no travel reimbursements.",
+            "Sanitized parsed rows: removed 0, fixed totals 0"
           ],
           "documentChecks": {
             "identityAndYearConfirmed": true,
@@ -132079,7 +132080,7 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=439&FY=2014-2015&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "parsed",
+          "parse_status": "not_required",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=439&lang=eng",
           "sourceBandNumber": 439,
@@ -132114,7 +132115,7 @@
           },
           "nationId": 439,
           "parserRevision": "alberta-20261009-v28",
-          "technical_status": "manual_review",
+          "technical_status": "parsed",
           "ocrStatus": "ok_ocr_text",
           "ocrEngine": "rapidocr",
           "manual_review_required": false,
@@ -159394,7 +159395,7 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=432&FY=2014-2015&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "parsed",
+          "parse_status": "not_required",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=432&lang=eng",
           "sourceBandNumber": 432,
@@ -159433,7 +159434,7 @@
           },
           "nationId": 432,
           "parserRevision": "alberta-20261009-v28",
-          "technical_status": "manual_review",
+          "technical_status": "parsed",
           "ocrStatus": "ok_ocr_text",
           "ocrEngine": "rapidocr",
           "manual_review_required": false,
@@ -181748,7 +181749,7 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=288&FY=2020-2021&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "parsed",
+          "parse_status": "not_required",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=288&lang=eng",
           "sourceBandNumber": 288,
@@ -181793,7 +181794,7 @@
               "Debt summary was not extracted"
             ]
           },
-          "technical_status": "manual_review",
+          "technical_status": "parsed",
           "ocrRequested": false,
           "ocrRequestedEngine": "windows",
           "extractionMethod": "Native PDF text; reported totals and fiscal-year columns reconciled",
@@ -181899,7 +181900,7 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=288&FY=2021-2022&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "parsed",
+          "parse_status": "not_required",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=288&lang=eng",
           "sourceBandNumber": 288,
@@ -181944,7 +181945,7 @@
               "Debt summary was not extracted"
             ]
           },
-          "technical_status": "manual_review",
+          "technical_status": "parsed",
           "ocrRequested": false,
           "ocrRequestedEngine": "windows",
           "extractionMethod": "Native PDF text; reported totals and fiscal-year columns reconciled",
@@ -216827,7 +216828,7 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=282&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "parsed",
+          "parse_status": "not_required",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=282&lang=eng",
           "sourceBandNumber": 282,
@@ -216879,7 +216880,7 @@
           "ocrWarnings": [],
           "ocrEngine": "windows_with_rapidocr_crosscheck",
           "ocrFinancialColumnPages": [],
-          "technical_status": "manual_review"
+          "technical_status": "parsed"
         },
         {
           "year": "2023-2024",
@@ -261777,7 +261778,7 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2017-2018&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "parsed",
+          "parse_status": "not_required",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=285&lang=eng",
           "sourceBandNumber": 285,
@@ -261824,7 +261825,7 @@
           ],
           "manual_review_required": false,
           "parse_confidence": "medium",
-          "technical_status": "manual_review",
+          "technical_status": "parsed",
           "ocrRequested": false,
           "ocrRequestedEngine": "",
           "extractionMethod": "Native PDF text; reported totals and fiscal-year columns reconciled",
@@ -262529,7 +262530,7 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "parsed",
+          "parse_status": "not_required",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=285&lang=eng",
           "sourceBandNumber": 285,
@@ -262585,7 +262586,7 @@
           "nativePageCount": 39,
           "nativeTextCharacters": 68340,
           "requiresOcr": false,
-          "technical_status": "manual_review",
+          "technical_status": "parsed",
           "ocrRequested": false,
           "ocrRequestedEngine": "",
           "extractionMethod": "Native PDF text; reported totals and fiscal-year columns reconciled",
@@ -262655,7 +262656,7 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "parsed",
+          "parse_status": "not_required",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=285&lang=eng",
           "sourceBandNumber": 285,
@@ -262709,7 +262710,7 @@
           "nativePageCount": 37,
           "nativeTextCharacters": 69335,
           "requiresOcr": false,
-          "technical_status": "manual_review",
+          "technical_status": "parsed",
           "ocrRequested": false,
           "ocrRequestedEngine": "",
           "extractionMethod": "Native PDF text; reported totals and fiscal-year columns reconciled",
