@@ -1,15 +1,15 @@
 {
-  "generatedFrom": "2026-11-02T02:28:28+00:00",
-  "manualReviewCount": 516,
+  "generatedFrom": "2026-11-05T05:23:46.795119+00:00",
+  "manualReviewCount": 511,
   "reasonCounts": {
     "implausibly small remuneration values appear in money columns": 6,
-    "month values appear in money columns": 2,
+    "month values appear in money columns": 1,
     "month values appear in money columns; implausibly small remuneration values appear in money columns": 8,
     "no Chief row in a small parsed filing": 1,
-    "no reliable official rows remain after validation": 77,
+    "no reliable official rows remain after validation": 76,
     "only one parsed row": 1,
-    "only one parsed row; no Chief row in a small parsed filing": 7,
-    "parser confidence is low": 414
+    "only one parsed row; no Chief row in a small parsed filing": 6,
+    "parser confidence is low": 412
   },
   "filings": [
     {
@@ -1107,22 +1107,6 @@
       ]
     },
     {
-      "bandId": 265,
-      "band": "Buffalo Point First Nation",
-      "province": "MB",
-      "year": "2024-2025",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=265&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from keyword-aware PDF table extraction",
-        "Coordinate-aware pdfplumber table extraction was validated before publication",
-        "Possible unrelated financial statement table",
-        "No official rows parsed",
-        "Quarantined parsed rows: parser confidence is low",
-        "Sanitized parsed rows: removed 2, fixed totals 0"
-      ]
-    },
-    {
       "bandId": 398,
       "band": "Buffalo River Dene Nation",
       "province": "SK",
@@ -1922,19 +1906,6 @@
         "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 451,
-      "band": "Duncan's First Nation",
-      "province": "AB",
-      "year": "2020-2021",
-      "reason": "month values appear in money columns",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=451&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from keyword-aware PDF table extraction",
-        "Quarantined parsed rows: month values appear in money columns",
-        "Sanitized parsed rows: removed 3, fixed totals 0"
       ]
     },
     {
@@ -3006,22 +2977,6 @@
         "No Chief row detected",
         "Quarantined parsed rows: no Chief row in a small parsed filing",
         "Sanitized parsed rows: removed 3, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 466,
-      "band": "Kehewin Cree Nation",
-      "province": "AB",
-      "year": "2017-2018",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=466&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "PDF has no usable native text; used free local OCR",
-        "Parsed via free local OCR fallback",
-        "Parsed officials do not reconcile with the source total row",
-        "Parsed row totals do not match source total row",
-        "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
     {
@@ -5722,22 +5677,6 @@
       ]
     },
     {
-      "bandId": 277,
-      "band": "Poplar River First Nation",
-      "province": "MB",
-      "year": "2017-2018",
-      "reason": "only one parsed row; no Chief row in a small parsed filing",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=277&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Coordinate-aware pdfplumber table extraction was validated before publication",
-        "Multiple candidate Chief and Council tables found",
-        "No Chief row detected",
-        "Only one official row parsed",
-        "Quarantined parsed rows: only one parsed row; no Chief row in a small parsed filing",
-        "Sanitized parsed rows: removed 11, fixed totals 0"
-      ]
-    },
-    {
       "bandId": 356,
       "band": "Red Earth Cree Nation",
       "province": "SK",
@@ -5749,20 +5688,6 @@
         "Parsed via free local OCR fallback",
         "Quarantined parsed rows: month values appear in money columns; implausibly small remuneration values appear in money columns",
         "Sanitized parsed rows: removed 9, fixed totals 0"
-      ]
-    },
-    {
-      "bandId": 356,
-      "band": "Red Earth Cree Nation",
-      "province": "SK",
-      "year": "2019-2020",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=356&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "No clear Chief and Council remuneration table found",
-        "Local OCR text contained no reliable official rows",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted",
-        "Preserved pending parse status from previous data.json snapshot"
       ]
     },
     {

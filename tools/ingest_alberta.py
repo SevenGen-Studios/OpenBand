@@ -361,8 +361,9 @@ def reviewed_remuneration(band, filing, digest):
     """Apply a complete visual transcription only to the exact reviewed PDF."""
     from tools.parser_quality import validate_people
     reviews = read(SOURCE_CACHE / 'remuneration-reviews.json', {}).get('reviews', [])
-    if PROVINCE == 'AB':
-        reviews += read(ROOT / 'manual_overrides/audit-remuneration-reviews.json', {}).get('reviews', [])
+    # These hash-bound audit reviews cover several provinces. The exact band,
+    # fiscal year, source URL and digest checks below keep each review scoped.
+    reviews += read(ROOT / 'manual_overrides/audit-remuneration-reviews.json', {}).get('reviews', [])
     review = next((item for item in reviews if str(item['bandId']) == str(band['id'])
                    and item['year'] == filing['year'] and item['sha256'] == digest
                    and canonical_url(item['sourcePdf']) == canonical_url(filing['href'])), None)
@@ -399,7 +400,10 @@ def remuneration_completeness_issues(result, page_sets):
                 numbers = re.findall(r'\d[\d,]*(?:\.\d+)?', line)
                 note_or_heading = re.search(r'chiefs?\s+and\s+council', line, re.I) or re.match(
                     r'^\s*(?:notes?\b|\d+[.)]\s|for the year|year ended)', line, re.I)
-                if not note_or_heading and len(numbers) >= 2 and re.search(r'\b(?:chief|councill?or)\b', line, re.I):
+                # A named official with printed dashes can be missed by a
+                # payment-only parser even when the footer still reconciles.
+                month_without_payment = re.search(r'\b(?:[1-9]|1[0-2])(?:\.\d+)?(?:\s+[-–—])*\s*$', line)
+                if not note_or_heading and (len(numbers) >= 2 or month_without_payment) and re.search(r'\b(?:chief|councill?or)\b', line, re.I):
                     count += 1
                 if re.match(r'^\s*totals\b', line, re.I) or (len(numbers) >= 2 and re.match(r'^\s*total\b', line, re.I)):
                     footer = True
@@ -432,7 +436,8 @@ def parse_one(task):
         # The accounting and remuneration interpretation still uses the shared parsers.
         try:
             import pypdfium2
-            with pypdfium2.PdfDocument(payload) as pdf:
+            pdf = pypdfium2.PdfDocument(payload)
+            try:
                 pages = []
                 for page in pdf:
                     textpage = page.get_textpage()
@@ -441,6 +446,8 @@ def parse_one(task):
                     finally:
                         textpage.close()
                     page.close()
+            finally:
+                pdf.close()
         except ImportError:
             with pdfplumber.open(io.BytesIO(payload)) as pdf:
                 pages = [p.extract_text(x_tolerance=1, y_tolerance=3) or '' for p in pdf.pages]
@@ -570,7 +577,7 @@ def parse_one(task):
                 summary['warnings'] = list(dict.fromkeys(summary.get('warnings', []) + recognized['warnings']))
             summary['requiresReportedTotals'] = True
             summary.update(capital_parser.validate_summary(summary))
-            if recognized and recognized.get('engine') in ('rapidocr','macos_vision'):
+            if recognized and recognized.get('engine') in ('rapidocr','macos_vision','windows_coordinate'):
                 aligned = set(recognized.get('financialColumnPages', []))
                 references = summary.get('sourceReferences', {})
                 # Optional balance-sheet and cash-flow figures may be absent.
@@ -606,6 +613,19 @@ def parse_one(task):
                 summary.update({'publishable': False, 'parseStatus': 'manual_review', 'confidence': 'low'})
                 summary['warnings'] = list(dict.fromkeys(summary.get('warnings', []) + issues))
             summary['sha256'] = update['sha256']
+            if summary.get('publishable'):
+                # ISC can bundle statements for more than one Nation in the
+                # same PDF. The cover alone does not identify the chosen table.
+                reference_pages = {summary.get('sourceReferences', {}).get(field, {}).get('pdfPage')
+                                   for field in ('totalRevenue', 'totalExpenses', 'annualSurplusDeficit')}
+                observations = []
+                for number in sorted(n for n in reference_pages if isinstance(n, int) and n > 0):
+                    variants = [page_list[number - 1] for page_list in (native_pages, recognized.get('pages', []) if recognized else [])
+                                if number <= len(page_list)]
+                    matched = any(not any(reason.startswith('Nation identity') for reason in document_identity(
+                        ['\n'.join(text.splitlines()[:10])], band, filing)) for text in variants if text.strip())
+                    observations.append({'pdfPage': number, 'identityConfirmed': matched})
+                update['documentChecks']['reportedOperationsPages'] = observations
             update['parse_status'] = summary['parseStatus']
             update['warnings'] = summary.get('warnings', [])
             update['manual_review_required'] = not summary.get('publishable', False)

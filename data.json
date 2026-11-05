@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T02:28:28+00:00",
+  "generated": "2026-11-05T05:23:46.795119+00:00",
   "band_count": 180,
   "error_count": 0,
   "parse_metrics": {
@@ -31845,13 +31845,187 @@
           "date": "2021-02-12",
           "href": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=356&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "pending_openai_opt_in",
+          "people": [
+            {
+              "name": "Ina Whitehead",
+              "role": "Chief",
+              "months": 11,
+              "remuneration": 91450,
+              "travel": null,
+              "expenses": 16778,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 108228,
+              "reportedComponents": {
+                "remuneration": 91450,
+                "expenses": 16778,
+                "otherPayments": 0
+              },
+              "travelExpenses": 16778.0,
+              "other": 0
+            },
+            {
+              "name": "Fabian Head",
+              "role": "Chief",
+              "months": 1,
+              "remuneration": 7250,
+              "travel": null,
+              "expenses": 2667,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 9917,
+              "reportedComponents": {
+                "remuneration": 7250,
+                "expenses": 2667,
+                "otherPayments": 0
+              },
+              "travelExpenses": 2667.0,
+              "other": 0
+            },
+            {
+              "name": "Charlene Head",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 78350,
+              "travel": null,
+              "expenses": 20869,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 99219,
+              "reportedComponents": {
+                "remuneration": 78350,
+                "expenses": 20869,
+                "otherPayments": 0
+              },
+              "travelExpenses": 20869.0,
+              "other": 0
+            },
+            {
+              "name": "Charlie McKay",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 78350,
+              "travel": null,
+              "expenses": 21118,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 99468,
+              "reportedComponents": {
+                "remuneration": 78350,
+                "expenses": 21118,
+                "otherPayments": 0
+              },
+              "travelExpenses": 21118.0,
+              "other": 0
+            },
+            {
+              "name": "Zachary Whitecap",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 78350,
+              "travel": null,
+              "expenses": 23570,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 101920,
+              "reportedComponents": {
+                "remuneration": 78350,
+                "expenses": 23570,
+                "otherPayments": 0
+              },
+              "travelExpenses": 23570.0,
+              "other": 0
+            },
+            {
+              "name": "Hillard Umpherville",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 77850,
+              "travel": null,
+              "expenses": 19593,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 97443,
+              "reportedComponents": {
+                "remuneration": 77850,
+                "expenses": 19593,
+                "otherPayments": 0
+              },
+              "travelExpenses": 19593.0,
+              "other": 0
+            },
+            {
+              "name": "Calehan Head",
+              "role": "Councillor",
+              "months": 1,
+              "remuneration": 6250,
+              "travel": null,
+              "expenses": 2152,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 8402,
+              "reportedComponents": {
+                "remuneration": 6250,
+                "expenses": 2152,
+                "otherPayments": 0
+              },
+              "travelExpenses": 2152.0,
+              "other": 0
+            }
+          ],
+          "parse_status": "parsed",
           "warnings": [
-            "No clear Chief and Council remuneration table found",
-            "Local OCR text contained no reliable official rows",
-            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted",
-            "Preserved pending parse status from previous data.json snapshot"
+            "Expenses are reported as a combined category; no separate travel-only amount is identified.",
+            "The complete schedule has no printed combined footer; totals are the sum of its reported remuneration and expense columns."
+          ],
+          "parserRevision": "alberta-20261009-v28",
+          "ocrRequested": false,
+          "ocrRequestedEngine": "",
+          "sha256": "40b35a86b2ec25a73aa8b3c1b0d75c49827a6c3d644526523fbc047b01b96916",
+          "byteSize": 252055,
+          "verificationStatus": "automated_validated",
+          "lastChecked": "2026-11-05T05:07:25+00:00",
+          "httpStatus": 200,
+          "nativePageCount": 4,
+          "nativeTextCharacters": 6232,
+          "requiresOcr": false,
+          "manualSourceReview": {
+            "bandId": "356",
+            "year": "2019-2020",
+            "sourcePdf": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=356&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "40b35a86b2ec25a73aa8b3c1b0d75c49827a6c3d644526523fbc047b01b96916",
+            "reviewedAt": "2026-11-04",
+            "completeSchedule": true,
+            "identityAndYearConfirmed": true,
+            "sourceRowCount": 7,
+            "pdfPage": 3,
+            "sourceTotal": null,
+            "sourceColumnTotals": {},
+            "warnings": [
+              "Expenses are reported as a combined category; no separate travel-only amount is identified.",
+              "The complete schedule has no printed combined footer; totals are the sum of its reported remuneration and expense columns."
+            ],
+            "totalMethod": "sum_of_reported_components",
+            "reviewContentSha256": "e0fd0ad02f3612faace39615415ce76aa388686887909960df6a3e7fc491e150"
+          },
+          "ocrStatus": "not_required_reviewed_source",
+          "ocrEngine": "not_required_reviewed_source",
+          "ocrWarnings": [],
+          "ocrFinancialColumnPages": [],
+          "extractionMethod": "Complete source schedule visually reviewed; source digest and arithmetic validated",
+          "documentChecks": {
+            "identityAndYearConfirmed": true,
+            "warnings": []
+          },
+          "parse_confidence": "high",
+          "manual_review_required": false,
+          "sourceTotal": null,
+          "parse_stages": [
+            {
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
+            }
           ]
         },
         {
@@ -100999,48 +101173,52 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=460&FY=2017-2018&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "not_required",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=460&lang=eng",
           "sourceBandNumber": 460,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-10-02T05:54:53+00:00",
           "sha256": "20004d9f301ddd47d374f52d42001e8de9163eacff43df392ebc83e9884b9d66",
           "byteSize": 560378,
-          "lastChecked": "2026-10-03T08:48:40+00:00",
+          "lastChecked": "2026-11-05T05:10:48+00:00",
           "httpStatus": 200,
           "warnings": [
-            "Recovery requires a reported final annual result",
-            "OCR recovery requires reported revenue and expense totals",
-            "Actual numeric column positions were not confirmed on every reported total page",
-            "Total revenue was not extracted",
-            "Total expenses were not extracted",
-            "Revenue breakdown is incomplete",
-            "Expense breakdown is incomplete",
-            "New extraction requires a reported final surplus for validation",
-            "A reported total was extracted from the wrong fiscal-year column",
-            "Annual surplus or deficit was not extracted",
             "Debt summary was not extracted",
-            "Unconfirmed OCR year columns; optional fields withheld: cash, accountsReceivable, accountsPayable, deferredRevenue, accumulatedSurplus, netFinancialAssetsDebt, debtRepayments"
+            "Classification requires source review: Human Resource Development Canada",
+            "Classification requires source review: Resourcerevenue",
+            "Classification requires source review: First Nation Development Funds",
+            "Classification requires source review: Employment Programs",
+            "Classification requires source review: Intergovernmental"
           ],
           "documentChecks": {
             "identityAndYearConfirmed": true,
-            "warnings": [
-              "Actual numeric column positions were not confirmed on every reported total page"
+            "warnings": [],
+            "reportedOperationsPages": [
+              {
+                "pdfPage": 6,
+                "identityConfirmed": true,
+                "method": "Visual review of the original statement heading and actual-year totals"
+              }
             ]
           },
           "nationId": 460,
-          "parserRevision": "alberta-20261003-v26",
+          "parserRevision": "alberta-20261009-v28",
           "technical_status": "manual_review",
           "ocrStatus": "ok_ocr_text",
           "ocrEngine": "rapidocr",
-          "manual_review_required": true,
-          "parse_confidence": "low",
+          "manual_review_required": false,
+          "parse_confidence": "medium",
           "ocrWarnings": [],
           "ocrFinancialColumnPages": [
             6,
             7
-          ]
+          ],
+          "ocrRequested": true,
+          "ocrRequestedEngine": "rapidocr",
+          "nativePageCount": 21,
+          "nativeTextCharacters": 32630,
+          "requiresOcr": false
         },
         {
           "year": "2017-2018",
@@ -117390,8 +117568,63 @@
           "date": "2022-10-20",
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=451&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "pending_manual_review",
+          "people": [
+            {
+              "name": "Virginia Gladue",
+              "role": "Chief",
+              "months": 12,
+              "remuneration": 79500,
+              "travel": null,
+              "expenses": 0,
+              "creditCard": null,
+              "otherPayments": 5400,
+              "total": 84900,
+              "reportedComponents": {
+                "remuneration": 79500,
+                "expenses": 0,
+                "otherPayments": 5400
+              },
+              "travelExpenses": 0,
+              "other": 5400.0
+            },
+            {
+              "name": "Irvin Knott Jr.",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 79500,
+              "travel": null,
+              "expenses": 0,
+              "creditCard": null,
+              "otherPayments": 5400,
+              "total": 84900,
+              "reportedComponents": {
+                "remuneration": 79500,
+                "expenses": 0,
+                "otherPayments": 5400
+              },
+              "travelExpenses": 0,
+              "other": 5400.0
+            },
+            {
+              "name": "Keith Lawrence",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 79500,
+              "travel": null,
+              "expenses": 0,
+              "creditCard": null,
+              "otherPayments": 5400,
+              "total": 84900,
+              "reportedComponents": {
+                "remuneration": 79500,
+                "expenses": 0,
+                "otherPayments": 5400
+              },
+              "travelExpenses": 0,
+              "other": 5400.0
+            }
+          ],
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=451&lang=eng",
           "sourceBandNumber": 451,
@@ -117399,12 +117632,10 @@
           "retrievedAt": "2026-10-02T05:54:57+00:00",
           "sha256": "ea3228fa10c5dca497540f734ae305592dae40aff0d9499769ee082fadf42401",
           "byteSize": 367818,
-          "lastChecked": "2026-09-12T17:54:00+00:00",
+          "lastChecked": "2026-11-05T05:00:27+00:00",
           "httpStatus": 200,
           "warnings": [
-            "Parsed from keyword-aware PDF table extraction",
-            "Quarantined parsed rows: month values appear in money columns",
-            "Sanitized parsed rows: removed 3, fixed totals 0"
+            "The source prints salary and honoraria/other separately; the row total is their sum. No schedule footer is printed. Note 2 explicitly states there were no travel reimbursements."
           ],
           "documentChecks": {
             "identityAndYearConfirmed": true,
@@ -117413,17 +117644,44 @@
           "parse_confidence": "high",
           "manual_review_required": false,
           "nationId": 451,
-          "parserRevision": "alberta-20260912-v7",
+          "parserRevision": "alberta-20261009-v28",
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "ok_pdf_keyword_table",
-              "warnings": [
-                "Parsed from keyword-aware PDF table extraction"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
-          "technical_status": "ok_pdf_keyword_table"
+          "technical_status": "ok_pdf_keyword_table",
+          "ocrRequested": true,
+          "ocrRequestedEngine": "windows",
+          "nativePageCount": 3,
+          "nativeTextCharacters": 2938,
+          "requiresOcr": false,
+          "manualSourceReview": {
+            "bandId": "451",
+            "year": "2020-2021",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=451&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "ea3228fa10c5dca497540f734ae305592dae40aff0d9499769ee082fadf42401",
+            "reviewedAt": "2026-11-04",
+            "completeSchedule": true,
+            "identityAndYearConfirmed": true,
+            "sourceRowCount": 3,
+            "pdfPage": 3,
+            "sourceTotal": null,
+            "sourceColumnTotals": {},
+            "warnings": [
+              "The source prints salary and honoraria/other separately; the row total is their sum. No schedule footer is printed. Note 2 explicitly states there were no travel reimbursements."
+            ],
+            "totalMethod": "sum_of_reported_components",
+            "reviewContentSha256": "7749721f35a3cb5b075c46882f3eaeeed7648ad37b67ae70d1efc9fe0d5deac5"
+          },
+          "ocrStatus": "not_required_reviewed_source",
+          "ocrEngine": "not_required_reviewed_source",
+          "ocrWarnings": [],
+          "ocrFinancialColumnPages": [],
+          "extractionMethod": "Complete source schedule visually reviewed; source digest and arithmetic validated",
+          "sourceTotal": null
         },
         {
           "year": "2021-2022",
@@ -128860,64 +129118,127 @@
           "date": "2018-10-16",
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=466&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "manual_review",
+          "people": [
+            {
+              "name": "Brenda Vanguard",
+              "role": "Chief",
+              "months": 12.0,
+              "remuneration": 84000.0,
+              "travel": 32804.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 116804,
+              "travelExpenses": 32804.0,
+              "other": 0
+            },
+            {
+              "name": "Benny R. Badger",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 60000.0,
+              "travel": 38968.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 98968,
+              "travelExpenses": 38968.0,
+              "other": 0
+            },
+            {
+              "name": "Trevor John",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 60000.0,
+              "travel": 29950.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 89950,
+              "travelExpenses": 29950.0,
+              "other": 0
+            },
+            {
+              "name": "William John",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 60000.0,
+              "travel": 48767.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 108767,
+              "travelExpenses": 48767.0,
+              "other": 0
+            },
+            {
+              "name": "Jason Mountain",
+              "role": "Councillor",
+              "months": 11.5,
+              "remuneration": 57500.0,
+              "travel": 20853.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 78353,
+              "travelExpenses": 20853.0,
+              "other": 0
+            },
+            {
+              "name": "Vernon Watchmaker",
+              "role": "Councillor",
+              "months": 12.0,
+              "remuneration": 60000.0,
+              "travel": 37014.0,
+              "expenses": null,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 97014,
+              "travelExpenses": 37014.0,
+              "other": 0
+            }
+          ],
+          "parse_status": "ok_ocr",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=466&lang=eng",
           "sourceBandNumber": 466,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-10-02T05:55:01+00:00",
           "sha256": "2d8c44a6a51ea737429a969e4c88faa01c656f7c89655a846c3077d50ff202d1",
           "byteSize": 131361,
-          "lastChecked": "2026-10-03T08:51:47+00:00",
+          "lastChecked": "2026-11-05T05:15:07+00:00",
           "httpStatus": 200,
           "warnings": [
-            "PDF has no usable native text; used free local OCR",
-            "Parsed via free local OCR fallback",
-            "Parsed officials do not reconcile with the source total row",
-            "Parsed row totals do not match source total row",
-            "OCR output failed validation",
-            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+            "Free local OCR rows reconcile with the printed remuneration/expense footer"
           ],
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
-          "parse_confidence": "low",
-          "manual_review_required": true,
+          "parse_confidence": "high",
+          "manual_review_required": false,
           "nationId": 466,
-          "parserRevision": "alberta-20261003-v26",
+          "parserRevision": "alberta-20261009-v28",
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "no_reliable_rows",
-              "warnings": [
-                "PDF has no usable native text; used free local OCR"
-              ]
-            },
-            {
               "stage": "ocr",
-              "status": "ok_ocr_text",
+              "status": "ok_ocr",
               "warnings": [
-                "PDF has no usable native text; used free local OCR",
-                "Parsed via free local OCR fallback",
-                "Parsed officials do not reconcile with the source total row",
-                "Parsed row totals do not match source total row",
-                "OCR output failed validation"
-              ]
-            },
-            {
-              "stage": "openai",
-              "status": "disabled",
-              "warnings": [
-                "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+                "Free local OCR rows reconcile with the printed remuneration/expense footer"
               ]
             }
           ],
           "ocrStatus": "ok_ocr_text",
-          "ocrEngine": "rapidocr",
+          "ocrEngine": "windows_coordinate",
           "ocrWarnings": [],
-          "ocrFinancialColumnPages": []
+          "ocrFinancialColumnPages": [],
+          "ocrRequested": true,
+          "ocrRequestedEngine": "windows-coordinate",
+          "nativePageCount": 4,
+          "nativeTextCharacters": 0,
+          "requiresOcr": true,
+          "manualSourceReview": null,
+          "sourceTotal": 589856.0
         },
         {
           "year": "2018-2019",
@@ -131758,45 +132079,55 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=439&FY=2014-2015&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "not_required",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=439&lang=eng",
           "sourceBandNumber": 439,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-10-02T05:55:03+00:00",
           "sha256": "a79ecbfb7a8746ff48de6af83cf299563a60ad920e31ddb5e16409164d77ebc1",
           "byteSize": 1814579,
-          "lastChecked": "2026-10-03T08:14:53+00:00",
+          "lastChecked": "2026-11-05T05:13:35+00:00",
           "httpStatus": 200,
           "warnings": [
-            "OCR recovery requires reported revenue and expense totals",
-            "Actual numeric column positions were not confirmed on every reported total page",
-            "Total revenue was not extracted",
-            "Total expenses were not extracted",
-            "Revenue breakdown is incomplete",
-            "Expense breakdown is incomplete",
             "A reported total was extracted from the wrong fiscal-year column",
-            "New extraction requires a reported final surplus for validation",
-            "Annual surplus or deficit was not extracted",
-            "Capital spending was not extracted"
+            "Capital spending was not extracted",
+            "Classification requires source review: First Nation Development Funds",
+            "Classification requires source review: HRDC",
+            "Classification requires source review: Resourcerevenue",
+            "Classification requires source review: Net earnings from Louis Bull entities",
+            "Classification requires source review: Community Services",
+            "Classification requires source review: Other",
+            "Unconfirmed OCR year columns; optional fields withheld: cash, accountsReceivable, accountsPayable, deferredRevenue, longTermDebt, accumulatedSurplus, netFinancialAssetsDebt, debt",
+            "Debt summary was not extracted"
           ],
           "documentChecks": {
             "identityAndYearConfirmed": true,
-            "warnings": [
-              "Actual numeric column positions were not confirmed on every reported total page"
+            "warnings": [],
+            "reportedOperationsPages": [
+              {
+                "pdfPage": 6,
+                "identityConfirmed": true,
+                "method": "Visual review of the original statement heading and actual-year totals"
+              }
             ]
           },
           "nationId": 439,
-          "parserRevision": "alberta-20261003-v26",
+          "parserRevision": "alberta-20261009-v28",
           "technical_status": "manual_review",
           "ocrStatus": "ok_ocr_text",
           "ocrEngine": "rapidocr",
-          "manual_review_required": true,
-          "parse_confidence": "low",
+          "manual_review_required": false,
+          "parse_confidence": "medium",
           "ocrWarnings": [],
           "ocrFinancialColumnPages": [
             6
-          ]
+          ],
+          "ocrRequested": true,
+          "ocrRequestedEngine": "rapidocr",
+          "nativePageCount": 22,
+          "nativeTextCharacters": 0,
+          "requiresOcr": true
         },
         {
           "year": "2014-2015",
@@ -159063,36 +159394,59 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=432&FY=2014-2015&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "not_required",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=432&lang=eng",
           "sourceBandNumber": 432,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-10-02T05:55:10+00:00",
           "sha256": "6099852636557fa5055d8791d58157fa85af2ca9f8f6b86f7862cd048fb51da0",
           "byteSize": 915500,
-          "lastChecked": "2026-10-03T08:21:47+00:00",
+          "lastChecked": "2026-11-05T05:13:59+00:00",
           "httpStatus": 200,
           "warnings": [
             "Financial assets do not reconcile to liabilities plus net financial assets",
             "Extreme expense category amount; source verification recommended",
-            "Annual surplus includes separately reported adjustments"
+            "Annual surplus includes separately reported adjustments",
+            "Classification requires source review: Own source",
+            "Classification requires source review: Deferred revenue - from prior year",
+            "Classification requires source review: Deferred revenue- to future year",
+            "Classification requires source review: Essential services",
+            "Classification requires source review: Legislative procedures",
+            "Classification requires source review: Nation administration",
+            "Classification requires source review: Programs",
+            "Classification requires source review: Services",
+            "Unconfirmed OCR year columns; optional fields withheld: cash, capitalAssets, capitalSpending, businessInvestments, accountsReceivable, restrictedCash, totalFinancialAssets, totalNonFinancialAssets, tangibleCapitalAssets, deferredRevenue, longTermDebt, totalLiabilities, accumulatedSurplus, netFinancialAssetsDebt, debt",
+            "Capital spending was not extracted",
+            "Debt summary was not extracted"
           ],
           "documentChecks": {
             "identityAndYearConfirmed": true,
-            "warnings": []
+            "warnings": [],
+            "reportedOperationsPages": [
+              {
+                "pdfPage": 6,
+                "identityConfirmed": true,
+                "method": "Visual review of the original statement heading and actual-year totals"
+              }
+            ]
           },
           "nationId": 432,
-          "parserRevision": "alberta-20261003-v26",
+          "parserRevision": "alberta-20261009-v28",
           "technical_status": "manual_review",
           "ocrStatus": "ok_ocr_text",
           "ocrEngine": "rapidocr",
-          "manual_review_required": true,
-          "parse_confidence": "low",
+          "manual_review_required": false,
+          "parse_confidence": "medium",
           "ocrWarnings": [],
           "ocrFinancialColumnPages": [
             6
-          ]
+          ],
+          "ocrRequested": true,
+          "ocrRequestedEngine": "rapidocr",
+          "nativePageCount": 20,
+          "nativeTextCharacters": 0,
+          "requiresOcr": true
         },
         {
           "year": "2014-2015",
@@ -172819,44 +173173,109 @@
           "date": "2025-07-28",
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=265&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "pending_manual_review",
+          "people": [
+            {
+              "name": "John Thunder",
+              "role": "Chief",
+              "months": 12,
+              "remuneration": 136033,
+              "travel": null,
+              "expenses": 6000,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 142033,
+              "reportedComponents": {
+                "remuneration": 136033,
+                "expenses": 6000,
+                "otherPayments": 0
+              },
+              "travelExpenses": 6000.0,
+              "other": 0
+            },
+            {
+              "name": "Herman Green",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 94843,
+              "travel": null,
+              "expenses": 1642,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 96485,
+              "reportedComponents": {
+                "remuneration": 94843,
+                "expenses": 1642,
+                "otherPayments": 0
+              },
+              "travelExpenses": 1642.0,
+              "other": 0
+            },
+            {
+              "name": "Drew Thunder",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 104905,
+              "travel": null,
+              "expenses": 2716,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 107621,
+              "reportedComponents": {
+                "remuneration": 104905,
+                "expenses": 2716,
+                "otherPayments": 0
+              },
+              "travelExpenses": 2716.0,
+              "other": 0
+            }
+          ],
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=265&lang=eng",
           "sourceBandNumber": 265,
           "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-02T02:27:02+00:00",
           "nationId": 265,
-          "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
+          "parserRevision": "alberta-20261009-v28",
           "sha256": "01f16087febd387ea8db38b49754b056cf952eeb492b70294156f9defadcaecd",
           "byteSize": 925640,
-          "lastChecked": "2026-11-02T02:32:45+00:00",
+          "lastChecked": "2026-11-05T04:58:31+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": "265",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=265&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "01f16087febd387ea8db38b49754b056cf952eeb492b70294156f9defadcaecd",
+            "reviewedAt": "2026-11-04",
+            "completeSchedule": true,
+            "identityAndYearConfirmed": true,
+            "sourceRowCount": 3,
+            "pdfPage": 4,
+            "sourceTotal": 346139,
+            "sourceColumnTotals": {
+              "remuneration": 335781,
+              "expenses": 10358
+            },
+            "warnings": [
+              "Reported amounts include additional employment duties: Chief/Economic Development Officer and Councillor/Super Intendent/Activing Maintenance Manager."
+            ],
+            "reviewContentSha256": "cc79f1f24eae3c483d78905feb5176cdbd0aac4c4e02dea6e1bf8a023cac1444"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "Parsed from keyword-aware PDF table extraction",
-            "Coordinate-aware pdfplumber table extraction was validated before publication",
-            "Possible unrelated financial statement table",
-            "No official rows parsed",
-            "Quarantined parsed rows: parser confidence is low",
-            "Sanitized parsed rows: removed 2, fixed totals 0"
+            "Reported amounts include additional employment duties: Chief/Economic Development Officer and Councillor/Super Intendent/Activing Maintenance Manager."
           ],
-          "sourceTotal": null,
-          "parse_confidence": "manual_review_required",
-          "manual_review_required": true,
+          "sourceTotal": 346139,
+          "parse_confidence": "high",
+          "manual_review_required": false,
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "ok_pdf_keyword_table",
-              "warnings": [
-                "Parsed from keyword-aware PDF table extraction",
-                "Coordinate-aware pdfplumber table extraction was validated before publication",
-                "Possible unrelated financial statement table"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
           "lastReparseAttempt": "2026-11-02T02:32:45+00:00",
@@ -172868,9 +173287,16 @@
           ],
           "reparseStatus": "ok_pdf_keyword_table",
           "nativePageCount": 4,
-          "nativeTextCharacters": 4941,
+          "nativeTextCharacters": 4878,
           "requiresOcr": false,
-          "technical_status": "ok_pdf_keyword_table"
+          "technical_status": "ok_pdf_keyword_table",
+          "ocrRequested": true,
+          "ocrRequestedEngine": "windows",
+          "ocrStatus": "not_required_reviewed_source",
+          "ocrEngine": "not_required_reviewed_source",
+          "ocrWarnings": [],
+          "ocrFinancialColumnPages": [],
+          "extractionMethod": "Complete source schedule visually reviewed; source digest and arithmetic validated"
         },
         {
           "year": "2025-2026",
@@ -181322,34 +181748,42 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=288&FY=2020-2021&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "not_required",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=288&lang=eng",
           "sourceBandNumber": 288,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-02T02:27:10+00:00",
           "nationId": 288,
-          "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
+          "parserRevision": "alberta-20261009-v28",
           "sha256": "b74378e9e5ab7beab4382ff3172eda78edbaab503818ee23cb40d171017573cb",
           "byteSize": 561855,
-          "lastChecked": "2026-11-02T02:40:32+00:00",
+          "lastChecked": "2026-11-05T04:44:13+00:00",
           "httpStatus": 200,
           "nativePageCount": 22,
-          "nativeTextCharacters": 33578,
+          "nativeTextCharacters": 32152,
           "requiresOcr": false,
           "documentChecks": {
             "identityAndYearConfirmed": true,
-            "warnings": []
+            "warnings": [],
+            "reportedOperationsPages": [
+              {
+                "pdfPage": 8,
+                "identityConfirmed": true,
+                "method": "Visual review of the original statement heading and actual-year totals"
+              }
+            ]
           },
           "warnings": [
-            "An expense row was extracted from the wrong fiscal-year column",
-            "A reported total was extracted from the wrong fiscal-year column",
-            "A negative expense category requires manual review",
             "Capital spending was not extracted",
-            "Debt summary was not extracted"
+            "Debt summary was not extracted",
+            "Classification requires source review: Deferred revenue from prior year",
+            "Classification requires source review: Deferred revenue to following year",
+            "Classification requires source review: Eliminations",
+            "Classification requires source review: Administration and finance"
           ],
-          "manual_review_required": true,
-          "parse_confidence": "low",
+          "manual_review_required": false,
+          "parse_confidence": "medium",
           "lastNativeHeaderRevalidation": {
             "checkedAt": "2026-11-02T05:26:38+00:00",
             "parserRevision": "manitoba-20261101-v2-alberta-20261009-v28",
@@ -181359,7 +181793,14 @@
               "Debt summary was not extracted"
             ]
           },
-          "technical_status": "manual_review"
+          "technical_status": "manual_review",
+          "ocrRequested": false,
+          "ocrRequestedEngine": "windows",
+          "extractionMethod": "Native PDF text; reported totals and fiscal-year columns reconciled",
+          "ocrStatus": "not_required_native_text",
+          "ocrEngine": "not_required_native_text",
+          "ocrWarnings": [],
+          "ocrFinancialColumnPages": []
         },
         {
           "year": "2020-2021",
@@ -181458,34 +181899,42 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=288&FY=2021-2022&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "not_required",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=288&lang=eng",
           "sourceBandNumber": 288,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-02T02:27:10+00:00",
           "nationId": 288,
-          "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
+          "parserRevision": "alberta-20261009-v28",
           "sha256": "557db4315ef9f0edda60fbde765e2a6d570f712fa9087b09680dd85901ed6ab0",
           "byteSize": 646293,
-          "lastChecked": "2026-11-02T02:38:36+00:00",
+          "lastChecked": "2026-11-05T04:43:36+00:00",
           "httpStatus": 200,
           "nativePageCount": 22,
-          "nativeTextCharacters": 33778,
+          "nativeTextCharacters": 32346,
           "requiresOcr": false,
           "documentChecks": {
             "identityAndYearConfirmed": true,
-            "warnings": []
+            "warnings": [],
+            "reportedOperationsPages": [
+              {
+                "pdfPage": 8,
+                "identityConfirmed": true,
+                "method": "Visual review of the original statement heading and actual-year totals"
+              }
+            ]
           },
           "warnings": [
-            "An expense row was extracted from the wrong fiscal-year column",
-            "A reported total was extracted from the wrong fiscal-year column",
-            "A negative expense category requires manual review",
             "Capital spending was not extracted",
-            "Debt summary was not extracted"
+            "Debt summary was not extracted",
+            "Classification requires source review: Deferred revenue from prior year",
+            "Classification requires source review: Deferred revenue to following year",
+            "Classification requires source review: Eliminations",
+            "Classification requires source review: Administration and finance"
           ],
-          "manual_review_required": true,
-          "parse_confidence": "low",
+          "manual_review_required": false,
+          "parse_confidence": "medium",
           "lastNativeHeaderRevalidation": {
             "checkedAt": "2026-11-02T05:26:38+00:00",
             "parserRevision": "manitoba-20261101-v2-alberta-20261009-v28",
@@ -181495,7 +181944,14 @@
               "Debt summary was not extracted"
             ]
           },
-          "technical_status": "manual_review"
+          "technical_status": "manual_review",
+          "ocrRequested": false,
+          "ocrRequestedEngine": "windows",
+          "extractionMethod": "Native PDF text; reported totals and fiscal-year columns reconciled",
+          "ocrStatus": "not_required_native_text",
+          "ocrEngine": "not_required_native_text",
+          "ocrWarnings": [],
+          "ocrFinancialColumnPages": []
         },
         {
           "year": "2021-2022",
@@ -216371,30 +216827,41 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=282&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "not_required",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=282&lang=eng",
           "sourceBandNumber": 282,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-02T02:27:42+00:00",
           "nationId": 282,
-          "parserRevision": "manitoba-20261101-v2-alberta-20261009-v28",
+          "parserRevision": "alberta-20261009-v28",
           "sha256": "4cb477459c2db850022afda9bb7e98498ebf3341967e9695829bcf0f809c8f06",
           "byteSize": 1992367,
-          "lastChecked": "2026-11-02T05:29:12+00:00",
+          "lastChecked": "2026-11-05T05:05:38+00:00",
           "httpStatus": 200,
           "documentChecks": {
             "identityAndYearConfirmed": true,
-            "warnings": []
+            "warnings": [],
+            "reportedOperationsPages": [
+              {
+                "pdfPage": 8,
+                "identityConfirmed": true,
+                "method": "Visual review of the original statement heading and actual-year totals"
+              }
+            ]
           },
           "warnings": [
-            "Revenue rows do not reconcile exactly to the reported total",
-            "Revenue categories do not reconcile to total revenue",
             "Annual surplus includes separately reported adjustments",
-            "Capital spending was not extracted"
+            "Classification requires source review: First Peoples Development Inc.",
+            "Classification requires source review: Province of Manitoba",
+            "Classification requires source review: Assembly of Manitoba Chiefs",
+            "Classification requires source review: Minimum band contribution",
+            "Classification requires source review: Recovery (repayment) of funding",
+            "Classification requires source review: Deferred revenue - prior year",
+            "Classification requires source review: Deferred revenue- current year"
           ],
-          "manual_review_required": true,
-          "parse_confidence": "low",
+          "manual_review_required": false,
+          "parse_confidence": "medium",
           "nativePageCount": 37,
           "nativeTextCharacters": 0,
           "requiresOcr": true,
@@ -216407,16 +216874,11 @@
             }
           ],
           "ocrRequested": true,
-          "ocrRequestedEngine": "vision",
+          "ocrRequestedEngine": "windows",
           "ocrStatus": "ok_ocr_text",
           "ocrWarnings": [],
-          "ocrEngine": "macos_vision",
-          "ocrFinancialColumnPages": [
-            6,
-            7,
-            8,
-            10
-          ],
+          "ocrEngine": "windows_with_rapidocr_crosscheck",
+          "ocrFinancialColumnPages": [],
           "technical_status": "manual_review"
         },
         {
@@ -236571,49 +237033,194 @@
           "date": "2018-08-31",
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=277&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "pending_manual_review",
+          "people": [
+            {
+              "name": "Vera Mitchell",
+              "role": "Chief",
+              "months": 12,
+              "remuneration": 97000,
+              "travel": null,
+              "expenses": 11527,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 108527,
+              "reportedComponents": {
+                "remuneration": 97000,
+                "expenses": 11527,
+                "otherPayments": 0
+              },
+              "travelExpenses": 11527.0,
+              "other": 0
+            },
+            {
+              "name": "Russell Lambert",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 51500,
+              "travel": null,
+              "expenses": 10407,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 61907,
+              "reportedComponents": {
+                "remuneration": 51500,
+                "expenses": 10407,
+                "otherPayments": 0
+              },
+              "travelExpenses": 10407.0,
+              "other": 0
+            },
+            {
+              "name": "Guy Douglas",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 51500,
+              "travel": null,
+              "expenses": 11609,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 63109,
+              "reportedComponents": {
+                "remuneration": 51500,
+                "expenses": 11609,
+                "otherPayments": 0
+              },
+              "travelExpenses": 11609.0,
+              "other": 0
+            },
+            {
+              "name": "Norway Rabilauskas",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 51500,
+              "travel": null,
+              "expenses": 13969,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 65469,
+              "reportedComponents": {
+                "remuneration": 51500,
+                "expenses": 13969,
+                "otherPayments": 0
+              },
+              "travelExpenses": 13969.0,
+              "other": 0
+            },
+            {
+              "name": "Edwin Hudson",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 58000,
+              "travel": null,
+              "expenses": 11687,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 69687,
+              "reportedComponents": {
+                "remuneration": 58000,
+                "expenses": 11687,
+                "otherPayments": 0
+              },
+              "travelExpenses": 11687.0,
+              "other": 0
+            },
+            {
+              "name": "Langford Mason",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 51500,
+              "travel": null,
+              "expenses": 9568,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 61068,
+              "reportedComponents": {
+                "remuneration": 51500,
+                "expenses": 9568,
+                "otherPayments": 0
+              },
+              "travelExpenses": 9568.0,
+              "other": 0
+            },
+            {
+              "name": "Darcy Bruce",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 51500,
+              "travel": null,
+              "expenses": 8267,
+              "creditCard": null,
+              "otherPayments": null,
+              "total": 59767,
+              "reportedComponents": {
+                "remuneration": 51500,
+                "expenses": 8267,
+                "otherPayments": 0
+              },
+              "travelExpenses": 8267.0,
+              "other": 0
+            }
+          ],
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=277&lang=eng",
           "sourceBandNumber": 277,
           "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-02T02:28:01+00:00",
           "nationId": 277,
-          "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
+          "parserRevision": "alberta-20261009-v28",
           "sha256": "ff8252c18d929da6217b4838e7b8b2fb1203422617ac53a52f79ddc3ff24a22c",
           "byteSize": 78883,
-          "lastChecked": "2026-11-02T02:44:56+00:00",
+          "lastChecked": "2026-11-05T05:07:25+00:00",
           "httpStatus": 200,
           "nativePageCount": 4,
           "nativeTextCharacters": 3552,
           "requiresOcr": false,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": "277",
+            "year": "2017-2018",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=277&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "ff8252c18d929da6217b4838e7b8b2fb1203422617ac53a52f79ddc3ff24a22c",
+            "reviewedAt": "2026-11-04",
+            "completeSchedule": true,
+            "identityAndYearConfirmed": true,
+            "sourceRowCount": 7,
+            "pdfPage": 4,
+            "sourceTotal": 489534,
+            "sourceColumnTotals": {
+              "remuneration": 412500,
+              "expenses": 77034
+            },
+            "warnings": [
+              "Expenses are reported as a combined category; no separate travel-only amount is identified."
+            ],
+            "reviewContentSha256": "b336a7c2b88153a3c305a3df08708e162524f1d234eb630846db6b6ed364f9ae"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "Coordinate-aware pdfplumber table extraction was validated before publication",
-            "Multiple candidate Chief and Council tables found",
-            "No Chief row detected",
-            "Only one official row parsed",
-            "Quarantined parsed rows: only one parsed row; no Chief row in a small parsed filing",
-            "Sanitized parsed rows: removed 11, fixed totals 0"
+            "Expenses are reported as a combined category; no separate travel-only amount is identified."
           ],
-          "sourceTotal": null,
-          "parse_confidence": "medium",
+          "sourceTotal": 489534,
+          "parse_confidence": "high",
           "manual_review_required": false,
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "ok_pdfplumber",
-              "warnings": [
-                "Coordinate-aware pdfplumber table extraction was validated before publication",
-                "Multiple candidate Chief and Council tables found"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
-          "technical_status": "ok_pdfplumber"
+          "technical_status": "ok_pdfplumber",
+          "ocrRequested": false,
+          "ocrRequestedEngine": "",
+          "ocrStatus": "not_required_reviewed_source",
+          "ocrWarnings": [],
+          "ocrEngine": "not_required_reviewed_source",
+          "ocrFinancialColumnPages": [],
+          "extractionMethod": "Complete source schedule visually reviewed; source digest and arithmetic validated"
         },
         {
           "year": "2018-2019",
@@ -260715,7 +261322,9 @@
       "iscBandNumber": 285,
       "name": "Waywayseecappo First Nation Treaty Four - 1874",
       "officialName": "Waywayseecappo First Nation Treaty Four - 1874",
-      "aliases": [],
+      "aliases": [
+        "Waywayseecappo First Nation"
+      ],
       "province": "MB",
       "treaty": "Treaty 4",
       "treatyVerificationStatus": "verified_numbered_treaty",
@@ -261168,35 +261777,61 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2017-2018&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "not_required",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=285&lang=eng",
           "sourceBandNumber": 285,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-02T02:28:25+00:00",
           "nationId": 285,
-          "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
+          "parserRevision": "alberta-20261009-v28",
           "sha256": "5dd3da20732d2f7b9212aa8f7dbb655808e10ab4e44c8a4f33a6987a9fffd719",
           "byteSize": 634541,
-          "lastChecked": "2026-11-02T02:44:35+00:00",
+          "lastChecked": "2026-11-05T04:59:46+00:00",
           "httpStatus": 200,
           "nativePageCount": 34,
-          "nativeTextCharacters": 61121,
+          "nativeTextCharacters": 56846,
           "requiresOcr": false,
           "documentChecks": {
-            "identityAndYearConfirmed": false,
-            "warnings": [
-              "Nation identity not confirmed in document cover; manual review required"
+            "identityAndYearConfirmed": true,
+            "warnings": [],
+            "reportedOperationsPages": [
+              {
+                "pdfPage": 7,
+                "identityConfirmed": true,
+                "method": "Visual review of the original statement heading and actual-year totals"
+              }
             ]
           },
           "warnings": [
             "Annual surplus includes separately reported adjustments",
             "Debt summary was not extracted",
-            "Nation identity not confirmed in document cover; manual review required"
+            "Classification requires source review: First Peoples Development Inc.",
+            "Classification requires source review: Custom Work",
+            "Classification requires source review: Administration and licence fees",
+            "Classification requires source review: Commission",
+            "Classification requires source review: Fine option",
+            "Classification requires source review: Province of Manitoba",
+            "Classification requires source review: Income from Waywayseecappo Wolverines",
+            "Classification requires source review: Earnings (loss) from investment in Nation partnership",
+            "Classification requires source review: Tobacco and fuel rebate",
+            "Classification requires source review: Unconditional grant",
+            "Classification requires source review: Video lottery terminals",
+            "Classification requires source review: Deferred revenue - prior year",
+            "Classification requires source review: Deferred revenue - current year",
+            "Classification requires source review: Waywayseecappo Operations",
+            "Classification requires source review: Business Enterprises"
           ],
-          "manual_review_required": true,
-          "parse_confidence": "low",
-          "technical_status": "manual_review"
+          "manual_review_required": false,
+          "parse_confidence": "medium",
+          "technical_status": "manual_review",
+          "ocrRequested": false,
+          "ocrRequestedEngine": "",
+          "extractionMethod": "Native PDF text; reported totals and fiscal-year columns reconciled",
+          "ocrStatus": "not_required_native_text",
+          "ocrEngine": "not_required_native_text",
+          "ocrWarnings": [],
+          "ocrFinancialColumnPages": []
         },
         {
           "year": "2017-2018",
@@ -261894,35 +262529,70 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "not_required",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=285&lang=eng",
           "sourceBandNumber": 285,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-02T02:28:25+00:00",
           "nationId": 285,
-          "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
+          "parserRevision": "alberta-20261009-v28",
           "sha256": "3fceaf13db7bb4b98393babe61ed6f690cc0f310fe4158c03d0671a46aa83d45",
           "byteSize": 398443,
-          "lastChecked": "2026-11-02T02:32:54+00:00",
+          "lastChecked": "2026-11-05T04:59:42+00:00",
           "httpStatus": 200,
           "documentChecks": {
-            "identityAndYearConfirmed": false,
-            "warnings": [
-              "Nation identity not confirmed in document cover; manual review required"
+            "identityAndYearConfirmed": true,
+            "warnings": [],
+            "reportedOperationsPages": [
+              {
+                "pdfPage": 6,
+                "identityConfirmed": true,
+                "method": "Visual review of the original statement heading and actual-year totals"
+              },
+              {
+                "pdfPage": 7,
+                "identityConfirmed": true,
+                "method": "Visual review of the original statement heading and actual-year totals"
+              }
             ]
           },
           "warnings": [
             "Annual surplus includes separately reported adjustments",
             "Debt summary was not extracted",
-            "Nation identity not confirmed in document cover; manual review required"
+            "Classification requires source review: First Peoples Development Inc.",
+            "Classification requires source review: Trust settlement income",
+            "Classification requires source review: Video lottery terminals",
+            "Classification requires source review: Minimum revenue contribution",
+            "Classification requires source review: Restaurant",
+            "Classification requires source review: Canteen",
+            "Classification requires source review: Grants",
+            "Classification requires source review: Tickets",
+            "Classification requires source review: Commissions",
+            "Classification requires source review: Contributions",
+            "Classification requires source review: Province of Manitoba",
+            "Classification requires source review: Assembly of Manitoba Chiefs",
+            "Classification requires source review: Repayment of funding",
+            "Classification requires source review: Southern Chief's Organization",
+            "Classification requires source review: Forgiveness of debt",
+            "Classification requires source review: Fine option",
+            "Classification requires source review: Deferred revenue - prior year",
+            "Classification requires source review: Deferred revenue - current year",
+            "Classification requires source review: Waywayseecappo Operations"
           ],
-          "manual_review_required": true,
-          "parse_confidence": "low",
+          "manual_review_required": false,
+          "parse_confidence": "medium",
           "nativePageCount": 39,
-          "nativeTextCharacters": 69620,
+          "nativeTextCharacters": 68340,
           "requiresOcr": false,
-          "technical_status": "manual_review"
+          "technical_status": "manual_review",
+          "ocrRequested": false,
+          "ocrRequestedEngine": "",
+          "extractionMethod": "Native PDF text; reported totals and fiscal-year columns reconciled",
+          "ocrStatus": "not_required_native_text",
+          "ocrEngine": "not_required_native_text",
+          "ocrWarnings": [],
+          "ocrFinancialColumnPages": []
         },
         {
           "year": "2023-2024",
@@ -261985,34 +262655,68 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "not_required",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=285&lang=eng",
           "sourceBandNumber": 285,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-02T02:28:25+00:00",
           "nationId": 285,
-          "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
+          "parserRevision": "alberta-20261009-v28",
           "sha256": "da26a020b63e59341d583eabbf7dc6c148c3e22134c65ab4f03331bb6fdbe6b4",
           "byteSize": 256462,
-          "lastChecked": "2026-11-02T02:29:58+00:00",
+          "lastChecked": "2026-11-05T04:59:37+00:00",
           "httpStatus": 200,
           "documentChecks": {
-            "identityAndYearConfirmed": false,
-            "warnings": [
-              "Nation identity not confirmed in document cover; manual review required"
+            "identityAndYearConfirmed": true,
+            "warnings": [],
+            "reportedOperationsPages": [
+              {
+                "pdfPage": 5,
+                "identityConfirmed": true,
+                "method": "Visual review of the original statement heading and actual-year totals"
+              },
+              {
+                "pdfPage": 6,
+                "identityConfirmed": true,
+                "method": "Visual review of the original statement heading and actual-year totals"
+              }
             ]
           },
           "warnings": [
             "Annual surplus includes separately reported adjustments",
-            "Nation identity not confirmed in document cover; manual review required"
+            "Classification requires source review: First Peoples Development Inc.",
+            "Classification requires source review: Trust settlement income",
+            "Classification requires source review: Province of Manitoba",
+            "Classification requires source review: Video lottery terminals",
+            "Classification requires source review: Assembly of Manitoba Chiefs",
+            "Classification requires source review: Minimum revenue contribution",
+            "Classification requires source review: Four Pillars Society",
+            "Classification requires source review: Restaurant",
+            "Classification requires source review: Canteen",
+            "Classification requires source review: Grants",
+            "Classification requires source review: Contributions",
+            "Classification requires source review: Tickets",
+            "Classification requires source review: Commissions",
+            "Classification requires source review: Daycare",
+            "Classification requires source review: Repayment of funding",
+            "Classification requires source review: Deferred revenue - prior year",
+            "Classification requires source review: Deferred revenue - current year",
+            "Classification requires source review: Waywayseecappo Operations"
           ],
-          "manual_review_required": true,
-          "parse_confidence": "low",
+          "manual_review_required": false,
+          "parse_confidence": "medium",
           "nativePageCount": 37,
-          "nativeTextCharacters": 70647,
+          "nativeTextCharacters": 69335,
           "requiresOcr": false,
-          "technical_status": "manual_review"
+          "technical_status": "manual_review",
+          "ocrRequested": false,
+          "ocrRequestedEngine": "",
+          "extractionMethod": "Native PDF text; reported totals and fiscal-year columns reconciled",
+          "ocrStatus": "not_required_native_text",
+          "ocrEngine": "not_required_native_text",
+          "ocrWarnings": [],
+          "ocrFinancialColumnPages": []
         },
         {
           "year": "2024-2025",
