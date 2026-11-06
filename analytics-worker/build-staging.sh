@@ -3,6 +3,9 @@ set -eu
 
 staging_origin=https://openband.kakakawaybrennan-ee1.workers.dev
 
+# The staging Worker may only open Stripe test sessions.
+sed -i 's/env.CREATOR_SUPPORT_ENABLED === "true"/env.CREATOR_SUPPORT_ENABLED === "true" \&\& stripeMode(env) === "test"/' src/creator-support.ts
+
 mkdir -p staging-site/assets
 cp -R ../support staging-site/
 cp ../assets/favicon.svg ../assets/openband.css ../assets/creator-support.css ../assets/creator-support.js staging-site/assets/
