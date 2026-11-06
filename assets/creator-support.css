@@ -1,0 +1,36 @@
+.support-nav-back {color:#fff;font-size:13px;font-weight:700;text-decoration:none}
+.support-nav-back:hover {text-decoration:underline}
+.support-shell {max-width:46rem;margin:0 auto;padding:clamp(1rem,5vw,3rem) 1rem 3rem}
+.support-card {padding:clamp(1.15rem,5vw,2.5rem);background:var(--surface);border:1px solid var(--border);border-radius:var(--r)}
+.support-kicker {color:var(--green);font-weight:700;font-size:12px;letter-spacing:.07em;text-transform:uppercase}
+.support-card h1 {font:800 clamp(1.6rem,5vw,2.35rem)/1.15 Syne,sans-serif;margin:.4rem 0 1rem}
+.support-copy {display:grid;gap:.65rem;margin-bottom:1.5rem}
+.support-fieldset {border:0;min-width:0;padding:0}
+.support-fieldset legend {font-weight:700;margin-bottom:.65rem}
+.support-options {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.55rem}
+.support-options label {position:relative;cursor:pointer}
+.support-options input {position:absolute;opacity:0}
+.support-options span {display:grid;place-items:center;min-height:44px;padding:.4rem;border:1px solid var(--border2);border-radius:8px;text-align:center;font-weight:700}
+.support-options input:checked + span {background:var(--greenL);border-color:var(--green);color:var(--green)}
+.support-options input:focus-visible + span,
+.support-button:focus-visible {outline:2px solid var(--green);outline-offset:3px}
+.support-custom {margin-top:1rem}
+.support-custom label {display:block;font-weight:700;margin-bottom:.25rem}
+.support-custom input {width:12rem;min-height:44px;border:1px solid var(--border2);border-radius:8px;padding:.5rem .65rem;font:inherit;font-size:16px}
+.support-custom input[aria-invalid="true"] {border-color:var(--red)}
+.support-custom p,.support-disclosure {color:var(--muted);font-size:13px;margin-top:.4rem}
+.support-message:not(:empty),.support-error:not([hidden]) {margin-top:.85rem}
+.support-error {color:var(--red);font-weight:700}
+.support-button {display:inline-flex;align-items:center;min-height:44px;white-space:normal;text-decoration:none;margin-top:1rem}
+.support-button[hidden] {display:none}
+.support-button:disabled {opacity:.65;cursor:default}
+.support-confirmation-link {margin-top:1rem}
+.support-admin-table {overflow-x:auto}
+.support-admin-table table {width:100%;border-collapse:collapse;font-size:14px}
+.support-admin-table th,.support-admin-table td {padding:.6rem;text-align:left;white-space:nowrap;border-bottom:1px solid var(--border)}
+.support-admin .admin-metrics {grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:1.25rem}
+.support-admin .admin-card h2 {margin-bottom:.75rem}
+@media(max-width:480px) {
+  .support-options {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .support-admin .admin-login-row {grid-template-columns:minmax(0,1fr)}
+}

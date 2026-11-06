@@ -1,9 +1,9 @@
 # OpenBand Analytics Worker
 
 This Cloudflare Worker is the optional internal analytics API for the static
-OpenBand site. It stores only coarse, anonymous usage records in D1. It never
-reads or stores request IP addresses, raw user-agent strings, names, emails, or
-other personal information.
+OpenBand site and the API for Creator Support. Analytics ingestion stores
+coarse, anonymous usage records in D1. It never reads or stores request IP
+addresses, raw user-agent strings, names, emails, or other personal information.
 
 ## Deploy
 
@@ -149,3 +149,63 @@ Run `node tests/test_analytics_runtime.js` from the repository root, and
 `python -m unittest discover -s tests -p 'test_analytics*.py'`. Reporting tests
 execute the dashboard SQL against SQLite, including equal-length boundaries,
 distinct outcome sessions, and ISO timestamp handling.
+
+## Creator Support
+
+The donation page and admin report use this Worker through the existing
+`OPENBAND_ANALYTICS_ENDPOINT` public configuration. Checkout starts disabled.
+The admin report uses the existing `ANALYTICS_ADMIN_TOKEN`. D1 holds Checkout
+and PaymentIntent references, amounts, timestamps, and statuses. Donor names,
+email addresses, and card details stay with Stripe. Refunds are managed in Stripe.
+
+### Configure and test
+
+1. Use a staging Worker and D1 database with a staging site in
+   `ALLOWED_ORIGINS`. Keep the production configuration disabled during testing.
+   Apply the donation migration to the bound D1 database and add the
+   `CREATOR_SUPPORT_RATE_LIMIT` binding from the example Wrangler configuration
+   with a unique namespace ID. Use Wrangler 4.36 or newer.
+
+   ```bash
+   npx wrangler d1 execute openband-analytics --remote --file creator-support.sql
+   ```
+
+2. In your Stripe sandbox, set up a snapshot webhook for events from your own
+   account at `https://YOUR-WORKER-HOST/v1/creator-support/webhook`. Select
+   `checkout.session.completed`, `checkout.session.async_payment_succeeded`,
+   `checkout.session.async_payment_failed`, `checkout.session.expired`,
+   `refund.created`, `refund.updated`, and `refund.failed`. Use API version
+   `2025-06-30.basil` for the endpoint. Checkout uses Stripe's standard hosted
+   domain, one-time card payments in CAD, and server-created prices.
+
+3. Store the Stripe API key and the webhook endpoint's signing secret as
+   Cloudflare Worker secrets. Use a test key with the test endpoint.
+
+   ```bash
+   npx wrangler secret put STRIPE_SECRET_KEY
+   npx wrangler secret put STRIPE_WEBHOOK_SECRET
+   ```
+
+   For a restricted key, allow Checkout Session writes and read access to
+   refunds and PaymentIntents. Set `CREATOR_SUPPORT_ENABLED = "true"` under
+   `[vars]` and deploy to staging. The Worker derives test or live mode from
+   the Stripe key, rejects webhooks from the other mode, and separates the
+   records in the admin report.
+
+4. Verify each preset and a custom amount, including $2.00 and invalid
+   values. Complete, cancel, and decline a Checkout in the sandbox. Resend
+   the completed webhook, then issue partial and full refunds. Check that
+   the thank-you page only appears after a verified payment and that
+   `/admin/creator-support/` reports one successful payment for each paid
+   session. Amounts are net of successful refunds, before Stripe fees.
+   The count measures payments completed, including payments refunded later.
+
+### Enable live donations
+
+Activate the Stripe account, configure payouts, and create a separate
+live-mode webhook with the same event selection. Apply the migration and
+configure the rate limit on the production Worker, add the live API key and
+live webhook signing secret, and set `CREATOR_SUPPORT_ENABLED = "true"` in
+production. Verify the first live payment and its webhook delivery in Stripe
+and Creator Support. To pause new checkouts, set the flag to `"false"` and keep
+the production webhook and secrets active for existing payments and refunds.

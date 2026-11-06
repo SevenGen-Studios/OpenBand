@@ -454,6 +454,14 @@ document.querySelectorAll('[data-province-link]').forEach(link=>link.addEventLis
 document.querySelectorAll('[data-map-mode]').forEach(button=>button.addEventListener('click',()=>{directoryMapMode=button.dataset.mapMode;el('treatyFilter').value='';el('tribalCouncilFilter').value='';document.querySelectorAll('[data-map-mode]').forEach(item=>{const active=item===button;item.classList.toggle('active',active);item.setAttribute('aria-pressed',String(active))});renderDirectory()}));
 el('mapLegend').addEventListener('click',event=>{const item=event.target.closest('[data-map-group]');if(!item)return;el('treatyFilter').value=directoryMapMode==='treaty'?item.dataset.mapGroup:'';el('tribalCouncilFilter').value=directoryMapMode==='tribalCouncil'?item.dataset.mapGroup:'';const menu=item.closest('details');if(menu)menu.open=false;renderDirectory()});
 el('clearDirectoryFilters').addEventListener('click',()=>{el('directorySearch').value='';el('treatyFilter').value='';el('tribalCouncilFilter').value='';renderDirectory();el('directorySearch').focus()});
+const browseNavLink = document.querySelector('#primaryNav > a[href="/browse/"]');
+if (browseNavLink) {
+  const supportLink = document.createElement('a');
+  supportLink.className = 'nav-creator-support';
+  supportLink.href = '/support/';
+  supportLink.textContent = 'Support the Creators';
+  browseNavLink.before(supportLink);
+}
 const navToggle=document.querySelector('.nav-toggle');navToggle.addEventListener('click',()=>{const expanded=navToggle.getAttribute('aria-expanded')==='true';navToggle.setAttribute('aria-expanded',String(!expanded));document.querySelector('.nav-r').classList.toggle('open',!expanded)});
 window.addEventListener('popstate',()=>restoreRoute(false));
 window.OpenBand={slugify,profilePath,profileUrl,parseMoney,formatMoney,formatNumber,sumRows,calculateRowTotal,calculateFiscalYearSummary,calculateSpendingComposition,calculateYearOverYearChange,getBandSummary,getBandTrend,getProvinceSummary,getAvailableFiscalYears,getParsedRows,getFilingStatus,getSourceLinks,getCapitalSummary,getRevenueBreakdown,getRevenueHistory,normalizeRevenueParent,revenueEntriesForSummary,getExpenseBreakdown,getExpenseDetails,getCapitalSpending,getDebtSummary,getSourceDocuments,getMemberInfo,getBandContact,getCapitalTrend,newsArticles,filteredNews,communityNews,newsCommunitySources,newsSourcesForBand,communityEvents,eventDateLabel,eventsSourcesForBand,projectsForBand,verifiedPartnershipsForBand,unverifiedProjectsForBand,renderHousingProjectsSection,renderUnverifiedProjectsSection};

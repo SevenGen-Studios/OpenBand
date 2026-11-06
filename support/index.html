@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Support the Creators | OpenBand</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&amp;family=DM+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/openband.css?v=20261104overview1">
+<link rel="stylesheet" href="/assets/creator-support.css">
+<script src="/assets/analytics-config.js" defer></script>
+<script src="/assets/creator-support.js" defer></script>
+</head>
+<body>
+<nav aria-label="OpenBand navigation">
+  <a class="logo" href="/">Open<em>Band</em></a>
+  <a class="support-nav-back" href="/">Return to OpenBand</a>
+</nav>
+<main class="support-shell">
+  <section class="support-card" aria-labelledby="supportTitle">
+    <p class="support-kicker">Creator support</p>
+    <h1 id="supportTitle">Support the Creators of OpenBand</h1>
+    <div class="support-copy">
+      <p>OpenBand was created to make First Nations financial information more accessible, understandable, and transparent.</p>
+      <p>We are an independently developed platform dedicated to helping First Nations band members like ourselves, better understand their Nation's finances.</p>
+      <p>Your contribution helps us maintain the website, improve our tools, expand our coverage, and continue developing OpenBand.</p>
+      <p>Every contribution, big or small, helps us move forward.</p>
+      <p>Thank you for supporting OpenBand.</p>
+    </div>
+    <form id="supportForm" novalidate>
+      <fieldset class="support-fieldset">
+        <legend>One-time donation in CAD</legend>
+        <div class="support-options">
+          <label><input type="radio" name="amount" value="500"><span>$5 CAD</span></label>
+          <label><input type="radio" name="amount" value="1000" checked><span>$10 CAD</span></label>
+          <label><input type="radio" name="amount" value="2500"><span>$25 CAD</span></label>
+          <label><input type="radio" name="amount" value="5000"><span>$50 CAD</span></label>
+          <label><input type="radio" name="amount" value="10000"><span>$100 CAD</span></label>
+          <label><input type="radio" name="amount" value="custom"><span>Custom amount</span></label>
+        </div>
+        <div class="support-custom" id="customAmountField" hidden>
+          <label for="customAmount">Custom amount in CAD</label>
+          <input id="customAmount" type="text" inputmode="decimal" autocomplete="off" maxlength="12" aria-describedby="customAmountHint supportError">
+          <p id="customAmountHint">Minimum $2 CAD. Enter up to two decimal places.</p>
+        </div>
+      </fieldset>
+      <p class="support-message" id="supportStatus" role="status"></p>
+      <p class="support-error" id="supportError" role="alert" hidden></p>
+      <button class="sbtn support-button" id="continuePayment" type="submit" disabled>Continue to Secure Payment</button>
+      <p class="support-disclosure">Donations support the independent creators, development, maintenance, and operating expenses of OpenBand.ca. Contributions are voluntary and are not charitable donations or eligible for charitable tax receipts.</p>
+    </form>
+    <noscript><p>Enable JavaScript to continue to Stripe Checkout.</p></noscript>
+  </section>
+</main>
+</body>
+</html>

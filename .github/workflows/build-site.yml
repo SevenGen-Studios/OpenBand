@@ -7,6 +7,7 @@ on:
     paths:
       - index.html
       - admin/**
+      - support/**
       - analytics-worker/**
       - assets/**
       - map-data.json
@@ -27,6 +28,7 @@ on:
     paths:
       - index.html
       - admin/**
+      - support/**
       - analytics-worker/**
       - assets/**
       - map-data.json
@@ -97,6 +99,9 @@ jobs:
           node tests/test_recent_updates.js
           node tests/test_expense_chart.js
           node tests/test_intelligence_status.js
+
+      - name: Run creator support payment tests
+        run: node --experimental-strip-types --test tests/test_creator_support.mjs
 
       - name: Commit generated routes
         if: github.event_name != 'pull_request'

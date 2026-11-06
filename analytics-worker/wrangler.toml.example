@@ -12,6 +12,7 @@ database_id = "REPLACE_WITH_D1_DATABASE_ID"
 ALLOWED_ORIGINS = "https://openband.ca,https://www.openband.ca"
 DATA_RETENTION_DAYS = "760"
 INTELLIGENCE_DATA_URL = "https://openband.ca/data.json"
+CREATOR_SUPPORT_ENABLED = "false"
 
 [triggers]
 crons = ["17 4 * * *"]
@@ -19,3 +20,14 @@ crons = ["17 4 * * *"]
 # Add these with `wrangler secret put` rather than committing them:
 # VISITOR_HASH_SALT
 # ANALYTICS_ADMIN_TOKEN
+
+# Required to accept donations. Use an unused namespace ID in this account.
+[[ratelimits]]
+name = "CREATOR_SUPPORT_RATE_LIMIT"
+namespace_id = "1001"
+  [ratelimits.simple]
+  limit = 10
+  period = 60
+
+# Set CREATOR_SUPPORT_ENABLED = "true" in [vars] only after completing setup.
+# Set STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET with wrangler secret put.
