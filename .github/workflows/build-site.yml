@@ -63,6 +63,14 @@ jobs:
         with:
           ref: ${{ github.event_name == 'pull_request' && github.ref || github.ref_name }}
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run creator support payment tests
+        run: node --experimental-strip-types --test tests/test_creator_support.mjs
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -83,11 +91,6 @@ jobs:
       - name: Run site and analytics tests
         run: python -m unittest discover -s tests -v
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-
       - name: Run browser logic regression tests
         run: |
           node tests/test_analytics_runtime.js
@@ -99,9 +102,6 @@ jobs:
           node tests/test_recent_updates.js
           node tests/test_expense_chart.js
           node tests/test_intelligence_status.js
-
-      - name: Run creator support payment tests
-        run: node --experimental-strip-types --test tests/test_creator_support.mjs
 
       - name: Commit generated routes
         if: github.event_name != 'pull_request'
