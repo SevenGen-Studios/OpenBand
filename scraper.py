@@ -681,6 +681,8 @@ def main():
         "bands": results,
     }
 
+    from tools.financial_entry import replay_managed
+    replay_managed(output)
     with open("data.json", "w", encoding="utf-8") as handle:
         json.dump(output, handle, ensure_ascii=False, indent=2)
 

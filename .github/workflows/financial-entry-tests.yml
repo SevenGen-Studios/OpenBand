@@ -1,0 +1,59 @@
+name: Financial entry regression tests
+on:
+  pull_request:
+    paths:
+      - admin/**
+      - assets/financial-entry.*
+      - analytics-worker/**
+      - tools/financial_entry.py
+      - tools/apply_manual_overrides.py
+      - tests/test_financial_entry*
+      - .github/workflows/*financial-entry*.yml
+  push:
+    branches: [main]
+    paths:
+      - admin/**
+      - assets/financial-entry.*
+      - analytics-worker/**
+      - tools/financial_entry.py
+      - tools/apply_manual_overrides.py
+      - tests/test_financial_entry*
+      - .github/workflows/*financial-entry*.yml
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test override application and scraper replay
+        run: python -m unittest tests.test_financial_entry tests.test_manual_overrides
+      - name: Test server-side authorization and GitHub publication
+        run: node --experimental-strip-types --test tests/test_financial_entry.mjs
+      - name: Install browser test tools
+        run: |
+          npm install --prefix "$RUNNER_TEMP/financial-test-tools" --no-save playwright typescript
+          "$RUNNER_TEMP/financial-test-tools/node_modules/.bin/playwright" install chromium --with-deps
+      - name: Check financial API types
+        run: "$RUNNER_TEMP/financial-test-tools/node_modules/.bin/tsc --noEmit --target es2022 --module esnext --lib es2022,dom analytics-worker/src/financial-entry.ts"
+      - name: Test administrator browser workflow
+        env:
+          PLAYWRIGHT_MODULE: ${{ runner.temp }}/financial-test-tools/node_modules/playwright/index.mjs
+        run: node --experimental-strip-types tests/test_financial_entry_browser.mjs
+      - name: Test existing public browser logic
+        run: |
+          node tests/test_provinces.js
+          node tests/test_manitoba.js
+          node tests/test_missing_filing_years.js
+          node tests/test_profile_history.js
+          node tests/test_data_loading.js
+          node tests/test_expense_chart.js
+          node tests/test_capital_classification.js
+          node tests/test_capital_spending.js
+          node tests/test_intelligence_status.js

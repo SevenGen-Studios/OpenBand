@@ -54,6 +54,8 @@ def read(path, default=None):
 def write(path, value):
     path = Path(path)
     if path.name == 'data.json':
+        from tools.financial_entry import replay_managed
+        replay_managed(value)
         from tools.sanitize_data import format_alberta_official_names
         format_alberta_official_names(value)
     # Existing OneDrive-backed data files may reject replace/rename even when

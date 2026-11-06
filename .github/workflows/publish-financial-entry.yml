@@ -1,0 +1,101 @@
+name: Publish verified financial entry
+run-name: Financial entry ${{ inputs.revision }}
+on:
+  workflow_dispatch:
+    inputs:
+      draft_sha:
+        description: Immutable draft commit
+        required: true
+        type: string
+      draft_path:
+        description: Validated admin_drafts record path
+        required: true
+        type: string
+      revision:
+        description: Approved revision ID
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: openband-v2-data-writers
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          # A fine-grained PAT is required: commits from GITHUB_TOKEN do not
+          # trigger branch-based Pages builds or downstream build workflows.
+          token: ${{ secrets.FINANCIAL_PUBLISH_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Read immutable approved draft (data only)
+        env:
+          DRAFT_SHA: ${{ inputs.draft_sha }}
+          DRAFT_PATH: ${{ inputs.draft_path }}
+          REVISION: ${{ inputs.revision }}
+        run: |
+          python - <<'PY'
+          import os, re, subprocess, json
+          from pathlib import Path
+          sha, path = os.environ['DRAFT_SHA'], os.environ['DRAFT_PATH']
+          if not re.fullmatch(r'[a-f0-9]{40}', sha) or not re.fullmatch(r'admin_drafts/[A-Za-z0-9_-]{1,64}-\d{4}-\d{4}\.json', path):
+              raise SystemExit('Invalid immutable draft reference')
+          subprocess.run(['git', 'fetch', 'origin', 'financial-drafts'], check=True)
+          subprocess.run(['git', 'merge-base', '--is-ancestor', sha, 'FETCH_HEAD'], check=True)
+          raw = subprocess.check_output(['git', 'show', sha + ':' + path])
+          draft = json.loads(raw)
+          if draft['revision'] != os.environ['REVISION'] or path != f"admin_drafts/{draft['bandId']}-{draft['year']}.json":
+              raise SystemExit('Draft identity mismatch')
+          Path(os.environ['RUNNER_TEMP'], 'financial-draft.json').write_bytes(raw)
+          PY
+      - name: Validate financial workflow
+        run: |
+          python -m unittest tests.test_financial_entry tests.test_manual_overrides
+          node --experimental-strip-types --test tests/test_financial_entry.mjs
+      - name: Publish validated snapshot and replay overrides
+        run: |
+          python tools/financial_entry.py "$RUNNER_TEMP/financial-draft.json"
+          python tools/apply_manual_overrides.py data.json
+          python tools/sanitize_data.py data.json
+          python tools/manual_review_report.py
+          python tools/build_site.py
+      - name: Assert published rows survive normalization
+        run: |
+          python - <<'PY'
+          import os, json
+          from pathlib import Path
+          from tools.financial_entry import select
+          d = json.loads(Path(os.environ['RUNNER_TEMP'], 'financial-draft.json').read_text())
+          data = json.loads(Path('data.json').read_text())
+          _, filing = select(data, d['bandId'], d['year'])
+          if filing['financialEntryRevision'] != d['revision']:
+              raise SystemExit('Revision missing from resulting dataset')
+          # Replay twice must be stable, including unknown values.
+          from copy import deepcopy
+          from tools.financial_entry import apply
+          expected = deepcopy(data)
+          apply(expected, d)
+          if expected != data:
+              raise SystemExit('Normalization changed the approved schedule')
+          PY
+      - name: Commit correction and generated data
+        env:
+          REVISION: ${{ inputs.revision }}
+        run: |
+          git config user.name 'OpenBand Financial Publisher'
+          git config user.email 'financial-publisher@users.noreply.github.com'
+          git add manual_overrides/zz-admin-*.json data.json manual-review-report.json first-nations browse news saskatchewan alberta manitoba financials methodology about seo-page-manifest.json sitemap.xml robots.txt .nojekyll
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish verified financial revision $REVISION"
+            git push origin HEAD:main
+          fi

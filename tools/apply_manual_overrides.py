@@ -14,6 +14,10 @@ import sys
 from copy import deepcopy
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 try:
     from tools import parser_quality
 except ImportError:  # pragma: no cover
@@ -100,6 +104,10 @@ def iter_override_records(path):
 
 
 def apply_record(data, record):
+    if record.get("schema") == "openband-remuneration-v1":
+        from tools.financial_entry import apply
+        return apply(data, record)
+
     band_name = record.get("band") or record.get("requestedBand")
     if not band_name:
         return 0
@@ -178,9 +186,10 @@ def main():
         paths = sorted(override_path.glob("*.json"))
     else:
         paths = []
-    for path in paths:
-        for record in iter_override_records(path):
-            applied += apply_record(data, record)
+    records = [record for path in paths for record in iter_override_records(path)]
+    records.sort(key=lambda record: record.get("schema") == "openband-remuneration-v1")
+    for record in records:
+        applied += apply_record(data, record)
 
     data_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"manual overrides applied: {applied}")
