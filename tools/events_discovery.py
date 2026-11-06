@@ -135,7 +135,7 @@ SHARED_COMMUNITY_ALIASES = {
 }
 EVENT_WORDS = re.compile(
     r"\b(pow[ -]?wow|wacipi|round dance|treaty day|feast|gathering|ceremony|"
-    r"gala|public opening|celebration|community (?:meeting|event|clean[ -]?up)|annual general meeting|agm|"
+    r"party|gala|public opening|celebration|community (?:meeting|event|clean[ -]?up)|annual general meeting|agm|"
     r"open house|workshop|training|conference|forum|fair|clinic|screening|"
     r"tournament|relay race|races|rodeo|bingo|fundraiser|market|festival|parade|camp|youth day|"
     r"family day|language class|culture camp|land-based|sports day|information session|"
@@ -651,7 +651,70 @@ def extract_eventer_detail(markup,page_url,community,source):
     return row
 
 
+def extract_olcn_calendar(markup, page_url, community, source):
+    """Read Onion Lake's published event JSON together with its matching detail cards."""
+    if str(community.get('bandId')) != '344' or urllib.parse.urlsplit(page_url).hostname not in {'onionlake.ca', 'www.onionlake.ca'}:
+        return None
+    from lxml import html as lxml_html
+    from html import unescape
+    document = lxml_html.fromstring(markup)
+    scripts = document.xpath('//script[@type="application/json" and starts-with(@id,"olcn-ev-data-")]')
+    if not scripts:
+        return None
+    try:
+        rows = json.loads(scripts[0].text or '[]')
+    except (TypeError, ValueError):
+        return []
+    if not isinstance(rows, list):
+        return []
+    cards = {node.get('data-slug'): node for node in document.xpath('//div[@data-slug and contains(concat(" ",normalize-space(@class)," ")," olcn-ev-detail ")]')}
+    output, seen = [], set()
+    for row in rows[:300]:
+        if not isinstance(row, dict):
+            continue
+        card = cards.get(row.get('slug'))
+        if card is None:
+            continue
+        title = clean_text(unescape(str(row.get('t') or '')))
+        headings = card.xpath('.//h3[contains(concat(" ",normalize-space(@class)," ")," olcn-evd-title ")]')
+        if not headings or clean_text(headings[0].text_content()) != title:
+            continue
+        start, end = row.get('s'), row.get('e') or row.get('s')
+        try:
+            if date.fromisoformat(end) < date.fromisoformat(start):
+                continue
+        except (ValueError, TypeError):
+            continue
+        url = canonical_url(row.get('u') or '')
+        if urllib.parse.urlsplit(url).hostname not in {'onionlake.ca','www.onionlake.ca'} or not urllib.parse.urlsplit(url).path.startswith('/events/'):
+            continue
+        key = (url, start)
+        if key in seen:
+            continue
+        seen.add(key)
+        # Keep the matching card's details; never borrow a neighbouring event's dates.
+        body_nodes = card.xpath('.//div[contains(concat(" ",normalize-space(@class)," ")," olcn-evd-body ")]')
+        body_text = clean_text(' '.join(body_nodes[0].itertext())) if body_nodes else ''
+        program_start = re.search(r'\bprogram starts\s+(.{0,100})', body_text, re.I)
+        if program_start:
+            stated = explicit_event_dates(program_start.group(1))
+            if stated and stated[0][0] != start:
+                continue  # Conflicting publisher dates require review, not a guess.
+        context = f'Date: {start} to {end}. ' + clean_text(' '.join(card.itertext()))
+        item = normalized_event(community, source, title=title, context=context, url=url, start=start, end=end, method='olcn-calendar')
+        item['title'] = title
+        item.pop('startTime', None); item.pop('location', None)
+        if row.get('tm'):
+            published_time = event_time(str(row['tm']))
+            if published_time:item['startTime'] = published_time
+        if row.get('loc'):item['location'] = clean_text(row['loc'])
+        output.append(item)
+    return output
+
+
 def extract_html_events(html: str, page_url: str, community: dict, source: dict, today: date | None = None):
+    calendar=extract_olcn_calendar(html,page_url,community,source)
+    if calendar is not None:return calendar,[],[]
     eventer=extract_eventer_detail(html,page_url,community,source)
     if eventer:return [eventer],[],[]
     parser = EventPageParser()
@@ -936,7 +999,8 @@ def merge_events(existing: list[dict], candidates: list[dict], today: date | Non
             and (
                 (old.get("sourceUid") and old.get("sourceUid")==item.get("sourceUid"))
                 or (old.get("sourceUrl") == url and old.get("startDate")==start and (
-                    event_identity_title(old.get('title'))==identity
+                    item.get('extractionMethod') == 'olcn-calendar'
+                    or event_identity_title(old.get('title'))==identity
                     or SequenceMatcher(None,event_identity_title(old.get('title')),identity).ratio()>=.84
                 ))
                 or (
@@ -1009,6 +1073,10 @@ def is_publishable_event(item: dict, today: date | None = None) -> bool:
         return False
     if path.endswith(("/events", "/calendar", "/events.html", "/announcements")) and method == "html-page":
         return False
+    if method == "olcn-calendar":
+        return (str(item.get("bandId")) == "344"
+                and urllib.parse.urlsplit(url).hostname in {"onionlake.ca","www.onionlake.ca"}
+                and any(a == item.get("startDate") for a, _ in explicit_event_dates(description)))
     if method in {"json-ld","icalendar"}:
         return True
     if method=='eventer':

@@ -1137,6 +1137,44 @@
       "researchSourceId": "blood-jobs",
       "maxDetailPages": 12,
       "maxMediaDocuments": 8
+    },
+    {
+      "id": "research-fortmckay-public-employer-feed",
+      "url": "https://fortmckay.bamboohr.com/jobs/embed2.php?version=1.0.0&format=json",
+      "name": "Fort McKay First Nation",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "467"
+      ],
+      "communityNames": [
+        "Fort McKay First Nation"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "bamboo_embed",
+      "researchSourceId": "fortmckay-public-employer-feed"
+    },
+    {
+      "id": "research-mikisewgroup-public-employer-feed",
+      "url": "https://mikisewgroup.bamboohr.com/jobs/embed2.php?version=1.0.0&format=json",
+      "name": "Mikisew Group",
+      "sourceType": "first_nation_owned_business",
+      "communityIds": [
+        "461"
+      ],
+      "communityNames": [
+        "Mikisew Cree First Nation"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "bamboo_embed",
+      "researchSourceId": "mikisewgroup-public-employer-feed"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "generated": "2026-11-04T20:39:23Z",
-  "notes": "Event discovery sources are derived from the verified News registry. Add event-specific calendars here when found.",
+  "notes": "Manually maintain verified community websites, public Facebook pages, and local organizations here. The discovery job preserves these records.",
   "communities": [
     {
       "bandId": 378,
@@ -973,6 +973,22 @@
             "https://onionlake.ca/events/computer-training-program-november-2-13-2026",
             "https://onionlake.ca/events/introduction-to-hand-games-for-youth-november-2-6-2026"
           ]
+        },
+        {
+          "name": "Onion Lake Cree Nation",
+          "url": "https://onionlake.ca/events/",
+          "type": "Official First Nation Website",
+          "status": "verified",
+          "adapter": "html",
+          "official": true,
+          "monitor": true,
+          "requiresCommunityMention": false,
+          "associationCommunityNames": [
+            "Onion Lake Cree Nation"
+          ],
+          "researchSourceId": "onion-lake-calendar",
+          "verifiedAt": "2026-11-06",
+          "lastSuccess": "2026-11-06T07:05:17+00:00"
         }
       ],
       "discoveryQueries": [
@@ -4411,6 +4427,22 @@
           "adapter": "static",
           "monitor": false,
           "official": true
+        },
+        {
+          "name": "Bears’ Lair Dream Camps",
+          "url": "https://bearslairdreamcamps.com/camp-event/frog-lake-first-nation/",
+          "type": "Institutional Source",
+          "status": "verified",
+          "adapter": "html",
+          "official": false,
+          "monitor": true,
+          "requiresCommunityMention": false,
+          "associationCommunityNames": [
+            "Frog Lake"
+          ],
+          "researchSourceId": "frog-lake-bears-lair",
+          "verifiedAt": "2026-11-06",
+          "lastSuccess": "2026-11-06T06:52:57+00:00"
         }
       ],
       "discoveryQueries": [
@@ -5198,6 +5230,22 @@
           "adapter": "static",
           "monitor": false,
           "official": true
+        },
+        {
+          "name": "Saddle Lake Cree Nation",
+          "url": "https://slcn125.ca/slcn_event",
+          "type": "Official First Nation Website",
+          "status": "verified",
+          "adapter": "html",
+          "official": true,
+          "monitor": true,
+          "requiresCommunityMention": false,
+          "associationCommunityNames": [
+            "Saddle Lake Cree Nation"
+          ],
+          "researchSourceId": "saddle-lake-events",
+          "verifiedAt": "2026-11-06",
+          "lastSuccess": null
         }
       ],
       "discoveryQueries": [
@@ -9756,7 +9804,9 @@
     {
       "bandId": 285,
       "communityName": "Waywayseecappo First Nation Treaty Four - 1874",
-      "aliases": [],
+      "aliases": [
+        "Waywayseecappo First Nation"
+      ],
       "provinceTerritory": "MB",
       "treaty": "Treaty 4",
       "sources": [

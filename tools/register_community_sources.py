@@ -45,11 +45,13 @@ def register(root=ROOT):
         configured = next((s for s in payload['sources'] if s['url'].rstrip('/') == source['url'].rstrip('/') and set(map(str,s.get('communityIds',[]))) == set(source['communityIds'])), None)
         if configured:
             if source.get('jobParser'): configured['parser'] = source['jobParser']
+            if source.get('type') == 'First Nation Owned Business': configured['sourceType'] = 'first_nation_owned_business'
+            elif source.get('jobParser') == 'bamboo_embed' and source.get('type') == 'Official First Nation Website': configured['sourceType'] = 'official_first_nation'
             for key in ('maxDetailPages', 'maxMediaDocuments'):
                 if key in source: configured[key] = source[key]
             continue
         payload['sources'].append({'id': 'research-' + source['id'], 'url': source['url'], 'name': source['name'],
-            'sourceType': 'official_first_nation' if source['type'] == 'Official First Nation Website' else 'tribal_council',
+            'sourceType': 'official_first_nation' if source['type'] == 'Official First Nation Website' else 'first_nation_owned_business' if source['type'] == 'First Nation Owned Business' else 'tribal_council',
             'communityIds': source['communityIds'], 'communityNames': [roster[i]['name'] for i in source['communityIds']],
             'verifiedOfficialSource': True, 'autoPublish': False, 'inspectDetails': True, 'scanMedia': True,
             'sameHostOnly': True, 'parser': source.get('jobParser', 'job_link_index'), 'researchSourceId': source['id'],

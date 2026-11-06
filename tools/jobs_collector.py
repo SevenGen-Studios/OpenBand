@@ -692,6 +692,41 @@ def inspect_candidate_page(url: str, today: date) -> tuple[dict, list[str]]:
     }, []
 
 
+def bamboo_embed_candidates(markup, source, today):
+    """Keep public BambooHR vacancies as leads until their deadline is verified."""
+    host = urllib.parse.urlsplit(source.get('url', '')).hostname or ''
+    ids = list(map(str, source.get('communityIds', [])))
+    if not source.get('verifiedOfficialSource') or not host.endswith('.bamboohr.com') or len(ids) != 1:
+        return [], ['BambooHR feed requires one reviewed community and an official employer host']
+    try:
+        payload = json.loads(markup)
+    except (TypeError, ValueError):
+        return [], ['Unreadable public BambooHR feed']
+    if not isinstance(payload, dict) or payload.get('success') is not True or not isinstance(payload.get('departments'), list):
+        return [], ['Unexpected public BambooHR feed structure']
+    output, seen = [], set()
+    for department in payload['departments'][:50]:
+        if not isinstance(department, dict): continue
+        positions=department.get('positions', [])
+        if not isinstance(positions, list): continue
+        for row in positions[:100]:
+            if not isinstance(row, dict): continue
+            title=clean_job_title(row.get('name')); url=str(row.get('url') or '')
+            parts=urllib.parse.urlsplit(url)
+            if not title or parts.scheme != 'https' or parts.hostname != host or not re.fullmatch(r'/careers/\d+/?',parts.path):continue
+            if re.search(r'\b(?:talent pool|expression of interest|general application)\b',title,re.I):continue
+            if url in seen:continue
+            seen.add(url)
+            output.append(normalize_listing({'id':'bamboo-'+host.split('.')[0]+'-'+parts.path.rstrip('/').split('/')[-1],
+                'title':title,'employer':source['name'],'sourceName':source['name'],'sourceId':source['id'],
+                'communityId':ids[0],'communityName':source['communityNames'][0],'sourceUrl':url,
+                'location':row.get('location') or '', 'category':department.get('label') or 'Other',
+                'description':'Listed on the official employer feed. A closing date or explicit open-until-filled statement has not yet been verified; held for review.',
+                'status':'Pending verification','lastChecked':today.isoformat(),'verifiedOfficialSource':True,
+                'extractionConfidence':'medium'},today))
+    return output, []
+
+
 def career_table_candidates(markup, source, today):
     """Read vacancy deadlines from their own table cells, never adjacent jobs."""
     from lxml import html
@@ -736,7 +771,13 @@ def career_table_candidates(markup, source, today):
 def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], list[str], str, list[dict]]:
     today = today or date.today()
     warnings = []
-    markup, error = fetch_markup(source["url"])
+    if source.get('parser') == 'bamboo_embed':
+        body, content_type, error = fetch_binary(source['url'])
+        markup = body.decode('utf-8', errors='replace') if not error else ''
+        if not error and content_type.split(';')[0].strip() != 'application/json':
+            markup, error = '', 'Public BambooHR feed did not return JSON'
+    else:
+        markup, error = fetch_markup(source["url"])
     if error:
         review = [{
             "sourceId": source["id"],
@@ -748,6 +789,9 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
             "reason": error,
         }]
         return [], [f"{source['id']}: fetch failed: {error}"], "", review
+    if source.get('parser') == 'bamboo_embed':
+        rows, warnings = bamboo_embed_candidates(markup, source, today)
+        return rows, warnings, markup, []
     if source.get('parser') == 'career_table':
         rows, warnings = career_table_candidates(markup, source, today)
         return rows, warnings, page_text(markup), []

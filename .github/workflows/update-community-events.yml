@@ -53,7 +53,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Test events collector
-        run: python -m unittest tests/test_events_discovery.py tests/test_community_updates_phase1.py tests/test_community_coverage_phase2.py tests/test_coverage_expansion.py -v
+        run: python -m unittest tests/test_events_discovery.py tests/test_community_updates_phase1.py tests/test_community_coverage_phase2.py tests/test_coverage_expansion.py tests/test_breadth_20261106.py -v
 
       - name: Register reviewed community sources
         run: python -m tools.register_community_sources
