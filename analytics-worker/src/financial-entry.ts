@@ -254,7 +254,7 @@ export async function handleFinancialEntry(request: Request, env: FinancialEntry
       draft = {schema,bandId:id,band:band.name,province:band.province,year,before,people,source,
         reason:String(body.reason || '').trim().slice(0,2000),editedBy:identity,editedAt:new Date().toISOString(),
         revision:crypto.randomUUID(),editor:{edits:body.edits,additions:body.additions,removals:body.removals},state:action==='/submit'?'awaiting_verification':'draft'};
-      if (!draft.reason) fail('Correction reason required');
+      if (!draft.reason && action === '/submit') fail('Correction reason required');
     } else return respond({error:'Not found'},404);
     // One atomic Git commit updates both the record and queue index. A
     // non-fast-forward ref update rejects any concurrent branch writer.

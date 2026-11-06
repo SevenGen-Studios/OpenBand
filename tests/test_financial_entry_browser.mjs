@@ -35,7 +35,7 @@ try{
  });
  await page.goto('https://openband.ca/admin/manual-entry/?band=1&year=2024-2025');
  await page.locator('#entryToken').fill('e'.repeat(40));await page.locator('#entryLogin button').click();await page.locator('#entryRows input[data-field=remuneration]').first().waitFor();
- await page.locator('#entryRows input[data-field=remuneration]').first().fill('15000');await page.locator('#entryPages').fill('3');await page.locator('#entryReason').fill('Correct OCR figure from official PDF');await page.locator('#entryPreview').click();
+ assert.equal(await page.locator('.choose-stage').isVisible(),false);assert.equal(await page.locator('#entryVerification').isVisible(),false);await page.locator('#entryRows input[data-field=remuneration]').first().fill('15000');await page.locator('#entryPreview').click();assert.equal(await page.locator('.editor-card').isVisible(),false);await page.locator('#entryPages').fill('3');await page.locator('#entryReason').fill('Correct OCR figure from official PDF');
  assert.match(await page.locator('#entryDiff').innerText(),/105000/);assert.match(await page.locator('#entryDiff').innerText(),/15000/);
  await page.locator('#entrySave').click();await page.waitForFunction(()=>document.querySelector('#entryStatus').textContent.includes('Draft saved'));
  assert.equal(draft.people[0].remuneration,15000);assert.equal(draft.people[0].total,15260);assert.equal(draft.people[0].expenses,50);assert.equal(draft.people[1].other,null);
@@ -46,6 +46,6 @@ try{
  await page.locator('#entryPublish').click();await page.waitForFunction(()=>document.querySelector('#entryStatus').textContent.includes('Publication queued'));assert.equal(dispatched,true);
  assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
  if(process.env.ENTRY_SCREENSHOT)await page.screenshot({path:process.env.ENTRY_SCREENSHOT,fullPage:true});
- await page.setViewportSize({width:390,height:844});assert.equal(await page.locator('#entryHeading').isVisible(),true);assert.deepEqual(errors,[]);
+ await page.setViewportSize({width:390,height:844});assert.equal(await page.locator('#entryHeading').isVisible(),true);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true);assert.deepEqual(errors,[]);
  console.log('PASS: browser editor → GitHub draft → submit → independent approval → queued publishing; desktop/mobile, no browser credential storage.');
 }finally{await browser.close();globalThis.fetch=nativeFetch}

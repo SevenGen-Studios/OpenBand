@@ -181,3 +181,24 @@ image-evidence subtest errors caused by unavailable RapidOCR/Tesseract, with thr
 skips. These belong to the existing community evidence test, not financial publishing.
 Live GitHub/Pages publishing and Community Capital remain gated on secure setup and a
 real approved source correction. Do not describe mocked tests as live end-to-end proof.
+
+## Approved interface and handoff
+
+The approved interface uses three steps: **Choose a schedule → Edit the figures →
+Review & submit**. The queue is optional, reported totals are hidden until requested,
+and verification/publishing controls appear only for the relevant role and revision
+state. Editors can save an unfinished draft without a correction note; submission
+still requires source pages and a reason. Enter moves down the same table column,
+changed cells are highlighted, and unsaved changes are guarded on navigation.
+
+The local preview server is a development harness outside the repository. It serves
+real published data but intercepts every backend GitHub and PDF request. Its draft,
+verification and publication operations are simulations held in process memory.
+Those simulated operations are never proof that a record was saved in GitHub or
+published on OpenBand.ca. Production loads the same checked-in editor and calls the
+real authenticated Worker; the preview banner and demo credentials are not shipped.
+
+Future sessions should start with PR #71 (`codex/manual-financial-entry`) and this
+file. Check the PR/branch and current production configuration before continuing;
+do not assume that successful local preview tests mean deployment has completed.
+The secure configuration and real-publication gate described above still apply.
