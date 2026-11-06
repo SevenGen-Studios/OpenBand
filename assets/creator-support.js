@@ -67,12 +67,12 @@
       available = config.enabled === true;
       const messages = [];
       if (cancelled) messages.push("Checkout was cancelled. You can choose an amount to try again.");
-      if (!available) messages.push("Online donations are currently unavailable.");
+      if (!available) messages.push("Online tips are currently unavailable.");
       else if (config.testMode) messages.push("Stripe test mode is active. No real payment will be collected.");
       status.textContent = messages.join(" ");
       resetButton();
     }).catch(() => {
-      status.textContent = "Online donations are currently unavailable.";
+      status.textContent = "Online tips are currently unavailable.";
     });
 
     form.addEventListener("submit", async event => {
@@ -107,7 +107,7 @@
         if (new URL(url).origin !== "https://checkout.stripe.com") throw new Error("invalid_checkout");
         location.assign(url);
       } catch (caught) {
-        if (caught.status === 400) showError("Choose a valid donation amount and try again.");
+        if (caught.status === 400) showError("Choose a valid tip amount and try again.");
         else if (caught.status === 429) showError("Too many attempts. Please wait a minute and try again.");
         else showError("Stripe Checkout could not be opened. Please try again shortly.");
         resetButton();
@@ -120,7 +120,7 @@
     const retry = node("confirmationRetry");
     const sessionId = new URLSearchParams(location.search).get("session_id");
     if (!sessionId || !/^cs_(test|live)_[a-zA-Z0-9]{1,200}$/.test(sessionId)) {
-      status.textContent = "Open your Stripe return link to check a donation.";
+      status.textContent = "Open your Stripe return link to check your payment.";
       return;
     }
     async function check() {
@@ -137,7 +137,7 @@
             return;
           }
           if (result.status === "failed" || result.status === "expired") {
-            status.textContent = "Stripe did not confirm this payment. You can return to the donation page to try again.";
+            status.textContent = "Stripe did not confirm this payment. You can return to the support page to try again.";
             const link = document.createElement("a");
             link.href = "/support/";
             link.textContent = "Return to creator support";
@@ -148,7 +148,7 @@
         status.textContent = "Payment confirmation is still pending. Check again in a moment.";
       } catch (caught) {
         if (caught.status === 400 || caught.status === 404) {
-          status.textContent = "We could not find a donation for this checkout.";
+          status.textContent = "We could not find a payment for this checkout.";
           return;
         }
         status.textContent = "Payment confirmation is temporarily unavailable. Try checking again shortly.";
