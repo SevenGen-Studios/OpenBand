@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Creator Support | OpenBand Administration</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&amp;family=DM+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/openband.css?v=20261104overview1">
+<link rel="stylesheet" href="/assets/analytics-admin.css?v=20260828a">
+<link rel="stylesheet" href="/assets/creator-support.css">
+<script src="/assets/analytics-config.js" defer></script>
+<script src="/assets/creator-support.js" defer></script>
+</head>
+<body class="analytics-admin-page support-admin">
+<nav aria-label="Administration navigation">
+  <a class="logo" href="/">Open<em>Band</em></a>
+  <a class="admin-back" href="/admin/">Admin portal</a>
+</nav>
+<main class="admin-shell">
+  <section class="admin-login" id="supportAdminLogin" aria-labelledby="supportAdminTitle">
+    <h1 id="supportAdminTitle">Creator Support</h1>
+    <p>Enter your administrator token to view the donation report.</p>
+    <form id="supportAdminForm">
+      <label for="supportAdminToken">Administrator token</label>
+      <div class="admin-login-row">
+        <input id="supportAdminToken" type="password" autocomplete="current-password" required>
+        <button type="submit">View report</button>
+      </div>
+      <p id="supportAdminError" class="admin-error" role="alert" hidden></p>
+    </form>
+  </section>
+  <section id="supportAdminReport" aria-labelledby="supportReportTitle" hidden>
+    <header class="admin-head">
+      <div><h1 id="supportReportTitle" tabindex="-1">Creator Support</h1><p id="supportAdminMode"></p></div>
+      <button type="button" class="sbtn" id="supportSignOut">Sign out</button>
+    </header>
+    <div class="admin-metrics">
+      <div class="admin-metric"><span>Donations received in CAD, after refunds and before Stripe fees</span><strong id="supportNet"></strong></div>
+      <div class="admin-metric"><span>Successful payments, including refunded payments</span><strong id="supportCount"></strong></div>
+    </div>
+    <section class="admin-card" aria-labelledby="supportTransactionsTitle">
+      <h2 id="supportTransactionsTitle">Recent donation transactions</h2>
+      <p id="supportEmpty" hidden>No donations have been recorded.</p>
+      <div class="support-admin-table" tabindex="0" role="region" aria-labelledby="supportTransactionsTitle">
+        <table>
+          <thead><tr><th scope="col">Date (Saskatchewan)</th><th scope="col">Amount (CAD)</th><th scope="col">Stripe reference</th><th scope="col">Payment status</th><th scope="col">Refund status</th></tr></thead>
+          <tbody id="supportTransactions"></tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+</main>
+</body>
+</html>

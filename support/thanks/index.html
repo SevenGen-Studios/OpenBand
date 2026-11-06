@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Donation Confirmation | OpenBand</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&amp;family=DM+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/openband.css?v=20261104overview1">
+<link rel="stylesheet" href="/assets/creator-support.css">
+<script src="/assets/analytics-config.js" defer></script>
+<script src="/assets/creator-support.js" defer></script>
+</head>
+<body>
+<nav aria-label="OpenBand navigation"><a class="logo" href="/">Open<em>Band</em></a></nav>
+<main class="support-shell" id="supportConfirmation">
+  <section class="support-card" id="confirmationPending" aria-labelledby="confirmationTitle">
+    <p class="support-kicker">Creator support</p>
+    <h1 id="confirmationTitle">Donation confirmation</h1>
+    <p class="support-message" id="confirmationStatus" role="status">Checking for payment confirmation…</p>
+    <button class="sbtn support-button" id="confirmationRetry" type="button" hidden>Check again</button>
+    <p class="support-confirmation-link"><a href="/">Return to OpenBand</a></p>
+    <noscript><p>Enable JavaScript to check whether Stripe confirmed your payment.</p></noscript>
+  </section>
+  <section class="support-card" id="confirmationPaid" aria-labelledby="thankYouTitle" hidden>
+    <p class="support-kicker">Creator support</p>
+    <h1 id="thankYouTitle" tabindex="-1">Thank You for Supporting OpenBand!</h1>
+    <div class="support-copy">
+      <p>Your generosity helps us continue building a platform dedicated to greater financial understanding and transparency for First Nations communities.</p>
+      <p>We appreciate your support.</p>
+    </div>
+    <a class="sbtn support-button" href="/">Return to OpenBand</a>
+  </section>
+</main>
+</body>
+</html>
