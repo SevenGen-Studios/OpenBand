@@ -6,6 +6,13 @@ staging_origin=https://openband.kakakawaybrennan-ee1.workers.dev
 # The staging Worker may only open Stripe test sessions.
 sed -i 's/env.CREATOR_SUPPORT_ENABLED === "true"/env.CREATOR_SUPPORT_ENABLED === "true" \&\& stripeMode(env) === "test"/' src/creator-support.ts
 
+# Expose only a fixed diagnostic code while testing Checkout in the sandbox.
+sed -i 's/  const url = new URL(session.url);/  if (!session.url) throw new Error("stripe_missing_checkout_url");\n  const url = new URL(session.url);\n  if (url.origin !== "https:\/\/checkout.stripe.com") throw new Error("stripe_checkout_host_" + url.hostname);/' src/creator-support.ts
+sed -i 's/^  } catch {$/  } catch (caught) {/' src/creator-support.ts
+sed -i '/Do not expose or log Stripe response bodies or donor data./a\
+    const code = caught instanceof Error ? caught.message : "";\n    if (code === "stripe_missing_checkout_url" || code === "invalid_checkout_session" || /^stripe_checkout_host_[a-z0-9.-]+$/.test(code)) return json({error: code}, 503);
+' src/creator-support.ts
+
 mkdir -p staging-site/assets
 cp -R ../support staging-site/
 cp ../assets/favicon.svg ../assets/openband.css ../assets/creator-support.css ../assets/creator-support.js staging-site/assets/
