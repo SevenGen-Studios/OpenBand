@@ -2,6 +2,29 @@
 .support-nav-back:hover {text-decoration:underline}
 .support-shell {max-width:46rem;margin:0 auto;padding:clamp(1rem,5vw,3rem) 1rem 3rem}
 .support-card {padding:clamp(1.15rem,5vw,2.5rem);background:var(--surface);border:1px solid var(--border);border-radius:var(--r)}
+/* Map artwork is decorative and only appears on the donation page. */
+.support-map-page {
+  background: url("/assets/creator-support-map.svg") no-repeat center -6rem / clamp(34rem, 100vw, 46rem) auto, #f1f4e9;
+}
+.support-map-page .support-shell {
+  padding-top: clamp(7rem, 20vw, 10rem);
+}
+.support-map-page .support-card {
+  box-shadow: 0 16px 48px rgba(34, 67, 39, .10);
+}
+@media (min-width: 960px) {
+  .support-map-page {
+    background-position: right max(-3rem, (100vw - 99rem) / 2) top 3rem;
+    background-size: clamp(39rem, 59vw, 58rem) auto;
+  }
+  .support-map-page .support-shell {
+    max-width: 77rem;
+    padding: clamp(3.5rem, 7vw, 6rem) clamp(1.5rem, 4vw, 3.5rem) 4rem;
+  }
+  .support-map-page .support-card {
+    max-width: min(59%, 42rem);
+  }
+}
 .support-kicker {color:var(--green);font-weight:700;font-size:12px;letter-spacing:.07em;text-transform:uppercase}
 .support-card h1 {font:800 clamp(1.6rem,5vw,2.35rem)/1.15 Syne,sans-serif;margin:.4rem 0 1rem}
 .support-copy {display:grid;gap:.65rem;margin-bottom:1.5rem}
