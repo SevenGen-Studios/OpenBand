@@ -19,6 +19,11 @@ on:
       - projects-data.json
       - tools/build_site.py
       - tools/seo_records.py
+      - tools/sanitize_data.py
+      - tools/parse_discovered_filings.py
+      - tools/local_ocr.py
+      - tools/vision_ocr.py
+      - tools/capital_parser.py
       - capital-data.json
       - contacts-data.json
       - tests/**
@@ -40,6 +45,11 @@ on:
       - projects-data.json
       - tools/build_site.py
       - tools/seo_records.py
+      - tools/sanitize_data.py
+      - tools/parse_discovered_filings.py
+      - tools/local_ocr.py
+      - tools/vision_ocr.py
+      - tools/capital_parser.py
       - capital-data.json
       - contacts-data.json
       - tests/**
