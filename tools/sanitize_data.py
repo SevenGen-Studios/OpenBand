@@ -12,10 +12,6 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
 try:
     from tools import parser_quality
 except ImportError:  # pragma: no cover - supports running from tools/ directly
@@ -125,7 +121,7 @@ def format_alberta_official_names(data):
             continue
         records = [(official, key) for official in (band.get('leadership') or {}).get('officials', [])
                    for key in ('givenName', 'surname')]
-        records += [(person, 'name') for filing in band.get('filings', []) if not filing.get('financialEntryRevision') for person in filing.get('people', [])]
+        records += [(person, 'name') for filing in band.get('filings', []) for person in filing.get('people', [])]
         for record, key in records:
             value = record.get(key)
             if not isinstance(value, str):
@@ -364,6 +360,15 @@ def normalize_filing_status(filing):
     status = filing.get("parse_status")
 
     if not is_remuneration(filing):
+        # Financial-statement extraction now has its own source-bound status.
+        # The remuneration sanitizer must not erase verified audits or an
+        # explicit review queue merely because there are no official rows.
+        digest = filing.get('sha256') or ''
+        source_bound = re.fullmatch(r'[a-f0-9]{64}', digest) and (
+            filing.get('independentVerification', {}).get('sourceSha256') == digest
+            or (filing.get('manual_review_required') and filing.get('extractionReviewReport')))
+        if 'audited' in clean_text(filing.get('docType')).lower() and source_bound:
+            return
         if status != "not_required":
             set_technical_status(filing, status)
             filing["parse_status"] = "not_required"
@@ -561,8 +566,6 @@ def sanitize_data(data):
 def main():
     path = Path(sys.argv[1] if len(sys.argv) > 1 else "data.json")
     data = json.loads(path.read_text(encoding="utf-8"))
-    from tools.financial_entry import replay_managed
-    replay_managed(data)
     inspected, removed, fixed = sanitize_data(data)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"sanitized rows inspected: {inspected}")

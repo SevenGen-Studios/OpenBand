@@ -46,3 +46,17 @@ class DiscoveredExtractionTests(unittest.TestCase):
         cells=[{'box':[[0,0],[100,0],[100,10],[0,10]],'text':'1,234'}]
         with patch.dict('os.environ', {'OPENBAND_VISION_PYOBJC':'1'}, clear=True), patch('tools.vision_ocr.recognize',return_value=cells):
             self.assertEqual(_vision_text('local-image.png'),'1,234')
+
+    def test_cleanup_preserves_verified_and_review_required_audits(self):
+        from tools.sanitize_data import normalize_filing_status
+        digest='ab'*32
+        for status in ('parsed','manual_review'):
+            filing={'docType':'Audited consolidated financial statements','sha256':digest,
+                    'parse_status':status,'independentVerification':{'sourceSha256':digest}}
+            normalize_filing_status(filing)
+            self.assertEqual(filing['parse_status'],status)
+        filing={'docType':'Audited consolidated financial statements','sha256':digest,
+                'parse_status':'manual_review','manual_review_required':True,
+                'extractionReviewReport':'filing-extraction-report.json'}
+        normalize_filing_status(filing)
+        self.assertEqual(filing['parse_status'],'manual_review')
