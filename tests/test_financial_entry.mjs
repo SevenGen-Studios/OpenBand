@@ -8,6 +8,13 @@ test('correct aggregate replaces components and aliases',()=>{const rows=editRow
 test('null is preserved while zero stays numeric',()=>{const rows=editRows(original,[{index:0,values:{travelExpenses:null}}],[],[]);assert.equal(rows[0].travel,null);assert.equal(rows[0].total,null);assert.equal(rows[1].remuneration,0);assert.equal(rows[1].other,null)});
 test('add and remove officials without renumbering patches',()=>{const rows=editRows(original,[],[{name:'New Person',role:'Councillor',remuneration:10,travelExpenses:0,other:0}],[0]);assert.equal(rows.length,2);assert.deepEqual(rows[0],original[1]);assert.equal(rows[1].total,10)});
 test('reject duplicate edits, invalid months, extra fields, NaN and bad totals',()=>{assert.throws(()=>editRows(original,[{index:0,values:{href:'bad'}}],[],[]));assert.throws(()=>editRows(original,[{index:0,values:{remuneration:NaN}}],[],[]));assert.throws(()=>editRows(original,[{index:0,values:{}},{index:0,values:{}}],[],[]));assert.throws(()=>validateRows([{...original[0],months:13}],{}));assert.throws(()=>validateRows([{...original[0],total:1}],{}));assert.throws(()=>validateRows([original[0],original[0]],{}));assert.throws(()=>validateRows(original,{scheduleTotal:105260}));});
+test('filling missing amounts replaces an imported subtotal',()=>{
+ const imported={name:'Chief Example',role:'Chief',remuneration:231105,travelExpenses:0,otherPayments:null,total:231105};
+ const [corrected]=editRows([imported],[{index:0,values:{travelExpenses:23826,other:53076}}],[],[]);
+ assert.equal(corrected.total,308007);
+ validateRows([corrected],{});
+ assert.throws(()=>editRows([{...imported,total:240000}],[{index:0,values:{travelExpenses:23826,other:53076}}],[],[]),/reported total for Chief Example/);
+});
 test('independently reported unmatched total requires explicit review',()=>{assert.throws(()=>editRows([{...original[0],total:200000}],[{index:0,values:{remuneration:15000}}],[],[]));});
 
 const origin='https://openband.ca';const base='https://worker.example/v1/financial-entry';
