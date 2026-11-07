@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {handleFinancialEntry} from '../analytics-worker/src/financial-entry.ts';
 const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||'playwright');
-const env={ALLOWED_ORIGINS:'https://openband.ca',FINANCIAL_ENTRY_ENABLED:'true',FINANCIAL_GITHUB_TOKEN:'fixture-server-only',FINANCIAL_ADMINS:JSON.stringify({editor:{token:'e'.repeat(40),role:'editor'},verifier:{token:'v'.repeat(40),role:'verifier'}})};
+const env={ALLOWED_ORIGINS:'https://openband.ca',FINANCIAL_ENTRY_ENABLED:'true',FINANCIAL_GITHUB_TOKEN:'fixture-server-only',ANALYTICS_ADMIN_TOKEN:'e'.repeat(40)};
 const filing={year:'2024-2025',docType:'Remuneration',href:'https://services.sac-isc.gc.ca/source.pdf',parse_status:'parsed',people:[{name:'Example Chief',role:'Chief',months:12,remuneration:105000,travel:200,expenses:50,creditCard:10,travelExpenses:260,otherPayments:0,other:0,total:105260},{name:'Example Councillor',role:'Councillor',months:null,remuneration:100,travel:null,expenses:null,creditCard:null,travelExpenses:null,otherPayments:null,other:null,total:null}]};
 const data={bands:[{id:1,name:'Example Nation',province:'SK',filings:[filing]}]};
 let draft=null,sha=null,index={},pending=null,sequence=0,dispatched=false;
@@ -39,13 +39,12 @@ try{
  assert.match(await page.locator('#entryDiff').innerText(),/105000/);assert.match(await page.locator('#entryDiff').innerText(),/15000/);
  await page.locator('#entrySave').click();await page.waitForFunction(()=>document.querySelector('#entryStatus').textContent.includes('Draft saved'));
  assert.equal(draft.people[0].remuneration,15000);assert.equal(draft.people[0].total,15260);assert.equal(draft.people[0].expenses,50);assert.equal(draft.people[1].other,null);
- await page.locator('#entrySubmit').click();await page.waitForFunction(()=>document.querySelector('#entryStatus').textContent.includes('Submitted.'));
- assert.equal(draft.state,'awaiting_verification');await page.locator('#entryLogout').click();
- await page.locator('#entryToken').fill('v'.repeat(40));await page.locator('#entryLogin button').click();await page.locator('#entryApprove').waitFor();
+ await page.locator('#entrySubmit').click();await page.waitForFunction(()=>document.querySelector('#entryStatus').textContent.includes('Verify against the official PDF'));
+ assert.equal(draft.state,'awaiting_verification');await page.locator('#entryApprove').waitFor();
  await page.locator('#entryConfirmed').check();await page.locator('#entryComplete').check();await page.locator('#entryApprove').click();await page.waitForFunction(()=>document.querySelector('#entryStatus').textContent.includes('Revision approved'));
  await page.locator('#entryPublish').click();await page.waitForFunction(()=>document.querySelector('#entryStatus').textContent.includes('Publication queued'));assert.equal(dispatched,true);
  assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
  if(process.env.ENTRY_SCREENSHOT)await page.screenshot({path:process.env.ENTRY_SCREENSHOT,fullPage:true});
  await page.setViewportSize({width:390,height:844});assert.equal(await page.locator('#entryHeading').isVisible(),true);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true);assert.deepEqual(errors,[]);
- console.log('PASS: browser editor → GitHub draft → submit → independent approval → queued publishing; desktop/mobile, no browser credential storage.');
+ console.log('PASS: browser editor → GitHub draft → submit → source verification → queued publishing; desktop/mobile, no browser credential storage.');
 }finally{await browser.close();globalThis.fetch=nativeFetch}

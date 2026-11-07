@@ -1,5 +1,6 @@
 /** Financial maintenance API. GitHub is the only persistence layer. */
 export interface FinancialEntryEnv {
+  ANALYTICS_ADMIN_TOKEN?: string;
   FINANCIAL_ADMINS?: string; // JSON {identity: {token, role: editor|verifier}}
   FINANCIAL_GITHUB_TOKEN?: string;
   FINANCIAL_ENTRY_ENABLED?: string;
@@ -144,11 +145,19 @@ export async function handleFinancialEntry(request: Request, env: FinancialEntry
   const respond = (v: any, status = 200) => new Response(JSON.stringify(v), {status, headers});
   try {
     if (!allowed) fail('Origin not allowed', 403);
-    if (env.FINANCIAL_ENTRY_ENABLED !== 'true' || !env.FINANCIAL_GITHUB_TOKEN || !env.FINANCIAL_ADMINS) fail('Financial entry backend is not configured', 503);
+    if (env.FINANCIAL_ENTRY_ENABLED !== 'true' || !env.FINANCIAL_GITHUB_TOKEN || (!env.ANALYTICS_ADMIN_TOKEN && !env.FINANCIAL_ADMINS)) fail('Financial entry backend is not configured', 503);
     const token = request.headers.get('Authorization')?.replace(/^Bearer\s+/i, '') || '';
-    const admins = JSON.parse(env.FINANCIAL_ADMINS!);
-    const identity = Object.keys(admins).find(k => typeof admins[k].token === 'string' && admins[k].token.length >= 32 && secureEqual(token, admins[k].token)) || fail('Unauthorized',401);
-    if (!identity || !['editor','verifier'].includes(admins[identity].role)) fail('Unauthorized', 401);
+    // A shared password cannot identify which administrator used it.
+    let identity = 'OpenBand admin';
+    if (!env.ANALYTICS_ADMIN_TOKEN || !secureEqual(token, env.ANALYTICS_ADMIN_TOKEN)) {
+      const admins = JSON.parse(env.FINANCIAL_ADMINS || '{}');
+      identity = Object.keys(admins).find(key => {
+        const admin = admins[key];
+        return ['editor', 'verifier', 'admin'].includes(admin?.role)
+          && typeof admin.token === 'string' && admin.token.length >= 32
+          && secureEqual(token, admin.token);
+      }) || fail('Unauthorized', 401);
+    }
     const url = new URL(request.url), action = url.pathname.slice('/v1/financial-entry'.length);
     if (request.method === 'GET' && action === '/catalog') {
       const data = await github(env, '/contents/data.json?ref=main', 'GET', undefined, true);
@@ -159,7 +168,7 @@ export async function handleFinancialEntry(request: Request, env: FinancialEntry
         const live = bands.find((b: any) => String(b.id) === d.bandId)?.filings.find((f: any) => f.year === d.year);
         return {...d,state:live?.revision===d.revision?'published':d.state};
       });
-      return respond({identity,role:admins[identity].role,bands,drafts});
+      return respond({identity,role:'admin',bands,drafts});
     }
     const id = url.searchParams.get('band') || '', year = url.searchParams.get('year') || '';
     if (!/^[A-Za-z0-9_-]{1,64}$/.test(id) || !/^\d{4}-\d{4}$/.test(year) || Number(year.slice(5)) !== Number(year.slice(0,4))+1) fail('Invalid Nation ID or fiscal year');
@@ -204,7 +213,7 @@ export async function handleFinancialEntry(request: Request, env: FinancialEntry
     const saved = await read(env,path,branch);
     if ((body.draftSha || null) !== saved.sha) fail('Draft changed: reload before saving or approving',409);
     if (action === '/publish') {
-      if (admins[identity].role !== 'verifier' || saved.value?.state !== 'approved' || saved.value.approvedBy !== identity) fail('Verifier approval required',403);
+      if (saved.value?.state !== 'approved' || !saved.value.approvedBy) fail('Source verification required',403);
       const head = await github(env,`/git/ref/heads/${branch}`);
       // Dispatch a SHA-bound draft; branch edits after dispatch cannot change it.
       const exact = await read(env,path,head.object.sha);
@@ -228,7 +237,7 @@ export async function handleFinancialEntry(request: Request, env: FinancialEntry
         revision:crypto.randomUUID(),state:'awaiting_verification',reverses:previous.revision};
       if (!draft.reason) fail('Reversal reason required');
     } else if (action === '/approve') {
-      if (admins[identity].role !== 'verifier' || saved.value?.state !== 'awaiting_verification' || saved.value.editedBy === identity) fail('Independent verifier required',403);
+      if (saved.value?.state !== 'awaiting_verification') fail('Submit the draft for source verification first',403);
       if (body.identityAndYearConfirmed !== true || body.completeSchedule !== true) fail('Explicit PDF verification required');
       draft = clone(saved.value);
       validateRows(draft.people,draft.source);
