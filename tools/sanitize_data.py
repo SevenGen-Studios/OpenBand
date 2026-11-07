@@ -12,6 +12,10 @@ import re
 import sys
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 try:
     from tools import parser_quality
 except ImportError:  # pragma: no cover - supports running from tools/ directly
@@ -121,7 +125,7 @@ def format_alberta_official_names(data):
             continue
         records = [(official, key) for official in (band.get('leadership') or {}).get('officials', [])
                    for key in ('givenName', 'surname')]
-        records += [(person, 'name') for filing in band.get('filings', []) for person in filing.get('people', [])]
+        records += [(person, 'name') for filing in band.get('filings', []) if not filing.get('financialEntryRevision') for person in filing.get('people', [])]
         for record, key in records:
             value = record.get(key)
             if not isinstance(value, str):
@@ -566,6 +570,8 @@ def sanitize_data(data):
 def main():
     path = Path(sys.argv[1] if len(sys.argv) > 1 else "data.json")
     data = json.loads(path.read_text(encoding="utf-8"))
+    from tools.financial_entry import replay_managed
+    replay_managed(data)
     inspected, removed, fixed = sanitize_data(data)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"sanitized rows inspected: {inspected}")
