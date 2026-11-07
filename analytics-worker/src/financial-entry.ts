@@ -71,9 +71,25 @@ export function editRows(before: Row[], edits: any[], additions: Row[], removals
     if ('other' in edit.values) row.otherPayments = row.other;
     const changedMoney = ['remuneration', 'travelExpenses', 'other'].some(k => k in edit.values);
     if (changedMoney && !('total' in edit.values)) {
-      const old = before[edit.index], oldParts = parts(old);
-      if (old.total != null && (oldParts.some(v => v == null) || Math.abs(oldParts.reduce((a, v) => a + v, 0) - old.total) > 1.01)) fail('Review and explicitly correct this reported total');
-      const p = parts(row); row.total = p.some(v => v == null) ? null : p.reduce((a, v) => a + v, 0);
+      const old = before[edit.index];
+      const oldParts = parts(old);
+      const previousSubtotal = oldParts.reduce((sum, value) => sum + (value ?? 0), 0);
+      const correctedParts = parts(row);
+      const correctedTotal = correctedParts.some(value => value == null)
+        ? null
+        : correctedParts.reduce((sum, value) => sum + value, 0);
+      // Older imports sometimes stored only the sum of the columns they parsed.
+      // Replace that subtotal only once the missing amounts have been supplied.
+      const incompleteSubtotal = oldParts.some(value => value == null)
+        && correctedTotal !== null
+        && Math.abs(previousSubtotal - old.total) <= 1.01;
+      const reconcilesWithReportedTotal = correctedTotal !== null
+        && Math.abs(correctedTotal - old.total) <= 1.01;
+      if (old.total != null && !incompleteSubtotal && !reconcilesWithReportedTotal
+          && (oldParts.some(value => value == null) || Math.abs(previousSubtotal - old.total) > 1.01)) {
+        fail(`Review and explicitly correct the reported total for ${row.name}. Use Show reported totals in the editor.`);
+      }
+      row.total = old.total != null && reconcilesWithReportedTotal ? old.total : correctedTotal;
     }
   }
   if (new Set(removals).size !== removals.length || removals.some(i => !Number.isInteger(i) || !rows[i])) fail('Invalid removed official');
