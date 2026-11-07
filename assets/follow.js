@@ -168,40 +168,54 @@
   const deviceStatus = make('span', 'follow-device-status');
   deviceStatus.setAttribute('role', 'status');
   deviceRow.append(deviceButton, testAlert, deviceStatus);
+  const alertConfirmation = make('p', 'follow-device-status');
+  alertConfirmation.setAttribute('role', 'status');
   const stream = make('div', 'follow-stream');
   stream.append(body);
-  dialog.append(top, currentName, identity, picker, deviceRow, stream, toolbar);
+  dialog.append(top, currentName, identity, picker, deviceRow, alertConfirmation, stream, toolbar);
   document.body.append(dialog);
   const updateExpanded = () => bell.setAttribute('aria-expanded', String(panelOpen()));
   dialog.addEventListener(supportsPopover ? 'toggle' : 'close', updateExpanded);
   updateExpanded();
 
-  const supportsDevice = 'Notification' in window && 'serviceWorker' in navigator && (!push || 'PushManager' in window);
+  const appleMobile = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  // On iPhone and iPad, community updates stay in the bell without an install.
+  const supportsDevice = !appleMobile && 'Notification' in window &&
+    'serviceWorker' in navigator && (!push || 'PushManager' in window);
   function paintDevice() {
-    deviceRow.hidden = !managing || (!selectedId() && !deviceSince) || choosing;
+    const blocked = supportsDevice && Notification.permission === 'denied';
+    deviceRow.hidden = appleMobile || !selectedId() || choosing ||
+      (deviceSince && !blocked && !managing) || (!supportsDevice && !managing);
     deviceButton.hidden = !supportsDevice;
-    if (!supportsDevice) {
-      testAlert.hidden = true;
-      deviceStatus.textContent = push
-        ? 'Device alerts need a supported browser. On iPhone or iPad, open OpenBand from your Home Screen.'
-        : 'Device alerts are unavailable in this browser.';
-      return;
+    deviceButton.textContent = deviceSince ? 'Turn off alerts' : 'Turn on alerts';
+    testAlert.hidden = !supportsDevice || blocked || !deviceSince || !managing;
+  }
+
+  function resetDeviceStatus() {
+    if (supportsDevice && Notification.permission === 'denied') {
+      deviceStatus.textContent = 'Notifications are blocked. Allow them for OpenBand in your browser or device settings.';
+    } else if (!supportsDevice) {
+      deviceStatus.textContent = 'Device alerts are unavailable in this browser.';
+    } else {
+      deviceStatus.textContent = '';
     }
-    deviceButton.textContent = deviceSince ? 'Turn off device alerts' : 'Enable device alerts';
-    testAlert.hidden = !deviceSince;
-    deviceStatus.textContent = push ? 'Get alerts even when OpenBand is closed.' : 'Alerts work while OpenBand is open.';
   }
 
   deviceButton.addEventListener('click', async () => {
+    if (changingCommunity || !selectedId()) return;
     deviceButton.disabled = true;
+    deviceStatus.textContent = '';
+    alertConfirmation.textContent = '';
     try {
       if (deviceSince) {
         if (push) await push.disable(await getDeviceWorker());
         localStorage.removeItem(deviceKey);
         deviceSince = '';
       } else {
-        if (!push && await Notification.requestPermission() !== 'granted') {
-          deviceStatus.textContent = 'Allow notifications in your browser to receive device alerts.';
+        // Start the permission request during the tap, before waiting for setup.
+        if (Notification.permission !== 'granted' && await Notification.requestPermission() !== 'granted') {
+          resetDeviceStatus();
           return;
         }
         const registration = await getDeviceWorker();
@@ -211,8 +225,9 @@
         deviceSince = enabledAt;
       }
       paintDevice();
+      if (deviceSince) alertConfirmation.textContent = 'Alerts are on.';
     } catch {
-      deviceStatus.textContent = 'Device alerts could not be set up on this browser.';
+      deviceStatus.textContent = 'Could not turn alerts ' + (deviceSince ? 'off' : 'on') + '. Try again.';
     } finally {
       deviceButton.disabled = false;
     }
@@ -229,13 +244,13 @@
     try {
       if (push) {
         await push.testAlert();
-        deviceStatus.textContent = 'Test alert queued. You can close this tab now.';
+        deviceStatus.textContent = 'Test alert requested. Check your device in a few seconds.';
         return;
       }
       const registration = await getDeviceWorker();
       await registration.showNotification('OpenBand test alert', {
         body: 'New updates from communities you follow will appear here.',
-        icon: '/assets/favicon.svg',
+        icon: '/assets/openband-192.png',
         tag: 'openband-follow-test',
         data: { path: roster?.[selectedId()]?.path || feed?.communities[selectedId()]?.path },
       });
@@ -295,7 +310,7 @@
     change.textContent = choosing ? 'Done' : 'Change';
     change.setAttribute('aria-expanded', String(choosing));
     picker.hidden = !managing || (!!id && !choosing);
-    deviceRow.hidden = !managing || (!id && !deviceSince) || choosing;
+    paintDevice();
     more.hidden = rows.length <= visibleLimit;
     read.hidden = unread === 0;
     toolbar.hidden = managing || (more.hidden && read.hidden);
@@ -417,15 +432,19 @@
     if (!profile) return;
     follow.disabled = true;
     followStatus.textContent = '';
-    if (!await setCommunity(selectedId() === profile.id ? '' : profile.id)) {
-      followStatus.textContent = 'Could not update device alerts. Try again.';
-    }
+    const id = selectedId() === profile.id ? '' : profile.id;
+    const saved = await setCommunity(id);
     follow.disabled = false;
+    if (!saved) {
+      followStatus.textContent = 'Could not save your community. Try again.';
+    } else if (id && !deviceSince && supportsDevice) {
+      openInbox(follow);
+    }
   });
 
   let changingCommunity = false;
   async function setCommunity(id) {
-    if (changingCommunity) return false;
+    if (changingCommunity || deviceButton.disabled) return false;
     const next = id ? { [id]: new Date().toISOString() } : {};
     changingCommunity = true;
     try {
@@ -468,15 +487,22 @@
       else dialog.close();
       return;
     }
+    openInbox(bell);
+  });
+  function openInbox(source) {
     managing = false;
     choosing = false;
     visibleLimit = 4;
-    if (supportsPopover) dialog.showPopover({ source: bell });
-    else dialog.showModal();
+    resetDeviceStatus();
+    alertConfirmation.textContent = '';
+    if (!panelOpen()) {
+      if (supportsPopover) dialog.showPopover({ source });
+      else dialog.showModal();
+    }
     updateExpanded();
     paint();
     if (selectedId()) void ensureFeed(true);
-  });
+  }
   window.addEventListener('storage', event => {
     if (![storageKey, deviceKey, null].includes(event.key)) return;
     following = readFollowing();

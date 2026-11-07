@@ -74,6 +74,33 @@ test('subscription endpoints accept one community, a supported push endpoint and
   assert.equal(sqlite.prepare('SELECT count(*) n FROM follow_subscriptions').get().n, 0);
 });
 
+test('Apple and Edge subscriptions receive standard encrypted Web Push', async () => {
+  const providers = [
+    'https://web.push.apple.com/test-token',
+    'https://wns2-db5p.notify.windows.com/test-token',
+    'https://edge.wns.windows.com/test-token',
+  ];
+  for (const endpoint of providers) {
+    const { env, now, request, record, feed } = setup();
+    const subscription = { ...record.subscription, endpoint };
+    assert.equal((await handle(request('PUT', { ...record, subscription }), env)).status, 204);
+    let sends = 0;
+    await refresh(env, now + 3000, async (url, options) => {
+      if (url === env.FEED_URL) return Response.json(feed);
+      assert.equal(url, endpoint);
+      assert.equal(options.redirect, 'manual');
+      assert.equal(options.headers['Content-Encoding'], 'aes128gcm');
+      assert.match(options.headers.Authorization, /^vapid /);
+      assert.ok(Number(options.headers.TTL) > 0);
+      sends++;
+      return new Response(null, { status: 201 });
+    });
+    assert.equal(sends, 1, endpoint);
+  }
+  const { subscription } = setup();
+  assert.equal(validSubscription({ ...subscription, endpoint: 'https://wns2.notify.windows.com.example.org/' }), false);
+});
+
 test('scheduled publishing sends encrypted push once across concurrent runs and skips older content', async () => {
   const { env, sqlite, now, request, record, feed, subscription } = setup();
   await handle(request('PUT', record), env);

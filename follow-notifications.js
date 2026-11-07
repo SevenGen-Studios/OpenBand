@@ -35,7 +35,7 @@ async function deliver(items) {
         typeof item.title !== 'string' || typeof item.community !== 'string') continue;
     await self.registration.showNotification(item.community, {
       body: `${item.category} · ${item.title}`,
-      icon: '/assets/favicon.svg',
+      icon: '/assets/openband-192.png',
       tag: 'openband-' + item.id,
       data: { path: item.path },
     });
