@@ -94,6 +94,16 @@ class FinancialEntryTests(unittest.TestCase):
         apply_record(data,draft)
         self.assertEqual(data['bands'][0]['filings'][0]['people'][0]['remuneration'],15000)
 
+    def test_browser_encoded_spaces_match_imported_source_url(self):
+        data, draft = fixture()
+        filing = data['bands'][0]['filings'][0]
+        filing['href'] += '?DOC=Schedule of Remuneration'
+        draft['before']['href'] = filing['href']
+        draft['source']['url'] = filing['href'].replace(' ', '%20')
+        apply(data, draft, True)
+        self.assertEqual(filing['href'], draft['source']['url'])
+        self.assertEqual(apply(data, draft), 1)
+
     def test_new_source_is_not_silently_overwritten(self):
         data,draft=fixture();data['bands'][0]['filings'][0]['href']='https://example.com/revised.pdf'
         with self.assertRaisesRegex(ValueError,'Source URL changed'):apply(data,draft)
