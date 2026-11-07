@@ -23,6 +23,9 @@ BASELINE=SOURCE_CACHE/'protected-baseline.json'
 def safe_write(path,value):
     """Preflight preservation, then atomically replace one local dataset."""
     path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+    if path.name=='data.json':
+        from tools.financial_entry import replay_managed
+        replay_managed(value)
     protected=json.loads(BASELINE.read_text())
     if path.name in protected['files']:
         from tools.manitoba_baseline import digest

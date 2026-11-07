@@ -13,6 +13,7 @@ ALLOWED_ORIGINS = "https://openband.ca,https://www.openband.ca"
 DATA_RETENTION_DAYS = "760"
 INTELLIGENCE_DATA_URL = "https://openband.ca/data.json"
 CREATOR_SUPPORT_ENABLED = "false"
+FINANCIAL_ENTRY_ENABLED = "false"
 
 [triggers]
 crons = ["17 4 * * *"]
@@ -31,3 +32,6 @@ namespace_id = "1001"
 
 # Set CREATOR_SUPPORT_ENABLED = "true" in [vars] only after completing setup.
 # Set STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET with wrangler secret put.
+
+# Financial entry: set FINANCIAL_ADMINS and FINANCIAL_GITHUB_TOKEN using
+# wrangler secret put. See docs/financial-entry.md before enabling.
