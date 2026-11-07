@@ -81,7 +81,7 @@ test('scheduled publishing sends encrypted push once across concurrent runs and 
   const mock = async (url, options) => {
     if (url === env.FEED_URL) return Response.json(feed);
     assert.equal(url, subscription.endpoint);
-    assert.equal(options.redirect, 'error');
+    assert.equal(options.redirect, 'manual');
     assert.equal(options.headers['Content-Encoding'], 'aes128gcm');
     assert.match(options.headers.Authorization, /^vapid /);
     assert.ok(Buffer.isBuffer(options.body));

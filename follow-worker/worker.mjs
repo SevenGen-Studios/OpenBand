@@ -5,6 +5,7 @@ const isCommunityId = id => typeof id === 'string' && id.length <= 48 &&
 const kinds = { news: 'News', events: 'Event', jobs: 'Job', projects: 'Project' };
 const windowMs = 48 * 60 * 60 * 1000;
 const minute = 60000;
+const fetchFromInternet = (url, options) => fetch(url, options);
 
 export function validSubscription(value) {
   if (!value || typeof value.endpoint !== 'string' || value.endpoint.length > 2048 ||
@@ -44,7 +45,7 @@ async function subscriptionId(request) {
   return Array.from(new Uint8Array(hash), byte => byte.toString(16).padStart(2, '0')).join('');
 }
 
-export async function handle(request, env, fetcher = fetch, defer) {
+export async function handle(request, env, fetcher = fetchFromInternet, defer) {
   const origin = request.headers.get('Origin');
   const allowed = (env.ALLOWED_ORIGINS || '').split(',').map(value => value.trim());
   if (!origin || !allowed.includes(origin)) return new Response(null, { status: 403 });
@@ -63,13 +64,14 @@ export async function handle(request, env, fetcher = fetch, defer) {
   if (feed && request.method === 'GET') {
     try {
       const url = new URL(`follow-data/${feed}.json`, env.FEED_URL);
-      const response = await fetcher(url.href, { redirect: 'error', signal: AbortSignal.timeout(8000) });
+      const response = await fetcher(url.href, { redirect: 'manual', signal: AbortSignal.timeout(8000) });
       if (!response.ok) return empty(response.status === 404 ? 404 : 502);
       return new Response(response.body, { headers: {
         ...headers, 'Content-Type': 'application/json', 'X-Content-Type-Options': 'nosniff',
         'Cache-Control': 'public, max-age=45',
       } });
-    } catch {
+    } catch (error) {
+      console.warn('OpenBand feed request failed:', error.name);
       return empty(502);
     }
   }
@@ -135,7 +137,7 @@ async function sendTest(env, fetcher, id, row) {
     ).bind(id, row.community_id, row.subscription).first();
     if (!stillFollowing) return;
     const response = await fetcher(new URL(`follow-data/${row.community_id}.json`, env.FEED_URL).href,
-      { redirect: 'error', signal: AbortSignal.timeout(5000) });
+      { redirect: 'manual', signal: AbortSignal.timeout(5000) });
     if (!response.ok) return;
     const community = (await response.json()).communities?.[row.community_id];
     if (!/^\/first-nations\/[a-z0-9-]+\/$/.test(community?.path)) return;
@@ -173,13 +175,13 @@ async function send(subscription, payload, env, fetcher) {
   });
   const result = await fetcher(details.endpoint, {
     method: details.method, headers: details.headers, body: details.body,
-    redirect: 'error', signal: AbortSignal.timeout(8000),
+    redirect: 'manual', signal: AbortSignal.timeout(8000),
   });
   return result.status;
 }
 
-export async function refresh(env, now = Date.now(), fetcher = fetch) {
-  const response = await fetcher(env.FEED_URL, { redirect: 'error', signal: AbortSignal.timeout(8000) });
+export async function refresh(env, now = Date.now(), fetcher = fetchFromInternet) {
+  const response = await fetcher(env.FEED_URL, { redirect: 'manual', signal: AbortSignal.timeout(8000) });
   if (!response.ok) throw Error('Follow feed fetch failed');
   const items = freshItems(await response.json(), now);
   const db = env.DB;
@@ -229,6 +231,6 @@ export async function refresh(env, now = Date.now(), fetcher = fetch) {
 }
 
 export default {
-  fetch(request, env, ctx) { return handle(request, env, fetch, work => ctx.waitUntil(work)); },
+  fetch(request, env, ctx) { return handle(request, env, fetchFromInternet, work => ctx.waitUntil(work)); },
   scheduled(_controller, env, ctx) { ctx.waitUntil(refresh(env)); },
 };
