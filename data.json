@@ -181160,50 +181160,71 @@
           "docType": "Schedule of Remuneration and Expenses",
           "documentTitle": "Schedule of Remuneration and Expenses — 2025-2026",
           "date": "2026-07-30",
-          "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=265&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
+          "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=265&FY=2025-2026&DOC=Schedule%20of%20Remuneration%20and%20Expenses&lang=eng",
           "posted": true,
           "people": [
             {
-              "name": "John Thund er",
+              "name": "John Thunder",
               "role": "Chief",
-              "months": 12.0,
-              "remuneration": 137290.0,
-              "travel": null,
+              "months": 12,
+              "remuneration": 137290,
+              "travel": 6500,
               "expenses": null,
               "creditCard": null,
               "otherPayments": null,
-              "total": 137290,
-              "travelExpenses": 0,
-              "other": 0
+              "total": 143790,
+              "travelExpenses": 6500,
+              "other": 0,
+              "sourceReference": {
+                "yearValidated": true,
+                "sourceDocumentSha256": "581ab0b0bd96579081bdfa816962fddb77127e8c1405c555813bdc802478497c",
+                "selectedYear": 2026,
+                "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=265&FY=2025-2026&DOC=Schedule%20of%20Remuneration%20and%20Expenses&lang=eng",
+                "pages": "all pages "
+              }
             },
             {
-              "name": "Herman Gre en",
+              "name": "Herman Green",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 95159.0,
-              "travel": null,
+              "months": 12,
+              "remuneration": 95159,
+              "travel": 3330,
               "expenses": null,
               "creditCard": null,
               "otherPayments": null,
-              "total": 95159,
-              "travelExpenses": 0,
-              "other": 0
+              "total": 98489,
+              "travelExpenses": 3330,
+              "other": 0,
+              "sourceReference": {
+                "yearValidated": true,
+                "sourceDocumentSha256": "581ab0b0bd96579081bdfa816962fddb77127e8c1405c555813bdc802478497c",
+                "selectedYear": 2026,
+                "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=265&FY=2025-2026&DOC=Schedule%20of%20Remuneration%20and%20Expenses&lang=eng",
+                "pages": "all pages "
+              }
             },
             {
-              "name": "Drew Thund er",
+              "name": "Drew Thunder",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 103552.0,
-              "travel": null,
+              "months": 12,
+              "remuneration": 103552,
+              "travel": 425,
               "expenses": null,
               "creditCard": null,
               "otherPayments": null,
-              "total": 103552,
-              "travelExpenses": 0,
-              "other": 0
+              "total": 103977,
+              "travelExpenses": 425,
+              "other": 0,
+              "sourceReference": {
+                "yearValidated": true,
+                "sourceDocumentSha256": "581ab0b0bd96579081bdfa816962fddb77127e8c1405c555813bdc802478497c",
+                "selectedYear": 2026,
+                "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=265&FY=2025-2026&DOC=Schedule%20of%20Remuneration%20and%20Expenses&lang=eng",
+                "pages": "all pages "
+              }
             }
           ],
-          "parse_status": "ok_pdf_keyword_table",
+          "parse_status": "manual_override",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=265&lang=eng",
           "sourceBandNumber": 265,
@@ -181215,7 +181236,16 @@
           "byteSize": 137942,
           "lastChecked": "2026-11-02T02:29:54+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "year": "2025-2026",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=265&FY=2025-2026&DOC=Schedule%20of%20Remuneration%20and%20Expenses&lang=eng",
+            "sha256": "581ab0b0bd96579081bdfa816962fddb77127e8c1405c555813bdc802478497c",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "pages": "all pages ",
+            "reviewedBy": "OpenBand admin",
+            "reviewedAt": "2026-11-07T17:30:59.074Z"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
@@ -181225,7 +181255,7 @@
             "Coordinate-aware pdfplumber table extraction was validated before publication"
           ],
           "sourceTotal": null,
-          "parse_confidence": "high",
+          "parse_confidence": "manual_reviewed",
           "manual_review_required": false,
           "parse_stages": [
             {
@@ -181239,7 +181269,9 @@
           ],
           "nativePageCount": 3,
           "nativeTextCharacters": 3631,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "manual_override": true,
+          "financialEntryRevision": "ac80d4a0-60d9-4ad2-ab63-88b442ac115a"
         }
       ],
       "website": "https://www.buffalopoint-firstnation.ca/",
