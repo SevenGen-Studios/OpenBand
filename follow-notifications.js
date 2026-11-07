@@ -37,7 +37,7 @@ async function deliver(items) {
       body: `${item.category} · ${item.title}`,
       icon: '/assets/openband-192.png',
       tag: 'openband-' + item.id,
-      data: { path: item.path },
+      data: { path: item.path, updateId: item.category === 'Test' ? undefined : item.id },
     });
     sent.add(item.id);
     await cache.put(deliveryLog, new Response(JSON.stringify([...sent].slice(-256))));
@@ -48,11 +48,16 @@ self.addEventListener('notificationclick', event => {
   const path = event.notification.data?.path;
   event.notification.close();
   if (!/^\/first-nations\/[a-z0-9-]+\/$/.test(path)) return;
-  const target = new URL(path + '?updates=1', self.location.origin).href;
+  const target = new URL(path, self.location.origin);
+  target.searchParams.set('updates', '1');
+  const updateId = event.notification.data?.updateId;
+  if (typeof updateId === 'string' && /^[a-f0-9]{24}$/.test(updateId)) {
+    target.searchParams.set('update', updateId);
+  }
   event.waitUntil((async () => {
     const windows = await clients.matchAll({ type: 'window', includeUncontrolled: true });
-    const existing = windows.find(window => window.url === target);
+    const existing = windows.find(window => window.url === target.href);
     if (existing) await existing.focus();
-    else await clients.openWindow(target);
+    else await clients.openWindow(target.href);
   })());
 });

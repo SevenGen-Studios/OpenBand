@@ -20,6 +20,9 @@
   // A configured sender enables the pilot on the published site.
   if (!push && !['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) return;
 
+  const inboxParams = new URLSearchParams(location.search);
+  const alertId = inboxParams.get('updates') === '1' ? inboxParams.get('update') : null;
+  const linkedUpdateId = /^[a-f0-9]{24}$/.test(alertId || '') ? alertId : '';
   let following = readFollowing();
   let profile = null;
   let roster = null;
@@ -327,12 +330,16 @@
       return;
     }
     if (error) body.append(make('p', 'follow-empty', 'Showing the last available updates. Reopen the inbox to retry.'));
-    const visible = rows.slice(0, visibleLimit);
+    const linkedUpdate = linkedUpdateId && rows.find(item => item.id === linkedUpdateId);
+    const visible = linkedUpdate
+      ? [linkedUpdate, ...rows.filter(item => item !== linkedUpdate)].slice(0, visibleLimit)
+      : rows.slice(0, visibleLimit);
     if (!visible.length) body.append(make('p', 'follow-empty', 'Verified updates for your community will appear here.'));
     for (const item of visible) {
       const card = make('article', 'follow-update');
       const meta = make('div', 'follow-update-meta', [categories[item.kind], metadata(item)].filter(Boolean).join(' · '));
-      if (isUnread(item, following)) meta.append(make('span', 'follow-new', 'New'));
+      if (item === linkedUpdate) meta.append(make('span', 'follow-new', 'From your alert'));
+      else if (isUnread(item, following)) meta.append(make('span', 'follow-new', 'New'));
       const link = make('a', 'follow-update-title', item.title);
       link.href = item.sourceUrl;
       link.target = '_blank';
@@ -344,11 +351,7 @@
 
   function ensureRoster() {
     if (roster) return Promise.resolve(roster);
-    rosterRequest ||= fetch(feedURL('communities'))
-      .then(response => {
-        if (!response.ok) throw Error('Community list unavailable');
-        return response.json();
-      })
+    rosterRequest ||= loadFollowFeed('communities')
       .then(data => { roster = data; paint(); return roster; })
       .catch(() => { pickerStatus.textContent = 'Could not load communities. Reopen the inbox to retry.'; })
       .finally(() => { rosterRequest = null; });
@@ -396,11 +399,7 @@
     if (pending?.id === id) return pending.promise;
     if (!force && feed?.communities[id] && Date.now() - lastLoaded < 45000) return Promise.resolve(feed);
     const request = { id };
-    request.promise = fetch(feedURL(id), { cache: 'no-cache' })
-      .then(response => {
-        if (!response.ok) throw Error('Follow feed unavailable');
-        return response.json();
-      })
+    request.promise = loadFollowFeed(id)
       .then(data => {
         if (data.schemaVersion !== 1 || !data.communities?.[id] || !Array.isArray(data.updates)) throw Error('Invalid follow feed');
         if (selectedId() !== id) return null;
@@ -419,8 +418,14 @@
     return request.promise;
   }
 
-  function feedURL(id) {
-    return push ? push.feedURL(id) : `/follow-data/${id}.json`;
+  function loadFollowFeed(id) {
+    const published = `/follow-data/${id}.json`;
+    const read = async url => {
+      const response = await fetch(url, { cache: 'no-cache' });
+      if (!response.ok) throw Error('Follow feed unavailable');
+      return response.json();
+    };
+    return push ? read(push.feedURL(id)).catch(() => read(published)) : read(published);
   }
 
   const follow = make('button', 'follow-button');
@@ -520,5 +525,5 @@
   paintDevice();
   paint();
   refreshFollowing();
-  if (new URLSearchParams(location.search).get('updates') === '1') bell.click();
+  if (inboxParams.get('updates') === '1') openInbox(bell);
 })();
