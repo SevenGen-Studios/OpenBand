@@ -8,10 +8,18 @@ committed to main, and been confirmed on GitHub Pages. The local/API/browser
 publication tests use simulated GitHub responses; they are not proof of deployment.
 No live financial records were edited to test this feature.
 
-The existing Cloudflare OAuth login was successfully checked during implementation.
-Production secret names were inspected: only analytics and Stripe credentials were
-present. `FINANCIAL_ADMINS`, `FINANCIAL_GITHUB_TOKEN`, and the repository publishing
-secret still need provisioning. Keep financial writes disabled until setup is complete.
+The [production editor](https://openband.ca/admin/manual-entry/) is live and PR #71
+is merged. On November 6, 2026 the Worker was deployed with financial entry enabled.
+`FINANCIAL_ADMINS` and `FINANCIAL_GITHUB_TOKEN` are encrypted Worker secrets;
+`FINANCIAL_PUBLISH_TOKEN` is an encrypted GitHub Actions secret. Live authenticated
+catalog checks succeeded for `Sheekee011` (Editor) and `CreeCoder13` (Verifier), each
+with 180 Nations. The corresponding sign-in keys are in the owner’s Mac Keychain
+as `OpenBand Financial Editor` and `OpenBand Financial Verifier`. No secret values
+belong in GitHub files, command arguments, chat, or logs.
+
+The current GitHub token expires December 6, 2026. Rotate both publishing secret
+locations together before expiry. The live gate still requires the first real,
+independently verified correction to be published and confirmed on GitHub Pages.
 
 ## Architecture audit
 
@@ -198,7 +206,7 @@ Those simulated operations are never proof that a record was saved in GitHub or
 published on OpenBand.ca. Production loads the same checked-in editor and calls the
 real authenticated Worker; the preview banner and demo credentials are not shipped.
 
-Future sessions should start with PR #71 (`codex/manual-financial-entry`) and this
-file. Check the PR/branch and current production configuration before continuing;
-do not assume that successful local preview tests mean deployment has completed.
-The secure configuration and real-publication gate described above still apply.
+Future sessions should start with this file on `main` and the merged PR #71.
+The UI and both sign-in roles are deployed. A local simulation or a live catalog
+read does not establish that a financial correction published successfully.
+The real-publication gate described above still applies.
