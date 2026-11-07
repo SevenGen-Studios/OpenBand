@@ -1,6 +1,6 @@
 {
   "generatedFrom": "2026-11-05T05:23:46.795119+00:00",
-  "manualReviewCount": 511,
+  "manualReviewCount": 510,
   "reasonCounts": {
     "implausibly small remuneration values appear in money columns": 6,
     "month values appear in money columns": 1,
@@ -9,7 +9,7 @@
     "no reliable official rows remain after validation": 76,
     "only one parsed row": 1,
     "only one parsed row; no Chief row in a small parsed filing": 6,
-    "parser confidence is low": 412
+    "parser confidence is low": 411
   },
   "filings": [
     {
@@ -863,35 +863,6 @@
       "year": "2022-2023",
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=435&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Totals do not reconcile for many rows",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "Row 6: total does not equal remuneration + travel/expenses + other",
-        "Row 7: total does not equal remuneration + travel/expenses + other",
-        "Row 8: total does not equal remuneration + travel/expenses + other",
-        "Row 9: total does not equal remuneration + travel/expenses + other",
-        "Row 10: total does not equal remuneration + travel/expenses + other",
-        "Row 11: total does not equal remuneration + travel/expenses + other",
-        "Row 12: total does not equal remuneration + travel/expenses + other",
-        "Row 13: total does not equal remuneration + travel/expenses + other",
-        "Local text output failed validation; trying free local OCR",
-        "Parsed via free local OCR fallback",
-        "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 435,
-      "band": "Blood",
-      "province": "AB",
-      "year": "2023-2024",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=435&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
         "Parsed from PDF text fallback",
         "Totals do not reconcile for many rows",
