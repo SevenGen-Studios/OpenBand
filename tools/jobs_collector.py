@@ -674,7 +674,7 @@ def inspect_candidate_page(url: str, today: date) -> tuple[dict, list[str]]:
     if error:
         return {}, [f"detail fetch failed: {error}"]
     text = page_text(markup)
-    closing = extract_labeled_date(text, ("closing", "deadline", "apply by", "applications close"))
+    closing = extract_labeled_date(text, ("closing", "deadline", "apply by", "apply before", "applications close"))
     posted = extract_labeled_date(text, ("posted", "posting date", "published"))
     status = "Pending verification"
     if CLOSED_WORDS.search(text):

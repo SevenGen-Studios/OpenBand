@@ -1,0 +1,11 @@
+{
+  "name": "openband-follow-worker",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "web-push": "4.0.0"
+  },
+  "scripts": {
+    "test": "node --test worker.test.mjs"
+  }
+}

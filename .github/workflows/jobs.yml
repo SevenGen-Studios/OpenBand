@@ -56,15 +56,18 @@ jobs:
           git config pull.rebase true
           git pull --rebase --autostash origin main
 
+      - name: Refresh the Follow inbox
+        run: python -m tools.build_follow_updates
+
       - name: Commit verified data and review report
         run: |
-          if git diff --quiet -- jobs-data.json jobs-coverage-report.json jobs-review-queue.json jobs-source-registry.json jobs-sources.json; then
+          if git diff --quiet -- follow-updates.json follow-data jobs-data.json jobs-coverage-report.json jobs-review-queue.json jobs-source-registry.json jobs-sources.json; then
             echo "No employment data changes"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add jobs-data.json jobs-coverage-report.json jobs-review-queue.json jobs-source-registry.json jobs-sources.json
+          git add follow-updates.json follow-data jobs-data.json jobs-coverage-report.json jobs-review-queue.json jobs-source-registry.json jobs-sources.json
           git commit -m "Update community employment records"
           for attempt in 1 2 3; do
             git fetch origin main

@@ -55,7 +55,7 @@ class CommunityIntelligenceTests(unittest.TestCase):
     def test_reviewed_job_fields_survive_an_offline_refresh(self):
         root=Path(__file__).resolve().parents[1]
         data,_=collect(root,date(2026,10,11),offline=True)
-        job=next(row for row in data['listings'] if row.get('sourceVerification'))
+        job=next(row for row in data['listings'] if row['id']=='job-treaty-six-first-nations-ct6fn-this-position-rep-e1802d07c4')
         self.assertEqual(job['title'],'Child and Family Services Lead')
         self.assertEqual(job['salary'],'$65,000–$70,000')
         self.assertEqual(job['closingDate'],'2026-10-19')

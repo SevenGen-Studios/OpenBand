@@ -7,10 +7,10 @@ from collections import Counter
 from datetime import date, timedelta
 from pathlib import Path
 try:
-    from tools.jobs_collector import effective_status, validation_warnings, ACTIVE_STATUSES
+    from tools.jobs_collector import effective_status, parse_date, validation_warnings, ACTIVE_STATUSES
     from tools.events_discovery import is_publishable_event
 except ImportError:
-    from jobs_collector import effective_status, validation_warnings, ACTIVE_STATUSES
+    from jobs_collector import effective_status, parse_date, validation_warnings, ACTIVE_STATUSES
     from events_discovery import is_publishable_event
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -67,12 +67,15 @@ def inventory(root, today, snapshot=None):
             states[kind]=('not_registered' if not checks else 'checked' if any(s in {'checked','ok','partial'} for s in checks)
                           else 'source_failure_or_restriction' if any(s not in {None,'not_checked','historical_review','stale'} for s in checks)
                           else 'not_recently_checked')
-        recent = sum(cutoff <= str(r.get('publishedAt') or '')[:10] <= today.isoformat() for r in nr)
+        publication_dates = [str(r.get('publishedAt') or '')[:10] for r in nr]
+        recent = sum(cutoff <= published <= today.isoformat() for published in publication_dates)
+        recent_dates = [published for published in publication_dates if cutoff30 <= published <= today.isoformat()]
+        news_weeks = {published.isocalendar()[:2] for published in map(parse_date, recent_dates) if published}
         counts = {'recentNews90': recent, 'upcomingEvents': len(er), 'verifiedProjects': len(pr), 'activeJobs': len(jr)}
         missing = [k for k, v in counts.items() if not v]
         result.append({'communityId': key, 'communityName': band['name'], 'province': band['province'],
                        'newsCount': len(nr), 'latestNews': max((str(r.get('publishedAt') or '')[:10] for r in nr), default=None),
-                       'recentNews30': sum(cutoff30 <= str(r.get('publishedAt') or '')[:10] <= today.isoformat() for r in nr),
+                       'recentNews30': len(recent_dates), 'recentNewsWeeks30': len(news_weeks),
                        **counts, 'allFour': not missing, 'noVerifiedInformation': not (nr or er or pr or jr),
                        'missingCategories': missing, 'researchPriority': len(missing), 'sources': sources, 'sourceStateByCategory':states,
                        'emptyResultMeaning': 'No verified records in current inventory; public availability not established' if missing else None})
@@ -90,9 +93,26 @@ def inventory(root, today, snapshot=None):
                            'Date-unavailable jobs are excluded from confirmed active coverage.']}
 
 
+def follow_pilot(current, next_week, today):
+    """Screen for a pilot using today's inventory and known expiries."""
+    runway = ({row['communityId'] for row in current['communities'] if row['allFour']}
+              & {row['communityId'] for row in next_week['communities'] if row['allFour']})
+    check_cutoff = (today - timedelta(days=14)).isoformat()
+    candidates = []
+    for row in current['communities']:
+        checked = {source['category'] for source in row['sources']
+                   if source.get('lastCheck') in {'checked', 'ok'}
+                   and check_cutoff <= str(source.get('lastSuccess') or '')[:10] <= today.isoformat()}
+        if (row['communityId'] in runway and row['recentNewsWeeks30'] >= 2
+                and {'news', 'events', 'jobs'} <= checked):
+            candidates.append({key: row[key] for key in ('communityId', 'communityName', 'province', 'recentNewsWeeks30')})
+    return {'through': next_week['asOf'], 'allFourThrough': len(runway), 'candidates': candidates}
+
+
 def write_report(root, today, baseline):
     after = inventory(root, today)
     before = inventory(root, today, baseline) if baseline else None
+    pilot = follow_pilot(after, inventory(root, today + timedelta(days=7)), today)
     delta=[]
     if baseline:
         for kind,field in [('news','articles'),('events','events'),('projects','projects'),('jobs','listings')]:
@@ -110,7 +130,7 @@ def write_report(root, today, baseline):
                                   'status':effective_status(row,today) if kind=='jobs' else row.get('status'),
                                   'publishedAt':row.get('publishedAt'),'startDate':row.get('startDate')})
             for key in old_by_id.keys()-new_by_id.keys():delta.append({'category':kind,'change':'removed_or_merged','id':key})
-    payload = {'baseline': before, 'current': after,'recordChanges':delta}
+    payload = {'baseline': before, 'current': after, 'followPilot': pilot, 'recordChanges': delta}
     (root / 'community-coverage-report.json').write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n')
     lines = ['# Four-category community coverage', '', f'As of {today.isoformat()}. Counts are Nations with verified records; activity is not inferred from registered sources.', '',
              '| Province | Tracked | News ≤90 days | Upcoming events | Projects/partnerships | Active jobs | All four | No verified information |',
@@ -119,6 +139,15 @@ def write_report(root, today, baseline):
         def val(k): return f"{before['byProvince'][p][k]} → {r[k]}" if before else str(r[k])
         lines.append(f"| {p} | {r['tracked']} | {val('recentNews90')} | {val('upcomingEvents')} | {val('verifiedProjects')} | {val('activeJobs')} | {val('allFour')} | {val('noVerifiedInformation')} |")
     lines += ['', *['- ' + s for s in after['limitations']], '', 'Complete community-level inventory, source checks, and record changes: `community-coverage-report.json` and `.csv`.']
+    lines += [
+        '', '## Follow pilot screening', '',
+        f"With no new records or checks, {pilot['allFourThrough']} Nations retain all four categories through {pilot['through']}.",
+        'Pilot candidates have all four categories today and at the end of the seven-day window, news in at least two calendar weeks in the last 30 days, and successful news, events and jobs source checks in the last 14 days.',
+        'This uses the current inventory and its known expiries. Employers and event organizers can change listings sooner.',
+        '', *[f"- {row['communityName']} ({row['province']})" for row in pilot['candidates']],
+    ]
+    if not pilot['candidates']:
+        lines.append('No communities meet this screening rule on the report date.')
     if delta:
         lines += ['', '## Record changes', '', '| Category | Added records | Materially updated | Check metadata only | Removed/merged |','|---|---:|---:|---:|---:|']
         for kind in ('news','events','projects','jobs'):

@@ -290,6 +290,9 @@
         "Onion Lake Cree Nation"
       ],
       "parser": "job_link_index",
+      "inspectDetails": true,
+      "sameHostOnly": true,
+      "maxDetailPages": 15,
       "verifiedOfficialSource": true,
       "autoPublish": false
     },
@@ -1175,6 +1178,25 @@
       "sameHostOnly": true,
       "parser": "bamboo_embed",
       "researchSourceId": "mikisewgroup-public-employer-feed"
+    },
+    {
+      "id": "research-siksika-health-careers",
+      "url": "https://siksikahealth.com/careers/",
+      "name": "Siksika Health Services",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "430"
+      ],
+      "communityNames": [
+        "Siksika Nation"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "job_link_index",
+      "researchSourceId": "siksika-health-careers"
     }
   ]
 }

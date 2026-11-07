@@ -8,9 +8,9 @@ from pathlib import Path
 from unittest.mock import patch
 
 from tools.apply_community_enrichment import validate
-from tools.community_coverage import inventory
+from tools.community_coverage import follow_pilot, inventory
 from tools.events_discovery import extract_eventer_detail, is_publishable_event
-from tools.jobs_collector import scoped_job_candidates, source_check_metadata, extract_labeled_date, fetch_markup, effective_status, fetch_source, collect
+from tools.jobs_collector import scoped_job_candidates, source_check_metadata, extract_labeled_date, fetch_markup, effective_status, fetch_source, collect, inspect_candidate_page
 from tools.news_discovery import direct_article_candidate
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -95,6 +95,27 @@ class ReviewedEvidenceTests(unittest.TestCase):
         self.assertTrue(any(s['lastSuccess'] for r in report['communities'] for s in r['sources'] if s['category']=='news'))
 
 
+class FollowPilotTests(unittest.TestCase):
+    def test_pilot_requires_runway_news_cadence_and_recent_successful_checks(self):
+        sources = [{'category': kind, 'lastCheck': 'checked', 'lastSuccess': '2026-11-02'}
+                   for kind in ('news', 'events', 'jobs')]
+        ready = {'communityId': '1', 'communityName': 'Pilot', 'province': 'MB',
+                 'recentNewsWeeks30': 2, 'allFour': True, 'sources': sources}
+        current = {'communities': [
+            ready,
+            {**ready, 'communityId': '2'},
+            {**ready, 'communityId': '3', 'recentNewsWeeks30': 1},
+            {**ready, 'communityId': '4', 'sources': sources[:2] + [{**sources[2], 'lastSuccess': '2026-10-01'}]},
+            {**ready, 'communityId': '5', 'allFour': False},
+        ]}
+        next_week = {'asOf': '2026-11-14', 'communities': [
+            {'communityId': key, 'allFour': key != '2'} for key in ('1', '2', '3', '4', '5')
+        ]}
+        report = follow_pilot(current, next_week, date(2026, 11, 7))
+        self.assertEqual(report['allFourThrough'], 3)
+        self.assertEqual([row['communityId'] for row in report['candidates']], ['1'])
+
+
 def card(id,title,place,deadline,url):
     return f'<div class="job-item"><div class="job-title" id="job-{id}"><h3>{title}</h3><p>{place}</p><p><b>Deadline:</b> {deadline}</p></div><div class="job-content"><a href="{url}">DOWNLOAD</a></div></div>'
 
@@ -144,6 +165,15 @@ class ScopedEmploymentTests(unittest.TestCase):
 
     def test_resume_deadline_label_is_supported_without_taking_publication_date(self):
         self.assertEqual(extract_labeled_date('Published October 28, 2026. Deadline for Resumes: Tuesday, November 10, 2026 at 4:30 pm',('deadline',)),'2026-11-10')
+
+    def test_apply_before_deadline_closes_posting_even_with_application_form(self):
+        markup = '<form>Apply Now</form><p>Apply Before 02 Nov, 2026</p>'
+        with patch('tools.jobs_collector.fetch_markup', return_value=(markup, None)):
+            detail, warnings = inspect_candidate_page('https://jobs.example.org/vacancy', TODAY)
+        self.assertEqual(warnings, [])
+        self.assertTrue(detail['acceptingApplications'])
+        self.assertEqual(detail['closingDate'], '2026-11-02')
+        self.assertEqual(detail['status'], 'Closed')
 
     def test_facebook_login_pages_cannot_count_as_successful_job_sources(self):
         meta=source_check_metadata({'id':'f','url':'https://facebook.com/nation','sourceType':'verified_official_facebook'},
