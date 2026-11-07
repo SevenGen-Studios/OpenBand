@@ -11,15 +11,15 @@ No live financial records were edited to test this feature.
 The [production editor](https://openband.ca/admin/manual-entry/) is live and PR #71
 is merged. On November 6, 2026 the Worker was deployed with financial entry enabled.
 `FINANCIAL_ADMINS` and `FINANCIAL_GITHUB_TOKEN` are encrypted Worker secrets;
-`FINANCIAL_PUBLISH_TOKEN` is an encrypted GitHub Actions secret. Live authenticated
-catalog checks succeeded for `Sheekee011` (Editor) and `CreeCoder13` (Verifier), each
-with 180 Nations. The corresponding sign-in keys are in the owner’s Mac Keychain
-as `OpenBand Financial Editor` and `OpenBand Financial Verifier`. No secret values
-belong in GitHub files, command arguments, chat, or logs.
+`FINANCIAL_PUBLISH_TOKEN` is an encrypted GitHub Actions secret. Use the existing OpenBand admin password to edit, verify and publish. Both
+administrators have the same capabilities and either can verify their own changes.
+The shared password records the actor as `OpenBand admin`. The individually
+issued keys still work and record the named administrator. No secret values belong
+in GitHub files, command arguments, chat, or logs.
 
 The current GitHub token expires December 6, 2026. Rotate both publishing secret
 locations together before expiry. The live gate still requires the first real,
-independently verified correction to be published and confirmed on GitHub Pages.
+source-verified correction to be published and confirmed on GitHub Pages.
 
 ## Architecture audit
 
@@ -45,8 +45,8 @@ independently verified correction to be published and confirmed on GitHub Pages.
 
 ## Data and publishing path
 
-1. `/admin/manual-entry/` signs in using an assigned financial credential, held
-   only in memory. Existing analytics credentials do not grant financial writes.
+1. `/admin/manual-entry/` accepts the existing OpenBand admin password or an issued
+   financial key, held only in memory. Both grant full financial access.
 2. The Worker authenticates every request, checks the exact configured Origin,
    constrains identity/year/size, and reads the latest repository `data.json`.
    It uses the raw GitHub content media type because data.json exceeds 1 MB.
@@ -64,10 +64,10 @@ independently verified correction to be published and confirmed on GitHub Pages.
    reconciliation of supplied totals. Blank is null, never an implied zero.
    Official source URLs are restricted to the two existing ISC hosts. The Worker
    retrieves a PDF with a 25 MB limit, no redirects, and hashes its actual bytes.
-6. A distinct verifier checks the complete source, identity/year and figures.
+6. An administrator checks the complete source, identity/year and figures.
    Approval re-fetches the PDF and checks the digest. Editing or resubmitting
    discards approval. Arithmetic alone never supplies verification flags.
-7. Only the approving verifier can dispatch publication. The immutable draft SHA,
+7. Any administrator can dispatch publication once the revision is verified. The immutable draft SHA,
    path and revision are sent to `publish-financial-entry.yml` on main. The workflow
    reads draft JSON as data; no branch code or shell expressions are executed.
 8. The workflow validates the approved snapshot, checks its entire before-image
@@ -98,7 +98,7 @@ correction; reconciliation tolerance is $1.01 for rounding. Unknown components r
 unknown, and unknown totals are labelled unavailable in administrative previews.
 
 A verifier must review the final preview and the official PDF. Restoring a previous
-populated schedule creates a new reversal revision requiring independent verification;
+populated schedule creates a new reversal revision requiring source verification;
 it never silently deletes correction history. Withdrawal of a previously missing
 schedule, or replacing a schedule with a different PDF URL, requires a source-identity
 review in the repository and is intentionally rejected by the financial editor.
@@ -144,8 +144,7 @@ this boundary. Future intentional public changes must explicitly update the base
    ```
 
    The latter is JSON shaped as below, with separately generated random credentials
-   of at least 32 characters and distinct real administrator identities. The same
-   person should not receive both roles for approving their own edits.
+   of at least 32 characters and distinct real administrator identities. These optional keys give both administrators the same capabilities.
 
    ```json
    {"editor-identity":{"token":"REPLACE_WITH_LONG_RANDOM_EDITOR_CREDENTIAL","role":"editor"},
@@ -179,7 +178,7 @@ node --experimental-strip-types tests/test_financial_entry_browser.mjs
 `financial-entry-tests.yml` runs API, Python, TypeScript, browser and existing public
 logic regressions on PRs. Publication repeats the core validation tests. Browser
 integration uses simulated GitHub/PDF services and covers a single-figure correction,
-preserved officials/components/nulls, draft saving, separate verifier sign-in,
+preserved officials/components/nulls, draft saving, shared admin sign-in,
 approval, queued publication, memory-only credentials and desktop/mobile viewports.
 Python tests cover replay, before-image conflicts, missing schedules, reversals,
 source changes, idempotency, malformed values and exact public asset baselines.

@@ -68,11 +68,11 @@ class FinancialEntryTests(unittest.TestCase):
         _,draft=fixture();draft['people'].append(deepcopy(draft['people'][0]))
         with self.assertRaisesRegex(ValueError,'Duplicate'):validate(draft)
 
-    def test_draft_or_self_approval_rejected(self):
+    def test_approved_revision_may_be_verified_by_its_editor(self):
         _,draft=fixture();draft['state']='draft'
         with self.assertRaises(ValueError):validate(draft)
         draft['state']='approved';draft['approvedBy']='editor'
-        with self.assertRaises(ValueError):validate(draft)
+        self.assertEqual(validate(draft), draft)
 
     def test_math_does_not_imply_source_verification(self):
         _,draft=fixture();draft['source']['completeSchedule']=False
