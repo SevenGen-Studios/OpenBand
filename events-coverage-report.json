@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generated": "2026-11-06T20:27:47Z",
+  "generated": "2026-11-07T18:32:32Z",
   "scanScope": {
     "communityIds": [
       "378",
@@ -187,9 +187,9 @@
     "communitiesScanned": 180,
     "fullScan": true
   },
-  "before": 328,
-  "after": 351,
-  "newCandidates": 1163,
+  "before": 359,
+  "after": 359,
+  "newCandidates": 1162,
   "sourceRuns": [
     {
       "bandId": 361,
@@ -276,22 +276,16 @@
       "errors": []
     },
     {
-      "bandId": 341,
-      "communityName": "Lucky Man Cree Nation",
-      "sourceName": "Lucky Man Cree Nation official website",
-      "sourceUrl": "https://luckymancree.com/",
+      "bandId": 377,
+      "communityName": "Kinistin Saulteaux Nation",
+      "sourceName": "Kinistin Saulteaux Nation official website",
+      "sourceUrl": "https://www.kinistin.sk.ca/",
       "sourceType": "Official First Nation Website",
-      "status": "partial",
-      "eventsFound": 1,
-      "pagesChecked": 5,
-      "mediaChecked": 0,
-      "errors": [
-        {
-          "url": "https://luckymancree.com/wp-content/uploads/2024/06/FINAL-NOTICE-2024-LUCKY-MAN13170.docx",
-          "status": "fetch_failed",
-          "reason": "not well-formed (invalid token): line 1, column 2"
-        }
-      ]
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 1,
+      "errors": []
     },
     {
       "bandId": 374,
@@ -330,6 +324,42 @@
       ]
     },
     {
+      "bandId": 341,
+      "communityName": "Lucky Man Cree Nation",
+      "sourceName": "Lucky Man Cree Nation official website",
+      "sourceUrl": "https://luckymancree.com/",
+      "sourceType": "Official First Nation Website",
+      "status": "partial",
+      "eventsFound": 1,
+      "pagesChecked": 5,
+      "mediaChecked": 0,
+      "errors": [
+        {
+          "url": "https://luckymancree.com/wp-content/uploads/2024/06/FINAL-NOTICE-2024-LUCKY-MAN13170.docx",
+          "status": "fetch_failed",
+          "reason": "not well-formed (invalid token): line 1, column 2"
+        }
+      ]
+    },
+    {
+      "bandId": 361,
+      "communityName": "Cowessess First Nation",
+      "sourceName": "Cowessess Economic Development",
+      "sourceUrl": "https://cowessessfn.com/entities/cowessess-ventures/",
+      "sourceType": "Economic Development Organization",
+      "status": "partial",
+      "eventsFound": 2,
+      "pagesChecked": 5,
+      "mediaChecked": 1,
+      "errors": [
+        {
+          "url": "https://cowessessfn.com/feed",
+          "status": "fetch_failed",
+          "reason": "not well-formed (invalid token): line 325, column 115"
+        }
+      ]
+    },
+    {
       "bandId": 377,
       "communityName": "Kinistin Saulteaux Nation",
       "sourceName": "Indigenous Services Canada",
@@ -349,42 +379,6 @@
           "url": "https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq=",
           "status": "robots_blocked",
           "reason": "robots.txt disallows https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq="
-        }
-      ]
-    },
-    {
-      "bandId": 361,
-      "communityName": "Cowessess First Nation",
-      "sourceName": "Cowessess Paradise Radio 98.1 FM",
-      "sourceUrl": "https://cowessessfn.com/news/paradise-radio/",
-      "sourceType": "Community Website",
-      "status": "partial",
-      "eventsFound": 5,
-      "pagesChecked": 5,
-      "mediaChecked": 3,
-      "errors": [
-        {
-          "url": "https://cowessessfn.com/feed",
-          "status": "fetch_failed",
-          "reason": "not well-formed (invalid token): line 325, column 115"
-        }
-      ]
-    },
-    {
-      "bandId": 361,
-      "communityName": "Cowessess First Nation",
-      "sourceName": "Cowessess Economic Development",
-      "sourceUrl": "https://cowessessfn.com/entities/cowessess-ventures/",
-      "sourceType": "Economic Development Organization",
-      "status": "partial",
-      "eventsFound": 2,
-      "pagesChecked": 5,
-      "mediaChecked": 1,
-      "errors": [
-        {
-          "url": "https://cowessessfn.com/feed",
-          "status": "fetch_failed",
-          "reason": "not well-formed (invalid token): line 325, column 115"
         }
       ]
     },
@@ -503,6 +497,24 @@
       "errors": []
     },
     {
+      "bandId": 361,
+      "communityName": "Cowessess First Nation",
+      "sourceName": "Cowessess Paradise Radio 98.1 FM",
+      "sourceUrl": "https://cowessessfn.com/news/paradise-radio/",
+      "sourceType": "Community Website",
+      "status": "partial",
+      "eventsFound": 5,
+      "pagesChecked": 5,
+      "mediaChecked": 3,
+      "errors": [
+        {
+          "url": "https://cowessessfn.com/feed",
+          "status": "fetch_failed",
+          "reason": "not well-formed (invalid token): line 325, column 115"
+        }
+      ]
+    },
+    {
       "bandId": 363,
       "communityName": "Ochapowace First Nation",
       "sourceName": "Ochapowace First Nation official website",
@@ -513,29 +525,6 @@
       "pagesChecked": 6,
       "mediaChecked": 0,
       "errors": []
-    },
-    {
-      "bandId": 374,
-      "communityName": "Mistawasis Nehiyawak",
-      "sourceName": "Indigenous Services Canada",
-      "sourceUrl": "https://www.canada.ca/en/indigenous-services-canada/news/2026/10/minister-gull-masty-joins-the-saskatoon-tribal-council-to-sign-regional-agreement-to-reform-child-and-family-services.html",
-      "sourceType": "Government Source",
-      "status": "partial",
-      "eventsFound": 0,
-      "pagesChecked": 4,
-      "mediaChecked": 0,
-      "errors": [
-        {
-          "url": "https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=media&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq=",
-          "status": "robots_blocked",
-          "reason": "robots.txt disallows https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=media&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq="
-        },
-        {
-          "url": "https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq=",
-          "status": "robots_blocked",
-          "reason": "robots.txt disallows https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq="
-        }
-      ]
     },
     {
       "bandId": 371,
@@ -550,8 +539,8 @@
       "errors": []
     },
     {
-      "bandId": 371,
-      "communityName": "Muskoday First Nation",
+      "bandId": 374,
+      "communityName": "Mistawasis Nehiyawak",
       "sourceName": "Indigenous Services Canada",
       "sourceUrl": "https://www.canada.ca/en/indigenous-services-canada/news/2026/10/minister-gull-masty-joins-the-saskatoon-tribal-council-to-sign-regional-agreement-to-reform-child-and-family-services.html",
       "sourceType": "Government Source",
@@ -585,27 +574,38 @@
       "errors": []
     },
     {
+      "bandId": 371,
+      "communityName": "Muskoday First Nation",
+      "sourceName": "Indigenous Services Canada",
+      "sourceUrl": "https://www.canada.ca/en/indigenous-services-canada/news/2026/10/minister-gull-masty-joins-the-saskatoon-tribal-council-to-sign-regional-agreement-to-reform-child-and-family-services.html",
+      "sourceType": "Government Source",
+      "status": "partial",
+      "eventsFound": 0,
+      "pagesChecked": 4,
+      "mediaChecked": 0,
+      "errors": [
+        {
+          "url": "https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=media&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq=",
+          "status": "robots_blocked",
+          "reason": "robots.txt disallows https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=media&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq="
+        },
+        {
+          "url": "https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq=",
+          "status": "robots_blocked",
+          "reason": "robots.txt disallows https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq="
+        }
+      ]
+    },
+    {
       "bandId": 344,
       "communityName": "Onion Lake Cree Nation",
       "sourceName": "Onion Lake Cree Nation",
       "sourceUrl": "https://onionlake.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 105,
+      "eventsFound": 106,
       "pagesChecked": 6,
       "mediaChecked": 2,
-      "errors": []
-    },
-    {
-      "bandId": 384,
-      "communityName": "Peepeekisis Cree Nation",
-      "sourceName": "Peepeekisis Cree Nation official website",
-      "sourceUrl": "https://peepeekisis.com/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 5,
-      "mediaChecked": 1,
       "errors": []
     },
     {
@@ -633,15 +633,15 @@
       "errors": []
     },
     {
-      "bandId": 344,
-      "communityName": "Onion Lake Cree Nation",
-      "sourceName": "Onion Lake Cree Nation official website",
-      "sourceUrl": "https://www.onionlake.ca/",
+      "bandId": 355,
+      "communityName": "Peter Ballantyne Cree Nation",
+      "sourceName": "Peter Ballantyne Cree Nation official website",
+      "sourceUrl": "https://pbcn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 105,
+      "eventsFound": 9,
       "pagesChecked": 6,
-      "mediaChecked": 2,
+      "mediaChecked": 0,
       "errors": []
     },
     {
@@ -663,15 +663,27 @@
       ]
     },
     {
-      "bandId": 355,
-      "communityName": "Peter Ballantyne Cree Nation",
-      "sourceName": "Peter Ballantyne Cree Nation official website",
-      "sourceUrl": "https://pbcn.ca/",
+      "bandId": 384,
+      "communityName": "Peepeekisis Cree Nation",
+      "sourceName": "Peepeekisis Cree Nation official website",
+      "sourceUrl": "https://peepeekisis.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 9,
+      "eventsFound": 0,
+      "pagesChecked": 5,
+      "mediaChecked": 1,
+      "errors": []
+    },
+    {
+      "bandId": 344,
+      "communityName": "Onion Lake Cree Nation",
+      "sourceName": "Onion Lake Cree Nation official website",
+      "sourceUrl": "https://www.onionlake.ca/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 106,
       "pagesChecked": 6,
-      "mediaChecked": 0,
+      "mediaChecked": 2,
       "errors": []
     },
     {
@@ -728,18 +740,6 @@
       ]
     },
     {
-      "bandId": 368,
-      "communityName": "The Key First Nation",
-      "sourceName": "The Key First Nation official website",
-      "sourceUrl": "https://www.keyband.com/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
       "bandId": 372,
       "communityName": "Whitecap Dakota First Nation",
       "sourceName": "Indigenous Services Canada",
@@ -781,6 +781,18 @@
       ]
     },
     {
+      "bandId": 368,
+      "communityName": "The Key First Nation",
+      "sourceName": "The Key First Nation official website",
+      "sourceUrl": "https://www.keyband.com/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 3,
+      "errors": []
+    },
+    {
       "bandId": 349,
       "communityName": "Thunderchild First Nation",
       "sourceName": "Thunderchild First Nation official website",
@@ -790,60 +802,6 @@
       "eventsFound": 0,
       "pagesChecked": 6,
       "mediaChecked": 1,
-      "errors": []
-    },
-    {
-      "bandId": 383,
-      "communityName": "Pasqua First Nation",
-      "sourceName": "Pasqua First Nation official website",
-      "sourceUrl": "https://www.pasquafn.ca/",
-      "sourceType": "Official First Nation Website",
-      "status": "partial",
-      "eventsFound": 0,
-      "pagesChecked": 5,
-      "mediaChecked": 1,
-      "errors": [
-        {
-          "url": "https://www.pasquafn.ca/fileadmin/user_upload/Notice_-_Accepting_COLA_Applications_2026.docx",
-          "status": "fetch_failed",
-          "reason": "not well-formed (invalid token): line 1, column 2"
-        }
-      ]
-    },
-    {
-      "bandId": 348,
-      "communityName": "Sweetgrass First Nation",
-      "sourceName": "Sweetgrass First Nation official website",
-      "sourceUrl": "https://sweetgrassfirstnation.ca/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
-      "bandId": 406,
-      "communityName": "Ahtahkakoop Cree Nation",
-      "sourceName": "Ahtahkakoop Cree Nation",
-      "sourceUrl": "https://www.facebook.com/ahtahkakoopcreenation/",
-      "sourceType": "Facebook",
-      "status": "authorized_api_required",
-      "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "errors": []
-    },
-    {
-      "bandId": 372,
-      "communityName": "Whitecap Dakota First Nation",
-      "sourceName": "Whitecap Dakota First Nation",
-      "sourceUrl": "https://www.whitecapdakota.com/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 7,
-      "pagesChecked": 5,
-      "mediaChecked": 3,
       "errors": []
     },
     {
@@ -865,27 +823,58 @@
       ]
     },
     {
-      "bandId": 376,
-      "communityName": "Yellow Quill First Nation",
-      "sourceName": "Government of Canada",
-      "sourceUrl": "https://www.canada.ca/en/housing-infrastructure-communities/news/2026/10/canada-announces-funding-for-new-homes-in-yorkton.html",
-      "sourceType": "Government Source",
+      "bandId": 406,
+      "communityName": "Ahtahkakoop Cree Nation",
+      "sourceName": "Ahtahkakoop Cree Nation",
+      "sourceUrl": "https://www.facebook.com/ahtahkakoopcreenation/",
+      "sourceType": "Facebook",
+      "status": "authorized_api_required",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "errors": []
+    },
+    {
+      "bandId": 383,
+      "communityName": "Pasqua First Nation",
+      "sourceName": "Pasqua First Nation official website",
+      "sourceUrl": "https://www.pasquafn.ca/",
+      "sourceType": "Official First Nation Website",
       "status": "partial",
       "eventsFound": 0,
-      "pagesChecked": 4,
-      "mediaChecked": 0,
+      "pagesChecked": 5,
+      "mediaChecked": 1,
       "errors": [
         {
-          "url": "https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=media&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq=",
-          "status": "robots_blocked",
-          "reason": "robots.txt disallows https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=media&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq="
-        },
-        {
-          "url": "https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq=",
-          "status": "robots_blocked",
-          "reason": "robots.txt disallows https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq="
+          "url": "https://www.pasquafn.ca/fileadmin/user_upload/Notice_-_Accepting_COLA_Applications_2026.docx",
+          "status": "fetch_failed",
+          "reason": "not well-formed (invalid token): line 1, column 2"
         }
       ]
+    },
+    {
+      "bandId": 372,
+      "communityName": "Whitecap Dakota First Nation",
+      "sourceName": "Whitecap Dakota First Nation",
+      "sourceUrl": "https://www.whitecapdakota.com/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 7,
+      "pagesChecked": 5,
+      "mediaChecked": 3,
+      "errors": []
+    },
+    {
+      "bandId": 348,
+      "communityName": "Sweetgrass First Nation",
+      "sourceName": "Sweetgrass First Nation official website",
+      "sourceUrl": "https://sweetgrassfirstnation.ca/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 3,
+      "errors": []
     },
     {
       "bandId": 398,
@@ -920,8 +909,8 @@
     {
       "bandId": 376,
       "communityName": "Yellow Quill First Nation",
-      "sourceName": "Indigenous Services Canada",
-      "sourceUrl": "https://www.canada.ca/en/indigenous-services-canada/news/2026/10/minister-gull-masty-joins-the-saskatoon-tribal-council-to-sign-regional-agreement-to-reform-child-and-family-services.html",
+      "sourceName": "Government of Canada",
+      "sourceUrl": "https://www.canada.ca/en/housing-infrastructure-communities/news/2026/10/canada-announces-funding-for-new-homes-in-yorkton.html",
       "sourceType": "Government Source",
       "status": "partial",
       "eventsFound": 0,
@@ -953,40 +942,25 @@
       "errors": []
     },
     {
-      "bandId": 377,
-      "communityName": "Kinistin Saulteaux Nation",
-      "sourceName": "Kinistin Saulteaux Nation official website",
-      "sourceUrl": "https://www.kinistin.sk.ca/",
-      "sourceType": "Official First Nation Website",
-      "status": "robots_unavailable",
+      "bandId": 376,
+      "communityName": "Yellow Quill First Nation",
+      "sourceName": "Indigenous Services Canada",
+      "sourceUrl": "https://www.canada.ca/en/indigenous-services-canada/news/2026/10/minister-gull-masty-joins-the-saskatoon-tribal-council-to-sign-regional-agreement-to-reform-child-and-family-services.html",
+      "sourceType": "Government Source",
+      "status": "partial",
       "eventsFound": 0,
-      "pagesChecked": 0,
+      "pagesChecked": 4,
       "mediaChecked": 0,
       "errors": [
         {
-          "url": "https://www.kinistin.sk.ca/",
-          "status": "robots_unavailable",
-          "reason": "robots.txt could not be checked: <urlopen error timed out>"
+          "url": "https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=media&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq=",
+          "status": "robots_blocked",
+          "reason": "robots.txt disallows https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=media&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq="
         },
         {
-          "url": "https://www.kinistin.sk.ca/feed",
-          "status": "robots_unavailable",
-          "reason": "robots.txt could not be checked: <urlopen error timed out>"
-        },
-        {
-          "url": "https://www.kinistin.sk.ca/comments/feed",
-          "status": "robots_unavailable",
-          "reason": "robots.txt could not be checked: <urlopen error timed out>"
-        },
-        {
-          "url": "https://www.kinistin.sk.ca/services",
-          "status": "robots_unavailable",
-          "reason": "robots.txt could not be checked: <urlopen error timed out>"
-        },
-        {
-          "url": "https://www.kinistin.sk.ca/agricultural-benefits-claim-announcement",
-          "status": "robots_unavailable",
-          "reason": "robots.txt could not be checked: <urlopen error timed out>"
+          "url": "https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq=",
+          "status": "robots_blocked",
+          "reason": "robots.txt disallows https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq="
         }
       ]
     },
@@ -1101,6 +1075,18 @@
     {
       "bandId": 406,
       "communityName": "Ahtahkakoop Cree Nation",
+      "sourceName": "Ahtahkakoop Community News Archive",
+      "sourceUrl": "https://www.ahtahkakoop.ca/news/category/all",
+      "sourceType": "Community Website",
+      "status": "ok",
+      "eventsFound": 1,
+      "pagesChecked": 6,
+      "mediaChecked": 3,
+      "errors": []
+    },
+    {
+      "bandId": 406,
+      "communityName": "Ahtahkakoop Cree Nation",
       "sourceName": "Inspire Our Nation",
       "sourceUrl": "https://www.inspireournation.com/ahtahkakoop-leadership-program-1",
       "sourceType": "Institutional Source",
@@ -1129,28 +1115,27 @@
       "errors": []
     },
     {
-      "bandId": 406,
-      "communityName": "Ahtahkakoop Cree Nation",
-      "sourceName": "Ahtahkakoop Community News Archive",
-      "sourceUrl": "https://www.ahtahkakoop.ca/news/category/all",
-      "sourceType": "Community Website",
-      "status": "ok",
+      "bandId": 375,
+      "communityName": "Muskeg Lake Cree Nation",
+      "sourceName": "Indigenous Services Canada",
+      "sourceUrl": "https://www.canada.ca/en/indigenous-services-canada/news/2026/10/minister-gull-masty-joins-the-saskatoon-tribal-council-to-sign-regional-agreement-to-reform-child-and-family-services.html",
+      "sourceType": "Government Source",
+      "status": "partial",
       "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
-      "bandId": 406,
-      "communityName": "Ahtahkakoop Cree Nation",
-      "sourceName": "Ahtahkakoop Cree Nation official website",
-      "sourceUrl": "https://www.ahtahkakoop.ca/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
+      "pagesChecked": 4,
+      "mediaChecked": 0,
+      "errors": [
+        {
+          "url": "https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=media&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq=",
+          "status": "robots_blocked",
+          "reason": "robots.txt disallows https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=media&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq="
+        },
+        {
+          "url": "https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq=",
+          "status": "robots_blocked",
+          "reason": "robots.txt disallows https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq="
+        }
+      ]
     },
     {
       "bandId": 392,
@@ -1171,6 +1156,18 @@
       ]
     },
     {
+      "bandId": 406,
+      "communityName": "Ahtahkakoop Cree Nation",
+      "sourceName": "Ahtahkakoop Cree Nation official website",
+      "sourceUrl": "https://www.ahtahkakoop.ca/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 3,
+      "errors": []
+    },
+    {
       "bandId": 380,
       "communityName": "Nekaneet Cree Nation",
       "sourceName": "Nekaneet Cree Nation official website",
@@ -1185,29 +1182,6 @@
           "url": "https://nekaneet.com/",
           "status": "tls_error",
           "reason": "robots.txt could not be checked: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake failure (_ssl.c:1018)>"
-        }
-      ]
-    },
-    {
-      "bandId": 375,
-      "communityName": "Muskeg Lake Cree Nation",
-      "sourceName": "Indigenous Services Canada",
-      "sourceUrl": "https://www.canada.ca/en/indigenous-services-canada/news/2026/10/minister-gull-masty-joins-the-saskatoon-tribal-council-to-sign-regional-agreement-to-reform-child-and-family-services.html",
-      "sourceType": "Government Source",
-      "status": "partial",
-      "eventsFound": 0,
-      "pagesChecked": 4,
-      "mediaChecked": 0,
-      "errors": [
-        {
-          "url": "https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=media&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq=",
-          "status": "robots_blocked",
-          "reason": "robots.txt disallows https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=media&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq="
-        },
-        {
-          "url": "https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq=",
-          "status": "robots_blocked",
-          "reason": "robots.txt disallows https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq="
         }
       ]
     },
@@ -1247,18 +1221,6 @@
       "errors": []
     },
     {
-      "bandId": 386,
-      "communityName": "Standing Buffalo Dakota Nation",
-      "sourceName": "Standing Buffalo Dakota Nation official website",
-      "sourceUrl": "https://www.standingbuffalodakotanation.com/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 3,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
       "bandId": 381,
       "communityName": "Muscowpetung First Nation",
       "sourceName": "Muscowpetung First Nation",
@@ -1267,6 +1229,18 @@
       "status": "ok",
       "eventsFound": 0,
       "pagesChecked": 6,
+      "mediaChecked": 3,
+      "errors": []
+    },
+    {
+      "bandId": 386,
+      "communityName": "Standing Buffalo Dakota Nation",
+      "sourceName": "Standing Buffalo Dakota Nation official website",
+      "sourceUrl": "https://www.standingbuffalodakotanation.com/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 3,
       "mediaChecked": 3,
       "errors": []
     },
@@ -1385,6 +1359,30 @@
       "errors": []
     },
     {
+      "bandId": 385,
+      "communityName": "Piapot First Nation",
+      "sourceName": "Piapot First Nation official website",
+      "sourceUrl": "https://piapotnation.com/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 2,
+      "pagesChecked": 6,
+      "mediaChecked": 3,
+      "errors": []
+    },
+    {
+      "bandId": 473,
+      "communityName": "Bearspaw",
+      "sourceName": "Innovation, Science and Economic Development Canada",
+      "sourceUrl": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/09/backgrounder-governments-of-canada-and-alberta-to-help-bring-high-speed-internet-access-to-communities-across-the-province.html",
+      "sourceType": "Government Source",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 0,
+      "errors": []
+    },
+    {
       "bandId": 375,
       "communityName": "Muskeg Lake Cree Nation",
       "sourceName": "Muskeg Lake Cree Nation",
@@ -1409,18 +1407,6 @@
       "errors": []
     },
     {
-      "bandId": 385,
-      "communityName": "Piapot First Nation",
-      "sourceName": "Piapot First Nation official website",
-      "sourceUrl": "https://piapotnation.com/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 2,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
       "bandId": 445,
       "communityName": "Beaver First Nation",
       "sourceName": "Beaver First Nation official website",
@@ -1437,18 +1423,6 @@
       "communityName": "Bearspaw",
       "sourceName": "Impact Assessment Agency of Canada Registry",
       "sourceUrl": "https://iaac-aeic.gc.ca/050/evaluations/proj/90743",
-      "sourceType": "Government Source",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 0,
-      "errors": []
-    },
-    {
-      "bandId": 473,
-      "communityName": "Bearspaw",
-      "sourceName": "Innovation, Science and Economic Development Canada",
-      "sourceUrl": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/09/backgrounder-governments-of-canada-and-alberta-to-help-bring-high-speed-internet-access-to-communities-across-the-province.html",
       "sourceType": "Government Source",
       "status": "ok",
       "eventsFound": 0,
@@ -1517,15 +1491,27 @@
       "errors": []
     },
     {
-      "bandId": 435,
-      "communityName": "Blood",
-      "sourceName": "Blood official website",
-      "sourceUrl": "https://www.bloodtribe.org/",
+      "bandId": 464,
+      "communityName": "Cold Lake First Nations",
+      "sourceName": "Cold Lake First Nations official website",
+      "sourceUrl": "https://www.clfns.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 61,
+      "eventsFound": 21,
       "pagesChecked": 6,
-      "mediaChecked": 3,
+      "mediaChecked": 2,
+      "errors": []
+    },
+    {
+      "bandId": 464,
+      "communityName": "Cold Lake First Nations",
+      "sourceName": "Cold Lake First Nations official website",
+      "sourceUrl": "https://clfns.com/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 21,
+      "pagesChecked": 6,
+      "mediaChecked": 2,
       "errors": []
     },
     {
@@ -1541,13 +1527,13 @@
       "errors": []
     },
     {
-      "bandId": 464,
-      "communityName": "Cold Lake First Nations",
-      "sourceName": "Cold Lake First Nations official website",
-      "sourceUrl": "https://www.clfns.com/",
+      "bandId": 470,
+      "communityName": "Chipewyan Prairie First Nation",
+      "sourceName": "Chipewyan Prairie First Nation official website",
+      "sourceUrl": "https://www.cpfn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 23,
+      "eventsFound": 2,
       "pagesChecked": 6,
       "mediaChecked": 2,
       "errors": []
@@ -1559,7 +1545,19 @@
       "sourceUrl": "https://bloodtribe.org/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 61,
+      "eventsFound": 56,
+      "pagesChecked": 6,
+      "mediaChecked": 3,
+      "errors": []
+    },
+    {
+      "bandId": 435,
+      "communityName": "Blood",
+      "sourceName": "Blood official website",
+      "sourceUrl": "https://www.bloodtribe.org/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 56,
       "pagesChecked": 6,
       "mediaChecked": 3,
       "errors": []
@@ -1577,18 +1575,6 @@
       "errors": []
     },
     {
-      "bandId": 470,
-      "communityName": "Chipewyan Prairie First Nation",
-      "sourceName": "Chipewyan Prairie First Nation official website",
-      "sourceUrl": "https://www.cpfn.ca/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 2,
-      "pagesChecked": 6,
-      "mediaChecked": 2,
-      "errors": []
-    },
-    {
       "bandId": 448,
       "communityName": "Dene Tha'",
       "sourceName": "Dene Tha' official website",
@@ -1598,42 +1584,6 @@
       "eventsFound": 10,
       "pagesChecked": 6,
       "mediaChecked": 0,
-      "errors": []
-    },
-    {
-      "bandId": 464,
-      "communityName": "Cold Lake First Nations",
-      "sourceName": "Cold Lake First Nations official website",
-      "sourceUrl": "https://clfns.com/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 23,
-      "pagesChecked": 6,
-      "mediaChecked": 2,
-      "errors": []
-    },
-    {
-      "bandId": 450,
-      "communityName": "Driftpile Cree Nation",
-      "sourceName": "Driftpile Cree Nation official website",
-      "sourceUrl": "https://www.driftpilecreenation.com/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
-      "bandId": 440,
-      "communityName": "Enoch Cree Nation #440",
-      "sourceName": "Enoch Cree Nation #440 official website",
-      "sourceUrl": "https://enochnation.ca/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 2,
-      "pagesChecked": 6,
-      "mediaChecked": 1,
       "errors": []
     },
     {
@@ -1653,6 +1603,30 @@
           "reason": "HTTP Error 502: Bad Gateway"
         }
       ]
+    },
+    {
+      "bandId": 440,
+      "communityName": "Enoch Cree Nation #440",
+      "sourceName": "Enoch Cree Nation #440 official website",
+      "sourceUrl": "https://enochnation.ca/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 2,
+      "pagesChecked": 6,
+      "mediaChecked": 1,
+      "errors": []
+    },
+    {
+      "bandId": 468,
+      "communityName": "Fort McMurray #468 First Nation",
+      "sourceName": "Fort McMurray #468 First Nation official website",
+      "sourceUrl": "https://fmfn468.com/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 1,
+      "errors": []
     },
     {
       "bandId": 465,
@@ -1700,7 +1674,7 @@
       "bandId": 468,
       "communityName": "Fort McMurray #468 First Nation",
       "sourceName": "Fort McMurray #468 First Nation official website",
-      "sourceUrl": "https://fmfn468.com/",
+      "sourceUrl": "https://www.fmfn468.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
       "eventsFound": 0,
@@ -1727,15 +1701,15 @@
       ]
     },
     {
-      "bandId": 468,
-      "communityName": "Fort McMurray #468 First Nation",
-      "sourceName": "Fort McMurray #468 First Nation official website",
-      "sourceUrl": "https://www.fmfn468.com/",
+      "bandId": 452,
+      "communityName": "Kapawe'no First Nation",
+      "sourceName": "Kapawe'no First Nation official website",
+      "sourceUrl": "https://www.kapaweno.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 1,
+      "pagesChecked": 1,
+      "mediaChecked": 0,
       "errors": []
     },
     {
@@ -1751,14 +1725,38 @@
       "errors": []
     },
     {
-      "bandId": 452,
-      "communityName": "Kapawe'no First Nation",
-      "sourceName": "Kapawe'no First Nation official website",
-      "sourceUrl": "https://www.kapaweno.com/",
+      "bandId": 466,
+      "communityName": "Kehewin Cree Nation",
+      "sourceName": "Innovation, Science and Economic Development Canada",
+      "sourceUrl": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/09/backgrounder-governments-of-canada-and-alberta-to-help-bring-high-speed-internet-access-to-communities-across-the-province.html",
+      "sourceType": "Government Source",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 0,
+      "errors": []
+    },
+    {
+      "bandId": 450,
+      "communityName": "Driftpile Cree Nation",
+      "sourceName": "Driftpile Cree Nation official website",
+      "sourceUrl": "https://www.driftpilecreenation.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 1,
+      "pagesChecked": 6,
+      "mediaChecked": 3,
+      "errors": []
+    },
+    {
+      "bandId": 476,
+      "communityName": "Loon River Cree",
+      "sourceName": "Loon River Cree official website",
+      "sourceUrl": "https://loonriverfirstnation.ca/",
+      "sourceType": "Official First Nation Website",
+      "status": "javascript_required",
+      "eventsFound": 0,
+      "pagesChecked": 0,
       "mediaChecked": 0,
       "errors": []
     },
@@ -1775,37 +1773,25 @@
       "errors": []
     },
     {
-      "bandId": 466,
-      "communityName": "Kehewin Cree Nation",
-      "sourceName": "Innovation, Science and Economic Development Canada",
-      "sourceUrl": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/09/backgrounder-governments-of-canada-and-alberta-to-help-bring-high-speed-internet-access-to-communities-across-the-province.html",
-      "sourceType": "Government Source",
+      "bandId": 443,
+      "communityName": "Ermineskin Tribe",
+      "sourceName": "Ermineskin Tribe official website",
+      "sourceUrl": "https://ermineskin.ca/",
+      "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 0,
+      "eventsFound": 14,
       "pagesChecked": 6,
-      "mediaChecked": 0,
+      "mediaChecked": 3,
       "errors": []
     },
     {
-      "bandId": 476,
-      "communityName": "Loon River Cree",
-      "sourceName": "Loon River Cree official website",
-      "sourceUrl": "https://loonriverfirstnation.ca/",
-      "sourceType": "Official First Nation Website",
-      "status": "javascript_required",
-      "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "errors": []
-    },
-    {
-      "bandId": 450,
-      "communityName": "Driftpile Cree Nation",
-      "sourceName": "Driftpile Cree Nation official website",
-      "sourceUrl": "https://dcn450.com/",
+      "bandId": 443,
+      "communityName": "Ermineskin Tribe",
+      "sourceName": "Ermineskin Tribe official website",
+      "sourceUrl": "https://www.ermineskin.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 0,
+      "eventsFound": 14,
       "pagesChecked": 6,
       "mediaChecked": 3,
       "errors": []
@@ -1841,18 +1827,6 @@
       ]
     },
     {
-      "bandId": 447,
-      "communityName": "Little Red River Cree Nation",
-      "sourceName": "Little Red River Cree Nation official website",
-      "sourceUrl": "https://lrrcn.ab.ca/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 1,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
       "bandId": 431,
       "communityName": "O'Chiese",
       "sourceName": "O'Chiese official website",
@@ -1862,6 +1836,18 @@
       "eventsFound": 0,
       "pagesChecked": 6,
       "mediaChecked": 2,
+      "errors": []
+    },
+    {
+      "bandId": 450,
+      "communityName": "Driftpile Cree Nation",
+      "sourceName": "Driftpile Cree Nation official website",
+      "sourceUrl": "https://dcn450.com/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 3,
       "errors": []
     },
     {
@@ -1877,13 +1863,25 @@
       "errors": []
     },
     {
+      "bandId": 436,
+      "communityName": "Piikani Nation",
+      "sourceName": "Piikani Nation official website",
+      "sourceUrl": "https://piikanination.com/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 8,
+      "pagesChecked": 6,
+      "mediaChecked": 0,
+      "errors": []
+    },
+    {
       "bandId": 461,
       "communityName": "Mikisew Cree First Nation",
       "sourceName": "Mikisew Cree First Nation official website",
       "sourceUrl": "https://mikisewcree.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 42,
+      "eventsFound": 43,
       "pagesChecked": 6,
       "mediaChecked": 3,
       "errors": []
@@ -1901,37 +1899,13 @@
       "errors": []
     },
     {
-      "bandId": 436,
-      "communityName": "Piikani Nation",
-      "sourceName": "Piikani Nation official website",
-      "sourceUrl": "https://piikanination.com/",
+      "bandId": 447,
+      "communityName": "Little Red River Cree Nation",
+      "sourceName": "Little Red River Cree Nation official website",
+      "sourceUrl": "https://lrrcn.ab.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 10,
-      "pagesChecked": 6,
-      "mediaChecked": 0,
-      "errors": []
-    },
-    {
-      "bandId": 443,
-      "communityName": "Ermineskin Tribe",
-      "sourceName": "Ermineskin Tribe official website",
-      "sourceUrl": "https://ermineskin.ca/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 14,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
-      "bandId": 443,
-      "communityName": "Ermineskin Tribe",
-      "sourceName": "Ermineskin Tribe official website",
-      "sourceUrl": "https://www.ermineskin.ca/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 14,
+      "eventsFound": 1,
       "pagesChecked": 6,
       "mediaChecked": 3,
       "errors": []
@@ -2017,13 +1991,13 @@
       "errors": []
     },
     {
-      "bandId": 478,
-      "communityName": "Peerless Trout First Nation",
-      "sourceName": "Peerless Trout First Nation official website",
-      "sourceUrl": "https://www.ptfn.net/",
-      "sourceType": "Official First Nation Website",
+      "bandId": 462,
+      "communityName": "Saddle Lake Cree Nation",
+      "sourceName": "Saddle Lake Post Secondary — Saddle Lake Education Authority",
+      "sourceUrl": "https://www.slps.ca/",
+      "sourceType": "School or Health Organization",
       "status": "ok",
-      "eventsFound": 1,
+      "eventsFound": 20,
       "pagesChecked": 6,
       "mediaChecked": 3,
       "errors": []
@@ -2047,13 +2021,13 @@
       ]
     },
     {
-      "bandId": 462,
-      "communityName": "Saddle Lake Cree Nation",
-      "sourceName": "Saddle Lake Post Secondary — Saddle Lake Education Authority",
-      "sourceUrl": "https://www.slps.ca/",
-      "sourceType": "School or Health Organization",
+      "bandId": 430,
+      "communityName": "Siksika Nation",
+      "sourceName": "Siksika Nation official website",
+      "sourceUrl": "https://www.siksikanation.com/index.html",
+      "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 20,
+      "eventsFound": 12,
       "pagesChecked": 6,
       "mediaChecked": 3,
       "errors": []
@@ -2066,6 +2040,30 @@
       "sourceType": "Official First Nation Website",
       "status": "ok",
       "eventsFound": 5,
+      "pagesChecked": 6,
+      "mediaChecked": 3,
+      "errors": []
+    },
+    {
+      "bandId": 430,
+      "communityName": "Siksika Nation",
+      "sourceName": "Siksika Nation official website",
+      "sourceUrl": "https://siksikanation.com/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 12,
+      "pagesChecked": 6,
+      "mediaChecked": 3,
+      "errors": []
+    },
+    {
+      "bandId": 430,
+      "communityName": "Siksika Nation",
+      "sourceName": "Siksika Nation",
+      "sourceUrl": "https://siksikanation.com/basic-home-maintenance-workshop-november/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 23,
       "pagesChecked": 6,
       "mediaChecked": 3,
       "errors": []
@@ -2107,30 +2105,6 @@
       "errors": []
     },
     {
-      "bandId": 430,
-      "communityName": "Siksika Nation",
-      "sourceName": "Siksika Nation official website",
-      "sourceUrl": "https://siksikanation.com/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 9,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
-      "bandId": 430,
-      "communityName": "Siksika Nation",
-      "sourceName": "Siksika Nation official website",
-      "sourceUrl": "https://www.siksikanation.com/index.html",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 9,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
       "bandId": 456,
       "communityName": "Sucker Creek",
       "sourceName": "Sucker Creek official website",
@@ -2139,6 +2113,30 @@
       "status": "ok",
       "eventsFound": 0,
       "pagesChecked": 5,
+      "mediaChecked": 0,
+      "errors": []
+    },
+    {
+      "bandId": 446,
+      "communityName": "Tallcree Tribal Government",
+      "sourceName": "Tallcree Tribal Government official website",
+      "sourceUrl": "https://www.tallcree.ca/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 0,
+      "errors": []
+    },
+    {
+      "bandId": 459,
+      "communityName": "Whitefish Lake",
+      "sourceName": "Whitefish Lake official website",
+      "sourceUrl": "https://www.whitefishlake459.com/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 1,
       "mediaChecked": 0,
       "errors": []
     },
@@ -2155,48 +2153,6 @@
       "errors": []
     },
     {
-      "bandId": 459,
-      "communityName": "Whitefish Lake",
-      "sourceName": "Whitefish Lake official website",
-      "sourceUrl": "https://www.whitefishlake459.com/",
-      "sourceType": "Official First Nation Website",
-      "status": "robots_unavailable",
-      "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "errors": [
-        {
-          "url": "https://www.whitefishlake459.com/",
-          "status": "robots_unavailable",
-          "reason": "robots.txt could not be checked: <urlopen error [Errno 111] Connection refused>"
-        }
-      ]
-    },
-    {
-      "bandId": 430,
-      "communityName": "Siksika Nation",
-      "sourceName": "Siksika Nation",
-      "sourceUrl": "https://siksikanation.com/basic-home-maintenance-workshop-november/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 20,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
-      "bandId": 446,
-      "communityName": "Tallcree Tribal Government",
-      "sourceName": "Tallcree Tribal Government official website",
-      "sourceUrl": "https://www.tallcree.ca/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 0,
-      "errors": []
-    },
-    {
       "bandId": "ab-whitefish-lake-128",
       "communityName": "Whitefish Lake First Nation #128",
       "sourceName": "Whitefish Lake First Nation #128 official website",
@@ -2206,6 +2162,54 @@
       "eventsFound": 0,
       "pagesChecked": 6,
       "mediaChecked": 2,
+      "errors": []
+    },
+    {
+      "bandId": 432,
+      "communityName": "Tsuut'ina Nation",
+      "sourceName": "Tsuut'ina Nation official website",
+      "sourceUrl": "https://www.tsuutina.ca/",
+      "sourceType": "Official First Nation Website",
+      "status": "partial",
+      "eventsFound": 73,
+      "pagesChecked": 5,
+      "mediaChecked": 3,
+      "errors": [
+        {
+          "url": "https://tsuutina.com/events/list?shortcode=588d7eac",
+          "status": "robots_blocked",
+          "reason": "robots.txt disallows https://tsuutina.com/events/list?shortcode=588d7eac"
+        }
+      ]
+    },
+    {
+      "bandId": 432,
+      "communityName": "Tsuut'ina Nation",
+      "sourceName": "Tsuut'ina Nation official website",
+      "sourceUrl": "https://tsuutina.com/",
+      "sourceType": "Official First Nation Website",
+      "status": "partial",
+      "eventsFound": 73,
+      "pagesChecked": 5,
+      "mediaChecked": 3,
+      "errors": [
+        {
+          "url": "https://tsuutina.com/events/list?shortcode=588d7eac",
+          "status": "robots_blocked",
+          "reason": "robots.txt disallows https://tsuutina.com/events/list?shortcode=588d7eac"
+        }
+      ]
+    },
+    {
+      "bandId": 474,
+      "communityName": "Woodland Cree First Nation",
+      "sourceName": "Woodland Cree First Nation official website",
+      "sourceUrl": "https://woodlandcree.ca/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 4,
+      "pagesChecked": 3,
+      "mediaChecked": 3,
       "errors": []
     },
     {
@@ -2221,26 +2225,14 @@
       "errors": []
     },
     {
-      "bandId": 474,
-      "communityName": "Woodland Cree First Nation",
-      "sourceName": "Woodland Cree First Nation official website",
-      "sourceUrl": "https://woodlandcree.ca/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 4,
-      "pagesChecked": 3,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
-      "bandId": 266,
-      "communityName": "Berens River",
-      "sourceName": "Berens River official website",
-      "sourceUrl": "https://www.berensriver.ca/",
+      "bandId": 260,
+      "communityName": "Black River First Nation",
+      "sourceName": "Black River First Nation official website",
+      "sourceUrl": "https://www.black-river.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 5,
+      "pagesChecked": 3,
       "mediaChecked": 0,
       "errors": []
     },
@@ -2259,32 +2251,14 @@
     {
       "bandId": 260,
       "communityName": "Black River First Nation",
-      "sourceName": "Black River First Nation official website",
-      "sourceUrl": "https://www.black-river.ca/",
+      "sourceName": "Black River First Nation attributable community source",
+      "sourceUrl": "https://www.blackriverfn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 3,
+      "pagesChecked": 4,
       "mediaChecked": 0,
       "errors": []
-    },
-    {
-      "bandId": 432,
-      "communityName": "Tsuut'ina Nation",
-      "sourceName": "Tsuut'ina Nation official website",
-      "sourceUrl": "https://www.tsuutina.ca/",
-      "sourceType": "Official First Nation Website",
-      "status": "partial",
-      "eventsFound": 70,
-      "pagesChecked": 5,
-      "mediaChecked": 3,
-      "errors": [
-        {
-          "url": "https://tsuutina.com/events/list?shortcode=588d7eac",
-          "status": "robots_blocked",
-          "reason": "robots.txt disallows https://tsuutina.com/events/list?shortcode=588d7eac"
-        }
-      ]
     },
     {
       "bandId": 308,
@@ -2310,34 +2284,16 @@
       ]
     },
     {
-      "bandId": 260,
-      "communityName": "Black River First Nation",
-      "sourceName": "Black River First Nation attributable community source",
-      "sourceUrl": "https://www.blackriverfn.ca/",
+      "bandId": 266,
+      "communityName": "Berens River",
+      "sourceName": "Berens River official website",
+      "sourceUrl": "https://www.berensriver.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 4,
+      "pagesChecked": 5,
       "mediaChecked": 0,
       "errors": []
-    },
-    {
-      "bandId": 432,
-      "communityName": "Tsuut'ina Nation",
-      "sourceName": "Tsuut'ina Nation official website",
-      "sourceUrl": "https://tsuutina.com/",
-      "sourceType": "Official First Nation Website",
-      "status": "partial",
-      "eventsFound": 70,
-      "pagesChecked": 5,
-      "mediaChecked": 3,
-      "errors": [
-        {
-          "url": "https://tsuutina.com/events/list?shortcode=588d7eac",
-          "status": "robots_blocked",
-          "reason": "robots.txt disallows https://tsuutina.com/events/list?shortcode=588d7eac"
-        }
-      ]
     },
     {
       "bandId": 265,
@@ -2352,15 +2308,27 @@
       "errors": []
     },
     {
-      "bandId": 261,
-      "communityName": "Brokenhead Ojibway Nation",
-      "sourceName": "Brokenhead Ojibway Nation official website",
-      "sourceUrl": "https://brokenheadojibwaynation.ca/",
+      "bandId": 457,
+      "communityName": "Swan River First Nation",
+      "sourceName": "Swan River First Nation official website",
+      "sourceUrl": "https://srfn.ca/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 10,
+      "eventsFound": 0,
       "pagesChecked": 6,
-      "mediaChecked": 3,
+      "mediaChecked": 0,
+      "errors": []
+    },
+    {
+      "bandId": 301,
+      "communityName": "Bunibonibee Cree Nation",
+      "sourceName": "Bunibonibee Cree Nation official website",
+      "sourceUrl": "https://www.ktc.ca/?page_id=162",
+      "sourceType": "Tribal Council",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 0,
       "errors": []
     },
     {
@@ -2382,16 +2350,44 @@
       ]
     },
     {
-      "bandId": 301,
-      "communityName": "Bunibonibee Cree Nation",
-      "sourceName": "Bunibonibee Cree Nation official website",
-      "sourceUrl": "https://www.ktc.ca/?page_id=162",
-      "sourceType": "Tribal Council",
+      "bandId": 261,
+      "communityName": "Brokenhead Ojibway Nation",
+      "sourceName": "Brokenhead Ojibway Nation official website",
+      "sourceUrl": "https://brokenheadojibwaynation.ca/",
+      "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 0,
+      "eventsFound": 10,
       "pagesChecked": 6,
-      "mediaChecked": 0,
+      "mediaChecked": 3,
       "errors": []
+    },
+    {
+      "bandId": 478,
+      "communityName": "Peerless Trout First Nation",
+      "sourceName": "Peerless Trout First Nation official website",
+      "sourceUrl": "https://www.ptfn.net/",
+      "sourceType": "Official First Nation Website",
+      "status": "partial",
+      "eventsFound": 0,
+      "pagesChecked": 3,
+      "mediaChecked": 3,
+      "errors": [
+        {
+          "url": "https://www.ptfn.net/comments/feed",
+          "status": "timeout",
+          "reason": "<urlopen error timed out>"
+        },
+        {
+          "url": "https://www.ptfn.net/announcements-news",
+          "status": "timeout",
+          "reason": "<urlopen error timed out>"
+        },
+        {
+          "url": "https://www.ptfn.net/community-meeting-announcement",
+          "status": "timeout",
+          "reason": "<urlopen error timed out>"
+        }
+      ]
     },
     {
       "bandId": 301,
@@ -2417,15 +2413,15 @@
       ]
     },
     {
-      "bandId": 457,
-      "communityName": "Swan River First Nation",
-      "sourceName": "Swan River First Nation official website",
-      "sourceUrl": "https://srfn.ca/",
-      "sourceType": "Official First Nation Website",
+      "bandId": 267,
+      "communityName": "Bloodvein",
+      "sourceName": "Assembly of Manitoba Chiefs",
+      "sourceUrl": "https://manitobachiefs.com/press_releases/chief-lisa-young-invites-media-to-bloodvein-river-first-nation-to-discuss-moose-stewardship-community-safety-and-checkpoint/",
+      "sourceType": "Institutional Source",
       "status": "ok",
-      "eventsFound": 0,
+      "eventsFound": 1,
       "pagesChecked": 6,
-      "mediaChecked": 0,
+      "mediaChecked": 3,
       "errors": []
     },
     {
@@ -2441,30 +2437,6 @@
       "errors": []
     },
     {
-      "bandId": 276,
-      "communityName": "Cross Lake Band of Indians",
-      "sourceName": "Cross Lake Band of Indians attributable community source",
-      "sourceUrl": "https://www.thombc.com/partners",
-      "sourceType": "Tribal Council",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
-      "bandId": 267,
-      "communityName": "Bloodvein",
-      "sourceName": "Assembly of Manitoba Chiefs",
-      "sourceUrl": "https://manitobachiefs.com/press_releases/chief-lisa-young-invites-media-to-bloodvein-river-first-nation-to-discuss-moose-stewardship-community-safety-and-checkpoint/",
-      "sourceType": "Institutional Source",
-      "status": "ok",
-      "eventsFound": 1,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
       "bandId": 295,
       "communityName": "Dakota Tipi",
       "sourceName": "Dakota Tipi attributable community source",
@@ -2473,18 +2445,6 @@
       "status": "ok",
       "eventsFound": 0,
       "pagesChecked": 2,
-      "mediaChecked": 0,
-      "errors": []
-    },
-    {
-      "bandId": 288,
-      "communityName": "Dakota Plains",
-      "sourceName": "Dakota Plains attributable community source",
-      "sourceUrl": "https://dakotaplains.ca/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 3,
       "mediaChecked": 0,
       "errors": []
     },
@@ -2506,11 +2466,77 @@
       "sourceName": "Ebb and Flow attributable community source",
       "sourceUrl": "https://ebbandflowfn.ca/",
       "sourceType": "Official First Nation Website",
+      "status": "robots_unavailable",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "errors": [
+        {
+          "url": "https://ebbandflowfn.ca/",
+          "status": "robots_unavailable",
+          "reason": "robots.txt unavailable (403); scan withheld"
+        },
+        {
+          "url": "https://ebbandflowfn.ca/feed",
+          "status": "robots_unavailable",
+          "reason": "robots.txt unavailable (403); scan withheld"
+        },
+        {
+          "url": "https://ebbandflowfn.ca/comments/feed",
+          "status": "robots_unavailable",
+          "reason": "robots.txt unavailable (403); scan withheld"
+        },
+        {
+          "url": "https://ebbandflowfn.ca/news",
+          "status": "robots_unavailable",
+          "reason": "robots.txt unavailable (403); scan withheld"
+        },
+        {
+          "url": "https://ebbandflowfn.ca/events-page",
+          "status": "robots_unavailable",
+          "reason": "robots.txt unavailable (403); scan withheld"
+        }
+      ]
+    },
+    {
+      "bandId": 276,
+      "communityName": "Cross Lake Band of Indians",
+      "sourceName": "Cross Lake Band of Indians attributable community source",
+      "sourceUrl": "https://www.thombc.com/partners",
+      "sourceType": "Tribal Council",
       "status": "ok",
       "eventsFound": 0,
       "pagesChecked": 6,
-      "mediaChecked": 0,
+      "mediaChecked": 3,
       "errors": []
+    },
+    {
+      "bandId": 280,
+      "communityName": "Ebb and Flow",
+      "sourceName": "Ebb and Flow First Nation",
+      "sourceUrl": "https://ebbandflowfn.ca/events-page/",
+      "sourceType": "Official First Nation Website",
+      "status": "robots_unavailable",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "errors": [
+        {
+          "url": "https://ebbandflowfn.ca/events-page",
+          "status": "robots_unavailable",
+          "reason": "robots.txt unavailable (403); scan withheld"
+        },
+        {
+          "url": "https://ebbandflowfn.ca/feed",
+          "status": "robots_unavailable",
+          "reason": "robots.txt unavailable (403); scan withheld"
+        },
+        {
+          "url": "https://ebbandflowfn.ca/news",
+          "status": "robots_unavailable",
+          "reason": "robots.txt unavailable (403); scan withheld"
+        }
+      ]
     },
     {
       "bandId": 316,
@@ -2522,6 +2548,114 @@
       "eventsFound": 0,
       "pagesChecked": 6,
       "mediaChecked": 0,
+      "errors": []
+    },
+    {
+      "bandId": 288,
+      "communityName": "Dakota Plains",
+      "sourceName": "Dakota Plains attributable community source",
+      "sourceUrl": "https://dakotaplains.ca/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 3,
+      "mediaChecked": 0,
+      "errors": []
+    },
+    {
+      "bandId": 267,
+      "communityName": "Bloodvein",
+      "sourceName": "Bloodvein official website",
+      "sourceUrl": "https://pimaki.ca/about-us/communities/bloodvein-river-first-nation",
+      "sourceType": "Community Website",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 5,
+      "mediaChecked": 2,
+      "errors": []
+    },
+    {
+      "bandId": 264,
+      "communityName": "Fisher River",
+      "sourceName": "Assembly of Manitoba Chiefs",
+      "sourceUrl": "https://manitobachiefs.com/press_releases/amc-welcomes-long-awaited-flood-protection-project-for-peguis-and-fisher-river-first-nations/",
+      "sourceType": "Institutional Source",
+      "status": "ok",
+      "eventsFound": 2,
+      "pagesChecked": 6,
+      "mediaChecked": 3,
+      "errors": []
+    },
+    {
+      "bandId": 262,
+      "communityName": "Fort Alexander",
+      "sourceName": "Fort Alexander official website",
+      "sourceUrl": "https://www.sagkeeng.ca/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 7,
+      "pagesChecked": 6,
+      "mediaChecked": 3,
+      "errors": []
+    },
+    {
+      "bandId": 264,
+      "communityName": "Fisher River",
+      "sourceName": "Public Safety Canada",
+      "sourceUrl": "https://www.canada.ca/en/public-safety-canada/news/2026/10/governments-of-canada-and-manitoba-invest-in-strengthening-the-manitoba-first-nations-police-service-and-first-nations-safety-officer-program.html",
+      "sourceType": "Government Source",
+      "status": "partial",
+      "eventsFound": 0,
+      "pagesChecked": 5,
+      "mediaChecked": 0,
+      "errors": [
+        {
+          "url": "https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq=",
+          "status": "robots_blocked",
+          "reason": "robots.txt disallows https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq="
+        }
+      ]
+    },
+    {
+      "bandId": 264,
+      "communityName": "Fisher River",
+      "sourceName": "Fisher River official website",
+      "sourceUrl": "https://fisherriver.ca/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 14,
+      "pagesChecked": 6,
+      "mediaChecked": 3,
+      "errors": []
+    },
+    {
+      "bandId": 305,
+      "communityName": "Fox Lake",
+      "sourceName": "Fox Lake official website",
+      "sourceUrl": "https://www.foxlakecreenation.com/",
+      "sourceType": "Official First Nation Website",
+      "status": "tls_error",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "errors": [
+        {
+          "url": "https://www.foxlakecreenation.com/",
+          "status": "tls_error",
+          "reason": "robots.txt could not be checked: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1018)>"
+        }
+      ]
+    },
+    {
+      "bandId": 264,
+      "communityName": "Fisher River",
+      "sourceName": "Fisher River Cree Nation",
+      "sourceUrl": "https://fisherriver.ca/category/events/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 11,
+      "pagesChecked": 6,
+      "mediaChecked": 2,
       "errors": []
     },
     {
@@ -2548,54 +2682,6 @@
       ]
     },
     {
-      "bandId": 280,
-      "communityName": "Ebb and Flow",
-      "sourceName": "Ebb and Flow First Nation",
-      "sourceUrl": "https://ebbandflowfn.ca/events-page/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
-      "bandId": 267,
-      "communityName": "Bloodvein",
-      "sourceName": "Bloodvein official website",
-      "sourceUrl": "https://pimaki.ca/about-us/communities/bloodvein-river-first-nation",
-      "sourceType": "Community Website",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 5,
-      "mediaChecked": 2,
-      "errors": []
-    },
-    {
-      "bandId": 264,
-      "communityName": "Fisher River",
-      "sourceName": "Assembly of Manitoba Chiefs",
-      "sourceUrl": "https://manitobachiefs.com/press_releases/amc-welcomes-long-awaited-flood-protection-project-for-peguis-and-fisher-river-first-nations/",
-      "sourceType": "Institutional Source",
-      "status": "ok",
-      "eventsFound": 1,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
-      "bandId": 262,
-      "communityName": "Fort Alexander",
-      "sourceName": "Fort Alexander official website",
-      "sourceUrl": "https://www.sagkeeng.ca/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 7,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
       "bandId": 262,
       "communityName": "Fort Alexander",
       "sourceName": "Fort Alexander attributable community source",
@@ -2605,66 +2691,6 @@
       "eventsFound": 7,
       "pagesChecked": 6,
       "mediaChecked": 3,
-      "errors": []
-    },
-    {
-      "bandId": 305,
-      "communityName": "Fox Lake",
-      "sourceName": "Fox Lake official website",
-      "sourceUrl": "https://www.foxlakecreenation.com/",
-      "sourceType": "Official First Nation Website",
-      "status": "tls_error",
-      "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "errors": [
-        {
-          "url": "https://www.foxlakecreenation.com/",
-          "status": "tls_error",
-          "reason": "robots.txt could not be checked: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1018)>"
-        }
-      ]
-    },
-    {
-      "bandId": 264,
-      "communityName": "Fisher River",
-      "sourceName": "Public Safety Canada",
-      "sourceUrl": "https://www.canada.ca/en/public-safety-canada/news/2026/10/governments-of-canada-and-manitoba-invest-in-strengthening-the-manitoba-first-nations-police-service-and-first-nations-safety-officer-program.html",
-      "sourceType": "Government Source",
-      "status": "partial",
-      "eventsFound": 0,
-      "pagesChecked": 5,
-      "mediaChecked": 0,
-      "errors": [
-        {
-          "url": "https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq=",
-          "status": "robots_blocked",
-          "reason": "robots.txt disallows https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq="
-        }
-      ]
-    },
-    {
-      "bandId": 262,
-      "communityName": "Fort Alexander",
-      "sourceName": "Sagkeeng Anicinabe Government",
-      "sourceUrl": "https://sagkeeng.ca/category/community-news/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 6,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
-      "bandId": 305,
-      "communityName": "Fox Lake",
-      "sourceName": "Fox Lake attributable community source",
-      "sourceUrl": "https://keeyask.com/the-partnership",
-      "sourceType": "Tribal Council",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 0,
       "errors": []
     },
     {
@@ -2692,79 +2718,13 @@
       "errors": []
     },
     {
-      "bandId": 296,
-      "communityName": "God's Lake First Nation",
-      "sourceName": "God's Lake First Nation official website",
-      "sourceUrl": "https://www.ktc.ca/?page_id=166",
-      "sourceType": "Tribal Council",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 0,
-      "errors": []
-    },
-    {
-      "bandId": 294,
-      "communityName": "Gambler First Nation",
-      "sourceName": "Public Safety Canada",
-      "sourceUrl": "https://www.canada.ca/en/public-safety-canada/news/2026/10/governments-of-canada-and-manitoba-invest-in-strengthening-the-manitoba-first-nations-police-service-and-first-nations-safety-officer-program.html",
-      "sourceType": "Government Source",
-      "status": "partial",
-      "eventsFound": 0,
-      "pagesChecked": 5,
-      "mediaChecked": 0,
-      "errors": [
-        {
-          "url": "https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq=",
-          "status": "robots_blocked",
-          "reason": "robots.txt disallows https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq="
-        }
-      ]
-    },
-    {
-      "bandId": 286,
-      "communityName": "Keeseekoowenin",
-      "sourceName": "Keeseekoowenin attributable community source",
-      "sourceUrl": "https://treaty2.ca/keeseekowenien",
-      "sourceType": "Tribal Council",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 0,
-      "errors": []
-    },
-    {
-      "bandId": 264,
-      "communityName": "Fisher River",
-      "sourceName": "Fisher River Cree Nation",
-      "sourceUrl": "https://fisherriver.ca/category/events/",
+      "bandId": 262,
+      "communityName": "Fort Alexander",
+      "sourceName": "Sagkeeng Anicinabe Government",
+      "sourceUrl": "https://sagkeeng.ca/category/community-news/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 13,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
-      "bandId": 268,
-      "communityName": "Kinonjeoshtegon First Nation",
-      "sourceName": "Kinonjeoshtegon First Nation attributable community source",
-      "sourceUrl": "https://irtc.ca/kinonjeoshtegon-first-nation",
-      "sourceType": "Tribal Council",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 0,
-      "errors": []
-    },
-    {
-      "bandId": 264,
-      "communityName": "Fisher River",
-      "sourceName": "Fisher River official website",
-      "sourceUrl": "https://fisherriver.ca/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 16,
+      "eventsFound": 6,
       "pagesChecked": 6,
       "mediaChecked": 3,
       "errors": []
@@ -2780,6 +2740,77 @@
       "pagesChecked": 6,
       "mediaChecked": 3,
       "errors": []
+    },
+    {
+      "bandId": 296,
+      "communityName": "God's Lake First Nation",
+      "sourceName": "God's Lake First Nation official website",
+      "sourceUrl": "https://www.ktc.ca/?page_id=166",
+      "sourceType": "Tribal Council",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 0,
+      "errors": []
+    },
+    {
+      "bandId": 305,
+      "communityName": "Fox Lake",
+      "sourceName": "Fox Lake attributable community source",
+      "sourceUrl": "https://keeyask.com/the-partnership",
+      "sourceType": "Tribal Council",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 0,
+      "errors": []
+    },
+    {
+      "bandId": 268,
+      "communityName": "Kinonjeoshtegon First Nation",
+      "sourceName": "Kinonjeoshtegon First Nation attributable community source",
+      "sourceUrl": "https://irtc.ca/kinonjeoshtegon-first-nation",
+      "sourceType": "Tribal Council",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 0,
+      "errors": []
+    },
+    {
+      "bandId": 263,
+      "communityName": "Hollow Water",
+      "sourceName": "Hollow Water official website",
+      "sourceUrl": "https://hollowwater.ca/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 5,
+      "mediaChecked": 3,
+      "errors": []
+    },
+    {
+      "bandId": 296,
+      "communityName": "God's Lake First Nation",
+      "sourceName": "God's Lake First Nation attributable community source",
+      "sourceUrl": "https://www.awasisagency.ca/our-communities",
+      "sourceType": "Tribal Council",
+      "status": "partial",
+      "eventsFound": 0,
+      "pagesChecked": 4,
+      "mediaChecked": 2,
+      "errors": [
+        {
+          "url": "https://www.awasisagency.ca/news/news",
+          "status": "not_found",
+          "reason": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://www.awasisagency.ca/news/about",
+          "status": "not_found",
+          "reason": "HTTP Error 404: Not Found"
+        }
+      ]
     },
     {
       "bandId": 271,
@@ -2818,29 +2849,6 @@
       "errors": []
     },
     {
-      "bandId": 296,
-      "communityName": "God's Lake First Nation",
-      "sourceName": "God's Lake First Nation attributable community source",
-      "sourceUrl": "https://www.awasisagency.ca/our-communities",
-      "sourceType": "Tribal Council",
-      "status": "partial",
-      "eventsFound": 0,
-      "pagesChecked": 4,
-      "mediaChecked": 2,
-      "errors": [
-        {
-          "url": "https://www.awasisagency.ca/news/news",
-          "status": "not_found",
-          "reason": "HTTP Error 404: Not Found"
-        },
-        {
-          "url": "https://www.awasisagency.ca/news/about",
-          "status": "not_found",
-          "reason": "HTTP Error 404: Not Found"
-        }
-      ]
-    },
-    {
       "bandId": 274,
       "communityName": "Little Saskatchewan",
       "sourceName": "Little Saskatchewan attributable community source",
@@ -2853,16 +2861,34 @@
       "errors": []
     },
     {
-      "bandId": 263,
-      "communityName": "Hollow Water",
-      "sourceName": "Hollow Water official website",
-      "sourceUrl": "https://hollowwater.ca/",
-      "sourceType": "Official First Nation Website",
+      "bandId": 286,
+      "communityName": "Keeseekoowenin",
+      "sourceName": "Keeseekoowenin attributable community source",
+      "sourceUrl": "https://treaty2.ca/keeseekowenien",
+      "sourceType": "Tribal Council",
       "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 5,
-      "mediaChecked": 3,
+      "pagesChecked": 6,
+      "mediaChecked": 0,
       "errors": []
+    },
+    {
+      "bandId": 294,
+      "communityName": "Gambler First Nation",
+      "sourceName": "Public Safety Canada",
+      "sourceUrl": "https://www.canada.ca/en/public-safety-canada/news/2026/10/governments-of-canada-and-manitoba-invest-in-strengthening-the-manitoba-first-nations-police-service-and-first-nations-safety-officer-program.html",
+      "sourceType": "Government Source",
+      "status": "partial",
+      "eventsFound": 0,
+      "pagesChecked": 5,
+      "mediaChecked": 0,
+      "errors": [
+        {
+          "url": "https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq=",
+          "status": "robots_blocked",
+          "reason": "robots.txt disallows https://www.canada.ca/en/sr/srb/sra.html?_charset_=UTF-8&allq=news+releases&anyq=&dmn=&exctq=&fqocct=&fqupdate=&noneq="
+        }
+      ]
     },
     {
       "bandId": 302,
@@ -2972,6 +2998,18 @@
       "errors": []
     },
     {
+      "bandId": 282,
+      "communityName": "Minegoziibe Anishinabe",
+      "sourceName": "Minegoziibe Anishinabe attributable community source",
+      "sourceUrl": "https://pinecreekfirstnation.com/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 1,
+      "errors": []
+    },
+    {
       "bandId": 270,
       "communityName": "Little Grand Rapids",
       "sourceName": "Little Grand Rapids official website",
@@ -2988,18 +3026,6 @@
           "reason": "robots.txt could not be checked: <urlopen error timed out>"
         }
       ]
-    },
-    {
-      "bandId": 282,
-      "communityName": "Minegoziibe Anishinabe",
-      "sourceName": "Minegoziibe Anishinabe attributable community source",
-      "sourceUrl": "https://pinecreekfirstnation.com/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 1,
-      "errors": []
     },
     {
       "bandId": 317,
@@ -3162,6 +3188,18 @@
       "errors": []
     },
     {
+      "bandId": 269,
+      "communityName": "Peguis",
+      "sourceName": "Peguis Child and Family Services",
+      "sourceUrl": "https://www.peguiscfs.ca/",
+      "sourceType": "Institutional Source",
+      "status": "ok",
+      "eventsFound": 6,
+      "pagesChecked": 6,
+      "mediaChecked": 0,
+      "errors": []
+    },
+    {
       "bandId": 272,
       "communityName": "Pinaymootang First Nation",
       "sourceName": "Pinaymootang First Nation attributable community source",
@@ -3171,6 +3209,30 @@
       "eventsFound": 0,
       "pagesChecked": 6,
       "mediaChecked": 1,
+      "errors": []
+    },
+    {
+      "bandId": 269,
+      "communityName": "Peguis",
+      "sourceName": "Peguis First Nation",
+      "sourceUrl": "https://www.peguis.ca/index.php/events",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 1,
+      "pagesChecked": 3,
+      "mediaChecked": 2,
+      "errors": []
+    },
+    {
+      "bandId": 277,
+      "communityName": "Poplar River First Nation",
+      "sourceName": "Poplar River First Nation official website",
+      "sourceUrl": "https://www.prfn.ca/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 0,
       "errors": []
     },
     {
@@ -3192,18 +3254,6 @@
       ]
     },
     {
-      "bandId": 269,
-      "communityName": "Peguis",
-      "sourceName": "Peguis First Nation",
-      "sourceUrl": "https://www.peguis.ca/index.php/events",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 1,
-      "pagesChecked": 3,
-      "mediaChecked": 2,
-      "errors": []
-    },
-    {
       "bandId": 300,
       "communityName": "Red Sucker Lake",
       "sourceName": "Red Sucker Lake attributable community source",
@@ -3212,18 +3262,6 @@
       "status": "unsupported_content_type",
       "eventsFound": 0,
       "pagesChecked": 0,
-      "mediaChecked": 0,
-      "errors": []
-    },
-    {
-      "bandId": 277,
-      "communityName": "Poplar River First Nation",
-      "sourceName": "Poplar River First Nation official website",
-      "sourceUrl": "https://www.prfn.ca/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 6,
       "mediaChecked": 0,
       "errors": []
     },
@@ -3245,17 +3283,11 @@
       "sourceName": "Roseau River Anishinabe First Nation Government official website",
       "sourceUrl": "https://www.rrafn.com/",
       "sourceType": "Official First Nation Website",
-      "status": "partial",
+      "status": "ok",
       "eventsFound": 0,
-      "pagesChecked": 4,
+      "pagesChecked": 5,
       "mediaChecked": 2,
-      "errors": [
-        {
-          "url": "https://www.rrafn.com/",
-          "status": "robots_unavailable",
-          "reason": "robots.txt could not be checked: <urlopen error [Errno 104] Connection reset by peer>"
-        }
-      ]
+      "errors": []
     },
     {
       "bandId": 273,
@@ -3305,11 +3337,11 @@
       ]
     },
     {
-      "bandId": 283,
-      "communityName": "Sandy Bay",
-      "sourceName": "Sandy Bay attributable community source",
-      "sourceUrl": "https://sbofn.com/",
-      "sourceType": "Official First Nation Website",
+      "bandId": 303,
+      "communityName": "Sayisi Dene First Nation",
+      "sourceName": "Sayisi Dene First Nation official website",
+      "sourceUrl": "https://www.ktc.ca/?page_id=172",
+      "sourceType": "Tribal Council",
       "status": "ok",
       "eventsFound": 0,
       "pagesChecked": 6,
@@ -3317,11 +3349,11 @@
       "errors": []
     },
     {
-      "bandId": 303,
-      "communityName": "Sayisi Dene First Nation",
-      "sourceName": "Sayisi Dene First Nation official website",
-      "sourceUrl": "https://www.ktc.ca/?page_id=172",
-      "sourceType": "Tribal Council",
+      "bandId": 283,
+      "communityName": "Sandy Bay",
+      "sourceName": "Sandy Bay attributable community source",
+      "sourceUrl": "https://sbofn.com/",
+      "sourceType": "Official First Nation Website",
       "status": "ok",
       "eventsFound": 0,
       "pagesChecked": 6,
@@ -3347,9 +3379,81 @@
       "sourceUrl": "https://svdngovernance.com/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 20,
+      "eventsFound": 17,
       "pagesChecked": 6,
       "mediaChecked": 2,
+      "errors": []
+    },
+    {
+      "bandId": 313,
+      "communityName": "Nisichawayasihk Cree Nation",
+      "sourceName": "Nisichawayasihk Cree Nation official website",
+      "sourceUrl": "https://www.ncncree.com/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 33,
+      "pagesChecked": 6,
+      "mediaChecked": 3,
+      "errors": []
+    },
+    {
+      "bandId": 281,
+      "communityName": "Skownan First Nation",
+      "sourceName": "Skownan First Nation attributable community source",
+      "sourceUrl": "https://www.fnccec.ca/cultural-centres/cultural-center-locations-list",
+      "sourceType": "Tribal Council",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 5,
+      "mediaChecked": 0,
+      "errors": []
+    },
+    {
+      "bandId": 298,
+      "communityName": "St. Theresa Point",
+      "sourceName": "St. Theresa Point attributable community source",
+      "sourceUrl": "https://www.ilfnfs.ca/wcm-docs/docs/programs_and_services/kinship_pamphlet_is_part_of_alt_care.pdf",
+      "sourceType": "Tribal Council",
+      "status": "unsupported_content_type",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "errors": []
+    },
+    {
+      "bandId": 298,
+      "communityName": "St. Theresa Point",
+      "sourceName": "St. Theresa Point official website",
+      "sourceUrl": "https://anishininewokimawin.org/st-theresa-point-first-nation",
+      "sourceType": "Official First Nation Website",
+      "status": "unrelated_or_parked_domain",
+      "eventsFound": 0,
+      "pagesChecked": 0,
+      "mediaChecked": 0,
+      "errors": []
+    },
+    {
+      "bandId": 293,
+      "communityName": "Swan Lake First Nation",
+      "sourceName": "Swan Lake First Nation official website",
+      "sourceUrl": "https://swanlakefirstnation.com/",
+      "sourceType": "Official First Nation Website",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 0,
+      "errors": []
+    },
+    {
+      "bandId": 306,
+      "communityName": "Tataskweyak Cree Nation",
+      "sourceName": "Tataskweyak Cree Nation official website",
+      "sourceUrl": "https://www.ktc.ca/?page_id=174",
+      "sourceType": "Tribal Council",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 0,
       "errors": []
     },
     {
@@ -3376,35 +3480,11 @@
       ]
     },
     {
-      "bandId": 298,
-      "communityName": "St. Theresa Point",
-      "sourceName": "St. Theresa Point official website",
-      "sourceUrl": "https://anishininewokimawin.org/st-theresa-point-first-nation",
-      "sourceType": "Official First Nation Website",
-      "status": "unrelated_or_parked_domain",
-      "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "errors": []
-    },
-    {
-      "bandId": 298,
-      "communityName": "St. Theresa Point",
-      "sourceName": "St. Theresa Point attributable community source",
-      "sourceUrl": "https://www.ilfnfs.ca/wcm-docs/docs/programs_and_services/kinship_pamphlet_is_part_of_alt_care.pdf",
+      "bandId": 306,
+      "communityName": "Tataskweyak Cree Nation",
+      "sourceName": "Tataskweyak Cree Nation attributable community source",
+      "sourceUrl": "https://keeyask.com/the-partnership",
       "sourceType": "Tribal Council",
-      "status": "unsupported_content_type",
-      "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "errors": []
-    },
-    {
-      "bandId": 293,
-      "communityName": "Swan Lake First Nation",
-      "sourceName": "Swan Lake First Nation official website",
-      "sourceUrl": "https://swanlakefirstnation.com/",
-      "sourceType": "Official First Nation Website",
       "status": "ok",
       "eventsFound": 0,
       "pagesChecked": 6,
@@ -3435,40 +3515,22 @@
       ]
     },
     {
-      "bandId": 281,
-      "communityName": "Skownan First Nation",
-      "sourceName": "Skownan First Nation attributable community source",
-      "sourceUrl": "https://www.fnccec.ca/cultural-centres/cultural-center-locations-list",
-      "sourceType": "Tribal Council",
-      "status": "ok",
+      "bandId": 299,
+      "communityName": "Wasagamack First Nation",
+      "sourceName": "Wasagamack First Nation official website",
+      "sourceUrl": "https://fourarrowsrha.org/wasagamack-first-nation",
+      "sourceType": "School or Health Organization",
+      "status": "not_found",
       "eventsFound": 0,
-      "pagesChecked": 5,
+      "pagesChecked": 0,
       "mediaChecked": 0,
-      "errors": []
-    },
-    {
-      "bandId": 306,
-      "communityName": "Tataskweyak Cree Nation",
-      "sourceName": "Tataskweyak Cree Nation official website",
-      "sourceUrl": "https://www.ktc.ca/?page_id=174",
-      "sourceType": "Tribal Council",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 0,
-      "errors": []
-    },
-    {
-      "bandId": 306,
-      "communityName": "Tataskweyak Cree Nation",
-      "sourceName": "Tataskweyak Cree Nation attributable community source",
-      "sourceUrl": "https://keeyask.com/the-partnership",
-      "sourceType": "Tribal Council",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 0,
-      "errors": []
+      "errors": [
+        {
+          "url": "https://fourarrowsrha.org/wasagamack-first-nation",
+          "status": "not_found",
+          "reason": "HTTP Error 404: Not Found"
+        }
+      ]
     },
     {
       "bandId": 323,
@@ -3493,24 +3555,6 @@
       "pagesChecked": 6,
       "mediaChecked": 0,
       "errors": []
-    },
-    {
-      "bandId": 299,
-      "communityName": "Wasagamack First Nation",
-      "sourceName": "Wasagamack First Nation official website",
-      "sourceUrl": "https://fourarrowsrha.org/wasagamack-first-nation",
-      "sourceType": "School or Health Organization",
-      "status": "not_found",
-      "eventsFound": 0,
-      "pagesChecked": 0,
-      "mediaChecked": 0,
-      "errors": [
-        {
-          "url": "https://fourarrowsrha.org/wasagamack-first-nation",
-          "status": "not_found",
-          "reason": "HTTP Error 404: Not Found"
-        }
-      ]
     },
     {
       "bandId": 299,
@@ -3561,25 +3605,13 @@
       "errors": []
     },
     {
-      "bandId": 285,
-      "communityName": "Waywayseecappo First Nation Treaty Four - 1874",
-      "sourceName": "Waywayseecappo First Nation Treaty Four - 1874 attributable community source",
-      "sourceUrl": "https://labrc.com/first-nation/waywayseecappo",
-      "sourceType": "Tribal Council",
-      "status": "ok",
-      "eventsFound": 0,
-      "pagesChecked": 6,
-      "mediaChecked": 0,
-      "errors": []
-    },
-    {
       "bandId": 313,
       "communityName": "Nisichawayasihk Cree Nation",
-      "sourceName": "Nisichawayasihk Cree Nation official website",
-      "sourceUrl": "https://www.ncncree.com/",
+      "sourceName": "Nisichawayasihk Cree Nation",
+      "sourceUrl": "https://www.ncncree.com/news/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 34,
+      "eventsFound": 32,
       "pagesChecked": 6,
       "mediaChecked": 3,
       "errors": []
@@ -3591,19 +3623,7 @@
       "sourceUrl": "https://www.ncncree.com/category/housing-emergency-contact/",
       "sourceType": "Official First Nation Website",
       "status": "ok",
-      "eventsFound": 33,
-      "pagesChecked": 6,
-      "mediaChecked": 3,
-      "errors": []
-    },
-    {
-      "bandId": 313,
-      "communityName": "Nisichawayasihk Cree Nation",
-      "sourceName": "Nisichawayasihk Cree Nation",
-      "sourceUrl": "https://www.ncncree.com/news/",
-      "sourceType": "Official First Nation Website",
-      "status": "ok",
-      "eventsFound": 33,
+      "eventsFound": 32,
       "pagesChecked": 6,
       "mediaChecked": 3,
       "errors": []
@@ -3618,6 +3638,18 @@
       "eventsFound": 19,
       "pagesChecked": 6,
       "mediaChecked": 3,
+      "errors": []
+    },
+    {
+      "bandId": 285,
+      "communityName": "Waywayseecappo First Nation Treaty Four - 1874",
+      "sourceName": "Waywayseecappo First Nation Treaty Four - 1874 attributable community source",
+      "sourceUrl": "https://labrc.com/first-nation/waywayseecappo",
+      "sourceType": "Tribal Council",
+      "status": "ok",
+      "eventsFound": 0,
+      "pagesChecked": 6,
+      "mediaChecked": 0,
       "errors": []
     },
     {
@@ -3687,14 +3719,14 @@
       "mediaChecked": 0
     }
   ],
-  "reviewCount": 739,
+  "reviewCount": 823,
   "statusCounts": {
     "authorized_api_required": 9,
     "dns_error": 1,
-    "ok": 171,
+    "ok": 172,
     "robots_blocked": 2,
-    "partial": 41,
     "tls_error": 8,
+    "partial": 41,
     "javascript_required": 3,
     "access_restricted": 1,
     "not_found": 4,
@@ -3704,315 +3736,70 @@
   },
   "recordChanges": [
     {
-      "id": "onion-lake-cree-nation-2026-10-09-bec95c0591",
-      "bandId": 344,
+      "id": "siksika-nation-2026-11-06-954d227106",
+      "bandId": 430,
       "change": "new",
       "revision": 1,
-      "contentFingerprint": "b18c1ac1552511823544fffd7657bcd69b2494ee5967e5719dc28d8146482b5c"
+      "contentFingerprint": "1875f3ef79f08f9e501061add39231f3259e12476fef7345f1d0b81e5fb82d96"
     },
     {
-      "id": "onion-lake-cree-nation-2026-10-10-076d724783",
-      "bandId": 344,
+      "id": "siksika-nation-2026-11-06-e475ccfcda",
+      "bandId": 430,
       "change": "new",
       "revision": 1,
-      "contentFingerprint": "61afd15c10d1a7f733b50d8026ed3edb2ec1af370653d3f21bfc71e2a93525b8"
-    },
-    {
-      "id": "peguis-2026-10-14-e1508e9722",
-      "bandId": 269,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "c6546cadd687aa24d94de3ba4c5617837f3bedb50982a1a9e735abb8fd100a96"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-10-17-9e61955894",
-      "bandId": 344,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "b0d90f8928e6a3439d9bd074e576543ac8be7b691562563d71159660a56bd339"
-    },
-    {
-      "id": "piikani-nation-2026-10-19-eb7d520d3c",
-      "bandId": 436,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "f6a126a4eba5097a5b7e6ffb7963068f24569de04061c90689226f563a5f850e"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-10-26-2a3eb999a2",
-      "bandId": 344,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "651d0f74915411c0e7495e6d2171d85991795ecfa866edf34574985b6ae83ef9"
-    },
-    {
-      "id": "fisher-river-2026-10-27-f11df826c8",
-      "bandId": 264,
-      "change": "updated",
-      "revision": 3,
-      "contentFingerprint": "c48e8deb3276402f5289f17a8f4e5c6852dfaf13b61a40067757a996b86e8c94"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-10-28-91c23ab14b",
-      "bandId": 344,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "56de1ebcd6f1a7500cc09a2a4c4fc1c39839d7e64f79c9632d9e3b178f63ba33"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-10-29-35c63b9d0d",
-      "bandId": 344,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "232ddef68c8361b2e3bf55738a1c51f37a121d5c0c722f105a2e9db4c15f769e"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-10-30-ba0fd7bbb4",
-      "bandId": 344,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "37c3f7ecb6dbb10420abd752e5ecb2e3de64ed8181c6eae2e04e227396a58807"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-11-02-e86a867a63",
-      "bandId": 344,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "d3bc61f9c1d2146f4a085547d6bfeca10f8a1c450009c5bbc3067cbee3b9f5e5"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-11-03-f1dcfba4cc",
-      "bandId": 344,
-      "change": "updated",
-      "revision": 3,
-      "contentFingerprint": "a2ecdd0ff066ef6a7fe5fe510d31e9801da23c238b73ee1e046944274f6a95ad"
-    },
-    {
-      "id": "nisichawayasihk-cree-nation-2026-11-04-f76ce8613c",
-      "bandId": 313,
-      "change": "updated",
-      "revision": 3,
-      "contentFingerprint": "80b8d6f09d9ba4b7f1e7cc8d0030cf56b26bea73202613605e554036d1f943d4"
-    },
-    {
-      "id": "sioux-valley-dakota-nation-2026-11-04-c6ccb9a1f6",
-      "bandId": 290,
-      "change": "updated",
-      "revision": 2,
-      "contentFingerprint": "48ec6720cc632792e66d0bdc95b98b22c3e7d23739862d8b81c43a2f05acf5ea"
-    },
-    {
-      "id": "nisichawayasihk-cree-nation-2026-11-05-bcefb41d63",
-      "bandId": 313,
-      "change": "updated",
-      "revision": 3,
-      "contentFingerprint": "36b247c9dd5f766fe797fa81814e4c45adaf1737b82c32df60aa5122a9254a24"
-    },
-    {
-      "id": "ermineskin-tribe-2026-11-05-3ab3d4b42c",
-      "bandId": 443,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "59fff8b41a3198d16df000f40962fd4f2edc90a68dd1ed1a64ce73a3b176bba6"
-    },
-    {
-      "id": "tsuut-ina-nation-2026-11-05-45a7e265d8",
-      "bandId": 432,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "4061754878a5a09a7867b70b1ee44cf93b2704f347fdf37a11b6a4585747fd91"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-11-05-445132d304",
-      "bandId": 344,
-      "change": "updated",
-      "revision": 2,
-      "contentFingerprint": "c37c061f88c97727bf5e98e8ffc74a72ae168544608380cd5fd767164d1e1836"
-    },
-    {
-      "id": "ermineskin-tribe-2026-11-05-bf92448ea5",
-      "bandId": 443,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "ed62d744afdaa13544d17df3e1b14069bd3112c66abd25633306a909273d761b"
-    },
-    {
-      "id": "ermineskin-tribe-2026-11-05-a97c62c0cd",
-      "bandId": 443,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "ec74e828ec672ec3ffcda0669a23ec18ffb2350fd2c92a28654bf3f2d184e6dd"
-    },
-    {
-      "id": "ermineskin-tribe-2026-11-05-a6b1989165",
-      "bandId": 443,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "70d33b14f1accb8929aa0774251f0810e0c28daa92920e9b719bfa655ebe1939"
-    },
-    {
-      "id": "red-pheasant-cree-nation-2026-11-05-85c88652eb",
-      "bandId": 346,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "bfbdde4ea99a4feb380b19c4a6b341e91287cc9411e4e017a5f4ca4a7b557bbe"
-    },
-    {
-      "id": "sioux-valley-dakota-nation-2026-11-05-ec7b86efa8",
-      "bandId": 290,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "f3402e799516c9776b67ff08eebc2a49abe000eb8c043aefbc8435968eba7e73"
-    },
-    {
-      "id": "nisichawayasihk-cree-nation-2026-11-06-4960c82606",
-      "bandId": 313,
-      "change": "updated",
-      "revision": 3,
-      "contentFingerprint": "276496cf151674bc230012d882d0e43f20ba167b0953a41f3674bcd44995620f"
+      "contentFingerprint": "ee5801466717c4e7985ed8c9ed24f0810f4a460ca8d305326c49d6606d0179d1"
     },
     {
       "id": "onion-lake-cree-nation-2026-11-06-3d2f9585db",
       "bandId": 344,
       "change": "updated",
-      "revision": 2,
+      "revision": 3,
       "contentFingerprint": "4601d356c18b9fa1262d23a2d775eb3e20a7e2752598186d509182f432a9e673"
-    },
-    {
-      "id": "onion-lake-cree-nation-2026-11-06-3d2f9585db",
-      "bandId": 344,
-      "change": "updated",
-      "revision": 2,
-      "contentFingerprint": "06c120b4f1b44c0b324b2a7e3250850b11b07067a2cc23a0712b5e82426335c0"
-    },
-    {
-      "id": "tsuut-ina-nation-2026-11-07-54551115e2",
-      "bandId": 432,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "4fe7e4dad9e83a7f37213a31af7c84b9f5f8dc75b306252ab0ae52f2d66ebdb4"
-    },
-    {
-      "id": "nisichawayasihk-cree-nation-2026-11-08-d22547f21e",
-      "bandId": 313,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "17ac933ad89f577a98cdbb4fcf9463330eed7aa5d3271e8716f884e3361d1491"
-    },
-    {
-      "id": "nisichawayasihk-cree-nation-2026-11-11-1b7dcfa0d5",
-      "bandId": 313,
-      "change": "updated",
-      "revision": 3,
-      "contentFingerprint": "78c1c3d22d78e580ae9d589a1eeb0bf7fe06e7c6abfec5b8c19030a018f0b84a"
     },
     {
       "id": "onion-lake-cree-nation-2026-11-11-d365ee1483",
       "bandId": 344,
       "change": "updated",
-      "revision": 2,
-      "contentFingerprint": "70993dd717d0624776083c05d9260a723602beadb583860c2ba9c2983560326f"
+      "revision": 3,
+      "contentFingerprint": "862f552062eec4e2d97608262d5bc6978f1980acbe5f44daabf1d3601868d053"
     },
     {
-      "id": "ermineskin-tribe-2026-11-12-b0541fe607",
-      "bandId": 443,
+      "id": "siksika-nation-2026-11-11-adf973559e",
+      "bandId": 430,
       "change": "new",
       "revision": 1,
-      "contentFingerprint": "d35bc050ac6c89826c68f653c409b69022d40ab6bac792aea694377d46ff7b55"
+      "contentFingerprint": "5774474166c6ef4f30e5b6789ea4227b0223591baa4529f14eddf1aa2d6ca68d"
     },
     {
-      "id": "nisichawayasihk-cree-nation-2026-11-12-7fd8cfa3c9",
-      "bandId": 313,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "087d07dede6a8d7ab3ac8f81a30d8fc50e80752eccccfcf4f847a639e3a1be39"
-    },
-    {
-      "id": "tsuut-ina-nation-2026-11-12-68b6279009",
+      "id": "tsuut-ina-nation-2026-11-18-35b9f9be83",
       "bandId": 432,
       "change": "new",
       "revision": 1,
-      "contentFingerprint": "fcd8f6dc5972bb05789d4a598e236ca36b1ec0992ded2e01c4ab0bad146f2f6c"
+      "contentFingerprint": "fbff6685223f12d97ec35e06fad491ec88847407ffe86644b4a92f840c1a309d"
     },
     {
-      "id": "ermineskin-tribe-2026-11-13-4c28e12acc",
-      "bandId": 443,
-      "change": "updated",
-      "revision": 2,
-      "contentFingerprint": "356cff3dffc13d51bacca85c0ecd17c3e347d55513cbf980739fbe91c5bbf4d3"
-    },
-    {
-      "id": "nisichawayasihk-cree-nation-2026-11-13-bc39ba17aa",
-      "bandId": 313,
+      "id": "mikisew-cree-first-nation-2026-11-23-d553af2b45",
+      "bandId": 461,
       "change": "new",
       "revision": 1,
-      "contentFingerprint": "47d768692c7468703bf0c3632f5c2bf80f2df0d2430561448494f7fd47021d81"
+      "contentFingerprint": "4abe5f0366f98a710d9e1a96419ba4a120328c4b0392507eabbc2b695b29f508"
     },
     {
-      "id": "nisichawayasihk-cree-nation-2026-11-14-95aa998ea1",
-      "bandId": 313,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "e7b448a0eac59c4472009ce2943e85fab95f184a5ed60c3aa1710041520cffe7"
-    },
-    {
-      "id": "nisichawayasihk-cree-nation-2026-11-15-eb4033788a",
-      "bandId": 313,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "94ac7e8b1f105ebfa3e053814d03cf5a9089a17c24b7bcf22e05be33a88c7aa9"
-    },
-    {
-      "id": "tsuut-ina-nation-2026-11-16-fb773a1085",
+      "id": "tsuut-ina-nation-2026-11-25-bc993a64df",
       "bandId": 432,
       "change": "new",
       "revision": 1,
-      "contentFingerprint": "29020284b07b88e7e192d14c7511ee20395dab6d78faedb1310bb4ab7b946cc2"
+      "contentFingerprint": "28cbcc6d6cc3b121402065f82fba43045ba89da4d05cffc33f9af43086a9deb0"
     },
     {
-      "id": "sioux-valley-dakota-nation-2026-11-16-ba15d9612f",
-      "bandId": 290,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "d496f45a877581e46e0985cc456cf79cf3b94e760c4a5286200be7745d16a739"
-    },
-    {
-      "id": "tsuut-ina-nation-2026-11-19-c0088ea20c",
+      "id": "tsuut-ina-nation-2026-12-02-fdeb7f973b",
       "bandId": 432,
       "change": "new",
       "revision": 1,
-      "contentFingerprint": "83ff7c893ab07c4e0669e1cd3215995c660779fa27645e50e4b07843e6660a4a"
-    },
-    {
-      "id": "tsuut-ina-nation-2026-11-23-6a05baf7ff",
-      "bandId": 432,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "02f97f23780850c6b6875f3ae5eec425bb0df2ac7baee100eae6cd0621814921"
-    },
-    {
-      "id": "tsuut-ina-nation-2026-11-30-b6018b5c2c",
-      "bandId": 432,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "a0adc7d8b37bb8785f1fd388669be1a5671204a524be10f8af6be11495a6ac1b"
-    },
-    {
-      "id": "saddle-lake-cree-nation-2026-12-10-76dc00139f",
-      "bandId": 462,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "d5e54f3b51cecfdc1fc707280bb556f3b727ff63eeada6d17d0e0a58eee4fb8b"
-    },
-    {
-      "id": "saddle-lake-cree-nation-2026-12-10-644e52c013",
-      "bandId": 462,
-      "change": "new",
-      "revision": 1,
-      "contentFingerprint": "a49b7a24add890896df3560adbf02de401d393183e0baf4873625024bd06a600"
+      "contentFingerprint": "39338bf4d332a242cb2b008722608e7f5987f36ba9b7df12d8290e3ecc66e4fc"
     }
   ],
-  "duplicatesSuppressed": 402,
+  "duplicatesSuppressed": 436,
   "expiredArchived": 2,
   "quality": {
     "byProvince": {
@@ -4021,24 +3808,24 @@
         "communitiesWithWorkingSourcesThisRun": 43,
         "communitiesWithNewsLast30Days": 0,
         "communitiesWithNewsLast90Days": 0,
-        "communitiesWithUpcomingEvents": 6,
+        "communitiesWithUpcomingEvents": 7,
         "communitiesNeedingSourceResearch": 26
       },
       "AB": {
         "communitiesTracked": 48,
-        "communitiesWithWorkingSourcesThisRun": 44,
+        "communitiesWithWorkingSourcesThisRun": 45,
         "communitiesWithNewsLast30Days": 1,
         "communitiesWithNewsLast90Days": 1,
         "communitiesWithUpcomingEvents": 9,
-        "communitiesNeedingSourceResearch": 4
+        "communitiesNeedingSourceResearch": 3
       },
       "MB": {
         "communitiesTracked": 63,
-        "communitiesWithWorkingSourcesThisRun": 57,
+        "communitiesWithWorkingSourcesThisRun": 56,
         "communitiesWithNewsLast30Days": 1,
         "communitiesWithNewsLast90Days": 1,
         "communitiesWithUpcomingEvents": 6,
-        "communitiesNeedingSourceResearch": 6
+        "communitiesNeedingSourceResearch": 7
       }
     },
     "communities": [
@@ -4118,13 +3905,13 @@
         "provinceTerritory": "SK",
         "workingSourcesThisRun": 1,
         "sourceAttemptsThisRun": 1,
-        "resultCount": 0,
+        "resultCount": 8,
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
-        "upcomingEvents": 0,
+        "upcomingEvents": 8,
         "manualReviewCount": 5,
         "needsSourceResearch": false,
-        "discoveryState": "checked_no_valid_dated_result"
+        "discoveryState": "published_results"
       },
       {
         "bandId": 367,
@@ -4144,7 +3931,7 @@
         "bandId": 377,
         "communityName": "Kinistin Saulteaux Nation",
         "provinceTerritory": "SK",
-        "workingSourcesThisRun": 1,
+        "workingSourcesThisRun": 2,
         "sourceAttemptsThisRun": 2,
         "resultCount": 0,
         "resultsLast30Days": 0,
@@ -4247,7 +4034,7 @@
         "resultCount": 34,
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
-        "upcomingEvents": 23,
+        "upcomingEvents": 19,
         "manualReviewCount": 43,
         "needsSourceResearch": false,
         "discoveryState": "published_results"
@@ -4262,7 +4049,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 2,
+        "manualReviewCount": 3,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -4402,7 +4189,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 1,
+        "manualReviewCount": 2,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -4430,7 +4217,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 2,
+        "manualReviewCount": 3,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -4528,7 +4315,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 3,
-        "manualReviewCount": 22,
+        "manualReviewCount": 30,
         "needsSourceResearch": false,
         "discoveryState": "published_results"
       },
@@ -4598,7 +4385,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 4,
+        "manualReviewCount": 5,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -4752,7 +4539,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 8,
+        "manualReviewCount": 12,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -4766,7 +4553,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 8,
+        "manualReviewCount": 14,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -4990,7 +4777,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 6,
+        "manualReviewCount": 9,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -5046,7 +4833,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 4,
-        "manualReviewCount": 4,
+        "manualReviewCount": 6,
         "needsSourceResearch": false,
         "discoveryState": "published_results"
       },
@@ -5060,7 +4847,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 4,
+        "manualReviewCount": 5,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -5116,7 +4903,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 1,
-        "manualReviewCount": 40,
+        "manualReviewCount": 44,
         "needsSourceResearch": false,
         "discoveryState": "published_results"
       },
@@ -5130,7 +4917,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 2,
+        "manualReviewCount": 4,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -5144,7 +4931,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 4,
+        "manualReviewCount": 5,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -5158,7 +4945,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 15,
+        "manualReviewCount": 17,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -5186,7 +4973,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 7,
+        "manualReviewCount": 11,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -5224,11 +5011,11 @@
         "provinceTerritory": "AB",
         "workingSourcesThisRun": 2,
         "sourceAttemptsThisRun": 2,
-        "resultCount": 46,
+        "resultCount": 41,
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 3,
-        "manualReviewCount": 16,
+        "manualReviewCount": 22,
         "needsSourceResearch": false,
         "discoveryState": "published_results"
       },
@@ -5241,7 +5028,7 @@
         "resultCount": 31,
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
-        "upcomingEvents": 22,
+        "upcomingEvents": 21,
         "manualReviewCount": 25,
         "needsSourceResearch": false,
         "discoveryState": "published_results"
@@ -5256,7 +5043,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 4,
+        "manualReviewCount": 6,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -5354,7 +5141,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 3,
+        "manualReviewCount": 4,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -5396,7 +5183,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 6,
+        "manualReviewCount": 9,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -5406,7 +5193,7 @@
         "provinceTerritory": "AB",
         "workingSourcesThisRun": 1,
         "sourceAttemptsThisRun": 1,
-        "resultCount": 19,
+        "resultCount": 20,
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 13,
@@ -5466,7 +5253,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 6,
+        "manualReviewCount": 9,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -5476,7 +5263,7 @@
         "provinceTerritory": "AB",
         "workingSourcesThisRun": 1,
         "sourceAttemptsThisRun": 1,
-        "resultCount": 5,
+        "resultCount": 4,
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
@@ -5494,7 +5281,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 4,
-        "manualReviewCount": 33,
+        "manualReviewCount": 42,
         "needsSourceResearch": false,
         "discoveryState": "published_results"
       },
@@ -5532,11 +5319,11 @@
         "provinceTerritory": "AB",
         "workingSourcesThisRun": 4,
         "sourceAttemptsThisRun": 4,
-        "resultCount": 47,
+        "resultCount": 50,
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
-        "upcomingEvents": 26,
-        "manualReviewCount": 41,
+        "upcomingEvents": 27,
+        "manualReviewCount": 43,
         "needsSourceResearch": false,
         "discoveryState": "published_results"
       },
@@ -5616,10 +5403,10 @@
         "provinceTerritory": "AB",
         "workingSourcesThisRun": 2,
         "sourceAttemptsThisRun": 2,
-        "resultCount": 81,
+        "resultCount": 84,
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
-        "upcomingEvents": 38,
+        "upcomingEvents": 40,
         "manualReviewCount": 24,
         "needsSourceResearch": false,
         "discoveryState": "published_results"
@@ -5642,7 +5429,7 @@
         "bandId": 459,
         "communityName": "Whitefish Lake",
         "provinceTerritory": "AB",
-        "workingSourcesThisRun": 0,
+        "workingSourcesThisRun": 1,
         "sourceAttemptsThisRun": 1,
         "resultCount": 0,
         "resultsLast30Days": 0,
@@ -5650,7 +5437,7 @@
         "upcomingEvents": 0,
         "manualReviewCount": 0,
         "needsSourceResearch": false,
-        "discoveryState": "source_failure"
+        "discoveryState": "checked_no_valid_dated_result"
       },
       {
         "bandId": "ab-whitefish-lake-128",
@@ -5880,7 +5667,7 @@
         "bandId": 280,
         "communityName": "Ebb and Flow",
         "provinceTerritory": "MB",
-        "workingSourcesThisRun": 2,
+        "workingSourcesThisRun": 0,
         "sourceAttemptsThisRun": 2,
         "resultCount": 0,
         "resultsLast30Days": 0,
@@ -5888,7 +5675,7 @@
         "upcomingEvents": 0,
         "manualReviewCount": 1,
         "needsSourceResearch": false,
-        "discoveryState": "checked_no_valid_dated_result"
+        "discoveryState": "source_failure"
       },
       {
         "bandId": 264,
@@ -5900,7 +5687,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 3,
-        "manualReviewCount": 29,
+        "manualReviewCount": 30,
         "needsSourceResearch": false,
         "discoveryState": "published_results"
       },
@@ -6179,8 +5966,8 @@
         "resultCount": 9,
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
-        "upcomingEvents": 7,
-        "manualReviewCount": 39,
+        "upcomingEvents": 6,
+        "manualReviewCount": 41,
         "needsSourceResearch": false,
         "discoveryState": "published_results"
       },
@@ -6272,13 +6059,13 @@
         "bandId": 269,
         "communityName": "Peguis",
         "provinceTerritory": "MB",
-        "workingSourcesThisRun": 4,
-        "sourceAttemptsThisRun": 4,
+        "workingSourcesThisRun": 5,
+        "sourceAttemptsThisRun": 5,
         "resultCount": 3,
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 2,
-        "manualReviewCount": 8,
+        "manualReviewCount": 14,
         "needsSourceResearch": false,
         "discoveryState": "published_results"
       },
@@ -6390,7 +6177,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 1,
+        "manualReviewCount": 2,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -6404,7 +6191,7 @@
         "resultsLast30Days": 0,
         "resultsLast90Days": 0,
         "upcomingEvents": 0,
-        "manualReviewCount": 1,
+        "manualReviewCount": 2,
         "needsSourceResearch": false,
         "discoveryState": "checked_no_valid_dated_result"
       },
@@ -6414,7 +6201,7 @@
         "provinceTerritory": "MB",
         "workingSourcesThisRun": 1,
         "sourceAttemptsThisRun": 1,
-        "resultCount": 8,
+        "resultCount": 7,
         "resultsLast30Days": 1,
         "resultsLast90Days": 1,
         "upcomingEvents": 1,
@@ -6566,10 +6353,10 @@
     "scanStatusCounts": {
       "authorized_api_required": 9,
       "dns_error": 1,
-      "ok": 171,
+      "ok": 172,
       "robots_blocked": 2,
-      "partial": 41,
       "tls_error": 8,
+      "partial": 41,
       "javascript_required": 3,
       "access_restricted": 1,
       "not_found": 4,
@@ -6583,7 +6370,7 @@
       "media extraction failed: robots.txt disallows data:image/svg+xml,%3Csvg%20xmlns=%22http:/www.w3.org/2000/svg%22%20viewBox=%220%200%20210%20140%22%3E%3C/svg%3E": 1,
       "Calendar-day aggregate is not an individual event": 7,
       "media extraction failed: robots.txt disallows https://static.xx.fbcdn.net/images/emoji.php/v9/t6c/2/16/1fab6.png": 1,
-      "Existing event failed current source quality checks": 73,
+      "Existing event failed current source quality checks": 79,
       "media extraction failed: robots.txt disallows https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/845544140_122194716356941892_8227255669101138492_n.jpg?stp=dst-jpg_p720x720_tt6&_nc": 1,
       "media extraction failed: robots.txt disallows https://scontent-ord5-1.xx.fbcdn.net/v/t39.30808-6/845100533_1138813765389775_8947632409856923355_n.jpg?stp=dst-jpg_p720x720_tt6&_nc_c": 1,
       "media extraction failed: robots.txt disallows https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/846168263_122194715468941892_1850998248635410887_n.jpg?stp=dst-jpg_p720x720_tt6&_nc": 1,
@@ -6604,7 +6391,7 @@
       "Facebook requires an authorized Meta API token and mapped page ID/handle": 9,
       "Source is not an identity-confirmed readable community page": 13,
       "application/pdf": 19,
-      "Candidate lacks unambiguous event date/identity or has invalid/cancelled source data": 342,
+      "Candidate lacks unambiguous event date/identity or has invalid/cancelled source data": 350,
       "Record failed explicit event-date/permalink validation": 3,
       "[Errno 2] No such file or directory: 'tesseract'": 40,
       "[Errno 2] No such file or directory: 'pdftotext'": 4,
@@ -6778,7 +6565,75 @@
       "Command '['tesseract', '/tmp/tmp29ye6hz0/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
       "Command '['tesseract', '/tmp/tmpox0ohsms/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
       "Command '['tesseract', '/tmp/tmp2ege2z8f/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
-      "Command '['tesseract', '/tmp/tmptan0de_v/source.webp', 'stdout', '--psm', '6']' timed out after 35 seconds": 1
+      "Command '['tesseract', '/tmp/tmptan0de_v/source.webp', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpcof6_5o3/source.JPG', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpmls1bx7o/page-1.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpgl7uvupk/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmp6u0tcgvk/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpbap2_g9m/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpmtugrj7o/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmp7ox3ecko/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmp3__i2ves/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpm8jhra95/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpzsmp110b/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpb2aj1__w/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpg52stg8l/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpo0_g8vlq/source.jpeg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpfxsmpze7/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmp_2_h05ln/source.jpeg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmp767zlx_d/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpb_mtvruc/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpl3h_htgc/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpdenkfurn/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpxqes1gwu/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpgugykj8m/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmp2bal4ezd/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmp4582cb49/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmph4_ccex6/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpxb76em05/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpfzbnwmr2/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpt1nsowlz/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpojrsoo49/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpro5na7h9/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmp3ivwrwm8/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpnoorkr4g/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmp3lowunir/page-1.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpq3aphx5v/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpxul216g6/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpmc8ns_ii/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpgu_iptpp/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpa43lkdyu/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpy75pgk2u/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpl5c_gvt5/page-1.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpwnsto0f3/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmp2mpycnje/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpnbx9bxh9/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpmilic2u_/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpngm2cn03/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpr60t5_l0/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpk1f7ilb0/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpq5m4k139/page-1.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmplhp61_ep/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpnaco_nyc/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpafq5ysyz/page-1.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "robots.txt unavailable (503); scan withheld": 1,
+      "Command '['tesseract', '/tmp/tmp56e1fpyc/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpl2lcur8i/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpbi_cqmnr/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmp2tpndn70/source.webp', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpzogwbsmb/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpzvjas24m/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpadldsmoj/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpb04yr0c5/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmptg56qp22/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpi9rufqhz/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpt3tlbwvo/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmpbnzqthx6/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "<urlopen error timed out>": 3,
+      "Command '['tesseract', '/tmp/tmpxxbsyszz/source.jpg', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmprfvjovk1/page-1.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmplshbjulj/page-1.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1,
+      "Command '['tesseract', '/tmp/tmphog9_t02/source.png', 'stdout', '--psm', '6']' timed out after 35 seconds": 1
     },
     "sourcesRequiringAuthentication": 10,
     "note": "Working-source counts describe successful pages in this run, not merely registered websites. Empty results are not evidence that no community activity occurred."
