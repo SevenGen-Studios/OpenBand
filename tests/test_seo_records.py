@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urlsplit
 from lxml import html
-from tools.seo_records import financial_years, money, publish, annual_page
+from tools.seo_records import financial_years, money, publish, annual_page, travel_expenses
 from tools.build_site import ROOT, ORIGIN, slugify
 
 class SeoRecordsTests(unittest.TestCase):
@@ -43,6 +43,21 @@ class SeoRecordsTests(unittest.TestCase):
         self.assertEqual(dataset['temporalCoverage'], '2023/2024')
         self.assertNotIn('license', dataset)
         self.assertIn('https://example.com/financials.pdf', dataset['isBasedOn'])
+
+    def test_canonical_expenses_coalesce_null_without_double_counting(self):
+        person = {'name': 'Test Official', 'travel': None, 'expenses': 125925,
+                  'creditCard': 136245, 'travelExpenses': 262170, 'otherPayments': None, 'other': 0}
+        self.assertEqual(travel_expenses(person), 262170)
+        self.assertEqual(travel_expenses({'travel': 10, 'expenses': 20, 'creditCard': 30}), 60)
+        self.assertIsNone(travel_expenses({'travel': None, 'expenses': None}))
+        self.assertEqual(travel_expenses({'expenses': 0}), 0)
+        self.band['filings'][0]['people'] = [person]
+        years = financial_years(self.band, self.capital)
+        doc = html.fromstring(annual_page(self.band, '2023-2024', years['2023-2024'], years, slugify))
+        cells = doc.xpath('//tbody/tr/td/text()')
+        self.assertIn('$262,170', cells)
+        self.assertEqual(cells.count('$262,170'), 1)
+        self.assertEqual(cells[-1], '$0')
 
     def test_regeneration_preserves_lastmod_and_removes_only_owned_stale_page(self):
         with tempfile.TemporaryDirectory() as directory:
