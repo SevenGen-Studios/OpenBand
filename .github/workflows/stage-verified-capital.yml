@@ -1,0 +1,33 @@
+name: Stage verified financial data
+on:
+  push:
+    branches: [codex/verified-filing-data-upload]
+    paths: [.github/verified-capital-data.json.gz.b64]
+permissions:
+  contents: write
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Decode and verify exact financial-data blob
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import base64,gzip,hashlib,json
+          raw=gzip.decompress(base64.b64decode(Path('.github/verified-capital-data.json.gz.b64').read_text(),validate=True))
+          digest=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+          assert digest=='2e27a54a09893fd48962619182acc6f6d3294c19'
+          assert len(json.loads(raw)['bands'])>0
+          Path('capital-data.json').write_bytes(raw)
+          print('Verified capital-data blob:',digest)
+          PY
+      - name: Stage verified blob on the transfer branch
+        run: |
+          git add capital-data.json
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Stage verified recovered financial data"
+          git push origin HEAD:codex/verified-filing-data-upload
