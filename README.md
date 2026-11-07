@@ -197,3 +197,9 @@ parsed again.
 OpenBand should be used as a transparent index and research lead. Automated extractions are labelled and linked back to source PDFs. For publication, verify exact figures against the original ISC filing linked from the result page.
 
 The standard is not "trust the scraper." The standard is "make public records easier to find, compare, and verify."
+
+Financial Filing Review at `/admin/financial-filings/` adds a private, resumable
+five-year audit checklist, public-source discovery, independent OCR comparison,
+source-page evidence and explicit administrator-approved imports. Start with
+`python -m tools.filing_review scan`; see
+[the service and deployment runbook](docs/FINANCIAL_FILING_REVIEW.md).
