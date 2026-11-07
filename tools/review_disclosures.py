@@ -50,7 +50,9 @@ def reconcile_listing(band, source_filings, years=None):
     return changed
 
 def review(band):
-    bid=band.get('iscBandNumber',band['id'])
+    bid=band.get('iscBandNumber')
+    if not isinstance(bid,int) or isinstance(bid,bool) or band.get('sharedIscIdentity'):
+        return dict(bandId=str(band['id']),name=band['name'],province=band.get('province'),checkedAt=now(),status='BLOCKED',error='ISC identity requires review; no profile ID substitution or shared-document reassignment')
     url=page_url('FederalFundingMain',bid)
     row={'bandId':str(band['id']),'name':band['name'],'province':band['province'],'sourceUrl':url,'checkedAt':now()}
     try:
@@ -73,9 +75,7 @@ if __name__=='__main__':
     parser.add_argument('--year',action='append',help='Reconcile only the selected fiscal year')
     parser.add_argument('--report',default='audit-disclosure-sources.json')
     args=parser.parse_args()
-    selected={388,409,365,378,362,385,381,386,387,379,392,366,367}
-    bands=[b for b in read('data.json')['bands'] if not b.get('sharedIscIdentity')
-           and (b['id'] in args.band if args.band else b['province']=='AB' or b['id'] in selected)]
+    bands=[b for b in read('data.json')['bands'] if not args.band or b['id'] in args.band]
     with ThreadPoolExecutor(max_workers=1) as pool:
         results=list(pool.map(review,bands))
     write(args.report,{'checkedAt':now(),'results':results})

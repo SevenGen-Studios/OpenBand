@@ -12,6 +12,20 @@ import time
 from urllib.parse import urlsplit, urljoin, quote
 from urllib.robotparser import RobotFileParser
 
+class HTTPStatusError(RuntimeError):
+    def __init__(self,status,retry_after=None):
+        super().__init__(f'HTTP {status}; source not retrieved')
+        self.status=status
+        self.retry_after=None
+        if retry_after:
+            try:self.retry_after=max(0,int(retry_after))
+            except ValueError:
+                try:
+                    from email.utils import parsedate_to_datetime
+                    from datetime import datetime,timezone
+                    self.retry_after=max(0,(parsedate_to_datetime(retry_after)-datetime.now(timezone.utc)).total_seconds())
+                except (ValueError,TypeError,OverflowError):pass
+
 AGENT='OpenBandFilingReview/1.0 (+https://openband.ca)'
 GOV_HOSTS={'services.sac-isc.gc.ca','fnp-ppn.aadnc-aandc.gc.ca','www.sac-isc.gc.ca','www.canada.ca'}
 
@@ -71,7 +85,7 @@ class PublicHTTP:
             if status in (301,302,303,307,308):
                 url=urljoin(url,headers.get('location',''))
                 continue
-            if status!=200: raise RuntimeError(f'HTTP {status}; source not retrieved')
+            if status!=200: raise HTTPStatusError(status,headers.get('retry-after'))
             if 'captcha' in body[:20000].decode('utf-8','ignore').lower() and not body.startswith(b'%PDF-'):
                 raise PermissionError('Access challenge; manual source review required')
             return body,url

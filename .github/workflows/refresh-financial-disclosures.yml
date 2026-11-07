@@ -1,0 +1,89 @@
+name: Refresh all First Nation filing availability
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 10 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: openband-v2-data-writers
+  cancel-in-progress: false
+
+jobs:
+  refresh-disclosures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install existing parser dependencies
+        run: python -m pip install --disable-pip-version-check -r requirements.txt
+      - name: Check reconciliation safeguards
+        run: python -m unittest tests.test_disclosure_scan tests.test_disclosure_refresh tests.test_disclosure_identity -v
+      - name: Scan every database profile and reconcile availability
+        run: >-
+          python -m tools.disclosure_scan --write
+          --baseline tools/manitoba-source-cache/protected-baseline.json
+          --history disclosure-scan-history.jsonl
+      - name: Verify protected records and metadata history
+        run: |
+          python -m tools.manitoba_baseline
+          python -m unittest tests.test_disclosure_scan tests.test_disclosure_refresh tests.test_disclosure_identity -v
+      - name: Build current routes and run all regressions
+        run: |
+          python tools/build_site.py
+          python -m unittest discover -s tests -v
+          node tests/test_missing_filing_years.js
+          node tests/test_data_loading.js
+      - name: Publish checked metadata and source coverage
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.json disclosure-scan-report.json tools/manitoba-source-cache/protected-baseline.json
+          if [ -f disclosure-scan-history.jsonl ]; then git add disclosure-scan-history.jsonl; fi
+          git add first-nations browse news saskatchewan alberta manitoba financials methodology about seo-page-manifest.json sitemap.xml robots.txt .nojekyll
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Refresh all First Nation public filing availability"
+          # Do not rebase generated data onto concurrent human edits. A rejected
+          # push fails safely; the next run starts from the new main snapshot.
+          git push origin HEAD:main
+      - name: Summarize coverage and flag blocked sources
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path=Path('disclosure-scan-report.json')
+          if not path.exists():
+              raise SystemExit('No scan report was produced; inspect the failed step.')
+          report=json.loads(path.read_text())
+          summary=f"First Nation disclosure scan: {report['profilesReviewed']}/{report['profilesExpected']} profiles reviewed; {report['profilesChecked']} source checks succeeded; {report['documentsRecovered']} document links recovered; {report['sourceFailures']} unavailable sources; {report['identityReviews']} identities require review.\n"
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as handle:
+              handle.write(summary+'\n'+report['notice']+'\n')
+          if report['status'] not in ('complete','complete_with_issues'):
+              raise SystemExit('Scan did not complete; existing data is preserved.')
+          if report['sourceFailures']:
+              raise SystemExit('Some ISC sources were unavailable. Details are recorded in disclosure-scan-report.json; existing filings were retained.')
+          PY
+      - name: Retain resumable scan evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: financial-disclosure-scan-${{ github.run_id }}
+          retention-days: 30
+          include-hidden-files: true
+          path: |
+            disclosure-scan-report.json
+            disclosure-scan-history.jsonl
+            .openband-ocr/disclosure-scan/checkpoint.json
+            .openband-ocr/disclosure-scan/publication.json
