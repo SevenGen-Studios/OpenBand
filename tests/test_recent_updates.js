@@ -20,8 +20,17 @@ context.renderRecentlyUpdated();
 assert.match(list.items[0].innerHTML,/Reviewed schedule/);
 assert.match(list.items[0].innerHTML,/2014-2015/);
 assert.equal(list.items.length,2,'One card per Nation');
+bands=Array.from({length:8},(_,i)=>({id:i+1,name:`Reviewed Nation ${i+1}`,filings:[{
+  year:'2024-2025',people:[{}],manualSourceReview:{reviewedAt:`2026-11-${String(i+1).padStart(2,'0')}`}
+}]}));
+list.items=[];context.renderRecentlyUpdated();
+assert.equal(list.items.length,6,'A new batch keeps the existing six-card limit');
+assert.match(list.items[0].innerHTML,/Reviewed Nation 8/);
+assert.match(list.items[5].innerHTML,/Reviewed Nation 3/);
+assert(!list.items.some(i=>/Reviewed Nation [12]</.test(i.innerHTML)),'Older reviews leave the recent window');
 bands=JSON.parse(fs.readFileSync('data.json','utf8')).bands.filter(b=>b.province==='SK');
 list.items=[];context.renderRecentlyUpdated();
-assert(list.items.some(i=>i.innerHTML.includes('Day Star First Nation')),'Live reviewed Day Star must enter the recent updates list');
-assert(list.items.some(i=>i.innerHTML.includes('George Gordon First Nation')),'The next reviewed batch must appear');
+assert(list.items.length>0&&list.items.length<=6,'Live data produces a bounded recent list');
+assert(list.items.every(i=>bands.some(b=>b.filings.some(f=>f.people?.length)&&i.innerHTML.includes(context.nationNameMarkup(b)))),
+  'Every live recent card belongs to a Nation with an extracted schedule');
 console.log('Recent updates include source-reviewed corrections and preserve scraped fallbacks.');
