@@ -95,7 +95,9 @@ def apply(data, payload, first_publication=False):
     if first_publication and filing != payload.get('before'):
         raise ValueError('Published schedule changed; reopen and review the correction')
     source = payload['source']
-    if filing and filing.get('href') and filing['href'] != source['url']:
+    # The browser percent-encodes spaces in older ISC disclosure links.
+    # Normalize that spelling only, leaving all other URL differences significant.
+    if filing and filing.get('href') and filing['href'].replace(' ', '%20') != source['url'].replace(' ', '%20'):
         raise ValueError('Source URL changed; resolve revised source before replay')
     if not first_publication and filing and re.fullmatch('[a-f0-9]{64}', str(filing.get('sha256') or '')) and filing['sha256'] != source['sha256']:
         raise ValueError('Source PDF hash changed; review the revised document')
