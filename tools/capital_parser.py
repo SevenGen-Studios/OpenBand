@@ -87,7 +87,7 @@ FINAL_SURPLUS_RE = re.compile(
 )
 BEFORE_OTHER_RE = re.compile(
     r"^(?:.*\b(?:surplus|deficit|excess|deficiency)\b.*\bbefore\s+"
-    r"(?:other|trust settlement|(?:the\s+)?undernoted|the following)|before\s+(?:the\s+)?undernoted)",
+    r"(?:other|transfers|trust settlement|(?:the\s+)?undernoted|the following)|before\s+(?:the\s+)?undernoted)",
     re.I,
 )
 EXPENSE_SECTION_END_RE = re.compile(
@@ -368,6 +368,9 @@ def is_primary_operations_page(text):
     lines = [clean_text(line) for line in text.splitlines()[:12]]
     if any(re.fullmatch(r"contents|table of contents", line, re.I) for line in lines):
         return False
+    # A date caption can share the title's baseline. Its day number is not a
+    # table-of-contents page number; keep the TOC checks on the title itself.
+    lines = [re.sub(r"\s+for the year ended\b.*$", "", line, flags=re.I) for line in lines]
     return any(
         re.match(r"^(?:consolidated\s+)?statement of\b", line, re.I)
         and OPERATIONS_RE.search(line)
@@ -688,6 +691,11 @@ def parse_surplus_adjustments(page_texts):
     expense_section = False
     seen_expenses = False
     for page_text in page_texts:
+        # Retain the label when a note reference and its amounts wrap onto the
+        # next line. Never infer the amount from the annual-result difference.
+        page_text = re.sub(
+            r"(Contribution from trust for the purpose of per capita distributions)[ \t]*\n[ \t]*(\(Note\s+\d+\))",
+            r"\1 \2", page_text, flags=re.I)
         for raw_line in page_text.splitlines():
             line = clean_text(raw_line)
             label, values = line_parts(line)

@@ -225,6 +225,10 @@ def _rapidocr_text(image, return_metadata=False):
 
 def _vision_text(image, return_metadata=False):
     binary=os.getenv('OPENBAND_VISION_OCR_BIN', str(Path(__file__).resolve().parents[1]/'.openband-ocr/bin/vision-ocr'))
+    if os.getenv('OPENBAND_VISION_PYOBJC') == '1' and not os.getenv('OPENBAND_VISION_OCR_BIN'):
+        from tools.vision_ocr import recognize
+        cells = recognize(image)
+        return coordinate_lines([(cell['box'],cell['text']) for cell in cells],align_financial_columns=True,return_metadata=return_metadata)
     args=[binary,str(image)]
     result=subprocess.run(args,capture_output=True,text=True,timeout=90,check=True)
     cells=json.loads(result.stdout)
