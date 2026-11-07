@@ -1,0 +1,177 @@
+{
+  "schema": "openband-remuneration-v1",
+  "bandId": "265",
+  "band": "Buffalo Point First Nation",
+  "province": "MB",
+  "year": "2025-2026",
+  "before": {
+    "year": "2025-2026",
+    "docType": "Schedule of Remuneration and Expenses",
+    "documentTitle": "Schedule of Remuneration and Expenses — 2025-2026",
+    "date": "2026-07-30",
+    "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=265&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
+    "posted": true,
+    "people": [
+      {
+        "name": "John Thund er",
+        "role": "Chief",
+        "months": 12,
+        "remuneration": 137290,
+        "travel": null,
+        "expenses": null,
+        "creditCard": null,
+        "otherPayments": null,
+        "total": 137290,
+        "travelExpenses": 0,
+        "other": 0
+      },
+      {
+        "name": "Herman Gre en",
+        "role": "Councillor",
+        "months": 12,
+        "remuneration": 95159,
+        "travel": null,
+        "expenses": null,
+        "creditCard": null,
+        "otherPayments": null,
+        "total": 95159,
+        "travelExpenses": 0,
+        "other": 0
+      },
+      {
+        "name": "Drew Thund er",
+        "role": "Councillor",
+        "months": 12,
+        "remuneration": 103552,
+        "travel": null,
+        "expenses": null,
+        "creditCard": null,
+        "otherPayments": null,
+        "total": 103552,
+        "travelExpenses": 0,
+        "other": 0
+      }
+    ],
+    "parse_status": "ok_pdf_keyword_table",
+    "sourceOrganization": "Indigenous Services Canada",
+    "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=265&lang=eng",
+    "sourceBandNumber": 265,
+    "verificationStatus": "automated_validated",
+    "retrievedAt": "2026-11-02T02:27:02+00:00",
+    "nationId": 265,
+    "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
+    "sha256": "581ab0b0bd96579081bdfa816962fddb77127e8c1405c555813bdc802478497c",
+    "byteSize": 137942,
+    "lastChecked": "2026-11-02T02:29:54+00:00",
+    "httpStatus": 200,
+    "manualSourceReview": null,
+    "documentChecks": {
+      "identityAndYearConfirmed": true,
+      "warnings": []
+    },
+    "warnings": [
+      "Parsed from keyword-aware PDF table extraction",
+      "Coordinate-aware pdfplumber table extraction was validated before publication"
+    ],
+    "sourceTotal": null,
+    "parse_confidence": "high",
+    "manual_review_required": false,
+    "parse_stages": [
+      {
+        "stage": "local",
+        "status": "ok_pdf_keyword_table",
+        "warnings": [
+          "Parsed from keyword-aware PDF table extraction",
+          "Coordinate-aware pdfplumber table extraction was validated before publication"
+        ]
+      }
+    ],
+    "nativePageCount": 3,
+    "nativeTextCharacters": 3631,
+    "requiresOcr": false
+  },
+  "people": [
+    {
+      "name": "John Thunder",
+      "role": "Chief",
+      "months": 12,
+      "remuneration": 137290,
+      "travel": 6500,
+      "expenses": null,
+      "creditCard": null,
+      "otherPayments": null,
+      "total": 143790,
+      "travelExpenses": 6500,
+      "other": 0
+    },
+    {
+      "name": "Herman Green",
+      "role": "Councillor",
+      "months": 12,
+      "remuneration": 95159,
+      "travel": 3330,
+      "expenses": null,
+      "creditCard": null,
+      "otherPayments": null,
+      "total": 98489,
+      "travelExpenses": 3330,
+      "other": 0
+    },
+    {
+      "name": "Drew Thunder",
+      "role": "Councillor",
+      "months": 12,
+      "remuneration": 103552,
+      "travel": 425,
+      "expenses": null,
+      "creditCard": null,
+      "otherPayments": null,
+      "total": 103977,
+      "travelExpenses": 425,
+      "other": 0
+    }
+  ],
+  "source": {
+    "url": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=265&FY=2025-2026&DOC=Schedule%20of%20Remuneration%20and%20Expenses&lang=eng",
+    "pages": "all pages ",
+    "scheduleTotal": null,
+    "sha256": "581ab0b0bd96579081bdfa816962fddb77127e8c1405c555813bdc802478497c",
+    "identityAndYearConfirmed": false,
+    "completeSchedule": false
+  },
+  "reason": "remenuration fix",
+  "editedBy": "OpenBand admin",
+  "editedAt": "2026-11-07T17:30:48.440Z",
+  "revision": "ac80d4a0-60d9-4ad2-ab63-88b442ac115a",
+  "editor": {
+    "edits": [
+      {
+        "index": 0,
+        "values": {
+          "name": "John Thunder",
+          "travelExpenses": 6500,
+          "total": 143790
+        }
+      },
+      {
+        "index": 1,
+        "values": {
+          "name": "Herman Green",
+          "travelExpenses": 3330,
+          "total": 98489
+        }
+      },
+      {
+        "index": 2,
+        "values": {
+          "name": "Drew Thunder",
+          "travelExpenses": 425,
+          "total": 103977
+        }
+      }
+    ],
+    "additions": [],
+    "removals": []
+  },
+  "state": "awaiting_verification"
+}
