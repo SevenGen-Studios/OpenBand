@@ -125,7 +125,7 @@ jobs:
           fi
           git commit -m "Update community news"
           for attempt in 1 2 3; do
-            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            git pull --rebase --autostash origin main && git push origin HEAD:main && exit 0
             echo "Push attempt $attempt failed; retrying after concurrent data writer"
             git rebase --abort || true
             sleep $((attempt * 5))
