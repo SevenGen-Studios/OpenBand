@@ -21,6 +21,18 @@ try:
 except ImportError:  # pragma: no cover - supports running from tools/ directly
     import parser_quality
 
+from tools.apply_manual_overrides import reviewed_source_protected
+
+
+def has_complete_source_review(filing):
+    return (
+        reviewed_source_protected(filing)
+        and re.fullmatch(r"[a-f0-9]{64}", filing["sha256"]) is not None
+        and filing["manualSourceReview"].get("sourceRowCount") == len(filing.get("people") or [])
+        and not filing.get("manual_review_required")
+    )
+
+
 PAYMENT_KEYS = ("remuneration", "travel", "expenses", "creditCard", "otherPayments")
 CANONICAL_MONEY_KEYS = ("travelExpenses", "other")
 ALL_MONEY_KEYS = PAYMENT_KEYS + CANONICAL_MONEY_KEYS + ("total",)
@@ -125,7 +137,8 @@ def format_alberta_official_names(data):
             continue
         records = [(official, key) for official in (band.get('leadership') or {}).get('officials', [])
                    for key in ('givenName', 'surname')]
-        records += [(person, 'name') for filing in band.get('filings', []) if not filing.get('financialEntryRevision') for person in filing.get('people', [])]
+        records += [(person, 'name') for filing in band.get('filings', []) if not filing.get('financialEntryRevision') and not has_complete_source_review(filing)
+                    for person in filing.get('people', [])]
         for record, key in records:
             value = record.get(key)
             if not isinstance(value, str):
@@ -476,6 +489,11 @@ def dedupe_people(people):
 
 
 def sanitize_filing(filing):
+    # Heuristics for OCR column echoes cannot supersede a complete review
+    # tied to the original document. Equal pay and expense figures can be real.
+    if is_remuneration(filing) and has_complete_source_review(filing):
+        return len(filing["people"]), 0, 0
+
     normalize_filing_status(filing)
 
     people = filing.get("people") or []
