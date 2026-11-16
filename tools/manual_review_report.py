@@ -96,7 +96,12 @@ def build_ocr_queue(data):
             if not is_remuneration(filing) or not filing.get('posted'):
                 continue
             province = band.get('province') or 'unknown'
-            if independently_ocr_checked(filing):
+            evidence = filing.get('manualReviewEvidence') or {}
+            discrepancy = (
+                evidence.get('outcome') == 'printed_totals_differ'
+                and evidence.get('sha256') == filing.get('sha256')
+            )
+            if independently_ocr_checked(filing) and not discrepancy:
                 checked[province] += 1
                 continue
             warnings = filing.get('warnings') or []
@@ -105,10 +110,11 @@ def build_ocr_queue(data):
             if not filing.get('href') or wrong_source:
                 status = 'source_needed'
                 reason = warnings[0] if warnings else 'Obtain the original remuneration schedule.'
-            elif (filing.get('manual_review_required') or not filing.get('people')
+            elif (discrepancy or filing.get('manual_review_required') or not filing.get('people')
                   or filing.get('parse_confidence') == 'low'):
                 status = 'manual_review'
-                reason = warnings[0] if warnings else review_reason(filing)
+                reason = evidence.get('reason') if discrepancy else None
+                reason = reason or (warnings[0] if warnings else review_reason(filing))
             else:
                 status = 'independent_ocr_needed'
                 reason = 'Compare the published rows to independent OCR and the original page.'
