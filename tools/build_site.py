@@ -570,7 +570,6 @@ def build() -> None:
     bands = sorted(data.get("bands", []), key=lambda item: item["name"])
     history = build_history(ROOT, bands, slugify)
     base = (ROOT / "index.html").read_text(encoding="utf-8")
-    base = base.replace('<a class="logo" href="/">Open<em>Band</em></a>', '<a class="logo" href="/">Open<em>Band</em></a><a class="nav-home" id="homeLink" href="/">Home</a>', 1)
     contacts = json.loads((ROOT / "contacts-data.json").read_text(encoding="utf-8"))
     capital = json.loads((ROOT / "capital-data.json").read_text(encoding="utf-8"))
     seo_manifest, financial_records = publish_records(ROOT, bands, capital, slugify)
