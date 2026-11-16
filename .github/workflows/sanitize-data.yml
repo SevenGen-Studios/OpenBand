@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: openband-v2-data-writers
+  group: ${{ github.event_name == 'push' && github.ref_name != github.event.repository.default_branch && format('openband-sanitize-check-{0}', github.ref) || 'openband-v2-data-writers' }}
   cancel-in-progress: false
 
 jobs:
