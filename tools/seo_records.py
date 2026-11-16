@@ -82,19 +82,29 @@ def financial_markup(summary, year):
 
 def remuneration_markup(filing, year):
     rows = []
-    for person in filing.get('people', []):
+    people = filing.get('people', [])
+    show_credit_card = any(person.get('creditCard') is not None for person in people)
+    credit_card_header = '<th scope="col">Credit card</th>' if show_credit_card else ''
+    for person in people:
         if not str(person.get('name') or '').strip():
             continue
         # Keep source fields distinct. No calculated row or aggregate totals.
+        travel = person.get('travel')
+        expenses = person.get('expenses')
+        credit_card = person.get('creditCard')
+        if travel is None and expenses is None and credit_card is None:
+            travel = person.get('travelExpenses')
         fields = [esc(person['name']), esc(person.get('role') or 'Not specified'),
                   esc(person['months']) if person.get('months') is not None else 'Not reported',
-                  money(person.get('remuneration')), money(person.get('travel', person.get('travelExpenses'))),
-                  money(person.get('expenses')), money(person.get('otherPayments', person.get('other')))]
+                  money(person.get('remuneration')), money(travel), money(expenses)]
+        if show_credit_card:
+            fields.append(money(credit_card))
+        fields.append(money(person.get('otherPayments', person.get('other'))))
         rows.append('<tr>' + ''.join(f'<td>{value}</td>' for value in fields) + '</tr>')
     return (f'<section><h2>Chief and Council remuneration and expenses · {esc(year)}</h2>'
             '<p>Historical payments for the stated fiscal year. These names do not identify current officeholders. Travel, expenses, and other payments retain their separate source fields; missing values are not zero.</p>'
             '<div class="record-table-wrap"><table><caption>Parsed remuneration schedule · amounts in Canadian dollars</caption><thead><tr>'
-            '<th scope="col">Name</th><th scope="col">Position</th><th scope="col">Months</th><th scope="col">Remuneration</th><th scope="col">Travel</th><th scope="col">Expenses</th><th scope="col">Other payments</th>'
+            f'<th scope="col">Name</th><th scope="col">Position</th><th scope="col">Months</th><th scope="col">Remuneration</th><th scope="col">Travel</th><th scope="col">Expenses</th>{credit_card_header}<th scope="col">Other payments</th>'
             '</tr></thead><tbody>' + ''.join(rows) + '</tbody></table></div>'
             f'<p>{source_link(filing.get("href"), "Review original remuneration and expenses schedule (PDF)")}</p></section>')
 
