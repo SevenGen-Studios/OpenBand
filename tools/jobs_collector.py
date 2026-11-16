@@ -1099,6 +1099,16 @@ def collect(
         if record["id"] in suppressed:
             continue
         issues = validation_warnings(record)
+        source = urllib.parse.urlsplit(record["sourceUrl"])
+        if source.scheme != "https" or not source.hostname:
+            review_items.append({
+                "sourceId": record.get("sourceId"),
+                "sourceUrl": record["sourceUrl"],
+                "status": "source_link_needs_review",
+                "reason": "An HTTPS source link is required for publication",
+                "candidate": record,
+            })
+            continue
         if issues:
             record["status"] = "Pending verification"
             record["warnings"] = issues

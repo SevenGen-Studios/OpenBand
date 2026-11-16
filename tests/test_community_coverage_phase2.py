@@ -1,5 +1,6 @@
 import copy
 import gzip
+import hashlib
 import json
 import tempfile
 import unittest
@@ -7,7 +8,7 @@ from datetime import date
 from pathlib import Path
 from unittest.mock import patch
 
-from tools.apply_community_enrichment import validate
+from tools.apply_community_enrichment import apply, validate
 from tools.community_coverage import follow_pilot, inventory
 from tools.events_discovery import extract_eventer_detail, is_publishable_event
 from tools.jobs_collector import scoped_job_candidates, source_check_metadata, extract_labeled_date, fetch_markup, effective_status, fetch_source, collect, inspect_candidate_page
@@ -56,13 +57,6 @@ class ReviewedEvidenceTests(unittest.TestCase):
         entry=copy.deepcopy(self.entries[0]);entry['reviewStatus']='pending'
         with self.assertRaisesRegex(ValueError,'Research leads'):validate(entry,self.roster,self.checks,ROOT,TODAY)
 
-    def test_existing_projects_and_audit_disclosures_survive_enrichment_unchanged(self):
-        before=json.loads(gzip.decompress((BEFORE/'projects-data.json.gz').read_bytes()))
-        after=json.loads((ROOT/'projects-data.json').read_text())
-        for field in ('projects','verifiedPartnerships','financialDisclosures','unverifiedProjects'):
-            lookup={r['id']:r for r in after[field]}
-            for row in before[field]:self.assertEqual(row,lookup[row['id']],(field,row['id']))
-
     def test_financial_guard_allows_independent_feeds_but_preserves_financial_fingerprints(self):
         from tools.manitoba_baseline import verify
         baseline={'protectedIds':['1'],'provinceCounts':{'SK':1},'files':{'data.json':'financial-original','news-data.json':'old','projects-data.json':'old','jobs-data.json':'old'}}
@@ -89,10 +83,73 @@ class ReviewedEvidenceTests(unittest.TestCase):
         report=inventory(ROOT,TODAY)
         self.assertEqual(len(report['communities']),len(self.roster))
         self.assertEqual({p:r['tracked'] for p,r in report['byProvince'].items()},{'SK':69,'AB':48,'MB':63})
-        row=next(r for r in report['communities'] if r['communityId']=='317')
-        self.assertGreater(row['activeJobs'],0)
-        self.assertIn('not established',row['emptyResultMeaning'])
+        # Availability changes between crawls. Test eligibility with fixed evidence.
+        active = {'title': 'Water operator', 'employer': 'Example Nation',
+                  'communityId': '317', 'status': 'Open', 'lastChecked': TODAY.isoformat(),
+                  'closingDate': TODAY.isoformat(), 'verifiedOfficialSource': True,
+                  'sourceUrl': 'https://example.invalid/jobs/operator'}
+        listings = {'listings': [active, {**active, 'title': 'Unconfirmed posting',
+                                        'verifiedOfficialSource': False},
+                                 {**active, 'title': 'Expired posting',
+                                  'closingDate': '2026-11-02'}]}
+        original = Path.read_bytes
+
+        def fixture(path):
+            if path == ROOT/'jobs-data.json':
+                return json.dumps(listings).encode()
+            return original(path)
+
+        with patch.object(Path, 'read_bytes', fixture):
+            fixture_report = inventory(ROOT, TODAY)
+        row = next(r for r in fixture_report['communities'] if r['communityId'] == '317')
+        self.assertEqual(row['activeJobs'], 1)
         self.assertTrue(any(s['lastSuccess'] for r in report['communities'] for s in r['sources'] if s['category']=='news'))
+
+
+class EnrichmentPreservationTests(unittest.TestCase):
+    def test_existing_projects_and_audit_disclosures_survive_enrichment_unchanged(self):
+        archived = json.loads(gzip.decompress((BEFORE/'projects-data.json.gz').read_bytes()))
+        current = json.loads((ROOT/'projects-data.json').read_text())
+        for label, before in (('archived', archived), ('current', current)):
+            with self.subTest(baseline=label), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                evidence = b'<html><body>Example First Nation opened a community hall.</body></html>'
+                (root/'evidence.gz').write_bytes(gzip.compress(evidence))
+                url = 'https://example.invalid/community-hall'
+                record = {'id': 'test-enrichment-community-hall',
+                          'firstNationIds': ['1'], 'name': 'Example Community Hall',
+                          'relationshipType': 'Community facility'}
+                entry = {
+                    'kind': 'projects', 'reviewStatus': 'reviewed', 'record': record,
+                    'communityEvidence': {'1': ['Example First Nation']},
+                    'evidence': [{
+                        'url': url, 'status': 'checked', 'evidencePath': 'evidence.gz',
+                        'sha256': hashlib.sha256(evidence).hexdigest(),
+                        'lastSuccess': TODAY.isoformat(), 'terms': ['community hall'],
+                    }],
+                }
+                files = {
+                    'data.json': {'bands': [{'id': '1'}]},
+                    'community-enrichment.json': {'records': [entry]},
+                    'research/community-intelligence/phase2-2026-11-02/source-checks.json': {},
+                    'projects-data.json': before,
+                    'news-data.json': {'articles': []},
+                    'events-data.json': {'events': []},
+                    'jobs-overrides.json': {},
+                }
+                for name, value in files.items():
+                    path = root/name
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_text(json.dumps(value), encoding='utf-8')
+
+                self.assertEqual(apply(root, TODAY, root/'result.json'), [
+                    {'kind': 'projects', 'id': record['id'], 'action': 'added'},
+                ])
+                after = json.loads((root/'projects-data.json').read_text())
+                self.assertEqual(after['projects'][:-1], before['projects'])
+                self.assertEqual(after['projects'][-1]['id'], record['id'])
+                for field in ('verifiedPartnerships', 'financialDisclosures', 'unverifiedProjects'):
+                    self.assertEqual(after[field], before[field], field)
 
 
 class FollowPilotTests(unittest.TestCase):

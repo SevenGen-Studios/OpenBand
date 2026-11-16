@@ -201,6 +201,23 @@ Application Deadline: WEDNESDAY NOVEMBER 4, 2026"""
         self.assertGreater(by_id["377"]["activeListings"], 0)
         self.assertGreater(by_id["374"]["activeListings"], 0)
 
+    def test_collector_keeps_insecure_source_candidates_in_review(self):
+        today = date(2026, 11, 16)
+        verified = {"id": "good", "title": "Water operator", "employer": "Example Nation",
+                    "communityId": "317", "sourceUrl": "https://example.invalid/jobs/water",
+                    "verifiedOfficialSource": True, "status": "Open",
+                    "lastChecked": today.isoformat(), "closingDate": "2026-12-01"}
+        insecure = {**verified, "id": "insecure", "title": "Road operator",
+                    "sourceUrl": "http://example.invalid/jobs/road"}
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "jobs-data.json").write_text(json.dumps({"listings": [verified, insecure]}))
+            data, report = collect(root, today, offline=True)
+        self.assertEqual([row["id"] for row in data["listings"]], ["good"])
+        self.assertEqual(report["verifiedActiveListings"], 1)
+        self.assertEqual([row["candidate"]["id"] for row in
+                          report["_reviewQueue"]["documentReviews"]], ["insecure"])
+
     def test_seed_data_is_source_linked_and_unique(self):
         payload = json.loads((ROOT / "jobs-data.json").read_text(encoding="utf-8"))
         keys = [listing_key(row) for row in payload["listings"]]
