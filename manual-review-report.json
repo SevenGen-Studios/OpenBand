@@ -1,12 +1,12 @@
 {
   "generatedFrom": "2026-11-07T11:45:25.863975+00:00",
-  "manualReviewCount": 510,
+  "manualReviewCount": 507,
   "reasonCounts": {
     "implausibly small remuneration values appear in money columns": 6,
     "month values appear in money columns": 1,
     "month values appear in money columns; implausibly small remuneration values appear in money columns": 8,
     "no Chief row in a small parsed filing": 1,
-    "no reliable official rows remain after validation": 81,
+    "no reliable official rows remain after validation": 78,
     "only one parsed row": 1,
     "only one parsed row; no Chief row in a small parsed filing": 6,
     "parser confidence is low": 406
@@ -1997,26 +1997,6 @@
       ]
     },
     {
-      "bandId": 390,
-      "band": "Fishing Lake First Nation",
-      "province": "SK",
-      "year": "2025-2026",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=390&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Official ISC listing confirms the document is posted; figures await source verification.",
-        "Complete hash-bound schedule and column classification require source review",
-        "Parsed from keyword-aware PDF table extraction",
-        "Coordinate-aware pdfplumber table extraction was validated before publication",
-        "Multiple candidate Chief and Council tables found",
-        "Printed schedule footer was not reconciled",
-        "Extraction remains unvalidated",
-        "Complete printed schedule footer or hash-bound visual review is required",
-        "No official rows parsed",
-        "no rows"
-      ]
-    },
-    {
       "bandId": 395,
       "band": "Flying Dust First Nation",
       "province": "SK",
@@ -2314,8 +2294,7 @@
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "Local OCR text contained no reliable official rows",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+        "The original schedule gives five rows by role and supplies no names for any official."
       ]
     },
     {
@@ -4342,35 +4321,6 @@
       ]
     },
     {
-      "bandId": 375,
-      "band": "Muskeg Lake Cree Nation",
-      "province": "SK",
-      "year": "2025-2026",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=375&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Official ISC listing confirms the document is posted; figures await source verification.",
-        "Complete hash-bound schedule and column classification require source review",
-        "Parsed from PDF text fallback",
-        "Totals do not reconcile for many rows",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "Row 6: total does not equal remuneration + travel/expenses + other",
-        "Row 7: total does not equal remuneration + travel/expenses + other",
-        "Local text output failed validation; trying free local OCR",
-        "OCR deferred; rerun with --ocr or review original PDF",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted",
-        "Extraction remains unvalidated",
-        "Complete printed schedule footer or hash-bound visual review is required",
-        "No official rows parsed",
-        "no rows",
-        "Printed salary footer is 678046; source salary rows sum to 678045. Printed benefits footer is 3461; source benefits rows sum to 3462. No component was changed to force agreement."
-      ]
-    },
-    {
       "bandId": 371,
       "band": "Muskoday First Nation",
       "province": "SK",
@@ -5523,12 +5473,10 @@
       "band": "Piapot First Nation",
       "province": "SK",
       "year": "2025-2026",
-      "reason": "no reliable official rows remain after validation",
+      "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=385&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
-        "Official ISC listing confirms the document is posted; figures await source verification.",
-        "Complete hash-bound schedule and column classification require source review",
-        "Complete printed schedule footer or hash-bound visual review is required"
+        "The original schedule deducts $135,955 in unreimbursed payments made to members from Mark Fox’s total. Keep the transfer distinct from pay and expenses when displaying the printed total."
       ]
     },
     {
@@ -6090,18 +6038,6 @@
       "year": "2023-2024",
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "OCR deferred; rerun with --ocr or review original PDF",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 314,
-      "band": "Sapotaweyak Cree Nation",
-      "province": "MB",
-      "year": "2025-2026",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "warnings": [
         "OCR deferred; rerun with --ocr or review original PDF",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
