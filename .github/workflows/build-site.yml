@@ -68,7 +68,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: openband-v2-data-writers
+  group: ${{ github.event_name == 'pull_request' && format('openband-route-build-pr-{0}', github.event.pull_request.number) || 'openband-v2-data-writers' }}
   cancel-in-progress: false
 
 jobs:
