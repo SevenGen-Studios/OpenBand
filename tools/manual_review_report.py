@@ -1,8 +1,8 @@
 """Generate a structured queue of remuneration filings needing manual review."""
 
+import argparse
 import json
 import re
-import sys
 from collections import Counter
 from pathlib import Path
 
@@ -58,16 +58,99 @@ def build_report(data):
     }
 
 
+def independently_ocr_checked(filing):
+    digest = filing.get('sha256') or ''
+    people = filing.get('people') or []
+    if (not re.fullmatch(r'[a-f0-9]{64}', digest) or not people
+            or filing.get('manual_review_required')):
+        return False
+
+    review = filing.get('manualSourceReview') or {}
+    ocr = review.get('ocrVerification') or {}
+    reviewed_ocr = ocr.get('engine') and ocr.get('sha256') == digest
+    legacy_method = re.search(r'\b(?:RapidOCR|independent Apple Vision OCR)\b',
+                              str(review.get('reviewMethod') or ''), re.I)
+    if (review.get('completeSchedule') and review.get('identityAndYearConfirmed')
+            and review.get('sha256') == digest and review.get('sourcePdf') == filing.get('href')
+            and review.get('sourceRowCount') == len(people) and (reviewed_ocr or legacy_method)):
+        return True
+
+    independent = filing.get('independentVerification') or {}
+    secondary = filing.get('secondaryExtraction') or {}
+    return (
+        independent.get('status') == 'source_checks_passed'
+        and independent.get('sourceSha256') == digest
+        and secondary.get('sha256') == digest
+        and bool(secondary.get('engine'))
+        and any(page.get('rawText') for page in secondary.get('pages', []))
+    )
+
+
+def build_ocr_queue(data):
+    queue = []
+    checked = Counter()
+    priorities = {'manual_review': 0, 'independent_ocr_needed': 1, 'source_needed': 2}
+
+    for band in data.get('bands', []):
+        for filing in band.get('filings', []):
+            if not is_remuneration(filing) or not filing.get('posted'):
+                continue
+            province = band.get('province') or 'unknown'
+            if independently_ocr_checked(filing):
+                checked[province] += 1
+                continue
+            warnings = filing.get('warnings') or []
+            wrong_source = (filing.get('verificationStatus') == 'wrong_document_type'
+                            or 'wrong_document' in str(filing.get('parse_status') or ''))
+            if not filing.get('href') or wrong_source:
+                status = 'source_needed'
+                reason = warnings[0] if warnings else 'Obtain the original remuneration schedule.'
+            elif (filing.get('manual_review_required') or not filing.get('people')
+                  or filing.get('parse_confidence') == 'low'):
+                status = 'manual_review'
+                reason = warnings[0] if warnings else review_reason(filing)
+            else:
+                status = 'independent_ocr_needed'
+                reason = 'Compare the published rows to independent OCR and the original page.'
+            queue.append({
+                'bandId': band.get('id'), 'band': band.get('name'), 'province': province,
+                'year': filing.get('year'), 'status': status, 'reason': reason,
+                'sourcePdf': filing.get('href'), 'sourceSha256': filing.get('sha256'),
+                'publishedRows': len(filing.get('people') or []),
+            })
+
+    queue.sort(key=lambda row: (
+        -int(str(row['year'] or '')[:4]) if str(row['year'] or '')[:4].isdigit() else 0,
+        priorities[row['status']], row['province'], row['band'] or '',
+    ))
+    return {
+        'generatedFrom': data.get('generated'),
+        'postedFilingCount': sum(checked.values()) + len(queue),
+        'independentlyCheckedCount': sum(checked.values()),
+        'independentlyCheckedByProvince': dict(sorted(checked.items())),
+        'queueCounts': dict(sorted(Counter(row['status'] for row in queue).items())),
+        'filings': queue,
+    }
+
+
 def main():
-    data_path = Path(sys.argv[1] if len(sys.argv) > 1 else "data.json")
-    output_path = Path(sys.argv[2] if len(sys.argv) > 2 else "manual-review-report.json")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('data', nargs='?', type=Path, default=Path('data.json'))
+    parser.add_argument('output', nargs='?', type=Path)
+    parser.add_argument('--ocr-queue', action='store_true', help='Prioritize independent OCR and source review.')
+    args = parser.parse_args()
+    data_path = args.data
+    output_path = args.output or Path('ocr-review-queue.json' if args.ocr_queue else 'manual-review-report.json')
     data = json.loads(data_path.read_text(encoding="utf-8"))
-    report = build_report(data)
+    report = build_ocr_queue(data) if args.ocr_queue else build_report(data)
     output_path.write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-    print(f"manual review filings: {report['manualReviewCount']}")
+    if args.ocr_queue:
+        print(f"OCR review filings queued: {len(report['filings'])}")
+    else:
+        print(f"manual review filings: {report['manualReviewCount']}")
     print(f"saved: {output_path}")
 
 
