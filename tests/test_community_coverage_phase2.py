@@ -83,9 +83,26 @@ class ReviewedEvidenceTests(unittest.TestCase):
         report=inventory(ROOT,TODAY)
         self.assertEqual(len(report['communities']),len(self.roster))
         self.assertEqual({p:r['tracked'] for p,r in report['byProvince'].items()},{'SK':69,'AB':48,'MB':63})
-        row=next(r for r in report['communities'] if r['communityId']=='317')
-        self.assertGreater(row['activeJobs'],0)
-        self.assertIn('not established',row['emptyResultMeaning'])
+        # Availability changes between crawls. Test eligibility with fixed evidence.
+        active = {'title': 'Water operator', 'employer': 'Example Nation',
+                  'communityId': '317', 'status': 'Open', 'lastChecked': TODAY.isoformat(),
+                  'closingDate': TODAY.isoformat(), 'verifiedOfficialSource': True,
+                  'sourceUrl': 'https://example.invalid/jobs/operator'}
+        listings = {'listings': [active, {**active, 'title': 'Unconfirmed posting',
+                                        'verifiedOfficialSource': False},
+                                 {**active, 'title': 'Expired posting',
+                                  'closingDate': '2026-11-02'}]}
+        original = Path.read_bytes
+
+        def fixture(path):
+            if path == ROOT/'jobs-data.json':
+                return json.dumps(listings).encode()
+            return original(path)
+
+        with patch.object(Path, 'read_bytes', fixture):
+            fixture_report = inventory(ROOT, TODAY)
+        row = next(r for r in fixture_report['communities'] if r['communityId'] == '317')
+        self.assertEqual(row['activeJobs'], 1)
         self.assertTrue(any(s['lastSuccess'] for r in report['communities'] for s in r['sources'] if s['category']=='news'))
 
 
