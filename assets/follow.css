@@ -45,7 +45,14 @@ body > nav > .follow-bell { color:#fff; }
   .tool-actions > .follow-device-status { grid-column:1/-1; }
 }
 @media(max-width:480px) {
-  .follow-nav:has(> .nav-toggle) > .nav-home,
+  .follow-nav > .nav-home {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    min-height:44px;
+    color:#fff;
+  }
   .follow-nav:has(> .nav-toggle) > .nav-creator-support-mobile { display:none; }
   .follow-nav:has(> .nav-toggle) .nav-r > a.nav-creator-support { display:flex; }
   .follow-nav > .nav-toggle { order:2; }
