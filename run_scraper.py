@@ -1109,6 +1109,82 @@ def _extract_elected_salary_schedule(text):
     return people
 
 
+def _parse_explicit_payment_schedule(text):
+    """Return a validated result for recognized layouts, or None for other schedules."""
+    lines = [_clean_cell(line).replace('–', '-').replace('—', '-') for line in text.splitlines()]
+    header = re.compile(
+        r'(?:position months \(1\) \(2\) expenses \(3\) remuneration total'
+        r'|name of individual position / title months remuneration remuneration remuneration reimbursed'
+        r'|position (?:number of )?months remuneration expenses other remuneration total'
+        r'|months remuneration other remuneration total remuneration expenses reimbursed)$', re.I)
+    for index, line in enumerate(lines):
+        if header.search(line):
+            break
+    else:
+        return None
+    subtotal_layout = line.lower().endswith('reimbursed')
+    amount = r'(?:\(?-?\d+(?:,\d{3})*(?:\.\d+)?\)?|-)'
+    columns = rf'({amount})\s+({amount})\s+({amount})\s+({amount})'
+    official = re.compile(r'^(.*?)\s+(chief|councill?or)\s+(\d{1,2})\s+(.*)$', re.I)
+    people, footer, reported_columns = [], None, []
+    reached_notes = False
+
+    def review():
+        return {
+            'parse_status': 'manual_review', 'manual_review_required': True,
+            'parse_confidence': 'low', 'people': [],
+            'warnings': ['Recognized remuneration layout failed row, subtotal or footer reconciliation'],
+        }
+
+    for line in lines[index + 1:]:
+        line = ' '.join(line.replace('$', ' ').split())
+        if not line:
+            continue
+        match = official.fullmatch(line)
+        if not match:
+            bottom = re.fullmatch(rf'(?:totals?\s+)?{columns}', line, re.I)
+            if bottom:
+                footer = [parser_quality.number(value) or 0 for value in bottom.groups()]
+                break
+            if re.match(r'^(?:notes?\b|\([a-z\d]+\))', line, re.I) and people:
+                reached_notes = True
+                break
+            return review()
+        name, role, months, amounts = match.groups()
+        values = re.fullmatch(columns, amounts)
+        if not values or not _looks_like_person_name(name) or not 0 < int(months) <= 12:
+            return review()
+        pay, second, third, fourth = [parser_quality.number(value) or 0 for value in values.groups()]
+        reported_columns.append((pay, second, third, fourth))
+        if subtotal_layout:
+            other, subtotal, expenses = second, third, fourth
+            if abs(pay + other - subtotal) > 0.01:
+                return review()
+            total = subtotal + expenses
+        else:
+            expenses, other, total = second, third, fourth
+            if abs(pay + expenses + other - total) > 0.01:
+                return review()
+        people.append({
+            'name': name, 'role': 'Chief' if role.lower() == 'chief' else 'Councillor',
+            'months': int(months), 'remuneration': pay, 'travel': None,
+            'expenses': expenses, 'creditCard': None, 'otherPayments': other,
+            'total': total,
+        })
+
+    if footer is None and (not subtotal_layout or not reached_notes):
+        return review()
+    if footer and any(abs(sum(values) - printed) > 0.01
+                      for values, printed in zip(zip(*reported_columns), footer)):
+        return review()
+    source_total = footer[2] + footer[3] if footer and subtotal_layout else footer[3] if footer else None
+    result = parser_quality.apply_validation_metadata({
+        'parse_status': 'ok_pdf_explicit_payment_columns', 'people': people,
+        'warnings': ['Payment components reconciled to the printed total or remuneration subtotal'],
+    }, source_total=source_total, strict=True)
+    return review() if result['manual_review_required'] else result
+
+
 def _ocr_footer_total(pages):
     """Read a labelled grand total or the two printed pay/expense subtotals."""
     found = []
@@ -1152,6 +1228,9 @@ def _extract_remuneration_rows_enhanced(pdf_url, recognized_ocr=None, skip_nativ
         }
 
     for text in native_page_texts or []:
+        explicit = _parse_explicit_payment_schedule(text)
+        if explicit is not None:
+            return explicit
         people = _extract_split_funding_schedule(text)
         if people:
             result = parser_quality.apply_validation_metadata({
@@ -1163,6 +1242,10 @@ def _extract_remuneration_rows_enhanced(pdf_url, recognized_ocr=None, skip_nativ
                 return result
 
     if recognized_ocr and recognized_ocr.get('pages'):
+        for text in recognized_ocr['pages']:
+            explicit = _parse_explicit_payment_schedule(text)
+            if explicit is not None:
+                return explicit
         source_total = _ocr_footer_total(recognized_ocr['pages'])
         if source_total is not None:
             result = parser_quality.apply_validation_metadata({
@@ -1184,6 +1267,9 @@ def _extract_remuneration_rows_enhanced(pdf_url, recognized_ocr=None, skip_nativ
             with scraper.pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
                 for page in pdf.pages:
                     page_text = page.extract_text(x_tolerance=1, y_tolerance=3) or ""
+                    explicit = _parse_explicit_payment_schedule(page_text)
+                    if explicit is not None:
+                        return explicit
                     salary_people = _extract_elected_salary_schedule(page_text)
                     method = 'ok_pdf_salary_schedule'
                     note = 'Salary and honoraria combined as remuneration; all source columns and totals reconciled'
@@ -1280,6 +1366,10 @@ def _extract_remuneration_rows_enhanced(pdf_url, recognized_ocr=None, skip_nativ
     ocr_result = recognized_ocr if recognized_ocr is not None else local_ocr.ocr_pdf_bytes(pdf_bytes)
     ocr_warnings = ocr_result.get("warnings") or []
     if ocr_result.get("pages"):
+        for text in ocr_result["pages"]:
+            explicit = _parse_explicit_payment_schedule(text)
+            if explicit is not None:
+                return explicit
         ocr_people = _extract_people_from_text_pages(ocr_result["pages"])
         if ocr_people:
             result = parser_quality.apply_validation_metadata(

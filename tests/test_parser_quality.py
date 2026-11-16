@@ -8,6 +8,46 @@ from tools import sanitize_data
 
 
 class ParserQualityTests(unittest.TestCase):
+    def test_explicit_reported_total_uses_full_expenses_and_checks_the_footer(self):
+        text = '''Schedule of Remuneration and Expenses - Chief and Councillors
+Number of Remuneration Other
+Position Months (1) (2) Expenses (3) remuneration Total
+David Monias Chief 12 113,923 32,918 - 146,841
+David Muswaggon Councillor 12 101,039 26,000 - 127,039
+214,962 58,918 - 273,880
+(1) Months reported'''
+        result = run_scraper._parse_explicit_payment_schedule(text)
+        self.assertFalse(result['manual_review_required'])
+        self.assertEqual(result['sourceTotal'], 273880)
+        self.assertEqual(result['people'][0]['travelExpenses'], 32918)
+        self.assertEqual(result['people'][0]['total'], 146841)
+        for corrupt in (text.replace('32,918', '32 918'),
+                        text.replace('58,918', '58,900'),
+                        text.replace('214,962 58,918 - 273,880', '')):
+            result = run_scraper._parse_explicit_payment_schedule(corrupt)
+            self.assertTrue(result['manual_review_required'])
+            self.assertEqual(result['people'], [])
+
+    def test_ocr_checks_remuneration_subtotal_before_adding_expenses(self):
+        text = '''Schedule of Remuneration and Expenses for Elected or Appointed Officials
+Number of Other Total Expenses
+Name of Individual Position / Title Months Remuneration Remuneration Remuneration Reimbursed
+Kurvis Anderson Chief 12 101,000 34,695 135,695 87,554
+Note 1 - Basis of accounting'''
+        with patch.object(run_scraper.scraper, 'fetch_url', return_value=b'%PDF-test'):
+            def extract(page):
+                return run_scraper._extract_remuneration_rows_enhanced(
+                    'https://example.test/pay.pdf', recognized_ocr={'pages': [page]}, skip_native=True)
+
+            result = extract(text)
+            self.assertFalse(result['manual_review_required'])
+            self.assertEqual(result['people'][0]['total'], 223249)
+            self.assertEqual(result['people'][0]['remuneration'], 101000)
+            for corrupt in (text.replace('135,695', '135,660'), text.split('Note 1')[0]):
+                result = extract(corrupt)
+                self.assertTrue(result['manual_review_required'])
+                self.assertEqual(result['people'], [])
+
     def test_samson_dual_role_preserves_reported_funding_subtotals(self):
         text = (Path(__file__).parent / 'fixtures' / 'ab_444_2016_remuneration.txt').read_text(encoding='utf8')
         people = run_scraper._extract_split_funding_schedule(text)

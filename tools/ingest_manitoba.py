@@ -49,7 +49,7 @@ def configure():
     engine.PROVINCE='MB';engine.CACHE=ROOT/'.openband-ocr/manitoba'
     engine.SOURCE_CACHE=SOURCE_CACHE;engine.ROSTER_PATH=ROOT/'manitoba-nations.json'
     engine.WORKER_SCRIPT=Path(__file__).resolve()
-    engine.PARSER_REVISION='manitoba-20261101-v2-'+ 'alberta-20261009-v28'
+    engine.PARSER_REVISION='manitoba-20261116-v3-' + engine.PARSER_REVISION
     engine.write=safe_write
     from tools import manitoba_source_formats
     engine.download=manitoba_source_formats.download
