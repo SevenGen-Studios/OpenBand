@@ -48,6 +48,20 @@ Note 1 - Basis of accounting'''
                 self.assertTrue(result['manual_review_required'])
                 self.assertEqual(result['people'], [])
 
+    def test_mapped_remuneration_subtotal_is_checked_and_excluded_from_sum(self):
+        table = [
+            ['Name', 'Position', 'Months', 'Remuneration', 'Other Remuneration',
+             'Total Remuneration', 'Expenses Reimbursed'],
+            ['Jane Bear', 'Chief', '12', '90,000', '10,000', '100,000', '20,000'],
+        ]
+        people = run_scraper._extract_people_from_keyword_table(table)
+        self.assertEqual(people[0]['total'], 120000)
+        self.assertEqual(people[0]['remuneration'], 90000)
+        for subtotal in ('100,001', '', '100,000 20,000'):
+            table[1][5] = subtotal
+            with self.assertRaises(run_scraper._UnreconciledPaymentColumns):
+                run_scraper._extract_people_from_keyword_table(table)
+
     def test_samson_dual_role_preserves_reported_funding_subtotals(self):
         text = (Path(__file__).parent / 'fixtures' / 'ab_444_2016_remuneration.txt').read_text(encoding='utf8')
         people = run_scraper._extract_split_funding_schedule(text)
