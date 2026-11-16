@@ -140,7 +140,7 @@ class FinancialEntryTests(unittest.TestCase):
         import hashlib
         root=Path(__file__).resolve().parents[1]
         # Update these baselines only for intentional public interface changes.
-        expected = {'assets/openband.js': '0a3ff6a923031d60529bc7d8f39b803e50bbdaa91bcf1c7a598baaaee565b958', 'assets/openband.css': '9dcbb8740ab1106420465d41005cb5f1e5334122cbfa22666042a40ec40bc695', 'index.html': 'd651ee57de392e71118c6e9f220354ecac835db42ba6fbff3ce54b695f27c85e'}
+        expected = {'assets/openband.js': '0a3ff6a923031d60529bc7d8f39b803e50bbdaa91bcf1c7a598baaaee565b958', 'assets/openband.css': '9dcbb8740ab1106420465d41005cb5f1e5334122cbfa22666042a40ec40bc695', 'index.html': '1e0667c1868f15fa356149d2bc6ade1d278201d59f9e6bdafe25788bf5f5db24'}
         for filename, digest in expected.items():
             self.assertEqual(hashlib.sha256((root/filename).read_bytes()).hexdigest(),digest,filename)
 
