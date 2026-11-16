@@ -88,3 +88,18 @@ class ManualReviewReportTests(unittest.TestCase):
             ('2021-2022', 'independent_ocr_needed'),
             ('2020-2021', 'source_needed'),
         ])
+
+    def test_printed_total_discrepancy_stays_in_manual_review(self):
+        digest = 'a' * 64
+        filing = {'docType': 'Schedule of Remuneration and Expenses', 'year': '2025-2026',
+                  'posted': True, 'href': 'https://example.test/source.pdf', 'sha256': digest,
+                  'people': [{'name': 'Official', 'total': 10}],
+                  'manualReviewEvidence': {'sha256': digest, 'outcome': 'printed_totals_differ',
+                                           'reason': 'The printed total is one dollar lower.'}}
+        data = {'bands': [{'id': 1, 'name': 'Example Nation', 'province': 'AB', 'filings': [filing]}]}
+        row = manual_review_report.build_ocr_queue(data)['filings'][0]
+        self.assertEqual((row['status'], row['reason']),
+                         ('manual_review', 'The printed total is one dollar lower.'))
+        filing['manualReviewEvidence']['sha256'] = 'b' * 64
+        row = manual_review_report.build_ocr_queue(data)['filings'][0]
+        self.assertEqual(row['status'], 'independent_ocr_needed')
