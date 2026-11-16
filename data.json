@@ -173494,74 +173494,137 @@
           "date": "2026-08-19",
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=266&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "manual_review",
+          "people": [
+            {
+              "name": "Everett, Hartley",
+              "role": "Chief",
+              "months": 12,
+              "remuneration": 105252,
+              "expenses": 139985,
+              "otherPayments": 0,
+              "total": 245237,
+              "travelExpenses": 139985.0,
+              "other": 0
+            },
+            {
+              "name": "Whiteway, Roland",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 94552,
+              "expenses": 100677,
+              "otherPayments": 0,
+              "total": 195229,
+              "travelExpenses": 100677.0,
+              "other": 0
+            },
+            {
+              "name": "Everett, Jackie",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 93303,
+              "expenses": 54869,
+              "otherPayments": 0,
+              "total": 148172,
+              "travelExpenses": 54869.0,
+              "other": 0
+            },
+            {
+              "name": "Boulanger, Glen",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 98305,
+              "expenses": 197924,
+              "otherPayments": 0,
+              "total": 296229,
+              "travelExpenses": 197924.0,
+              "other": 0
+            },
+            {
+              "name": "Disbrowe, Paul",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 93303,
+              "expenses": 67430,
+              "otherPayments": 0,
+              "total": 160733,
+              "travelExpenses": 67430.0,
+              "other": 0
+            },
+            {
+              "name": "Berens, Steve",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 91149,
+              "expenses": 58800,
+              "otherPayments": 0,
+              "total": 149949,
+              "travelExpenses": 58800.0,
+              "other": 0
+            },
+            {
+              "name": "Schwarz, Blakie",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 93303,
+              "expenses": 92617,
+              "otherPayments": 0,
+              "total": 185920,
+              "travelExpenses": 92617.0,
+              "other": 0
+            }
+          ],
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=266&lang=eng",
           "sourceBandNumber": 266,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-02T02:26:50+00:00",
           "nationId": 266,
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "e7da13423d795ea7cce7810b71e7fdb0a68d12cf02b94ace55f8ecf8a6729617",
           "byteSize": 106339,
-          "lastChecked": "2026-11-02T02:32:52+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 266,
+            "bandName": "Berens River",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=266&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "e7da13423d795ea7cce7810b71e7fdb0a68d12cf02b94ace55f8ecf8a6729617",
+            "pdfPage": 4,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 7,
+            "sourceTotal": null,
+            "totalMethod": "sum_of_reported_components",
+            "warnings": [
+              "Total includes the printed band business expense subtotal. Its travel and indirect program components are excluded from the sum because they are already included in that subtotal."
+            ],
+            "reviewContentSha256": "6d206fac87044bf5e9c616b0eb8dfe07a7d2188ba3271152cf57ac8cff5ada88"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "Parsed from PDF text fallback",
-            "Totals do not reconcile for many rows",
-            "Row 1: total does not equal remuneration + travel/expenses + other",
-            "Row 2: total does not equal remuneration + travel/expenses + other",
-            "Row 3: total does not equal remuneration + travel/expenses + other",
-            "Row 4: total does not equal remuneration + travel/expenses + other",
-            "Row 5: total does not equal remuneration + travel/expenses + other",
-            "Row 6: total does not equal remuneration + travel/expenses + other",
-            "Row 7: total does not equal remuneration + travel/expenses + other",
-            "Local text output failed validation; trying free local OCR",
-            "OCR deferred; rerun with --ocr or review original PDF",
-            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+            "Total includes the printed band business expense subtotal. Its travel and indirect program components are excluded from the sum because they are already included in that subtotal."
           ],
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "failed_validation",
-              "warnings": [
-                "Parsed from PDF text fallback",
-                "Totals do not reconcile for many rows",
-                "Row 1: total does not equal remuneration + travel/expenses + other",
-                "Row 2: total does not equal remuneration + travel/expenses + other",
-                "Row 3: total does not equal remuneration + travel/expenses + other",
-                "Row 4: total does not equal remuneration + travel/expenses + other",
-                "Row 5: total does not equal remuneration + travel/expenses + other",
-                "Row 6: total does not equal remuneration + travel/expenses + other",
-                "Row 7: total does not equal remuneration + travel/expenses + other"
-              ]
-            },
-            {
-              "stage": "ocr",
-              "status": "deferred",
-              "warnings": [
-                "OCR deferred; rerun with --ocr or review original PDF"
-              ]
-            },
-            {
-              "stage": "openai",
-              "status": "disabled",
-              "warnings": [
-                "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
-          "parse_confidence": "low",
-          "manual_review_required": true,
+          "parse_confidence": "high",
+          "manual_review_required": false,
           "nativePageCount": 5,
           "nativeTextCharacters": 6138,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "sourceTotal": null,
+          "technical_status": "parsed"
         }
       ],
       "website": "https://www.berensriver.ca/",
@@ -174968,64 +175031,115 @@
           "date": "2026-06-01",
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=284&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "manual_review",
+          "people": [
+            {
+              "name": "Lindsay Bunn",
+              "role": "Chief",
+              "months": 12,
+              "remuneration": 75600,
+              "expenses": 62569,
+              "otherPayments": 0,
+              "total": 138169,
+              "travelExpenses": 62569.0,
+              "other": 0
+            },
+            {
+              "name": "Carson Benn",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 73314,
+              "expenses": 141078,
+              "otherPayments": 0,
+              "total": 214392,
+              "travelExpenses": 141078.0,
+              "other": 0
+            },
+            {
+              "name": "Chris Benn",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 58157,
+              "expenses": 85282,
+              "otherPayments": 0,
+              "total": 143439,
+              "travelExpenses": 85282.0,
+              "other": 0
+            },
+            {
+              "name": "Heath Bunn",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 18196,
+              "expenses": 6325,
+              "otherPayments": 0,
+              "total": 24521,
+              "travelExpenses": 6325.0,
+              "other": 0
+            },
+            {
+              "name": "Theresa Kasto",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 24026,
+              "expenses": 2503,
+              "otherPayments": 0,
+              "total": 26529,
+              "travelExpenses": 2503.0,
+              "other": 0
+            }
+          ],
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=284&lang=eng",
           "sourceBandNumber": 284,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-02T02:26:54+00:00",
           "nationId": 284,
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "1830b24cbffa814255be2d35a1b17ac2b41b6e75413a2c83c9632950ae5733aa",
           "byteSize": 551617,
-          "lastChecked": "2026-11-02T02:32:50+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 284,
+            "bandName": "Birdtail Sioux",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=284&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "1830b24cbffa814255be2d35a1b17ac2b41b6e75413a2c83c9632950ae5733aa",
+            "pdfPage": 3,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 5,
+            "sourceTotal": 547050,
+            "totalMethod": "printed_row_totals",
+            "warnings": [
+              "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
+            ],
+            "reviewContentSha256": "ef1e5004710558aa6c4aac046c20464061c62b415325b44467db120993ca7ef5"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "Parsed from PDF text fallback",
-            "A complete Chief and Council schedule requires an identified Chief row",
-            "No Chief row detected",
-            "Only one official row parsed",
-            "Local text output failed validation; trying free local OCR",
-            "OCR deferred; rerun with --ocr or review original PDF",
-            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+            "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
           ],
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "failed_validation",
-              "warnings": [
-                "Parsed from PDF text fallback",
-                "A complete Chief and Council schedule requires an identified Chief row",
-                "No Chief row detected",
-                "Only one official row parsed"
-              ]
-            },
-            {
-              "stage": "ocr",
-              "status": "deferred",
-              "warnings": [
-                "OCR deferred; rerun with --ocr or review original PDF"
-              ]
-            },
-            {
-              "stage": "openai",
-              "status": "disabled",
-              "warnings": [
-                "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
-          "parse_confidence": "low",
-          "manual_review_required": true,
+          "parse_confidence": "high",
+          "manual_review_required": false,
           "nativePageCount": 3,
           "nativeTextCharacters": 3876,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "sourceTotal": 547050,
+          "technical_status": "parsed"
         }
       ],
       "website": "https://birdtailsioux.ca/",
@@ -178025,96 +178139,82 @@
             {
               "name": "Lisa Young",
               "role": "Chief",
-              "months": 6.0,
-              "remuneration": 37093.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 37093,
-              "travelExpenses": 0,
+              "months": 6,
+              "remuneration": 37093,
+              "expenses": 16947,
+              "otherPayments": 0,
+              "total": 54040,
+              "travelExpenses": 16947.0,
               "other": 0
             },
             {
               "name": "Roland Hamilton",
               "role": "Chief",
-              "months": 4.0,
-              "remuneration": 24615.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 24615,
-              "travelExpenses": 0,
+              "months": 4,
+              "remuneration": 24615,
+              "expenses": 4764,
+              "otherPayments": 0,
+              "total": 29379,
+              "travelExpenses": 4764.0,
               "other": 0
             },
             {
               "name": "Ellen Young",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 100385.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 100385,
-              "travelExpenses": 0,
+              "months": 12,
+              "remuneration": 100385,
+              "expenses": 25826,
+              "otherPayments": 0,
+              "total": 126211,
+              "travelExpenses": 25826.0,
               "other": 0
             },
             {
               "name": "Kelvin Raven",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 88885.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 88885,
-              "travelExpenses": 0,
+              "months": 12,
+              "remuneration": 88885,
+              "expenses": 40360,
+              "otherPayments": 0,
+              "total": 129245,
+              "travelExpenses": 40360.0,
               "other": 0
             },
             {
               "name": "Lorraine Cook",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 98177.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 98177,
-              "travelExpenses": 0,
+              "months": 12,
+              "remuneration": 98177,
+              "expenses": 43851,
+              "otherPayments": 0,
+              "total": 142028,
+              "travelExpenses": 43851.0,
               "other": 0
             },
             {
               "name": "Cindy Young",
               "role": "Councillor",
-              "months": 6.0,
-              "remuneration": 56923.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 56923,
-              "travelExpenses": 0,
+              "months": 6,
+              "remuneration": 56923,
+              "expenses": 38377,
+              "otherPayments": 0,
+              "total": 95300,
+              "travelExpenses": 38377.0,
               "other": 0
             },
             {
               "name": "Oswald Turtle",
               "role": "Councillor",
-              "months": 6.0,
-              "remuneration": 35462.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 35462,
-              "travelExpenses": 0,
+              "months": 6,
+              "remuneration": 35462,
+              "expenses": 16759,
+              "otherPayments": 0,
+              "total": 52221,
+              "travelExpenses": 16759.0,
               "other": 0
             }
           ],
-          "parse_status": "ok_pdf_keyword_table",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=267&lang=eng",
           "sourceBandNumber": 267,
@@ -178124,35 +178224,48 @@
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "5638bde744c4ed8e99d27e85387d114f76d28a91c555a4fb62ac98f4beac37b4",
           "byteSize": 158781,
-          "lastChecked": "2026-11-02T02:32:48+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 267,
+            "bandName": "Bloodvein",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=267&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "5638bde744c4ed8e99d27e85387d114f76d28a91c555a4fb62ac98f4beac37b4",
+            "pdfPage": 4,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 7,
+            "sourceTotal": 628424,
+            "totalMethod": "sum_of_reported_components",
+            "warnings": [
+              "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
+            ],
+            "reviewContentSha256": "168d9f4b5e3698672354085ac4913c67c29719d688f793fe5d09eb5039e19d30"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "Parsed from keyword-aware PDF table extraction",
-            "Coordinate-aware pdfplumber table extraction was validated before publication",
-            "Multiple candidate Chief and Council tables found"
+            "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
           ],
-          "sourceTotal": null,
+          "sourceTotal": 628424,
           "parse_confidence": "high",
           "manual_review_required": false,
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "ok_pdf_keyword_table",
-              "warnings": [
-                "Parsed from keyword-aware PDF table extraction",
-                "Coordinate-aware pdfplumber table extraction was validated before publication",
-                "Multiple candidate Chief and Council tables found"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
           "nativePageCount": 4,
           "nativeTextCharacters": 4520,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "technical_status": "parsed"
         }
       ],
       "website": "https://pimaki.ca/about-us/communities/bloodvein-river-first-nation/",
@@ -184636,44 +184749,38 @@
             {
               "name": "Raymond Brown",
               "role": "Chief",
-              "months": 12.0,
-              "remuneration": 62330.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 62330,
-              "travelExpenses": 0,
+              "months": 12,
+              "remuneration": 62330,
+              "expenses": 139254,
+              "otherPayments": 0,
+              "total": 201584,
+              "travelExpenses": 139254.0,
               "other": 0
             },
             {
               "name": "Gerald Sandy",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 54200.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 54200,
-              "travelExpenses": 0,
+              "months": 12,
+              "remuneration": 54200,
+              "expenses": 17075,
+              "otherPayments": 0,
+              "total": 71275,
+              "travelExpenses": 17075.0,
               "other": 0
             },
             {
               "name": "Tim Eastman",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 52200.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 52200,
-              "travelExpenses": 0,
+              "months": 12,
+              "remuneration": 52200,
+              "expenses": 8152,
+              "otherPayments": 0,
+              "total": 60352,
+              "travelExpenses": 8152.0,
               "other": 0
             }
           ],
-          "parse_status": "ok_pdf_keyword_table",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=289&lang=eng",
           "sourceBandNumber": 289,
@@ -184683,35 +184790,48 @@
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "817d2a374f964059790a9ef3e25632ae3c4fadc6c5ca066e30b0b55462114f28",
           "byteSize": 189375,
-          "lastChecked": "2026-11-02T02:32:43+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 289,
+            "bandName": "Canupawakpa Dakota First Nation",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=289&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "817d2a374f964059790a9ef3e25632ae3c4fadc6c5ca066e30b0b55462114f28",
+            "pdfPage": 4,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 3,
+            "sourceTotal": 333211,
+            "totalMethod": "sum_of_reported_components",
+            "warnings": [
+              "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
+            ],
+            "reviewContentSha256": "48ec366e945beb2c2d3c836e10703ca85ae70ee7a9d2ddf4af625741a11cb9fd"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "Parsed from keyword-aware PDF table extraction",
-            "Coordinate-aware pdfplumber table extraction was validated before publication",
-            "Multiple candidate Chief and Council tables found"
+            "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
           ],
-          "sourceTotal": null,
+          "sourceTotal": 333211,
           "parse_confidence": "high",
           "manual_review_required": false,
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "ok_pdf_keyword_table",
-              "warnings": [
-                "Parsed from keyword-aware PDF table extraction",
-                "Coordinate-aware pdfplumber table extraction was validated before publication",
-                "Multiple candidate Chief and Council tables found"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
           "nativePageCount": 4,
           "nativeTextCharacters": 4018,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "technical_status": "parsed"
         }
       ],
       "website": "https://canupawakpanation.com/",
@@ -186355,12 +186475,10 @@
               "name": "Clarence Easter",
               "role": "Chief",
               "months": 12,
-              "remuneration": 105500,
-              "travel": 46028,
-              "expenses": null,
-              "creditCard": null,
+              "remuneration": 117500,
+              "expenses": 46028,
               "otherPayments": 500,
-              "total": 152028,
+              "total": 164028,
               "travelExpenses": 46028.0,
               "other": 500.0
             },
@@ -186368,12 +186486,10 @@
               "name": "Conway Munroe",
               "role": "Councillor",
               "months": 12,
-              "remuneration": 61628,
-              "travel": 14653,
-              "expenses": null,
-              "creditCard": null,
+              "remuneration": 73628,
+              "expenses": 14653,
               "otherPayments": 941,
-              "total": 77222,
+              "total": 89222,
               "travelExpenses": 14653.0,
               "other": 941.0
             },
@@ -186381,12 +186497,10 @@
               "name": "Franklin Turner",
               "role": "Councillor",
               "months": 4,
-              "remuneration": 18809,
-              "travel": 7125,
-              "expenses": null,
-              "creditCard": null,
+              "remuneration": 22809,
+              "expenses": 7125,
               "otherPayments": 30564,
-              "total": 56498,
+              "total": 60498,
               "travelExpenses": 7125.0,
               "other": 30564.0
             },
@@ -186394,38 +186508,32 @@
               "name": "Quentin Mink",
               "role": "Councillor",
               "months": 12,
-              "remuneration": 61628,
-              "travel": 24458,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 86086,
+              "remuneration": 73628,
+              "expenses": 24458,
+              "otherPayments": 0,
+              "total": 98086,
               "travelExpenses": 24458.0,
-              "other": 0.0
+              "other": 0
             },
             {
               "name": "Sheldon Bourassa",
               "role": "Councillor",
               "months": 4,
-              "remuneration": 21160,
-              "travel": 6893,
-              "expenses": null,
-              "creditCard": null,
+              "remuneration": 25160,
+              "expenses": 6893,
               "otherPayments": 30564,
-              "total": 58617,
+              "total": 62617,
               "travelExpenses": 6893.0,
               "other": 30564.0
             },
             {
-              "name": "Vincent Ledoux Jr",
+              "name": "Vincent Ledoux Jr.",
               "role": "Councillor",
               "months": 4,
-              "remuneration": 18809,
-              "travel": 4340,
-              "expenses": null,
-              "creditCard": null,
+              "remuneration": 22809,
+              "expenses": 4340,
               "otherPayments": 30964,
-              "total": 54113,
+              "total": 58113,
               "travelExpenses": 4340.0,
               "other": 30964.0
             },
@@ -186433,25 +186541,21 @@
               "name": "Sidney Brass",
               "role": "Councillor",
               "months": 9,
-              "remuneration": 43040,
-              "travel": 19121,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 62161,
+              "remuneration": 52040,
+              "expenses": 19121,
+              "otherPayments": 0,
+              "total": 71161,
               "travelExpenses": 19121.0,
-              "other": 0.0
+              "other": 0
             },
             {
               "name": "Derek Packo",
               "role": "Councillor",
               "months": 9,
-              "remuneration": 43040,
-              "travel": 32345,
-              "expenses": null,
-              "creditCard": null,
+              "remuneration": 52040,
+              "expenses": 32345,
               "otherPayments": 377,
-              "total": 75762,
+              "total": 84762,
               "travelExpenses": 32345.0,
               "other": 377.0
             },
@@ -186459,17 +186563,15 @@
               "name": "Zerlina Young",
               "role": "Councillor",
               "months": 9,
-              "remuneration": 42984,
-              "travel": 5466,
-              "expenses": null,
-              "creditCard": null,
+              "remuneration": 51984,
+              "expenses": 5466,
               "otherPayments": 300,
-              "total": 48750,
+              "total": 57750,
               "travelExpenses": 5466.0,
               "other": 300.0
             }
           ],
-          "parse_status": "ok_pdf_keyword_table",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=309&lang=eng",
           "sourceBandNumber": 309,
@@ -186479,31 +186581,42 @@
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "5e7d73f70ebf06c585a3409b3becafdc19a83ce1062d95c43f378852b21e2b50",
           "byteSize": 377032,
-          "lastChecked": "2026-11-02T02:32:41+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 309,
+            "bandName": "Chemawawin Cree Nation",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "5e7d73f70ebf06c585a3409b3becafdc19a83ce1062d95c43f378852b21e2b50",
+            "pdfPage": 3,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 9,
+            "sourceTotal": 746237,
+            "totalMethod": "sum_of_reported_components",
+            "warnings": [
+              "Remuneration includes salary and honoraria. The printed subtotal also includes other remuneration and is counted once."
+            ],
+            "reviewContentSha256": "a8490b137b9a547f189414e4618c5bc898900a1a570925fc8e70ed90bcecb963"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "Parsed from keyword-aware PDF table extraction",
-            "Coordinate-aware pdfplumber table extraction was validated before publication",
-            "Possible unrelated financial statement table",
-            "Sanitized parsed rows: removed 0, fixed totals 0"
+            "Remuneration includes salary and honoraria. The printed subtotal also includes other remuneration and is counted once."
           ],
-          "sourceTotal": null,
+          "sourceTotal": 746237,
           "parse_confidence": "high",
           "manual_review_required": false,
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "ok_pdf_keyword_table",
-              "warnings": [
-                "Parsed from keyword-aware PDF table extraction",
-                "Coordinate-aware pdfplumber table extraction was validated before publication",
-                "Possible unrelated financial statement table"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
           "lastReparseAttempt": "2026-11-02T02:32:41+00:00",
@@ -186516,7 +186629,8 @@
           "reparseStatus": "ok_pdf_keyword_table",
           "nativePageCount": 3,
           "nativeTextCharacters": 3124,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "technical_status": "parsed"
         }
       ],
       "website": "https://swampycree.com/chemawawin-cree-nation/",
@@ -190175,84 +190289,72 @@
           "people": [
             {
               "name": "Don Smoke",
-              "role": "Chief",
-              "months": 12.0,
-              "remuneration": null,
-              "travel": null,
-              "expenses": 10518.0,
-              "creditCard": null,
-              "otherPayments": 99087.0,
+              "role": "CEO/Chief",
+              "months": 12,
+              "remuneration": 99087,
+              "expenses": 10518,
+              "otherPayments": 0,
               "total": 109605,
               "travelExpenses": 10518.0,
-              "other": 99087.0
+              "other": 0
             },
             {
               "name": "Jeffery Smoke",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 721.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "months": 12,
+              "remuneration": 0,
+              "expenses": 721,
+              "otherPayments": 0,
               "total": 721,
-              "travelExpenses": 0,
+              "travelExpenses": 721.0,
               "other": 0
             },
             {
               "name": "Lisa Roulette",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": null,
-              "travel": null,
-              "expenses": 13589.0,
-              "creditCard": null,
-              "otherPayments": 12000.0,
+              "months": 12,
+              "remuneration": 12000,
+              "expenses": 13589,
+              "otherPayments": 0,
               "total": 25589,
               "travelExpenses": 13589.0,
-              "other": 12000.0
+              "other": 0
             },
             {
               "name": "Megan Johnson",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": null,
-              "travel": null,
-              "expenses": 2246.0,
-              "creditCard": null,
-              "otherPayments": 34952.0,
+              "months": 12,
+              "remuneration": 34952,
+              "expenses": 2246,
+              "otherPayments": 0,
               "total": 37198,
               "travelExpenses": 2246.0,
-              "other": 34952.0
+              "other": 0
             },
             {
               "name": "Rolanna Johnson",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": null,
-              "travel": null,
-              "expenses": 3469.0,
-              "creditCard": null,
-              "otherPayments": 39719.0,
+              "months": 12,
+              "remuneration": 39719,
+              "expenses": 3469,
+              "otherPayments": 0,
               "total": 43188,
               "travelExpenses": 3469.0,
-              "other": 39719.0
+              "other": 0
             },
             {
               "name": "Matthew Smoke",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": null,
-              "travel": null,
-              "expenses": 5556.0,
-              "creditCard": null,
-              "otherPayments": 55341.0,
+              "months": 12,
+              "remuneration": 55341,
+              "expenses": 5556,
+              "otherPayments": 0,
               "total": 60897,
               "travelExpenses": 5556.0,
-              "other": 55341.0
+              "other": 0
             }
           ],
-          "parse_status": "ok_pdf_keyword_table",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=288&lang=eng",
           "sourceBandNumber": 288,
@@ -190262,45 +190364,48 @@
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "5bfbdee4c437188705895936fc606bd5010aeeaa55e0ffdf2d26af6ee8c63fee",
           "byteSize": 219346,
-          "lastChecked": "2026-11-02T02:32:36+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 288,
+            "bandName": "Dakota Plains",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=288&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "5bfbdee4c437188705895936fc606bd5010aeeaa55e0ffdf2d26af6ee8c63fee",
+            "pdfPage": 4,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 6,
+            "sourceTotal": 277198,
+            "totalMethod": "sum_of_reported_components",
+            "warnings": [
+              "The printed expenses column contains the $721 entry for Jeffery Smoke. The remuneration column is blank on that row."
+            ],
+            "reviewContentSha256": "067d7f192e6fa461b391e50509d39affa8491f2a5fe3bd47137b808324b181d0"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "Parsed from keyword-aware PDF table extraction",
-            "Coordinate-aware pdfplumber table extraction was validated before publication",
-            "Multiple candidate Chief and Council tables found",
-            "Row 1: remuneration missing for apparent full-year official",
-            "Row 3: remuneration missing for apparent full-year official",
-            "Row 4: remuneration missing for apparent full-year official",
-            "Row 5: remuneration missing for apparent full-year official",
-            "Row 6: remuneration missing for apparent full-year official"
+            "The printed expenses column contains the $721 entry for Jeffery Smoke. The remuneration column is blank on that row."
           ],
-          "sourceTotal": null,
-          "parse_confidence": "medium",
+          "sourceTotal": 277198,
+          "parse_confidence": "high",
           "manual_review_required": false,
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "ok_pdf_keyword_table",
-              "warnings": [
-                "Parsed from keyword-aware PDF table extraction",
-                "Coordinate-aware pdfplumber table extraction was validated before publication",
-                "Multiple candidate Chief and Council tables found",
-                "Row 1: remuneration missing for apparent full-year official",
-                "Row 3: remuneration missing for apparent full-year official",
-                "Row 4: remuneration missing for apparent full-year official",
-                "Row 5: remuneration missing for apparent full-year official",
-                "Row 6: remuneration missing for apparent full-year official"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
           "nativePageCount": 4,
           "nativeTextCharacters": 4463,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "technical_status": "parsed"
         }
       ],
       "contact": {
@@ -193299,57 +193404,49 @@
             {
               "name": "Lawrence Letander",
               "role": "Chief",
-              "months": 12.0,
-              "remuneration": 60000.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 60000,
-              "travelExpenses": 0,
+              "months": 12,
+              "remuneration": 60000,
+              "expenses": 24871,
+              "otherPayments": 0,
+              "total": 84871,
+              "travelExpenses": 24871.0,
               "other": 0
             },
             {
               "name": "Ryan Anderson",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 50000.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 50000,
-              "travelExpenses": 0,
+              "months": 12,
+              "remuneration": 50000,
+              "expenses": 25933,
+              "otherPayments": 0,
+              "total": 75933,
+              "travelExpenses": 25933.0,
               "other": 0
             },
             {
               "name": "John Stagg",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 50000.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 50000,
-              "travelExpenses": 0,
+              "months": 12,
+              "remuneration": 50000,
+              "expenses": 18796,
+              "otherPayments": 0,
+              "total": 68796,
+              "travelExpenses": 18796.0,
               "other": 0
             },
             {
               "name": "Derek Letander",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 50000.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 50000,
-              "travelExpenses": 0,
+              "months": 12,
+              "remuneration": 50000,
+              "expenses": 21963,
+              "otherPayments": 0,
+              "total": 71963,
+              "travelExpenses": 21963.0,
               "other": 0
             }
           ],
-          "parse_status": "ok_pdf_keyword_table",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=316&lang=eng",
           "sourceBandNumber": 316,
@@ -193359,35 +193456,48 @@
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "0ca46554d649aca1ef5f014215ae2bdad3ee4ddc7117a462bb0add3ba3fd95ee",
           "byteSize": 190254,
-          "lastChecked": "2026-11-02T02:32:35+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 316,
+            "bandName": "Dauphin River",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=316&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "0ca46554d649aca1ef5f014215ae2bdad3ee4ddc7117a462bb0add3ba3fd95ee",
+            "pdfPage": 4,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 4,
+            "sourceTotal": 301563,
+            "totalMethod": "sum_of_reported_components",
+            "warnings": [
+              "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
+            ],
+            "reviewContentSha256": "81b3ba6aad6e60ea56a053e8e37b65ca4f30bd40cec32bf21172bde0686933e9"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "Parsed from keyword-aware PDF table extraction",
-            "Coordinate-aware pdfplumber table extraction was validated before publication",
-            "Multiple candidate Chief and Council tables found"
+            "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
           ],
-          "sourceTotal": null,
+          "sourceTotal": 301563,
           "parse_confidence": "high",
           "manual_review_required": false,
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "ok_pdf_keyword_table",
-              "warnings": [
-                "Parsed from keyword-aware PDF table extraction",
-                "Coordinate-aware pdfplumber table extraction was validated before publication",
-                "Multiple candidate Chief and Council tables found"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
           "nativePageCount": 4,
           "nativeTextCharacters": 4016,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "technical_status": "parsed"
         }
       ],
       "website": "https://irtc.ca/dauphin-river-first-nation/",
@@ -201206,12 +201316,10 @@
             {
               "name": "David LeDoux",
               "role": "Chief",
-              "months": 12.0,
-              "remuneration": 184464.0,
-              "travel": 1953.0,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "months": 12,
+              "remuneration": 184464,
+              "expenses": 1953,
+              "otherPayments": 0,
               "total": 186417,
               "travelExpenses": 1953.0,
               "other": 0
@@ -201219,57 +201327,27 @@
             {
               "name": "Kellie LeDoux",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 103509.0,
-              "travel": 3692.0,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "months": 12,
+              "remuneration": 103509,
+              "expenses": 3692,
+              "otherPayments": 0,
               "total": 107201,
               "travelExpenses": 3692.0,
               "other": 0
             },
             {
-              "name": "Four Pillars Leader",
-              "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 22450.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 22450,
-              "travelExpenses": 0,
-              "other": 0
-            },
-            {
-              "name": "Spiritual Studies Lead",
-              "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 9400.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 9400,
-              "travelExpenses": 0,
-              "other": 0
-            },
-            {
               "name": "Louis Tanner",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 54124.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "months": 12,
+              "remuneration": 54124,
+              "expenses": 0,
+              "otherPayments": 0,
               "total": 54124,
               "travelExpenses": 0,
               "other": 0
             }
           ],
-          "parse_status": "ok_pdf_keyword_table",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=294&lang=eng",
           "sourceBandNumber": 294,
@@ -201279,33 +201357,58 @@
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "8a7b7b818934b636a780bde296df447511d2ce7a087c3f3685060b7bb464de6b",
           "byteSize": 126401,
-          "lastChecked": "2026-11-02T02:32:27+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 294,
+            "bandName": "Gambler First Nation",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=294&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "8a7b7b818934b636a780bde296df447511d2ce7a087c3f3685060b7bb464de6b",
+            "pdfPage": 3,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 3,
+            "sourceTotal": null,
+            "totalMethod": "sum_of_reported_components",
+            "warnings": [
+              "Two additional lines with role labels and blank names total $31,850. The filing does not name recipients on those lines, so they are excluded from named rows."
+            ],
+            "unnamedLinesExcluded": [
+              {
+                "label": "Four Pillars Leader",
+                "remuneration": 22450
+              },
+              {
+                "label": "Spiritual Studies Leader",
+                "remuneration": 9400
+              }
+            ],
+            "reviewContentSha256": "3fe8c3b9d8d89c0611bb79c14325d42de5d0ad30a8408f35d4913c50ebce54f9"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "Parsed from keyword-aware PDF table extraction",
-            "Coordinate-aware pdfplumber table extraction was validated before publication"
+            "Two additional lines with role labels and blank names total $31,850. The filing does not name recipients on those lines, so they are excluded from named rows."
           ],
           "sourceTotal": null,
           "parse_confidence": "high",
           "manual_review_required": false,
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "ok_pdf_keyword_table",
-              "warnings": [
-                "Parsed from keyword-aware PDF table extraction",
-                "Coordinate-aware pdfplumber table extraction was validated before publication"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
           "nativePageCount": 3,
           "nativeTextCharacters": 2975,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "technical_status": "parsed"
         }
       ],
       "contact": {
@@ -210880,81 +210983,69 @@
               "role": "Chief",
               "months": 12,
               "remuneration": 87840,
-              "travel": null,
               "expenses": 93615,
-              "creditCard": null,
-              "otherPayments": null,
+              "otherPayments": 0,
               "total": 181455,
               "travelExpenses": 93615.0,
-              "other": 0.0
+              "other": 0
             },
             {
               "name": "Berry McLean",
               "role": "Councillor",
               "months": 12,
               "remuneration": 68868,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 68868,
-              "travelExpenses": 0.0,
-              "other": 0.0
+              "expenses": 70029,
+              "otherPayments": 0,
+              "total": 138897,
+              "travelExpenses": 70029.0,
+              "other": 0
             },
             {
               "name": "Byron Swan",
               "role": "Councillor",
               "months": 12,
               "remuneration": 68868,
-              "travel": null,
               "expenses": 56154,
-              "creditCard": null,
-              "otherPayments": null,
+              "otherPayments": 0,
               "total": 125022,
               "travelExpenses": 56154.0,
-              "other": 0.0
+              "other": 0
             },
             {
               "name": "Dwight Paul",
               "role": "Councillor",
               "months": 12,
               "remuneration": 68868,
-              "travel": null,
               "expenses": 41778,
-              "creditCard": null,
-              "otherPayments": null,
+              "otherPayments": 0,
               "total": 110646,
               "travelExpenses": 41778.0,
-              "other": 0.0
+              "other": 0
             },
             {
               "name": "Preston Swan",
               "role": "Councillor",
               "months": 8,
               "remuneration": 42904,
-              "travel": null,
               "expenses": 35843,
-              "creditCard": null,
-              "otherPayments": null,
+              "otherPayments": 0,
               "total": 78747,
               "travelExpenses": 35843.0,
-              "other": 0.0
+              "other": 0
             },
             {
               "name": "Kevin Swan",
               "role": "Councillor",
               "months": 4,
               "remuneration": 25963,
-              "travel": null,
               "expenses": 14685,
-              "creditCard": null,
-              "otherPayments": null,
+              "otherPayments": 0,
               "total": 40648,
               "travelExpenses": 14685.0,
-              "other": 0.0
+              "other": 0
             }
           ],
-          "parse_status": "ok_pdf_keyword_table",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=271&lang=eng",
           "sourceBandNumber": 271,
@@ -210964,36 +211055,48 @@
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "23ad6d8b2900905bc2d1f2906669ab07de2ff3d072139959408eab445284e800",
           "byteSize": 149761,
-          "lastChecked": "2026-11-02T02:30:40+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 271,
+            "bandName": "Lake Manitoba",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=271&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "23ad6d8b2900905bc2d1f2906669ab07de2ff3d072139959408eab445284e800",
+            "pdfPage": 4,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 6,
+            "sourceTotal": 675415,
+            "totalMethod": "printed_row_totals",
+            "warnings": [
+              "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
+            ],
+            "reviewContentSha256": "9f01b2d2eb3c7e95fbd36c2cc187ae2e2b3dc064c2f5c134957de4cedbdf7666"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "Parsed from keyword-aware PDF table extraction",
-            "Coordinate-aware pdfplumber table extraction was validated before publication",
-            "Multiple candidate Chief and Council tables found",
-            "Sanitized parsed rows: removed 0, fixed totals 0"
+            "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
           ],
-          "sourceTotal": null,
+          "sourceTotal": 675415,
           "parse_confidence": "high",
           "manual_review_required": false,
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "ok_pdf_keyword_table",
-              "warnings": [
-                "Parsed from keyword-aware PDF table extraction",
-                "Coordinate-aware pdfplumber table extraction was validated before publication",
-                "Multiple candidate Chief and Council tables found"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
           "nativePageCount": 4,
           "nativeTextCharacters": 4475,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "technical_status": "parsed"
         }
       ],
       "contact": {
@@ -217116,54 +217219,110 @@
           "date": "2025-10-23",
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "manual_review",
+          "people": [
+            {
+              "name": "Marvin Daniels",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 175040,
+              "expenses": 14860,
+              "otherPayments": 0,
+              "total": 189900,
+              "travelExpenses": 14860.0,
+              "other": 0
+            },
+            {
+              "name": "Liz Merrick",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 162559,
+              "expenses": 14486,
+              "otherPayments": 0,
+              "total": 177045,
+              "travelExpenses": 14486.0,
+              "other": 0
+            },
+            {
+              "name": "Garnet Meeches",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 174620,
+              "expenses": 18192,
+              "otherPayments": 0,
+              "total": 192812,
+              "travelExpenses": 18192.0,
+              "other": 0
+            },
+            {
+              "name": "David Meeches",
+              "role": "Chief",
+              "months": 4,
+              "remuneration": 175894,
+              "expenses": 87706,
+              "otherPayments": 0,
+              "total": 263600,
+              "travelExpenses": 87706.0,
+              "other": 0
+            },
+            {
+              "name": "Randy Merrick",
+              "role": "Councillor",
+              "months": 4,
+              "remuneration": 169847,
+              "expenses": 8677,
+              "otherPayments": 0,
+              "total": 178524,
+              "travelExpenses": 8677.0,
+              "other": 0
+            }
+          ],
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=287&lang=eng",
           "sourceBandNumber": 287,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-02T02:27:36+00:00",
           "nationId": 287,
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "f9a54d0bcb493f8569ce5d6648f9275e59cf9e790b3205729746920df742290a",
           "byteSize": 226530,
-          "lastChecked": "2026-11-02T05:20:19+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 287,
+            "bandName": "Long Plain",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "f9a54d0bcb493f8569ce5d6648f9275e59cf9e790b3205729746920df742290a",
+            "pdfPage": 1,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 5,
+            "sourceTotal": null,
+            "totalMethod": "printed_row_totals",
+            "warnings": [
+              "Combined totals use the printed total remuneration and expenses. Some detailed remuneration components differ by one dollar from the printed subtotal."
+            ],
+            "reviewContentSha256": "82be6060e95da3155bc84a591be0e9834e4f692bf74f8701a922e9f57b269b0e"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "PDF has no usable native text; used free local OCR",
-            "Local OCR text contained no reliable official rows",
-            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+            "Combined totals use the printed total remuneration and expenses. Some detailed remuneration components differ by one dollar from the printed subtotal."
           ],
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "no_reliable_rows",
-              "warnings": [
-                "PDF has no usable native text; used free local OCR"
-              ]
-            },
-            {
-              "stage": "ocr",
-              "status": "no_ocr_rows",
-              "warnings": [
-                "Local OCR text contained no reliable official rows"
-              ]
-            },
-            {
-              "stage": "openai",
-              "status": "disabled",
-              "warnings": [
-                "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
-          "parse_confidence": "low",
-          "manual_review_required": true,
+          "parse_confidence": "high",
+          "manual_review_required": false,
           "lastReparseAttempt": "2026-11-02T02:30:34+00:00",
           "reparseWarnings": [
             "No clear Chief and Council remuneration table found",
@@ -217189,7 +217348,9 @@
           "ocrStatus": "ok_ocr_text",
           "ocrWarnings": [],
           "ocrEngine": "macos_vision",
-          "ocrFinancialColumnPages": []
+          "ocrFinancialColumnPages": [],
+          "sourceTotal": null,
+          "technical_status": "parsed"
         }
       ],
       "website": "https://lpband.ca/",
@@ -219233,23 +219394,21 @@
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=302&lang=eng",
           "sourceBandNumber": 302,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "wrong_document_type",
           "retrievedAt": "2026-11-02T02:27:37+00:00",
           "nationId": 302,
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "893ac1f86fe3df7b180f865da57300e13d0216c309148b265950a37cdc0658de",
           "byteSize": 2257746,
-          "lastChecked": "2026-11-02T02:30:31+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
           "manualSourceReview": null,
           "documentChecks": {
             "identityAndYearConfirmed": true,
-            "warnings": []
+            "expectedSchedulePresent": false
           },
           "warnings": [
-            "No clear Chief and Council remuneration table found",
-            "OCR deferred; rerun with --ocr or review original PDF",
-            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+            "The ISC schedule link opens revenue and expenditure schedules without an official-by-official remuneration table."
           ],
           "parse_stages": [
             {
@@ -219278,7 +219437,8 @@
           "manual_review_required": true,
           "nativePageCount": 116,
           "nativeTextCharacters": 116330,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "technical_status": "manual_review"
         }
       ],
       "website": "http://www.ktc.ca/?page_id=168",
@@ -226602,57 +226762,49 @@
             {
               "name": "Heidi Cook",
               "role": "Chief",
-              "months": 12.0,
-              "remuneration": 93000.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 93000,
-              "travelExpenses": 0,
+              "months": 12,
+              "remuneration": 93000,
+              "expenses": 18145,
+              "otherPayments": 0,
+              "total": 111145,
+              "travelExpenses": 18145.0,
               "other": 0
             },
             {
               "name": "Yvonne Ballantyne",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 78000.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 78000,
-              "travelExpenses": 0,
+              "months": 12,
+              "remuneration": 78000,
+              "expenses": 11177,
+              "otherPayments": 0,
+              "total": 89177,
+              "travelExpenses": 11177.0,
               "other": 0
             },
             {
               "name": "Annie Ballantyne",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 78000.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 78000,
-              "travelExpenses": 0,
+              "months": 12,
+              "remuneration": 78000,
+              "expenses": 22861,
+              "otherPayments": 0,
+              "total": 100861,
+              "travelExpenses": 22861.0,
               "other": 0
             },
             {
               "name": "Bobby Ballantyne",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 78000.0,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 78000,
-              "travelExpenses": 0,
+              "months": 12,
+              "remuneration": 78000,
+              "expenses": 6164,
+              "otherPayments": 0,
+              "total": 84164,
+              "travelExpenses": 6164.0,
               "other": 0
             }
           ],
-          "parse_status": "ok_pdf_keyword_table",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=310&lang=eng",
           "sourceBandNumber": 310,
@@ -226662,35 +226814,48 @@
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "f33bb1ceb44d1ff512771d25c2ec1cf33dc11d3fb08372e7c98fa1fe85b28ab1",
           "byteSize": 226343,
-          "lastChecked": "2026-11-02T02:30:26+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 310,
+            "bandName": "Misipawistik Cree Nation",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=310&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "f33bb1ceb44d1ff512771d25c2ec1cf33dc11d3fb08372e7c98fa1fe85b28ab1",
+            "pdfPage": 4,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 4,
+            "sourceTotal": 385347,
+            "totalMethod": "sum_of_reported_components",
+            "warnings": [
+              "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
+            ],
+            "reviewContentSha256": "a57a421ac65e1b33ef7fd165d6611aee2e4e58800ecc284795f0e09263220964"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "Parsed from keyword-aware PDF table extraction",
-            "Coordinate-aware pdfplumber table extraction was validated before publication",
-            "Multiple candidate Chief and Council tables found"
+            "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
           ],
-          "sourceTotal": null,
+          "sourceTotal": 385347,
           "parse_confidence": "high",
           "manual_review_required": false,
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "ok_pdf_keyword_table",
-              "warnings": [
-                "Parsed from keyword-aware PDF table extraction",
-                "Coordinate-aware pdfplumber table extraction was validated before publication",
-                "Multiple candidate Chief and Council tables found"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
           "nativePageCount": 4,
           "nativeTextCharacters": 4197,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "technical_status": "parsed"
         },
         {
           "year": "2025-2026",
@@ -231136,25 +231301,21 @@
             {
               "name": "Angela Levasseur",
               "role": "Chief",
-              "months": 12.0,
-              "remuneration": 124485.0,
-              "travel": 36984.0,
-              "expenses": 1500.0,
-              "creditCard": null,
-              "otherPayments": null,
+              "months": 12,
+              "remuneration": 124485,
+              "expenses": 36984,
+              "otherPayments": 1500,
               "total": 162969,
-              "travelExpenses": 38484.0,
-              "other": 0
+              "travelExpenses": 36984.0,
+              "other": 1500.0
             },
             {
               "name": "Marcel Moody",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 104349.0,
-              "travel": 63457.0,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "months": 12,
+              "remuneration": 104349,
+              "expenses": 63457,
+              "otherPayments": 0,
               "total": 167806,
               "travelExpenses": 63457.0,
               "other": 0
@@ -231162,12 +231323,10 @@
             {
               "name": "Cheryl Moore",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 98874.0,
-              "travel": 65771.0,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "months": 12,
+              "remuneration": 98874,
+              "expenses": 65771,
+              "otherPayments": 0,
               "total": 164645,
               "travelExpenses": 65771.0,
               "other": 0
@@ -231175,12 +231334,10 @@
             {
               "name": "Jeremiah Spence",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 98690.0,
-              "travel": 83943.0,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "months": 12,
+              "remuneration": 98690,
+              "expenses": 83943,
+              "otherPayments": 0,
               "total": 182633,
               "travelExpenses": 83943.0,
               "other": 0
@@ -231188,25 +231345,21 @@
             {
               "name": "Ron D Spence",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 102208.0,
-              "travel": 87862.0,
-              "expenses": 3455.0,
-              "creditCard": null,
-              "otherPayments": null,
+              "months": 12,
+              "remuneration": 102208,
+              "expenses": 87862,
+              "otherPayments": 3455,
               "total": 193525,
-              "travelExpenses": 91317.0,
-              "other": 0
+              "travelExpenses": 87862.0,
+              "other": 3455.0
             },
             {
               "name": "Kimberley Linklater",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 91655.0,
-              "travel": 91226.0,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
+              "months": 12,
+              "remuneration": 91655,
+              "expenses": 91226,
+              "otherPayments": 0,
               "total": 182881,
               "travelExpenses": 91226.0,
               "other": 0
@@ -231214,18 +231367,16 @@
             {
               "name": "Shirley Linklater",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 103966.0,
-              "travel": 101320.0,
-              "expenses": 3440.0,
-              "creditCard": null,
-              "otherPayments": null,
+              "months": 12,
+              "remuneration": 103966,
+              "expenses": 101320,
+              "otherPayments": 3440,
               "total": 208726,
-              "travelExpenses": 104760.0,
-              "other": 0
+              "travelExpenses": 101320.0,
+              "other": 3440.0
             }
           ],
-          "parse_status": "ok_pdf_text",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=313&lang=eng",
           "sourceBandNumber": 313,
@@ -231235,30 +231386,48 @@
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "1469b018f56f91a31ad1f4c574ca3d47787f25bf2d47616e9769ea8784dca352",
           "byteSize": 503797,
-          "lastChecked": "2026-11-02T02:30:22+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 313,
+            "bandName": "Nisichawayasihk Cree Nation",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=313&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "1469b018f56f91a31ad1f4c574ca3d47787f25bf2d47616e9769ea8784dca352",
+            "pdfPage": 3,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 7,
+            "sourceTotal": 1263185,
+            "totalMethod": "printed_row_totals",
+            "warnings": [
+              "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
+            ],
+            "reviewContentSha256": "3f787e07774e6ccf899c1c3a33044425b6c41953021c7fefe22215783a08f3b2"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "Parsed from PDF text fallback"
+            "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
           ],
           "parse_confidence": "high",
           "manual_review_required": false,
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "ok_pdf_text",
-              "warnings": [
-                "Parsed from PDF text fallback"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
           "nativePageCount": 3,
           "nativeTextCharacters": 3818,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "sourceTotal": 1263185,
+          "technical_status": "parsed"
         }
       ],
       "website": "https://www.ncncree.com/",
@@ -234505,44 +234674,137 @@
           "date": "2025-08-01",
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=278&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "manual_review",
+          "people": [
+            {
+              "name": "Larson Anderson",
+              "role": "Chief",
+              "months": 12,
+              "remuneration": 119194,
+              "expenses": 115248,
+              "otherPayments": 0,
+              "total": 234442,
+              "travelExpenses": 115248.0,
+              "other": 0
+            },
+            {
+              "name": "Anthony Apetagon",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 104104,
+              "expenses": 236111,
+              "otherPayments": 0,
+              "total": 340215,
+              "travelExpenses": 236111.0,
+              "other": 0
+            },
+            {
+              "name": "Deon Clarke",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 102604,
+              "expenses": 141062,
+              "otherPayments": 0,
+              "total": 243666,
+              "travelExpenses": 141062.0,
+              "other": 0
+            },
+            {
+              "name": "Edward Albert",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 102904,
+              "expenses": 81220,
+              "otherPayments": 0,
+              "total": 184124,
+              "travelExpenses": 81220.0,
+              "other": 0
+            },
+            {
+              "name": "Orville Apetagon",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 102904,
+              "expenses": 102838,
+              "otherPayments": 0,
+              "total": 205742,
+              "travelExpenses": 102838.0,
+              "other": 0
+            },
+            {
+              "name": "John Henry",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 102504,
+              "expenses": 115182,
+              "otherPayments": 0,
+              "total": 217686,
+              "travelExpenses": 115182.0,
+              "other": 0
+            },
+            {
+              "name": "David Swanson",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 102504,
+              "expenses": 80070,
+              "otherPayments": 0,
+              "total": 182574,
+              "travelExpenses": 80070.0,
+              "other": 0
+            }
+          ],
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=278&lang=eng",
           "sourceBandNumber": 278,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-02T02:27:49+00:00",
           "nationId": 278,
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "3ac4f61cf3de1fa342f3660a11386e9f7b5f40263b1a4e20bc3f2f3189b9dd87",
           "byteSize": 179113,
-          "lastChecked": "2026-11-02T02:30:19+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 278,
+            "bandName": "Norway House Cree Nation",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=278&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "3ac4f61cf3de1fa342f3660a11386e9f7b5f40263b1a4e20bc3f2f3189b9dd87",
+            "pdfPage": 4,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 7,
+            "sourceTotal": 1608449,
+            "totalMethod": "printed_row_totals",
+            "warnings": [
+              "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
+            ],
+            "reviewContentSha256": "c7dd41060dee950817e2aeb4b48f298c468dda8f165c8beeed4ec1e51636948b"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
-            "warnings": [
-              "Printed schedule footer was not reconciled"
-            ]
+            "warnings": []
           },
           "warnings": [
-            "Parsed from PDF text fallback",
-            "Printed schedule footer was not reconciled"
+            "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
           ],
           "parse_confidence": "high",
-          "manual_review_required": true,
+          "manual_review_required": false,
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "ok_pdf_text",
-              "warnings": [
-                "Parsed from PDF text fallback"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
           "nativePageCount": 5,
           "nativeTextCharacters": 3245,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "sourceTotal": 1608449,
+          "technical_status": "parsed"
         }
       ],
       "website": "http://www.nhcn.ca/",
@@ -240149,55 +240411,47 @@
               "role": "Councillor",
               "months": 12,
               "remuneration": 75000,
-              "travel": null,
               "expenses": 26326,
-              "creditCard": null,
-              "otherPayments": null,
+              "otherPayments": 0,
               "total": 101326,
               "travelExpenses": 26326.0,
-              "other": 0.0
+              "other": 0
             },
             {
               "name": "Owens, Moses",
               "role": "Councillor",
               "months": 12,
               "remuneration": 78800,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 78800,
-              "travelExpenses": 0.0,
-              "other": 0.0
+              "expenses": 78779,
+              "otherPayments": 0,
+              "total": 157579,
+              "travelExpenses": 78779.0,
+              "other": 0
             },
             {
               "name": "Owens, Roddy",
               "role": "Chief",
               "months": 12,
               "remuneration": 103540,
-              "travel": null,
               "expenses": 32711,
-              "creditCard": null,
-              "otherPayments": null,
+              "otherPayments": 0,
               "total": 136251,
               "travelExpenses": 32711.0,
-              "other": 0.0
+              "other": 0
             },
             {
               "name": "Pascal, Benson",
               "role": "Councillor",
               "months": 12,
               "remuneration": 76296,
-              "travel": null,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": null,
-              "total": 76296,
-              "travelExpenses": 0.0,
-              "other": 0.0
+              "expenses": 77453,
+              "otherPayments": 0,
+              "total": 153749,
+              "travelExpenses": 77453.0,
+              "other": 0
             }
           ],
-          "parse_status": "ok_pdf_keyword_table",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=327&lang=eng",
           "sourceBandNumber": 327,
@@ -240207,36 +240461,48 @@
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "3bdd6bdc9e0e4e662aad0d8216b02b207f72576afa73d27a3f6f37b2f3f5fd53",
           "byteSize": 144742,
-          "lastChecked": "2026-11-02T02:30:15+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 327,
+            "bandName": "Pauingassi First Nation",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=327&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "3bdd6bdc9e0e4e662aad0d8216b02b207f72576afa73d27a3f6f37b2f3f5fd53",
+            "pdfPage": 4,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 4,
+            "sourceTotal": 548905,
+            "totalMethod": "sum_of_reported_components",
+            "warnings": [
+              "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
+            ],
+            "reviewContentSha256": "aaf5bb34c1afae0aabb5328e586276503099128dda8737e9b3f1a1e4a05855d2"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "Parsed from keyword-aware PDF table extraction",
-            "Coordinate-aware pdfplumber table extraction was validated before publication",
-            "Multiple candidate Chief and Council tables found",
-            "Sanitized parsed rows: removed 0, fixed totals 0"
+            "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
           ],
-          "sourceTotal": null,
+          "sourceTotal": 548905,
           "parse_confidence": "high",
           "manual_review_required": false,
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "ok_pdf_keyword_table",
-              "warnings": [
-                "Parsed from keyword-aware PDF table extraction",
-                "Coordinate-aware pdfplumber table extraction was validated before publication",
-                "Multiple candidate Chief and Council tables found"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
           "nativePageCount": 4,
           "nativeTextCharacters": 4114,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "technical_status": "parsed"
         }
       ],
       "website": "https://pimaki.ca/about-us/communities/pauingassi-first-nation/",
@@ -254449,54 +254715,126 @@
           "date": "2025-12-10",
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "manual_review",
+          "people": [
+            {
+              "name": "Nelson Genaille",
+              "role": "Chief",
+              "months": 12,
+              "remuneration": 95000,
+              "expenses": 91834,
+              "otherPayments": 0,
+              "total": 186834,
+              "travelExpenses": 91834.0,
+              "other": 0
+            },
+            {
+              "name": "Mary Lou Leask",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 60000,
+              "expenses": 64178,
+              "otherPayments": 0,
+              "total": 124178,
+              "travelExpenses": 64178.0,
+              "other": 0
+            },
+            {
+              "name": "Reynold Cook",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 60000,
+              "expenses": 28310,
+              "otherPayments": 0,
+              "total": 88310,
+              "travelExpenses": 28310.0,
+              "other": 0
+            },
+            {
+              "name": "Surinder Dhillon",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 60000,
+              "expenses": 53812,
+              "otherPayments": 0,
+              "total": 113812,
+              "travelExpenses": 53812.0,
+              "other": 0
+            },
+            {
+              "name": "Myrtle Bilow",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 60000,
+              "expenses": 5460,
+              "otherPayments": 0,
+              "total": 65460,
+              "travelExpenses": 5460.0,
+              "other": 0
+            },
+            {
+              "name": "Fred Stevens",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 60000,
+              "expenses": 43474,
+              "otherPayments": 0,
+              "total": 103474,
+              "travelExpenses": 43474.0,
+              "other": 0
+            }
+          ],
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=314&lang=eng",
           "sourceBandNumber": 314,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-02T02:28:08+00:00",
           "nationId": 314,
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "88ab44ee82d376721db5ff2ee962f0114b22c9fc86116a5b1fed8423b946f61b",
           "byteSize": 600711,
-          "lastChecked": "2026-11-02T02:30:07+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 314,
+            "bandName": "Sapotaweyak Cree Nation",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "88ab44ee82d376721db5ff2ee962f0114b22c9fc86116a5b1fed8423b946f61b",
+            "pdfPage": 3,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 6,
+            "sourceTotal": null,
+            "totalMethod": "sum_of_reported_components",
+            "warnings": [
+              "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
+            ],
+            "reviewContentSha256": "7f703ae922999682d88df5758feccbed73b11a9e153463f991c8d89fa0f1b15c"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "OCR deferred; rerun with --ocr or review original PDF",
-            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+            "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
           ],
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "no_reliable_rows",
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
               "warnings": []
-            },
-            {
-              "stage": "ocr",
-              "status": "deferred",
-              "warnings": [
-                "OCR deferred; rerun with --ocr or review original PDF"
-              ]
-            },
-            {
-              "stage": "openai",
-              "status": "disabled",
-              "warnings": [
-                "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-              ]
             }
           ],
-          "parse_confidence": "low",
-          "manual_review_required": true,
+          "parse_confidence": "high",
+          "manual_review_required": false,
           "nativePageCount": 3,
           "nativeTextCharacters": 3407,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "sourceTotal": null,
+          "technical_status": "parsed"
         },
         {
           "year": "2025-2026",
@@ -257652,54 +257990,121 @@
           "date": "2025-08-29",
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=290&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "manual_review",
+          "people": [
+            {
+              "name": "Vincent Tacan",
+              "role": "Chief",
+              "months": 12,
+              "remuneration": 137019,
+              "expenses": 120881,
+              "otherPayments": 0,
+              "total": 257900,
+              "travelExpenses": 120881.0,
+              "other": 0
+            },
+            {
+              "name": "Jonathan Bell",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 105000,
+              "expenses": 120511,
+              "otherPayments": 0,
+              "total": 225511,
+              "travelExpenses": 120511.0,
+              "other": 0
+            },
+            {
+              "name": "Carol Johnson",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 105000,
+              "expenses": 144137,
+              "otherPayments": 0,
+              "total": 249137,
+              "travelExpenses": 144137.0,
+              "other": 0
+            },
+            {
+              "name": "Anthony Tacan",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 105000,
+              "expenses": 171815,
+              "otherPayments": 0,
+              "total": 276815,
+              "travelExpenses": 171815.0,
+              "other": 0
+            },
+            {
+              "name": "Rusty Taylor",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 105000,
+              "expenses": 96143,
+              "otherPayments": 0,
+              "total": 201143,
+              "travelExpenses": 96143.0,
+              "other": 0
+            },
+            {
+              "name": "Melissa Hotain",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 105000,
+              "expenses": 98745,
+              "otherPayments": 0,
+              "total": 203745,
+              "travelExpenses": 98745.0,
+              "other": 0
+            }
+          ],
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=290&lang=eng",
           "sourceBandNumber": 290,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-02T02:28:13+00:00",
           "nationId": 290,
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "bd750388826008c403beda3d813da7d4c17b95d6047cb0e6591b9df1c82164d2",
           "byteSize": 1945683,
-          "lastChecked": "2026-11-02T02:30:03+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 290,
+            "bandName": "Sioux Valley Dakota Nation",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=290&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "bd750388826008c403beda3d813da7d4c17b95d6047cb0e6591b9df1c82164d2",
+            "pdfPage": 3,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 6,
+            "sourceTotal": 1414251,
+            "totalMethod": "printed_row_totals",
+            "warnings": [
+              "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
+            ],
+            "reviewContentSha256": "5e2905e2cacccd181fa68110d6dc7645b0ce132f6f0f0642c79539bc1634ca63"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "No clear Chief and Council remuneration table found",
-            "OCR deferred; rerun with --ocr or review original PDF",
-            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+            "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
           ],
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "no_reliable_rows",
-              "warnings": [
-                "No clear Chief and Council remuneration table found"
-              ]
-            },
-            {
-              "stage": "ocr",
-              "status": "deferred",
-              "warnings": [
-                "OCR deferred; rerun with --ocr or review original PDF"
-              ]
-            },
-            {
-              "stage": "openai",
-              "status": "disabled",
-              "warnings": [
-                "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
-          "parse_confidence": "low",
-          "manual_review_required": true,
+          "parse_confidence": "high",
+          "manual_review_required": false,
           "lastReparseAttempt": "2026-11-02T02:30:03+00:00",
           "reparseWarnings": [
             "No clear Chief and Council remuneration table found",
@@ -257709,7 +258114,9 @@
           "reparseStatus": "manual_review",
           "nativePageCount": 4,
           "nativeTextCharacters": 3915,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "sourceTotal": 1414251,
+          "technical_status": "parsed"
         },
         {
           "year": "2025-2026",
@@ -267129,6 +267536,95 @@
           "nativePageCount": 4,
           "nativeTextCharacters": 5603,
           "requiresOcr": false
+        },
+        {
+          "year": "2024-2025",
+          "docType": "Schedule of Remuneration and Expenses",
+          "documentTitle": "Schedule of Remuneration and Expenses — 2024-2025",
+          "date": "2026-11-10",
+          "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=323&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+          "posted": true,
+          "people": [
+            {
+              "name": "Betsy Kennedy",
+              "role": "Chief",
+              "months": 12,
+              "remuneration": 88150,
+              "expenses": 35303,
+              "otherPayments": 0,
+              "total": 123453,
+              "travelExpenses": 35303.0,
+              "other": 0
+            },
+            {
+              "name": "Dwayne Flett",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 75900,
+              "expenses": 34075,
+              "otherPayments": 0,
+              "total": 109975,
+              "travelExpenses": 34075.0,
+              "other": 0
+            },
+            {
+              "name": "Elijah Garson",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 75900,
+              "expenses": 80950,
+              "otherPayments": 0,
+              "total": 156850,
+              "travelExpenses": 80950.0,
+              "other": 0
+            }
+          ],
+          "parse_status": "parsed",
+          "sourceOrganization": "Indigenous Services Canada",
+          "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=323&lang=eng",
+          "sourceBandNumber": 323,
+          "verificationStatus": "automated_validated",
+          "retrievedAt": "2026-11-16T19:16:19+00:00",
+          "sha256": "1b1e0828463e5896d5da79f96408ca3f18e76f78b0fb2be07924c75761410a96",
+          "byteSize": 241872,
+          "sourceTotal": 390278,
+          "manualSourceReview": {
+            "bandId": 323,
+            "bandName": "War Lake First Nation",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=323&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "1b1e0828463e5896d5da79f96408ca3f18e76f78b0fb2be07924c75761410a96",
+            "pdfPage": 4,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 3,
+            "sourceTotal": 390278,
+            "totalMethod": "printed_row_totals",
+            "warnings": [
+              "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
+            ],
+            "reviewContentSha256": "89bd8029b754dc91adb0eea145e1c10e624e8dc4497f6bf6083f4f4a7d32fdec"
+          },
+          "parse_confidence": "high",
+          "manual_review_required": false,
+          "warnings": [
+            "Official rows independently checked with pixel-based OCR and reconciled to the source columns."
+          ],
+          "parse_stages": [
+            {
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
+            }
+          ],
+          "documentChecks": {
+            "identityAndYearConfirmed": true,
+            "warnings": []
+          },
+          "technical_status": "parsed",
+          "lastChecked": "2026-11-16T19:23:21+00:00"
         }
       ],
       "website": "http://www.ktc.ca/?page_id=178",
@@ -270657,26 +271153,21 @@
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=285&lang=eng",
           "sourceBandNumber": 285,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "wrong_document_type",
           "retrievedAt": "2026-11-02T02:28:25+00:00",
           "nationId": 285,
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "4bb3ac9730289a57dd7e34a1c61d30ba84b9b15aa03ddaa14984fd2bac76a0ae",
           "byteSize": 432290,
-          "lastChecked": "2026-11-02T02:29:59+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
           "manualSourceReview": null,
           "documentChecks": {
-            "identityAndYearConfirmed": false,
-            "warnings": [
-              "Nation identity not confirmed in document cover; manual review required"
-            ]
+            "identityAndYearConfirmed": true,
+            "expectedSchedulePresent": false
           },
           "warnings": [
-            "No clear Chief and Council remuneration table found",
-            "OCR deferred; rerun with --ocr or review original PDF",
-            "OpenAI fallback was not enabled; local parsing and free OCR were exhausted",
-            "Nation identity not confirmed in document cover; manual review required"
+            "The ISC schedule link opens compiled financial statements without an official-by-official remuneration table."
           ],
           "parse_stages": [
             {
@@ -270705,7 +271196,8 @@
           "manual_review_required": true,
           "nativePageCount": 128,
           "nativeTextCharacters": 77116,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "technical_status": "manual_review"
         }
       ],
       "contact": {
@@ -272467,57 +272959,49 @@
             {
               "name": "Elwood Zastre",
               "role": "Chief",
-              "months": 12.0,
-              "remuneration": 91000.0,
-              "travel": 91.0,
-              "expenses": 0.0,
-              "creditCard": null,
-              "otherPayments": 43640.0,
-              "total": 134731,
-              "travelExpenses": 91.0,
-              "other": 43640.0
+              "months": 12,
+              "remuneration": 91000,
+              "expenses": 43640,
+              "otherPayments": 0,
+              "total": 134640,
+              "travelExpenses": 43640.0,
+              "other": 0
             },
             {
               "name": "Maxwell Kematch",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 71500.0,
-              "travel": 71.0,
-              "expenses": 0.0,
-              "creditCard": null,
-              "otherPayments": 22280.0,
-              "total": 93851,
-              "travelExpenses": 71.0,
-              "other": 22280.0
+              "months": 12,
+              "remuneration": 71500,
+              "expenses": 22280,
+              "otherPayments": 0,
+              "total": 93780,
+              "travelExpenses": 22280.0,
+              "other": 0
             },
             {
               "name": "Nathan Kematch",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": 71500.0,
-              "travel": 71.0,
-              "expenses": 0.0,
-              "creditCard": null,
-              "otherPayments": 26941.0,
-              "total": 98512,
-              "travelExpenses": 71.0,
-              "other": 26941.0
+              "months": 12,
+              "remuneration": 71500,
+              "expenses": 26941,
+              "otherPayments": 0,
+              "total": 98441,
+              "travelExpenses": 26941.0,
+              "other": 0
             },
             {
               "name": "Benjamin Young",
               "role": "Councillor",
-              "months": 12.0,
-              "remuneration": null,
-              "travel": 28389.0,
-              "expenses": null,
-              "creditCard": null,
-              "otherPayments": 580.0,
-              "total": 28969,
+              "months": 12,
+              "remuneration": 71500,
+              "expenses": 28389,
+              "otherPayments": 580,
+              "total": 100469,
               "travelExpenses": 28389.0,
               "other": 580.0
             }
           ],
-          "parse_status": "ok_pdf_keyword_table",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=324&lang=eng",
           "sourceBandNumber": 324,
@@ -272527,37 +273011,48 @@
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "70adb0c4866cda65c1888e6299152ada2269feff078feb2926db3f5aca58ab52",
           "byteSize": 980843,
-          "lastChecked": "2026-11-02T02:29:57+00:00",
+          "lastChecked": "2026-11-16T19:23:21+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 324,
+            "bandName": "Wuskwi Sipihk First Nation",
+            "year": "2024-2025",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=324&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "70adb0c4866cda65c1888e6299152ada2269feff078feb2926db3f5aca58ab52",
+            "pdfPage": 3,
+            "reviewed": "2026-11-16",
+            "reviewMethod": "Compared every named chief and council row to RapidOCR from the rendered filing and resolved OCR disagreements against the image.",
+            "identityAndYearConfirmed": true,
+            "completeSchedule": true,
+            "sourceRowCount": 4,
+            "sourceTotal": 427330,
+            "totalMethod": "sum_of_reported_components",
+            "warnings": [
+              "Honoraria is remuneration. The printed remuneration subtotal includes other remuneration and is counted once."
+            ],
+            "reviewContentSha256": "9b0c95f0293c0893bf0fb6563056a33b0bd3a15987ef2151735c2c889bdd46f1"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "Parsed from keyword-aware PDF table extraction",
-            "Coordinate-aware pdfplumber table extraction was validated before publication",
-            "Multiple candidate Chief and Council tables found",
-            "Row 4: remuneration missing for apparent full-year official"
+            "Honoraria is remuneration. The printed remuneration subtotal includes other remuneration and is counted once."
           ],
-          "sourceTotal": null,
-          "parse_confidence": "medium",
+          "sourceTotal": 427330,
+          "parse_confidence": "high",
           "manual_review_required": false,
           "parse_stages": [
             {
-              "stage": "local",
-              "status": "ok_pdf_keyword_table",
-              "warnings": [
-                "Parsed from keyword-aware PDF table extraction",
-                "Coordinate-aware pdfplumber table extraction was validated before publication",
-                "Multiple candidate Chief and Council tables found",
-                "Row 4: remuneration missing for apparent full-year official"
-              ]
+              "stage": "reviewed_original_pdf",
+              "status": "complete_rows_reconciled",
+              "warnings": []
             }
           ],
           "nativePageCount": 3,
           "nativeTextCharacters": 2907,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "technical_status": "parsed"
         }
       ],
       "contact": {
