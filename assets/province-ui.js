@@ -9,17 +9,19 @@ function applyProvinceContext(province){
   const name=OpenBandProvinces.names[code],title=document.getElementById('heroTitle'),intro=document.getElementById('heroIntro'),searchLabel=document.querySelector('label[for="si"]'),hint=document.getElementById('heroHint'),browse=document.getElementById('heroBrowse'),homeBrowse=document.getElementById('homeBrowse'),navHome=document.getElementById('homeLink'),navBrowse=document.querySelector('#primaryNav>a[href^="/browse/"]'),overviewBrowse=document.querySelector('#provinceOverview .text-link'),howLink=document.getElementById('howLink'),homeTitle=document.getElementById('homeIntroTitle'),homeCopy=document.getElementById('homeIntroCopy');
   const news=document.getElementById('newsLink');if(news)news.href=code?`/news/?province=${code}`:'/news/';
   if(navHome)navHome.href=code?OpenBandProvinces.routeFor(code):'/';
-  if(title)title.textContent=name?'First Nations Public Financial Records':'OpenBand';
-  if(intro)intro.textContent=name?`Search ${name} First Nations to review public filings, financial records, and original ISC source documents.`:'Choose a province to search First Nations public financial records and original source documents.';
+  const pending=code==='BC'&&!bandsData.some(b=>b.province==='BC');
+  const notice=document.getElementById('provinceExpansionNotice');if(notice)notice.hidden=!pending;
+  if(title)title.textContent=code==='BC'?'British Columbia First Nations':name?'First Nations Public Financial Records':'OpenBand';
+  if(intro)intro.textContent=pending?'Explore British Columbia First Nations and their public financial information through OpenBand. Community profiles and financial records will be added as verified sources become available.':name?`Search ${name} First Nations to review public filings, financial records, and original ISC source documents.`:'Choose a province to search First Nations public financial records and original source documents.';
   if(searchLabel)searchLabel.textContent=`Search ${name||'First Nations'}`;
-  if(hint)hint.textContent=name?`${name} First Nations · FNFTA public filings · Source: Indigenous Services Canada`:'Public FNFTA records organized by province';
+  if(hint)hint.textContent=pending?'British Columbia public records · Not yet indexed':name?`${name} First Nations · FNFTA public filings · Source: Indigenous Services Canada`:'Public FNFTA records organized by province';
   if(browse){browse.href=code?`/browse/?province=${code}`:'/browse/';browse.textContent=name?`Browse ${name} First Nations`:'Browse all First Nations'}
   if(homeBrowse){homeBrowse.href=code?`/browse/?province=${code}`:'/browse/';homeBrowse.textContent=name?`Browse ${name} First Nations`:'Browse all First Nations'}
   if(navBrowse)navBrowse.href=code?`/browse/?province=${code}`:'/browse/';
   if(overviewBrowse)overviewBrowse.href=code?`/browse/?province=${code}`:'/browse/';
   if(howLink)howLink.href=code?`${OpenBandProvinces.routeFor(code)}#how`:'/#how';
   if(homeTitle)homeTitle.textContent=name?`${name} public records, easier to review`:'Public records, easier to review';
-  if(homeCopy)homeCopy.textContent=name?`OpenBand organizes ${name} First Nations FNFTA filings into searchable profiles while keeping original ISC source documents one click away.`:'OpenBand organizes public FNFTA filings into searchable profiles while keeping original source documents one click away.';
+  if(homeCopy)homeCopy.textContent=pending?'Community profiles and financial records will be added as verified sources become available.':name?`OpenBand organizes ${name} First Nations FNFTA filings into searchable profiles while keeping original ISC source documents one click away.`:'OpenBand organizes public FNFTA filings into searchable profiles while keeping original source documents one click away.';
 }
 function updateProvinceUI(){
   const province=selectedProvince(),rows=provinceBands();
@@ -27,7 +29,7 @@ function updateProvinceUI(){
   const map=document.getElementById('directoryMap');if(map)map.setAttribute('aria-label',province?`Interactive map of ${provinceLabel()} First Nations`:'Interactive map of First Nations');
   const overviewTitle=document.querySelector('#provinceOverview h2');if(overviewTitle)overviewTitle.textContent=`${provinceLabel()} Coverage`;
   const count=document.getElementById('coverageCount');
-  count.textContent=province&&OpenBandProvinces.totals[province]?`${rows.length} of ${OpenBandProvinces.totals[province]}`:`${rows.length} indexed`;
+  count.textContent=province==='BC'&&!rows.length?'Not yet indexed':province&&OpenBandProvinces.totals[province]?`${rows.length} of ${OpenBandProvinces.totals[province]}`:`${rows.length} indexed`;
   document.getElementById('coverageLabel').textContent=` ${provinceLabel()} First Nations tracked`;
   const source=document.getElementById('provinceCountSource');
   source.href=province==='SK'?'https://www.fsin.ca/sask-fn-listings':province==='MB'?'https://www.isc-sac.gc.ca/eng/1626886719453/1626886859809':province==='AB'?'https://www.alberta.ca/first-nations-relations':'https://www.saskatchewan.ca/-/media/news-release-backgrounders/2025/jun/lgs-2024-25-annual-report.pdf';
@@ -42,7 +44,7 @@ function renderProvinceFinance(){
   const rows=provinceBands();
   const years=[...new Set(rows.flatMap(b=>Object.keys(capitalData.bands?.[String(b.id)]?.years||{})))].sort().reverse();
   const oldYear=document.getElementById('provinceFiscalYear')?.value,latestReported=years.find(y=>rows.some(b=>OpenBandProvinces.summaryFor(capitalData,b,y))),year=years.includes(oldYear)?oldYear:latestReported||years[0];
-  if(!year){root.innerHTML='<h2>Financial comparisons</h2><p>Records have not yet been indexed or validated for this selection. Missing financial information is not zero.</p>';return}
+  if(!latestReported){root.innerHTML='<h2>Financial comparisons</h2><p>Records have not yet been indexed or validated for this selection. Missing financial information is not zero.</p>';return}
   const first=document.getElementById('compareFirst')?.value,second=document.getElementById('compareSecond')?.value;
   const options=rows.map(b=>`<option value="${escAttr(b.id)}">${esc(OpenBandNationName.text(b))}</option>`).join('');
   root.innerHTML=`<div class="section-head"><div><h2>Financial comparisons</h2><p>Reported figures for one fiscal year. Missing values are not zero.</p></div><label>Fiscal year <select id="provinceFiscalYear">${years.map(y=>`<option ${year===y?'selected':''}>${esc(y)}</option>`).join('')}</select></label></div><div id="provinceFinancialTotals"></div><div class="compare-controls"><label>First Nation <select id="compareFirst">${options}</select></label><label>Compare with <select id="compareSecond">${options}</select></label></div><div id="provinceComparison" class="comparison-scroll"></div>`;

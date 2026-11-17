@@ -292,3 +292,6 @@ footer{padding-bottom:calc(1.25rem + env(safe-area-inset-bottom,0px))}
 
 /* Safari can sample the body canvas beneath its bottom toolbar. */
 body[data-view="gateway"],body[data-page="home"]:not([data-view]){background:#18170f}
+
+/* Allow four provincial links to wrap on narrow screens. */
+.hero-region-switcher{flex-wrap:wrap}

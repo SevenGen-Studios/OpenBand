@@ -11,7 +11,7 @@ body[data-view="gateway"]:has(.hero[data-preview-province="AB"])>nav{background:
 .province-flag-link{position:absolute;width:62%;max-width:820px;aspect-ratio:2/1;top:28%;left:50%;transform:translateX(-50%) rotate(-6deg);filter:drop-shadow(0 28px 28px rgba(0,0,0,.23));transition:transform 650ms cubic-bezier(.4,0,.2,1),left 650ms cubic-bezier(.4,0,.2,1),opacity 650ms,filter 650ms;user-select:none;cursor:pointer;z-index:1}
 .province-flag-link img{display:block;width:100%;height:100%;object-fit:contain}
 .province-flag-link.selected{z-index:2;opacity:1}
-.province-flag-link.standby{left:105%;transform:translateX(-50%) scale(.48) rotate(10deg);opacity:.42;filter:blur(1px)}
+.province-flag-link.standby{pointer-events:none;left:105%;transform:translateX(-50%) scale(.48) rotate(10deg);opacity:.42;filter:blur(1px)}
 .province-carousel-bottom{position:absolute;bottom:8%;left:6%;right:6%;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
 .province-carousel-kicker{font:600 11px/1.5 'DM Sans',sans-serif!important;margin:0 0 6px!important;text-align:left;color:rgba(255,255,255,.6)!important}
 .hero .province-carousel-name{font:700 26px/1.2 Syne,sans-serif;margin:0 0 20px;text-align:left}

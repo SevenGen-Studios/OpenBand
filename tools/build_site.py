@@ -11,11 +11,11 @@ from urllib.parse import quote
 
 try:
     from tools.nation_name import nation_name_markup, identity_source_url
-    from tools.seo_records import publish as publish_records, financial_markup, safe_url, PROVINCES
+    from tools.seo_records import publish as publish_records, financial_markup, safe_url, PROVINCES, province_path
     from tools.profile_history import build_history
 except ModuleNotFoundError:
     from nation_name import nation_name_markup, identity_source_url
-    from seo_records import publish as publish_records, financial_markup, safe_url, PROVINCES
+    from seo_records import publish as publish_records, financial_markup, safe_url, PROVINCES, province_path
     from profile_history import build_history
 
 
@@ -501,7 +501,7 @@ def write_page(path: Path, content: str) -> None:
 
 
 def provincial_landing(base: str, code: str, name: str) -> str:
-    path = f"/{name.lower()}/"
+    path = province_path(name)
     title = f"OpenBand Canada | {name} First Nations Public Financial Records"
     description = (
         f"Search {name} First Nations public financial records, filing history, "
@@ -533,11 +533,21 @@ def provincial_landing(base: str, code: str, name: str) -> str:
         1,
     )
     page = page.replace(
-        '<script src="/assets/openband.js?v=20261103history3" defer></script>',
-        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261103history3" defer></script>',
+        '<script src="/assets/openband.js?v=20261117bc1" defer></script>',
+        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261117bc1" defer></script>',
         1,
     )
-    if code == 'MB':
+    if code == 'BC':
+        description = 'Explore British Columbia First Nations and their public financial information through OpenBand. Community profiles and financial records will be added as verified sources become available.'
+        page = set_meta(page, title=title, description=description, path=path, structured={'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': title, 'url': ORIGIN + path, 'description': description})
+        page = page.replace('<h1 id="heroTitle">First Nations Public Financial Records</h1>', '<h1 id="heroTitle">British Columbia First Nations</h1>')
+        page = re.sub(r'(<p id="heroIntro">).*?(</p>)', lambda m: m[1] + description + m[2], page)
+        page = page.replace('<p id="provinceExpansionNotice" class="note province-only" hidden>', '<p id="provinceExpansionNotice" class="note province-only">')
+        page = page.replace('href="/browse/"', 'href="/browse/?province=BC"')
+        page = page.replace('Browse all First Nations', 'Browse British Columbia First Nations')
+        page = page.replace('<div class="recent-list" id="recentList"></div>', '<div class="recent-list" id="recentList"><p class="trend-empty">British Columbia First Nation profiles are being added. Verified community records will appear here as they become available.</p></div>')
+        page = re.sub(r'(id="(?:statN|statP|provTracked|provBands|provFilings)">)-', lambda m: m[1] + 'Not yet indexed', page)
+    if code in ('MB', 'BC'):
         page = page.replace('<p id="albertaCoverageLink"><a href="/alberta-coverage-report.html">Alberta source coverage and review report</a></p>', '<p id="albertaCoverageLink" hidden></p>')
     return page
 
@@ -586,7 +596,7 @@ def build() -> None:
 
     for code, province in PROVINCES.items():
         landing = provincial_landing(base, code, province)
-        write_page(ROOT / province.lower() / 'index.html', landing)
+        write_page(ROOT / province_path(province).strip('/') / 'index.html', landing)
 
     for band in bands:
         slug = slugify(band["name"])
@@ -647,14 +657,14 @@ def build() -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20261103history3" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261103history3" defer></script>',
+            '<script src="/assets/openband.js?v=20261117bc1" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261117bc1" defer></script>',
             1,
         )
         if str(band['id']) in history:
-            page = page.replace('openband.css?v=20261103map1', 'openband.css?v=20261103history3')
-            page = page.replace('<script src="/assets/openband.js?v=20261103history3" defer></script>',
-                                '<script src="/assets/profile-history.js?v=20261103history3" defer></script><script src="/assets/openband.js?v=20261103history3" defer></script>')
+            page = page.replace('openband.css?v=20261103map1', 'openband.css?v=20261117bc1')
+            page = page.replace('<script src="/assets/openband.js?v=20261117bc1" defer></script>',
+                                '<script src="/assets/profile-history.js?v=20261117bc1" defer></script><script src="/assets/openband.js?v=20261117bc1" defer></script>')
         write_page(profile_root / slug / "index.html", page)
 
         write_page(
@@ -698,7 +708,7 @@ def build() -> None:
     news_page = news_page.replace('<div class="news-grid" id="newsGrid"></div>', news_prerender(news.get("articles", []), bands), 1)
     write_page(ROOT / "news" / "index.html", news_page)
 
-    paths = ["/", *[f"/{name.lower()}/" for name in PROVINCES.values()], "/browse/", "/news/"] + [f"/first-nations/{slug}/" for slug in slugs]
+    paths = ["/", *[province_path(name) for name in PROVINCES.values()], "/browse/", "/news/"] + [f"/first-nations/{slug}/" for slug in slugs]
     paths.extend(seo_manifest)
     def lastmod_markup(path):
         return "<lastmod>" + seo_manifest[path]["lastmod"] + "</lastmod>" if path in seo_manifest else ""
