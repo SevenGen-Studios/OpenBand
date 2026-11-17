@@ -189964,7 +189964,7 @@
               "otherPayments": 0,
               "total": 136846,
               "travelExpenses": 44846.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "David Muswaggon",
@@ -189977,7 +189977,7 @@
               "otherPayments": 0,
               "total": 106794,
               "travelExpenses": 23833.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Vivian Scott",
@@ -189990,7 +189990,7 @@
               "otherPayments": 0,
               "total": 135061,
               "travelExpenses": 52592.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Donald McKay",
@@ -190003,7 +190003,7 @@
               "otherPayments": 0,
               "total": 110049,
               "travelExpenses": 28049.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Shirley Robinson",
@@ -190016,7 +190016,7 @@
               "otherPayments": 0,
               "total": 123376,
               "travelExpenses": 41376.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Kyle Scribe",
@@ -190029,7 +190029,7 @@
               "otherPayments": 0,
               "total": 124435,
               "travelExpenses": 42435.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Vaughn Blacksmith",
@@ -190042,7 +190042,7 @@
               "otherPayments": 0,
               "total": 109238,
               "travelExpenses": 29167.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Florence Blacksmith",
@@ -190055,7 +190055,7 @@
               "otherPayments": 0,
               "total": 121446,
               "travelExpenses": 45754.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Brenda Frogg",
@@ -190068,7 +190068,7 @@
               "otherPayments": 0,
               "total": 103490,
               "travelExpenses": 27798.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Noretta Miswaggon",
@@ -190081,7 +190081,7 @@
               "otherPayments": 0,
               "total": 10759,
               "travelExpenses": 2167.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Mervin Garrick",
@@ -190094,7 +190094,7 @@
               "otherPayments": 0,
               "total": 10376,
               "travelExpenses": 4068.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Ivan Monias",
@@ -190107,7 +190107,7 @@
               "otherPayments": 0,
               "total": 11758,
               "travelExpenses": 5450.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Lee Thomas",
@@ -190120,7 +190120,7 @@
               "otherPayments": 0,
               "total": 8475,
               "travelExpenses": 2167.0,
-              "other": 0
+              "other": 0.0
             }
           ],
           "parse_status": "parsed",
@@ -190133,7 +190133,7 @@
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "701699cc6f4a79fda0152d2094416d1bef409b645b2abb4f37b319ba0b71c2e9",
           "byteSize": 368099,
-          "lastChecked": "2026-11-02T02:34:20+00:00",
+          "lastChecked": "2026-11-17T00:59:31+00:00",
           "httpStatus": 200,
           "nativePageCount": 3,
           "nativeTextCharacters": 5577,
@@ -190145,24 +190145,28 @@
             "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=276&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
             "sha256": "701699cc6f4a79fda0152d2094416d1bef409b645b2abb4f37b319ba0b71c2e9",
             "pdfPage": 3,
-            "reviewed": "2026-11-16",
-            "reviewMethod": "Checked the original ISC schedule and reconciled every printed official row.",
-            "identityAndYearConfirmed": true,
+            "reviewedAt": "2026-11-17T00:59:31+00:00",
             "completeSchedule": true,
+            "identityAndYearConfirmed": true,
             "sourceRowCount": 13,
-            "sourceTotal": 1112103.0,
-            "totalMethod": "printed_row_totals",
+            "sourceTotal": 1112103,
+            "reviewMethod": "Compared the original name and amount columns against independent RapidOCR.",
+            "ocrVerification": {
+              "engine": "RapidOCR",
+              "sha256": "701699cc6f4a79fda0152d2094416d1bef409b645b2abb4f37b319ba0b71c2e9",
+              "pdfPage": 3
+            },
             "warnings": [
-              "All official rows and all four printed footer columns reconciled."
+              "Matched all 13 named rows and the printed footer to the audited schedule and independent OCR."
             ],
-            "reviewContentSha256": "a2bcc404190250a0f95a8c7e3a2ec8fb9091f1075faa9f7681cfe39561e301c5"
+            "reviewContentSha256": "fe598bde2060c44f3f00536e9651a7aec8655d36682942293ce387a94039dac5"
           },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "All official rows and all four printed footer columns reconciled."
+            "Matched all 13 named rows and the printed footer to the audited schedule and independent OCR."
           ],
           "sourceTotal": 1112103.0,
           "parse_confidence": "high",
@@ -243967,10 +243971,15 @@
               "travel": 32191.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": null,
-              "total": 130366,
+              "otherPayments": 786,
+              "total": 131152,
               "travelExpenses": 32191.0,
-              "other": 0
+              "other": 786.0,
+              "reportedComponents": {
+                "remuneration": 98175,
+                "travel": 32191,
+                "cellPhone": 786
+              }
             },
             {
               "name": "Mary Tyler Bear",
@@ -243980,10 +243989,15 @@
               "travel": 50000.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": null,
+              "otherPayments": 0,
               "total": 132992,
               "travelExpenses": 50000.0,
-              "other": 0
+              "other": 0.0,
+              "reportedComponents": {
+                "remuneration": 82992,
+                "travel": 50000,
+                "cellPhone": 0
+              }
             },
             {
               "name": "Linda Sinclair",
@@ -243993,10 +244007,15 @@
               "travel": 51500.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": null,
-              "total": 132896,
+              "otherPayments": 1852,
+              "total": 134748,
               "travelExpenses": 51500.0,
-              "other": 0
+              "other": 1852.0,
+              "reportedComponents": {
+                "remuneration": 81396,
+                "travel": 51500,
+                "cellPhone": 1852
+              }
             },
             {
               "name": "Terrance Sinclair",
@@ -244006,10 +244025,15 @@
               "travel": 46896.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": null,
+              "otherPayments": 0,
               "total": 128292,
               "travelExpenses": 46896.0,
-              "other": 0
+              "other": 0.0,
+              "reportedComponents": {
+                "remuneration": 81396,
+                "travel": 46896,
+                "cellPhone": 0
+              }
             },
             {
               "name": "Dennis Cameron",
@@ -244019,10 +244043,15 @@
               "travel": 49000.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": null,
-              "total": 130396,
+              "otherPayments": 2364,
+              "total": 132760,
               "travelExpenses": 49000.0,
-              "other": 0
+              "other": 2364.0,
+              "reportedComponents": {
+                "remuneration": 81396,
+                "travel": 49000,
+                "cellPhone": 2364
+              }
             },
             {
               "name": "Kelvin Wilson",
@@ -244032,10 +244061,15 @@
               "travel": 50000.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": null,
-              "total": 132992,
+              "otherPayments": 1030,
+              "total": 134022,
               "travelExpenses": 50000.0,
-              "other": 0
+              "other": 1030.0,
+              "reportedComponents": {
+                "remuneration": 82992,
+                "travel": 50000,
+                "cellPhone": 1030
+              }
             },
             {
               "name": "Donna Sutherland",
@@ -244045,10 +244079,15 @@
               "travel": 49900.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": null,
-              "total": 131296,
+              "otherPayments": 1549,
+              "total": 132845,
               "travelExpenses": 49900.0,
-              "other": 0
+              "other": 1549.0,
+              "reportedComponents": {
+                "remuneration": 81396,
+                "travel": 49900,
+                "cellPhone": 1549
+              }
             }
           ],
           "parse_status": "ok_pdf_keyword_table",
@@ -244061,17 +244100,37 @@
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "fc083ed51f74f32a98f8946ce9dbeb8e4c9610c6ba340116dff54eae9a6a457f",
           "byteSize": 154377,
-          "lastChecked": "2026-11-02T02:33:11+00:00",
+          "lastChecked": "2026-11-17T00:59:31+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 269,
+            "bandName": "Peguis",
+            "year": "2023-2024",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=269&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "fc083ed51f74f32a98f8946ce9dbeb8e4c9610c6ba340116dff54eae9a6a457f",
+            "pdfPage": 4,
+            "reviewedAt": "2026-11-17T00:59:31+00:00",
+            "completeSchedule": true,
+            "identityAndYearConfirmed": true,
+            "sourceRowCount": 7,
+            "sourceTotal": null,
+            "reviewMethod": "Compared the original name and amount columns against independent RapidOCR.",
+            "ocrVerification": {
+              "engine": "RapidOCR",
+              "sha256": "fc083ed51f74f32a98f8946ce9dbeb8e4c9610c6ba340116dff54eae9a6a457f",
+              "pdfPage": 4
+            },
+            "warnings": [
+              "Added the separately reported cell phone column. The three printed column totals reconcile."
+            ],
+            "reviewContentSha256": "8365d43c86bbf98a7694b6fceed87089a9a024d1e1aadb9e9047b02df8a1e861"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "Parsed from keyword-aware PDF table extraction",
-            "Coordinate-aware pdfplumber table extraction was validated before publication",
-            "Multiple candidate Chief and Council tables found"
+            "Added the separately reported cell phone column. The three printed column totals reconcile."
           ],
           "sourceTotal": null,
           "parse_confidence": "high",
