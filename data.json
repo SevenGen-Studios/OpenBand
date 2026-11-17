@@ -75644,23 +75644,26 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=381&FY=2025-2026&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "pending_manual_review",
+          "parse_status": "parsed",
           "warnings": [
-            "Official ISC listing confirms the document is posted; figures await source verification."
+            "Scope covers the actual-year statement of operations. Balance sheet, cash flows and segment details require separate review.",
+            "The audited revenue includes a $98,940,708 settlement claim and a $66,186,666 authorized-loan line. The $146,334,072 Treaties & Indigenous Government expense is a combined program line pending detailed classification."
           ],
           "documentTitle": "Audited consolidated financial statements — 2025-2026",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=381&lang=eng",
           "sourceBandNumber": 381,
-          "verificationStatus": "source_listed_pending_extraction",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-16T20:34:37+00:00",
-          "manual_review_required": true,
+          "manual_review_required": false,
           "previousAvailability": {
             "posted": false,
             "href": null,
             "date": "Not yet posted",
             "parse_status": "not_required"
-          }
+          },
+          "sha256": "a27cd47085aded2015f46b0c04496adef04f1c83c4fdc2a9cfb9d1e02c79eec1",
+          "lastChecked": "2026-11-17T00:44:16+00:00"
         },
         {
           "year": "2025-2026",
@@ -75668,24 +75671,155 @@
           "date": "2026-11-06",
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=381&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "pending_manual_review",
+          "people": [
+            {
+              "name": "Melissa Tavita",
+              "role": "Chief",
+              "months": 12,
+              "remuneration": 78000,
+              "expenses": 106692,
+              "travelExpenses": 106692.0,
+              "other": 16500.0,
+              "otherPayments": 16500,
+              "total": 201192,
+              "reportedComponents": {
+                "councilComponent": 78000,
+                "otherRemuneration": 16500,
+                "meetingsAndTravel": 90867,
+                "meetingsAndTravelClaims": 15825
+              }
+            },
+            {
+              "name": "Barry Cappo",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 60000,
+              "expenses": 133445,
+              "travelExpenses": 133445.0,
+              "other": 36704.0,
+              "otherPayments": 36704,
+              "total": 230149,
+              "reportedComponents": {
+                "councilComponent": 60000,
+                "otherRemuneration": 36704,
+                "meetingsAndTravel": 120833,
+                "meetingsAndTravelClaims": 12612
+              }
+            },
+            {
+              "name": "Terance Cappo",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 60000,
+              "expenses": 106820,
+              "travelExpenses": 106820.0,
+              "other": 9000.0,
+              "otherPayments": 9000,
+              "total": 175820,
+              "reportedComponents": {
+                "councilComponent": 60000,
+                "otherRemuneration": 9000,
+                "meetingsAndTravel": 94016,
+                "meetingsAndTravelClaims": 12804
+              }
+            },
+            {
+              "name": "Thomas Pratt",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 60000,
+              "expenses": 125885,
+              "travelExpenses": 125885.0,
+              "other": 24600.0,
+              "otherPayments": 24600,
+              "total": 210485,
+              "reportedComponents": {
+                "councilComponent": 60000,
+                "otherRemuneration": 24600,
+                "meetingsAndTravel": 110056,
+                "meetingsAndTravelClaims": 15829
+              }
+            },
+            {
+              "name": "Rhonda Rosebluff",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 60000,
+              "expenses": 127368,
+              "travelExpenses": 127368.0,
+              "other": 9750.0,
+              "otherPayments": 9750,
+              "total": 197118,
+              "reportedComponents": {
+                "councilComponent": 60000,
+                "otherRemuneration": 9750,
+                "meetingsAndTravel": 116251,
+                "meetingsAndTravelClaims": 11117
+              }
+            },
+            {
+              "name": "Byron Toto",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 60000,
+              "expenses": 105794,
+              "travelExpenses": 105794.0,
+              "other": 11000.0,
+              "otherPayments": 11000,
+              "total": 176794,
+              "reportedComponents": {
+                "councilComponent": 60000,
+                "otherRemuneration": 11000,
+                "meetingsAndTravel": 94830,
+                "meetingsAndTravelClaims": 10964
+              }
+            }
+          ],
+          "parse_status": "parsed",
           "warnings": [
-            "Official ISC listing confirms the document is posted; figures await source verification."
+            "The source reports meetings and travel and travel claims in separate columns. Both source columns are retained."
           ],
           "documentTitle": "Schedule of Remuneration and Expenses — 2025-2026",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=381&lang=eng",
           "sourceBandNumber": 381,
-          "verificationStatus": "source_listed_pending_extraction",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-16T20:34:37+00:00",
-          "manual_review_required": true,
+          "manual_review_required": false,
           "previousAvailability": {
             "posted": false,
             "href": null,
             "date": "Not yet posted",
             "parse_status": "not_posted"
-          }
+          },
+          "manualSourceReview": {
+            "bandId": 381,
+            "bandName": "Muscowpetung First Nation",
+            "year": "2025-2026",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=381&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "89c990547d8b1ff2ff8a49f37fee556e85c0f99d96d48db080cbf286a12316ea",
+            "pdfPage": 5,
+            "reviewedAt": "2026-11-17T00:44:16+00:00",
+            "completeSchedule": true,
+            "identityAndYearConfirmed": true,
+            "sourceRowCount": 6,
+            "sourceTotal": 1191558,
+            "reviewMethod": "Matched the original table to independent RapidOCR and reconciled every named row.",
+            "ocrVerification": {
+              "engine": "RapidOCR",
+              "sha256": "89c990547d8b1ff2ff8a49f37fee556e85c0f99d96d48db080cbf286a12316ea",
+              "pdfPage": 5
+            },
+            "warnings": [
+              "The source reports meetings and travel and travel claims in separate columns. Both source columns are retained."
+            ],
+            "reviewContentSha256": "23441973ae2eb6f4362b1925c8ba7be93c90463fe321b5dba3f265e06034b506"
+          },
+          "parse_confidence": "high",
+          "technical_status": "parsed",
+          "sourceTotal": 1191558,
+          "sha256": "89c990547d8b1ff2ff8a49f37fee556e85c0f99d96d48db080cbf286a12316ea",
+          "lastChecked": "2026-11-17T00:44:16+00:00"
         }
       ],
       "status": "ok",
@@ -107892,17 +108026,174 @@
           "date": "2026-11-02",
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=437&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "pending_manual_review",
+          "people": [
+            {
+              "name": "Tony Alexis",
+              "role": "Chief",
+              "months": 12,
+              "remuneration": 126212,
+              "expenses": 33600,
+              "travelExpenses": 33600.0,
+              "other": 125022.0,
+              "otherPayments": 125022,
+              "total": 284834,
+              "reportedComponents": {
+                "remunerationInclusiveOfBenefits": 126212,
+                "travelAndCell": 33600,
+                "other": 125022
+              }
+            },
+            {
+              "name": "Darren Kootenay",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 103095,
+              "expenses": 24000,
+              "travelExpenses": 24000.0,
+              "other": 145532.0,
+              "otherPayments": 145532,
+              "total": 272627,
+              "reportedComponents": {
+                "remunerationInclusiveOfBenefits": 103095,
+                "travelAndCell": 24000,
+                "other": 145532
+              }
+            },
+            {
+              "name": "Darwin Alexis",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 103095,
+              "expenses": 24000,
+              "travelExpenses": 24000.0,
+              "other": 79750.0,
+              "otherPayments": 79750,
+              "total": 206845,
+              "reportedComponents": {
+                "remunerationInclusiveOfBenefits": 103095,
+                "travelAndCell": 24000,
+                "other": 79750
+              }
+            },
+            {
+              "name": "Dwayne Alexis",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 103095,
+              "expenses": 24000,
+              "travelExpenses": 24000.0,
+              "other": 162360.0,
+              "otherPayments": 162360,
+              "total": 289455,
+              "reportedComponents": {
+                "remunerationInclusiveOfBenefits": 103095,
+                "travelAndCell": 24000,
+                "other": 162360
+              }
+            },
+            {
+              "name": "Emily Potts",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 103095,
+              "expenses": 24000,
+              "travelExpenses": 24000.0,
+              "other": 127934.0,
+              "otherPayments": 127934,
+              "total": 255029,
+              "reportedComponents": {
+                "remunerationInclusiveOfBenefits": 103095,
+                "travelAndCell": 24000,
+                "other": 127934
+              }
+            },
+            {
+              "name": "Henry R. Alexis",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 103045,
+              "expenses": 24000,
+              "travelExpenses": 24000.0,
+              "other": 92130.0,
+              "otherPayments": 92130,
+              "total": 219175,
+              "reportedComponents": {
+                "remunerationInclusiveOfBenefits": 103045,
+                "travelAndCell": 24000,
+                "other": 92130
+              }
+            },
+            {
+              "name": "Cameron Alexis",
+              "role": "Councillor",
+              "months": 11,
+              "remuneration": 102700,
+              "expenses": 24000,
+              "travelExpenses": 24000.0,
+              "other": 94279.0,
+              "otherPayments": 94279,
+              "total": 220979,
+              "reportedComponents": {
+                "remunerationInclusiveOfBenefits": 102700,
+                "travelAndCell": 24000,
+                "other": 94279
+              }
+            },
+            {
+              "name": "Tina Cardinal",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 103095,
+              "expenses": 24000,
+              "travelExpenses": 24000.0,
+              "other": 139918.0,
+              "otherPayments": 139918,
+              "total": 267013,
+              "reportedComponents": {
+                "remunerationInclusiveOfBenefits": 103095,
+                "travelAndCell": 24000,
+                "other": 139918
+              }
+            }
+          ],
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=437&lang=eng",
           "sourceBandNumber": 437,
-          "verificationStatus": "source_listed_pending_extraction",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-16T20:35:17+00:00",
-          "manual_review_required": true,
+          "manual_review_required": false,
           "warnings": [
-            "Official ISC listing confirms the document is posted; figures await source verification."
-          ]
+            "The printed footer is $1 below the sum of the eight printed individual totals. The schedule labels the expense column Travel and Cell."
+          ],
+          "manualSourceReview": {
+            "bandId": 437,
+            "bandName": "Alexis Nakota Sioux Nation",
+            "year": "2025-2026",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=437&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "73bdf9167d0fca7c2683b932a10c3a998665badf5ef507243a4b631cbaf89910",
+            "pdfPage": 4,
+            "reviewedAt": "2026-11-17T00:44:16+00:00",
+            "completeSchedule": true,
+            "identityAndYearConfirmed": true,
+            "sourceRowCount": 8,
+            "sourceTotal": 2015956,
+            "reviewMethod": "Matched the original table to independent RapidOCR and reconciled every named row.",
+            "ocrVerification": {
+              "engine": "RapidOCR",
+              "sha256": "73bdf9167d0fca7c2683b932a10c3a998665badf5ef507243a4b631cbaf89910",
+              "pdfPage": 4
+            },
+            "warnings": [
+              "The printed footer is $1 below the sum of the eight printed individual totals. The schedule labels the expense column Travel and Cell."
+            ],
+            "reviewContentSha256": "433e61284ee9166fce5c530631033877039c65df286f85d5a175e49b9e2ea061"
+          },
+          "parse_confidence": "high",
+          "technical_status": "parsed",
+          "sourceTotal": 2015956,
+          "sha256": "73bdf9167d0fca7c2683b932a10c3a998665badf5ef507243a4b631cbaf89910",
+          "lastChecked": "2026-11-17T00:44:16+00:00"
         }
       ],
       "discoveryStatus": "checked",
@@ -189673,7 +189964,7 @@
               "otherPayments": 0,
               "total": 136846,
               "travelExpenses": 44846.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "David Muswaggon",
@@ -189686,7 +189977,7 @@
               "otherPayments": 0,
               "total": 106794,
               "travelExpenses": 23833.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Vivian Scott",
@@ -189699,7 +189990,7 @@
               "otherPayments": 0,
               "total": 135061,
               "travelExpenses": 52592.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Donald McKay",
@@ -189712,7 +190003,7 @@
               "otherPayments": 0,
               "total": 110049,
               "travelExpenses": 28049.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Shirley Robinson",
@@ -189725,7 +190016,7 @@
               "otherPayments": 0,
               "total": 123376,
               "travelExpenses": 41376.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Kyle Scribe",
@@ -189738,7 +190029,7 @@
               "otherPayments": 0,
               "total": 124435,
               "travelExpenses": 42435.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Vaughn Blacksmith",
@@ -189751,7 +190042,7 @@
               "otherPayments": 0,
               "total": 109238,
               "travelExpenses": 29167.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Florence Blacksmith",
@@ -189764,7 +190055,7 @@
               "otherPayments": 0,
               "total": 121446,
               "travelExpenses": 45754.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Brenda Frogg",
@@ -189777,7 +190068,7 @@
               "otherPayments": 0,
               "total": 103490,
               "travelExpenses": 27798.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Noretta Miswaggon",
@@ -189790,7 +190081,7 @@
               "otherPayments": 0,
               "total": 10759,
               "travelExpenses": 2167.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Mervin Garrick",
@@ -189803,7 +190094,7 @@
               "otherPayments": 0,
               "total": 10376,
               "travelExpenses": 4068.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Ivan Monias",
@@ -189816,7 +190107,7 @@
               "otherPayments": 0,
               "total": 11758,
               "travelExpenses": 5450.0,
-              "other": 0
+              "other": 0.0
             },
             {
               "name": "Lee Thomas",
@@ -189829,7 +190120,7 @@
               "otherPayments": 0,
               "total": 8475,
               "travelExpenses": 2167.0,
-              "other": 0
+              "other": 0.0
             }
           ],
           "parse_status": "parsed",
@@ -189842,7 +190133,7 @@
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "701699cc6f4a79fda0152d2094416d1bef409b645b2abb4f37b319ba0b71c2e9",
           "byteSize": 368099,
-          "lastChecked": "2026-11-02T02:34:20+00:00",
+          "lastChecked": "2026-11-17T00:59:31+00:00",
           "httpStatus": 200,
           "nativePageCount": 3,
           "nativeTextCharacters": 5577,
@@ -189854,24 +190145,28 @@
             "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=276&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
             "sha256": "701699cc6f4a79fda0152d2094416d1bef409b645b2abb4f37b319ba0b71c2e9",
             "pdfPage": 3,
-            "reviewed": "2026-11-16",
-            "reviewMethod": "Checked the original ISC schedule and reconciled every printed official row.",
-            "identityAndYearConfirmed": true,
+            "reviewedAt": "2026-11-17T00:59:31+00:00",
             "completeSchedule": true,
+            "identityAndYearConfirmed": true,
             "sourceRowCount": 13,
-            "sourceTotal": 1112103.0,
-            "totalMethod": "printed_row_totals",
+            "sourceTotal": 1112103,
+            "reviewMethod": "Compared the original name and amount columns against independent RapidOCR.",
+            "ocrVerification": {
+              "engine": "RapidOCR",
+              "sha256": "701699cc6f4a79fda0152d2094416d1bef409b645b2abb4f37b319ba0b71c2e9",
+              "pdfPage": 3
+            },
             "warnings": [
-              "All official rows and all four printed footer columns reconciled."
+              "Matched all 13 named rows and the printed footer to the audited schedule and independent OCR."
             ],
-            "reviewContentSha256": "a2bcc404190250a0f95a8c7e3a2ec8fb9091f1075faa9f7681cfe39561e301c5"
+            "reviewContentSha256": "fe598bde2060c44f3f00536e9651a7aec8655d36682942293ce387a94039dac5"
           },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "All official rows and all four printed footer columns reconciled."
+            "Matched all 13 named rows and the printed footer to the audited schedule and independent OCR."
           ],
           "sourceTotal": 1112103.0,
           "parse_confidence": "high",
@@ -236208,13 +236503,18 @@
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=278&lang=eng",
           "sourceBandNumber": 278,
-          "verificationStatus": "parse_timeout_or_error",
+          "verificationStatus": "pdf_retrieved",
           "retrievedAt": "2026-11-02T02:27:49+00:00",
           "nationId": 278,
           "warnings": [
-            "Bounded extraction stopped: TimeoutExpired"
+            "Revenue breakdown is incomplete",
+            "Expense breakdown is incomplete",
+            "Operations totals and separately reported capital contributions were source verified. Revenue and expense classifications remain in manual review.",
+            "Annual surplus includes separately reported adjustments",
+            "Capital spending was not extracted",
+            "Debt summary was not extracted"
           ],
-          "lastChecked": "2026-11-02T05:06:57+00:00",
+          "lastChecked": "2026-11-17T00:49:33+00:00",
           "sha256": "1cf7aed3875d96f85f1be20c877d6da4f37ce85fee67772ce2f538d12f0bb62e",
           "byteSize": 639872,
           "pdfCacheVerifiedAt": "2026-11-02T02:58:46+00:00",
@@ -236237,7 +236537,8 @@
               "Annual surplus or deficit was not extracted"
             ]
           },
-          "technical_status": "manual_review"
+          "technical_status": "manual_review",
+          "manual_review_required": true
         },
         {
           "year": "2023-2024",
@@ -236246,20 +236547,141 @@
           "date": "2025-03-18",
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=278&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "manual_review",
+          "people": [
+            {
+              "name": "Larson Anderson",
+              "role": "Chief",
+              "months": 12,
+              "remuneration": 126694,
+              "expenses": 108844,
+              "travelExpenses": 108844.0,
+              "reportedComponents": {
+                "remuneration": 126694,
+                "expenses": 108844
+              },
+              "total": 235538,
+              "other": 0
+            },
+            {
+              "name": "Anthony Apetagon",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 118124,
+              "expenses": 149620,
+              "travelExpenses": 149620.0,
+              "reportedComponents": {
+                "remuneration": 118124,
+                "expenses": 149620
+              },
+              "total": 267744,
+              "other": 0
+            },
+            {
+              "name": "Deon Clarke",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 107804,
+              "expenses": 144383,
+              "travelExpenses": 144383.0,
+              "reportedComponents": {
+                "remuneration": 107804,
+                "expenses": 144383
+              },
+              "total": 252187,
+              "other": 0
+            },
+            {
+              "name": "Edward Albert",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 107104,
+              "expenses": 109173,
+              "travelExpenses": 109173.0,
+              "reportedComponents": {
+                "remuneration": 107104,
+                "expenses": 109173
+              },
+              "total": 216277,
+              "other": 0
+            },
+            {
+              "name": "Orville Apetagon",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 108154,
+              "expenses": 114569,
+              "travelExpenses": 114569.0,
+              "reportedComponents": {
+                "remuneration": 108154,
+                "expenses": 114569
+              },
+              "total": 222723,
+              "other": 0
+            },
+            {
+              "name": "John Henry",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 107454,
+              "expenses": 142638,
+              "travelExpenses": 142638.0,
+              "reportedComponents": {
+                "remuneration": 107454,
+                "expenses": 142638
+              },
+              "total": 250092,
+              "other": 0
+            },
+            {
+              "name": "David Swanson",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 107104,
+              "expenses": 103023,
+              "travelExpenses": 103023.0,
+              "reportedComponents": {
+                "remuneration": 107104,
+                "expenses": 103023
+              },
+              "total": 210127,
+              "other": 0
+            }
+          ],
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=278&lang=eng",
           "sourceBandNumber": 278,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-02T02:27:49+00:00",
           "nationId": 278,
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "20b05c61a2a87933345d9320024182ada35768da39cfbd03b0baff02bef5a428",
           "byteSize": 217811,
-          "lastChecked": "2026-11-02T02:33:23+00:00",
+          "lastChecked": "2026-11-17T00:49:33+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 278,
+            "bandName": "Norway House Cree Nation",
+            "year": "2023-2024",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=278&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "20b05c61a2a87933345d9320024182ada35768da39cfbd03b0baff02bef5a428",
+            "pdfPage": 4,
+            "reviewedAt": "2026-11-17T00:49:33+00:00",
+            "completeSchedule": true,
+            "identityAndYearConfirmed": true,
+            "sourceRowCount": 7,
+            "sourceTotal": 1654688,
+            "reviewMethod": "Matched every original name and amount column against independent RapidOCR.",
+            "ocrVerification": {
+              "engine": "RapidOCR",
+              "sha256": "20b05c61a2a87933345d9320024182ada35768da39cfbd03b0baff02bef5a428",
+              "pdfPage": 4
+            },
+            "warnings": [
+              "The original defines expenses as transportation, meals, hospitality and incidental expense. Each row and the printed footer reconcile."
+            ],
+            "reviewContentSha256": "9c5b3cf290abfe524711054de1f048fe167c39632544f43a76574e044387c981"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": [
@@ -236267,11 +236689,10 @@
             ]
           },
           "warnings": [
-            "Parsed from PDF text fallback",
-            "Printed schedule footer was not reconciled"
+            "The original defines expenses as transportation, meals, hospitality and incidental expense. Each row and the printed footer reconcile."
           ],
           "parse_confidence": "high",
-          "manual_review_required": true,
+          "manual_review_required": false,
           "parse_stages": [
             {
               "stage": "local",
@@ -236283,7 +236704,9 @@
           ],
           "nativePageCount": 5,
           "nativeTextCharacters": 3254,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "technical_status": "parsed",
+          "sourceTotal": 1654688
         },
         {
           "year": "2024-2025",
@@ -236303,20 +236726,19 @@
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "b3436c45383cfcd68b777698fc429c2790660735b4274cf93434361d2808da0a",
           "byteSize": 744243,
-          "lastChecked": "2026-11-02T02:30:19+00:00",
+          "lastChecked": "2026-11-17T00:49:33+00:00",
           "httpStatus": 200,
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "OCR recovery requires reported revenue and expense totals",
             "Revenue rows do not reconcile exactly to the reported total",
-            "Reported annual result does not reconcile exactly",
-            "Total expenses were not extracted",
+            "Expense rows do not reconcile exactly to the reported total",
             "Revenue breakdown is incomplete",
             "Expense breakdown is incomplete",
-            "Revenue, expenses, and annual surplus do not reconcile"
+            "Operations totals and separately reported capital contributions were source verified. Revenue and expense classifications remain in manual review.",
+            "Annual surplus includes separately reported adjustments"
           ],
           "manual_review_required": true,
           "parse_confidence": "low",
@@ -243549,10 +243971,15 @@
               "travel": 32191.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": null,
-              "total": 130366,
+              "otherPayments": 786,
+              "total": 131152,
               "travelExpenses": 32191.0,
-              "other": 0
+              "other": 786.0,
+              "reportedComponents": {
+                "remuneration": 98175,
+                "travel": 32191,
+                "cellPhone": 786
+              }
             },
             {
               "name": "Mary Tyler Bear",
@@ -243562,10 +243989,15 @@
               "travel": 50000.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": null,
+              "otherPayments": 0,
               "total": 132992,
               "travelExpenses": 50000.0,
-              "other": 0
+              "other": 0.0,
+              "reportedComponents": {
+                "remuneration": 82992,
+                "travel": 50000,
+                "cellPhone": 0
+              }
             },
             {
               "name": "Linda Sinclair",
@@ -243575,10 +244007,15 @@
               "travel": 51500.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": null,
-              "total": 132896,
+              "otherPayments": 1852,
+              "total": 134748,
               "travelExpenses": 51500.0,
-              "other": 0
+              "other": 1852.0,
+              "reportedComponents": {
+                "remuneration": 81396,
+                "travel": 51500,
+                "cellPhone": 1852
+              }
             },
             {
               "name": "Terrance Sinclair",
@@ -243588,10 +244025,15 @@
               "travel": 46896.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": null,
+              "otherPayments": 0,
               "total": 128292,
               "travelExpenses": 46896.0,
-              "other": 0
+              "other": 0.0,
+              "reportedComponents": {
+                "remuneration": 81396,
+                "travel": 46896,
+                "cellPhone": 0
+              }
             },
             {
               "name": "Dennis Cameron",
@@ -243601,10 +244043,15 @@
               "travel": 49000.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": null,
-              "total": 130396,
+              "otherPayments": 2364,
+              "total": 132760,
               "travelExpenses": 49000.0,
-              "other": 0
+              "other": 2364.0,
+              "reportedComponents": {
+                "remuneration": 81396,
+                "travel": 49000,
+                "cellPhone": 2364
+              }
             },
             {
               "name": "Kelvin Wilson",
@@ -243614,10 +244061,15 @@
               "travel": 50000.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": null,
-              "total": 132992,
+              "otherPayments": 1030,
+              "total": 134022,
               "travelExpenses": 50000.0,
-              "other": 0
+              "other": 1030.0,
+              "reportedComponents": {
+                "remuneration": 82992,
+                "travel": 50000,
+                "cellPhone": 1030
+              }
             },
             {
               "name": "Donna Sutherland",
@@ -243627,10 +244079,15 @@
               "travel": 49900.0,
               "expenses": null,
               "creditCard": null,
-              "otherPayments": null,
-              "total": 131296,
+              "otherPayments": 1549,
+              "total": 132845,
               "travelExpenses": 49900.0,
-              "other": 0
+              "other": 1549.0,
+              "reportedComponents": {
+                "remuneration": 81396,
+                "travel": 49900,
+                "cellPhone": 1549
+              }
             }
           ],
           "parse_status": "ok_pdf_keyword_table",
@@ -243643,17 +244100,37 @@
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "fc083ed51f74f32a98f8946ce9dbeb8e4c9610c6ba340116dff54eae9a6a457f",
           "byteSize": 154377,
-          "lastChecked": "2026-11-02T02:33:11+00:00",
+          "lastChecked": "2026-11-17T00:59:31+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 269,
+            "bandName": "Peguis",
+            "year": "2023-2024",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=269&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "fc083ed51f74f32a98f8946ce9dbeb8e4c9610c6ba340116dff54eae9a6a457f",
+            "pdfPage": 4,
+            "reviewedAt": "2026-11-17T00:59:31+00:00",
+            "completeSchedule": true,
+            "identityAndYearConfirmed": true,
+            "sourceRowCount": 7,
+            "sourceTotal": null,
+            "reviewMethod": "Compared the original name and amount columns against independent RapidOCR.",
+            "ocrVerification": {
+              "engine": "RapidOCR",
+              "sha256": "fc083ed51f74f32a98f8946ce9dbeb8e4c9610c6ba340116dff54eae9a6a457f",
+              "pdfPage": 4
+            },
+            "warnings": [
+              "Added the separately reported cell phone column. The three printed column totals reconcile."
+            ],
+            "reviewContentSha256": "8365d43c86bbf98a7694b6fceed87089a9a024d1e1aadb9e9047b02df8a1e861"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "Parsed from keyword-aware PDF table extraction",
-            "Coordinate-aware pdfplumber table extraction was validated before publication",
-            "Multiple candidate Chief and Council tables found"
+            "Added the separately reported cell phone column. The three printed column totals reconcile."
           ],
           "sourceTotal": null,
           "parse_confidence": "high",
@@ -269469,16 +269946,18 @@
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=323&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
           "posted": true,
           "people": [],
-          "parse_status": "pending_manual_review",
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=323&lang=eng",
           "sourceBandNumber": 323,
-          "verificationStatus": "source_listed_pending_extraction",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-16T20:38:45+00:00",
-          "manual_review_required": true,
+          "manual_review_required": false,
           "warnings": [
-            "Official ISC listing confirms the document is posted; figures await source verification."
-          ]
+            "Scope covers the actual-year statement of operations. Balance sheet, cash flows and segment details require separate review."
+          ],
+          "sha256": "b7c56f4f90b5c970e24e64342d9d97005247ac40bea95e058791287cd5f33e38",
+          "lastChecked": "2026-11-17T00:44:16+00:00"
         }
       ],
       "website": "http://www.ktc.ca/?page_id=178",
