@@ -236499,13 +236499,18 @@
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=278&lang=eng",
           "sourceBandNumber": 278,
-          "verificationStatus": "parse_timeout_or_error",
+          "verificationStatus": "pdf_retrieved",
           "retrievedAt": "2026-11-02T02:27:49+00:00",
           "nationId": 278,
           "warnings": [
-            "Bounded extraction stopped: TimeoutExpired"
+            "Revenue breakdown is incomplete",
+            "Expense breakdown is incomplete",
+            "Operations totals and separately reported capital contributions were source verified. Revenue and expense classifications remain in manual review.",
+            "Annual surplus includes separately reported adjustments",
+            "Capital spending was not extracted",
+            "Debt summary was not extracted"
           ],
-          "lastChecked": "2026-11-02T05:06:57+00:00",
+          "lastChecked": "2026-11-17T00:49:33+00:00",
           "sha256": "1cf7aed3875d96f85f1be20c877d6da4f37ce85fee67772ce2f538d12f0bb62e",
           "byteSize": 639872,
           "pdfCacheVerifiedAt": "2026-11-02T02:58:46+00:00",
@@ -236528,7 +236533,8 @@
               "Annual surplus or deficit was not extracted"
             ]
           },
-          "technical_status": "manual_review"
+          "technical_status": "manual_review",
+          "manual_review_required": true
         },
         {
           "year": "2023-2024",
@@ -236537,20 +236543,141 @@
           "date": "2025-03-18",
           "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=278&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
           "posted": true,
-          "people": [],
-          "parse_status": "manual_review",
+          "people": [
+            {
+              "name": "Larson Anderson",
+              "role": "Chief",
+              "months": 12,
+              "remuneration": 126694,
+              "expenses": 108844,
+              "travelExpenses": 108844.0,
+              "reportedComponents": {
+                "remuneration": 126694,
+                "expenses": 108844
+              },
+              "total": 235538,
+              "other": 0
+            },
+            {
+              "name": "Anthony Apetagon",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 118124,
+              "expenses": 149620,
+              "travelExpenses": 149620.0,
+              "reportedComponents": {
+                "remuneration": 118124,
+                "expenses": 149620
+              },
+              "total": 267744,
+              "other": 0
+            },
+            {
+              "name": "Deon Clarke",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 107804,
+              "expenses": 144383,
+              "travelExpenses": 144383.0,
+              "reportedComponents": {
+                "remuneration": 107804,
+                "expenses": 144383
+              },
+              "total": 252187,
+              "other": 0
+            },
+            {
+              "name": "Edward Albert",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 107104,
+              "expenses": 109173,
+              "travelExpenses": 109173.0,
+              "reportedComponents": {
+                "remuneration": 107104,
+                "expenses": 109173
+              },
+              "total": 216277,
+              "other": 0
+            },
+            {
+              "name": "Orville Apetagon",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 108154,
+              "expenses": 114569,
+              "travelExpenses": 114569.0,
+              "reportedComponents": {
+                "remuneration": 108154,
+                "expenses": 114569
+              },
+              "total": 222723,
+              "other": 0
+            },
+            {
+              "name": "John Henry",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 107454,
+              "expenses": 142638,
+              "travelExpenses": 142638.0,
+              "reportedComponents": {
+                "remuneration": 107454,
+                "expenses": 142638
+              },
+              "total": 250092,
+              "other": 0
+            },
+            {
+              "name": "David Swanson",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 107104,
+              "expenses": 103023,
+              "travelExpenses": 103023.0,
+              "reportedComponents": {
+                "remuneration": 107104,
+                "expenses": 103023
+              },
+              "total": 210127,
+              "other": 0
+            }
+          ],
+          "parse_status": "parsed",
           "sourceOrganization": "Indigenous Services Canada",
           "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=278&lang=eng",
           "sourceBandNumber": 278,
-          "verificationStatus": "pdf_retrieved",
+          "verificationStatus": "automated_validated",
           "retrievedAt": "2026-11-02T02:27:49+00:00",
           "nationId": 278,
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "20b05c61a2a87933345d9320024182ada35768da39cfbd03b0baff02bef5a428",
           "byteSize": 217811,
-          "lastChecked": "2026-11-02T02:33:23+00:00",
+          "lastChecked": "2026-11-17T00:49:33+00:00",
           "httpStatus": 200,
-          "manualSourceReview": null,
+          "manualSourceReview": {
+            "bandId": 278,
+            "bandName": "Norway House Cree Nation",
+            "year": "2023-2024",
+            "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=278&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
+            "sha256": "20b05c61a2a87933345d9320024182ada35768da39cfbd03b0baff02bef5a428",
+            "pdfPage": 4,
+            "reviewedAt": "2026-11-17T00:49:33+00:00",
+            "completeSchedule": true,
+            "identityAndYearConfirmed": true,
+            "sourceRowCount": 7,
+            "sourceTotal": 1654688,
+            "reviewMethod": "Matched every original name and amount column against independent RapidOCR.",
+            "ocrVerification": {
+              "engine": "RapidOCR",
+              "sha256": "20b05c61a2a87933345d9320024182ada35768da39cfbd03b0baff02bef5a428",
+              "pdfPage": 4
+            },
+            "warnings": [
+              "The original defines expenses as transportation, meals, hospitality and incidental expense. Each row and the printed footer reconcile."
+            ],
+            "reviewContentSha256": "9c5b3cf290abfe524711054de1f048fe167c39632544f43a76574e044387c981"
+          },
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": [
@@ -236558,11 +236685,10 @@
             ]
           },
           "warnings": [
-            "Parsed from PDF text fallback",
-            "Printed schedule footer was not reconciled"
+            "The original defines expenses as transportation, meals, hospitality and incidental expense. Each row and the printed footer reconcile."
           ],
           "parse_confidence": "high",
-          "manual_review_required": true,
+          "manual_review_required": false,
           "parse_stages": [
             {
               "stage": "local",
@@ -236574,7 +236700,9 @@
           ],
           "nativePageCount": 5,
           "nativeTextCharacters": 3254,
-          "requiresOcr": false
+          "requiresOcr": false,
+          "technical_status": "parsed",
+          "sourceTotal": 1654688
         },
         {
           "year": "2024-2025",
@@ -236594,20 +236722,19 @@
           "parserRevision": "manitoba-20261101-v1-alberta-20261009-v28",
           "sha256": "b3436c45383cfcd68b777698fc429c2790660735b4274cf93434361d2808da0a",
           "byteSize": 744243,
-          "lastChecked": "2026-11-02T02:30:19+00:00",
+          "lastChecked": "2026-11-17T00:49:33+00:00",
           "httpStatus": 200,
           "documentChecks": {
             "identityAndYearConfirmed": true,
             "warnings": []
           },
           "warnings": [
-            "OCR recovery requires reported revenue and expense totals",
             "Revenue rows do not reconcile exactly to the reported total",
-            "Reported annual result does not reconcile exactly",
-            "Total expenses were not extracted",
+            "Expense rows do not reconcile exactly to the reported total",
             "Revenue breakdown is incomplete",
             "Expense breakdown is incomplete",
-            "Revenue, expenses, and annual surplus do not reconcile"
+            "Operations totals and separately reported capital contributions were source verified. Revenue and expense classifications remain in manual review.",
+            "Annual surplus includes separately reported adjustments"
           ],
           "manual_review_required": true,
           "parse_confidence": "low",
