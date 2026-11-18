@@ -715,6 +715,15 @@ def extract_olcn_calendar(markup, page_url, community, source):
 def extract_html_events(html: str, page_url: str, community: dict, source: dict, today: date | None = None):
     calendar=extract_olcn_calendar(html,page_url,community,source)
     if calendar is not None:return calendar,[],[]
+    # Sweetgrass uses query-string event permalinks with a specific event heading.
+    if urllib.parse.urlsplit(page_url).hostname in {"sweetgrassfirstnation.ca", "www.sweetgrassfirstnation.ca"} and urllib.parse.parse_qs(urllib.parse.urlsplit(page_url).query).get("EventID"):
+        heading = re.search(r'<h1[^>]*class=["\'][^"\']*event_header[^"\']*["\'][^>]*>(.*?)</h1>', html, re.I | re.S)
+        day = re.search(r'EventDate=(20\d{2}-\d{2}-\d{2})', html)
+        if heading and day:
+            title = clean_text(re.sub(r'<[^>]+>', ' ', heading.group(1))).replace('&amp;', '&')
+            if title:
+                row = normalized_event(community, source, title=title, context=title + ' ' + day.group(1), url=page_url, start=day.group(1), method='html-calendar-detail')
+                return [row], [], []
     eventer=extract_eventer_detail(html,page_url,community,source)
     if eventer:return [eventer],[],[]
     parser = EventPageParser()

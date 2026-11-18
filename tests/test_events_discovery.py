@@ -29,6 +29,13 @@ SOURCE = {
 
 
 class EventDateTests(unittest.TestCase):
+    def test_sweetgrass_event_detail_uses_heading_and_linked_date(self):
+        html = '<title>Events - Sweetgrass</title><div class="single_event_details"><h1 class="event_header">Fiddle Dance &amp; Basket Social</h1><a href="/events.html?EventDate=2026-11-20">November 20, 2026</a></div>'
+        community = {"bandId": 348, "communityName": "Sweetgrass First Nation", "provinceTerritory": "SK"}
+        source = {"type": "Official First Nation Website", "name": "Sweetgrass First Nation"}
+        rows, _, _ = extract_html_events(html, 'https://sweetgrassfirstnation.ca/events.html?EventID=783', community, source)
+        self.assertEqual([(row['title'], row['startDate']) for row in rows], [('Fiddle Dance & Basket Social', '2026-11-20')])
+
     def test_dated_calendar_detail_uses_actual_heading_not_previous_event_or_back_link(self):
         html = '''<a href="/events">Back to All Events</a><h1>Business Trust Workshop</h1>
         <p>Wednesday, October 21, 2026. Trust Update Workshop at the Youth Centre.</p>
