@@ -1,15 +1,15 @@
 {
   "generatedFrom": "2026-11-16T20:38:53.667398+00:00",
-  "manualReviewCount": 506,
+  "manualReviewCount": 496,
   "reasonCounts": {
     "implausibly small remuneration values appear in money columns": 6,
     "month values appear in money columns": 1,
     "month values appear in money columns; implausibly small remuneration values appear in money columns": 8,
     "no Chief row in a small parsed filing": 1,
-    "no reliable official rows remain after validation": 77,
+    "no reliable official rows remain after validation": 74,
     "only one parsed row": 1,
     "only one parsed row; no Chief row in a small parsed filing": 6,
-    "parser confidence is low": 406
+    "parser confidence is low": 399
   },
   "filings": [
     {
@@ -603,36 +603,6 @@
       "bandId": 435,
       "band": "Blood",
       "province": "AB",
-      "year": "2014-2015",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=435&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "PDF has no usable native text; used free local OCR",
-        "Parsed via free local OCR fallback",
-        "Row 9: ambiguous decimal separator in travelExpenses",
-        "Row 13: ambiguous decimal separator in remuneration",
-        "Totals do not reconcile for many rows",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "Row 6: total does not equal remuneration + travel/expenses + other",
-        "Row 7: total does not equal remuneration + travel/expenses + other",
-        "Row 8: total does not equal remuneration + travel/expenses + other",
-        "Row 9: total does not equal remuneration + travel/expenses + other",
-        "Row 10: total does not equal remuneration + travel/expenses + other",
-        "Row 11: total does not equal remuneration + travel/expenses + other",
-        "Row 12: total does not equal remuneration + travel/expenses + other",
-        "Row 13: total does not equal remuneration + travel/expenses + other",
-        "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 435,
-      "band": "Blood",
-      "province": "AB",
       "year": "2015-2016",
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=435&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng",
@@ -652,26 +622,8 @@
         "Row 9: total does not equal remuneration + travel/expenses + other",
         "No Chief row detected",
         "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 435,
-      "band": "Blood",
-      "province": "AB",
-      "year": "2016-2017",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=435&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "PDF has no usable native text; used free local OCR",
-        "Parsed via free local OCR fallback",
-        "A complete Chief and Council schedule requires an identified Chief row",
-        "At least one official row does not reconcile",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "No Chief row detected",
-        "Only one official row parsed",
-        "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted",
+        "The printed salary, travel and total columns contain several material row discrepancies. For example, Dorothy First Rider has salary $94,770 and total travel and other $48,558, while the printed row total is $130,188."
       ]
     },
     {
@@ -694,32 +646,8 @@
         "Row 7: total does not equal remuneration + travel/expenses + other",
         "Row 8: total does not equal remuneration + travel/expenses + other",
         "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 435,
-      "band": "Blood",
-      "province": "AB",
-      "year": "2018-2019",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=435&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "PDF has no usable native text; used free local OCR",
-        "Parsed via free local OCR fallback",
-        "Totals do not reconcile for many rows",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "Row 6: total does not equal remuneration + travel/expenses + other",
-        "Row 7: total does not equal remuneration + travel/expenses + other",
-        "Row 8: total does not equal remuneration + travel/expenses + other",
-        "Row 9: total does not equal remuneration + travel/expenses + other",
-        "Row 10: total does not equal remuneration + travel/expenses + other",
-        "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted",
+        "Timothy Tail Feathers has $11,816 council travel/per diems and $6,849 board travel/honoraria. The source prints combined travel $18,655, a $10 difference. The printed final total uses $18,665."
       ]
     },
     {
@@ -748,102 +676,8 @@
         "Local text output failed validation; trying free local OCR",
         "Parsed via free local OCR fallback",
         "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 435,
-      "band": "Blood",
-      "province": "AB",
-      "year": "2020-2021",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=435&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Totals do not reconcile for many rows",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "Row 6: total does not equal remuneration + travel/expenses + other",
-        "Row 7: total does not equal remuneration + travel/expenses + other",
-        "Row 8: total does not equal remuneration + travel/expenses + other",
-        "Row 9: total does not equal remuneration + travel/expenses + other",
-        "Row 10: total does not equal remuneration + travel/expenses + other",
-        "Row 11: total does not equal remuneration + travel/expenses + other",
-        "Row 12: total does not equal remuneration + travel/expenses + other",
-        "Row 13: total does not equal remuneration + travel/expenses + other",
-        "Row 14: total does not equal remuneration + travel/expenses + other",
-        "Row 15: total does not equal remuneration + travel/expenses + other",
-        "Row 16: total does not equal remuneration + travel/expenses + other",
-        "Row 17: total does not equal remuneration + travel/expenses + other",
-        "Row 18: total does not equal remuneration + travel/expenses + other",
-        "Row 19: total does not equal remuneration + travel/expenses + other",
-        "Row 20: total does not equal remuneration + travel/expenses + other",
-        "Row 21: total does not equal remuneration + travel/expenses + other",
-        "Local text output failed validation; trying free local OCR",
-        "Parsed via free local OCR fallback",
-        "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 435,
-      "band": "Blood",
-      "province": "AB",
-      "year": "2021-2022",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=435&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Totals do not reconcile for many rows",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "Row 6: total does not equal remuneration + travel/expenses + other",
-        "Row 7: total does not equal remuneration + travel/expenses + other",
-        "Row 8: total does not equal remuneration + travel/expenses + other",
-        "Row 9: total does not equal remuneration + travel/expenses + other",
-        "Row 10: total does not equal remuneration + travel/expenses + other",
-        "Row 11: total does not equal remuneration + travel/expenses + other",
-        "Row 12: total does not equal remuneration + travel/expenses + other",
-        "Row 13: total does not equal remuneration + travel/expenses + other",
-        "Local text output failed validation; trying free local OCR",
-        "Parsed via free local OCR fallback",
-        "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 435,
-      "band": "Blood",
-      "province": "AB",
-      "year": "2022-2023",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=435&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Totals do not reconcile for many rows",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "Row 6: total does not equal remuneration + travel/expenses + other",
-        "Row 7: total does not equal remuneration + travel/expenses + other",
-        "Row 8: total does not equal remuneration + travel/expenses + other",
-        "Row 9: total does not equal remuneration + travel/expenses + other",
-        "Row 10: total does not equal remuneration + travel/expenses + other",
-        "Row 11: total does not equal remuneration + travel/expenses + other",
-        "Row 12: total does not equal remuneration + travel/expenses + other",
-        "Row 13: total does not equal remuneration + travel/expenses + other",
-        "Local text output failed validation; trying free local OCR",
-        "Parsed via free local OCR fallback",
-        "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
+        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted",
+        "Franklyn White Quills has $26,820 council travel/per diems and $20,530 board travel/honoraria. The source prints combined travel $42,448, while the components sum to $47,350."
       ]
     },
     {
@@ -4575,47 +4409,6 @@
       ]
     },
     {
-      "bandId": 278,
-      "band": "Norway House Cree Nation",
-      "province": "MB",
-      "year": "2020-2021",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=278&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Printed schedule footer was not reconciled"
-      ]
-    },
-    {
-      "bandId": 278,
-      "band": "Norway House Cree Nation",
-      "province": "MB",
-      "year": "2021-2022",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=278&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from keyword-aware PDF table extraction",
-        "Coordinate-aware pdfplumber table extraction was validated before publication",
-        "Multiple candidate Chief and Council tables found",
-        "Row 1: months outside 0-12",
-        "Only one official row parsed",
-        "Parsed officials are fewer than the printed Chief and Council rows",
-        "Printed schedule footer was not reconciled"
-      ]
-    },
-    {
-      "bandId": 278,
-      "band": "Norway House Cree Nation",
-      "province": "MB",
-      "year": "2022-2023",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=278&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Printed schedule footer was not reconciled"
-      ]
-    },
-    {
       "bandId": 431,
       "band": "O'Chiese",
       "province": "AB",
@@ -5290,28 +5083,6 @@
         "Row 4: total does not equal remuneration + travel/expenses + other",
         "Row 5: total does not equal remuneration + travel/expenses + other",
         "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 269,
-      "band": "Peguis",
-      "province": "MB",
-      "year": "2020-2021",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=269&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Totals do not reconcile for many rows",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "Row 6: total does not equal remuneration + travel/expenses + other",
-        "Row 7: total does not equal remuneration + travel/expenses + other",
-        "Local text output failed validation; trying free local OCR",
-        "OCR deferred; rerun with --ocr or review original PDF",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
