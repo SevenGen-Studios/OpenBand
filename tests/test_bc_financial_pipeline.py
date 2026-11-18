@@ -65,4 +65,7 @@ class BCFinancialPipelineTests(unittest.TestCase):
    task=({'id':604},{'href':'https://official.example/a.pdf'},False);key=bc.hashlib.sha256(('604'+task[1]['href']).encode()).hexdigest();p=Path(d)/(key+'.result.json');bc.atomic_write(p,['604',task[1]['href'],{'sha256':'old','status':'validated'},None])
    with patch.object(bc.shared,'bounded_parse',side_effect=lambda _:self.assertFalse(p.exists())):self.assertIsNone(bc.parse_task(task,refresh=True))
    fetch.assert_called_once_with(task[1]['href'],refresh=True)
+ def test_unavailable_refresh_retains_previous_source_links(self):
+  old={'filings':[{'href':'https://official.example/a.pdf','year':'2025-2026'}]};new={'filings':[],'checks':[{'url':'https://services.sac-isc.gc.ca/FederalFundingMain.aspx','status':'source_unavailable'}]}
+  row=bc.merge_discovery(old,new);self.assertEqual(row['filings'][0]['href'],old['filings'][0]['href']);self.assertEqual(row['filings'][0]['latestListingStatus'],'source_unavailable')
 if __name__=='__main__':unittest.main()

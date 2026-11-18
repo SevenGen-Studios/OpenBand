@@ -4,7 +4,7 @@ Use --discover, --parse --limit 20, --ocr --retry, --audit. Results and
 hash-bound review batches live in .openband-ocr/british-columbia/.
 """
 from __future__ import annotations
-import argparse, hashlib, ipaddress, json, os, re, socket, sys, time, tempfile
+import argparse, hashlib, ipaddress, json, os, re, socket, sys, time, tempfile, subprocess
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 from urllib.request import Request, build_opener, HTTPRedirectHandler
@@ -69,7 +69,8 @@ def download(url,refresh=False,hosts=None):
 def baseline():
  data=read(ROOT/'data.json');ids={str(b['id']) for b in roster()}
  from tools.build_site import slugify
- profiles=[p for b in data['bands'] if b.get('province')!='BC' for p in (ROOT/'first-nations'/slugify(b['name'])).rglob('*.html')]
+ tracked=set(subprocess.check_output(['git','ls-files','-z','--','first-nations'],cwd=ROOT).decode('utf-8').split('\0'))
+ profiles=[p for b in data['bands'] if b.get('province')!='BC' for p in (ROOT/'first-nations'/slugify(b['name'])).rglob('*.html') if p.relative_to(ROOT).as_posix() in tracked]
  fixed=['map-data.json','public/reserve-boundaries.geojson','british-columbia-nations.json','member-counts.json','contacts-data.json','first-nation-logos.json','first-nation-logo-report.json','elections-data.json','history-data.json','community-enterprise.json']
  def file_digest(p):
   payload=p.read_bytes()
@@ -83,6 +84,9 @@ def protect():
  if path.exists():
   if read(path)!=current:raise ValueError('Protected provincial/profile baseline changed')
  else:atomic_write(path,current)
+ for name,expected in read(CACHE/'local-protected-files.json',{}).items():
+  p=ROOT/name
+  if not p.exists() or hashlib.sha256(p.read_bytes().replace(b'\r\n',b'\n')).hexdigest()!=expected:raise ValueError('Existing untracked local profile changed: '+name)
 def discover_one(b,refresh=False):
  hosts={'services.sac-isc.gc.ca'};site=b.get('website');checks=[];docs=[]
  if site:hosts.add(urlsplit(site).hostname);hosts.add(('www.'+urlsplit(site).hostname) if not urlsplit(site).hostname.startswith('www.') else urlsplit(site).hostname[4:])
@@ -118,6 +122,13 @@ def configure():
  shared.CACHE=CACHE;shared.PARSER_REVISION=REVISION;shared.WORKER_SCRIPT=Path(__file__).resolve();shared.download=download;shared.write=atomic_write
  # No existing Alberta manual overrides apply to BC documents.
  shared.reviewed_remuneration=lambda *a:None
+def merge_discovery(previous,row):
+ """Failed or changed listings must not erase previously indexed sources."""
+ for filing in previous.get('filings',[]):
+  if any(f['href']==filing['href'] for f in row['filings']):continue
+  if filing.get('officialSiteReview'):row['filings'].append(filing)
+  else:row['filings'].append({**filing,'previouslyIndexed':True,'latestListingStatus':'source_unavailable' if any(c['status']=='source_unavailable' and 'FederalFundingMain' in c['url'] for c in row['checks']) else 'not_seen_in_latest_listing'})
+ return row
 def checkpoint_result(task,result):
  """A worker timeout must retain independently cached download evidence."""
  u=result[2];url=task[1]['href'];key=hashlib.sha256(shared.canonical_url(url).encode()).hexdigest();path=CACHE/(key+'.source');meta=read(path.with_suffix('.json'),{})
@@ -215,7 +226,7 @@ def main():
    tasks={pool.submit(discover_one,b,args.refresh):b for b in bands if args.refresh or str(b['id']) not in index['governments']}
    for future in as_completed(tasks):
     b=tasks[future];bid=str(b['id']);row=future.result()
-    row['filings'] += [f for f in index['governments'].get(bid,{}).get('filings',[]) if f.get('officialSiteReview') and not any(n['href']==f['href'] for n in row['filings'])]
+    row=merge_discovery(index['governments'].get(bid,{}),row)
     index['governments'][bid]=row;atomic_write(INDEX,index);print('Checked',b['id'],flush=True)
  if args.parse:
   queue=[];results=read(CACHE/'results.json',{})

@@ -32,10 +32,10 @@ See [the operating guide](../BRITISH-COLUMBIA-FINANCIALS.md), [fiscal-year cover
 
 - Complete Python run: 582 tests, 577 passed, five existing failures. The same five failures occurred before Phase 3: Cold Lake recovery manifest, Cold Lake historical recovery checkpoint, Day Star/Cote recovery checkpoint, Gordon recovery manifest and the older Manitoba elections fingerprint. No evidence files were rewritten to conceal these failures.
 - All 18 JavaScript suites pass, including BC compatibility, period/framework exclusions, missing values and duplicate-source checks.
-- 16 focused BC financial pipeline tests pass (including a subsequent same-URL revision cache test): verified identity and year scope, official/private URL rejection, cache hashes, approval requirements, invalid candidates, shared documents, preserved baselines, workflow constraints, column/page provenance, financial position, units, OCR timeout state, source rendering and conservative revenue definitions.
+- 17 focused BC financial pipeline tests pass (including subsequent revision-cache and unavailable-refresh retention tests): verified identity and year scope, official/private URL rejection, cache hashes, approval requirements, invalid candidates, shared documents, preserved baselines, workflow constraints, column/page provenance, financial position, units, OCR timeout state, source rendering and conservative revenue definitions.
 - Isolated headless Chrome tests pass for Bonaparte's capital figures, exact Aitchelitz remuneration, 390px mobile overflow, navigation back to Saskatchewan and no runtime console exceptions. Source PDF operations/schedule pages were rendered and visually reviewed.
 - The full regression suite rebuilds time-dependent non-BC job prerenders as a side effect. Those seven generated profile changes were restored to the captured baseline before staging; the final preservation audit verifies the original content.
-- Protected non-BC data/capital records, 1,840 profile/financial HTML pages, maps, geometry, contacts, population, logos, elections, history, enterprise data and manual overrides remain unchanged. Text fingerprints normalize only CRLF/LF across operating systems.
+- Protected non-BC data/capital records, 1,831 versioned profile/financial HTML pages plus nine existing untracked pages protected by a separate local baseline, maps, geometry, contacts, population, logos, elections, history, enterprise data and manual overrides remain unchanged. Text fingerprints normalize only CRLF/LF across operating systems.
 
 ## Limits requiring review
 
