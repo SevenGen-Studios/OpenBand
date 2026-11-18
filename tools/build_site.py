@@ -329,6 +329,15 @@ def profile_prerender(
     jobs: list[dict],
     history_markup: str = '',
 ) -> str:
+    if band.get('province') == 'BC':
+        try:
+            from tools.bc_profile import profile_markup
+        except ModuleNotFoundError:
+            from bc_profile import profile_markup
+        return ('<div id="profilePrerender" class="profile-prerender">'
+                f'<div class="profile-prerender-title"><h1>{nation_name_markup(band)} Community Profile</h1>{nation_logo_markup(band, "profile", eager=True)}</div>'
+                '<p>Verified government and community information. Financial records have not yet been indexed for British Columbia.</p>'
+                + profile_markup(band) + '</div>')
     filings = remuneration_filings(band)
     parsed = [filing for filing in filings if is_parsed(filing)]
     latest = filings[0].get("year") if filings else None
@@ -500,7 +509,7 @@ def write_page(path: Path, content: str) -> None:
         handle.truncate()
 
 
-def provincial_landing(base: str, code: str, name: str) -> str:
+def provincial_landing(base: str, code: str, name: str, bands=()) -> str:
     path = province_path(name)
     title = f"OpenBand Canada | {name} First Nations Public Financial Records"
     description = (
@@ -533,11 +542,12 @@ def provincial_landing(base: str, code: str, name: str) -> str:
         1,
     )
     page = page.replace(
-        '<script src="/assets/openband.js?v=20261117bc1" defer></script>',
-        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261117bc1" defer></script>',
+        '<script src="/assets/openband.js?v=20261117bc2" defer></script>',
+        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261117bc2" defer></script>',
         1,
     )
     if code == 'BC':
+        rows = [b for b in bands if b.get('province') == 'BC']
         description = 'Explore British Columbia First Nations and their public financial information through OpenBand. Community profiles and financial records will be added as verified sources become available.'
         page = set_meta(page, title=title, description=description, path=path, structured={'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': title, 'url': ORIGIN + path, 'description': description})
         page = page.replace('<h1 id="heroTitle">First Nations Public Financial Records</h1>', '<h1 id="heroTitle">British Columbia First Nations</h1>')
@@ -547,6 +557,13 @@ def provincial_landing(base: str, code: str, name: str) -> str:
         page = page.replace('Browse all First Nations', 'Browse British Columbia First Nations')
         page = page.replace('<div class="recent-list" id="recentList"></div>', '<div class="recent-list" id="recentList"><p class="trend-empty">British Columbia First Nation profiles are being added. Verified community records will appear here as they become available.</p></div>')
         page = re.sub(r'(id="(?:statN|statP|provTracked|provBands|provFilings)">)-', lambda m: m[1] + 'Not yet indexed', page)
+        if rows:
+            description = 'Explore verified British Columbia government and community profiles, registered-population sources and dated governance information. Financial records have not yet been indexed.'
+            page = set_meta(page, title=title, description=description, path=path, structured={'@context':'https://schema.org','@type':'CollectionPage','name':title,'url':ORIGIN+path,'description':description})
+            page = re.sub(r'(<p id="heroIntro">).*?(</p>)', lambda m:m[1]+description+m[2], page)
+            page = page.replace('British Columbia expansion is underway. First Nation profiles and financial records are being prepared for inclusion.', 'British Columbia community profiles are available. Financial records have not yet been indexed.')
+            for key in ('statN','provTracked'):
+                page = re.sub(r'(id="'+key+r'">).*?(</div>)', lambda m:m[1]+str(len(rows))+m[2], page)
     if code in ('MB', 'BC'):
         page = page.replace('<p id="albertaCoverageLink"><a href="/alberta-coverage-report.html">Alberta source coverage and review report</a></p>', '<p id="albertaCoverageLink" hidden></p>')
     return page
@@ -595,17 +612,19 @@ def build() -> None:
     profile_root.mkdir(parents=True, exist_ok=True)
 
     for code, province in PROVINCES.items():
-        landing = provincial_landing(base, code, province)
+        landing = provincial_landing(base, code, province, bands)
         write_page(ROOT / province_path(province).strip('/') / 'index.html', landing)
 
     for band in bands:
         slug = slugify(band["name"])
         path = f"/first-nations/{slug}/"
-        title = f"{band['name']} Financial Records | OpenBand"
+        title = f"{band['name']} {'Community Profile' if band.get('province') == 'BC' else 'Financial Records'} | OpenBand"
         description = (
             f"Review {band['name']} public FNFTA filing availability, parsed Chief and Council "
             "remuneration, audited statements, and original ISC source documents."
         )
+        if band.get("province") == "BC":
+            description = f"Verified {band['name']} government identity, registered population, geography and dated governance sources. Financial records have not yet been indexed."
         structured = {
             "@context": "https://schema.org",
             "@type": "WebPage",
@@ -657,14 +676,14 @@ def build() -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20261117bc1" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261117bc1" defer></script>',
+            '<script src="/assets/openband.js?v=20261117bc2" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261117bc2" defer></script>',
             1,
         )
         if str(band['id']) in history:
-            page = page.replace('openband.css?v=20261103map1', 'openband.css?v=20261117bc1')
-            page = page.replace('<script src="/assets/openband.js?v=20261117bc1" defer></script>',
-                                '<script src="/assets/profile-history.js?v=20261117bc1" defer></script><script src="/assets/openband.js?v=20261117bc1" defer></script>')
+            page = page.replace('openband.css?v=20261103map1', 'openband.css?v=20261117bc2')
+            page = page.replace('<script src="/assets/openband.js?v=20261117bc2" defer></script>',
+                                '<script src="/assets/profile-history.js?v=20261117bc2" defer></script><script src="/assets/openband.js?v=20261117bc2" defer></script>')
         write_page(profile_root / slug / "index.html", page)
 
         write_page(

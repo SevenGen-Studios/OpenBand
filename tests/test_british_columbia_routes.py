@@ -9,10 +9,11 @@ class BritishColumbiaRoutes(unittest.TestCase):
     def test_shared_template_and_canonical_route(self):
         base = (ROOT / 'index.html').read_text(encoding='utf-8')
         base = base.replace('<a class="logo" href="/">Open<em>Band</em></a>', '<a class="logo" href="/">Open<em>Band</em></a><a class="nav-home" id="homeLink" href="/">Home</a>', 1)
-        page = provincial_landing(base, 'BC', PROVINCES['BC'])
+        bands=__import__('json').loads((ROOT/'data.json').read_text(encoding='utf-8'))['bands']
+        page = provincial_landing(base, 'BC', PROVINCES['BC'],bands)
         self.assertEqual(province_path(PROVINCES['BC']), '/british-columbia/')
         self.assertEqual(page, (ROOT / 'british-columbia/index.html').read_text(encoding='utf-8'))
-        for text in ('data-page="province" data-province="BC"', 'https://openband.ca/british-columbia/', '<h1 id="heroTitle">British Columbia First Nations</h1>', 'href="/browse/?province=BC"', 'British Columbia expansion is underway.', 'Not yet indexed', 'verified sources become available'):
+        for text in ('data-page="province" data-province="BC"', 'https://openband.ca/british-columbia/', '<h1 id="heroTitle">British Columbia First Nations</h1>', 'href="/browse/?province=BC"', 'British Columbia community profiles are available.', 'Not yet indexed', 'dated governance information'):
             self.assertIn(text, page)
         self.assertNotIn('/british columbia/', page)
         self.assertNotIn('/alberta-coverage-report.html', page)

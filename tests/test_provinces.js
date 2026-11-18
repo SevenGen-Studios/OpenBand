@@ -31,9 +31,10 @@ assert.equal(P.fromPath('/bc/'),'BC');
 assert.equal(P.fromPath('/british-columbian/'),'');
 assert.equal(P.routeFor('BC'),'/british-columbia/');
 assert.equal(P.totals.BC,undefined,'No invented provincial total');
-assert.equal(data.filter(b=>P.inProvince(b,'BC')).length,0);
-assert.equal(data.filter(b=>P.inProvince(b,'BC')&&P.matches(b,'Cree')).length,0);
-const bc=P.aggregate(data,capital,'BC','2024-2025');
+const bcRoster=JSON.parse(fs.readFileSync('british-columbia-nations.json','utf8'));
+assert.equal(data.filter(b=>P.inProvince(b,'BC')).length,bcRoster.nations.length);
+assert.equal(data.filter(b=>P.inProvince(b,'BC')&&P.matches(b,'Keeseekoose')).length,0);
+const bc=P.aggregate(data.filter(b=>b.province!=='BC'),capital,'BC','2024-2025');
 assert.equal(bc.expected,null);assert.equal(bc.tracked,0);assert.equal(bc.reporting,0);
 assert(Object.values(bc.fields).every(f=>f.total===null));
 const future=[{id:'future',province:'BC',name:'Future verified record',treaty:'Verified treaty'}];
@@ -44,7 +45,7 @@ console.log('BC routes, empty coverage, province isolation and future records pa
 const vm=require('node:vm'),elements=new Map();
 function element(){return {dataset:{},classList:{toggle(){}},setAttribute(){},removeAttribute(){},value:'',innerHTML:'',textContent:''}}
 const document={body:element(),getElementById(id){if(!elements.has(id))elements.set(id,element());return elements.get(id)},querySelector(){return null},querySelectorAll(){return []}};
-const context=vm.createContext({document,location:{pathname:'/british-columbia/',href:'https://openband.ca/british-columbia/'},URL,OpenBandProvinces:P,bandsData:data,capitalData:{bands:{}},directoryMapRecord:()=>null,bandMap:{},nationNameMarkup:()=>"Onion Lake Cree Nation",esc:String,escAttr:String});
+const context=vm.createContext({document,location:{pathname:'/british-columbia/',href:'https://openband.ca/british-columbia/'},URL,OpenBandProvinces:P,bandsData:data.filter(b=>b.province!=='BC'),capitalData:{bands:{}},directoryMapRecord:()=>null,bandMap:{},nationNameMarkup:()=>"Onion Lake Cree Nation",esc:String,escAttr:String});
 vm.runInContext(fs.readFileSync('assets/province-ui.js','utf8'),context);
 context.applyProvinceContext('BC');context.updateProvinceUI();context.renderProvinceFinance();
 assert.equal(context.provinceBands().length,0);
