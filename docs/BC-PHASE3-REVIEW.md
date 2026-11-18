@@ -2,7 +2,7 @@
 
 Branch: `codex/british-columbia-phase3`.
 
-The pull request is based on `codex/british-columbia-phase2` (`ad13f351`), so its diff contains Phase 3 only. The Phase 2 base includes Phase 1 and is a separate prerequisite; production is not changed or deployed.
+The pull request is based on `codex/british-columbia-phase2` (`6e30dfd4`, including the sanitizer follow-up to `ad13f351`), so its diff contains Phase 3 only. The Phase 2 base includes Phase 1 and is a separate prerequisite; production is not changed or deployed. Its automatic sanitizer refreshed seven older job prerenders after the initial push. The Phase 3 merge explicitly restores those seven profiles to the captured original baseline, and limits automatic sanitizer runs to main; manual dispatch remains available.
 
 ## Result
 

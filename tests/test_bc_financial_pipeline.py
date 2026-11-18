@@ -37,7 +37,7 @@ class BCFinancialPipelineTests(unittest.TestCase):
   with self.assertRaises(ValueError):approved_candidates(batch,{'approved':True,'batchSha256':batch['batchSha256'],'reviewer':'reviewer','approvedAt':'2026-11-18','candidateKeys':['a','b']})
  def test_protected_baseline_matches(self):bc.protect()
  def test_workflow_has_no_import_or_push(self):
-  text=(bc.ROOT/'.github/workflows/bc-financial-ingestion.yml').read_text();self.assertNotIn('import_bc_financials',text);self.assertNotIn('git push',text);self.assertIn('contents: read',text)
+  text=(bc.ROOT/'.github/workflows/bc-financial-ingestion.yml').read_text();self.assertNotIn('import_bc_financials',text);self.assertNotIn('git push',text);self.assertIn('contents: read',text);self.assertIn("github.ref_name == 'main'",(bc.ROOT/'.github/workflows/sanitize-data.yml').read_text())
  def test_current_year_pages_and_financial_position(self):
   s={'totalAssets':100,'totalLiabilities':30,'accumulatedSurplus':70,'sourceReferences':{k:{'pdfPage':4,'yearValidated':True} for k in ('totalRevenue','totalExpenses','annualSurplusDeficit')}}
   self.assertEqual(bc.financial_checks(s,['Annual statement']),[])
