@@ -9,7 +9,7 @@
   function inProvince(band,province){return !province||band.province===province}
   function fromPath(path){const value=String(path||'').toLowerCase();return Object.keys(routes).find(code=>value===routes[code].slice(0,-1)||value.startsWith(routes[code])||value===`/${code.toLowerCase()}`||value.startsWith(`/${code.toLowerCase()}/`))||''}
   function routeFor(province){return routes[province]||(names[province]?`/browse/?province=${province}`:'/')}
-  function summaryFor(capital,band,year){const row=capital?.bands?.[String(band.id)]?.years?.[year];return row&&row.parseStatus==='parsed'&&row.publishable!==false&&!row.sharedFinancialScope?row:null}
+  function summaryFor(capital,band,year){const row=capital?.bands?.[String(band.id)]?.years?.[year];return row&&row.parseStatus==='parsed'&&row.publishable!==false&&!row.sharedFinancialScope&&(band.province!=='BC'||(band.entityType==='isc_band_or_village_government'&&!(band.treatyAgreements||[]).some(a=>['modern_treaty','self_government'].includes(a.kind))&&row.comparisonEligible===true&&row.periodEnd===`${year.split('-')[1]}-03-31`&&row.comparisonBasis==='CAD-annual-March31-band-consolidated'))?row:null}
   function aggregate(bands,capital,province,year){
     const selected=bands.filter(b=>inProvince(b,province)),fields=['totalRevenue','totalExpenses','annualSurplusDeficit','totalAssets','totalLiabilities','governmentRevenue','ownSourceRevenue'];
     const result={year,tracked:selected.length,expected:totals[province]||null,reporting:0,fields:{}};

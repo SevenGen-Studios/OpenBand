@@ -336,8 +336,8 @@ def profile_prerender(
             from bc_profile import profile_markup
         return ('<div id="profilePrerender" class="profile-prerender">'
                 f'<div class="profile-prerender-title"><h1>{nation_name_markup(band)} Community Profile</h1>{nation_logo_markup(band, "profile", eager=True)}</div>'
-                '<p>Verified government and community information. Financial records have not yet been indexed for British Columbia.</p>'
-                + profile_markup(band) + '</div>')
+                '<p>Verified government and community information with original financial source links. Financial extraction coverage remains partial.</p>'
+                + profile_markup(band) + __import__('tools.bc_financial_profile',fromlist=['financial_sources_markup']).financial_sources_markup(band) + '</div>')
     filings = remuneration_filings(band)
     parsed = [filing for filing in filings if is_parsed(filing)]
     latest = filings[0].get("year") if filings else None
@@ -558,10 +558,10 @@ def provincial_landing(base: str, code: str, name: str, bands=()) -> str:
         page = page.replace('<div class="recent-list" id="recentList"></div>', '<div class="recent-list" id="recentList"><p class="trend-empty">British Columbia First Nation profiles are being added. Verified community records will appear here as they become available.</p></div>')
         page = re.sub(r'(id="(?:statN|statP|provTracked|provBands|provFilings)">)-', lambda m: m[1] + 'Not yet indexed', page)
         if rows:
-            description = 'Explore verified British Columbia government and community profiles, registered-population sources and dated governance information. Financial records have not yet been indexed.'
+            description = 'Explore verified British Columbia government and community profiles, registered-population sources and dated governance information. Original financial documents are indexed; verified extraction coverage remains partial.'
             page = set_meta(page, title=title, description=description, path=path, structured={'@context':'https://schema.org','@type':'CollectionPage','name':title,'url':ORIGIN+path,'description':description})
             page = re.sub(r'(<p id="heroIntro">).*?(</p>)', lambda m:m[1]+description+m[2], page)
-            page = page.replace('British Columbia expansion is underway. First Nation profiles and financial records are being prepared for inclusion.', 'British Columbia community profiles are available. Financial records have not yet been indexed.')
+            page = page.replace('British Columbia expansion is underway. First Nation profiles and financial records are being prepared for inclusion.', 'British Columbia community profiles are available. Original financial documents are indexed; verified extraction coverage remains partial.')
             for key in ('statN','provTracked'):
                 page = re.sub(r'(id="'+key+r'">).*?(</div>)', lambda m:m[1]+str(len(rows))+m[2], page)
     if code in ('MB', 'BC'):
@@ -587,7 +587,7 @@ def legacy_enterprise_redirect(band: dict) -> str:
     )
 
 
-def build() -> None:
+def build(province_filter=None) -> None:
     data = json.loads((ROOT / "data.json").read_text(encoding="utf-8"))
     news = json.loads((ROOT / "news-data.json").read_text(encoding="utf-8"))
     elections = json.loads((ROOT / "elections-data.json").read_text(encoding="utf-8"))
@@ -600,7 +600,7 @@ def build() -> None:
     base = base.replace('<a class="logo" href="/">Open<em>Band</em></a>', '<a class="logo" href="/">Open<em>Band</em></a><a class="nav-home" id="homeLink" href="/">Home</a>', 1)
     contacts = json.loads((ROOT / "contacts-data.json").read_text(encoding="utf-8"))
     capital = json.loads((ROOT / "capital-data.json").read_text(encoding="utf-8"))
-    seo_manifest, financial_records = publish_records(ROOT, bands, capital, slugify)
+    seo_manifest, financial_records = publish_records(ROOT, bands, capital, slugify, province_filter=province_filter)
     slugs = [slugify(band["name"]) for band in bands]
     if len(slugs) != len(set(slugs)):
         raise RuntimeError("Community slugs are not unique")
@@ -612,10 +612,14 @@ def build() -> None:
     profile_root.mkdir(parents=True, exist_ok=True)
 
     for code, province in PROVINCES.items():
+        if province_filter and code != province_filter:
+            continue
         landing = provincial_landing(base, code, province, bands)
         write_page(ROOT / province_path(province).strip('/') / 'index.html', landing)
 
     for band in bands:
+        if province_filter and band.get('province') != province_filter:
+            continue
         slug = slugify(band["name"])
         path = f"/first-nations/{slug}/"
         title = f"{band['name']} {'Community Profile' if band.get('province') == 'BC' else 'Financial Records'} | OpenBand"
@@ -624,7 +628,7 @@ def build() -> None:
             "remuneration, audited statements, and original ISC source documents."
         )
         if band.get("province") == "BC":
-            description = f"Verified {band['name']} government identity, registered population, geography and dated governance sources. Financial records have not yet been indexed."
+            description = f"Verified {band['name']} government identity, registered population, geography and dated governance sources. Original financial documents are indexed; verified extraction coverage remains partial."
         structured = {
             "@context": "https://schema.org",
             "@type": "WebPage",
@@ -749,4 +753,7 @@ def build() -> None:
 
 
 if __name__ == "__main__":
-    build()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--province', choices=list(PROVINCES))
+    build(parser.parse_args().province)

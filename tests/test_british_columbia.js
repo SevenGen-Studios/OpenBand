@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const P=require('../assets/provinces.js'),roster=JSON.parse(fs.readFileSync('british-columbia-nations.json','utf8')),all=JSON.parse(fs.readFileSync('data.json','utf8')).bands,bc=all.filter(b=>b.province==='BC');
 assert.equal(bc.length,roster.nations.length);assert.equal(bc.filter(b=>b.iscBandNumber!=null).length,201);
-assert(bc.every(b=>Array.isArray(b.filings)&&b.filings.length===0));
+assert(bc.every(b=>Array.isArray(b.filings)&&b.filings.every(f=>f.approval&&f.status==='validated')));
 assert.equal(all.filter(b=>P.inProvince(b,'BC')&&P.matches(b,'Keeseekoose')).length,0);
 assert(P.matches(bc.find(b=>b.id===668),'Ucluelet'));assert(P.matches(bc.find(b=>b.id===566),'Qayqayt'));
 for(const n of bc.filter(b=>b.iscBandNumber==null))assert(!require('../assets/nation-name.js').markup(n).includes('nation-band-number'));
@@ -10,7 +10,7 @@ const context=vm.createContext({document:{body:{dataset:{province:'BC'}},getElem
 vm.runInContext(fs.readFileSync('assets/province-ui.js','utf8'),context);
 const fixture={leadership:{officials:[{position:'Chief Councillor',givenName:'Current',surname:'Official',appointmentDate:'01/01/2026',expiryDate:'12/31/2026'},{position:'President',givenName:'Expired',surname:'Official',appointmentDate:'01/01/2024',expiryDate:'12/31/2025'},{position:'Councillor',givenName:'Bad',surname:'Date',appointmentDate:'99/99/2026',expiryDate:'12/31/2027'}]}};
 assert.equal(context.bcCurrentOfficials(fixture,'2026-11-17').length,1);
-const markup=context.bcProfileMarkup(bc.find(n=>n.id===663));assert.match(markup,/Maa-nulth/);assert.match(markup,/not the full citizenship/);assert.match(markup,/Financial disclosure collection has not begun/);
+const markup=context.bcProfileMarkup(bc.find(n=>n.id===663));assert.match(markup,/Maa-nulth/);assert.match(markup,/not the full citizenship/);assert.match(markup,/BC financial extraction coverage remains partial/);
 const central=bc.find(n=>n.id==='bc-fnpo-9637');assert.equal(central.population,undefined);assert.equal(central.iscBandNumber,null);
 assert.doesNotMatch(context.bcProfileMarkup(central),/Registered population \(ISC\)<\/dt><dd>[0-9]/);
 context.renderProvinceFinance();assert.doesNotMatch(el('provinceFinance').innerHTML,/<select|<table/);

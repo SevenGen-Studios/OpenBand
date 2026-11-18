@@ -266867,7 +266867,168 @@
         "Aitchelitz Band"
       ],
       "province": "BC",
-      "filings": [],
+      "filings": [
+        {
+          "year": "2025-2026",
+          "docType": "Schedule of Remuneration and Expenses",
+          "documentTitle": "Schedule of Remuneration and Expenses — 2025-2026",
+          "date": "2026-07-29",
+          "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=558&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
+          "posted": true,
+          "people": [
+            {
+              "name": "Bailey, Angie",
+              "role": "Chief",
+              "months": 12,
+              "remuneration": 132680,
+              "expenses": 85078,
+              "travel": null,
+              "otherPayments": null,
+              "benefits": null,
+              "total": 217758,
+              "totalIsCalculated": true,
+              "sourceReference": {
+                "pdfPage": 3,
+                "fiscalYear": "2025-2026",
+                "columns": [
+                  "Name of Individual",
+                  "Position Title",
+                  "Number of Months",
+                  "Remuneration",
+                  "Expenses"
+                ]
+              }
+            },
+            {
+              "name": "Sam, Leona",
+              "role": "Councillor",
+              "months": 12,
+              "remuneration": 100947,
+              "expenses": 18936,
+              "travel": null,
+              "otherPayments": null,
+              "benefits": null,
+              "total": 119883,
+              "totalIsCalculated": true,
+              "sourceReference": {
+                "pdfPage": 3,
+                "fiscalYear": "2025-2026",
+                "columns": [
+                  "Name of Individual",
+                  "Position Title",
+                  "Number of Months",
+                  "Remuneration",
+                  "Expenses"
+                ]
+              }
+            }
+          ],
+          "parse_status": "ok_pdf_keyword_table",
+          "sourceOrganization": "Indigenous Services Canada",
+          "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=558&lang=eng",
+          "sourceBandNumber": 558,
+          "verificationStatus": "automated_validated",
+          "retrievedAt": "2026-11-18T06:36:05+00:00",
+          "reportingEntity": "Aitchelitz",
+          "entityType": "isc_band_or_village_government",
+          "status": "validated",
+          "periodEnd": "2026-03-31",
+          "parserRevision": "bc-financial-v3",
+          "ocrRequested": false,
+          "ocrRequestedEngine": "",
+          "sha256": "4143d74c7eaa13c8cc83a609915212b3eb4c63ef5c98a04f010a4cb1ab68d0ab",
+          "byteSize": 206194,
+          "lastChecked": "2026-11-18T06:42:59+00:00",
+          "httpStatus": 200,
+          "nativePageCount": 3,
+          "nativeTextCharacters": 2536,
+          "requiresOcr": false,
+          "manualSourceReview": null,
+          "documentChecks": {
+            "identityAndYearConfirmed": true,
+            "warnings": []
+          },
+          "warnings": [
+            "Parsed from keyword-aware PDF table extraction",
+            "Coordinate-aware pdfplumber table extraction was validated before publication"
+          ],
+          "sourceTotal": null,
+          "parse_confidence": "high",
+          "manual_review_required": false,
+          "parse_stages": [
+            {
+              "stage": "local",
+              "status": "ok_pdf_keyword_table",
+              "warnings": [
+                "Parsed from keyword-aware PDF table extraction",
+                "Coordinate-aware pdfplumber table extraction was validated before publication"
+              ]
+            }
+          ],
+          "sourceScheduleReview": {
+            "bandId": "558",
+            "fiscalYear": "2025-2026",
+            "reviewedAt": "2026-11-18T06:42:45+00:00",
+            "pdfPage": 3,
+            "reviewer": "Codex visual source review",
+            "footerReconciled": true,
+            "footerNote": "Complete two-row schedule visually checked. No footer totals are reported. Remuneration sum 233627 and expenses sum 104014 are arithmetic checks only. Practitioner review page 2. No travel or benefits column disclosed.",
+            "people": [
+              {
+                "name": "Bailey, Angie",
+                "role": "Chief",
+                "months": 12,
+                "remuneration": 132680,
+                "expenses": 85078,
+                "travel": null,
+                "otherPayments": null,
+                "benefits": null,
+                "total": 217758,
+                "totalIsCalculated": true,
+                "sourceReference": {
+                  "pdfPage": 3,
+                  "fiscalYear": "2025-2026",
+                  "columns": [
+                    "Name of Individual",
+                    "Position Title",
+                    "Number of Months",
+                    "Remuneration",
+                    "Expenses"
+                  ]
+                }
+              },
+              {
+                "name": "Sam, Leona",
+                "role": "Councillor",
+                "months": 12,
+                "remuneration": 100947,
+                "expenses": 18936,
+                "travel": null,
+                "otherPayments": null,
+                "benefits": null,
+                "total": 119883,
+                "totalIsCalculated": true,
+                "sourceReference": {
+                  "pdfPage": 3,
+                  "fiscalYear": "2025-2026",
+                  "columns": [
+                    "Name of Individual",
+                    "Position Title",
+                    "Number of Months",
+                    "Remuneration",
+                    "Expenses"
+                  ]
+                }
+              }
+            ]
+          },
+          "approval": {
+            "batchSha256": "0fa164cd4059af3343b0caa3b1fb2289ad380fbd31cc83a9c3284d7cb7f99143",
+            "reviewer": "User approval in Codex chat",
+            "approvedAt": "2026-11-18T06:46:57+00:00"
+          }
+        }
+      ],
       "verificationStatus": "verified_isc_identity",
       "verifiedAt": "2026-11-17T22:54:11+00:00",
       "sources": [
@@ -267000,7 +267161,7 @@
         "officials": [],
         "classification": "ISC-listed appointments; current only when a verified term includes today"
       },
-      "financialIndexStatus": "not_indexed_phase2",
+      "financialIndexStatus": "partially_indexed",
       "entityType": "isc_band_or_village_government",
       "rosterScope": "bc_community_governments",
       "treaty": null,
@@ -268028,7 +268189,60 @@
         "Bonaparte Indian Band"
       ],
       "province": "BC",
-      "filings": [],
+      "filings": [
+        {
+          "year": "2025-2026",
+          "docType": "Audited consolidated financial statements",
+          "documentTitle": "Audited consolidated financial statements — 2025-2026",
+          "date": "2026-07-31",
+          "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=686&FY=2025-2026&DOC=Audited consolidated financial statements&lang=eng",
+          "posted": true,
+          "people": [],
+          "parse_status": "parsed",
+          "sourceOrganization": "Indigenous Services Canada",
+          "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=686&lang=eng",
+          "sourceBandNumber": 686,
+          "verificationStatus": "automated_validated",
+          "retrievedAt": "2026-11-18T06:36:07+00:00",
+          "reportingEntity": "Bonaparte First Nation",
+          "entityType": "isc_band_or_village_government",
+          "status": "validated",
+          "periodEnd": "2026-03-31",
+          "parserRevision": "bc-financial-v3",
+          "ocrRequested": false,
+          "ocrRequestedEngine": "",
+          "sha256": "703cb7c13584906513fa57e3ca70b4529286bd89c6e1f2d44154fb75cf6a59c6",
+          "byteSize": 458284,
+          "lastChecked": "2026-11-18T06:43:03+00:00",
+          "httpStatus": 200,
+          "nativePageCount": 24,
+          "nativeTextCharacters": 50719,
+          "requiresOcr": false,
+          "extractionMethod": "Native PDF text; reported totals and fiscal-year columns reconciled",
+          "ocrStatus": "not_required_native_text",
+          "ocrEngine": "not_required_native_text",
+          "ocrWarnings": [],
+          "ocrFinancialColumnPages": [],
+          "documentChecks": {
+            "identityAndYearConfirmed": true,
+            "warnings": []
+          },
+          "warnings": [
+            "Debt summary was not extracted",
+            "Classification requires source review: Province of BC",
+            "Classification requires source review: First Nations Health Authority",
+            "Classification requires source review: Four Pillars Society funding",
+            "Classification requires source review: Community Welfare"
+          ],
+          "manual_review_required": false,
+          "parse_confidence": "medium",
+          "approval": {
+            "batchSha256": "0fa164cd4059af3343b0caa3b1fb2289ad380fbd31cc83a9c3284d7cb7f99143",
+            "reviewer": "User approval in Codex chat",
+            "approvedAt": "2026-11-18T06:46:57+00:00"
+          }
+        }
+      ],
       "verificationStatus": "verified_isc_identity",
       "verifiedAt": "2026-11-17T22:54:11+00:00",
       "sources": [
@@ -268221,7 +268435,7 @@
         ],
         "classification": "ISC-listed appointments; current only when a verified term includes today"
       },
-      "financialIndexStatus": "not_indexed_phase2",
+      "financialIndexStatus": "partially_indexed",
       "entityType": "isc_band_or_village_government",
       "rosterScope": "bc_community_governments",
       "treaty": null,
@@ -269784,7 +269998,64 @@
       "officialName": "Cheam First Nation",
       "aliases": [],
       "province": "BC",
-      "filings": [],
+      "filings": [
+        {
+          "year": "2025-2026",
+          "docType": "Audited consolidated financial statements",
+          "documentTitle": "Audited consolidated financial statements — 2025-2026",
+          "date": "2026-07-30",
+          "href": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=584&FY=2025-2026&DOC=Audited consolidated financial statements&lang=eng",
+          "posted": true,
+          "people": [],
+          "parse_status": "parsed",
+          "sourceOrganization": "Indigenous Services Canada",
+          "sourceListingUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=584&lang=eng",
+          "sourceBandNumber": 584,
+          "verificationStatus": "automated_validated",
+          "retrievedAt": "2026-11-18T06:36:10+00:00",
+          "reportingEntity": "Cheam First Nation",
+          "entityType": "isc_band_or_village_government",
+          "status": "validated",
+          "periodEnd": "2026-03-31",
+          "parserRevision": "bc-financial-v3",
+          "ocrRequested": false,
+          "ocrRequestedEngine": "",
+          "sha256": "b7cf3b2f9aafe0034a8a5ca91bd0e252cc5cc44747b7c6f7466ed2a53bf5b51c",
+          "byteSize": 1748052,
+          "lastChecked": "2026-11-18T06:43:13+00:00",
+          "httpStatus": 200,
+          "nativePageCount": 26,
+          "nativeTextCharacters": 60862,
+          "requiresOcr": false,
+          "extractionMethod": "Native PDF text; reported totals and fiscal-year columns reconciled",
+          "ocrStatus": "not_required_native_text",
+          "ocrEngine": "not_required_native_text",
+          "ocrWarnings": [],
+          "ocrFinancialColumnPages": [],
+          "documentChecks": {
+            "identityAndYearConfirmed": true,
+            "warnings": []
+          },
+          "warnings": [
+            "Classification requires source review: Contracts and other revenue",
+            "Classification requires source review: Province of BC",
+            "Classification requires source review: First Nation Health Authority",
+            "Classification requires source review: Other federal funding",
+            "Classification requires source review: Language, Culture and Community",
+            "Classification requires source review: Rights and Title, Territorial Stewardship",
+            "Classification requires source review: Emergency Management and Climate Change Readiness",
+            "Classification requires source review: Taxation, Own Source Revenue, IBAs and Investments",
+            "Classification requires source review: Tangible Capital Assets"
+          ],
+          "manual_review_required": false,
+          "parse_confidence": "medium",
+          "approval": {
+            "batchSha256": "0fa164cd4059af3343b0caa3b1fb2289ad380fbd31cc83a9c3284d7cb7f99143",
+            "reviewer": "User approval in Codex chat",
+            "approvedAt": "2026-11-18T06:46:57+00:00"
+          }
+        }
+      ],
       "verificationStatus": "verified_isc_identity",
       "verifiedAt": "2026-11-17T22:54:11+00:00",
       "sources": [
@@ -269954,7 +270225,7 @@
         ],
         "classification": "ISC-listed appointments; current only when a verified term includes today"
       },
-      "financialIndexStatus": "not_indexed_phase2",
+      "financialIndexStatus": "partially_indexed",
       "entityType": "isc_band_or_village_government",
       "rosterScope": "bc_community_governments",
       "treaty": null,

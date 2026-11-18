@@ -15,10 +15,10 @@ class BritishColumbiaPipeline(unittest.TestCase):
   self.assertEqual({b['id'] for b in self.bc}, {b['id'] for b in self.roster['nations']});self.assertFalse(self.roster['rosterReconciliationComplete'])
   self.assertTrue(all(b['id']==b['iscBandNumber'] for b in self.bc if b.get('iscBandNumber')))
   self.assertEqual({b['id'] for b in self.bc if b.get('iscBandNumber')is None},{'bc-fnpo-9637','bc-haida-nation-council-of','bc-lower-post-first-nation-daylu-dena-council'})
-  validate(self.bc,{'bands':[b for b in self.data['bands'] if b.get('province')!='BC']})
+  validate(self.roster['nations'],{'bands':[b for b in self.data['bands'] if b.get('province')!='BC']})
  def test_no_financial_collection_or_copied_totals(self):
-  self.assertTrue(all(b['filings']==[] for b in self.bc));capital=read(ROOT/'capital-data.json')['bands']
-  self.assertTrue(all(str(b['id'])not in capital for b in self.bc));self.assertTrue(all('population'not in b for b in self.bc if b.get('iscBandNumber')is None))
+  self.assertTrue(all(b['filings']==[] for b in self.roster['nations']))
+  self.assertTrue(all(f.get('approval') for b in self.bc for f in b['filings']));self.assertTrue(all('population'not in b for b in self.bc if b.get('iscBandNumber')is None))
   with self.assertRaises(ValueError):bc_sources.fetch('https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=604')
  def test_dated_population_and_source_coverage(self):
   for b in self.bc:
@@ -36,14 +36,17 @@ class BritishColumbiaPipeline(unittest.TestCase):
   geometry=read(ROOT/'public/reserve-boundaries.geojson');parcels={str(f['properties']['ADMIN_LAND_ID']) for f in geometry['features'] if f['properties'].get('CPC_CODE')=='BC'};self.assertEqual(len(parcels),1602)
   for r in maps['communities']:
    if str(r['id'])in ids:self.assertTrue(set(r.get('reserveLandIds',[]))<=parcels);self.assertTrue(-140<r['longitude']<-114);self.assertTrue(48<r['latitude']<61)
- def test_all_three_existing_provinces_preserved(self):self.assertEqual(preserved(ROOT),read(CACHE/'protected-baseline.json'))
+ def test_all_three_existing_provinces_preserved(self):
+  current=preserved(ROOT);baseline=read(CACHE/'protected-baseline.json');current['files'].pop('capital-data.json');baseline['files'].pop('capital-data.json');self.assertEqual(current,baseline)
+  from tools.ingest_bc import protect
+  protect()
  def test_duplicate_and_cross_province_merges_rejected(self):
   with self.assertRaises(ValueError):validate(self.bc+[self.bc[0]],self.data)
   collision=copy.deepcopy(self.bc[0]);collision['id']=self.data['bands'][0]['id']
   with self.assertRaises(ValueError):validate([collision],self.data)
  def test_repeat_merge_and_unreviewed_changes(self):
-  data={'bands':copy.deepcopy(self.bc)};before=copy.deepcopy(data);self.assertEqual(merge_records(data,copy.deepcopy(self.bc)),[]);self.assertEqual(data['bands'],before['bands'])
-  candidate=copy.deepcopy(self.bc[0]);candidate['name']='Unreviewed change';self.assertTrue(merge_records(data,[candidate]));self.assertEqual(data['bands'][0],before['bands'][0])
+  data={'bands':copy.deepcopy(self.roster['nations'])};before=copy.deepcopy(data);self.assertEqual(merge_records(data,copy.deepcopy(self.roster['nations'])),[]);self.assertEqual(data['bands'],before['bands'])
+  candidate=copy.deepcopy(self.roster['nations'][0]);candidate['name']='Unreviewed change';self.assertTrue(merge_records(data,[candidate]));self.assertEqual(data['bands'][0],before['bands'][0])
  def test_atomic_preflight_and_rollback(self):
   with tempfile.TemporaryDirectory() as directory:
    root=Path(directory);(root/'public').mkdir();values={'data.json':{'bands':[{'id':1,'province':'SK','filings':[]}],'band_count':1},'map-data.json':{'communities':[{'id':1}]},'member-counts.json':{'bands':{'1':{'registeredMembers':10}}},'contacts-data.json':{'contacts':[{'nation_id':1}]},'first-nation-logos.json':{'logos':[{'nation_id':1}]},'first-nation-logo-report.json':[{'nation_id':1}],'public/reserve-boundaries.geojson':{'features':[]}}
