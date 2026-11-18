@@ -23,6 +23,7 @@ function applyProvinceContext(province){
 }
 function updateProvinceUI(){
   const province=selectedProvince(),rows=provinceBands();
+  const benefitSearch=document.getElementById('benefitSearch');if(benefitSearch)benefitSearch.textContent=province?`Search ${provinceLabel()} First Nations`:'Search First Nations by province';
   const supplement=document.getElementById('mapSupplement');if(supplement)supplement.hidden=Boolean(province)&&province!=='SK';
   const map=document.getElementById('directoryMap');if(map)map.setAttribute('aria-label',province?`Interactive map of ${provinceLabel()} First Nations`:'Interactive map of First Nations');
   const overviewTitle=document.querySelector('#provinceOverview h2');if(overviewTitle)overviewTitle.textContent=`${provinceLabel()} Coverage`;
