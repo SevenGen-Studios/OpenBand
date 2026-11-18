@@ -722,7 +722,7 @@ def extract_html_events(html: str, page_url: str, community: dict, source: dict,
         if heading and day:
             title = clean_text(re.sub(r'<[^>]+>', ' ', heading.group(1))).replace('&amp;', '&')
             if title:
-                row = normalized_event(community, source, title=title, context=title + ' ' + day.group(1), url=page_url, start=day.group(1), method='html-calendar-detail')
+                row = normalized_event(community, source, title=title, context=title + ' Event date: ' + day.group(1), url=page_url, start=day.group(1), method='sweetgrass-calendar-detail')
                 return [row], [], []
     eventer=extract_eventer_detail(html,page_url,community,source)
     if eventer:return [eventer],[],[]
@@ -1082,6 +1082,11 @@ def is_publishable_event(item: dict, today: date | None = None) -> bool:
         return False
     if path.endswith(("/events", "/calendar", "/events.html", "/announcements")) and method == "html-page":
         return False
+    if method == "sweetgrass-calendar-detail":
+        return (str(item.get("bandId")) == "348"
+                and urllib.parse.urlsplit(url).hostname in {"sweetgrassfirstnation.ca", "www.sweetgrassfirstnation.ca"}
+                and bool(re.fullmatch(r"\d+", (urllib.parse.parse_qs(urllib.parse.urlsplit(url).query).get("EventID") or [""])[0]))
+                and any(d == item.get("startDate") for d, _ in explicit_event_dates(description)))
     if method == "olcn-calendar":
         return (str(item.get("bandId")) == "344"
                 and urllib.parse.urlsplit(url).hostname in {"onionlake.ca","www.onionlake.ca"}
