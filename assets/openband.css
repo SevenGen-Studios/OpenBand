@@ -296,3 +296,7 @@ body[data-view="gateway"],body[data-page="home"]:not([data-view]){background:#18
 /* Keep the overview compact while retaining each card’s original content. */
 .overview-context-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:1rem;margin-bottom:1rem;align-items:start}.overview-context-grid>.election-card,.overview-context-grid>.history-card{min-width:0;margin-bottom:0}
 @media(min-width:1100px){.overview-context-grid:has(>.history-card){grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.overview-context-grid .history-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.overview-context-grid .election-heading{flex-wrap:wrap}.overview-context-grid .election-results{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Benefits introduce the tools; coverage metrics live in the section below. */
+.sbar.benefits-bar{gap:clamp(1.5rem,4vw,4rem);padding:.1rem 2rem}.benefits-bar .si2{min-width:0;max-width:22rem}.benefit-title{font-family:Syne,sans-serif;font-size:18px;font-weight:700;color:var(--green);margin-bottom:.35rem}.benefits-bar .sl{font-size:12px}
+@media(max-width:760px){.sbar.benefits-bar{grid-template-columns:1fr;gap:0;padding:.5rem 1rem}.benefits-bar .si2{max-width:none;padding:.65rem .35rem}.benefit-title{font-size:17px}}
