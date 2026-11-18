@@ -53,6 +53,12 @@ def records():
                        sources=[dict(name=source, url=url, publishedAt=date)])
             if funding:
                 row["funding"] = [funding]
+            if ident in {
+                "blood-wind-capacity", "ermineskin-solar-feasibility",
+                "samson-solar-development", "saddle-lake-solar-storage",
+                "bigstone-energy-feasibility",
+            }:
+                row.update(status="Planned", statusAsOf=date, lastVerifiedAt="2026-11-18")
             if url == ROAD:
                 row.update(status="Completed", statusAsOf=date)
             result.append(row)

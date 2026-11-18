@@ -1,0 +1,12 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const vm = require('node:vm');
+const source = fs.readFileSync('assets/openband.js', 'utf8');
+const definition = source.match(/^function roleOf\(p\).*$/m)[0];
+const context = vm.createContext({raw: (person, field) => person[field]});
+vm.runInContext(definition, context);
+assert.equal(context.roleOf({name: 'Roy Fox', role: 'Chief'}), 'Chief');
+assert.equal(context.roleOf({name: 'Winston Day Chief Jr.', role: 'Councillor'}), 'Councillor');
+assert.equal(context.roleOf({name: 'Day Chief', role: 'Councillor'}), 'Councillor');
+assert.equal(context.roleOf({name: 'Another official', role: 'Chief'}), 'Chief');
+console.log('Official role labels follow the source role field.');
