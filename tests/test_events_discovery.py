@@ -35,6 +35,7 @@ class EventDateTests(unittest.TestCase):
         source = {"type": "Official First Nation Website", "name": "Sweetgrass First Nation"}
         rows, _, _ = extract_html_events(html, 'https://sweetgrassfirstnation.ca/events.html?EventID=783', community, source)
         self.assertEqual([(row['title'], row['startDate']) for row in rows], [('Fiddle Dance & Basket Social', '2026-11-20')])
+        self.assertTrue(is_publishable_event(rows[0], date(2026, 11, 18)))
 
     def test_dated_calendar_detail_uses_actual_heading_not_previous_event_or_back_link(self):
         html = '''<a href="/events">Back to All Events</a><h1>Business Trust Workshop</h1>
