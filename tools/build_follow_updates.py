@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -45,6 +46,10 @@ def build(root=ROOT, now=None):
     old_feed = load(output.name) if output.exists() else {}
     previous = {row["id"]: row for row in old_feed.get("updates", []) + old_feed.get("inactive", [])}
     updates = {}
+    # Keep a permanent identity baseline: old years must never be announced again.
+    known_years = set(old_feed.get("filingYears", []))
+    bootstrap_filings = "filingYears" not in old_feed
+    available_years = set()
 
     def add(kind, row, community_ids, source, milestone, details):
         source = https_url(source)
@@ -72,6 +77,31 @@ def build(root=ROOT, now=None):
             existing = updates.get(key)
             if not existing or (item["date"] or "") > (existing["date"] or ""):
                 updates[key] = item
+
+    for band in load("data.json")["bands"]:
+        years = {}
+        for filing in band.get("filings", []):
+            year = str(filing.get("year") or "")
+            match = re.fullmatch(r"(\d{4})-(\d{4})", year)
+            if not match or int(match[2]) != int(match[1]) + 1:
+                continue
+            if filing.get("posted") is not True or not https_url(filing.get("href")):
+                continue
+            if filing.get("docType") not in {
+                "Audited consolidated financial statements",
+                "Schedule of Remuneration and Expenses",
+            }:
+                continue
+            # A linked filing can be available even when extracted amounts await review.
+            years.setdefault(year, filing)
+        for year, filing in sorted(years.items()):
+            identity = f"{band['id']}:{year}"
+            available_years.add(identity)
+            key = digest(["filings", str(band["id"]), identity])
+            if bootstrap_filings or identity in known_years and key not in previous:
+                continue
+            add("filings", {"id": identity, "title": f"{year} financial records now available"},
+                [band["id"]], filing["href"], None, {"fiscalYear": year})
 
     recent = today - timedelta(days=30)
     for row in load("news-data.json")["articles"]:
@@ -107,7 +137,8 @@ def build(root=ROOT, now=None):
                  "firstSeenAt": row.get("firstSeenAt") or row["updatedAt"]}
                 for key, row in sorted(previous.items()) if key not in updates and row["updatedAt"][:10] >= cutoff]
     payload = {
-        "schemaVersion": 1, "communities": communities, "inactive": inactive,
+        "schemaVersion": 1, "filingYears": sorted(known_years | available_years),
+        "communities": communities, "inactive": inactive,
         "updates": sorted(updates.values(), key=lambda row: (row["updatedAt"], row["date"] or "", row["id"]), reverse=True),
     }
     directory = root / "follow-data"
