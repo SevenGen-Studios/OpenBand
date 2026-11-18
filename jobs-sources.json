@@ -1197,6 +1197,38 @@
       "sameHostOnly": true,
       "parser": "job_link_index",
       "researchSourceId": "siksika-health-careers"
+    },
+    {
+      "id": "mistawasis-official-jobs",
+      "name": "Mistawasis Nehiyawak Employment",
+      "url": "https://mistawasis.ca/jobs/",
+      "sourceType": "official_first_nation",
+      "province": "SK",
+      "communityIds": [
+        "374"
+      ],
+      "communityNames": [
+        "Mistawasis Nehiyawak"
+      ],
+      "parser": "job_link_index",
+      "verifiedOfficialSource": true,
+      "autoPublish": false
+    },
+    {
+      "id": "tsec-pelican-lake-jobs",
+      "name": "Treaty Six Education Council Pelican Lake School Jobs",
+      "url": "https://tsec.shareables.ai/middle-years-teacher-pelican-lake-high-school-2026-10-29",
+      "sourceType": "first_nation_education_organization",
+      "province": "SK",
+      "communityIds": [
+        "405"
+      ],
+      "communityNames": [
+        "Pelican Lake First Nation"
+      ],
+      "parser": "job_detail",
+      "verifiedOfficialSource": true,
+      "autoPublish": false
     }
   ]
 }
