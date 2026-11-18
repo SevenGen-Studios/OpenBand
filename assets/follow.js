@@ -2,7 +2,7 @@
   'use strict';
 
   const storageKey = 'openband-follow-pilot-v1';
-  const categories = { news: 'News', events: 'Event', jobs: 'Job', projects: 'Project' };
+  const categories = { news: 'News', events: 'Event', jobs: 'Job', projects: 'Project', filings: 'Financial records' };
   const isUnread = (item, following) => Date.parse(item.updatedAt) > Date.parse(following[item.communityId]);
   const isNewForDevice = (item, following, enabledAt) => Date.parse(item.firstSeenAt) >
     Math.max(Date.parse(following[item.communityId]), Date.parse(enabledAt));
@@ -286,6 +286,7 @@
   }
 
   function metadata(item) {
+    if (item.kind === 'filings') return item.fiscalYear;
     if (item.kind === 'events') return dateLabel(item.startDate);
     if (item.kind === 'jobs') return item.closingDate ? `Apply by ${dateLabel(item.closingDate)}` : 'See employer posting';
     return dateLabel(item.date);

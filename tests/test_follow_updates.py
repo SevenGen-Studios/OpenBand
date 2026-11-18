@@ -71,3 +71,53 @@ class FollowUpdatesTests(unittest.TestCase):
                 {**job, "id": "job-2", "sourceUrl": "https://example.org/careers/#job-2"},
             ])
             self.assertEqual(sum(row["kind"] == "jobs" for row in build(root, later)["updates"]), 2)
+
+
+class FilingUpdatesTests(unittest.TestCase):
+    def test_new_year_is_announced_once_without_replaying_history(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            band = {"id": 261, "name": "Example Nation", "province": "MB", "filings": []}
+            def filing(year, **changes):
+                return {"year": year, "posted": True,
+                        "docType": "Audited consolidated financial statements",
+                        "href": "https://example.org/" + year + ".pdf", **changes}
+            def save():
+                (root/"data.json").write_text(json.dumps({"bands": [band]}))
+            for name, field in (("news", "articles"), ("events", "events"),
+                                ("jobs", "listings"), ("projects", "projects")):
+                (root/(name+"-data.json")).write_text(json.dumps({field: []}))
+            band["filings"] = [filing("2023-2024")]
+            save()
+            first = datetime(2026, 11, 18, tzinfo=timezone.utc)
+            self.assertEqual(build(root, first)["updates"], [])
+            band["filings"] += [filing("2024-2025", parse_status="pending"),
+                               filing("2024-2025", docType="Schedule of Remuneration and Expenses"),
+                               filing("2025-2026", posted=False),
+                               filing("2026-2027", href="http://example.org/file"),
+                               filing("2027-2029")]
+            save()
+            later = datetime(2026, 11, 19, tzinfo=timezone.utc)
+            feed = build(root, later)
+            self.assertEqual(len(feed["updates"]), 1)
+            item = feed["updates"][0]
+            self.assertEqual((item["kind"], item["fiscalYear"]), ("filings", "2024-2025"))
+            self.assertEqual(item["firstSeenAt"], later.isoformat())
+            self.assertEqual(build(root, later), feed)
+            band["filings"][1]["href"] = "https://example.org/corrected.pdf"
+            save()
+            self.assertEqual(build(root, later)["updates"][0]["id"], item["id"])
+            band["filings"] = []
+            save()
+            build(root, later)
+            # Reappearance after the inactive-record retention window is not new.
+            band["filings"] = [filing("2024-2025")]
+            save()
+            much_later = datetime(2027, 3, 1, tzinfo=timezone.utc)
+            build(root, much_later)
+            band["filings"] = []
+            save()
+            build(root, much_later)
+            band["filings"] = [filing("2024-2025")]
+            save()
+            self.assertEqual(build(root, much_later)["updates"], [])

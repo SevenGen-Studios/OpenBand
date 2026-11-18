@@ -193,3 +193,20 @@ test('the delayed test alert uses only the requesting device', async t => {
   await scheduled;
   assert.equal(sends, 1);
 });
+
+
+test('new filing years queue once for existing followers', async () => {
+  const { env, sqlite, now, request, record, feed } = setup();
+  assert.equal((await handle(request('PUT', record), env)).status, 204);
+  feed.updates = [{ ...feed.updates[0], kind: 'filings',
+    title: '2025-2026 financial records now available', fiscalYear: '2025-2026' }];
+  let sends = 0;
+  const fetcher = async (url) => {
+    if (url === env.FEED_URL) return Response.json(feed);
+    sends++;
+    return new Response(null, { status: 201 });
+  };
+  await refresh(env, now + 3000, fetcher);
+  await refresh(env, now + 4000, fetcher);
+  assert.equal(sends, 1);
+});

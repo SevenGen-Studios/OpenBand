@@ -2,7 +2,7 @@ import { generateRequestDetails } from 'web-push';
 
 const isCommunityId = id => typeof id === 'string' && id.length <= 48 &&
   id !== 'communities' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id);
-const kinds = { news: 'News', events: 'Event', jobs: 'Job', projects: 'Project' };
+const kinds = { news: 'News', events: 'Event', jobs: 'Job', projects: 'Project', filings: 'Financial records' };
 const windowMs = 48 * 60 * 60 * 1000;
 const minute = 60000;
 const fetchFromInternet = (url, options) => fetch(url, options);

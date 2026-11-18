@@ -14,3 +14,13 @@ The service uses its own D1 database. It stores browser push subscriptions, one 
 6. Publish a verified test update to the test feed. Wait for the scheduled sender to process it, check the device notification, and open it. Run the schedule again and verify the device receives one alert. Unfollow and repeat with a later update to verify that the subscription preferences are respected.
 
 The scheduled sender checks the published feed every two minutes and retries transient failures for up to 48 hours. On a published site, delivery also depends on the browser's permission and its device notification settings. With no Worker origin configured, the published pilot stays disabled and the local preview remains available.
+
+### Newly available financial years
+
+Follow includes a “Financial records” update when a community gains a fiscal year
+with a posted HTTPS audited statement or remuneration schedule. The first run
+records existing years without notifying followers about historical records.
+Multiple documents for one year share a single notification identity. Refreshes,
+re-parsing amounts, corrected links, and reappearing old years do not create a new
+year alert. Availability describes the source document, not verification of its
+extracted figures. Filing discovery refreshes the inbox before publishing.
