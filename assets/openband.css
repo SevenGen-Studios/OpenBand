@@ -299,4 +299,6 @@ body[data-view="gateway"],body[data-page="home"]:not([data-view]){background:#18
 
 /* Benefits introduce the tools; coverage metrics live in the section below. */
 .sbar.benefits-bar{gap:clamp(1.5rem,4vw,4rem);padding:.1rem 2rem}.benefits-bar .si2{min-width:0;max-width:22rem}.benefit-title{font-family:Syne,sans-serif;font-size:18px;font-weight:700;color:var(--green);margin-bottom:.35rem}.benefits-bar .sl{font-size:12px}
-@media(max-width:760px){.sbar.benefits-bar{grid-template-columns:1fr;gap:0;padding:.5rem 1rem}.benefits-bar .si2{max-width:none;padding:.65rem .35rem}.benefit-title{font-size:17px}}
+.benefit-short{display:none}
+@media(max-width:760px){.sbar.benefits-bar{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:.25rem .5rem}.benefits-bar .si2{max-width:none;padding:.75rem .2rem}.benefits-bar .benefit-title{font-family:inherit;font-size:12px;line-height:1.4;margin:0}.benefits-bar .sl,.benefit-full{display:none}.benefit-short{display:inline}}
+
