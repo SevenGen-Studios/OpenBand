@@ -14,13 +14,13 @@ The first bounded extraction batch processed **24 documents**. The user explicit
 - Cheam First Nation, 2025–26 audited statement: revenue 12,484,788; expenses 15,640,335; annual deficit 3,155,547. The actual column on PDF page 7 was visually checked separately from budget and prior year.
 - Aitchelitz, 2025–26 remuneration: the complete two-person schedule on PDF page 3 and practitioner review on page 2 were visually checked. Exact names, titles and remuneration/expense columns are preserved. No travel or benefits amount is invented. Combined totals are calculated and labelled accordingly; the source reports no footer total.
 
-Only these three approved documents enter `data.json` and `capital-data.json`. Native text, proposed names and uncertain OCR output remain in ignored staging. The shared financial overview, year selector, history, remuneration and original-source views consume the existing schemas.
+Those three approved documents seeded `data.json` and `capital-data.json`. The first latest-available extraction release adds 15 user-approved documents (13 audited statements and two remuneration schedules), bringing published coverage to 18 documents: 15 audits and three remuneration schedules. See `docs/BC-BATCH1-RELEASE.md` and its hash-bound approval/source receipts. Native text, proposed names and uncertain OCR output remain in ignored staging. The shared financial overview, year selector, history, remuneration and original-source views consume the existing schemas.
 
 ## Coverage and remaining work
 
 See [the fiscal-year coverage report](bc-financial-coverage-report.md) and its JSON companion for all twelve years, field-specific coverage, source retrieval errors, government/year discovery states and every unresolved indexed document. Discovery and extraction have different denominators.
 
-**4,024 indexed documents remain unprocessed; 21 processed documents require review.** Official-site PDF candidates form an additional, separately counted identity/period review queue in `bc-financial-index.json`. No full historical extraction or complete official-site search is claimed.
+The latest-available pass processed **378 documents across 189 profiles**, including 71 successful local OCR recoveries. **3,670 indexed historical documents remain unprocessed; 360 processed documents require review.** The original 24-document pilot is included in these totals. Official-site PDF candidates form an additional, separately counted identity/period review queue in `bc-financial-index.json`. No full historical extraction or complete official-site search is claimed.
 
 Two scanned Beecher Bay documents received free local RapidOCR retries. One recovered text but remained under review; one hit the 180-second worker timeout. Neither was published. Download hashes and resumable checkpoints are retained even after a timeout.
 

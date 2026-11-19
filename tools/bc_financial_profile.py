@@ -1,6 +1,6 @@
 """Original document index for static BC profiles; amounts use shared views."""
 from html import escape as esc
-from tools.ingest_bc import INDEX,read,YEARS
+from tools.bc_financial_config import INDEX,read,YEARS
 from functools import lru_cache
 @lru_cache(maxsize=1)
 def source_index(modified):return read(INDEX,{'governments':{}})['governments']

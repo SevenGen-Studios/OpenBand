@@ -5,9 +5,12 @@ from __future__ import annotations
 import html
 import json
 import re
+import sys
 import unicodedata
 from pathlib import Path
 from urllib.parse import quote
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 try:
     from tools.nation_name import nation_name_markup, identity_source_url

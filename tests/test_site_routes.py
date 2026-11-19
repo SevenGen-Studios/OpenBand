@@ -126,7 +126,7 @@ class SiteRouteTests(unittest.TestCase):
             markup = page.read_text(encoding="utf-8")
             self.assertIn(f'data-page="province" data-province="{code}"', markup)
             self.assertIn(f'<link rel="canonical" href="{ORIGIN}/{province}/">', markup)
-            self.assertIn(f"{province.replace("-", " ").title()} First Nations Public Financial Records", markup)
+            self.assertIn(f"{province.replace('-', ' ').title()} First Nations Public Financial Records", markup)
             self.assertIn(f"{ORIGIN}/{province}/", sitemap)
         self.assertIn(f"{ORIGIN}/browse/", sitemap)
         self.assertIn(f"{ORIGIN}/news/", sitemap)
