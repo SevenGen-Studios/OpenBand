@@ -5,20 +5,17 @@ from __future__ import annotations
 import html
 import json
 import re
-import sys
 import unicodedata
 from pathlib import Path
 from urllib.parse import quote
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-
 try:
     from tools.nation_name import nation_name_markup, identity_source_url
-    from tools.seo_records import publish as publish_records, financial_markup, safe_url, PROVINCES, province_path
+    from tools.seo_records import publish as publish_records, financial_markup, safe_url, PROVINCES
     from tools.profile_history import build_history
 except ModuleNotFoundError:
     from nation_name import nation_name_markup, identity_source_url
-    from seo_records import publish as publish_records, financial_markup, safe_url, PROVINCES, province_path
+    from seo_records import publish as publish_records, financial_markup, safe_url, PROVINCES
     from profile_history import build_history
 
 
@@ -332,15 +329,6 @@ def profile_prerender(
     jobs: list[dict],
     history_markup: str = '',
 ) -> str:
-    if band.get('province') == 'BC':
-        try:
-            from tools.bc_profile import profile_markup
-        except ModuleNotFoundError:
-            from bc_profile import profile_markup
-        return ('<div id="profilePrerender" class="profile-prerender">'
-                f'<div class="profile-prerender-title"><h1>{nation_name_markup(band)} Community Profile</h1>{nation_logo_markup(band, "profile", eager=True)}</div>'
-                '<p>Verified government and community information with original financial source links. Financial extraction coverage remains partial.</p>'
-                + profile_markup(band) + __import__('tools.bc_financial_profile',fromlist=['financial_sources_markup']).financial_sources_markup(band) + '</div>')
     filings = remuneration_filings(band)
     parsed = [filing for filing in filings if is_parsed(filing)]
     latest = filings[0].get("year") if filings else None
@@ -512,8 +500,8 @@ def write_page(path: Path, content: str) -> None:
         handle.truncate()
 
 
-def provincial_landing(base: str, code: str, name: str, bands=()) -> str:
-    path = province_path(name)
+def provincial_landing(base: str, code: str, name: str) -> str:
+    path = f"/{name.lower()}/"
     title = f"OpenBand Canada | {name} First Nations Public Financial Records"
     description = (
         f"Search {name} First Nations public financial records, filing history, "
@@ -545,29 +533,11 @@ def provincial_landing(base: str, code: str, name: str, bands=()) -> str:
         1,
     )
     page = page.replace(
-        '<script src="/assets/openband.js?v=20261118bc3" defer></script>',
-        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261118bc3" defer></script>',
+        '<script src="/assets/openband.js?v=20261118roles2" defer></script>',
+        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261118roles2" defer></script>',
         1,
     )
-    if code == 'BC':
-        rows = [b for b in bands if b.get('province') == 'BC']
-        description = 'Explore British Columbia First Nations and their public financial information through OpenBand. Community profiles and financial records will be added as verified sources become available.'
-        page = set_meta(page, title=title, description=description, path=path, structured={'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': title, 'url': ORIGIN + path, 'description': description})
-        page = page.replace('<h1 id="heroTitle">First Nations Public Financial Records</h1>', '<h1 id="heroTitle">British Columbia First Nations</h1>')
-        page = re.sub(r'(<p id="heroIntro">).*?(</p>)', lambda m: m[1] + description + m[2], page)
-        page = page.replace('<p id="provinceExpansionNotice" class="note province-only" hidden>', '<p id="provinceExpansionNotice" class="note province-only">')
-        page = page.replace('href="/browse/"', 'href="/browse/?province=BC"')
-        page = page.replace('Browse all First Nations', 'Browse British Columbia First Nations')
-        page = page.replace('<div class="recent-list" id="recentList"></div>', '<div class="recent-list" id="recentList"><p class="trend-empty">British Columbia First Nation profiles are being added. Verified community records will appear here as they become available.</p></div>')
-        page = re.sub(r'(id="(?:statN|statP|provTracked|provBands|provFilings)">)-', lambda m: m[1] + 'Not yet indexed', page)
-        if rows:
-            description = 'Explore verified British Columbia government and community profiles, registered-population sources and dated governance information. Original financial documents are indexed; verified extraction coverage remains partial.'
-            page = set_meta(page, title=title, description=description, path=path, structured={'@context':'https://schema.org','@type':'CollectionPage','name':title,'url':ORIGIN+path,'description':description})
-            page = re.sub(r'(<p id="heroIntro">).*?(</p>)', lambda m:m[1]+description+m[2], page)
-            page = page.replace('British Columbia expansion is underway. First Nation profiles and financial records are being prepared for inclusion.', 'British Columbia community profiles are available. Original financial documents are indexed; verified extraction coverage remains partial.')
-            for key in ('statN','provTracked'):
-                page = re.sub(r'(id="'+key+r'">).*?(</div>)', lambda m:m[1]+str(len(rows))+m[2], page)
-    if code in ('MB', 'BC'):
+    if code == 'MB':
         page = page.replace('<p id="albertaCoverageLink"><a href="/alberta-coverage-report.html">Alberta source coverage and review report</a></p>', '<p id="albertaCoverageLink" hidden></p>')
     return page
 
@@ -590,7 +560,7 @@ def legacy_enterprise_redirect(band: dict) -> str:
     )
 
 
-def build(province_filter=None) -> None:
+def build() -> None:
     data = json.loads((ROOT / "data.json").read_text(encoding="utf-8"))
     news = json.loads((ROOT / "news-data.json").read_text(encoding="utf-8"))
     elections = json.loads((ROOT / "elections-data.json").read_text(encoding="utf-8"))
@@ -602,7 +572,7 @@ def build(province_filter=None) -> None:
     base = (ROOT / "index.html").read_text(encoding="utf-8")
     contacts = json.loads((ROOT / "contacts-data.json").read_text(encoding="utf-8"))
     capital = json.loads((ROOT / "capital-data.json").read_text(encoding="utf-8"))
-    seo_manifest, financial_records = publish_records(ROOT, bands, capital, slugify, province_filter=province_filter)
+    seo_manifest, financial_records = publish_records(ROOT, bands, capital, slugify)
     slugs = [slugify(band["name"]) for band in bands]
     if len(slugs) != len(set(slugs)):
         raise RuntimeError("Community slugs are not unique")
@@ -614,23 +584,17 @@ def build(province_filter=None) -> None:
     profile_root.mkdir(parents=True, exist_ok=True)
 
     for code, province in PROVINCES.items():
-        if province_filter and code != province_filter:
-            continue
-        landing = provincial_landing(base, code, province, bands)
-        write_page(ROOT / province_path(province).strip('/') / 'index.html', landing)
+        landing = provincial_landing(base, code, province)
+        write_page(ROOT / province.lower() / 'index.html', landing)
 
     for band in bands:
-        if province_filter and band.get('province') != province_filter:
-            continue
         slug = slugify(band["name"])
         path = f"/first-nations/{slug}/"
-        title = f"{band['name']} {'Community Profile' if band.get('province') == 'BC' else 'Financial Records'} | OpenBand"
+        title = f"{band['name']} Financial Records | OpenBand"
         description = (
             f"Review {band['name']} public FNFTA filing availability, parsed Chief and Council "
             "remuneration, audited statements, and original ISC source documents."
         )
-        if band.get("province") == "BC":
-            description = f"Verified {band['name']} government identity, registered population, geography and dated governance sources. Original financial documents are indexed; verified extraction coverage remains partial."
         structured = {
             "@context": "https://schema.org",
             "@type": "WebPage",
@@ -682,13 +646,13 @@ def build(province_filter=None) -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20261118bc3" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261118bc3" defer></script>',
+            '<script src="/assets/openband.js?v=20261118roles2" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261118roles2" defer></script>',
             1,
         )
         if str(band['id']) in history:
-            page = page.replace('<script src="/assets/openband.js?v=20261118bc3" defer></script>',
-                                '<script src="/assets/profile-history.js?v=20261104overview1" defer></script><script src="/assets/openband.js?v=20261118bc3" defer></script>')
+            page = page.replace('<script src="/assets/openband.js?v=20261118roles2" defer></script>',
+                                '<script src="/assets/profile-history.js?v=20261104overview1" defer></script><script src="/assets/openband.js?v=20261118roles2" defer></script>')
         write_page(profile_root / slug / "index.html", page)
 
         write_page(
@@ -732,7 +696,7 @@ def build(province_filter=None) -> None:
     news_page = news_page.replace('<div class="news-grid" id="newsGrid"></div>', news_prerender(news.get("articles", []), bands), 1)
     write_page(ROOT / "news" / "index.html", news_page)
 
-    paths = ["/", *[province_path(name) for name in PROVINCES.values()], "/browse/", "/news/"] + [f"/first-nations/{slug}/" for slug in slugs]
+    paths = ["/", *[f"/{name.lower()}/" for name in PROVINCES.values()], "/browse/", "/news/"] + [f"/first-nations/{slug}/" for slug in slugs]
     paths.extend(seo_manifest)
     def lastmod_markup(path):
         return "<lastmod>" + seo_manifest[path]["lastmod"] + "</lastmod>" if path in seo_manifest else ""
@@ -754,7 +718,4 @@ def build(province_filter=None) -> None:
 
 
 if __name__ == "__main__":
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--province', choices=list(PROVINCES))
-    build(parser.parse_args().province)
+    build()

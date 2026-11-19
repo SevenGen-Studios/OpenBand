@@ -19,8 +19,6 @@ concurrency:
 
 jobs:
   sanitize:
-    # Feature review branches must not receive automatic data/profile commits.
-    if: github.event_name == 'workflow_dispatch' || github.ref_name == 'main'
     runs-on: ubuntu-latest
     timeout-minutes: 20
 

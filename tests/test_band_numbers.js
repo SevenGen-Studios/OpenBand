@@ -12,7 +12,7 @@ for(const band of bands){
   if(band.iscBandNumber){
     assert.match(markup,new RegExp(`>${band.iscBandNumber}</span>`));
     assert.equal(context.identitySourceLabel(band),'ISC profile');
-    assert.match(context.identitySourceUrl(band),new RegExp(`BAND_NUMBER=${band.iscBandNumber}(?:&|$)`));
+    assert.match(context.identitySourceUrl(band),new RegExp(`BAND_NUMBER=${band.iscBandNumber}$`));
   }else{
     assert.ok(!markup.includes('nation-band-number'));
     assert.equal(context.identitySourceLabel(band),'Community identity source');

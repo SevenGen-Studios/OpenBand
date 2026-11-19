@@ -28,8 +28,7 @@ class BandNumberTests(unittest.TestCase):
 
     def test_unknown_numbers_are_flagged_and_never_inferred(self):
         result = audit(self.bands, self.roster, self.reviewed)
-        self.assertEqual(result['verifiedCount'], 180 + sum(b.get('province')=='BC' and b.get('iscBandNumber') is not None for b in self.bands))
-        self.assertEqual(result['verifiedGovernmentWithoutIscCount'],sum(b.get('province')=='BC' and b.get('iscBandNumber') is None for b in self.bands))
+        self.assertEqual(result['verifiedCount'], 180)
         self.assertEqual({row['id'] for row in result['unmatched']}, set())
         for band in self.bands:
             if not band.get('iscBandNumber'):

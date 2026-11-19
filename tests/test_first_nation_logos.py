@@ -126,7 +126,7 @@ class ManitobaLogoReviewTests(unittest.TestCase):
         from tools.manitoba_logos import digest
         baseline=json.loads((ROOT/'manual_overrides/manitoba-logo-baseline.json').read_text())
         data=json.loads((ROOT/'data.json').read_text())
-        ids={str(b['id']) for b in data['bands'] if b.get('province') in ('SK','AB')}
+        ids={str(b['id']) for b in data['bands'] if b.get('province')!='MB'}
         registry=json.loads((ROOT/'first-nation-logos.json').read_text())
         report=json.loads((ROOT/'first-nation-logo-report.json').read_text())
         self.assertEqual(baseline['registry'],digest([r for r in registry['logos'] if str(r['nation_id']) in ids]))

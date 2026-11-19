@@ -5,8 +5,7 @@
   const provinces = [
     {name:'Saskatchewan', code:'SK', path:'/saskatchewan/', flag:'https://upload.wikimedia.org/wikipedia/commons/b/bb/Flag_of_Saskatchewan.svg'},
     {name:'Alberta', code:'AB', path:'/alberta/', flag:'https://upload.wikimedia.org/wikipedia/commons/f/f5/Flag_of_Alberta.svg'},
-    {name:'Manitoba',code:'MB',path:'/manitoba/',flag:'https://upload.wikimedia.org/wikipedia/commons/c/c4/Flag_of_Manitoba.svg'},
-    {name:'British Columbia',code:'BC',path:'/british-columbia/',flag:'https://upload.wikimedia.org/wikipedia/commons/b/b8/Flag_of_British_Columbia.svg'}
+    {name:'Manitoba',code:'MB',path:'/manitoba/',flag:'https://upload.wikimedia.org/wikipedia/commons/c/c4/Flag_of_Manitoba.svg'}
   ];
   const scene = document.createElement('section');
   scene.className = 'province-carousel';
@@ -28,10 +27,9 @@
     const link = scene.querySelector('.province-enter');
     link.href = p.path;
     link.innerHTML = `Explore ${p.name} <span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>`;
-    scene.querySelectorAll('.province-flag-link').forEach((flag,i)=>{flag.classList.toggle('selected',i===index);flag.classList.toggle('standby',i!==index);flag.tabIndex=i===index?0:-1;flag.setAttribute('aria-hidden',String(i!==index))});
+    scene.querySelectorAll('.province-flag-link').forEach((flag,i)=>{flag.classList.toggle('selected',i===index);flag.classList.toggle('standby',i!==index)});
     setTimeout(()=>{locked=false},650);
   }
-  scene.querySelectorAll('.province-flag-link').forEach((flag,i)=>{flag.tabIndex=i===index?0:-1;flag.setAttribute('aria-hidden',String(i!==index))});
   scene.querySelectorAll('button').forEach((button,i)=>button.addEventListener('click',()=>navigate(i?1:-1)));
   scene.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();navigate(event.key==='ArrowRight'?1:-1)}});
   scene.addEventListener('pointerdown',event=>{if(event.target.closest('a,button'))return;start={x:event.clientX,y:event.clientY};scene.setPointerCapture(event.pointerId)});

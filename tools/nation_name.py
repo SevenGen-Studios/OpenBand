@@ -17,8 +17,6 @@ def nation_name_markup(band):
 
 def identity_source_url(band):
     number = band_number(band)
-    if band.get("province") == "BC":
-        return next((s["url"] for s in band.get("sources", []) if s.get("field") == "profile" and s.get("retrievedAt")), next((s["url"] for s in band.get("sources", []) if s.get("field") == "identity"), band.get("website", "")))
     if number:
         return f'https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER={int(number)}&lang=eng'
     return next((source['url'] for source in band.get('sources', []) if source.get('field') == 'identity'), 'https://www.fsin.ca/sask-fn-listings')
