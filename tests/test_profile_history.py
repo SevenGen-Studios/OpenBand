@@ -15,7 +15,7 @@ class ProfileHistoryTests(unittest.TestCase):
     def setUpClass(cls):
         cls.records = json.loads((ROOT / 'history-data.json').read_text(encoding='utf-8'))['records']
         cls.record = cls.records[0]
-        cls.bands = json.loads((ROOT / 'data.json').read_text(encoding='utf-8'))['bands']
+        cls.bands = [b for b in json.loads((ROOT / 'data.json').read_text(encoding='utf-8'))['bands'] if b.get('province') != 'BC']
 
     def test_every_published_nation_has_one_history(self):
         self.assertEqual(len(self.records), len(self.bands))

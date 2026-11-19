@@ -24,3 +24,55 @@ assert.equal(P.aggregate(bands,capital,'AB','2025-2026').fields.totalRevenue.tot
 console.log('Province routes, aliases, treaties, fiscal years, null values and duplicate-source checks passed.');
 assert.equal(P.fromPath('/manitoba/'),'MB');
 assert.equal(P.routeFor('MB'),'/manitoba/');
+
+assert.equal(P.fromPath('/british-columbia/'),'BC');
+assert.equal(P.fromPath('/british-columbia/index.html'),'BC');
+assert.equal(P.fromPath('/bc/'),'BC');
+assert.equal(P.fromPath('/british-columbian/'),'');
+assert.equal(P.routeFor('BC'),'/british-columbia/');
+assert.equal(P.totals.BC,undefined,'No invented provincial total');
+const bcRoster=JSON.parse(fs.readFileSync('british-columbia-nations.json','utf8'));
+assert.equal(data.filter(b=>P.inProvince(b,'BC')).length,bcRoster.nations.length);
+assert.equal(data.filter(b=>P.inProvince(b,'BC')&&P.matches(b,'Keeseekoose')).length,0);
+const bc=P.aggregate(data.filter(b=>b.province!=='BC'),capital,'BC','2024-2025');
+assert.equal(bc.expected,null);assert.equal(bc.tracked,0);assert.equal(bc.reporting,0);
+assert(Object.values(bc.fields).every(f=>f.total===null));
+const future=[{id:'future',province:'BC',name:'Future verified record',treaty:'Verified treaty'}];
+assert.equal(future.filter(b=>P.inProvince(b,'BC')&&P.matches(b,'verified')).length,1);
+console.log('BC routes, empty coverage, province isolation and future records passed.');
+
+// Render the shared UI against the real datasets with no BC records.
+const vm=require('node:vm'),elements=new Map();
+function element(){return {dataset:{},classList:{toggle(){}},setAttribute(){},removeAttribute(){},value:'',innerHTML:'',textContent:''}}
+const document={body:element(),getElementById(id){if(!elements.has(id))elements.set(id,element());return elements.get(id)},querySelector(){return null},querySelectorAll(){return []}};
+const context=vm.createContext({document,location:{pathname:'/british-columbia/',href:'https://openband.ca/british-columbia/'},URL,OpenBandProvinces:P,bandsData:data.filter(b=>b.province!=='BC'),capitalData:{bands:{}},directoryMapRecord:()=>null,bandMap:{},nationNameMarkup:()=>"Onion Lake Cree Nation",esc:String,escAttr:String});
+vm.runInContext(fs.readFileSync('assets/province-ui.js','utf8'),context);
+context.applyProvinceContext('BC');context.updateProvinceUI();context.renderProvinceFinance();
+assert.equal(context.provinceBands().length,0);
+assert.equal(elements.get('coverageCount').textContent,'Not yet indexed');
+assert.equal(elements.get('provinceCountSource').hidden,true);
+assert.equal(elements.get('provinceExpansionNotice').hidden,false);
+assert.equal(elements.get('heroBrowse').href,'/browse/?province=BC');
+assert.match(elements.get('heroIntro').textContent,/verified sources become available/);
+assert.doesNotMatch(elements.get('treatyFilter').innerHTML,/Treaty [0-9]/);
+assert.doesNotMatch(elements.get('provinceFinance').innerHTML,/<select|<table/);
+const source=fs.readFileSync('assets/openband.js','utf8');
+Object.assign(context,{el:id=>document.getElementById(id),renderDirectoryMap(){},renderProvinceFinance(){}});
+vm.runInContext(source.split('\n').filter(l=>['renderProvinceSummary','renderRecentlyUpdated','renderDirectory'].some(n=>l.startsWith('function '+n+'('))).join('\n'),context);
+context.renderProvinceSummary({tracked:0,parsedFilings:0,bandsWithParsed:0});
+assert.equal(elements.get('provFilings').textContent,'Not indexed');
+context.renderRecentlyUpdated();assert.match(elements.get('recentList').innerHTML,/British Columbia First Nation profiles are being added/);
+context.renderDirectory();assert.equal(elements.get('directoryEmpty').hidden,false);
+assert.match(elements.get('directoryEmpty').textContent,/Verified community records will appear here/);
+assert.doesNotMatch(elements.get('directoryList').innerHTML,/directory-community"/);
+for(const code of ['SK','AB','MB']){context.applyProvinceContext(code);context.updateProvinceUI();assert.equal(context.provinceBands().length,P.totals[code]);assert.equal(elements.get('provinceExpansionNotice').hidden,true)}
+console.log('BC shared UI, empty directory, finance gating and existing provincial coverage passed.');
+
+const routeContext=vm.createContext({URLSearchParams,OpenBandProvinces:P,VALID_TABS:['overview'],window:{OPENBAND_BOOT:{page:'province',province:'BC'}},document:{body:{dataset:{}}},location:{pathname:'/british-columbia/',search:''}});
+vm.runInContext(source.split('\n').find(l=>l.startsWith('function currentRoute(')),routeContext);
+assert.equal(routeContext.currentRoute().province,'BC');
+routeContext.location.pathname='/browse/';routeContext.location.search='?province=BC';
+assert.equal(routeContext.currentRoute().page,'directory');
+routeContext.location.pathname='/';routeContext.location.search='';
+assert.equal(routeContext.currentRoute().page,'gateway','Back to homepage must not inherit the BC boot province');
+console.log('BC direct navigation and back/forward route context passed.');

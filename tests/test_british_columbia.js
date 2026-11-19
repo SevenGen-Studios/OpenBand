@@ -1,0 +1,22 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const P=require('../assets/provinces.js'),roster=JSON.parse(fs.readFileSync('british-columbia-nations.json','utf8')),all=JSON.parse(fs.readFileSync('data.json','utf8')).bands,bc=all.filter(b=>b.province==='BC');
+assert.equal(bc.length,roster.nations.length);assert.equal(bc.filter(b=>b.iscBandNumber!=null).length,201);
+assert(bc.every(b=>Array.isArray(b.filings)&&b.filings.every(f=>f.approval&&f.status==='validated')));
+assert.equal(all.filter(b=>P.inProvince(b,'BC')&&P.matches(b,'Keeseekoose')).length,0);
+assert(P.matches(bc.find(b=>b.id===668),'Ucluelet'));assert(P.matches(bc.find(b=>b.id===566),'Qayqayt'));
+for(const n of bc.filter(b=>b.iscBandNumber==null))assert(!require('../assets/nation-name.js').markup(n).includes('nation-band-number'));
+const nodes=new Map(),el=id=>{if(!nodes.has(id))nodes.set(id,{innerHTML:'',textContent:'',value:'',hidden:false});return nodes.get(id)};
+const context=vm.createContext({document:{body:{dataset:{province:'BC'}},getElementById:el,querySelector:()=>null,querySelectorAll:()=>[]},location:{pathname:'/british-columbia/',href:'https://openband.ca/british-columbia/'},URL,OpenBandProvinces:P,bandsData:all,capitalData:{bands:{}},esc:String,escAttr:String,formatNumber:String});
+vm.runInContext(fs.readFileSync('assets/province-ui.js','utf8'),context);
+const fixture={leadership:{officials:[{position:'Chief Councillor',givenName:'Current',surname:'Official',appointmentDate:'01/01/2026',expiryDate:'12/31/2026'},{position:'President',givenName:'Expired',surname:'Official',appointmentDate:'01/01/2024',expiryDate:'12/31/2025'},{position:'Councillor',givenName:'Bad',surname:'Date',appointmentDate:'99/99/2026',expiryDate:'12/31/2027'}]}};
+assert.equal(context.bcCurrentOfficials(fixture,'2026-11-17').length,1);
+const markup=context.bcProfileMarkup(bc.find(n=>n.id===663));assert.match(markup,/Maa-nulth/);assert.match(markup,/not the full citizenship/);assert.match(markup,/BC financial extraction coverage remains partial/);
+const central=bc.find(n=>n.id==='bc-fnpo-9637');assert.equal(central.population,undefined);assert.equal(central.iscBandNumber,null);
+assert.doesNotMatch(context.bcProfileMarkup(central),/Registered population \(ISC\)<\/dt><dd>[0-9]/);
+context.renderProvinceFinance();assert.doesNotMatch(el('provinceFinance').innerHTML,/<select|<table/);
+assert.equal(bc.find(n=>n.id===501).province,'BC');assert.equal(bc.find(n=>n.id===504).province,'BC');
+console.log('BC published identities, search isolation, dated officeholders, population scope, source markup and Phase 2 financial gating passed.');
+
+const mapContext=vm.createContext({directoryMapRecord:()=>({latitude:54,longitude:-125,locations:[{latitude:54,longitude:-125,sourceUrl:'https://official.test/one'},{latitude:55,longitude:-126,sourceUrl:'https://official.test/two'},{latitude:null,longitude:null}]}),validMapPoint:r=>Number.isFinite(r.latitude)&&Number.isFinite(r.longitude)});
+vm.runInContext(fs.readFileSync('assets/openband.js','utf8').split('\n').find(l=>l.startsWith('function directoryMapRecords(')),mapContext);
+assert.equal(mapContext.directoryMapRecords({id:604}).length,2,'One government may have multiple verified community points; invalid points are excluded');

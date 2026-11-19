@@ -14,9 +14,22 @@ RESEARCH = ROOT / 'research/band-numbers/2026-11-03'
 def audit(bands, roster, reviewed):
     official = {row['attributes']['BAND_NUMBER']: row['attributes']['BAND_NAME'] for row in roster['features']}
     issues, groups, verified = [], defaultdict(list), set()
+    bc_path=ROOT/'british-columbia-nations.json'
+    bc_reviewed={str(b['id']):b for b in json.loads(bc_path.read_text(encoding='utf-8'))['nations']} if bc_path.exists() else {}
+    verified_without_isc=set()
     for band in bands:
         number = band.get('iscBandNumber')
         expected = reviewed.get(str(band['id']))
+        if band.get('province') == 'BC':
+            checked=bc_reviewed.get(str(band['id']))
+            if not checked or (band['name'],number)!=(checked['name'],checked.get('iscBandNumber')) or not checked.get('sources'):
+                issues.append({'id':band['id'],'reason':'BC name/number mapping requires verification'})
+                continue
+            if number is None and checked.get('verificationStatus')=='verified_government_identity':
+                verified_without_isc.add(str(band['id']));continue
+            if type(number) is not int or checked.get('verificationStatus')!='verified_isc_identity':
+                issues.append({'id':band['id'],'reason':'Unverified BC ISC identity'});continue
+            verified.add(str(band['id']));groups[number].append(band);continue
         if not isinstance(number, int) or isinstance(number, bool) or number not in official:
             issues.append({'id': band['id'], 'name': band['name'], 'reason': 'Missing or unknown ISC band number'})
             continue
@@ -33,7 +46,7 @@ def audit(bands, roster, reviewed):
         duplicates.append({'iscBandNumber': number, 'nationIds': [row['id'] for row in rows], 'status': 'documented_shared_identity' if documented else 'requires_verification'})
         if not documented:
             issues.append({'iscBandNumber': number, 'reason': 'Undocumented duplicate band number'})
-    return {'recordCount': len(bands), 'verifiedCount': len(verified), 'unmatched': issues, 'duplicates': duplicates}
+    return {'recordCount': len(bands), 'verifiedCount': len(verified), 'verifiedGovernmentWithoutIscCount':len(verified_without_isc), 'unmatched': issues, 'duplicates': duplicates}
 
 
 if __name__ == '__main__':

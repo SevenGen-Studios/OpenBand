@@ -4,7 +4,7 @@ const vm = require('node:vm');
 const source = fs.readFileSync('assets/openband.js', 'utf8');
 const list = {innerHTML:'',items:[],appendChild(item){this.items.push(item)}};
 let bands=[];
-const context = vm.createContext({Date, provinceBands:()=>bands,
+const context = vm.createContext({Date, selectedProvince:()=> 'SK', provinceBands:()=>bands,
   remFilingsByYear:b=>b.filings, hasRows:f=>Boolean(f.people?.length),
   el:()=>list, document:{createElement:()=>({querySelector:()=>({})})},
   nationLogoMarkup:()=>'', nationNameMarkup:require('../assets/nation-name.js').markup, getFilingStatus:()=>({label:'Parsed'}),

@@ -1,0 +1,47 @@
+{
+  "repairs": [
+    {
+      "reserveId": "06787",
+      "name": "BECHER BAY 1",
+      "relativePlanarAreaChange": 6.613692259016247e-16,
+      "method": "GEOS make_valid linework; preserve source parcel and ownership"
+    },
+    {
+      "reserveId": "06814",
+      "name": "MALAHAT 11",
+      "relativePlanarAreaChange": 1.300041324372465e-15,
+      "method": "GEOS make_valid linework; preserve source parcel and ownership"
+    },
+    {
+      "reserveId": "07555",
+      "name": "BINCHE 2",
+      "relativePlanarAreaChange": 1.2314471972537707e-15,
+      "method": "GEOS make_valid linework; preserve source parcel and ownership"
+    },
+    {
+      "reserveId": "08047",
+      "name": "SEMIAHMOO",
+      "relativePlanarAreaChange": 3.4660546199615395e-16,
+      "method": "GEOS make_valid linework; preserve source parcel and ownership"
+    },
+    {
+      "reserveId": "08148",
+      "name": "MARBLE CANYON 3",
+      "relativePlanarAreaChange": 1.6768902629196649e-16,
+      "method": "GEOS make_valid linework; preserve source parcel and ownership"
+    }
+  ],
+  "blocked": [],
+  "verifiedBCParcels": 1602,
+  "sourceUrls": [
+    "https://data.sac-isc.gc.ca/geomatics/rest/services/ILRS_PRD/ERIP_E_NRCan/MapServer/26/query?where=CPC_CODE%3D%27BC%27&outFields=ADMIN_LAND_ID%2CSHORT_NAME%2CENAME%2CCPC_CODE%2CFIRST_NATIONS&returnGeometry=true&outSR=4326&f=geojson&resultRecordCount=200&resultOffset=0&orderByFields=ADMIN_LAND_ID",
+    "https://data.sac-isc.gc.ca/geomatics/rest/services/ILRS_PRD/ERIP_E_NRCan/MapServer/26/query?where=CPC_CODE%3D%27BC%27&outFields=ADMIN_LAND_ID%2CSHORT_NAME%2CENAME%2CCPC_CODE%2CFIRST_NATIONS&returnGeometry=true&outSR=4326&f=geojson&resultRecordCount=200&resultOffset=200&orderByFields=ADMIN_LAND_ID",
+    "https://data.sac-isc.gc.ca/geomatics/rest/services/ILRS_PRD/ERIP_E_NRCan/MapServer/26/query?where=CPC_CODE%3D%27BC%27&outFields=ADMIN_LAND_ID%2CSHORT_NAME%2CENAME%2CCPC_CODE%2CFIRST_NATIONS&returnGeometry=true&outSR=4326&f=geojson&resultRecordCount=200&resultOffset=400&orderByFields=ADMIN_LAND_ID",
+    "https://data.sac-isc.gc.ca/geomatics/rest/services/ILRS_PRD/ERIP_E_NRCan/MapServer/26/query?where=CPC_CODE%3D%27BC%27&outFields=ADMIN_LAND_ID%2CSHORT_NAME%2CENAME%2CCPC_CODE%2CFIRST_NATIONS&returnGeometry=true&outSR=4326&f=geojson&resultRecordCount=200&resultOffset=600&orderByFields=ADMIN_LAND_ID",
+    "https://data.sac-isc.gc.ca/geomatics/rest/services/ILRS_PRD/ERIP_E_NRCan/MapServer/26/query?where=CPC_CODE%3D%27BC%27&outFields=ADMIN_LAND_ID%2CSHORT_NAME%2CENAME%2CCPC_CODE%2CFIRST_NATIONS&returnGeometry=true&outSR=4326&f=geojson&resultRecordCount=200&resultOffset=800&orderByFields=ADMIN_LAND_ID",
+    "https://data.sac-isc.gc.ca/geomatics/rest/services/ILRS_PRD/ERIP_E_NRCan/MapServer/26/query?where=CPC_CODE%3D%27BC%27&outFields=ADMIN_LAND_ID%2CSHORT_NAME%2CENAME%2CCPC_CODE%2CFIRST_NATIONS&returnGeometry=true&outSR=4326&f=geojson&resultRecordCount=200&resultOffset=1000&orderByFields=ADMIN_LAND_ID",
+    "https://data.sac-isc.gc.ca/geomatics/rest/services/ILRS_PRD/ERIP_E_NRCan/MapServer/26/query?where=CPC_CODE%3D%27BC%27&outFields=ADMIN_LAND_ID%2CSHORT_NAME%2CENAME%2CCPC_CODE%2CFIRST_NATIONS&returnGeometry=true&outSR=4326&f=geojson&resultRecordCount=200&resultOffset=1200&orderByFields=ADMIN_LAND_ID",
+    "https://data.sac-isc.gc.ca/geomatics/rest/services/ILRS_PRD/ERIP_E_NRCan/MapServer/26/query?where=CPC_CODE%3D%27BC%27&outFields=ADMIN_LAND_ID%2CSHORT_NAME%2CENAME%2CCPC_CODE%2CFIRST_NATIONS&returnGeometry=true&outSR=4326&f=geojson&resultRecordCount=200&resultOffset=1400&orderByFields=ADMIN_LAND_ID",
+    "https://data.sac-isc.gc.ca/geomatics/rest/services/ILRS_PRD/ERIP_E_NRCan/MapServer/26/query?where=CPC_CODE%3D%27BC%27&outFields=ADMIN_LAND_ID%2CSHORT_NAME%2CENAME%2CCPC_CODE%2CFIRST_NATIONS&returnGeometry=true&outSR=4326&f=geojson&resultRecordCount=200&resultOffset=1600&orderByFields=ADMIN_LAND_ID"
+  ]
+}

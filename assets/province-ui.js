@@ -9,17 +9,19 @@ function applyProvinceContext(province){
   const name=OpenBandProvinces.names[code],title=document.getElementById('heroTitle'),intro=document.getElementById('heroIntro'),searchLabel=document.querySelector('label[for="si"]'),hint=document.getElementById('heroHint'),browse=document.getElementById('heroBrowse'),homeBrowse=document.getElementById('homeBrowse'),navHome=document.getElementById('homeLink'),navBrowse=document.querySelector('#primaryNav>a[href^="/browse/"]'),overviewBrowse=document.querySelector('#provinceOverview .text-link'),howLink=document.getElementById('howLink'),homeTitle=document.getElementById('homeIntroTitle'),homeCopy=document.getElementById('homeIntroCopy');
   const news=document.getElementById('newsLink');if(news)news.href=code?`/news/?province=${code}`:'/news/';
   if(navHome)navHome.href=code?OpenBandProvinces.routeFor(code):'/';
-  if(title)title.textContent=name?'First Nations Public Financial Records':'OpenBand';
-  if(intro)intro.textContent=name?`Search ${name} First Nations to review public filings, financial records, and original ISC source documents.`:'Choose a province to search First Nations public financial records and original source documents.';
+  const pending=code==='BC'&&!bandsData.some(b=>b.province==='BC');
+  const notice=document.getElementById('provinceExpansionNotice');if(notice){notice.hidden=code!=='BC';notice.textContent=pending?'British Columbia expansion is underway. First Nation profiles and financial records are being prepared for inclusion.':'British Columbia community profiles are available. Original financial documents are indexed; verified extraction coverage remains partial.'}
+  if(title)title.textContent=code==='BC'?'British Columbia First Nations':name?'First Nations Public Financial Records':'OpenBand';
+  if(intro)intro.textContent=pending?'Explore British Columbia First Nations and their public financial information through OpenBand. Community profiles and financial records will be added as verified sources become available.':code==='BC'?'Explore verified British Columbia government and community profiles, registered-population sources and dated governance information. Original financial documents are indexed; verified extraction coverage remains partial.':name?`Search ${name} First Nations to review public filings, financial records, and original ISC source documents.`:'Choose a province to search First Nations public financial records and original source documents.';
   if(searchLabel)searchLabel.textContent=`Search ${name||'First Nations'}`;
-  if(hint)hint.textContent=name?`${name} First Nations · FNFTA public filings · Source: Indigenous Services Canada`:'Public FNFTA records organized by province';
+  if(hint)hint.textContent=pending?'British Columbia public records · Not yet indexed':code==='BC'?'Source-linked community information · Financial extraction coverage is partial':name?`${name} First Nations · FNFTA public filings · Source: Indigenous Services Canada`:'Public FNFTA records organized by province';
   if(browse){browse.href=code?`/browse/?province=${code}`:'/browse/';browse.textContent=name?`Browse ${name} First Nations`:'Browse all First Nations'}
   if(homeBrowse){homeBrowse.href=code?`/browse/?province=${code}`:'/browse/';homeBrowse.textContent=name?`Browse ${name} First Nations`:'Browse all First Nations'}
   if(navBrowse)navBrowse.href=code?`/browse/?province=${code}`:'/browse/';
   if(overviewBrowse)overviewBrowse.href=code?`/browse/?province=${code}`:'/browse/';
   if(howLink)howLink.href=code?`${OpenBandProvinces.routeFor(code)}#how`:'/#how';
   if(homeTitle)homeTitle.textContent=name?`${name} public records, easier to review`:'Public records, easier to review';
-  if(homeCopy)homeCopy.textContent=name?`OpenBand organizes ${name} First Nations FNFTA filings into searchable profiles while keeping original ISC source documents one click away.`:'OpenBand organizes public FNFTA filings into searchable profiles while keeping original source documents one click away.';
+  if(homeCopy)homeCopy.textContent=pending?'Community profiles and financial records will be added as verified sources become available.':name?`OpenBand organizes ${name} First Nations FNFTA filings into searchable profiles while keeping original ISC source documents one click away.`:'OpenBand organizes public FNFTA filings into searchable profiles while keeping original source documents one click away.';
 }
 function updateProvinceUI(){
   const province=selectedProvince(),rows=provinceBands();
@@ -28,8 +30,9 @@ function updateProvinceUI(){
   const map=document.getElementById('directoryMap');if(map)map.setAttribute('aria-label',province?`Interactive map of ${provinceLabel()} First Nations`:'Interactive map of First Nations');
   const overviewTitle=document.querySelector('#provinceOverview h2');if(overviewTitle)overviewTitle.textContent=`${provinceLabel()} Coverage`;
   const count=document.getElementById('coverageCount');
-  count.textContent=province&&OpenBandProvinces.totals[province]?`${rows.length} of ${OpenBandProvinces.totals[province]}`:`${rows.length} indexed`;
-  document.getElementById('coverageLabel').textContent=` ${provinceLabel()} First Nations tracked`;
+  count.textContent=province==='BC'&&!rows.length?'Not yet indexed':province&&OpenBandProvinces.totals[province]?`${rows.length} of ${OpenBandProvinces.totals[province]}`:`${rows.length} indexed`;
+  document.getElementById('coverageLabel').textContent=province==='BC'?' British Columbia government and community profiles indexed':` ${provinceLabel()} First Nations tracked`;
+  const countLabel=document.getElementById('statNLabel');if(countLabel)countLabel.textContent=province==='BC'?'Government and community profiles':'First Nations tracked';
   const source=document.getElementById('provinceCountSource');
   source.href=province==='SK'?'https://www.fsin.ca/sask-fn-listings':province==='MB'?'https://www.isc-sac.gc.ca/eng/1626886719453/1626886859809':province==='AB'?'https://www.alberta.ca/first-nations-relations':'https://www.saskatchewan.ca/-/media/news-release-backgrounders/2025/jun/lgs-2024-25-annual-report.pdf';
   source.hidden=!OpenBandProvinces.totals[province];source.textContent=province==='SK'?'Saskatchewan directory: 69 profiles; recent additions withdrawn pending review':'Province coverage source';
@@ -43,7 +46,7 @@ function renderProvinceFinance(){
   const rows=provinceBands();
   const years=[...new Set(rows.flatMap(b=>Object.keys(capitalData.bands?.[String(b.id)]?.years||{})))].sort().reverse();
   const oldYear=document.getElementById('provinceFiscalYear')?.value,latestReported=years.find(y=>rows.some(b=>OpenBandProvinces.summaryFor(capitalData,b,y))),year=years.includes(oldYear)?oldYear:latestReported||years[0];
-  if(!year){root.innerHTML='<h2>Financial comparisons</h2><p>Records have not yet been indexed or validated for this selection. Missing financial information is not zero.</p>';return}
+  if(!latestReported){root.innerHTML='<h2>Financial comparisons</h2><p>Records have not yet been indexed or validated for this selection. Missing financial information is not zero.</p>';return}
   const first=document.getElementById('compareFirst')?.value,second=document.getElementById('compareSecond')?.value;
   const options=rows.map(b=>`<option value="${escAttr(b.id)}">${esc(OpenBandNationName.text(b))}</option>`).join('');
   root.innerHTML=`<div class="section-head"><div><h2>Financial comparisons</h2><p>Reported figures for one fiscal year. Missing values are not zero.</p></div><label>Fiscal year <select id="provinceFiscalYear">${years.map(y=>`<option ${year===y?'selected':''}>${esc(y)}</option>`).join('')}</select></label></div><div id="provinceFinancialTotals"></div><div class="compare-controls"><label>First Nation <select id="compareFirst">${options}</select></label><label>Compare with <select id="compareSecond">${options}</select></label></div><div id="provinceComparison" class="comparison-scroll"></div>`;
@@ -83,4 +86,65 @@ function extendedFinancialMarkup(band){
     'Cash flows':{operatingCashFlow:'Operating cash flow',investingCashFlow:'Investing cash flow',financingCashFlow:'Financing cash flow',capitalAssetPurchases:'Capital asset purchases',debtRepayments:'Debt repayments'}
   };
   return `<section class="nation-details"><h3>Additional reported figures · ${esc(year)}</h3><p>Explicit source labels only. Unavailable fields have not been reliably extracted. Revenue categories can overlap; do not add federal revenue to ISC revenue or own-source revenue to its components.</p>${Object.entries(sections).map(([heading,fields])=>`<details><summary>${esc(heading)}</summary><dl class="province-subtotals">${Object.entries(fields).map(([key,label])=>`<div><dt>${esc(label)}</dt><dd>${typeof summary[key]==='number'?formatMoney(summary[key]):'Unavailable'}</dd></div>`).join('')}</dl></details>`).join('')}<p><a href="${escAttr(summary.sourceUrl)}" target="_blank" rel="noopener">Original audited statement</a></p></section>`;
+}
+
+/* BC keeps treaty, governance and registered-population concepts separate. */
+function bcCurrentOfficials(band,today=new Date().getFullYear()+'-'+String(new Date().getMonth()+1).padStart(2,'0')+'-'+String(new Date().getDate()).padStart(2,'0')){
+  function iso(value){const m=/^(\d{2})\/(\d{2})\/(\d{4})$/.exec(value||'');if(!m)return '';const out=`${m[3]}-${m[1]}-${m[2]}`;const d=new Date(out+'T12:00:00Z');return Number.isFinite(d.getTime())&&d.toISOString().slice(0,10)===out?out:''}
+  return (band.leadership?.officials||[]).filter(p=>{const start=iso(p.appointmentDate),end=iso(p.expiryDate);return start&&end&&start<=today&&today<=end});
+}
+function bcLeadershipMarkup(band){
+  const current=bcCurrentOfficials(band),source=band.leadership;
+  return `<section class="election-card"><h3>Elections &amp; Leadership</h3><p>${esc(band.governanceSystem||'Governance system not yet verified')}</p>${current.length?`<p>ISC-listed officeholders with terms covering today. Source checked ${esc(source.retrievedAt.slice(0,10))}. Appointment dates are not verified election dates.</p><ul>${current.map(p=>`<li><strong>${esc(p.position)} ${esc(p.givenName)} ${esc(p.surname)}</strong> · Appointment ${esc(p.appointmentDate)} · Term expiry ${esc(p.expiryDate)}</li>`).join('')}</ul>`:'<p>No term-verified current officeholders are indexed. This does not mean the government has no leadership.</p>'}${source?.sourceUrl?`<p><a href="${escAttr(source.sourceUrl)}" target="_blank" rel="noopener">ISC governance source</a></p>`:''}</section>`;
+}
+function bcProfileMarkup(band){
+  if(band?.province!=='BC')return '';
+  const pop=band.population,measure=v=>typeof v==='number'?formatNumber(v):'Not yet verified',agreements=band.treatyAgreements||[],affiliations=band.regionalAffiliations||[],sources=(band.sources||[]).filter(s=>['identity','profile','population','location','provincialProfile','historicTreaty'].includes(s.field));
+  return `<section class="nation-details"><h3>Government &amp; Community Profile</h3><p>${esc(band.entityType.replaceAll('_',' '))} · Identity verified ${esc(band.verifiedAt.slice(0,10))}</p>${band.identityNote?`<p class="note">${esc(band.identityNote)}</p>`:''}<dl class="province-subtotals"><div><dt>Official name</dt><dd>${esc(band.officialName)}</dd></div><div><dt>ISC band number</dt><dd>${band.iscBandNumber==null?'No separate ISC band number assigned':esc(band.iscBandNumber)}</dd></div><div><dt>Tribal council (ISC)</dt><dd>${esc(band.tribalCouncil||'Not verified')}</dd></div><div><dt>Registered population (ISC)</dt><dd>${measure(pop?.registeredMembers)}</dd></div><div><dt>Registered on own reserve</dt><dd>${measure(pop?.onOwnReserve)}</dd></div><div><dt>Registered off reserve</dt><dd>${measure(pop?.offReserve)}</dd></div><div><dt>Population reference period</dt><dd>${esc(pop?.sourcePeriod||'Not available')}</dd></div><div><dt>Administrative mailing address (ISC)</dt><dd>${esc(band.contact?.mailing_address||'Not yet verified')}</dd></div></dl><p class="note">Registered population is not the full citizenship or resident population of a self-governing Nation. Reserve categories shown may not sum to the total. No population is copied from a related or umbrella government.</p><h4>Treaties and agreements</h4>${agreements.length?`<ul>${agreements.map(a=>`<li>${esc(a.label)} · ${esc(a.kind.replaceAll('_',' '))} · ${esc(a.status)} · <a href="${escAttr(a.sourceUrl)}" target="_blank" rel="noopener">Source</a></li>`).join('')}</ul>`:'<p>No treaty classification is verified. Missing information does not establish non-signatory status.</p>'}${band.treatyNegotiation?`<p>Treaty negotiations: ${esc(band.treatyNegotiation.statusText)} · <a href="${escAttr(band.treatyNegotiation.sourceUrl)}" target="_blank" rel="noopener">Source</a>. Negotiation participation is not a completed treaty.</p>`:''}${affiliations.length?`<details><summary>Regional and treaty organizations</summary><ul>${affiliations.map(a=>`<li>${esc(a.name)} · <a href="${escAttr(a.sourceUrl)}">Source</a></li>`).join('')}</ul></details>`:''}${band.reserves?.length?`<details><summary>ISC-listed reserves (${band.reserves.length})</summary><ul>${band.reserves.map(r=>`<li>${esc(r.name)} · ISC reserve ${esc(r.number)}</li>`).join('')}</ul></details>`:''}${band.location?`<p>Map point: ${esc(band.location.locationType)} · <a href="/browse/?province=BC">Browse BC communities</a>.</p>`:'<p>No verified map location is indexed for this government.</p>'}${band.website?`<p><a href="${escAttr(band.website)}" target="_blank" rel="noopener">Source-listed official government website</a></p>`:''}<p>${sources.map(s=>`<a href="${escAttr(s.url)}" target="_blank" rel="noopener">${esc(s.field)} source${s.retrievedAt?' · '+esc(s.retrievedAt.slice(0,10)):''}</a>`).join(' · ')}</p><p class="note">BC financial extraction coverage remains partial. Original documents and review status appear below. No financial figures are inferred from community information.</p></section>`;
+}
+
+function renderBcRecentlyVerified(){
+ const rows=provinceBands().slice().sort((a,b)=>String(b.verifiedAt||'').localeCompare(String(a.verifiedAt||''))).slice(0,6),list=document.getElementById('recentList');list.innerHTML='';
+ rows.forEach(band=>{const item=document.createElement('div');item.className='recent-item';item.innerHTML=`<div class="recent-main">${nationLogoMarkup(band,'medium')}<div><div class="recent-name">${nationNameMarkup(band)}</div><div class="recent-meta">Community identity verified · ${esc(String(band.verifiedAt||'').slice(0,10))}</div></div></div><button class="recent-btn">View profile</button>`;item.querySelector('button').onclick=()=>pick(band.name);list.appendChild(item)});
+}
+
+let bcFinancialIndexPromise;
+function renderBcRemunerationRows(rows){
+ const body=document.getElementById('tb'),table=body.closest('table');
+ table.dataset.bcColumns='true';table.querySelector('thead').innerHTML='<tr><th>Name</th><th>Reported position</th><th>Months</th><th>Remuneration</th><th>Travel</th><th>Expenses</th><th>Other payments</th><th>Benefits</th><th>Calculated combined total</th></tr>';
+ const value=v=>v==null?'Not reported':formatMoney(v);
+ body.innerHTML=rows.length?rows.map(p=>`<tr class="leadership-row" tabindex="0" aria-expanded="false" onclick="toggleMobileRow(event,this)" onkeydown="toggleMobileRowKey(event,this)"><td data-label="Name">${esc(p.name)}</td><td data-label="Reported position">${esc(p.raw.role)}</td><td data-label="Months">${p.months==null?'Not reported':esc(p.months)}</td>${['remuneration','travel','expenses','otherPayments','benefits'].map(k=>`<td class="amt" data-label="${esc(k)}">${value(p.raw[k])}</td>`).join('')}<td class="amtt" data-label="Calculated combined total">${value(p.raw.total)}</td></tr>`).join(''):'<tr><td colspan="9">No approved rows match this filter.</td></tr>';
+ document.getElementById('tfl').textContent=`${rows.length} recipients shown. Exact source categories; missing amounts are not zero.`;
+ document.getElementById('tft').textContent='Combined totals are calculated; verify original schedule.';
+}
+function restoreRemunerationHead(){
+ const table=document.getElementById('tb')?.closest('table');if(!table?.dataset.bcColumns)return;
+ table.querySelector('thead').innerHTML='<tr><th>Name</th><th>Role</th><th>Months</th><th>Remuneration</th><th>Travel / Expenses</th><th>Other</th><th>Total</th></tr>';delete table.dataset.bcColumns;
+ document.getElementById('sTotal').closest('.sc').querySelector('.sc-lbl').textContent='Total paid';
+}
+function renderBcPaymentSummary(filing){
+ const people=filing.people||[],total=document.getElementById('sTotal');total.closest('.sc').querySelector('.sc-lbl').textContent='Calculated combined payments';total.nextElementSibling.textContent='Sum of reported components; no source total inferred';
+ if(people.every(p=>p.otherPayments==null))document.getElementById('sOther').textContent='Not reported';
+ const categories=[['Remuneration','remuneration'],['Travel','travel'],['Expenses','expenses'],['Other payments','otherPayments'],['Benefits','benefits']];
+ document.getElementById('composition').innerHTML=categories.map(([label,key])=>{const reported=people.filter(p=>p[key]!=null),sum=reported.reduce((n,p)=>n+p[key],0);return `<div class="composition-row"><div class="composition-label">${label}</div><div>${reported.length?formatMoney(sum):'Not reported'}</div></div>`}).join('');
+ const source=getSourceLinks(selectedBand(),filing).pdf;document.getElementById('srcNote').innerHTML=`<strong>Source:</strong> <a href="${escAttr(source)}" target="_blank" rel="noopener">Original remuneration schedule</a>. Names, position titles and payment categories retain their source distinctions. Combined totals are calculated. Historic recipients are not current leadership. Reviewed ${esc(filing.approval?.approvedAt?.slice(0,10)||'')} · Reporting period ends ${esc(filing.periodEnd||'Not confirmed')}.`;
+}
+function exportBcCSV(){
+ const filing=currentFiling();if(!filing?.people?.length)return;
+ const fields=['name','role','months','remuneration','travel','expenses','otherPayments','benefits','total','totalIsCalculated'];
+ const rows=visibleRows().map(p=>[curName,curYear,...fields.map(k=>p.raw[k]??''),filing.href].map(csvEscape).join(','));
+ const blob=new Blob([[['government','fiscal_year',...fields,'source_url'].join(','),...rows].join('\n')],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`openband-bc-${selectedBand().id}-${curYear}.csv`;a.click();URL.revokeObjectURL(a.href);
+}
+async function renderBcFinancialSources(band){
+ if(band?.province!=='BC')return;
+ const host=document.getElementById('overviewPanel');
+ const section=document.createElement('section');section.className='nation-details';section.innerHTML='<h3>Financial sources</h3><p>Loading original document index…</p>';host.appendChild(section);
+ try{
+  bcFinancialIndexPromise ||= fetch('/bc-financial-index.json').then(r=>{if(!r.ok)throw Error('index unavailable');return r.json()});
+  const index=await bcFinancialIndexPromise;if(host.dataset.bandId!==String(band.id))return;
+  const row=index.governments[String(band.id)],published=new Set((band.filings||[]).map(f=>f.href));
+  if(!row){section.innerHTML='<h3>Financial sources</h3><p>Not assessed. Missing financial information is not zero.</p>';return}
+  const filings=(row.filings||[]).slice().sort((a,b)=>b.year.localeCompare(a.year));
+  section.innerHTML=`<h3>Financial sources</h3><p>Original public records for this reporting government. Extraction and approval coverage remains partial. Historic remuneration recipients are separate from current leadership.</p><p><a href="/bc-financial-coverage-report.md">BC coverage and review report</a></p>${filings.length?`<details><summary>Available documents (${filings.length})</summary><ul>${filings.map(f=>`<li>${esc(f.year)} · <a href="${escAttr(f.href)}" target="_blank" rel="noopener">${esc(f.docType)}</a> · ${published.has(f.href)?'Validated':f.status==='manual_review_needed'?'Manual review needed':f.status==='available_pending_approval'?'Validated candidate, pending approval':'Available, pending extraction and approval'} · ${esc(f.reportingEntity)}</li>`).join('')}</ul></details>`:'<p>No documents found in the checked listings. Other official sources may contain records.</p>'}${row.checks.map(c=>`<p><a href="${escAttr(c.url)}" target="_blank" rel="noopener">Source checked</a> · ${esc(c.status.replaceAll('_',' '))} · ${esc(c.retrievedAt.slice(0,10))}</p>${(c.documentCandidates||[]).map(f=>`<p><a href="${escAttr(f.url)}" target="_blank" rel="noopener">${esc(f.label||'Official PDF candidate')}</a> · Reporting entity and period need review.</p>`).join('')}`).join('')}<p class="note">Search coverage is bounded. An unavailable website or absent listing does not establish that a government has not published financial records. Missing figures are not zero.</p>`;
+ }catch(error){section.innerHTML='<h3>Financial sources</h3><p>Source index unavailable. This does not establish that records are missing.</p>'}
 }

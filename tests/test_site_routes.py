@@ -36,11 +36,11 @@ class SiteRouteTests(unittest.TestCase):
             page = ROOT / "first-nations" / slugify(band["name"]) / "index.html"
             self.assertTrue(page.is_file(), band["name"])
             markup = page.read_text(encoding="utf-8")
-            expected_title = html.escape(f"{band['name']} Financial Records | OpenBand")
+            expected_title = html.escape(f"{band['name']} {'Community Profile' if band.get('province') == 'BC' else 'Financial Records'} | OpenBand")
             self.assertIn(f"<title>{expected_title}</title>", markup)
             self.assertIn(f'{ORIGIN}/first-nations/{slugify(band["name"])}/', markup)
             self.assertIn(f'data-band-id="{band["id"]}"', markup)
-            expected_heading = nation_name_markup(band) + " Financial Records"
+            expected_heading = nation_name_markup(band) + (" Community Profile" if band.get("province") == "BC" else " Financial Records")
             self.assertIn(f"<h1>{expected_heading}</h1>", markup)
 
     def test_legacy_enterprise_routes_redirect_to_community_capital(self):
@@ -95,7 +95,7 @@ class SiteRouteTests(unittest.TestCase):
             self.assertIsNone(mapping.get("ownershipPercentage"))
 
         coverage = enterprise["coverage"]
-        band_ids = {str(row["id"]) for row in self.data["bands"]}
+        band_ids = {str(row["id"]) for row in self.data["bands"] if row.get("province") != "BC"}
         self.assertEqual({str(row["bandId"]) for row in coverage}, band_ids)
         self.assertTrue(all("directOrganizationStatus" in row for row in coverage))
 
@@ -119,14 +119,14 @@ class SiteRouteTests(unittest.TestCase):
             self.assertTrue((ROOT / relative).is_file(), relative)
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
         manifest = json.loads((ROOT / "seo-page-manifest.json").read_text())
-        self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 6 + len(manifest))
-        for province, code in [("saskatchewan", "SK"), ("alberta", "AB")]:
+        self.assertEqual(sitemap.count("<url>"), len(self.data["bands"]) + 7 + len(manifest))
+        for province, code in [("saskatchewan", "SK"), ("alberta", "AB"), ("manitoba", "MB"), ("british-columbia", "BC")]:
             page = ROOT / province / "index.html"
             self.assertTrue(page.exists())
             markup = page.read_text(encoding="utf-8")
             self.assertIn(f'data-page="province" data-province="{code}"', markup)
             self.assertIn(f'<link rel="canonical" href="{ORIGIN}/{province}/">', markup)
-            self.assertIn(f"{province.title()} First Nations Public Financial Records", markup)
+            self.assertIn(f"{province.replace("-", " ").title()} First Nations Public Financial Records", markup)
             self.assertIn(f"{ORIGIN}/{province}/", sitemap)
         self.assertIn(f"{ORIGIN}/browse/", sitemap)
         self.assertIn(f"{ORIGIN}/news/", sitemap)
@@ -283,7 +283,7 @@ class SiteRouteTests(unittest.TestCase):
                 if record["nation_id"] == "ab-whitefish-lake-128":
                     self.assertIsNone(record["office_phone"])
                     self.assertIsNone(record["mailing_address"])
-                else:
+                elif record["nation_id"] not in {b["id"] for b in self.data["bands"] if b.get("province")=="BC" and (not b.get("contact",{}).get("office_phone") or not b.get("contact",{}).get("mailing_address"))}:
                     self.assertRegex(record["office_phone"], r"^\(\d{3}\) \d{3}-\d{4}$")
                     self.assertTrue(record["mailing_address"])
                 self.assertTrue(record["source_url"].startswith("https://"))
@@ -309,7 +309,7 @@ class SiteRouteTests(unittest.TestCase):
             page = ROOT / "first-nations" / slugify(band["name"]) / "index.html"
             with self.subTest(band=band["name"]):
                 markup = page.read_text(encoding="utf-8")
-                self.assertEqual(markup.count("Verified Projects &amp; Partnerships"), 1)
+                self.assertEqual(markup.count("Verified Projects &amp; Partnerships"), 0 if band.get("province") == "BC" else 1)
                 self.assertLessEqual(markup.count("Additional Public Records"), 1)
                 self.assertNotIn("Projects Named in Audited Statements", markup)
                 self.assertNotIn("Unverified Projects &amp; Community Discussion", markup)
@@ -344,15 +344,15 @@ class SiteRouteTests(unittest.TestCase):
         self.assertIn('class="map-list-fallback"', markup)
         map_data = json.loads((ROOT / "map-data.json").read_text(encoding="utf-8"))
         self.assertEqual(map_data["communityCount"] + len(map_data["missingLocations"]), len(self.data["bands"]))
-        expected_missing = {"ab-whitefish-lake-128"} | {band["id"] for band in self.data["bands"] if band.get("rosterScope") == "regional_listing"}
+        expected_missing = {"ab-whitefish-lake-128"} | {band["id"] for band in self.data["bands"] if band.get("province")=="BC" and not band.get("location")} | {band["id"] for band in self.data["bands"] if band.get("rosterScope") == "regional_listing"}
         self.assertEqual({r["id"] for r in map_data["missingLocations"]}, expected_missing)
         mapped_ids = {str(row["id"]) for row in map_data["communities"]}
         self.assertEqual(mapped_ids | {str(r["id"]) for r in map_data["missingLocations"]}, {str(row["id"]) for row in self.data["bands"]})
         for row in map_data["communities"]:
-            self.assertGreaterEqual(row["latitude"], 48.5)
+            self.assertGreaterEqual(row["latitude"], 48 if row.get("province")=="BC" else 48.5)
             self.assertLessEqual(row["latitude"], 60.5)
-            self.assertGreaterEqual(row["longitude"], -120.5)
-            self.assertLessEqual(row["longitude"], -88.0)
+            self.assertGreaterEqual(row["longitude"], -140 if row.get("province") == "BC" else -120.5)
+            self.assertLessEqual(row["longitude"], -114 if row.get("province") == "BC" else -88.0)
         javascript = (ROOT / "assets" / "openband.js").read_text(encoding="utf-8")
         self.assertIn("function renderDirectoryMap", javascript)
         self.assertIn('class="map-legend-mobile"', javascript)
@@ -374,7 +374,7 @@ class SiteRouteTests(unittest.TestCase):
         snapshot=json.loads((ROOT/'public/reserve-boundaries.geojson').read_text(encoding='utf-8'))
         self.assertEqual(snapshot['type'],'FeatureCollection')
         self.assertTrue(snapshot['sourceUrl'].startswith('https://data.sac-isc.gc.ca/'))
-        self.assertEqual({f['properties']['CPC_CODE'] for f in snapshot['features']},{'SK','AB','MB'})
+        self.assertEqual({f['properties']['CPC_CODE'] for f in snapshot['features']},{'SK','AB','MB','BC'})
         self.assertIn("function renderReserveLandLayer", javascript)
         self.assertIn("function clearReserveLandLayer", javascript)
         self.assertIn("function usesTwoTapMapNavigation", javascript)
@@ -413,7 +413,7 @@ class SiteRouteTests(unittest.TestCase):
 
     def test_election_records_are_complete_and_source_linked(self):
         elections = json.loads((ROOT / "elections-data.json").read_text(encoding="utf-8"))
-        band_ids = {band["id"] for band in self.data["bands"]}
+        band_ids = {band["id"] for band in self.data["bands"] if band.get("province") != "BC"}
         required = {"firstNationId", "firstNation", "electionDate", "candidateName", "position", "votesReceived", "elected", "sourceUrl"}
         verified_ids = {record["firstNationId"] for record in elections["records"]}
         self.assertEqual(verified_ids | set(elections["coverage"]["unverifiedNationIds"]), band_ids)
