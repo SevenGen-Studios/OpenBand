@@ -1,6 +1,8 @@
 """Regressions checked against the batch-one original source PDF pages."""
 import json
 import unittest
+import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,6 +27,12 @@ class BCBatchOneSourceTests(unittest.TestCase):
         year = self.capital['632']['years']['2017-2018']
         self.assertIsNone(year['investmentIncome'])
         self.assertEqual(year['annualSurplusDeficit'], -252074)
+
+    def test_bc_static_builder_runs_without_parser_dependencies(self):
+        # GitHub generates routes before installing the extraction libraries.
+        subprocess.run([sys.executable, '-I', '-S', 'tools/build_site.py',
+                        '--province', 'BC'], cwd=ROOT, check=True,
+                       capture_output=True, text=True, timeout=60)
 
 if __name__ == '__main__':
     unittest.main()

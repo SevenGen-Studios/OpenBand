@@ -14,10 +14,8 @@ sys.path.insert(0,str(ROOT))
 from tools import ingest_alberta as shared
 from tools.bc_sources import atomic_write as _atomic_write, now
 from lxml import html
-CACHE=ROOT/'.openband-ocr/british-columbia'
-INDEX=ROOT/'bc-financial-index.json'
+from tools.bc_financial_config import CACHE, INDEX, YEARS, read
 REVISION='bc-financial-v4'
-YEARS=[f'{y}-{y+1}' for y in range(2014,2026)]
 
 def atomic_write(path,value):
  # OneDrive/virus scanning may briefly hold an existing checkpoint open.
@@ -27,8 +25,6 @@ def atomic_write(path,value):
    if attempt==11:raise
    time.sleep(.25*(attempt+1))
 
-def read(path,default=None):
- return json.loads(Path(path).read_text(encoding='utf-8')) if Path(path).exists() else default
 def digest(value):return hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 def roster():return read(ROOT/'british-columbia-nations.json')['nations']
 def safe_url(url,hosts):
