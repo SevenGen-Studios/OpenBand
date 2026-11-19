@@ -60,7 +60,7 @@ const source=fs.readFileSync('assets/openband.js','utf8');
 Object.assign(context,{el:id=>document.getElementById(id),renderDirectoryMap(){},renderProvinceFinance(){}});
 vm.runInContext(source.split('\n').filter(l=>['renderProvinceSummary','renderRecentlyUpdated','renderDirectory'].some(n=>l.startsWith('function '+n+'('))).join('\n'),context);
 context.renderProvinceSummary({tracked:0,parsedFilings:0,bandsWithParsed:0});
-assert.equal(elements.get('statP').textContent,'Not yet indexed');
+assert.equal(elements.get('provFilings').textContent,'Not indexed');
 context.renderRecentlyUpdated();assert.match(elements.get('recentList').innerHTML,/British Columbia First Nation profiles are being added/);
 context.renderDirectory();assert.equal(elements.get('directoryEmpty').hidden,false);
 assert.match(elements.get('directoryEmpty').textContent,/Verified community records will appear here/);

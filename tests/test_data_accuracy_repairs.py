@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 from tools.apply_manual_overrides import apply_record, iter_override_records
 from tools.apply_capital_overrides import apply_override
-from tools.sanitize_data import sanitize_filing
+from tools.sanitize_data import sanitize_data, sanitize_filing
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -17,6 +17,23 @@ class DataAccuracyRepairsTests(unittest.TestCase):
     def filing(self, name, year):
         band = next(b for b in self.data['bands'] if b['name'] == name)
         return next(f for f in band['filings'] if f['year'] == year and 'remuneration' in f['docType'].lower())
+
+    def test_complete_pdf_reviews_survive_sitewide_sanitization(self):
+        reviewed = [
+            ('Norway House Cree Nation', 'Orville Apetagon', 205742),
+            ('Paul', 'Delores Rain', 165786),
+            ('Ministikwan Lake Cree Nation', 'Dale Chief', 187132),
+            ('Lake Manitoba', 'Berry McLean', 138897),
+        ]
+        for nation, official, total in reviewed:
+            with self.subTest(nation=nation):
+                band = next(b for b in self.data['bands'] if b['name'] == nation)
+                original = self.filing(nation, '2024-2025')
+                dataset = {'bands': [{'province': band['province'], 'filings': [copy.deepcopy(original)]}]}
+                sanitize_data(dataset)
+                self.assertEqual(dataset['bands'][0]['filings'][0], original)
+                row = next(p for p in original['people'] if p['name'] == official)
+                self.assertEqual(row['total'], total)
 
     def test_pbcn_source_columns_and_dashes(self):
         filing = self.filing('Peter Ballantyne Cree Nation', '2018-2019')

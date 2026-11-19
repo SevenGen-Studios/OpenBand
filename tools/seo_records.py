@@ -85,19 +85,29 @@ def financial_markup(summary, year):
 
 def remuneration_markup(filing, year):
     rows = []
-    for person in filing.get('people', []):
+    people = filing.get('people', [])
+    show_credit_card = any(person.get('creditCard') is not None for person in people)
+    credit_card_header = '<th scope="col">Credit card</th>' if show_credit_card else ''
+    for person in people:
         if not str(person.get('name') or '').strip():
             continue
         # Keep source fields distinct. No calculated row or aggregate totals.
+        travel = person.get('travel')
+        expenses = person.get('expenses')
+        credit_card = person.get('creditCard')
+        if travel is None and expenses is None and credit_card is None:
+            travel = person.get('travelExpenses')
         fields = [esc(person['name']), esc(person.get('role') or 'Not specified'),
                   esc(person['months']) if person.get('months') is not None else 'Not reported',
-                  money(person.get('remuneration')), money(person.get('travel', person.get('travelExpenses'))),
-                  money(person.get('expenses')), money(person.get('otherPayments', person.get('other')))]
+                  money(person.get('remuneration')), money(travel), money(expenses)]
+        if show_credit_card:
+            fields.append(money(credit_card))
+        fields.append(money(person.get('otherPayments', person.get('other'))))
         rows.append('<tr>' + ''.join(f'<td>{value}</td>' for value in fields) + '</tr>')
     return (f'<section><h2>Chief and Council remuneration and expenses · {esc(year)}</h2>'
             '<p>Historical payments for the stated fiscal year. These names do not identify current officeholders. Travel, expenses, and other payments retain their separate source fields; missing values are not zero.</p>'
             '<div class="record-table-wrap"><table><caption>Parsed remuneration schedule · amounts in Canadian dollars</caption><thead><tr>'
-            '<th scope="col">Name</th><th scope="col">Position</th><th scope="col">Months</th><th scope="col">Remuneration</th><th scope="col">Travel</th><th scope="col">Expenses</th><th scope="col">Other payments</th>'
+            f'<th scope="col">Name</th><th scope="col">Position</th><th scope="col">Months</th><th scope="col">Remuneration</th><th scope="col">Travel</th><th scope="col">Expenses</th>{credit_card_header}<th scope="col">Other payments</th>'
             '</tr></thead><tbody>' + ''.join(rows) + '</tbody></table></div>'
             f'<p>{source_link(filing.get("href"), "Review original remuneration and expenses schedule (PDF)")}</p></section>')
 
@@ -120,7 +130,7 @@ def shell(title, description, path, body, *, schema=None, breadcrumbs=None, nati
     return f'''<!doctype html><html lang="en-CA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)}</title><meta name="description" content="{esc(description)}"><link rel="canonical" href="{ORIGIN}{esc(path)}">
 <meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="website"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{ORIGIN}{esc(path)}"><meta property="og:image" content="{ORIGIN}/assets/openband-social.png"><meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="/assets/nation-name.css?v=20261103a"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/records.css?v=20261011a"><script type="application/ld+json">{structured}</script></head>
+<link rel="stylesheet" href="/assets/nation-name.css?v=20261103a"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/records.css?v=20261011a"><link rel="manifest" href="/openband.webmanifest"><link rel="stylesheet" href="/assets/follow.css?v=6"><script src="/assets/follow-push.js?v=4" defer></script><script src="/assets/follow.js?v=11" defer></script><script type="application/ld+json">{structured}</script></head>
 <body><header class="record-header"><a href="/" class="record-brand">OpenBand</a><nav aria-label="Primary navigation"><a href="/first-nations/">First Nations</a><a href="/financials/">Financial records</a><a href="/methodology/">Methodology</a></nav></header>
 <main class="record-main">{breadcrumb(breadcrumbs, nation) if breadcrumbs else ''}{body}</main>
 <footer class="record-footer"><a href="/about/">About OpenBand</a> · <a href="/methodology/">Sources and corrections</a><p>&copy; <span data-current-year>2026</span> OpenBand. All rights reserved. A product of SevenGenStudios.</p></footer>

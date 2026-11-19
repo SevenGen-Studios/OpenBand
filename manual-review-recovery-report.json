@@ -1,0 +1,245 @@
+{
+  "reviewDate": "2026-11-04",
+  "nationsChecked": 180,
+  "postedReviewDocumentsRetried": 1384,
+  "scannedDocumentsRetriedWithFreshCoordinateOcr": 697,
+  "parsedDocuments": 14,
+  "nationsWithRecoveries": 11,
+  "remainingInReview": 1370,
+  "beforeByProvince": {
+    "AB": {
+      "remuneration": 121,
+      "auditedStatement": 165
+    },
+    "MB": {
+      "remuneration": 236,
+      "auditedStatement": 461
+    },
+    "SK": {
+      "remuneration": 159,
+      "auditedStatement": 242
+    }
+  },
+  "remainingByProvince": {
+    "AB": {
+      "remuneration": 119,
+      "auditedStatement": 162
+    },
+    "MB": {
+      "remuneration": 234,
+      "auditedStatement": 455
+    },
+    "SK": {
+      "remuneration": 158,
+      "auditedStatement": 242
+    }
+  },
+  "recoveries": [
+    {
+      "bandId": "460",
+      "band": "Beaver Lake Cree Nation",
+      "province": "AB",
+      "year": "2017-2018",
+      "type": "auditedStatement",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=460&FY=2017-2018&DOC=Audited consolidated financial statements&lang=eng",
+      "sha256": "20004d9f301ddd47d374f52d42001e8de9163eacff43df392ebc83e9884b9d66",
+      "pdfPages": [
+        6
+      ],
+      "method": "capital_text_v3"
+    },
+    {
+      "bandId": "451",
+      "band": "Duncan's First Nation",
+      "province": "AB",
+      "year": "2020-2021",
+      "type": "remuneration",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=451&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "ea3228fa10c5dca497540f734ae305592dae40aff0d9499769ee082fadf42401",
+      "pdfPages": [
+        3
+      ],
+      "method": "complete visual review"
+    },
+    {
+      "bandId": "466",
+      "band": "Kehewin Cree Nation",
+      "province": "AB",
+      "year": "2017-2018",
+      "type": "remuneration",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=466&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "2d8c44a6a51ea737429a969e4c88faa01c656f7c89655a846c3077d50ff202d1",
+      "pdfPages": [
+        4
+      ],
+      "method": "coordinate OCR with visual review and printed footer reconciliation"
+    },
+    {
+      "bandId": "439",
+      "band": "Louis Bull Tribe",
+      "province": "AB",
+      "year": "2014-2015",
+      "type": "auditedStatement",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=439&FY=2014-2015&DOC=Audited consolidated financial statements&lang=eng",
+      "sha256": "a79ecbfb7a8746ff48de6af83cf299563a60ad920e31ddb5e16409164d77ebc1",
+      "pdfPages": [
+        6
+      ],
+      "method": "capital_text_v3"
+    },
+    {
+      "bandId": "432",
+      "band": "Tsuut'ina Nation",
+      "province": "AB",
+      "year": "2014-2015",
+      "type": "auditedStatement",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=432&FY=2014-2015&DOC=Audited consolidated financial statements&lang=eng",
+      "sha256": "6099852636557fa5055d8791d58157fa85af2ca9f8f6b86f7862cd048fb51da0",
+      "pdfPages": [
+        6
+      ],
+      "method": "capital_text_v3"
+    },
+    {
+      "bandId": "265",
+      "band": "Buffalo Point First Nation",
+      "province": "MB",
+      "year": "2024-2025",
+      "type": "remuneration",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=265&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "01f16087febd387ea8db38b49754b056cf952eeb492b70294156f9defadcaecd",
+      "pdfPages": [
+        4
+      ],
+      "method": "complete visual review"
+    },
+    {
+      "bandId": "288",
+      "band": "Dakota Plains",
+      "province": "MB",
+      "year": "2020-2021",
+      "type": "auditedStatement",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=288&FY=2020-2021&DOC=Audited consolidated financial statements&lang=eng",
+      "sha256": "b74378e9e5ab7beab4382ff3172eda78edbaab503818ee23cb40d171017573cb",
+      "pdfPages": [
+        8
+      ],
+      "method": "capital_text_v3"
+    },
+    {
+      "bandId": "288",
+      "band": "Dakota Plains",
+      "province": "MB",
+      "year": "2021-2022",
+      "type": "auditedStatement",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=288&FY=2021-2022&DOC=Audited consolidated financial statements&lang=eng",
+      "sha256": "557db4315ef9f0edda60fbde765e2a6d570f712fa9087b09680dd85901ed6ab0",
+      "pdfPages": [
+        8
+      ],
+      "method": "capital_text_v3"
+    },
+    {
+      "bandId": "282",
+      "band": "Minegoziibe Anishinabe",
+      "province": "MB",
+      "year": "2023-2024",
+      "type": "auditedStatement",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=282&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng",
+      "sha256": "4cb477459c2db850022afda9bb7e98498ebf3341967e9695829bcf0f809c8f06",
+      "pdfPages": [
+        8
+      ],
+      "method": "capital_text_v3"
+    },
+    {
+      "bandId": "277",
+      "band": "Poplar River First Nation",
+      "province": "MB",
+      "year": "2017-2018",
+      "type": "remuneration",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=277&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "ff8252c18d929da6217b4838e7b8b2fb1203422617ac53a52f79ddc3ff24a22c",
+      "pdfPages": [
+        4
+      ],
+      "method": "complete visual review"
+    },
+    {
+      "bandId": "285",
+      "band": "Waywayseecappo First Nation Treaty Four - 1874",
+      "province": "MB",
+      "year": "2017-2018",
+      "type": "auditedStatement",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2017-2018&DOC=Audited consolidated financial statements&lang=eng",
+      "sha256": "5dd3da20732d2f7b9212aa8f7dbb655808e10ab4e44c8a4f33a6987a9fffd719",
+      "pdfPages": [
+        7
+      ],
+      "method": "capital_text_v3"
+    },
+    {
+      "bandId": "285",
+      "band": "Waywayseecappo First Nation Treaty Four - 1874",
+      "province": "MB",
+      "year": "2023-2024",
+      "type": "auditedStatement",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2023-2024&DOC=Audited consolidated financial statements&lang=eng",
+      "sha256": "3fceaf13db7bb4b98393babe61ed6f690cc0f310fe4158c03d0671a46aa83d45",
+      "pdfPages": [
+        6,
+        7
+      ],
+      "method": "capital_text_v3"
+    },
+    {
+      "bandId": "285",
+      "band": "Waywayseecappo First Nation Treaty Four - 1874",
+      "province": "MB",
+      "year": "2024-2025",
+      "type": "auditedStatement",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
+      "sha256": "da26a020b63e59341d583eabbf7dc6c148c3e22134c65ab4f03331bb6fdbe6b4",
+      "pdfPages": [
+        5,
+        6
+      ],
+      "method": "capital_text_v3"
+    },
+    {
+      "bandId": "356",
+      "band": "Red Earth Cree Nation",
+      "province": "SK",
+      "year": "2019-2020",
+      "type": "remuneration",
+      "sourceUrl": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=356&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "40b35a86b2ec25a73aa8b3c1b0d75c49827a6c3d644526523fbc047b01b96916",
+      "pdfPages": [
+        3
+      ],
+      "method": "complete visual review"
+    }
+  ],
+  "examplesRetainedForReview": [
+    {
+      "band": "Saddle Lake Cree Nation",
+      "year": "2017-2018",
+      "reason": "The proposed totals page in a bundled PDF is for another Nation."
+    },
+    {
+      "band": "Gambler First Nation",
+      "year": "2014-2015",
+      "reason": "OCR omitted a listed councillor whose payment cells contained dashes."
+    },
+    {
+      "band": "O’Chiese First Nation",
+      "year": "2024-2025",
+      "reason": "The schedule covers only ISC-funded amounts and does not establish total payments."
+    },
+    {
+      "band": "Cowessess First Nation",
+      "year": "2022-2023",
+      "reason": "The extracted salary column did not account for all reported payment categories."
+    }
+  ]
+}

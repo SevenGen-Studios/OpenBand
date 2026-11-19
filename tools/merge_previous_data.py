@@ -129,6 +129,11 @@ def main():
             current.setdefault("bands", []).append(previous_band)
             appended += 1
 
+    try:
+        from tools.financial_entry import replay_managed
+    except ImportError:
+        from financial_entry import replay_managed
+    replay_managed(current)
     current["band_count"] = len(current.get("bands", []))
     after_path.write_text(json.dumps(current, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 

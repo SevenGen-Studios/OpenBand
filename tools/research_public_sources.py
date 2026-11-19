@@ -21,8 +21,22 @@ except ImportError:
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def research(root, sources, refresh=False, limit=40):
-    folder = root / 'research/community-intelligence/phase2-2026-11-02/evidence'
+def source_checks(root):
+    """Merge campaign diagnostics chronologically without losing prior success."""
+    rows = []
+    for path in (root / 'research/community-intelligence').glob('*/source-checks.json'):
+        for url, result in json.loads(path.read_text()).items():
+            rows.append((result.get('lastAttempted') or result.get('lastSuccess') or '', url, result))
+    combined = {}
+    for _, url, result in sorted(rows, key=lambda row: row[0]):
+        combined[url] = {**combined.get(url, {}), **result}
+    return combined
+
+
+def research(root, sources, refresh=False, limit=40, campaign="phase2-2026-11-02"):
+    if Path(campaign).name != campaign or campaign in {".", ".."}:
+        raise ValueError("Campaign must be a single directory name")
+    folder = root / "research/community-intelligence" / campaign / "evidence"
     folder.mkdir(parents=True, exist_ok=True)
     path = folder.parent / 'source-checks.json'
     previous = json.loads(path.read_text()) if path.exists() else {}
@@ -58,10 +72,23 @@ def evidence_text(root, result):
     if result.get('contentType', '').startswith('image/'):
         import subprocess
         import tempfile
+        import shutil
         suffix = Path(urlsplit(result['url']).path).suffix or '.png'
         with tempfile.NamedTemporaryFile(suffix=suffix) as handle:
             handle.write(body); handle.flush()
-            return subprocess.check_output(['tesseract', handle.name, 'stdout'], stderr=subprocess.DEVNULL, timeout=45).decode()
+            # Use the pinned engine consistently across developer machines and CI;
+            # reviewed evidence terms must not depend on the host's OCR defaults.
+            try:
+                try:
+                    from tools.local_ocr import _rapidocr_text
+                except ImportError:
+                    from local_ocr import _rapidocr_text
+                return _rapidocr_text(handle.name)
+            except ImportError:
+                if not shutil.which('tesseract'):
+                    raise RuntimeError('Image evidence requires requirements.txt or Tesseract')
+                return subprocess.check_output(['tesseract', handle.name, 'stdout'], stderr=subprocess.DEVNULL, timeout=45).decode()
+
     if result.get('contentType') == 'application/pdf' or body.startswith(b'%PDF-'):
         import io
         import pdfplumber
@@ -73,8 +100,9 @@ def evidence_text(root, result):
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser(); p.add_argument('--url', action='append', default=[])
+    p.add_argument('--campaign', default='phase2-2026-11-02')
     p.add_argument('--refresh', action='store_true'); p.add_argument('--limit', type=int, default=40)
     a = p.parse_args()
     registry = ROOT / 'community-research-sources.json'
     sources = [{'url': u} for u in a.url] if a.url else json.loads(registry.read_text())['sources']
-    research(ROOT, sources, a.refresh, a.limit)
+    research(ROOT, sources, a.refresh, a.limit, a.campaign)

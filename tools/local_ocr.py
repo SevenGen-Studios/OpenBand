@@ -205,7 +205,9 @@ def _rapidocr_text(image, return_metadata=False):
         try:
             from rapidocr_onnxruntime import RapidOCR
             threads = max(1, int(os.getenv('OPENBAND_OCR_THREADS', '1')))
-            _RAPID_OCR = RapidOCR(intra_op_num_threads=threads, inter_op_num_threads=threads)
+            batch = max(1, int(os.getenv('OPENBAND_OCR_BATCH_SIZE', '1')))
+            _RAPID_OCR = RapidOCR(intra_op_num_threads=threads, inter_op_num_threads=threads,
+                                 rec_batch_num=batch, cls_batch_num=batch)
         except ImportError:
             from rapidocr import RapidOCR
             _RAPID_OCR = RapidOCR()
@@ -223,6 +225,10 @@ def _rapidocr_text(image, return_metadata=False):
 
 def _vision_text(image, return_metadata=False):
     binary=os.getenv('OPENBAND_VISION_OCR_BIN', str(Path(__file__).resolve().parents[1]/'.openband-ocr/bin/vision-ocr'))
+    if os.getenv('OPENBAND_VISION_PYOBJC') == '1' and not os.getenv('OPENBAND_VISION_OCR_BIN'):
+        from tools.vision_ocr import recognize
+        cells = recognize(image)
+        return coordinate_lines([(cell['box'],cell['text']) for cell in cells],align_financial_columns=True,return_metadata=return_metadata)
     args=[binary,str(image)]
     result=subprocess.run(args,capture_output=True,text=True,timeout=90,check=True)
     cells=json.loads(result.stdout)
@@ -252,12 +258,15 @@ def _windows_text(image):
 def _rapidocr_text_isolated(image):
     """Keep ONNX DLL loading separate from Windows' native OCR runtime."""
     import sys
-    result = subprocess.run(
-        [sys.executable, '-c',
-         'import sys; from tools.local_ocr import _rapidocr_text; print(_rapidocr_text(sys.argv[1]))',
-         str(image)], capture_output=True, text=True, encoding='utf-8', errors='replace',
-        timeout=120, check=True, cwd=str(Path(__file__).resolve().parents[1]),
-        env=dict(os.environ, PYTHONIOENCODING='utf-8'))
+    try:
+        result = subprocess.run(
+            [sys.executable, '-c',
+             'import sys; from tools.local_ocr import _rapidocr_text; print(_rapidocr_text(sys.argv[1]))',
+             str(image)], capture_output=True, text=True, encoding='utf-8', errors='replace',
+            timeout=120, check=True, cwd=str(Path(__file__).resolve().parents[1]),
+            env=dict(os.environ, PYTHONIOENCODING='utf-8'))
+    except subprocess.CalledProcessError as error:
+        raise RuntimeError('Independent OCR cross-check failed: ' + str(error.stderr or error)[-1000:]) from error
     return result.stdout
 
 

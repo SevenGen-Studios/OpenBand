@@ -677,6 +677,7 @@ def article_page_metadata(markup, page_url):
     date_sources = [
         (parser.meta.get("article:published_time"), "article:published_time"),
         (parser.meta.get("date"), "meta:date"),
+        (parser.meta.get("dcterms.issued"), "meta:dcterms.issued"),
     ]
     date_sources.extend(
         (row.get("datePublished"), "json-ld:datePublished")
@@ -752,6 +753,17 @@ def extract_document_text(fetcher, url):
                 text = run_text_command(["pdftotext", "-layout", str(path), "-"])
                 if len(clean_text(text)) >= 80:
                     return text, "pdf_text", final_url
+            # The scheduled collectors already install pdfplumber. Embedded
+            # notices remain readable when Poppler command-line tools are absent.
+            try:
+                import io
+                import pdfplumber
+                with pdfplumber.open(io.BytesIO(body)) as pdf:
+                    text = "\n".join(page.extract_text() or "" for page in pdf.pages[:2])
+                if len(clean_text(text)) >= 80:
+                    return text, "pdf_text", final_url
+            except Exception:
+                pass  # Scanned or malformed PDFs still follow the OCR/review path.
             if not shutil.which("pdftoppm") or not shutil.which("tesseract"):
                 return "", "ocr_unavailable", final_url
             prefix = Path(directory) / "page"
@@ -1835,7 +1847,7 @@ def media_candidate(fetcher, community, source, media):
 def direct_article_candidate(markup, page_url, community, source):
     """A registered announcement permalink is itself content, not just an index."""
     parser = ArticleMetadataParser(); parser.feed(markup)
-    is_article = bool(parser.meta.get('article:published_time')) or any(
+    is_article = bool(parser.meta.get('article:published_time')) or bool(parser.meta.get('dcterms.issued') and re.search(r'/news/20\d{2}/\d{2}/', urllib.parse.urlsplit(page_url).path)) or any(
         any(t in {'Article', 'NewsArticle', 'BlogPosting'} for t in (r.get('@type') if isinstance(r.get('@type'), list) else [r.get('@type')]))
         for r in parser.json_ld_records())
     if not is_article: return None

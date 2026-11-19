@@ -1,0 +1,11 @@
+{
+  "baseCommit": "828781de4da77f39be04b43e10bd9466e3a945a4",
+  "reason": "Refresh stale SK/AB data fingerprint after the already-published FNFTA sanitizer. Current financial/profile input bytes match the starting upstream commit; this campaign changes none of them.",
+  "upstreamSanitizerCommit": "26d04662",
+  "changes": {
+    "data.json": {
+      "before": "fa8a4bb83198fcf8ea0791e555ce29080ae7c26641d3f6155e7a813a42e462aa",
+      "after": "43d2bf07f2093bf008f87204563600350199f2e16ba758e79bccc44de96fbf13"
+    }
+  }
+}

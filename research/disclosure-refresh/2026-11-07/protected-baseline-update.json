@@ -1,0 +1,27 @@
+{
+  "reason": "Refresh the protected metadata fingerprint after verified Canoe Lake link corrections, retaining existing administrator-reviewed main-branch records.",
+  "previousBaseline": "43d2bf07f2093bf008f87204563600350199f2e16ba758e79bccc44de96fbf13",
+  "previousMain": "f92305c7a098ffed7001f8dc7b7679eeab055ba6c1ca0f09f40bbb54d03a305a",
+  "replacement": "ba5e9a2f4bedf56f6cac46a92eef5f766857e2b78b7e4f4e07e80fbf926f3e25",
+  "preexistingAdminReviewedMainChanges": [
+    {
+      "bandId": "435",
+      "fiscalYear": "2023-2024",
+      "documentType": "Schedule of Remuneration and Expenses",
+      "existingApprovedRevision": "dac9a6e5-32aa-4145-bd30-d5e8a5b20241"
+    },
+    {
+      "bandId": "440",
+      "fiscalYear": "2025-2026",
+      "documentType": "Schedule of Remuneration and Expenses",
+      "existingApprovedRevision": "06e5acab-95f8-4256-a953-46936a0c4ff6"
+    }
+  ],
+  "correction": {
+    "bandId": 394,
+    "year": "2023-2024",
+    "scope": "Two empty availability placeholders only; no financial values changed."
+  },
+  "otherProtectedNationsUnchangedFromMain": true,
+  "otherProtectedFileFingerprintsUnchanged": true
+}

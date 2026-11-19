@@ -53,7 +53,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Test events collector
-        run: python -m unittest tests/test_events_discovery.py tests/test_community_updates_phase1.py tests/test_community_coverage_phase2.py -v
+        run: python -m unittest tests/test_events_discovery.py tests/test_community_updates_phase1.py tests/test_community_coverage_phase2.py tests/test_coverage_expansion.py tests/test_breadth_20261106.py -v
 
       - name: Register reviewed community sources
         run: python -m tools.register_community_sources
@@ -106,6 +106,9 @@ jobs:
       - name: Rebuild static pages
         run: python tools/build_site.py
 
+      - name: Refresh the Follow inbox
+        run: python -m tools.build_follow_updates
+
       - name: Remove validation snapshot
         run: rm -f events-data.before.json
 
@@ -113,7 +116,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add events-data.json events-sources.json events-review-queue.json events-coverage-report.json
+          git add follow-updates.json follow-data events-data.json events-sources.json events-review-queue.json events-coverage-report.json
           if git diff --cached --quiet; then
             echo "No community event data changes to commit"
             exit 0

@@ -56,3 +56,50 @@ class ManualReviewReportTests(unittest.TestCase):
             report["filings"][0]["reason"],
             "month values appear in money columns",
         )
+
+
+    def test_ocr_queue_prioritizes_recent_manual_review_and_requires_independent_evidence(self):
+        source = 'https://example.test/source.pdf'
+        digest = 'a' * 64
+        base = {'docType': 'Schedule of Remuneration and Expenses', 'posted': True,
+                'href': source, 'sha256': digest}
+        people = [{'name': 'Example Person', 'total': 5000}]
+        review = {'completeSchedule': True, 'identityAndYearConfirmed': True,
+                  'sourcePdf': source, 'sha256': digest, 'sourceRowCount': 1,
+                  'ocrVerification': {'engine': 'RapidOCR', 'sha256': digest}}
+        report = manual_review_report.build_ocr_queue({'bands': [{
+            'id': 1, 'name': 'Example Nation', 'province': 'MB', 'filings': [
+                {**base, 'year': '2023-2024', 'people': people},
+                {**base, 'year': '2025-2026', 'people': [], 'manual_review_required': True},
+                {**base, 'year': '2024-2025', 'people': people, 'parse_status': 'ok_ocr'},
+                {**base, 'year': '2022-2023', 'people': people, 'manualSourceReview': review},
+                {**base, 'year': '2021-2022', 'people': people, 'manualSourceReview': review, 'sha256': 'b' * 64},
+                {**base, 'year': '2020-2021', 'verificationStatus': 'wrong_document_type'},
+                {**base, 'year': '2019-2020', 'posted': False},
+            ],
+        }]})
+
+        self.assertEqual(report['postedFilingCount'], 6)
+        self.assertEqual(report['independentlyCheckedCount'], 1)
+        self.assertEqual([(row['year'], row['status']) for row in report['filings']], [
+            ('2025-2026', 'manual_review'),
+            ('2024-2025', 'independent_ocr_needed'),
+            ('2023-2024', 'independent_ocr_needed'),
+            ('2021-2022', 'independent_ocr_needed'),
+            ('2020-2021', 'source_needed'),
+        ])
+
+    def test_printed_total_discrepancy_stays_in_manual_review(self):
+        digest = 'a' * 64
+        filing = {'docType': 'Schedule of Remuneration and Expenses', 'year': '2025-2026',
+                  'posted': True, 'href': 'https://example.test/source.pdf', 'sha256': digest,
+                  'people': [{'name': 'Official', 'total': 10}],
+                  'manualReviewEvidence': {'sha256': digest, 'outcome': 'printed_totals_differ',
+                                           'reason': 'The printed total is one dollar lower.'}}
+        data = {'bands': [{'id': 1, 'name': 'Example Nation', 'province': 'AB', 'filings': [filing]}]}
+        row = manual_review_report.build_ocr_queue(data)['filings'][0]
+        self.assertEqual((row['status'], row['reason']),
+                         ('manual_review', 'The printed total is one dollar lower.'))
+        filing['manualReviewEvidence']['sha256'] = 'b' * 64
+        row = manual_review_report.build_ocr_queue(data)['filings'][0]
+        self.assertEqual(row['status'], 'independent_ocr_needed')

@@ -1,0 +1,24 @@
+name = "openband-follow"
+main = "worker.mjs"
+compatibility_date = "2026-08-01"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = false
+
+[[d1_databases]]
+binding = "DB"
+database_name = "openband-follow"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+[[ratelimits]]
+name = "SUBSCRIPTION_LIMIT"
+namespace_id = "1002"
+simple = { limit = 30, period = 60 }
+
+[vars]
+ALLOWED_ORIGINS = "https://openband.ca,https://www.openband.ca"
+FEED_URL = "https://raw.githubusercontent.com/SevenGen-Studios/OpenBand/main/follow-updates.json"
+VAPID_PUBLIC_KEY = "REPLACE_WITH_PUBLIC_KEY"
+VAPID_SUBJECT = "mailto:REPLACE_WITH_OPENBAND_CONTACT"
+
+[triggers]
+crons = ["*/2 * * * *"]

@@ -8,7 +8,6 @@ ROOT = Path(__file__).resolve().parents[1]
 class BritishColumbiaRoutes(unittest.TestCase):
     def test_shared_template_and_canonical_route(self):
         base = (ROOT / 'index.html').read_text(encoding='utf-8')
-        base = base.replace('<a class="logo" href="/">Open<em>Band</em></a>', '<a class="logo" href="/">Open<em>Band</em></a><a class="nav-home" id="homeLink" href="/">Home</a>', 1)
         bands=__import__('json').loads((ROOT/'data.json').read_text(encoding='utf-8'))['bands']
         page = provincial_landing(base, 'BC', PROVINCES['BC'],bands)
         self.assertEqual(province_path(PROVINCES['BC']), '/british-columbia/')

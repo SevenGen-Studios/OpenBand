@@ -360,8 +360,8 @@ def profile_prerender(
         f"<div><dt>Latest parsed remuneration</dt><dd>{html.escape(latest_parsed or 'Pending extraction')}</dd></div>"
         f"<div><dt>Parsed years</dt><dd>{len(parsed)}</dd></div>"
         f'<div><dt>Authoritative source</dt><dd><a href="{isc_url}">{source_label}</a></dd></div>'
-        f"</dl>{identity_note}{map_link}{election_prerender(band, election_records)}"
-        f"{history_markup}"
+        f'</dl>{identity_note}{map_link}<div class="overview-context-grid">{election_prerender(band, election_records)}'
+        f"{history_markup}</div>"
         f"{projects_prerender(band, projects, verified_partnerships, financial_disclosures, unverified_projects)}"
         f"{jobs_prerender(band, jobs)}</div>"
     )
@@ -542,8 +542,8 @@ def provincial_landing(base: str, code: str, name: str, bands=()) -> str:
         1,
     )
     page = page.replace(
-        '<script src="/assets/openband.js?v=20261117bc2" defer></script>',
-        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261117bc2" defer></script>',
+        '<script src="/assets/openband.js?v=20261118bc3" defer></script>',
+        f'<script>window.OPENBAND_BOOT={{"page":"province","province":"{code}"}};</script><script src="/assets/openband.js?v=20261118bc3" defer></script>',
         1,
     )
     if code == 'BC':
@@ -597,7 +597,6 @@ def build(province_filter=None) -> None:
     bands = sorted(data.get("bands", []), key=lambda item: item["name"])
     history = build_history(ROOT, bands, slugify)
     base = (ROOT / "index.html").read_text(encoding="utf-8")
-    base = base.replace('<a class="logo" href="/">Open<em>Band</em></a>', '<a class="logo" href="/">Open<em>Band</em></a><a class="nav-home" id="homeLink" href="/">Home</a>', 1)
     contacts = json.loads((ROOT / "contacts-data.json").read_text(encoding="utf-8"))
     capital = json.loads((ROOT / "capital-data.json").read_text(encoding="utf-8"))
     seo_manifest, financial_records = publish_records(ROOT, bands, capital, slugify, province_filter=province_filter)
@@ -680,14 +679,13 @@ def build(province_filter=None) -> None:
         if job_schemas:
             page = page.replace("</head>", '<script type="application/ld+json" id="openbandJobPostingData">' + json.dumps({"@context": "https://schema.org", "@graph": job_schemas}, ensure_ascii=False, separators=(",", ":")) + "</script></head>", 1)
         page = page.replace(
-            '<script src="/assets/openband.js?v=20261117bc2" defer></script>',
-            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261117bc2" defer></script>',
+            '<script src="/assets/openband.js?v=20261118bc3" defer></script>',
+            f'<script>window.OPENBAND_BOOT={{"page":"profile","bandId":"{band["id"]}","slug":"{slug}"}};</script><script src="/assets/openband.js?v=20261118bc3" defer></script>',
             1,
         )
         if str(band['id']) in history:
-            page = page.replace('openband.css?v=20261103map1', 'openband.css?v=20261117bc2')
-            page = page.replace('<script src="/assets/openband.js?v=20261117bc2" defer></script>',
-                                '<script src="/assets/profile-history.js?v=20261117bc2" defer></script><script src="/assets/openband.js?v=20261117bc2" defer></script>')
+            page = page.replace('<script src="/assets/openband.js?v=20261118bc3" defer></script>',
+                                '<script src="/assets/profile-history.js?v=20261104overview1" defer></script><script src="/assets/openband.js?v=20261118bc3" defer></script>')
         write_page(profile_root / slug / "index.html", page)
 
         write_page(

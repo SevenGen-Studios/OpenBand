@@ -1,3 +1,5 @@
+import {handleFinancialEntry, type FinancialEntryEnv} from "./financial-entry";
+import {handleCreatorSupport, type CreatorSupportEnv} from "./creator-support";
 import {buildIntelligence, IntelligenceReport, NationAnalysis, OfficialAnalysis, StoryLead} from "./intelligence";
 
 interface D1Result<T = Record<string, unknown>> { results?: T[]; success: boolean; }
@@ -12,7 +14,7 @@ interface D1Database {
 }
 interface ExecutionContext { waitUntil(promise: Promise<unknown>): void; }
 
-interface Env {
+export interface Env extends CreatorSupportEnv, FinancialEntryEnv {
   DB: D1Database;
   VISITOR_HASH_SALT: string;
   ANALYTICS_ADMIN_TOKEN: string;
@@ -280,6 +282,13 @@ async function dashboard(request: Request, env: Env): Promise<Response> {
 async function handle(request: Request, env: Env): Promise<Response> {
   const url = new URL(request.url);
   if (request.method === "OPTIONS") return new Response(null, {status: 204, headers: corsHeaders(request, env)});
+  if (url.pathname.startsWith("/v1/financial-entry/")) return handleFinancialEntry(request, env);
+  if (url.pathname.startsWith("/v1/creator-support/")) {
+    const headers = corsHeaders(request, env);
+    const path = url.pathname.slice("/v1/creator-support".length);
+    return handleCreatorSupport(request, env, path, headers["Access-Control-Allow-Origin"] || "",
+      path === "/admin" && authorize(request, env), (value, status) => json(value, status, headers));
+  }
   if (url.pathname === "/v1/events" && request.method === "POST") return ingest(request, env);
   if (url.pathname === "/v1/dashboard" && request.method === "GET") return dashboard(request, env);
   if (url.pathname === "/v1/intelligence" && request.method === "GET") return intelligence(request, env);

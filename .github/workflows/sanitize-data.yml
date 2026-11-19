@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: openband-v2-data-writers
+  group: ${{ github.event_name == 'push' && github.ref_name != github.event.repository.default_branch && format('openband-sanitize-check-{0}', github.ref) || 'openband-v2-data-writers' }}
   cancel-in-progress: false
 
 jobs:
@@ -72,6 +72,7 @@ jobs:
         run: python tools/build_site.py
 
       - name: Commit sanitized data
+        if: github.ref_name == github.event.repository.default_branch || github.event_name == 'workflow_dispatch'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Sanitize FNFTA parsed data"

@@ -99,7 +99,8 @@ class ProjectsIntegrityTests(unittest.TestCase):
         self.assertGreaterEqual(len({str(i) for r in rows for i in r["firstNationIds"]}), 15)
         by_id = {r["id"]: r for r in rows}
         self.assertEqual(by_id["bigstone-energy-feasibility"]["firstNationIds"], ["458"])
-        self.assertNotIn("status", by_id["bigstone-energy-feasibility"])
+        self.assertEqual(by_id["bigstone-energy-feasibility"]["status"], "Planned")
+        self.assertEqual(by_id["bigstone-energy-feasibility"]["statusAsOf"], "2026-07-04")
         self.assertNotIn("estimatedCost", by_id["lubicon-tiny-homes-study"])
         self.assertNotIn("status", by_id["cold-lake-wireless-upgrade"])
         self.assertEqual(by_id["fox-lake-access-road"]["statusAsOf"], "2019-07-19")

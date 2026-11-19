@@ -59,7 +59,7 @@ CLOSED_WORDS = re.compile(
     r"\b(position filled|posting closed|applications? closed|no longer accepting|competition closed)\b",
     re.IGNORECASE,
 )
-OPEN_UNTIL_FILLED = re.compile(r"\b(open until filled|until (?:a suitable candidate is )?filled)\b", re.IGNORECASE)
+OPEN_UNTIL_FILLED = re.compile(r"\b(?:open until filled|until (?:the |a )?position is filled|until (?:a )?suitable candidate is found|until (?:a suitable candidate is )?filled)\b", re.IGNORECASE)
 EMPLOYMENT_PAGE_WORDS = re.compile(
     r"\b(job|jobs|career|careers|employment|opportunities|work with us|"
     r"vacancies|job postings|join our team)\b",
@@ -140,6 +140,16 @@ def discovery_key(record: dict) -> str:
     host = urllib.parse.urlsplit(clean_text(record.get("sourceUrl"))).netloc.lower().removeprefix("www.")
     source_identity = host or slug(record.get("sourceId") or "")
     return "|".join([slug(title), source_identity, ",".join(value for value in associations if value)])
+
+
+def posting_key(record):
+    """A title suffix must not duplicate the same vacancy on the same permalink."""
+    url = urllib.parse.urlsplit(clean_text(record.get('sourceUrl')))
+    if not url.netloc or not url.path.strip('/'):
+        return None
+    title = re.sub(r"\s*[–—-]\s*(?:(?:term|full[ -]time|part[ -]time)\s+)?opportunity\s*$", '', clean_job_title(record.get('title')), flags=re.I)
+    associations = tuple(sorted({str(record.get('communityId') or '')} | set(map(str, record.get('firstNationIds') or []))))
+    return (url.netloc.lower().removeprefix('www.'), url.path.rstrip('/'), url.query, associations, slug(title))
 
 
 def stable_id(record: dict) -> str:
@@ -664,7 +674,7 @@ def inspect_candidate_page(url: str, today: date) -> tuple[dict, list[str]]:
     if error:
         return {}, [f"detail fetch failed: {error}"]
     text = page_text(markup)
-    closing = extract_labeled_date(text, ("closing", "deadline", "apply by", "applications close"))
+    closing = extract_labeled_date(text, ("closing", "deadline", "apply by", "apply before", "applications close"))
     posted = extract_labeled_date(text, ("posted", "posting date", "published"))
     status = "Pending verification"
     if CLOSED_WORDS.search(text):
@@ -682,10 +692,92 @@ def inspect_candidate_page(url: str, today: date) -> tuple[dict, list[str]]:
     }, []
 
 
+def bamboo_embed_candidates(markup, source, today):
+    """Keep public BambooHR vacancies as leads until their deadline is verified."""
+    host = urllib.parse.urlsplit(source.get('url', '')).hostname or ''
+    ids = list(map(str, source.get('communityIds', [])))
+    if not source.get('verifiedOfficialSource') or not host.endswith('.bamboohr.com') or len(ids) != 1:
+        return [], ['BambooHR feed requires one reviewed community and an official employer host']
+    try:
+        payload = json.loads(markup)
+    except (TypeError, ValueError):
+        return [], ['Unreadable public BambooHR feed']
+    if not isinstance(payload, dict) or payload.get('success') is not True or not isinstance(payload.get('departments'), list):
+        return [], ['Unexpected public BambooHR feed structure']
+    output, seen = [], set()
+    for department in payload['departments'][:50]:
+        if not isinstance(department, dict): continue
+        positions=department.get('positions', [])
+        if not isinstance(positions, list): continue
+        for row in positions[:100]:
+            if not isinstance(row, dict): continue
+            title=clean_job_title(row.get('name')); url=str(row.get('url') or '')
+            parts=urllib.parse.urlsplit(url)
+            if not title or parts.scheme != 'https' or parts.hostname != host or not re.fullmatch(r'/careers/\d+/?',parts.path):continue
+            if re.search(r'\b(?:talent pool|expression of interest|general application)\b',title,re.I):continue
+            if url in seen:continue
+            seen.add(url)
+            output.append(normalize_listing({'id':'bamboo-'+host.split('.')[0]+'-'+parts.path.rstrip('/').split('/')[-1],
+                'title':title,'employer':source['name'],'sourceName':source['name'],'sourceId':source['id'],
+                'communityId':ids[0],'communityName':source['communityNames'][0],'sourceUrl':url,
+                'location':row.get('location') or '', 'category':department.get('label') or 'Other',
+                'description':'Listed on the official employer feed. A closing date or explicit open-until-filled statement has not yet been verified; held for review.',
+                'status':'Pending verification','lastChecked':today.isoformat(),'verifiedOfficialSource':True,
+                'extractionConfidence':'medium'},today))
+    return output, []
+
+
+def career_table_candidates(markup, source, today):
+    """Read vacancy deadlines from their own table cells, never adjacent jobs."""
+    from lxml import html
+    doc = html.fromstring(markup)
+    ids = list(map(str, source.get('communityIds', [])))
+    if len(ids) != 1 or not source.get('verifiedOfficialSource'):
+        return [], ['A career table requires one verified community employer']
+    rows = []
+    for table in doc.xpath('//table'):
+        headers = [re.sub(r'[^a-z]', '', cell.text_content().lower()) for cell in table.xpath('(.//tr)[1]/*')]
+        if not {'opportunity', 'postedon', 'closingdate'}.issubset(headers):
+            continue
+        for tr in table.xpath('(.//tr)[position()>1]'):
+            cells = tr.xpath('./td')
+            if len(cells) != len(headers):
+                continue
+            values = {key: clean_text(cell.text_content()) for key, cell in zip(headers, cells)}
+            link = cells[headers.index('opportunity')].xpath('.//a[@href]')
+            if not link or not values['opportunity']:
+                continue
+            url = urllib.parse.urljoin(source['url'], link[0].get('href'))
+            if urllib.parse.urlsplit(url).netloc.lower().removeprefix('www.') != urllib.parse.urlsplit(source['url']).netloc.lower().removeprefix('www.'):
+                continue
+            closing = parse_date(values['closingdate'])
+            posted = parse_date(values['postedon'])
+            # A blank deadline cannot borrow the next row's date or turn into
+            # an open-until-filled vacancy without the employer saying so.
+            open_ended = bool(OPEN_UNTIL_FILLED.search(values['closingdate']))
+            status = effective_status({'closingDate': closing.isoformat() if closing else None, 'lastChecked': today.isoformat()}, today) if closing else 'Open' if open_ended else 'Pending verification'
+            row = normalize_listing({'title': values['opportunity'], 'employer': source['name'],
+                'communityId': ids[0], 'communityName': (source.get('communityNames') or [''])[0],
+                'sourceId': source['id'], 'sourceName': source['name'], 'sourceUrl': url, 'applicationUrl': url,
+                'postedDate': posted.isoformat() if posted else None, 'closingDate': closing.isoformat() if closing else None,
+                'employmentType': values.get('type', ''), 'description': 'Official employer posting. ' + values.get('term', ''),
+                'status': status, 'lastChecked': today.isoformat(), 'verifiedOfficialSource': True,
+                'extractionConfidence': 'high', 'activeEvidence': {'kind': 'deadline' if closing else 'open_until_filled',
+                    'sourceUrl': source['url'], 'checkedAt': today.isoformat()} if closing or open_ended else None}, today)
+            rows.append(row)
+    return rows, []
+
+
 def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], list[str], str, list[dict]]:
     today = today or date.today()
     warnings = []
-    markup, error = fetch_markup(source["url"])
+    if source.get('parser') == 'bamboo_embed':
+        body, content_type, error = fetch_binary(source['url'])
+        markup = body.decode('utf-8', errors='replace') if not error else ''
+        if not error and content_type.split(';')[0].strip() != 'application/json':
+            markup, error = '', 'Public BambooHR feed did not return JSON'
+    else:
+        markup, error = fetch_markup(source["url"])
     if error:
         review = [{
             "sourceId": source["id"],
@@ -697,6 +789,12 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
             "reason": error,
         }]
         return [], [f"{source['id']}: fetch failed: {error}"], "", review
+    if source.get('parser') == 'bamboo_embed':
+        rows, warnings = bamboo_embed_candidates(markup, source, today)
+        return rows, warnings, markup, []
+    if source.get('parser') == 'career_table':
+        rows, warnings = career_table_candidates(markup, source, today)
+        return rows, warnings, page_text(markup), []
     if source.get('parser') == 'scoped_job_cards':
         rows,reviews=scoped_job_candidates(markup,source,today)
         return rows, [], page_text(markup), reviews
@@ -753,7 +851,7 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
     review_items = []
     seen = set()
     media_urls = []
-    detail_budget = 4
+    detail_budget = max(0, min(20, int(source.get("maxDetailPages", 4))))
     for page_url, page_markup, employment_context in pages:
         parser = AnchorCollector()
         parser.feed(page_markup)
@@ -814,7 +912,7 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
                 if employment_context or JOB_WORDS.search(hint):
                     if src not in media_urls:
                         media_urls.append(src)
-    for media_url in media_urls[:3]:
+    for media_url in media_urls[:max(0, min(20, int(source.get("maxMediaDocuments", 3))))]:
         candidate, review = document_candidate(media_url, source, today)
         review_items.append(review)
         if candidate:
@@ -974,6 +1072,7 @@ def collect(
 
     by_id = {}
     by_discovery = {}
+    by_posting = {}
     duplicate_count = 0
     suppressed = {str(value) for value in overrides.get("suppressIds", [])}
     corrections = overrides.get("corrections", {})
@@ -1000,13 +1099,22 @@ def collect(
         if record["id"] in suppressed:
             continue
         issues = validation_warnings(record)
+        source = urllib.parse.urlsplit(record["sourceUrl"])
+        if source.scheme != "https" or not source.hostname:
+            review_items.append({
+                "sourceId": record.get("sourceId"),
+                "sourceUrl": record["sourceUrl"],
+                "status": "source_link_needs_review",
+                "reason": "An HTTPS source link is required for publication",
+                "candidate": record,
+            })
+            continue
         if issues:
             record["status"] = "Pending verification"
             record["warnings"] = issues
         key = listing_key(record)
         source_key = discovery_key(record)
-        existing_key = by_discovery.get(source_key)
-        existing = by_id.get(key) or (by_id.get(existing_key) if existing_key else None)
+        existing = by_id.get(key) or by_id.get(by_discovery.get(source_key)) or by_id.get(by_posting.get(posting_key(record)))
         if existing:
             duplicate_count += 1
             if record.get("manualOverride") or not existing.get("manualOverride") and record.get("extractionConfidence") == "high":
@@ -1018,6 +1126,8 @@ def collect(
         else:
             by_id[key] = record
             by_discovery[source_key] = key
+        if posting_key(record):
+            by_posting[posting_key(record)] = listing_key(by_id.get(key) or existing or record)
 
     listings = sorted(by_id.values(), key=lambda row: (row.get("postedDate") or row.get("lastChecked") or "", row["title"]), reverse=True)
     active = [row for row in listings if row["status"] in ACTIVE_STATUSES]

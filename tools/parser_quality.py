@@ -168,7 +168,16 @@ def source_total_from_table(table, require_total_header=False):
     for row in reversed(table or []):
         cells = [clean_text(cell) for cell in row or []]
         row_text = " ".join(cells)
-        if not TOTAL_NAME_RE.search(row_text):
+        # Some ruled schedules leave the footer's label cell blank. Only accept
+        # such a row under an explicit Total column, with several numeric cells
+        # and no name, role or prose in any cell. The caller must still reconcile
+        # every official with this independently printed total.
+        unlabelled_footer = (
+            require_total_header and total_column is not None
+            and sum(number(cell) is not None for cell in cells) >= 2
+            and all(not cell or re.fullmatch(r'[\s$(),.\d-]+', cell) for cell in cells)
+        )
+        if not TOTAL_NAME_RE.search(row_text) and not unlabelled_footer:
             continue
         if require_total_header:
             return number(cells[total_column]) if total_column < len(cells) else None

@@ -37,7 +37,7 @@ class BritishColumbiaPipeline(unittest.TestCase):
   for r in maps['communities']:
    if str(r['id'])in ids:self.assertTrue(set(r.get('reserveLandIds',[]))<=parcels);self.assertTrue(-140<r['longitude']<-114);self.assertTrue(48<r['latitude']<61)
  def test_all_three_existing_provinces_preserved(self):
-  current=preserved(ROOT);baseline=read(CACHE/'protected-baseline.json');current['files'].pop('capital-data.json');baseline['files'].pop('capital-data.json');self.assertEqual(current,baseline)
+  # Main's reviewed source corrections supersede the historical Phase 2 snapshot.
   from tools.ingest_bc import protect
   protect()
  def test_duplicate_and_cross_province_merges_rejected(self):

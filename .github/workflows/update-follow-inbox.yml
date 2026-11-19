@@ -1,0 +1,31 @@
+name: Refresh Follow pilot inbox
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "47 */4 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: openband-v2-data-writers
+  cancel-in-progress: false
+
+jobs:
+  follow-inbox:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify update rules
+        run: python -m unittest tests.test_follow_updates
+      - name: Refresh the inbox from published data
+        run: python -m tools.build_follow_updates
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Refresh Follow pilot inbox"
+          file_pattern: follow-updates.json follow-data

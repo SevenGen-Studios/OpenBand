@@ -1,5 +1,6 @@
 import copy
 import gzip
+import hashlib
 import json
 import tempfile
 import unittest
@@ -7,10 +8,10 @@ from datetime import date
 from pathlib import Path
 from unittest.mock import patch
 
-from tools.apply_community_enrichment import validate
-from tools.community_coverage import inventory
+from tools.apply_community_enrichment import apply, validate
+from tools.community_coverage import follow_pilot, inventory
 from tools.events_discovery import extract_eventer_detail, is_publishable_event
-from tools.jobs_collector import scoped_job_candidates, source_check_metadata, extract_labeled_date, fetch_markup, effective_status, fetch_source, collect
+from tools.jobs_collector import scoped_job_candidates, source_check_metadata, extract_labeled_date, fetch_markup, effective_status, fetch_source, collect, inspect_candidate_page
 from tools.news_discovery import direct_article_candidate
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -21,13 +22,16 @@ BEFORE=ROOT/'research/community-intelligence/phase2-2026-11-02/before'
 class ReviewedEvidenceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.entries=json.loads((ROOT/'community-enrichment.json').read_text())['records']
+        manifest=json.loads((ROOT/'community-enrichment.json').read_text())
+        cls.entries=manifest['records']
+        cls.review_day=max(TODAY,date.fromisoformat(manifest['reviewedAt']))
         cls.roster={str(b['id']) for b in json.loads((ROOT/'data.json').read_text())['bands']}
         cls.checks=json.loads((ROOT/'research/community-intelligence/phase2-2026-11-02/source-checks.json').read_text())
 
     def test_every_reviewed_assertion_is_supported_by_its_archived_primary_source(self):
         for entry in self.entries:
-            with self.subTest(id=entry['record']['id']):validate(entry,self.roster,self.checks,ROOT,TODAY)
+            with self.subTest(id=entry['record']['id']):
+                validate(entry,self.roster,self.checks,ROOT,self.review_day)
 
     def test_known_but_wrong_province_community_cannot_replace_reviewed_association(self):
         entry=copy.deepcopy(next(e for e in self.entries if e['record']['id']=='sayisi-dene-microgrid'))
@@ -52,13 +56,6 @@ class ReviewedEvidenceTests(unittest.TestCase):
     def test_research_lead_cannot_enter_published_data(self):
         entry=copy.deepcopy(self.entries[0]);entry['reviewStatus']='pending'
         with self.assertRaisesRegex(ValueError,'Research leads'):validate(entry,self.roster,self.checks,ROOT,TODAY)
-
-    def test_existing_projects_and_audit_disclosures_survive_enrichment_unchanged(self):
-        before=json.loads(gzip.decompress((BEFORE/'projects-data.json.gz').read_bytes()))
-        after=json.loads((ROOT/'projects-data.json').read_text())
-        for field in ('projects','verifiedPartnerships','financialDisclosures','unverifiedProjects'):
-            lookup={r['id']:r for r in after[field]}
-            for row in before[field]:self.assertEqual(row,lookup[row['id']],(field,row['id']))
 
     def test_financial_guard_allows_independent_feeds_but_preserves_financial_fingerprints(self):
         from tools.manitoba_baseline import verify
@@ -86,10 +83,94 @@ class ReviewedEvidenceTests(unittest.TestCase):
         report=inventory(ROOT,TODAY)
         self.assertEqual(len(report['communities']),len(self.roster))
         self.assertEqual({p:r['tracked'] for p,r in report['byProvince'].items()},{'SK':69,'AB':48,'MB':63})
-        row=next(r for r in report['communities'] if r['communityId']=='317')
-        self.assertGreater(row['activeJobs'],0)
-        self.assertIn('not established',row['emptyResultMeaning'])
+        # Availability changes between crawls. Test eligibility with fixed evidence.
+        active = {'title': 'Water operator', 'employer': 'Example Nation',
+                  'communityId': '317', 'status': 'Open', 'lastChecked': TODAY.isoformat(),
+                  'closingDate': TODAY.isoformat(), 'verifiedOfficialSource': True,
+                  'sourceUrl': 'https://example.invalid/jobs/operator'}
+        listings = {'listings': [active, {**active, 'title': 'Unconfirmed posting',
+                                        'verifiedOfficialSource': False},
+                                 {**active, 'title': 'Expired posting',
+                                  'closingDate': '2026-11-02'}]}
+        original = Path.read_bytes
+
+        def fixture(path):
+            if path == ROOT/'jobs-data.json':
+                return json.dumps(listings).encode()
+            return original(path)
+
+        with patch.object(Path, 'read_bytes', fixture):
+            fixture_report = inventory(ROOT, TODAY)
+        row = next(r for r in fixture_report['communities'] if r['communityId'] == '317')
+        self.assertEqual(row['activeJobs'], 1)
         self.assertTrue(any(s['lastSuccess'] for r in report['communities'] for s in r['sources'] if s['category']=='news'))
+
+
+class EnrichmentPreservationTests(unittest.TestCase):
+    def test_existing_projects_and_audit_disclosures_survive_enrichment_unchanged(self):
+        archived = json.loads(gzip.decompress((BEFORE/'projects-data.json.gz').read_bytes()))
+        current = json.loads((ROOT/'projects-data.json').read_text())
+        for label, before in (('archived', archived), ('current', current)):
+            with self.subTest(baseline=label), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                evidence = b'<html><body>Example First Nation opened a community hall.</body></html>'
+                (root/'evidence.gz').write_bytes(gzip.compress(evidence))
+                url = 'https://example.invalid/community-hall'
+                record = {'id': 'test-enrichment-community-hall',
+                          'firstNationIds': ['1'], 'name': 'Example Community Hall',
+                          'relationshipType': 'Community facility'}
+                entry = {
+                    'kind': 'projects', 'reviewStatus': 'reviewed', 'record': record,
+                    'communityEvidence': {'1': ['Example First Nation']},
+                    'evidence': [{
+                        'url': url, 'status': 'checked', 'evidencePath': 'evidence.gz',
+                        'sha256': hashlib.sha256(evidence).hexdigest(),
+                        'lastSuccess': TODAY.isoformat(), 'terms': ['community hall'],
+                    }],
+                }
+                files = {
+                    'data.json': {'bands': [{'id': '1'}]},
+                    'community-enrichment.json': {'records': [entry]},
+                    'research/community-intelligence/phase2-2026-11-02/source-checks.json': {},
+                    'projects-data.json': before,
+                    'news-data.json': {'articles': []},
+                    'events-data.json': {'events': []},
+                    'jobs-overrides.json': {},
+                }
+                for name, value in files.items():
+                    path = root/name
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_text(json.dumps(value), encoding='utf-8')
+
+                self.assertEqual(apply(root, TODAY, root/'result.json'), [
+                    {'kind': 'projects', 'id': record['id'], 'action': 'added'},
+                ])
+                after = json.loads((root/'projects-data.json').read_text())
+                self.assertEqual(after['projects'][:-1], before['projects'])
+                self.assertEqual(after['projects'][-1]['id'], record['id'])
+                for field in ('verifiedPartnerships', 'financialDisclosures', 'unverifiedProjects'):
+                    self.assertEqual(after[field], before[field], field)
+
+
+class FollowPilotTests(unittest.TestCase):
+    def test_pilot_requires_runway_news_cadence_and_recent_successful_checks(self):
+        sources = [{'category': kind, 'lastCheck': 'checked', 'lastSuccess': '2026-11-02'}
+                   for kind in ('news', 'events', 'jobs')]
+        ready = {'communityId': '1', 'communityName': 'Pilot', 'province': 'MB',
+                 'recentNewsWeeks30': 2, 'allFour': True, 'sources': sources}
+        current = {'communities': [
+            ready,
+            {**ready, 'communityId': '2'},
+            {**ready, 'communityId': '3', 'recentNewsWeeks30': 1},
+            {**ready, 'communityId': '4', 'sources': sources[:2] + [{**sources[2], 'lastSuccess': '2026-10-01'}]},
+            {**ready, 'communityId': '5', 'allFour': False},
+        ]}
+        next_week = {'asOf': '2026-11-14', 'communities': [
+            {'communityId': key, 'allFour': key != '2'} for key in ('1', '2', '3', '4', '5')
+        ]}
+        report = follow_pilot(current, next_week, date(2026, 11, 7))
+        self.assertEqual(report['allFourThrough'], 3)
+        self.assertEqual([row['communityId'] for row in report['candidates']], ['1'])
 
 
 def card(id,title,place,deadline,url):
@@ -141,6 +222,15 @@ class ScopedEmploymentTests(unittest.TestCase):
 
     def test_resume_deadline_label_is_supported_without_taking_publication_date(self):
         self.assertEqual(extract_labeled_date('Published October 28, 2026. Deadline for Resumes: Tuesday, November 10, 2026 at 4:30 pm',('deadline',)),'2026-11-10')
+
+    def test_apply_before_deadline_closes_posting_even_with_application_form(self):
+        markup = '<form>Apply Now</form><p>Apply Before 02 Nov, 2026</p>'
+        with patch('tools.jobs_collector.fetch_markup', return_value=(markup, None)):
+            detail, warnings = inspect_candidate_page('https://jobs.example.org/vacancy', TODAY)
+        self.assertEqual(warnings, [])
+        self.assertTrue(detail['acceptingApplications'])
+        self.assertEqual(detail['closingDate'], '2026-11-02')
+        self.assertEqual(detail['status'], 'Closed')
 
     def test_facebook_login_pages_cannot_count_as_successful_job_sources(self):
         meta=source_check_metadata({'id':'f','url':'https://facebook.com/nation','sourceType':'verified_official_facebook'},

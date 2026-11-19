@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urlsplit
 from lxml import html
-from tools.seo_records import financial_years, money, publish, annual_page
+from tools.seo_records import financial_years, money, publish, annual_page, remuneration_markup
 from tools.build_site import ROOT, ORIGIN, slugify
 
 class SeoRecordsTests(unittest.TestCase):
@@ -43,6 +43,21 @@ class SeoRecordsTests(unittest.TestCase):
         self.assertEqual(dataset['temporalCoverage'], '2023/2024')
         self.assertNotIn('license', dataset)
         self.assertIn('https://example.com/financials.pdf', dataset['isBasedOn'])
+
+    def test_remuneration_uses_combined_expenses_only_without_source_columns(self):
+        filing = {'people': [
+            {'name': 'With expenses', 'remuneration': 104104, 'expenses': 236111, 'travelExpenses': 236111},
+            {'name': 'With credit card', 'remuneration': 110000, 'creditCard': 5000, 'travelExpenses': 5000},
+            {'name': 'Combined only', 'remuneration': 110000, 'travelExpenses': 4000},
+        ]}
+        doc = html.fromstring(remuneration_markup(filing, '2024-2025'))
+        self.assertEqual(doc.xpath('//th/text()')[-4:], ['Travel', 'Expenses', 'Credit card', 'Other payments'])
+        amounts = [row.xpath('td/text()')[3:] for row in doc.xpath('//tbody/tr')]
+        self.assertEqual(amounts, [
+            ['$104,104', 'Not reported', '$236,111', 'Not reported', 'Not reported'],
+            ['$110,000', 'Not reported', 'Not reported', '$5,000', 'Not reported'],
+            ['$110,000', '$4,000', 'Not reported', 'Not reported', 'Not reported'],
+        ])
 
     def test_regeneration_preserves_lastmod_and_removes_only_owned_stale_page(self):
         with tempfile.TemporaryDirectory() as directory:

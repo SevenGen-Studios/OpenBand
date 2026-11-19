@@ -290,6 +290,9 @@
         "Onion Lake Cree Nation"
       ],
       "parser": "job_link_index",
+      "inspectDetails": true,
+      "sameHostOnly": true,
+      "maxDetailPages": 15,
       "verifiedOfficialSource": true,
       "autoPublish": false
     },
@@ -769,7 +772,9 @@
       "scanMedia": true,
       "sameHostOnly": true,
       "parser": "job_link_index",
-      "researchSourceId": "ncn-jobs"
+      "researchSourceId": "ncn-jobs",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 12
     },
     {
       "id": "research-fisher-river-jobs",
@@ -788,7 +793,9 @@
       "scanMedia": true,
       "sameHostOnly": true,
       "parser": "job_link_index",
-      "researchSourceId": "fisher-river-jobs"
+      "researchSourceId": "fisher-river-jobs",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 12
     },
     {
       "id": "research-sagkeeng-jobs",
@@ -807,7 +814,9 @@
       "scanMedia": true,
       "sameHostOnly": true,
       "parser": "job_link_index",
-      "researchSourceId": "sagkeeng-jobs"
+      "researchSourceId": "sagkeeng-jobs",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 12
     },
     {
       "id": "research-peguis-jobs",
@@ -986,6 +995,240 @@
       "autoPublish": false,
       "maxDocuments": 40,
       "associationMode": "explicit_card_only"
+    },
+    {
+      "id": "research-dene-tha-careers",
+      "url": "https://denetha.ca/careers/",
+      "name": "Dene Tha’ First Nation",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "448"
+      ],
+      "communityNames": [
+        "Dene Tha'"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "career_table",
+      "researchSourceId": "dene-tha-careers"
+    },
+    {
+      "id": "research-bigstone-employment",
+      "url": "https://www.bigstone.ca/employment",
+      "name": "Bigstone Cree Nation",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "458"
+      ],
+      "communityNames": [
+        "Bigstone Cree Nation"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "job_link_index",
+      "researchSourceId": "bigstone-employment",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 12
+    },
+    {
+      "id": "research-siksika-careers",
+      "url": "https://siksikanation.com/careers/",
+      "name": "Siksika Nation",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "430"
+      ],
+      "communityNames": [
+        "Siksika Nation"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "job_link_index",
+      "researchSourceId": "siksika-careers",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 12
+    },
+    {
+      "id": "research-peguis-cfs-jobs",
+      "url": "https://www.peguiscfs.ca/employment",
+      "name": "Peguis Child and Family Services",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "269"
+      ],
+      "communityNames": [
+        "Peguis"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "job_link_index",
+      "researchSourceId": "peguis-cfs-jobs",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 8
+    },
+    {
+      "id": "research-llrib-jobs",
+      "url": "https://llrib.com/llrib-jobs/",
+      "name": "Lac La Ronge Indian Band",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "353"
+      ],
+      "communityNames": [
+        "Lac La Ronge Indian Band"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "job_link_index",
+      "researchSourceId": "llrib-jobs",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 8
+    },
+    {
+      "id": "research-acfn-jobs",
+      "url": "https://acfn.com/careers/",
+      "name": "Athabasca Chipewyan First Nation",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "463"
+      ],
+      "communityNames": [
+        "Athabasca Chipewyan First Nation"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "job_link_index",
+      "researchSourceId": "acfn-jobs",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 8
+    },
+    {
+      "id": "research-blood-jobs",
+      "url": "https://bloodtribe.org/job-postings/",
+      "name": "Blood Tribe",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "435"
+      ],
+      "communityNames": [
+        "Blood"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "job_link_index",
+      "researchSourceId": "blood-jobs",
+      "maxDetailPages": 12,
+      "maxMediaDocuments": 8
+    },
+    {
+      "id": "research-fortmckay-public-employer-feed",
+      "url": "https://fortmckay.bamboohr.com/jobs/embed2.php?version=1.0.0&format=json",
+      "name": "Fort McKay First Nation",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "467"
+      ],
+      "communityNames": [
+        "Fort McKay First Nation"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "bamboo_embed",
+      "researchSourceId": "fortmckay-public-employer-feed"
+    },
+    {
+      "id": "research-mikisewgroup-public-employer-feed",
+      "url": "https://mikisewgroup.bamboohr.com/jobs/embed2.php?version=1.0.0&format=json",
+      "name": "Mikisew Group",
+      "sourceType": "first_nation_owned_business",
+      "communityIds": [
+        "461"
+      ],
+      "communityNames": [
+        "Mikisew Cree First Nation"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "bamboo_embed",
+      "researchSourceId": "mikisewgroup-public-employer-feed"
+    },
+    {
+      "id": "research-siksika-health-careers",
+      "url": "https://siksikahealth.com/careers/",
+      "name": "Siksika Health Services",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "430"
+      ],
+      "communityNames": [
+        "Siksika Nation"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": true,
+      "sameHostOnly": true,
+      "parser": "job_link_index",
+      "researchSourceId": "siksika-health-careers"
+    },
+    {
+      "id": "mistawasis-official-jobs",
+      "name": "Mistawasis Nehiyawak Employment",
+      "url": "https://mistawasis.ca/jobs/",
+      "sourceType": "official_first_nation",
+      "province": "SK",
+      "communityIds": [
+        "374"
+      ],
+      "communityNames": [
+        "Mistawasis Nehiyawak"
+      ],
+      "parser": "job_link_index",
+      "verifiedOfficialSource": true,
+      "autoPublish": false
+    },
+    {
+      "id": "tsec-pelican-lake-jobs",
+      "name": "Treaty Six Education Council Pelican Lake School Jobs",
+      "url": "https://tsec.shareables.ai/middle-years-teacher-pelican-lake-high-school-2026-10-29",
+      "sourceType": "first_nation_education_organization",
+      "province": "SK",
+      "communityIds": [
+        "405"
+      ],
+      "communityNames": [
+        "Pelican Lake First Nation"
+      ],
+      "parser": "job_detail",
+      "verifiedOfficialSource": true,
+      "autoPublish": false
     }
   ]
 }
