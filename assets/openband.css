@@ -302,3 +302,17 @@ body[data-view="gateway"],body[data-page="home"]:not([data-view]){background:#18
 .benefit-short{display:none}
 @media(max-width:760px){.sbar.benefits-bar{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:.25rem .5rem}.benefits-bar .si2{max-width:none;padding:.75rem .2rem}.benefits-bar .benefit-title{font-family:inherit;font-size:12px;line-height:1.4;margin:0}.benefits-bar .sl,.benefit-full{display:none}.benefit-short{display:inline}}
 
+
+/* Keep province choices inside compact phone navigation. */
+@media(max-width:760px){nav{flex-wrap:wrap}.province-switcher{flex-shrink:0}.nav-toggle{flex-shrink:0}}
+@media(max-width:360px){nav{padding-inline:max(.5rem,env(safe-area-inset-left,0px));gap:.25rem}.province-switcher a{min-width:28px}}
+@media(min-width:761px) and (max-width:1100px){
+  nav{padding:.45rem 1rem;gap:.5rem}
+  .province-switcher{margin-left:auto;flex-shrink:0}
+  .province-switcher a{min-height:44px}
+  .nav-toggle{display:block;flex-shrink:0;min-height:44px}
+  .nav-r{display:none;position:absolute;top:100%;left:0;right:0;background:var(--green);padding:.5rem 1rem 1rem;flex-direction:column;align-items:stretch;max-height:calc(100dvh - 58px);overflow-y:auto;box-shadow:0 8px 18px rgba(0,0,0,.2)}
+  .nav-r.open{display:flex}
+  .nav-r a{padding:10px 8px;min-height:44px}
+  .nav-r .badge{align-self:flex-start;margin:4px 8px}
+}

@@ -13,7 +13,7 @@ assert.equal(totals.expected,63);
 assert.equal(totals.reporting,0);
 assert.equal(totals.fields.totalRevenue.total,null);
 const elements=new Map();
-function element(){return {dataset:{},classList:{toggle(){}},setAttribute(){},removeAttribute(){},value:'',innerHTML:'',textContent:''}}
+function element(){return {dataset:{},style:{setProperty(){}},classList:{toggle(){},add(){},remove(){}},setAttribute(){},removeAttribute(){},value:'',innerHTML:'',textContent:''}}
 const body=element();
 const doc={body,getElementById(id){if(!elements.has(id))elements.set(id,element());return elements.get(id)},querySelector(){return null},querySelectorAll(){return []}};
 const ctx={document:doc,location:{pathname:'/manitoba/',href:'https://openband.ca/manitoba/'},URL,OpenBandProvinces:P,bandsData:data.filter(b=>b.province!=='MB'),capitalData:{bands:{}},directoryMapRecord:()=>null,esc:x=>x,escAttr:x=>x};
@@ -28,11 +28,11 @@ assert.equal(elements.get('heroBrowse').href,'/browse/?province=MB');
 console.log('Manitoba routes, filtering, honest totals, theme context and empty UI passed.');
 // Exercise the existing carousel controls, including wraparound and swipe.
 let buttons=[{},{}], flags=[element(),element(),element()], listeners={};
-const nodes={'.province-carousel-count':element(),'.province-ghost':element(),'.province-carousel-name':element(),'.province-enter':element()};
+const nodes={'.province-carousel-count':element(),'.province-ghost':element(),'.province-carousel-name':element(),'.province-enter':element(),'.province-flags':{clientHeight:400,style:{setProperty(){}}}};
 buttons.forEach(b=>b.addEventListener=(event,fn)=>b[event]=fn);
-const scene={setAttribute(){},setPointerCapture(){},addEventListener:(event,fn)=>listeners[event]=fn,querySelector:s=>nodes[s],querySelectorAll:s=>s==='button'?buttons:flags};
+const scene={clientWidth:390,classList:{add(){},remove(){}},hasPointerCapture(){return false},style:{setProperty(){}},setAttribute(){},setPointerCapture(){},addEventListener:(event,fn)=>listeners[event]=fn,querySelector:s=>nodes[s],querySelectorAll:s=>s==='button'?buttons:flags};
 const hero={dataset:{},append(){}};
-vm.runInNewContext(fs.readFileSync('assets/province-carousel.js','utf8'),{document:{querySelector:()=>hero,createElement:()=>scene},setTimeout:fn=>fn()});
+vm.runInNewContext(fs.readFileSync('assets/province-carousel.js','utf8'),{document:{querySelector:()=>hero,createElement:()=>scene},setTimeout:fn=>fn(),window:{innerWidth:390,addEventListener(){}},performance:{now:()=>0},matchMedia:()=>({matches:true,addEventListener(){}}),cancelAnimationFrame(){},requestAnimationFrame:()=>1});
 buttons[1].click();assert.equal(hero.dataset.previewProvince,'AB');
 buttons[1].click();assert.equal(hero.dataset.previewProvince,'MB');
 assert.equal(nodes['.province-carousel-count'].textContent,'03 / 03');
