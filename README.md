@@ -1,5 +1,7 @@
 # OpenBand
 
+Coding agents and new contributors: read [AGENTS.md](AGENTS.md) for project orientation, data safeguards, validation, and publishing guidance.
+
 OpenBand makes First Nations Financial Transparency Act filings easier to search, inspect, export, and verify.
 
 The public website supports Saskatchewan, Alberta, and Manitoba First Nations, audited statements, and Chief and Council remuneration. Every displayed result stays connected to its original source filing. Alberta has complete roster coverage with explicitly incomplete disclosure and extraction coverage; see [the Alberta coverage audit](alberta-coverage-report.md).
