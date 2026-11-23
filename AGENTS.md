@@ -6,6 +6,8 @@ OpenBand (https://openband.ca) makes source-linked First Nations public records 
 
 Read this guide and README.md before editing. Follow any more specific AGENTS.md in the directory you change. This file provides project context; it does not grant account access, credentials, or permission to publish. Confirm the current user's instructions and available access.
 
+For the detailed financial extraction and OCR process, read [docs/PARSING_AND_OCR.md](docs/PARSING_AND_OCR.md).
+
 ## Start here
 
 1. Fetch the latest main and inspect git status, recent commits, and open pull requests. Use an isolated branch or worktree. Preserve concurrent code, data, and generated-route changes.

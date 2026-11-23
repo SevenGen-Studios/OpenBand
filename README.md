@@ -75,6 +75,10 @@ The map keeps original council labels and source URLs alongside short public
 display names. A missing relationship is shown neutrally; OpenBand does not
 infer an affiliation.
 
+## Financial parsing and OCR runbook
+
+Read [docs/PARSING_AND_OCR.md](docs/PARSING_AND_OCR.md) for extraction stages, local OCR engines, independent verification, review rules, bounded commands, and failure recovery.
+
 ## Community Capital data
 
 Community Capital summaries are stored separately from remuneration data in
