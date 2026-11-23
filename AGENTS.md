@@ -15,6 +15,37 @@ For the detailed financial extraction and OCR process, read [docs/PARSING_AND_OC
 3. Derive the current roster and category coverage from the current datasets. Do not reuse community counts from chat history. Application IDs and ISC band numbers are distinct; some application IDs are synthetic.
 4. Identify a bounded change, verify its sources, run the relevant checks, and describe what is ready versus what is deployed.
 
+## New account: first-session checklist
+
+A new coding agent should complete this checklist before making changes. Do not require the owner to retell project history.
+
+1. Read this file, README.md, and docs/PARSING_AND_OCR.md. Identify the exact branch, latest main commit, working-tree changes, and relevant open PRs.
+2. Establish the user's requested outcome and existing publishing authorization. Account access must be configured independently; documentation is not a credential.
+3. Inspect the current affected dataset and actual producer, not just generated HTML. Record a reproducible example: page URL and action for UI issues, or Nation ID, fiscal year, document URL and parser status for extraction issues.
+4. Check the latest relevant workflow, its failed step/log, and the current public asset/data. Distinguish a code failure, missing optional dependency, data review hold, stale cached asset and failed deployment.
+5. Make the smallest source change in an isolated branch. Preserve unrelated work and validated data. Run the relevant checks below, then required CI.
+6. Report the changed behavior, evidence, checks, exact deployment state, and remaining limitations. Never report “fixed/live” from a commit or PR alone.
+
+### UI troubleshooting
+
+- Reproduce the issue on the actual route, including mobile layout when relevant. Check browser console and failed network requests; verify dataset loading before diagnosing an empty result as absent coverage.
+- If HTML works but interactive data is missing, inspect assets/openband.js, its dependent shared scripts, fetchDataset errors, and the affected JSON schema/identity join.
+- Inspect tools/build_site.py for generated-route/template problems. Regenerate pages using the documented build; do not patch generated pages individually.
+- For search, test real names, aliases, apostrophes/ampersands, ISC identifiers, and selected-province scope with assets/provinces.js and tests/test_provinces.js.
+- For stale UI, compare the loaded asset with the merged source, inspect versioned references and deployment status, and refresh appropriately. Do not assume the browser has the newest file.
+- Run the browser logic suites listed in .github/workflows/build-site.yml and inspect the resulting page visually when presentation changes. Preserve intentional financial-entry asset guards.
+
+### Parsing troubleshooting
+
+- Follow docs/PARSING_AND_OCR.md. A posted filing with pending extraction is a valid review state, not automatically a UI bug.
+- Confirm document identity and fiscal year, then inspect original pages, native text/OCR output, columns, continuation pages and reconciliation warnings.
+- Verify the host has the required optional OCR tools. Missing Tesseract, Poppler, Apple Vision or another optional engine is an environment problem; use supported local setup or retain pending status.
+- For parser fixes, use source-derived fixtures and relevant tiered/structured/parser tests. Verify both parsed output and publication eligibility. Do not replace validated data with a weaker retry or force totals to reconcile.
+
+### Minimal handoff after each task
+
+Leave the PR/commit, affected source files, validation results, remaining review items, and production verification in the repository's normal review record. Refresh this guide when architecture or processes change. Avoid storing temporary blockers as permanent facts. If a documented command or path is wrong, correct the documentation alongside the implementation.
+
 ## Repository map
 
 - index.html and assets/: shared frontend. assets/openband.js renders community profiles and news; assets/provinces.js handles shared name matching; assets/nation-name.js handles Nation identity display.
