@@ -95,7 +95,7 @@ jobs:
                   raise SystemExit(f"Event missing required fields: {event.get('id')} {sorted(missing)}")
               if not str(event["sourceUrl"]).startswith("https://"):
                   raise SystemExit(f"Event lacks HTTPS source: {event.get('id')}")
-              if event["startDate"] < minimum:
+              if (event.get("endDate") or event["startDate"]) < minimum:
                   raise SystemExit(f"Expired event was published: {event.get('id')}")
           print(f"validated {len(events)} events across {band_count} tracked communities")
           PY
