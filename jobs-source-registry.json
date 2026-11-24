@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-11-24T01:00:48Z",
+  "generated": "2026-11-24T23:12:28Z",
   "trackedCommunityCount": 180,
   "configuredSourceCount": 204,
   "communities": [
@@ -289,8 +289,8 @@
           "url": "https://www.bigriverfirstnation.ca/",
           "sourceType": "official_first_nation",
           "direct": true,
-          "checkStatus": "unavailable",
-          "lastChecked": "2026-11-22",
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-24",
           "lastAttempted": "2026-11-24"
         },
         {
@@ -473,8 +473,8 @@
           "url": "https://www.black-river.ca/",
           "sourceType": "isc_listed_first_nation_website",
           "direct": true,
-          "checkStatus": "unavailable",
-          "lastChecked": "2026-11-22",
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-24",
           "lastAttempted": "2026-11-24"
         }
       ],
@@ -737,8 +737,8 @@
           "url": "https://swampycree.com/chemawawin-cree-nation/",
           "sourceType": "isc_listed_first_nation_website",
           "direct": true,
-          "checkStatus": "unavailable",
-          "lastChecked": "2026-11-22",
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-24",
           "lastAttempted": "2026-11-24"
         }
       ],
@@ -928,8 +928,8 @@
           "url": "https://cowessessfn.com/careers/",
           "sourceType": "official_first_nation",
           "direct": true,
-          "checkStatus": "unavailable",
-          "lastChecked": "2026-11-22",
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-24",
           "lastAttempted": "2026-11-24"
         },
         {
@@ -938,8 +938,8 @@
           "url": "https://cowessessfn.com",
           "sourceType": "isc_listed_first_nation_website",
           "direct": true,
-          "checkStatus": "unavailable",
-          "lastChecked": "2026-11-22",
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-24",
           "lastAttempted": "2026-11-24"
         },
         {
@@ -2069,7 +2069,7 @@
           "url": "https://llrib.com/job-openings/",
           "sourceType": "official_first_nation",
           "direct": true,
-          "checkStatus": "checked",
+          "checkStatus": "unavailable",
           "lastChecked": "2026-11-24",
           "lastAttempted": "2026-11-24"
         },
@@ -2635,8 +2635,8 @@
           "url": "https://www.mlcn.ca/",
           "sourceType": "isc_listed_first_nation_website",
           "direct": true,
-          "checkStatus": "unavailable",
-          "lastChecked": "2026-11-22",
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-24",
           "lastAttempted": "2026-11-24"
         }
       ],
@@ -2769,8 +2769,8 @@
           "url": "https://www.muscowpetung.com/",
           "sourceType": "isc_listed_first_nation_website",
           "direct": true,
-          "checkStatus": "unavailable",
-          "lastChecked": "2026-11-22",
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-24",
           "lastAttempted": "2026-11-24"
         }
       ],
@@ -2808,8 +2808,8 @@
           "url": "https://www.muskeglake.com/",
           "sourceType": "isc_listed_first_nation_website",
           "direct": true,
-          "checkStatus": "unavailable",
-          "lastChecked": "2026-11-22",
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-24",
           "lastAttempted": "2026-11-24"
         }
       ],
@@ -3296,8 +3296,8 @@
           "url": "https://onionlake.ca/",
           "sourceType": "official_first_nation",
           "direct": true,
-          "checkStatus": "unavailable",
-          "lastChecked": "2026-11-22",
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-24",
           "lastAttempted": "2026-11-24"
         },
         {
@@ -3316,8 +3316,8 @@
           "url": "https://www.onionlake.ca/",
           "sourceType": "isc_listed_first_nation_website",
           "direct": true,
-          "checkStatus": "unavailable",
-          "lastChecked": "2026-11-22",
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-24",
           "lastAttempted": "2026-11-24"
         }
       ],
@@ -4592,8 +4592,8 @@
           "url": "https://www.keyband.com",
           "sourceType": "isc_listed_first_nation_website",
           "direct": true,
-          "checkStatus": "unavailable",
-          "lastChecked": "2026-11-22",
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-24",
           "lastAttempted": "2026-11-24"
         }
       ],
@@ -5395,7 +5395,7 @@
       "communityIds": [
         "440"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 3,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -5410,7 +5410,7 @@
       "communityIds": [
         "443"
       ],
-      "candidatesFound": 7,
+      "candidatesFound": 8,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -5973,10 +5973,12 @@
       "communityIds": [
         "353"
       ],
-      "candidatesFound": 41,
-      "reviewItems": 0,
-      "status": "checked",
-      "warnings": []
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "llrib-official-jobs: fetch failed: The read operation timed out"
+      ]
     },
     {
       "lastAttempted": "2026-11-24",
@@ -6230,7 +6232,7 @@
     },
     {
       "lastAttempted": "2026-11-24",
-      "lastChecked": "2026-11-22",
+      "lastChecked": "2026-11-24",
       "sourceId": "onion-lake-community-updates",
       "sourceName": "Onion Lake Cree Nation Community Updates",
       "url": "https://onionlake.ca/",
@@ -6239,10 +6241,10 @@
         "344"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 3,
+      "status": "checked",
       "warnings": [
-        "onion-lake-community-updates: fetch failed: robots.txt could not be checked: <urlopen error timed out>"
+        "onion-lake-community-updates: no candidate job links detected"
       ]
     },
     {
@@ -6262,7 +6264,7 @@
     },
     {
       "lastAttempted": "2026-11-24",
-      "lastChecked": "2026-11-22",
+      "lastChecked": "2026-11-24",
       "sourceId": "cowessess-careers",
       "sourceName": "Cowessess First Nation Careers",
       "url": "https://cowessessfn.com/careers/",
@@ -6270,12 +6272,10 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "cowessess-careers: fetch failed: robots.txt could not be checked: <urlopen error timed out>"
-      ]
+      "candidatesFound": 7,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
     },
     {
       "lastAttempted": "2026-11-24",
@@ -6294,7 +6294,7 @@
     },
     {
       "lastAttempted": "2026-11-24",
-      "lastChecked": "2026-11-22",
+      "lastChecked": "2026-11-24",
       "sourceId": "big-river-official",
       "sourceName": "Big River First Nation",
       "url": "https://www.bigriverfirstnation.ca/",
@@ -6302,12 +6302,10 @@
       "communityIds": [
         "404"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "big-river-official: fetch failed: robots.txt could not be checked: The read operation timed out"
-      ]
+      "candidatesFound": 1,
+      "reviewItems": 2,
+      "status": "checked",
+      "warnings": []
     },
     {
       "lastAttempted": "2026-11-24",
@@ -6385,7 +6383,7 @@
       "communityIds": [
         "362"
       ],
-      "candidatesFound": 2,
+      "candidatesFound": 3,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -6400,7 +6398,7 @@
       "communityIds": [
         "393"
       ],
-      "candidatesFound": 3,
+      "candidatesFound": 2,
       "reviewItems": 0,
       "status": "checked",
       "warnings": []
@@ -6436,7 +6434,7 @@
       "reviewItems": 1,
       "status": "unavailable",
       "warnings": [
-        "muscowpetung-jobs: fetch failed: robots.txt could not be checked: <urlopen error timed out>"
+        "muscowpetung-jobs: fetch failed: HTTP Error 404: Not Found"
       ]
     },
     {
@@ -6547,7 +6545,7 @@
       "communityIds": [
         "356"
       ],
-      "candidatesFound": 4,
+      "candidatesFound": 3,
       "reviewItems": 2,
       "status": "checked",
       "warnings": []
@@ -6735,7 +6733,7 @@
     },
     {
       "lastAttempted": "2026-11-24",
-      "lastChecked": "2026-11-22",
+      "lastChecked": "2026-11-24",
       "sourceId": "community-site-361",
       "sourceName": "Cowessess First Nation official website",
       "url": "https://cowessessfn.com",
@@ -6743,12 +6741,10 @@
       "communityIds": [
         "361"
       ],
-      "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "community-site-361: fetch failed: robots.txt could not be checked: <urlopen error timed out>"
-      ]
+      "candidatesFound": 8,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
     },
     {
       "lastAttempted": "2026-11-24",
@@ -6875,8 +6871,8 @@
       "communityIds": [
         "362"
       ],
-      "candidatesFound": 2,
-      "reviewItems": 1,
+      "candidatesFound": 3,
+      "reviewItems": 2,
       "status": "checked",
       "warnings": []
     },
@@ -6978,7 +6974,7 @@
     },
     {
       "lastAttempted": "2026-11-24",
-      "lastChecked": "2026-11-22",
+      "lastChecked": "2026-11-24",
       "sourceId": "community-site-354",
       "sourceName": "Montreal Lake Cree Nation official website",
       "url": "https://www.mlcn.ca/",
@@ -6986,12 +6982,10 @@
       "communityIds": [
         "354"
       ],
-      "candidatesFound": 0,
+      "candidatesFound": 3,
       "reviewItems": 1,
-      "status": "unavailable",
-      "warnings": [
-        "community-site-354: fetch failed: robots.txt could not be checked: The read operation timed out"
-      ]
+      "status": "checked",
+      "warnings": []
     },
     {
       "lastAttempted": "2026-11-24",
@@ -7025,7 +7019,7 @@
     },
     {
       "lastAttempted": "2026-11-24",
-      "lastChecked": "2026-11-22",
+      "lastChecked": "2026-11-24",
       "sourceId": "community-site-381",
       "sourceName": "Muscowpetung First Nation official website",
       "url": "https://www.muscowpetung.com/",
@@ -7034,15 +7028,15 @@
         "381"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 0,
+      "status": "checked",
       "warnings": [
-        "community-site-381: fetch failed: robots.txt could not be checked: <urlopen error timed out>"
+        "community-site-381: no candidate job links detected"
       ]
     },
     {
       "lastAttempted": "2026-11-24",
-      "lastChecked": "2026-11-22",
+      "lastChecked": "2026-11-24",
       "sourceId": "community-site-375",
       "sourceName": "Muskeg Lake Cree Nation official website",
       "url": "https://www.muskeglake.com/",
@@ -7051,10 +7045,10 @@
         "375"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 3,
+      "status": "checked",
       "warnings": [
-        "community-site-375: fetch failed: robots.txt could not be checked: <urlopen error timed out>"
+        "community-site-375: no candidate job links detected"
       ]
     },
     {
@@ -7106,7 +7100,7 @@
     },
     {
       "lastAttempted": "2026-11-24",
-      "lastChecked": "2026-11-22",
+      "lastChecked": "2026-11-24",
       "sourceId": "community-site-344",
       "sourceName": "Onion Lake Cree Nation official website",
       "url": "https://www.onionlake.ca/",
@@ -7115,10 +7109,10 @@
         "344"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 3,
+      "status": "checked",
       "warnings": [
-        "community-site-344: fetch failed: robots.txt could not be checked: <urlopen error timed out>"
+        "community-site-344: no candidate job links detected"
       ]
     },
     {
@@ -7131,7 +7125,7 @@
       "communityIds": [
         "383"
       ],
-      "candidatesFound": 6,
+      "candidatesFound": 10,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -7251,7 +7245,7 @@
     },
     {
       "lastAttempted": "2026-11-24",
-      "lastChecked": "2026-11-22",
+      "lastChecked": "2026-11-24",
       "sourceId": "community-site-368",
       "sourceName": "The Key First Nation official website",
       "url": "https://www.keyband.com",
@@ -7261,9 +7255,9 @@
       ],
       "candidatesFound": 0,
       "reviewItems": 1,
-      "status": "unavailable",
+      "status": "checked",
       "warnings": [
-        "community-site-368: fetch failed: robots.txt could not be checked: <urlopen error timed out>"
+        "community-site-368: no candidate job links detected"
       ]
     },
     {
@@ -7534,7 +7528,7 @@
     },
     {
       "lastAttempted": "2026-11-24",
-      "lastChecked": "2026-11-22",
+      "lastChecked": "2026-11-24",
       "sourceId": "community-site-260",
       "sourceName": "Black River First Nation official website",
       "url": "https://www.black-river.ca/",
@@ -7544,9 +7538,9 @@
       ],
       "candidatesFound": 0,
       "reviewItems": 1,
-      "status": "unavailable",
+      "status": "checked",
       "warnings": [
-        "community-site-260: fetch failed: robots.txt could not be checked: <urlopen error timed out>"
+        "community-site-260: no candidate job links detected"
       ]
     },
     {
@@ -7632,7 +7626,7 @@
     },
     {
       "lastAttempted": "2026-11-24",
-      "lastChecked": "2026-11-22",
+      "lastChecked": "2026-11-24",
       "sourceId": "community-site-309",
       "sourceName": "Chemawawin Cree Nation official website",
       "url": "https://swampycree.com/chemawawin-cree-nation/",
@@ -7641,10 +7635,10 @@
         "309"
       ],
       "candidatesFound": 0,
-      "reviewItems": 1,
-      "status": "unavailable",
+      "reviewItems": 0,
+      "status": "checked",
       "warnings": [
-        "community-site-309: fetch failed: robots.txt could not be checked: <urlopen error timed out>"
+        "community-site-309: no candidate job links detected"
       ]
     },
     {
@@ -7973,7 +7967,7 @@
       "communityIds": [
         "290"
       ],
-      "candidatesFound": 1,
+      "candidatesFound": 2,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -8005,7 +7999,7 @@
       "communityIds": [
         "293"
       ],
-      "candidatesFound": 4,
+      "candidatesFound": 5,
       "reviewItems": 3,
       "status": "checked",
       "warnings": []
@@ -8265,7 +8259,7 @@
       "communityIds": [
         "262"
       ],
-      "candidatesFound": 8,
+      "candidatesFound": 7,
       "reviewItems": 12,
       "status": "checked",
       "warnings": []
@@ -90905,6 +90899,369 @@
       "warnings": [
         "community-facebook-406-203: fetch failed: authorized platform API required; HTML scraping withheld"
       ]
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "llrib-official-jobs",
+      "sourceName": "Lac La Ronge Indian Band Jobs",
+      "url": "https://llrib.com/job-openings/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "353"
+      ],
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "llrib-official-jobs: fetch failed: The read operation timed out"
+      ]
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "onion-lake-community-updates",
+      "sourceName": "Onion Lake Cree Nation Community Updates",
+      "url": "https://onionlake.ca/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "344"
+      ],
+      "candidatesFound": 0,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": [
+        "onion-lake-community-updates: no candidate job links detected"
+      ]
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "cowessess-careers",
+      "sourceName": "Cowessess First Nation Careers",
+      "url": "https://cowessessfn.com/careers/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "361"
+      ],
+      "candidatesFound": 7,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "big-river-official",
+      "sourceName": "Big River First Nation",
+      "url": "https://www.bigriverfirstnation.ca/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "404"
+      ],
+      "candidatesFound": 1,
+      "reviewItems": 2,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "kahkewistahaw-jobs",
+      "sourceName": "Kahkewistahaw First Nation Jobs",
+      "url": "https://www.kfn72.com/job/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "362"
+      ],
+      "candidatesFound": 3,
+      "reviewItems": 0,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "kawacatoose-jobs",
+      "sourceName": "Kawacatoose First Nation Job Postings",
+      "url": "https://kawacatoosefirstnation.ca/2025/02/12/job-postings/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "393"
+      ],
+      "candidatesFound": 2,
+      "reviewItems": 0,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": null,
+      "sourceId": "muscowpetung-jobs",
+      "sourceName": "Muscowpetung First Nation Job Opportunities",
+      "url": "https://www.muscowpetung.com/mfn-job-opportunities/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "381"
+      ],
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "unavailable",
+      "warnings": [
+        "muscowpetung-jobs: fetch failed: HTTP Error 404: Not Found"
+      ]
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "red-earth-jobs",
+      "sourceName": "Red Earth Cree Nation Job Opportunities",
+      "url": "https://www.redearthcreenation.ca/careers/job-opportunities/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "356"
+      ],
+      "candidatesFound": 3,
+      "reviewItems": 2,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "research-sagkeeng-jobs",
+      "sourceName": "Sagkeeng Anicinabe Government",
+      "url": "https://sagkeeng.ca/category/employment-opportunities/",
+      "sourceType": "official_first_nation",
+      "communityIds": [
+        "262"
+      ],
+      "candidatesFound": 7,
+      "reviewItems": 12,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "community-site-361",
+      "sourceName": "Cowessess First Nation official website",
+      "url": "https://cowessessfn.com",
+      "sourceType": "isc_listed_first_nation_website",
+      "communityIds": [
+        "361"
+      ],
+      "candidatesFound": 8,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "community-site-362",
+      "sourceName": "Kahkewistahaw First Nation official website",
+      "url": "https://www.kfn72.com/",
+      "sourceType": "isc_listed_first_nation_website",
+      "communityIds": [
+        "362"
+      ],
+      "candidatesFound": 3,
+      "reviewItems": 2,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "community-site-354",
+      "sourceName": "Montreal Lake Cree Nation official website",
+      "url": "https://www.mlcn.ca/",
+      "sourceType": "isc_listed_first_nation_website",
+      "communityIds": [
+        "354"
+      ],
+      "candidatesFound": 3,
+      "reviewItems": 1,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "community-site-381",
+      "sourceName": "Muscowpetung First Nation official website",
+      "url": "https://www.muscowpetung.com/",
+      "sourceType": "isc_listed_first_nation_website",
+      "communityIds": [
+        "381"
+      ],
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "checked",
+      "warnings": [
+        "community-site-381: no candidate job links detected"
+      ]
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "community-site-375",
+      "sourceName": "Muskeg Lake Cree Nation official website",
+      "url": "https://www.muskeglake.com/",
+      "sourceType": "isc_listed_first_nation_website",
+      "communityIds": [
+        "375"
+      ],
+      "candidatesFound": 0,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": [
+        "community-site-375: no candidate job links detected"
+      ]
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "community-site-344",
+      "sourceName": "Onion Lake Cree Nation official website",
+      "url": "https://www.onionlake.ca/",
+      "sourceType": "isc_listed_first_nation_website",
+      "communityIds": [
+        "344"
+      ],
+      "candidatesFound": 0,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": [
+        "community-site-344: no candidate job links detected"
+      ]
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "community-site-383",
+      "sourceName": "Pasqua First Nation official website",
+      "url": "https://www.pasquafn.ca/",
+      "sourceType": "isc_listed_first_nation_website",
+      "communityIds": [
+        "383"
+      ],
+      "candidatesFound": 10,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "community-site-368",
+      "sourceName": "The Key First Nation official website",
+      "url": "https://www.keyband.com",
+      "sourceType": "isc_listed_first_nation_website",
+      "communityIds": [
+        "368"
+      ],
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "checked",
+      "warnings": [
+        "community-site-368: no candidate job links detected"
+      ]
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "community-site-440",
+      "sourceName": "Enoch Cree Nation #440 official website",
+      "url": "https://enochnation.ca/",
+      "sourceType": "isc_listed_first_nation_website",
+      "communityIds": [
+        "440"
+      ],
+      "candidatesFound": 3,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "community-site-443",
+      "sourceName": "Ermineskin Tribe official website",
+      "url": "https://ermineskin.ca/",
+      "sourceType": "isc_listed_first_nation_website",
+      "communityIds": [
+        "443"
+      ],
+      "candidatesFound": 8,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "community-site-260",
+      "sourceName": "Black River First Nation official website",
+      "url": "https://www.black-river.ca/",
+      "sourceType": "isc_listed_first_nation_website",
+      "communityIds": [
+        "260"
+      ],
+      "candidatesFound": 0,
+      "reviewItems": 1,
+      "status": "checked",
+      "warnings": [
+        "community-site-260: no candidate job links detected"
+      ]
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "community-site-309",
+      "sourceName": "Chemawawin Cree Nation official website",
+      "url": "https://swampycree.com/chemawawin-cree-nation/",
+      "sourceType": "isc_listed_first_nation_website",
+      "communityIds": [
+        "309"
+      ],
+      "candidatesFound": 0,
+      "reviewItems": 0,
+      "status": "checked",
+      "warnings": [
+        "community-site-309: no candidate job links detected"
+      ]
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "community-site-290",
+      "sourceName": "Sioux Valley Dakota Nation official website",
+      "url": "https://svdngovernance.com/",
+      "sourceType": "isc_listed_first_nation_website",
+      "communityIds": [
+        "290"
+      ],
+      "candidatesFound": 2,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
+    },
+    {
+      "lastAttempted": "2026-11-24",
+      "lastChecked": "2026-11-24",
+      "sourceId": "community-site-293",
+      "sourceName": "Swan Lake First Nation official website",
+      "url": "https://swanlakefirstnation.com/",
+      "sourceType": "isc_listed_first_nation_website",
+      "communityIds": [
+        "293"
+      ],
+      "candidatesFound": 5,
+      "reviewItems": 3,
+      "status": "checked",
+      "warnings": []
     }
   ]
 }
