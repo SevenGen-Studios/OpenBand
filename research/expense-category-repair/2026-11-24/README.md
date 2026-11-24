@@ -38,4 +38,6 @@ python -m unittest tests.test_expense_category_repair tests.test_capital_classif
 
 Validation includes full-dataset before/after checks for exact financial amounts, unchanged original labels/source references, unchanged non-expense fields, unchanged aggregate sums, reproducibility from the baseline, and idempotence. Browser expense, capital-spending and classification tests exercise all stored/public mappings.
 
-Prepared as a pull request; not merged or deployed by this task.
+Validation completed: all 692 Python tests and 13 browser regression scripts passed. The full suite used the pinned requirements, including RapidOCR; the initial system runtime lacked that OCR dependency.
+
+Prepared as PR #107; not merged or deployed by this task.
