@@ -7,7 +7,7 @@ funding residual. Reviewed row decisions take precedence over these rules.
 """
 import re
 
-RULE_VERSION = 'classification_v1'
+RULE_VERSION = 'classification_v2'
 
 
 def reviewed_row(row):
@@ -84,7 +84,7 @@ def classify(label, kind, *, reference=None, parent_label=None, row=None):
         if re.fullmatch(r'other(?: revenue| income)?|miscellaneous|insurance proceeds?', low):
             return decision('Other revenue', 'explicit_other_revenue')
         return decision('Unclassified', 'unknown_revenue_label', True)
-    if re.search(r'capital assets?|asset balances?|construction in progress|cash flows?', low):
+    if re.search(r'capital assets?|asset balances?|construction in progress|cash flows?|^investment in ', low):
         return decision('Operations', 'asset_or_cash_flow_requires_review', True)
     if re.search(r'transfer.*trust|settlement trust|program administration', low):
         return decision('Operations', 'program_or_trust_context_required', True)
@@ -99,10 +99,10 @@ def classify(label, kind, *, reference=None, parent_label=None, row=None):
         (r'infrastructure|public works|community development|\bcapital\b|'
          r'facilit(?:y|ies) maintenance|operations?\s*(?:&|and)\s*maintenance',
          'Infrastructure / public works', 'infrastructure_program'),
-        (r'economic|lands? management|band development|first nation owned|retail operations|commercial enterprises?',
+        (r'economic|lands? management|band development|business development|nation businesses|business enterprises|first nation owned|retail operations|commercial enterprises?',
          'Economic development', 'economic_program'),
         (r'governance|chief and council|government (?:support|services)|band government|'
-         r'^(?:band )?administration$|registration(?: and)? membership|membership',
+         r'^(?:(?:band|nation) )?administration(?: segment)?$|^admin services(?: segment)?$|registration(?: and)? membership|membership',
          'Administration', 'governance_program'),
     ]
     for pattern, category, rule in patterns:
