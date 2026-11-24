@@ -547,6 +547,7 @@ def parse_section_rows(
     rows = []
     active = False
     pending_business_label = ""
+    pending_expense_label = ""
     for page_index, page_text in enumerate(page_texts):
         page_number = (
             page_numbers[page_index]
@@ -563,6 +564,16 @@ def parse_section_rows(
             if not active:
                 continue
             label, values = line_parts(line)
+            # Segment names can wrap before the schedule/amount row. Keep the
+            # prefix only for an explicit Segment continuation, not section headings.
+            if section == "expenses":
+                if not values and label and not SKIP_LINE_RE.search(label):
+                    pending_expense_label = label
+                    continue
+                if values:
+                    if re.fullmatch(r"Segment", normalize_category(label), re.I) and pending_expense_label:
+                        label = pending_expense_label + " " + label
+                    pending_expense_label = ""
             if section == "revenue" and not values and re.match(
                 r"^(?:Income|Earnings|Loss) from government business enterprises?\s*-", line, re.I
             ):
