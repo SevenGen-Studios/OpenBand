@@ -174,6 +174,31 @@ Application Deadline: WEDNESDAY NOVEMBER 4, 2026"""
             self.assertEqual(data["listings"][0]["status"], "Open")
             self.assertEqual(report["duplicatesSuppressed"], 1)
 
+    def test_reviewed_title_correction_replaces_same_id_and_stays_unique_on_retry(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            pending = {
+                "id": "existing-finance-lead", "title": "Employment Opportunity with Centre",
+                "employer": "Example First Nation", "communityId": "1",
+                "sourceUrl": "https://example.test/job/finance", "status": "Pending verification",
+                "lastChecked": "2026-11-25",
+            }
+            reviewed = {
+                **pending, "title": "Finance Officer", "employer": "Community Centre Society",
+                "status": "Open", "description": "Open until filled.",
+                "verifiedOfficialSource": True, "extractionConfidence": "high", "manualOverride": True,
+            }
+            (root / "jobs-sources.json").write_text('{"sources": []}')
+            (root / "jobs-data.json").write_text(json.dumps({"listings": [pending]}))
+            (root / "jobs-overrides.json").write_text(json.dumps({"manualListings": [reviewed]}))
+            for _ in range(2):
+                data, report = collect(root, date(2026, 11, 25), offline=True)
+                self.assertEqual(len(data["listings"]), 1)
+                self.assertEqual(data["listings"][0]["id"], pending["id"])
+                self.assertEqual(data["listings"][0]["title"], "Finance Officer")
+                self.assertEqual(data["listings"][0]["status"], "Open")
+                (root / "jobs-data.json").write_text(json.dumps(data))
+
     def test_verified_batches_expand_without_losing_regional_scope(self):
         rows = expand_verified_batches({
             "verifiedBatches": [{

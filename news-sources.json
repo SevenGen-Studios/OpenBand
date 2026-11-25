@@ -208,11 +208,31 @@
           "url": "https://www.daystarfirstnation.ca/",
           "status": "verified",
           "adapter": "html",
-          "monitor": true,
+          "monitor": false,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
           "lastCheckedAt": "2026-11-24T22:53:41Z",
-          "lastScanStatus": "dns_error"
+          "lastScanStatus": "dns_error",
+          "monitoringNote": "Legacy site retained for provenance. Current Nation updates are monitored at https://www.daystarfn.com/."
+        },
+        {
+          "type": "Official First Nation Website",
+          "name": "Day Star First Nation current website",
+          "url": "https://www.daystarfn.com/",
+          "discoveryUrls": [
+            "https://www.daystarfn.com/blogs",
+            "https://www.daystarfn.com/blogs/15",
+            "https://www.daystarfn.com/blogs/6"
+          ],
+          "status": "verified",
+          "adapter": "html",
+          "monitor": true,
+          "official": true,
+          "sourceOrigin": "Reviewed Nation home page and November 13, 2026 member memo",
+          "lastCheckedAt": "2026-11-25T18:24:30.007432+00:00",
+          "lastScanStatus": "ok",
+          "lastSuccessfulScanAt": "2026-11-25T18:24:30.007432+00:00",
+          "identityEvidenceUrl": "https://www.daystarfn.com/api/media/file/Christmas%20memo%202026.pdf"
         }
       ],
       "discoveryQueries": [

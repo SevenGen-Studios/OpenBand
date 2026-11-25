@@ -1071,6 +1071,7 @@ def collect(
     runs_by_id.update({run["sourceId"]: run for run in source_runs})
 
     by_id = {}
+    by_stable_id = {}
     by_discovery = {}
     by_posting = {}
     duplicate_count = 0
@@ -1114,7 +1115,7 @@ def collect(
             record["warnings"] = issues
         key = listing_key(record)
         source_key = discovery_key(record)
-        existing = by_id.get(key) or by_id.get(by_discovery.get(source_key)) or by_id.get(by_posting.get(posting_key(record)))
+        existing = by_id.get(by_stable_id.get(record["id"])) or by_id.get(key) or by_id.get(by_discovery.get(source_key)) or by_id.get(by_posting.get(posting_key(record)))
         if existing:
             duplicate_count += 1
             if record.get("manualOverride") or not existing.get("manualOverride") and record.get("extractionConfidence") == "high":
@@ -1128,6 +1129,7 @@ def collect(
             by_discovery[source_key] = key
         if posting_key(record):
             by_posting[posting_key(record)] = listing_key(by_id.get(key) or existing or record)
+        by_stable_id[record["id"]] = listing_key(by_id.get(key) or existing or record)
 
     listings = sorted(by_id.values(), key=lambda row: (row.get("postedDate") or row.get("lastChecked") or "", row["title"]), reverse=True)
     active = [row for row in listings if row["status"] in ACTIVE_STATUSES]
