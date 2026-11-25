@@ -29,6 +29,16 @@ SOURCE = {
 
 
 class EventDateTests(unittest.TestCase):
+    def test_dated_annual_general_assembly_can_include_an_audit_review(self):
+        event = {"title": "Opaskwayak Annual General Assembly",
+                 "sourceUrl": "https://opaskwayak.com/events/annual-general-assembly/",
+                 "startDate": "2026-11-26", "endDate": "2026-11-26",
+                 "description": "Date: November 26, 2026, 1-5 p.m. at Veterans Hall. 2025/2026 audit review and branch updates.",
+                 "extractionMethod": "html"}
+        self.assertTrue(is_publishable_event(event, date(2026, 11, 25)))
+        self.assertFalse(is_publishable_event({**event, "description": "Audit review and branch updates."}, date(2026, 11, 25)))
+        self.assertFalse(is_publishable_event({**event, "title": "2025/2026 Audited Financial Statements"}, date(2026, 11, 25)))
+
     def test_sweetgrass_event_detail_uses_heading_and_linked_date(self):
         html = '<title>Events - Sweetgrass</title><div class="single_event_details"><h1 class="event_header">Fiddle Dance &amp; Basket Social</h1><a href="/events.html?EventDate=2026-11-20">November 20, 2026</a></div>'
         community = {"bandId": 348, "communityName": "Sweetgrass First Nation", "provinceTerritory": "SK"}
