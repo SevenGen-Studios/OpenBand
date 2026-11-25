@@ -13557,13 +13557,13 @@
         "sourceStates": {
           "news": {
             "not_registered": 18,
-            "checked": 43,
-            "source_failure_or_restriction": 8
+            "checked": 44,
+            "source_failure_or_restriction": 7
           },
           "events": {
             "not_registered": 18,
-            "checked": 43,
-            "source_failure_or_restriction": 8
+            "checked": 44,
+            "source_failure_or_restriction": 7
           },
           "jobs": {
             "checked": 69
@@ -13580,13 +13580,13 @@
         "recentNews90": 17,
         "upcomingEvents": 8,
         "verifiedProjects": 48,
-        "activeJobs": 7,
-        "allFour": 5,
+        "activeJobs": 8,
+        "allFour": 6,
         "noVerifiedInformation": 0,
         "newsRecords": 428,
-        "upcomingEventRecords": 61,
+        "upcomingEventRecords": 66,
         "projectAssociations": 77,
-        "activeJobAssociations": 32,
+        "activeJobAssociations": 34,
         "sourceStates": {
           "news": {
             "checked": 45,
@@ -13615,7 +13615,7 @@
         "activeJobs": 12,
         "allFour": 4,
         "noVerifiedInformation": 11,
-        "newsRecords": 148,
+        "newsRecords": 149,
         "upcomingEventRecords": 9,
         "projectAssociations": 72,
         "activeJobAssociations": 28,
@@ -24928,99 +24928,6 @@
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
       },
       {
-        "communityId": "435",
-        "communityName": "Blood",
-        "province": "AB",
-        "newsCount": 95,
-        "latestNews": "2026-11-23",
-        "recentNews30": 40,
-        "recentNewsWeeks30": 5,
-        "recentNews90": 88,
-        "upcomingEvents": 1,
-        "verifiedProjects": 1,
-        "activeJobs": 0,
-        "allFour": false,
-        "noVerifiedInformation": false,
-        "missingCategories": [
-          "activeJobs"
-        ],
-        "researchPriority": 1,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://www.bloodtribe.org/",
-            "name": "Blood official website",
-            "verification": "verified",
-            "lastCheck": "checked",
-            "lastAttempted": "2026-11-24T22:53:41Z",
-            "lastSuccess": "2026-11-24T22:42:28Z"
-          },
-          {
-            "category": "news",
-            "url": "https://bloodtribe.org/",
-            "name": "Blood official website",
-            "verification": "verified",
-            "lastCheck": "checked",
-            "lastAttempted": "2026-11-24T22:53:41Z",
-            "lastSuccess": "2026-11-24T22:42:27Z"
-          },
-          {
-            "category": "events",
-            "url": "https://www.bloodtribe.org/",
-            "name": "Blood official website",
-            "verification": "verified",
-            "lastCheck": "ok",
-            "lastAttempted": "2026-11-24T23:39:56Z",
-            "lastSuccess": "2026-11-24T23:39:56Z"
-          },
-          {
-            "category": "events",
-            "url": "https://bloodtribe.org/",
-            "name": "Blood official website",
-            "verification": "verified",
-            "lastCheck": "ok",
-            "lastAttempted": "2026-11-24T23:40:14Z",
-            "lastSuccess": "2026-11-24T23:40:14Z"
-          },
-          {
-            "category": "jobs",
-            "url": "https://bloodtribe.org/job-postings/",
-            "name": "Blood Tribe",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-24"
-          },
-          {
-            "category": "jobs",
-            "url": "https://bloodtribe.org/",
-            "name": "Blood official website",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-24"
-          },
-          {
-            "category": "jobs",
-            "url": "https://www.treaty7.org/job-opportunities",
-            "name": "Treaty 7 First Nations Chiefs' Association Job Opportunities",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-24"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.canada.ca/en/natural-resources-canada/news/2026/07/backgrounder-canada-invests-in-clean-energy-in-alberta-and-saskatchewan.html",
-            "name": "Natural Resources Canada",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-11-18",
-            "relationship": "See source-dated project description; ownership not inferred"
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "checked",
-          "events": "checked",
-          "jobs": "checked",
-          "projects": "not_recently_checked"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
-      {
         "communityId": "448",
         "communityName": "Dene Tha'",
         "province": "AB",
@@ -25667,11 +25574,11 @@
         "communityId": "293",
         "communityName": "Swan Lake First Nation",
         "province": "MB",
-        "newsCount": 4,
-        "latestNews": "2026-10-29",
-        "recentNews30": 1,
-        "recentNewsWeeks30": 1,
-        "recentNews90": 3,
+        "newsCount": 5,
+        "latestNews": "2026-11-18",
+        "recentNews30": 2,
+        "recentNewsWeeks30": 2,
+        "recentNews90": 4,
         "upcomingEvents": 0,
         "verifiedProjects": 1,
         "activeJobs": 1,
@@ -27657,6 +27564,97 @@
         "emptyResultMeaning": null
       },
       {
+        "communityId": "435",
+        "communityName": "Blood",
+        "province": "AB",
+        "newsCount": 95,
+        "latestNews": "2026-11-23",
+        "recentNews30": 40,
+        "recentNewsWeeks30": 5,
+        "recentNews90": 88,
+        "upcomingEvents": 6,
+        "verifiedProjects": 1,
+        "activeJobs": 2,
+        "allFour": true,
+        "noVerifiedInformation": false,
+        "missingCategories": [],
+        "researchPriority": 0,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://www.bloodtribe.org/",
+            "name": "Blood official website",
+            "verification": "verified",
+            "lastCheck": "checked",
+            "lastAttempted": "2026-11-24T22:53:41Z",
+            "lastSuccess": "2026-11-24T22:42:28Z"
+          },
+          {
+            "category": "news",
+            "url": "https://bloodtribe.org/",
+            "name": "Blood official website",
+            "verification": "verified",
+            "lastCheck": "checked",
+            "lastAttempted": "2026-11-24T22:53:41Z",
+            "lastSuccess": "2026-11-24T22:42:27Z"
+          },
+          {
+            "category": "events",
+            "url": "https://www.bloodtribe.org/",
+            "name": "Blood official website",
+            "verification": "verified",
+            "lastCheck": "ok",
+            "lastAttempted": "2026-11-24T23:39:56Z",
+            "lastSuccess": "2026-11-24T23:39:56Z"
+          },
+          {
+            "category": "events",
+            "url": "https://bloodtribe.org/",
+            "name": "Blood official website",
+            "verification": "verified",
+            "lastCheck": "ok",
+            "lastAttempted": "2026-11-24T23:40:14Z",
+            "lastSuccess": "2026-11-24T23:40:14Z"
+          },
+          {
+            "category": "jobs",
+            "url": "https://bloodtribe.org/job-postings/",
+            "name": "Blood Tribe",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-24"
+          },
+          {
+            "category": "jobs",
+            "url": "https://bloodtribe.org/",
+            "name": "Blood official website",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-24"
+          },
+          {
+            "category": "jobs",
+            "url": "https://www.treaty7.org/job-opportunities",
+            "name": "Treaty 7 First Nations Chiefs' Association Job Opportunities",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-24"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.canada.ca/en/natural-resources-canada/news/2026/07/backgrounder-canada-invests-in-clean-energy-in-alberta-and-saskatchewan.html",
+            "name": "Natural Resources Canada",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-11-18",
+            "relationship": "See source-dated project description; ownership not inferred"
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "checked",
+          "events": "checked",
+          "jobs": "checked",
+          "projects": "not_recently_checked"
+        },
+        "emptyResultMeaning": null
+      },
+      {
         "communityId": "443",
         "communityName": "Ermineskin Tribe",
         "province": "AB",
@@ -28758,21 +28756,21 @@
         "sources": [
           {
             "category": "news",
-            "url": "https://www.daystarfirstnation.ca/",
-            "name": "Day Star First Nation official website",
+            "url": "https://www.daystarfn.com/",
+            "name": "Day Star First Nation current website",
             "verification": "verified",
-            "lastCheck": "dns_error",
-            "lastAttempted": "2026-11-24T22:53:41Z",
-            "lastSuccess": null
+            "lastCheck": "ok",
+            "lastAttempted": "2026-11-25T18:24:30.007432+00:00",
+            "lastSuccess": "2026-11-25T18:24:30.007432+00:00"
           },
           {
             "category": "events",
-            "url": "https://www.daystarfirstnation.ca/",
-            "name": "Day Star First Nation official website",
+            "url": "https://www.daystarfn.com/",
+            "name": "Day Star First Nation current website",
             "verification": "verified",
-            "lastCheck": "dns_error",
-            "lastAttempted": "2026-11-24T23:33:45Z",
-            "lastSuccess": null
+            "lastCheck": "ok",
+            "lastAttempted": "2026-11-25T18:24:30.007432+00:00",
+            "lastSuccess": "2026-11-25T18:24:30.007432+00:00"
           },
           {
             "category": "jobs",
@@ -28805,8 +28803,8 @@
           }
         ],
         "sourceStateByCategory": {
-          "news": "source_failure_or_restriction",
-          "events": "source_failure_or_restriction",
+          "news": "checked",
+          "events": "checked",
           "jobs": "checked",
           "projects": "not_recently_checked"
         },
@@ -29057,8 +29055,14 @@
   },
   "followPilot": {
     "through": "2026-12-02",
-    "allFourThrough": 9,
+    "allFourThrough": 10,
     "candidates": [
+      {
+        "communityId": "435",
+        "communityName": "Blood",
+        "province": "AB",
+        "recentNewsWeeks30": 5
+      },
       {
         "communityId": "461",
         "communityName": "Mikisew Cree First Nation",
@@ -39806,6 +39810,19 @@
       "startDate": null
     },
     {
+      "category": "news",
+      "change": "added",
+      "id": "swan-lake-asl-feedback-20261118",
+      "title": "RRC Polytech seeks Swan Lake feedback on proposed ASL learning",
+      "communityIds": [
+        293
+      ],
+      "sourceUrl": "https://www.rrc.ca/indigenous/2026/11/18/american-sign-language-asl-in-swan-lake-first-nation/",
+      "status": null,
+      "publishedAt": "2026-11-18",
+      "startDate": null
+    },
+    {
       "category": "events",
       "change": "metadata_checked",
       "id": "tsuut-ina-nation-2026-10-23-0bdec43611",
@@ -44994,83 +45011,83 @@
     },
     {
       "category": "events",
-      "change": "removed_or_merged",
-      "id": "athabasca-chipewyan-first-nation-2026-10-23-ba3c41bb8c"
+      "change": "added",
+      "id": "blood-reviewed-20261203-calgary-dinner",
+      "title": "Blood Tribe Chief & Council Calgary Christmas Dinner",
+      "communityIds": [
+        435
+      ],
+      "sourceUrl": "https://bloodtribe.org/bta-in-case-you-missed-it-november-13-2026/",
+      "status": "Upcoming",
+      "publishedAt": null,
+      "startDate": "2026-12-03"
+    },
+    {
+      "category": "events",
+      "change": "added",
+      "id": "blood-reviewed-20261209-energy-session",
+      "title": "BTEST & KRI Renewable Energy Information Session",
+      "communityIds": [
+        435
+      ],
+      "sourceUrl": "https://bloodtribe.org/bta-in-case-you-missed-it-november-13-2026/",
+      "status": "Upcoming",
+      "publishedAt": null,
+      "startDate": "2026-12-09"
+    },
+    {
+      "category": "events",
+      "change": "added",
+      "id": "blood-reviewed-20261126-christmas-market",
+      "title": "Blood Tribe Economic Development Christmas Market",
+      "communityIds": [
+        435
+      ],
+      "sourceUrl": "https://bloodtribe.org/bta-in-case-you-missed-it-november-13-2026/",
+      "status": "Upcoming",
+      "publishedAt": null,
+      "startDate": "2026-11-26"
+    },
+    {
+      "category": "events",
+      "change": "added",
+      "id": "blood-reviewed-20261210-christmas-market",
+      "title": "Blood Tribe Economic Development Christmas Market",
+      "communityIds": [
+        435
+      ],
+      "sourceUrl": "https://bloodtribe.org/bta-in-case-you-missed-it-november-13-2026/",
+      "status": "Upcoming",
+      "publishedAt": null,
+      "startDate": "2026-12-10"
+    },
+    {
+      "category": "events",
+      "change": "added",
+      "id": "blood-reviewed-20261218-christmas-market",
+      "title": "Blood Tribe Economic Development Christmas Market",
+      "communityIds": [
+        435
+      ],
+      "sourceUrl": "https://bloodtribe.org/bta-in-case-you-missed-it-november-13-2026/",
+      "status": "Upcoming",
+      "publishedAt": null,
+      "startDate": "2026-12-18"
     },
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-11-299e22d992"
+      "id": "blood-2026-10-13-794e43925b"
     },
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-13-1fa7e1c768"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-15-042b5fb773"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "dene-tha-2026-10-14-1840be4bcc"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-22-62cb8b5b2c"
+      "id": "ermineskin-tribe-2026-10-21-787169e921"
     },
     {
       "category": "events",
       "change": "removed_or_merged",
       "id": "siksika-nation-2026-10-15-99bc76164b"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-19-24cca4a0b5"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-05-2bee3211ad"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-09-111467db11"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-13-3026a18e1c"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-13-c6daeacfed"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-14-2a9ee3f287"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "athabasca-chipewyan-first-nation-2026-10-21-472e027d00"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-16-21a6c27aa6"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-17-2585ba96ee"
     },
     {
       "category": "events",
@@ -45085,177 +45102,12 @@
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "blood-2026-10-08-061c825401"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-13-0520cdc53b"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "wood-mountain-first-nation-2026-10-23-d804a48ef7"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-15-b834772537"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-23-4d6dc16647"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-21-40383fea9c"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-15-5cc8e63942"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-15-d55cdebc6a"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-22-8ff9fb0336"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-14-374cb3ee94"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "athabasca-chipewyan-first-nation-2026-10-19-347ef616de"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-16-dd6c597cf4"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-07-d975d0673f"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-13-35210d28bd"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "cowessess-first-nation-2026-10-23-d03389ad9f"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-16-923159015d"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "piikani-nation-2026-10-20-8b1cd851cf"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-22-25572dc71b"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "wood-mountain-first-nation-2026-10-23-fad5a1e2da"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "piikani-nation-2026-10-07-698fc78379"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-15-f0f434de31"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-15-f4d6f508f1"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-05-a6baddf14b"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-14-5ec3d4cbb2"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-19-6366ae6dfc"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "saddle-lake-cree-nation-2026-10-23-bc7d03062d"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-07-99d11a834b"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-15-ec51b1ad3b"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "cowessess-first-nation-2026-10-21-c6aacee991"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-16-93ed8cff7b"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "piikani-nation-2026-10-06-96c5023c42"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
       "id": "ermineskin-tribe-2026-10-18-1b8f26955c"
     },
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-13-67b2c7699e"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "onion-lake-cree-nation-2026-12-17-8329b75cfa"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-06-9aee2474cb"
+      "id": "tsuut-ina-nation-2026-10-13-0c0c72f165"
     },
     {
       "category": "events",
@@ -45265,12 +45117,32 @@
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-15-fcbd0646e2"
+      "id": "ermineskin-tribe-2026-10-04-78bf1b34b4"
     },
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-04-78bf1b34b4"
+      "id": "ermineskin-tribe-2026-10-11-299e22d992"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-15-042b5fb773"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "athabasca-chipewyan-first-nation-2026-10-21-472e027d00"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "onion-lake-cree-nation-2026-12-17-8329b75cfa"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-14-5ec3d4cbb2"
     },
     {
       "category": "events",
@@ -45280,7 +45152,147 @@
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-09-de0c6e0763"
+      "id": "ermineskin-tribe-2026-10-05-e05603128e"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-05-a6baddf14b"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-17-2585ba96ee"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "siksika-nation-2026-10-16-923159015d"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "piikani-nation-2026-10-08-27df2a3b43"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "athabasca-chipewyan-first-nation-2026-10-19-347ef616de"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-16-8535da4b35"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "tsuut-ina-nation-2026-10-13-3026a18e1c"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "siksika-nation-2026-10-08-d90c1e41a2"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-08-061c825401"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "piikani-nation-2026-10-07-698fc78379"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "wood-mountain-first-nation-2026-10-23-d804a48ef7"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-15-98d0298368"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "piikani-nation-2026-10-20-8b1cd851cf"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-15-5461e30457"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-13-0520cdc53b"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-09-a0db7fb832"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-13-1fa7e1c768"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "cowessess-first-nation-2026-10-21-c6aacee991"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-09-1b944b8c1f"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-15-f0f434de31"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-07-d975d0673f"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "siksika-nation-2026-10-16-21a6c27aa6"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "wood-mountain-first-nation-2026-10-23-fad5a1e2da"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-17-3031380dd7"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-09-111467db11"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-08-6d0dd98451"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-19-24cca4a0b5"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-14-2a9ee3f287"
     },
     {
       "category": "events",
@@ -45295,112 +45307,17 @@
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-07-d813da281e"
+      "id": "tsuut-ina-nation-2026-10-21-40383fea9c"
     },
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "blood-2026-10-17-4dcea672dd"
+      "id": "tsuut-ina-nation-2026-10-22-8ff9fb0336"
     },
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "blood-2026-10-09-a0db7fb832"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-13-0c0c72f165"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-19-d0f74ed086"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "piikani-nation-2026-10-08-27df2a3b43"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-19-572c5078cd"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-13-794e43925b"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-05-e05603128e"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "piikani-nation-2026-10-06-c8b9e7f879"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-19-b1d18df685"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-15-98d0298368"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-21-787169e921"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-09-1b944b8c1f"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-15-5461e30457"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-17-3031380dd7"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-07-f8b657be00"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-08-6d0dd98451"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-07-da87229390"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-05-69fbf8eacf"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "cowessess-first-nation-2026-10-23-f1f8a5092f"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "samson-2026-10-22-8c6187b293"
+      "id": "siksika-nation-2026-10-19-6366ae6dfc"
     },
     {
       "category": "events",
@@ -45410,12 +45327,57 @@
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-16-8535da4b35"
+      "id": "siksika-nation-2026-10-13-67b2c7699e"
     },
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-08-7bdb4f6f85"
+      "id": "piikani-nation-2026-10-06-96c5023c42"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-17-4dcea672dd"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-15-b834772537"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-19-b1d18df685"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "samson-2026-10-22-8c6187b293"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "saddle-lake-cree-nation-2026-10-23-bc7d03062d"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-07-d813da281e"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "siksika-nation-2026-10-23-4d6dc16647"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-22-62cb8b5b2c"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-15-f4d6f508f1"
     },
     {
       "category": "events",
@@ -45425,7 +45387,127 @@
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-08-d90c1e41a2"
+      "id": "ermineskin-tribe-2026-10-07-f8b657be00"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "tsuut-ina-nation-2026-10-15-5cc8e63942"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "siksika-nation-2026-10-09-de0c6e0763"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "piikani-nation-2026-10-06-c8b9e7f879"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-07-99d11a834b"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-16-93ed8cff7b"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "tsuut-ina-nation-2026-10-14-374cb3ee94"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-16-dd6c597cf4"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-05-69fbf8eacf"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "siksika-nation-2026-10-19-572c5078cd"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-07-da87229390"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "cowessess-first-nation-2026-10-23-d03389ad9f"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "tsuut-ina-nation-2026-10-13-c6daeacfed"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-05-2bee3211ad"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "cowessess-first-nation-2026-10-23-f1f8a5092f"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-19-d0f74ed086"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "tsuut-ina-nation-2026-10-15-d55cdebc6a"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "siksika-nation-2026-10-15-fcbd0646e2"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "dene-tha-2026-10-14-1840be4bcc"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-15-ec51b1ad3b"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "athabasca-chipewyan-first-nation-2026-10-23-ba3c41bb8c"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "tsuut-ina-nation-2026-10-13-35210d28bd"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "siksika-nation-2026-10-22-25572dc71b"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-08-7bdb4f6f85"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "tsuut-ina-nation-2026-10-06-9aee2474cb"
     },
     {
       "category": "projects",
@@ -49279,32 +49361,6 @@
     {
       "category": "jobs",
       "change": "added",
-      "id": "job-employment-opportunity-with-kainai-transition-ce-511ecf29be",
-      "title": "Employment Opportunity with Kainai Transition Centre – Re-integration (Federal) Worker",
-      "communityIds": [
-        "435"
-      ],
-      "sourceUrl": "https://bloodtribe.org/employment-opportunity-with-kainai-transition-centre-re-integration-federal-worker/",
-      "status": "Pending verification",
-      "publishedAt": null,
-      "startDate": null
-    },
-    {
-      "category": "jobs",
-      "change": "added",
-      "id": "job-employment-opportunity-with-kainai-transition-ce-7d27ba0584",
-      "title": "Employment Opportunity with Kainai Transition Centre Society",
-      "communityIds": [
-        "435"
-      ],
-      "sourceUrl": "https://bloodtribe.org/employment-opportunity-with-kainai-transition-centre-society/",
-      "status": "Pending verification",
-      "publishedAt": null,
-      "startDate": null
-    },
-    {
-      "category": "jobs",
-      "change": "added",
       "id": "job-employment-opportunity-jordan-s-principle-servic-2fbfa8bc48",
       "title": "Employment Opportunity - Jordan’s Principle Service Coordinator",
       "communityIds": [
@@ -49608,6 +49664,32 @@
         "467"
       ],
       "sourceUrl": "https://fortmckay.bamboohr.com/careers/159",
+      "status": "Open",
+      "publishedAt": null,
+      "startDate": null
+    },
+    {
+      "category": "jobs",
+      "change": "added",
+      "id": "job-employment-opportunity-with-kainai-transition-ce-511ecf29be",
+      "title": "Re-integration (Federal) Worker",
+      "communityIds": [
+        "435"
+      ],
+      "sourceUrl": "https://bloodtribe.org/employment-opportunity-with-kainai-transition-centre-re-integration-federal-worker/",
+      "status": "Open",
+      "publishedAt": null,
+      "startDate": null
+    },
+    {
+      "category": "jobs",
+      "change": "added",
+      "id": "job-employment-opportunity-with-kainai-transition-ce-7d27ba0584",
+      "title": "Finance Officer",
+      "communityIds": [
+        "435"
+      ],
+      "sourceUrl": "https://bloodtribe.org/employment-opportunity-with-kainai-transition-centre-society/",
       "status": "Open",
       "publishedAt": null,
       "startDate": null
@@ -51248,7 +51330,22 @@
     {
       "category": "jobs",
       "change": "removed_or_merged",
-      "id": "job-lead-field-projects-with-contractors-and-consult-d2730d5342"
+      "id": "job-nisto-rivers-group-director-of-finance-270209c9eb"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-assistant-general-manager-mystery-lake-hotel-1cff4a4a87"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-case-support-worker-133bfdb600"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-community-health-representative-4da97583c2"
     },
     {
       "category": "jobs",
@@ -51263,27 +51360,7 @@
     {
       "category": "jobs",
       "change": "removed_or_merged",
-      "id": "job-director-of-human-resources-admin-analyst-person-aa12a1a344"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-counsellor-rcc-ma-320e93548c"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-general-manager-mystery-lake-hotel-f11555f0dd"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-early-childhood-educator-la-ronge-sk-education-f-e5664be163"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-counsellor-cacc-ba-c12e328784"
+      "id": "job-nadap-worker-health-services-full-time-opportuni-d3225ef281"
     },
     {
       "category": "jobs",
@@ -51293,37 +51370,12 @@
     {
       "category": "jobs",
       "change": "removed_or_merged",
-      "id": "job-community-health-representative-4da97583c2"
+      "id": "job-general-manager-mystery-lake-hotel-f11555f0dd"
     },
     {
       "category": "jobs",
       "change": "removed_or_merged",
-      "id": "job-finance-assistant-la-ronge-sk-education-full-tim-9189919c45"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-nadap-worker-health-services-full-time-opportuni-d3225ef281"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-janitor-smvs-la-ronge-sk-education-full-time-la--7452d83b2f"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-nncea-is-seeking-nihitho-language-support-worker-d469d18a83"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-director-of-finance-and-administration-employmen-a6c33e1613"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-case-support-worker-133bfdb600"
+      "id": "job-jordan-s-principle-service-coordinator-3ca28168fd"
     },
     {
       "category": "jobs",
@@ -51338,17 +51390,7 @@
     {
       "category": "jobs",
       "change": "removed_or_merged",
-      "id": "job-nisto-rivers-group-director-of-finance-270209c9eb"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
       "id": "job-community-program-assistant-human-resource-progr-6f6b134223"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-high-school-teacher-sally-ross-school-hall-lake--5762e998d5"
     },
     {
       "category": "jobs",
@@ -51358,27 +51400,7 @@
     {
       "category": "jobs",
       "change": "removed_or_merged",
-      "id": "job-jordan-s-principle-service-coordinator-3ca28168fd"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-employment-opportunity-4e030fd575"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-assistant-general-manager-mystery-lake-hotel-1cff4a4a87"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-housing-community-infrastructure-manager-109a4d6fcd"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-early-childhood-worker-la-ronge-sk-education-ful-d3ffdf4f82"
+      "id": "job-counsellor-cacc-ba-c12e328784"
     },
     {
       "category": "jobs",
@@ -51388,7 +51410,67 @@
     {
       "category": "jobs",
       "change": "removed_or_merged",
+      "id": "job-employment-opportunity-4e030fd575"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-early-childhood-educator-la-ronge-sk-education-f-e5664be163"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-lead-field-projects-with-contractors-and-consult-d2730d5342"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-finance-assistant-la-ronge-sk-education-full-tim-9189919c45"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-high-school-teacher-sally-ross-school-hall-lake--5762e998d5"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-counsellor-rcc-ma-320e93548c"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-housing-community-infrastructure-manager-109a4d6fcd"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-nncea-is-seeking-nihitho-language-support-worker-d469d18a83"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-early-childhood-worker-la-ronge-sk-education-ful-d3ffdf4f82"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-janitor-smvs-la-ronge-sk-education-full-time-la--7452d83b2f"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
       "id": "job-recreation-assistant-sports-recreation-term-oppo-7af61a4617"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-director-of-human-resources-admin-analyst-person-aa12a1a344"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-director-of-finance-and-administration-employmen-a6c33e1613"
     }
   ]
 }
