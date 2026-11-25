@@ -13545,13 +13545,13 @@
         "tracked": 69,
         "recentNews30": 12,
         "recentNews90": 28,
-        "upcomingEvents": 7,
+        "upcomingEvents": 8,
         "verifiedProjects": 69,
         "activeJobs": 28,
-        "allFour": 3,
+        "allFour": 4,
         "noVerifiedInformation": 0,
         "newsRecords": 248,
-        "upcomingEventRecords": 41,
+        "upcomingEventRecords": 42,
         "projectAssociations": 161,
         "activeJobAssociations": 115,
         "sourceStates": {
@@ -13611,13 +13611,13 @@
         "recentNews30": 8,
         "recentNews90": 12,
         "upcomingEvents": 5,
-        "verifiedProjects": 38,
+        "verifiedProjects": 42,
         "activeJobs": 12,
         "allFour": 4,
-        "noVerifiedInformation": 17,
+        "noVerifiedInformation": 15,
         "newsRecords": 142,
         "upcomingEventRecords": 8,
-        "projectAssociations": 61,
+        "projectAssociations": 66,
         "activeJobAssociations": 28,
         "sourceStates": {
           "news": {
@@ -13634,9 +13634,9 @@
             "not_registered": 23
           },
           "projects": {
-            "not_registered": 25,
+            "not_registered": 21,
             "checked": 31,
-            "not_recently_checked": 7
+            "not_recently_checked": 11
           }
         }
       }
@@ -14061,80 +14061,6 @@
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
       },
       {
-        "communityId": "270",
-        "communityName": "Little Grand Rapids",
-        "province": "MB",
-        "newsCount": 0,
-        "latestNews": null,
-        "recentNews30": 0,
-        "recentNewsWeeks30": 0,
-        "recentNews90": 0,
-        "upcomingEvents": 0,
-        "verifiedProjects": 0,
-        "activeJobs": 0,
-        "allFour": false,
-        "noVerifiedInformation": true,
-        "missingCategories": [
-          "recentNews90",
-          "upcomingEvents",
-          "verifiedProjects",
-          "activeJobs"
-        ],
-        "researchPriority": 4,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://www.littlegrandrapidsfn.ca/",
-            "name": "Little Grand Rapids official website",
-            "verification": "candidate",
-            "lastCheck": "robots_unavailable",
-            "lastAttempted": "2026-11-24T22:53:41Z",
-            "lastSuccess": null
-          },
-          {
-            "category": "news",
-            "url": "https://pimaki.ca/about-us/communities/little-grand-rapids-first-nation",
-            "name": "Little Grand Rapids attributable community source",
-            "verification": "verified",
-            "lastCheck": "checked",
-            "lastAttempted": "2026-11-24T22:53:41Z",
-            "lastSuccess": "2026-11-24T22:50:16Z"
-          },
-          {
-            "category": "events",
-            "url": "https://www.littlegrandrapidsfn.ca/",
-            "name": "Little Grand Rapids official website",
-            "verification": "candidate",
-            "lastCheck": "robots_unavailable",
-            "lastAttempted": "2026-11-24T23:45:47Z",
-            "lastSuccess": null
-          },
-          {
-            "category": "events",
-            "url": "https://pimaki.ca/about-us/communities/little-grand-rapids-first-nation",
-            "name": "Little Grand Rapids attributable community source",
-            "verification": "verified",
-            "lastCheck": "ok",
-            "lastAttempted": "2026-11-24T23:45:36Z",
-            "lastSuccess": "2026-11-24T23:45:36Z"
-          },
-          {
-            "category": "jobs",
-            "url": "https://www.littlegrandrapidsfn.ca/",
-            "name": "Little Grand Rapids official website",
-            "lastCheck": "unavailable",
-            "lastSuccess": null
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "checked",
-          "events": "checked",
-          "jobs": "source_failure_or_restriction",
-          "projects": "not_registered"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
-      {
         "communityId": "274",
         "communityName": "Little Saskatchewan",
         "province": "MB",
@@ -14392,118 +14318,6 @@
             "category": "jobs",
             "url": "https://opaskwayak.com/",
             "name": "Opaskwayak Cree Nation official website",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-24"
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "checked",
-          "events": "checked",
-          "jobs": "checked",
-          "projects": "not_registered"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
-      {
-        "communityId": "327",
-        "communityName": "Pauingassi First Nation",
-        "province": "MB",
-        "newsCount": 1,
-        "latestNews": "2026-03-16",
-        "recentNews30": 0,
-        "recentNewsWeeks30": 0,
-        "recentNews90": 0,
-        "upcomingEvents": 0,
-        "verifiedProjects": 0,
-        "activeJobs": 0,
-        "allFour": false,
-        "noVerifiedInformation": false,
-        "missingCategories": [
-          "recentNews90",
-          "upcomingEvents",
-          "verifiedProjects",
-          "activeJobs"
-        ],
-        "researchPriority": 4,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://pimaki.ca/about-us/communities/pauingassi-first-nation",
-            "name": "Pauingassi First Nation official website",
-            "verification": "verified",
-            "lastCheck": "checked",
-            "lastAttempted": "2026-11-24T22:53:41Z",
-            "lastSuccess": "2026-11-24T22:51:14Z"
-          },
-          {
-            "category": "events",
-            "url": "https://pimaki.ca/about-us/communities/pauingassi-first-nation",
-            "name": "Pauingassi First Nation official website",
-            "verification": "verified",
-            "lastCheck": "ok",
-            "lastAttempted": "2026-11-24T23:46:54Z",
-            "lastSuccess": "2026-11-24T23:46:54Z"
-          },
-          {
-            "category": "jobs",
-            "url": "https://pimaki.ca/about-us/communities/pauingassi-first-nation/",
-            "name": "Pauingassi First Nation official website",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-24"
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "checked",
-          "events": "checked",
-          "jobs": "checked",
-          "projects": "not_registered"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
-      {
-        "communityId": "277",
-        "communityName": "Poplar River First Nation",
-        "province": "MB",
-        "newsCount": 0,
-        "latestNews": null,
-        "recentNews30": 0,
-        "recentNewsWeeks30": 0,
-        "recentNews90": 0,
-        "upcomingEvents": 0,
-        "verifiedProjects": 0,
-        "activeJobs": 0,
-        "allFour": false,
-        "noVerifiedInformation": true,
-        "missingCategories": [
-          "recentNews90",
-          "upcomingEvents",
-          "verifiedProjects",
-          "activeJobs"
-        ],
-        "researchPriority": 4,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://www.prfn.ca/",
-            "name": "Poplar River First Nation official website",
-            "verification": "verified",
-            "lastCheck": "checked",
-            "lastAttempted": "2026-11-24T22:53:41Z",
-            "lastSuccess": "2026-11-24T22:51:15Z"
-          },
-          {
-            "category": "events",
-            "url": "https://www.prfn.ca/",
-            "name": "Poplar River First Nation official website",
-            "verification": "verified",
-            "lastCheck": "ok",
-            "lastAttempted": "2026-11-24T23:48:05Z",
-            "lastSuccess": "2026-11-24T23:48:05Z"
-          },
-          {
-            "category": "jobs",
-            "url": "https://www.prfn.ca/",
-            "name": "Poplar River First Nation official website",
             "lastCheck": "checked",
             "lastSuccess": "2026-11-24"
           }
@@ -17199,79 +17013,6 @@
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
       },
       {
-        "communityId": "267",
-        "communityName": "Bloodvein",
-        "province": "MB",
-        "newsCount": 2,
-        "latestNews": "2026-10-09",
-        "recentNews30": 0,
-        "recentNewsWeeks30": 0,
-        "recentNews90": 1,
-        "upcomingEvents": 0,
-        "verifiedProjects": 0,
-        "activeJobs": 0,
-        "allFour": false,
-        "noVerifiedInformation": false,
-        "missingCategories": [
-          "upcomingEvents",
-          "verifiedProjects",
-          "activeJobs"
-        ],
-        "researchPriority": 3,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://pimaki.ca/about-us/communities/bloodvein-river-first-nation",
-            "name": "Bloodvein official website",
-            "verification": "verified",
-            "lastCheck": "checked",
-            "lastAttempted": "2026-11-24T22:53:41Z",
-            "lastSuccess": "2026-11-24T22:47:40Z"
-          },
-          {
-            "category": "news",
-            "url": "https://manitobachiefs.com/press_releases/chief-lisa-young-invites-media-to-bloodvein-river-first-nation-to-discuss-moose-stewardship-community-safety-and-checkpoint/",
-            "name": "Assembly of Manitoba Chiefs",
-            "verification": "verified",
-            "lastCheck": "checked",
-            "lastAttempted": "2026-11-24T22:53:41Z",
-            "lastSuccess": "2026-11-24T22:47:36Z"
-          },
-          {
-            "category": "events",
-            "url": "https://pimaki.ca/about-us/communities/bloodvein-river-first-nation",
-            "name": "Bloodvein official website",
-            "verification": "verified",
-            "lastCheck": "ok",
-            "lastAttempted": "2026-11-24T23:44:22Z",
-            "lastSuccess": "2026-11-24T23:44:22Z"
-          },
-          {
-            "category": "events",
-            "url": "https://manitobachiefs.com/press_releases/chief-lisa-young-invites-media-to-bloodvein-river-first-nation-to-discuss-moose-stewardship-community-safety-and-checkpoint/",
-            "name": "Assembly of Manitoba Chiefs",
-            "verification": "verified",
-            "lastCheck": "ok",
-            "lastAttempted": "2026-11-24T23:44:23Z",
-            "lastSuccess": "2026-11-24T23:44:23Z"
-          },
-          {
-            "category": "jobs",
-            "url": "https://pimaki.ca/about-us/communities/bloodvein-river-first-nation/",
-            "name": "Bloodvein official website",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-24"
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "checked",
-          "events": "checked",
-          "jobs": "checked",
-          "projects": "not_registered"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
-      {
         "communityId": "301",
         "communityName": "Bunibonibee Cree Nation",
         "province": "MB",
@@ -17916,6 +17657,87 @@
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
       },
       {
+        "communityId": "270",
+        "communityName": "Little Grand Rapids",
+        "province": "MB",
+        "newsCount": 0,
+        "latestNews": null,
+        "recentNews30": 0,
+        "recentNewsWeeks30": 0,
+        "recentNews90": 0,
+        "upcomingEvents": 0,
+        "verifiedProjects": 1,
+        "activeJobs": 0,
+        "allFour": false,
+        "noVerifiedInformation": false,
+        "missingCategories": [
+          "recentNews90",
+          "upcomingEvents",
+          "activeJobs"
+        ],
+        "researchPriority": 3,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://www.littlegrandrapidsfn.ca/",
+            "name": "Little Grand Rapids official website",
+            "verification": "candidate",
+            "lastCheck": "robots_unavailable",
+            "lastAttempted": "2026-11-24T22:53:41Z",
+            "lastSuccess": null
+          },
+          {
+            "category": "news",
+            "url": "https://pimaki.ca/about-us/communities/little-grand-rapids-first-nation",
+            "name": "Little Grand Rapids attributable community source",
+            "verification": "verified",
+            "lastCheck": "checked",
+            "lastAttempted": "2026-11-24T22:53:41Z",
+            "lastSuccess": "2026-11-24T22:50:16Z"
+          },
+          {
+            "category": "events",
+            "url": "https://www.littlegrandrapidsfn.ca/",
+            "name": "Little Grand Rapids official website",
+            "verification": "candidate",
+            "lastCheck": "robots_unavailable",
+            "lastAttempted": "2026-11-24T23:45:47Z",
+            "lastSuccess": null
+          },
+          {
+            "category": "events",
+            "url": "https://pimaki.ca/about-us/communities/little-grand-rapids-first-nation",
+            "name": "Little Grand Rapids attributable community source",
+            "verification": "verified",
+            "lastCheck": "ok",
+            "lastAttempted": "2026-11-24T23:45:36Z",
+            "lastSuccess": "2026-11-24T23:45:36Z"
+          },
+          {
+            "category": "jobs",
+            "url": "https://www.littlegrandrapidsfn.ca/",
+            "name": "Little Grand Rapids official website",
+            "lastCheck": "unavailable",
+            "lastSuccess": null
+          },
+          {
+            "category": "projects",
+            "url": "https://www.canada.ca/en/indigenous-northern-affairs/news/2016/01/government-of-canada-signs-school-infrastructure-partnership-understanding-with-four-manitoba-first-nations.html",
+            "name": "Indigenous and Northern Affairs Canada",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-11-25",
+            "relationship": "The four Nations were named partners and intended beneficiaries of school infrastructure planning."
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "checked",
+          "events": "checked",
+          "jobs": "source_failure_or_restriction",
+          "projects": "not_recently_checked"
+        },
+        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
+      },
+      {
         "communityId": "287",
         "communityName": "Long Plain",
         "province": "MB",
@@ -18380,6 +18202,69 @@
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
       },
       {
+        "communityId": "327",
+        "communityName": "Pauingassi First Nation",
+        "province": "MB",
+        "newsCount": 1,
+        "latestNews": "2026-03-16",
+        "recentNews30": 0,
+        "recentNewsWeeks30": 0,
+        "recentNews90": 0,
+        "upcomingEvents": 0,
+        "verifiedProjects": 1,
+        "activeJobs": 0,
+        "allFour": false,
+        "noVerifiedInformation": false,
+        "missingCategories": [
+          "recentNews90",
+          "upcomingEvents",
+          "activeJobs"
+        ],
+        "researchPriority": 3,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://pimaki.ca/about-us/communities/pauingassi-first-nation",
+            "name": "Pauingassi First Nation official website",
+            "verification": "verified",
+            "lastCheck": "checked",
+            "lastAttempted": "2026-11-24T22:53:41Z",
+            "lastSuccess": "2026-11-24T22:51:14Z"
+          },
+          {
+            "category": "events",
+            "url": "https://pimaki.ca/about-us/communities/pauingassi-first-nation",
+            "name": "Pauingassi First Nation official website",
+            "verification": "verified",
+            "lastCheck": "ok",
+            "lastAttempted": "2026-11-24T23:46:54Z",
+            "lastSuccess": "2026-11-24T23:46:54Z"
+          },
+          {
+            "category": "jobs",
+            "url": "https://pimaki.ca/about-us/communities/pauingassi-first-nation/",
+            "name": "Pauingassi First Nation official website",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-24"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.canada.ca/en/indigenous-northern-affairs/news/2016/01/government-of-canada-signs-school-infrastructure-partnership-understanding-with-four-manitoba-first-nations.html",
+            "name": "Indigenous and Northern Affairs Canada",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-11-25",
+            "relationship": "The four Nations were named partners and intended beneficiaries of school infrastructure planning."
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "checked",
+          "events": "checked",
+          "jobs": "checked",
+          "projects": "not_recently_checked"
+        },
+        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
+      },
+      {
         "communityId": "272",
         "communityName": "Pinaymootang First Nation",
         "province": "MB",
@@ -18431,6 +18316,77 @@
           "news": "checked",
           "events": "checked",
           "jobs": "not_registered",
+          "projects": "not_recently_checked"
+        },
+        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
+      },
+      {
+        "communityId": "277",
+        "communityName": "Poplar River First Nation",
+        "province": "MB",
+        "newsCount": 0,
+        "latestNews": null,
+        "recentNews30": 0,
+        "recentNewsWeeks30": 0,
+        "recentNews90": 0,
+        "upcomingEvents": 0,
+        "verifiedProjects": 2,
+        "activeJobs": 0,
+        "allFour": false,
+        "noVerifiedInformation": false,
+        "missingCategories": [
+          "recentNews90",
+          "upcomingEvents",
+          "activeJobs"
+        ],
+        "researchPriority": 3,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://www.prfn.ca/",
+            "name": "Poplar River First Nation official website",
+            "verification": "verified",
+            "lastCheck": "checked",
+            "lastAttempted": "2026-11-24T22:53:41Z",
+            "lastSuccess": "2026-11-24T22:51:15Z"
+          },
+          {
+            "category": "events",
+            "url": "https://www.prfn.ca/",
+            "name": "Poplar River First Nation official website",
+            "verification": "verified",
+            "lastCheck": "ok",
+            "lastAttempted": "2026-11-24T23:48:05Z",
+            "lastSuccess": "2026-11-24T23:48:05Z"
+          },
+          {
+            "category": "jobs",
+            "url": "https://www.prfn.ca/",
+            "name": "Poplar River First Nation official website",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-24"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.canada.ca/en/indigenous-northern-affairs/news/2016/01/government-of-canada-signs-school-infrastructure-partnership-understanding-with-four-manitoba-first-nations.html",
+            "name": "Indigenous and Northern Affairs Canada",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-11-25",
+            "relationship": "The four Nations were named partners and intended beneficiaries of school infrastructure planning."
+          },
+          {
+            "category": "projects",
+            "url": "https://www.canada.ca/en/indigenous-services-canada/news/2022/10/new-school-provides-education-closer-to-home-for-high-school-students-in-poplar-river-first-nation.html",
+            "name": "Indigenous Services Canada",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-11-25",
+            "relationship": "School facility serving Poplar River First Nation."
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "checked",
+          "events": "checked",
+          "jobs": "checked",
           "projects": "not_recently_checked"
         },
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
@@ -22423,6 +22379,86 @@
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
       },
       {
+        "communityId": "267",
+        "communityName": "Bloodvein",
+        "province": "MB",
+        "newsCount": 2,
+        "latestNews": "2026-10-09",
+        "recentNews30": 0,
+        "recentNewsWeeks30": 0,
+        "recentNews90": 1,
+        "upcomingEvents": 0,
+        "verifiedProjects": 1,
+        "activeJobs": 0,
+        "allFour": false,
+        "noVerifiedInformation": false,
+        "missingCategories": [
+          "upcomingEvents",
+          "activeJobs"
+        ],
+        "researchPriority": 2,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://pimaki.ca/about-us/communities/bloodvein-river-first-nation",
+            "name": "Bloodvein official website",
+            "verification": "verified",
+            "lastCheck": "checked",
+            "lastAttempted": "2026-11-24T22:53:41Z",
+            "lastSuccess": "2026-11-24T22:47:40Z"
+          },
+          {
+            "category": "news",
+            "url": "https://manitobachiefs.com/press_releases/chief-lisa-young-invites-media-to-bloodvein-river-first-nation-to-discuss-moose-stewardship-community-safety-and-checkpoint/",
+            "name": "Assembly of Manitoba Chiefs",
+            "verification": "verified",
+            "lastCheck": "checked",
+            "lastAttempted": "2026-11-24T22:53:41Z",
+            "lastSuccess": "2026-11-24T22:47:36Z"
+          },
+          {
+            "category": "events",
+            "url": "https://pimaki.ca/about-us/communities/bloodvein-river-first-nation",
+            "name": "Bloodvein official website",
+            "verification": "verified",
+            "lastCheck": "ok",
+            "lastAttempted": "2026-11-24T23:44:22Z",
+            "lastSuccess": "2026-11-24T23:44:22Z"
+          },
+          {
+            "category": "events",
+            "url": "https://manitobachiefs.com/press_releases/chief-lisa-young-invites-media-to-bloodvein-river-first-nation-to-discuss-moose-stewardship-community-safety-and-checkpoint/",
+            "name": "Assembly of Manitoba Chiefs",
+            "verification": "verified",
+            "lastCheck": "ok",
+            "lastAttempted": "2026-11-24T23:44:23Z",
+            "lastSuccess": "2026-11-24T23:44:23Z"
+          },
+          {
+            "category": "jobs",
+            "url": "https://pimaki.ca/about-us/communities/bloodvein-river-first-nation/",
+            "name": "Bloodvein official website",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-24"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.canada.ca/en/indigenous-northern-affairs/news/2016/01/government-of-canada-signs-school-infrastructure-partnership-understanding-with-four-manitoba-first-nations.html",
+            "name": "Indigenous and Northern Affairs Canada",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-11-25",
+            "relationship": "The four Nations were named partners and intended beneficiaries of school infrastructure planning."
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "checked",
+          "events": "checked",
+          "jobs": "checked",
+          "projects": "not_recently_checked"
+        },
+        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
+      },
+      {
         "communityId": "262",
         "communityName": "Fort Alexander",
         "province": "MB",
@@ -25749,182 +25785,6 @@
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
       },
       {
-        "communityId": "361",
-        "communityName": "Cowessess First Nation",
-        "province": "SK",
-        "newsCount": 39,
-        "latestNews": "2026-11-23",
-        "recentNews30": 12,
-        "recentNewsWeeks30": 5,
-        "recentNews90": 25,
-        "upcomingEvents": 0,
-        "verifiedProjects": 3,
-        "activeJobs": 1,
-        "allFour": false,
-        "noVerifiedInformation": false,
-        "missingCategories": [
-          "upcomingEvents"
-        ],
-        "researchPriority": 1,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://cowessessfn.com/",
-            "name": "Cowessess First Nation",
-            "verification": "verified",
-            "lastCheck": "checked",
-            "lastAttempted": "2026-11-24T22:53:41Z",
-            "lastSuccess": "2026-11-24T22:37:52Z"
-          },
-          {
-            "category": "news",
-            "url": "https://www.facebook.com/cowessessfn",
-            "name": "Cowessess First Nation",
-            "verification": "verified",
-            "lastCheck": "authorized_api_required",
-            "lastAttempted": "2026-11-24T22:53:41Z",
-            "lastSuccess": null
-          },
-          {
-            "category": "news",
-            "url": "https://cowessessfn.com/entities/cowessess-ventures/",
-            "name": "Cowessess Economic Development",
-            "verification": "verified",
-            "lastCheck": "checked",
-            "lastAttempted": "2026-11-24T22:53:41Z",
-            "lastSuccess": "2026-11-24T22:37:52Z"
-          },
-          {
-            "category": "news",
-            "url": "https://cowessessfn.com/news/paradise-radio/",
-            "name": "Cowessess Paradise Radio 98.1 FM",
-            "verification": "verified",
-            "lastCheck": "checked",
-            "lastAttempted": "2026-11-24T22:53:41Z",
-            "lastSuccess": "2026-11-24T22:37:51Z"
-          },
-          {
-            "category": "events",
-            "url": "https://cowessessfn.com/",
-            "name": "Cowessess First Nation",
-            "verification": "verified",
-            "lastCheck": "ok",
-            "lastAttempted": "2026-11-24T23:34:10Z",
-            "lastSuccess": "2026-11-24T23:34:10Z"
-          },
-          {
-            "category": "events",
-            "url": "https://www.facebook.com/cowessessfn",
-            "name": "Cowessess First Nation",
-            "verification": "verified",
-            "lastCheck": "authorized_api_required",
-            "lastAttempted": "2026-11-03T03:18:45Z",
-            "lastSuccess": null
-          },
-          {
-            "category": "events",
-            "url": "https://cowessessfn.com/entities/cowessess-ventures/",
-            "name": "Cowessess Economic Development",
-            "verification": "verified",
-            "lastCheck": "ok",
-            "lastAttempted": "2026-11-24T23:34:08Z",
-            "lastSuccess": "2026-11-24T23:34:08Z"
-          },
-          {
-            "category": "events",
-            "url": "https://cowessessfn.com/news/paradise-radio/",
-            "name": "Cowessess Paradise Radio 98.1 FM",
-            "verification": "verified",
-            "lastCheck": "ok",
-            "lastAttempted": "2026-11-24T23:34:08Z",
-            "lastSuccess": "2026-11-24T23:34:08Z"
-          },
-          {
-            "category": "jobs",
-            "url": "https://cowessessfn.com/careers/",
-            "name": "Cowessess First Nation Careers",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-24"
-          },
-          {
-            "category": "jobs",
-            "url": "https://cowessessfn.com",
-            "name": "Cowessess First Nation official website",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-24"
-          },
-          {
-            "category": "jobs",
-            "url": "https://www.facebook.com/cowessessfn",
-            "name": "Cowessess First Nation official Facebook page",
-            "lastCheck": "authorized_api_required",
-            "lastSuccess": null
-          },
-          {
-            "category": "jobs",
-            "url": "https://www.fsin.ca/employment-opportunities",
-            "name": "FSIN Employment Opportunities",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-24"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.saskpower.com/about-us/our-company/blog/2024/bekevar-wind-facility-now-online",
-            "name": "SaskPower",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-08-11",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.budget.canada.ca/2024/report-rapport/chap4-en.html",
-            "name": "Government of Canada Budget 2024",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-08-11",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.enbridge.com/Projects-and-Infrastructure/Projects/Seven-Stars-Energy-Project",
-            "name": "Enbridge — project overview and 2029 in-service target",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-10-29",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.saskpower.com/our-power-future/infrastructure-projects/construction-projects/planning-and-construction-projects/seven-stars-wind-energy-project",
-            "name": "SaskPower — partners, ownership and late-2028 estimate",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-10-29",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.enbridge.com/projects-and-infrastructure/public-awareness/seven-stars-rm-griffin-and-saskatchewan-provincial-approvals",
-            "name": "Enbridge — approvals and final investment decision requirement",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-10-29",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.cmhc-schl.gc.ca/media-newsroom/news-releases/2024/federal-government-invests-affordable-homes-saskatchewan",
-            "name": "Canada Mortgage and Housing Corporation",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-08-10",
-            "relationship": "See source-dated project description; ownership not inferred"
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "checked",
-          "events": "checked",
-          "jobs": "checked",
-          "projects": "not_recently_checked"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
-      {
         "communityId": "389",
         "communityName": "Day Star First Nation",
         "province": "SK",
@@ -28736,6 +28596,180 @@
         "emptyResultMeaning": null
       },
       {
+        "communityId": "361",
+        "communityName": "Cowessess First Nation",
+        "province": "SK",
+        "newsCount": 39,
+        "latestNews": "2026-11-23",
+        "recentNews30": 12,
+        "recentNewsWeeks30": 5,
+        "recentNews90": 25,
+        "upcomingEvents": 1,
+        "verifiedProjects": 3,
+        "activeJobs": 1,
+        "allFour": true,
+        "noVerifiedInformation": false,
+        "missingCategories": [],
+        "researchPriority": 0,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://cowessessfn.com/",
+            "name": "Cowessess First Nation",
+            "verification": "verified",
+            "lastCheck": "checked",
+            "lastAttempted": "2026-11-24T22:53:41Z",
+            "lastSuccess": "2026-11-24T22:37:52Z"
+          },
+          {
+            "category": "news",
+            "url": "https://www.facebook.com/cowessessfn",
+            "name": "Cowessess First Nation",
+            "verification": "verified",
+            "lastCheck": "authorized_api_required",
+            "lastAttempted": "2026-11-24T22:53:41Z",
+            "lastSuccess": null
+          },
+          {
+            "category": "news",
+            "url": "https://cowessessfn.com/entities/cowessess-ventures/",
+            "name": "Cowessess Economic Development",
+            "verification": "verified",
+            "lastCheck": "checked",
+            "lastAttempted": "2026-11-24T22:53:41Z",
+            "lastSuccess": "2026-11-24T22:37:52Z"
+          },
+          {
+            "category": "news",
+            "url": "https://cowessessfn.com/news/paradise-radio/",
+            "name": "Cowessess Paradise Radio 98.1 FM",
+            "verification": "verified",
+            "lastCheck": "checked",
+            "lastAttempted": "2026-11-24T22:53:41Z",
+            "lastSuccess": "2026-11-24T22:37:51Z"
+          },
+          {
+            "category": "events",
+            "url": "https://cowessessfn.com/",
+            "name": "Cowessess First Nation",
+            "verification": "verified",
+            "lastCheck": "ok",
+            "lastAttempted": "2026-11-24T23:34:10Z",
+            "lastSuccess": "2026-11-24T23:34:10Z"
+          },
+          {
+            "category": "events",
+            "url": "https://www.facebook.com/cowessessfn",
+            "name": "Cowessess First Nation",
+            "verification": "verified",
+            "lastCheck": "authorized_api_required",
+            "lastAttempted": "2026-11-03T03:18:45Z",
+            "lastSuccess": null
+          },
+          {
+            "category": "events",
+            "url": "https://cowessessfn.com/entities/cowessess-ventures/",
+            "name": "Cowessess Economic Development",
+            "verification": "verified",
+            "lastCheck": "ok",
+            "lastAttempted": "2026-11-24T23:34:08Z",
+            "lastSuccess": "2026-11-24T23:34:08Z"
+          },
+          {
+            "category": "events",
+            "url": "https://cowessessfn.com/news/paradise-radio/",
+            "name": "Cowessess Paradise Radio 98.1 FM",
+            "verification": "verified",
+            "lastCheck": "ok",
+            "lastAttempted": "2026-11-24T23:34:08Z",
+            "lastSuccess": "2026-11-24T23:34:08Z"
+          },
+          {
+            "category": "jobs",
+            "url": "https://cowessessfn.com/careers/",
+            "name": "Cowessess First Nation Careers",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-24"
+          },
+          {
+            "category": "jobs",
+            "url": "https://cowessessfn.com",
+            "name": "Cowessess First Nation official website",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-24"
+          },
+          {
+            "category": "jobs",
+            "url": "https://www.facebook.com/cowessessfn",
+            "name": "Cowessess First Nation official Facebook page",
+            "lastCheck": "authorized_api_required",
+            "lastSuccess": null
+          },
+          {
+            "category": "jobs",
+            "url": "https://www.fsin.ca/employment-opportunities",
+            "name": "FSIN Employment Opportunities",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-24"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.saskpower.com/about-us/our-company/blog/2024/bekevar-wind-facility-now-online",
+            "name": "SaskPower",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-08-11",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.budget.canada.ca/2024/report-rapport/chap4-en.html",
+            "name": "Government of Canada Budget 2024",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-08-11",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.enbridge.com/Projects-and-Infrastructure/Projects/Seven-Stars-Energy-Project",
+            "name": "Enbridge — project overview and 2029 in-service target",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-10-29",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.saskpower.com/our-power-future/infrastructure-projects/construction-projects/planning-and-construction-projects/seven-stars-wind-energy-project",
+            "name": "SaskPower — partners, ownership and late-2028 estimate",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-10-29",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.enbridge.com/projects-and-infrastructure/public-awareness/seven-stars-rm-griffin-and-saskatchewan-provincial-approvals",
+            "name": "Enbridge — approvals and final investment decision requirement",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-10-29",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.cmhc-schl.gc.ca/media-newsroom/news-releases/2024/federal-government-invests-affordable-homes-saskatchewan",
+            "name": "Canada Mortgage and Housing Corporation",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-08-10",
+            "relationship": "See source-dated project description; ownership not inferred"
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "checked",
+          "events": "checked",
+          "jobs": "checked",
+          "projects": "not_recently_checked"
+        },
+        "emptyResultMeaning": null
+      },
+      {
         "communityId": "362",
         "communityName": "Kahkewistahaw First Nation",
         "province": "SK",
@@ -28980,13 +29014,19 @@
   },
   "followPilot": {
     "through": "2026-12-02",
-    "allFourThrough": 7,
+    "allFourThrough": 8,
     "candidates": [
       {
         "communityId": "461",
         "communityName": "Mikisew Cree First Nation",
         "province": "AB",
         "recentNewsWeeks30": 2
+      },
+      {
+        "communityId": "361",
+        "communityName": "Cowessess First Nation",
+        "province": "SK",
+        "recentNewsWeeks30": 5
       },
       {
         "communityId": "362",
@@ -44729,313 +44769,16 @@
     },
     {
       "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-15-f0f434de31"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-16-21a6c27aa6"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-13-794e43925b"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-20-4624e0c017"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-09-111467db11"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "cowessess-first-nation-2026-10-21-c6aacee991"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-23-4d6dc16647"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "samson-2026-10-22-8c6187b293"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-17-3031380dd7"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "saddle-lake-cree-nation-2026-10-23-bc7d03062d"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-22-62cb8b5b2c"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "piikani-nation-2026-10-08-27df2a3b43"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "athabasca-chipewyan-first-nation-2026-10-19-347ef616de"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-20-3651bc0426"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "dene-tha-2026-10-14-1840be4bcc"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-17-1341d5c2f6"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-21-40383fea9c"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-13-35210d28bd"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-13-3026a18e1c"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-14-2a9ee3f287"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-17-4dcea672dd"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-13-c6daeacfed"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-15-042b5fb773"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "onion-lake-cree-nation-2026-12-17-8329b75cfa"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-07-d813da281e"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-19-6366ae6dfc"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-16-8535da4b35"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "cowessess-first-nation-2026-10-23-d03389ad9f"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-15-fcbd0646e2"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "wood-mountain-first-nation-2026-10-23-fad5a1e2da"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-14-545ba52e69"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-19-24cca4a0b5"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-13-1fa7e1c768"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-07-f8b657be00"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "wood-mountain-first-nation-2026-10-23-d804a48ef7"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-05-2bee3211ad"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-15-5461e30457"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-15-98d0298368"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-07-d975d0673f"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-22-8ff9fb0336"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "athabasca-chipewyan-first-nation-2026-10-23-ba3c41bb8c"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "piikani-nation-2026-10-07-698fc78379"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-05-a6baddf14b"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-13-67b2c7699e"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "piikani-nation-2026-10-06-96c5023c42"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-15-d55cdebc6a"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-15-ec51b1ad3b"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-09-a0db7fb832"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "athabasca-chipewyan-first-nation-2026-10-21-472e027d00"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-08-6d0dd98451"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-16-93ed8cff7b"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-07-da87229390"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-04-78bf1b34b4"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-06-c3ca794051"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-09-1b944b8c1f"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-14-5ec3d4cbb2"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-16-923159015d"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-14-726a0ca508"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-08-061c825401"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-15-99bc76164b"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "blood-2026-10-19-b1d18df685"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-05-e05603128e"
+      "change": "added",
+      "id": "cowessess-cree-language-class-20261204",
+      "title": "Cree Language Class – opening session",
+      "communityIds": [
+        361
+      ],
+      "sourceUrl": "https://cowessessfn.com/weekly-cree-language-classes/",
+      "status": "Upcoming",
+      "publishedAt": null,
+      "startDate": "2026-12-04"
     },
     {
       "category": "events",
@@ -45045,12 +44788,17 @@
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-22-25572dc71b"
+      "id": "ermineskin-tribe-2026-10-15-b834772537"
     },
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-07-99d11a834b"
+      "id": "blood-2026-10-13-794e43925b"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-20-3651bc0426"
     },
     {
       "category": "events",
@@ -45060,37 +44808,12 @@
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "blood-2026-10-15-f4d6f508f1"
+      "id": "ermineskin-tribe-2026-10-09-111467db11"
     },
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-08-d90c1e41a2"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-13-0520cdc53b"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-14-374cb3ee94"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-19-d0f74ed086"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "siksika-nation-2026-10-19-572c5078cd"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-21-787169e921"
+      "id": "ermineskin-tribe-2026-10-14-726a0ca508"
     },
     {
       "category": "events",
@@ -45100,12 +44823,32 @@
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-15-b834772537"
+      "id": "ermineskin-tribe-2026-10-05-e05603128e"
     },
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-13-0c0c72f165"
+      "id": "piikani-nation-2026-10-08-27df2a3b43"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "tsuut-ina-nation-2026-10-14-545ba52e69"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-15-5461e30457"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-19-24cca4a0b5"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-08-061c825401"
     },
     {
       "category": "events",
@@ -45120,37 +44863,27 @@
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-18-1b8f26955c"
+      "id": "tsuut-ina-nation-2026-10-13-c6daeacfed"
     },
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "piikani-nation-2026-10-20-8b1cd851cf"
+      "id": "siksika-nation-2026-10-22-25572dc71b"
     },
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-08-7bdb4f6f85"
+      "id": "saddle-lake-cree-nation-2026-10-23-bc7d03062d"
     },
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-05-69fbf8eacf"
+      "id": "tsuut-ina-nation-2026-10-14-374cb3ee94"
     },
     {
       "category": "events",
       "change": "removed_or_merged",
-      "id": "tsuut-ina-nation-2026-10-15-5cc8e63942"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-11-299e22d992"
-    },
-    {
-      "category": "events",
-      "change": "removed_or_merged",
-      "id": "ermineskin-tribe-2026-10-17-2585ba96ee"
+      "id": "ermineskin-tribe-2026-10-15-ec51b1ad3b"
     },
     {
       "category": "events",
@@ -45160,7 +44893,327 @@
     {
       "category": "events",
       "change": "removed_or_merged",
+      "id": "siksika-nation-2026-10-15-fcbd0646e2"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "tsuut-ina-nation-2026-10-21-40383fea9c"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-07-d813da281e"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-08-6d0dd98451"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-18-1b8f26955c"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "athabasca-chipewyan-first-nation-2026-10-19-347ef616de"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "dene-tha-2026-10-14-1840be4bcc"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "siksika-nation-2026-10-15-99bc76164b"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-05-a6baddf14b"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-17-3031380dd7"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-13-0520cdc53b"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "siksika-nation-2026-10-13-67b2c7699e"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "tsuut-ina-nation-2026-10-20-4624e0c017"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "wood-mountain-first-nation-2026-10-23-d804a48ef7"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "siksika-nation-2026-10-08-d90c1e41a2"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-07-f8b657be00"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-15-042b5fb773"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-17-2585ba96ee"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-04-78bf1b34b4"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-05-69fbf8eacf"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-16-93ed8cff7b"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "athabasca-chipewyan-first-nation-2026-10-23-ba3c41bb8c"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-09-a0db7fb832"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-07-99d11a834b"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "onion-lake-cree-nation-2026-12-17-8329b75cfa"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "samson-2026-10-22-8c6187b293"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-15-f4d6f508f1"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "athabasca-chipewyan-first-nation-2026-10-21-472e027d00"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-09-1b944b8c1f"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-19-d0f74ed086"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "tsuut-ina-nation-2026-10-22-8ff9fb0336"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "siksika-nation-2026-10-23-4d6dc16647"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "siksika-nation-2026-10-19-6366ae6dfc"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-14-5ec3d4cbb2"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-14-2a9ee3f287"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-17-1341d5c2f6"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-15-98d0298368"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-17-4dcea672dd"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-22-62cb8b5b2c"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "wood-mountain-first-nation-2026-10-23-fad5a1e2da"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-13-1fa7e1c768"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-08-7bdb4f6f85"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "piikani-nation-2026-10-07-698fc78379"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "tsuut-ina-nation-2026-10-15-d55cdebc6a"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "siksika-nation-2026-10-19-572c5078cd"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-16-8535da4b35"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-07-da87229390"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "tsuut-ina-nation-2026-10-13-35210d28bd"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "blood-2026-10-19-b1d18df685"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "piikani-nation-2026-10-20-8b1cd851cf"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-15-f0f434de31"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "siksika-nation-2026-10-16-21a6c27aa6"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "siksika-nation-2026-10-16-923159015d"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
       "id": "siksika-nation-2026-10-09-de0c6e0763"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "tsuut-ina-nation-2026-10-06-c3ca794051"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "piikani-nation-2026-10-06-96c5023c42"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-05-2bee3211ad"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "cowessess-first-nation-2026-10-23-d03389ad9f"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "tsuut-ina-nation-2026-10-15-5cc8e63942"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "tsuut-ina-nation-2026-10-13-3026a18e1c"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "tsuut-ina-nation-2026-10-13-0c0c72f165"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "cowessess-first-nation-2026-10-21-c6aacee991"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-21-787169e921"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-11-299e22d992"
+    },
+    {
+      "category": "events",
+      "change": "removed_or_merged",
+      "id": "ermineskin-tribe-2026-10-07-d975d0673f"
     },
     {
       "category": "projects",
@@ -46100,6 +46153,35 @@
         "272"
       ],
       "sourceUrl": "https://www.canada.ca/en/indigenous-services-canada/news/2019/05/monthly-progress-update-through-april-2019-on-long-term-drinking-water-advisories-on-public-systems-on-reserves.html",
+      "status": "Completed",
+      "publishedAt": null,
+      "startDate": null
+    },
+    {
+      "category": "projects",
+      "change": "added",
+      "id": "lake-winnipeg-schools-partnership-2016",
+      "title": "2016 school infrastructure planning partnership",
+      "communityIds": [
+        "267",
+        "270",
+        "327",
+        "277"
+      ],
+      "sourceUrl": "https://www.canada.ca/en/indigenous-northern-affairs/news/2016/01/government-of-canada-signs-school-infrastructure-partnership-understanding-with-four-manitoba-first-nations.html",
+      "status": null,
+      "publishedAt": null,
+      "startDate": null
+    },
+    {
+      "category": "projects",
+      "change": "added",
+      "id": "poplar-river-k12-school-2022",
+      "title": "Poplar River Kindergarten-to-Grade-12 school",
+      "communityIds": [
+        "277"
+      ],
+      "sourceUrl": "https://www.canada.ca/en/indigenous-services-canada/news/2022/10/new-school-provides-education-closer-to-home-for-high-school-students-in-poplar-river-first-nation.html",
       "status": "Completed",
       "publishedAt": null,
       "startDate": null
@@ -50887,7 +50969,112 @@
     {
       "category": "jobs",
       "change": "removed_or_merged",
-      "id": "job-septic-truck-operator-full-time-opportunity-863a133236"
+      "id": "job-early-childhood-worker-la-ronge-sk-education-ful-d3ffdf4f82"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-community-program-assistant-human-resource-progr-6f6b134223"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-counsellor-cacc-ba-c12e328784"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-lead-field-projects-with-contractors-and-consult-d2730d5342"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-recreation-assistant-sports-recreation-term-oppo-7af61a4617"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-nadap-worker-health-services-full-time-opportuni-d3225ef281"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-general-manager-mystery-lake-hotel-f11555f0dd"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-jordan-s-principle-service-coordinator-3ca28168fd"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-nncea-is-seeking-nihitho-language-support-worker-d469d18a83"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-assistant-general-manager-mystery-lake-hotel-1cff4a4a87"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-housing-community-infrastructure-manager-109a4d6fcd"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-counsellor-rcc-ma-320e93548c"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-director-of-human-resources-admin-analyst-person-aa12a1a344"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-finance-assistant-la-ronge-sk-education-full-tim-9189919c45"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-youth-support-intervention-worker-health-service-06efdaaaf3"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-case-support-worker-133bfdb600"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-employment-opportunity-4e030fd575"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-janitorial-worker-b20259eede"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-nisto-rivers-group-is-hiring-a-finance-clerk-92e3d6ac0d"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-early-childhood-educator-18937a287b"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-director-of-technical-services-56c07075c3"
+    },
+    {
+      "category": "jobs",
+      "change": "removed_or_merged",
+      "id": "job-case-management-assistant-pre-employment-support-ee2b32012b"
     },
     {
       "category": "jobs",
@@ -50902,22 +51089,7 @@
     {
       "category": "jobs",
       "change": "removed_or_merged",
-      "id": "job-janitor-smvs-la-ronge-sk-education-full-time-la--7452d83b2f"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-nadap-worker-health-services-full-time-opportuni-d3225ef281"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-assistant-general-manager-mystery-lake-hotel-1cff4a4a87"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-recreation-assistant-sports-recreation-term-oppo-7af61a4617"
+      "id": "job-community-health-representative-4da97583c2"
     },
     {
       "category": "jobs",
@@ -50927,72 +51099,7 @@
     {
       "category": "jobs",
       "change": "removed_or_merged",
-      "id": "job-early-childhood-educator-18937a287b"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-lead-field-projects-with-contractors-and-consult-d2730d5342"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-housing-community-infrastructure-manager-109a4d6fcd"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-youth-support-intervention-worker-health-service-06efdaaaf3"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-case-management-assistant-pre-employment-support-ee2b32012b"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-counsellor-rcc-ma-320e93548c"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-nisto-rivers-group-is-hiring-a-finance-clerk-92e3d6ac0d"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-community-health-representative-4da97583c2"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-nncea-is-seeking-nihitho-language-support-worker-d469d18a83"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-early-childhood-worker-la-ronge-sk-education-ful-d3ffdf4f82"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-community-program-assistant-human-resource-progr-6f6b134223"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-janitorial-worker-b20259eede"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-jordan-s-principle-service-coordinator-3ca28168fd"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-case-support-worker-133bfdb600"
+      "id": "job-janitor-smvs-la-ronge-sk-education-full-time-la--7452d83b2f"
     },
     {
       "category": "jobs",
@@ -51002,32 +51109,7 @@
     {
       "category": "jobs",
       "change": "removed_or_merged",
-      "id": "job-counsellor-cacc-ba-c12e328784"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-finance-assistant-la-ronge-sk-education-full-tim-9189919c45"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-employment-opportunity-4e030fd575"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-director-of-human-resources-admin-analyst-person-aa12a1a344"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-director-of-technical-services-56c07075c3"
-    },
-    {
-      "category": "jobs",
-      "change": "removed_or_merged",
-      "id": "job-general-manager-mystery-lake-hotel-f11555f0dd"
+      "id": "job-septic-truck-operator-full-time-opportunity-863a133236"
     }
   ]
 }
