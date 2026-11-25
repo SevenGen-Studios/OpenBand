@@ -32,7 +32,28 @@ jobs:
           python -m tools.register_community_sources
           python -m tools.community_coverage --baseline research/community-intelligence/phase2-2026-11-02/before
       - name: Commit source diagnostics and coverage inventory
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Refresh community coverage and research source diagnostics"
-          file_pattern: community-coverage-report.json community-coverage-report.md community-coverage-report.csv news-sources.json events-sources.json jobs-sources.json research/community-intelligence/phase2-2026-11-02/source-checks.json research/community-intelligence/phase2-2026-11-02/evidence
+        env:
+          TARGET_BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add community-coverage-report.json community-coverage-report.md community-coverage-report.csv news-sources.json events-sources.json jobs-sources.json research/community-intelligence/phase2-2026-11-02/source-checks.json research/community-intelligence/phase2-2026-11-02/evidence
+          if git diff --cached --quiet; then
+            echo "No coverage diagnostics changes to commit"
+            exit 0
+          fi
+          git commit -m "Refresh community coverage and research source diagnostics"
+          for attempt in 1 2 3; do
+            git fetch origin "$TARGET_BRANCH"
+            if ! git rebase FETCH_HEAD; then
+              git rebase --abort
+              echo "Concurrent changes conflict with coverage diagnostics; preserving remote data" >&2
+              exit 1
+            fi
+            if git push origin "HEAD:$TARGET_BRANCH"; then
+              exit 0
+            fi
+            sleep $((attempt * 5))
+          done
+          echo "Failed to publish coverage diagnostics after 3 attempts" >&2
+          exit 1
