@@ -135,7 +135,7 @@ SHARED_COMMUNITY_ALIASES = {
 }
 EVENT_WORDS = re.compile(
     r"\b(pow[ -]?wow|wacipi|round dance|treaty day|feast|gathering|ceremony|"
-    r"party|gala|public opening|celebration|community (?:meeting|event|clean[ -]?up)|annual general meeting|agm|"
+    r"party|gala|public opening|celebration|community (?:meeting|event|clean[ -]?up)|annual general (?:meeting|assembly)|agm|"
     r"open house|workshop|training|conference|forum|fair|clinic|screening|"
     r"tournament|relay race|races|rodeo|bingo|fundraiser|market|festival|parade|camp|youth day|"
     r"family day|language class|culture camp|land-based|sports day|information session|"
@@ -192,7 +192,7 @@ def event_category(value: str, context: str = "") -> str:
         (r"youth|family|children|kids|camp", "Youth & Family"),
         (r"tournament|sports|hockey|softball|rodeo|golf", "Recreation & Sports"),
         (r"training|workshop|class|education|conference|forum", "Education & Training"),
-        (r"election|vote|annual general meeting|agm|community meeting|council", "Governance & Meetings"),
+        (r"election|vote|annual general (?:meeting|assembly)|agm|community meeting|council", "Governance & Meetings"),
         (r"emergency|evacuation|wildfire", "Emergency Information"),
     ]
     for local in (text, normalized_text(context)):
@@ -1066,7 +1066,7 @@ def is_publishable_event(item: dict, today: date | None = None) -> bool:
     # An explicitly dated audit/program community meeting is a public event;
     # an audit document by itself is not.
     if re.search(r"\baudit\b", f"{title} {description}", re.I) and not (
-        re.search(r"\b(?:community )?meetings?\b", title, re.I) and explicit_event_dates(description)
+        re.search(r"\b(?:(?:community )?meetings?|annual general assembly)\b", title, re.I) and explicit_event_dates(description)
     ):
         return False
     if NON_EVENT_WORDS.search(f"{title} {description}"):
