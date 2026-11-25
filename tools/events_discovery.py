@@ -135,7 +135,7 @@ SHARED_COMMUNITY_ALIASES = {
 }
 EVENT_WORDS = re.compile(
     r"\b(pow[ -]?wow|wacipi|round dance|treaty day|feast|gathering|ceremony|"
-    r"party|gala|public opening|celebration|community (?:meeting|event|clean[ -]?up)|annual general (?:meeting|assembly)|agm|"
+    r"party|gala|christmas dinner|public opening|celebration|community (?:meeting|event|clean[ -]?up)|annual general (?:meeting|assembly)|agm|"
     r"open house|workshop|training|conference|forum|fair|clinic|screening|"
     r"tournament|relay race|races|rodeo|bingo|fundraiser|market|festival|parade|camp|youth day|"
     r"family day|language class|culture camp|land-based|sports day|information session|"

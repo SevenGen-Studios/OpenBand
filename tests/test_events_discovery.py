@@ -28,6 +28,20 @@ SOURCE = {
 }
 
 
+class ChristmasDinnerPublicationTests(unittest.TestCase):
+    def test_dated_primary_source_dinner_requires_event_date(self):
+        event = {
+            "title": "Day Star Christmas Dinner — Winnipeg",
+            "sourceUrl": "https://www.daystarfn.com/api/media/file/Christmas%20memo%202026.pdf",
+            "startDate": "2026-11-30", "endDate": "2026-11-30",
+            "description": "Date: November 30, 2026. Christmas dinner for Day Star members.",
+            "extractionMethod": "reviewed-primary-source",
+        }
+        self.assertTrue(is_publishable_event(event, date(2026, 11, 25)))
+        self.assertFalse(is_publishable_event({**event, "description": "Christmas dinner for members."}, date(2026, 11, 25)))
+        self.assertFalse(is_publishable_event({**event, "title": "Christmas gift card application form"}, date(2026, 11, 25)))
+
+
 class EventDateTests(unittest.TestCase):
     def test_dated_annual_general_assembly_can_include_an_audit_review(self):
         event = {"title": "Opaskwayak Annual General Assembly",
