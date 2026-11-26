@@ -76,7 +76,7 @@ EXPENSE_SECTION_RE = re.compile(
 )
 FINAL_SURPLUS_RE = re.compile(
     r"^(?:(?:(?:annual|current|operating)\s+)?"
-    r"(?:surplus|deficit)(?:\s+\(deficit\))?"
+    r"(?:surplus|deficit)(?:\s+\(deficit\))?(?:\s+for\s+(?:the\s+)?year)?"
     r"|excess(?:\s+\(deficiency\))? of revenues? over (?:expenses|expenditures)"
     r"|surplus of revenues? over (?:expenses|expenditures)"
     r"|deficit of revenues? over (?:expenses|expenditures)"
@@ -392,6 +392,16 @@ def is_primary_operations_page(text):
         and not re.search(r"by program|by segment|schedule\s*[-\d]|notes to", line, re.I)
         for line in lines
     )
+
+
+def department_statement_scope(page_texts):
+    """Hold explicitly named Nation departments apart from Nation-wide accounts."""
+    primary = next((text for text in page_texts if is_primary_operations_page(text)), '')
+    for line in primary.splitlines()[:4]:
+        title = clean_text(line)
+        if re.fullmatch(r'.+\b(?:First Nation|Tribe)\s+(?:Economic Development|Department of Health|Police Services|Housing Authority)', title, re.I):
+            return title
+    return None
 
 
 def expected_fiscal_year(fiscal_year):
@@ -722,6 +732,8 @@ def parse_surplus_adjustments(page_texts):
             r"\1 \2", page_text, flags=re.I)
         for raw_line in page_text.splitlines():
             line = clean_text(raw_line)
+            if re.match(r"^(?:for\s*)?(?:the\s*)?year\s*ended", line, re.I):
+                continue
             label, values = line_parts(line)
             if EXPENSE_SECTION_RE.fullmatch(label):
                 seen_expenses = True
@@ -1058,6 +1070,8 @@ def nearly_equal(left, right, tolerance=0.01):
 def validate_summary(summary):
     warnings = list(summary.get("warnings") or [])
     severe = list(summary.get("structuredTableIssues") or [])
+    if summary.get('scopeReviewRequired'):
+        severe.append('Source covers a named department or entity; Nation-wide financial scope requires review')
     assets, liabilities, accumulated = (parse_money(summary.get(key)) for key in ("totalAssets", "totalLiabilities", "accumulatedSurplus"))
     if all(value is not None for value in (assets, liabilities, accumulated)) and not nearly_equal(assets, liabilities + accumulated):
         severe.append("Total assets do not reconcile to liabilities plus accumulated surplus")
@@ -1373,6 +1387,7 @@ def parse_structured_capital(extracted, source_url=None, fiscal_year=None):
     """Read actual cells directly; never collapse blank monetary columns."""
     pages = extracted.get("pages") or []
     summary = parse_page_texts(pages, source_url, fiscal_year)
+    scope_fields = {key: summary[key] for key in ('sourceScope', 'scopeReviewRequired') if key in summary}
     candidates = [table for table in extracted.get("tables", [])
                   if isinstance(table.get("page"), int)
                   and 0 < table["page"] <= len(pages)
@@ -1399,7 +1414,7 @@ def parse_structured_capital(extracted, source_url=None, fiscal_year=None):
         summary.update(validate_summary(summary))
         return summary
     column = columns[0]
-    summary = {"sourceUrl": source_url, "fiscalYear": fiscal_year,
+    summary = {**scope_fields, "sourceUrl": source_url, "fiscalYear": fiscal_year,
                "requiresSurplusValidation": True, "sourceReferences": {}}
     sections = {"revenue": [], "expenses": [], "adjustments": []}
     totals = {}
@@ -1497,6 +1512,7 @@ def parse_structured_capital(extracted, source_url=None, fiscal_year=None):
 
 
 def parse_page_texts(page_texts, source_url=None, fiscal_year=None, require_reported_totals=False):
+    page_texts = [local_ocr.normalize_ocr_headings(text) for text in page_texts]
     operations_records = statement_page_records(page_texts, OPERATIONS_RE)
     # Audit bundles may append a separately governed community's statements.
     # Keep the first contiguous main statement, not later audit packages.
@@ -1737,6 +1753,9 @@ def parse_page_texts(page_texts, source_url=None, fiscal_year=None, require_repo
     summary.update(additional)
     summary['sourceReferences'].update(references)
     summary.update(identified_revenue_fields(revenue_source_rows))
+    scope = department_statement_scope(page_texts)
+    if scope:
+        summary.update(sourceScope=scope, scopeReviewRequired=True)
     summary.update(validate_summary(summary))
     summary["extractionCompleteness"] = (
         "complete" if summary.get("publishable") else "partial"

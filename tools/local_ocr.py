@@ -23,6 +23,9 @@ _RAPID_OCR = None
 def normalize_ocr_headings(text):
     """Restore spaces in known report headings without changing names or figures."""
     for heading in (
+        'Consolidated Statement of Operations and Accumulated Surplus',
+        'Consolidated Statement of Financial Position',
+        'Consolidated Statement of Changes in Net Financial Assets',
         'Consolidated Statement of Operations', 'Statement of Operations',
         'Statement of Changes in Net Financial Assets', 'Statement of Changes in Net Financial Debt',
         'Statement of Cash Flows',
