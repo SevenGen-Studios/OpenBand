@@ -9,6 +9,15 @@ from tools.ingest_manitoba import merge_band,safe_write,ROOT,SOURCE_CACHE
 from tools.manitoba_baseline import verify,snapshot
 
 class ManitobaPipelineTests(unittest.TestCase):
+    def test_published_financial_records_are_sanitizer_stable(self):
+        # A reviewed baseline must describe the state the publishing sanitizer
+        # will actually persist, otherwise unrelated collectors fail afterward.
+        from tools.sanitize_data import sanitize_data
+        original=json.loads((ROOT/'data.json').read_text())
+        cleaned=copy.deepcopy(original)
+        sanitize_data(cleaned)
+        self.assertEqual(original['bands'],cleaned['bands'])
+
     def test_verified_roster_and_non_signatories(self):
         roster=json.loads((ROOT/'manitoba-nations.json').read_text())['nations']
         self.assertEqual(len(roster),63)
