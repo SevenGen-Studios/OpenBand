@@ -1,0 +1,3070 @@
+{
+  "evidence": {
+    "bandId": "361",
+    "fiscalYear": "2022-2023",
+    "sourceUrl": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=361&FY=2022-2023&DOC=Audited consolidated financial statements&lang=eng",
+    "pdfPath": "research/classification-audit/2026-11-02/sources/cowessess-financial-2022-2023.pdf",
+    "pdfSha256": "bebe0c35af8d2cd9d0da28b90859dc7e90301afea5bfdc12e5ca443aa5fdb2d6",
+    "pdfPage": 8,
+    "printedPage": 3,
+    "selectedColumn": "2023 actual (middle column)",
+    "fullSourceLabel": "FSIN (net of deferred revenue of $1,800,000 (2022 - nil))",
+    "originalAmount": 2022,
+    "correctedAmount": -412859,
+    "category": "Unclassified",
+    "verificationMethod": "independent_pdf_review",
+    "explanation": "The prior value is the comparative year inside the label, not the reported actual amount. Negative recognized funding remains Unclassified pending attribution of the deferral; no balancing residual or funding guess.",
+    "checks": {
+      "nation": true,
+      "fiscalYear": true,
+      "section": true,
+      "actualColumn": true,
+      "amount": true,
+      "notDuplicated": true,
+      "accountingContext": true
+    }
+  },
+  "inputSha256": "2a960141a21c5373320dfa6bb3d933f6574f0e4ea44caefcc62dc5284be591bf",
+  "outputSha256": "a326034015def0d2e585921745943ca8116d383c44074546d01188730430ea12",
+  "beforeSummary": {
+    "totalRevenue": 44440344,
+    "totalExpenses": 32671475,
+    "annualSurplusDeficit": 15268997,
+    "cashInvestments": 17183884,
+    "revenueBreakdown": [
+      {
+        "category": "Government funding and transfers",
+        "amount": 32442909
+      },
+      {
+        "category": "Business and enterprise revenue",
+        "amount": 3380944
+      },
+      {
+        "category": "Rental and property income",
+        "amount": 2559134
+      },
+      {
+        "category": "Unclassified",
+        "amount": 734609
+      },
+      {
+        "category": "Investment income",
+        "amount": 2297210
+      },
+      {
+        "category": "Donations or contributions",
+        "amount": 870032
+      },
+      {
+        "category": "Settlement and claim revenue",
+        "amount": 868978
+      },
+      {
+        "category": "Other revenue",
+        "amount": 1701409
+      }
+    ],
+    "expenseBreakdown": [
+      {
+        "category": "Operations",
+        "amount": 13804861
+      },
+      {
+        "category": "Infrastructure / public works",
+        "amount": 6033235
+      },
+      {
+        "category": "Education",
+        "amount": 4985532
+      },
+      {
+        "category": "Administration",
+        "amount": 4162936
+      },
+      {
+        "category": "Health",
+        "amount": 1896818
+      },
+      {
+        "category": "Social programs",
+        "amount": 1788093
+      }
+    ],
+    "capitalSpending": {
+      "total": 6276524,
+      "categories": []
+    },
+    "capitalAssets": 60702882,
+    "debt": {
+      "total": 3992467,
+      "components": [
+        {
+          "label": "Short-term debt",
+          "amount": 849,
+          "sourceReference": {
+            "pdfPage": 7,
+            "table": "Statement of Financial Position",
+            "section": "liabilities",
+            "fiscalYear": "2022-2023",
+            "selectedColumn": "current year",
+            "selectedYear": "2023",
+            "yearValidated": true
+          }
+        },
+        {
+          "label": "Current portion of long-term debt",
+          "amount": 442810,
+          "sourceReference": {
+            "pdfPage": 7,
+            "table": "Statement of Financial Position",
+            "section": "liabilities",
+            "fiscalYear": "2022-2023",
+            "selectedColumn": "current year",
+            "selectedYear": "2023",
+            "yearValidated": true
+          }
+        },
+        {
+          "label": "Current portion of capital lease obligations",
+          "amount": 178940,
+          "sourceReference": {
+            "pdfPage": 7,
+            "table": "Statement of Financial Position",
+            "section": "liabilities",
+            "fiscalYear": "2022-2023",
+            "selectedColumn": "current year",
+            "selectedYear": "2023",
+            "yearValidated": true
+          }
+        },
+        {
+          "label": "Current portion of term loans due on demand",
+          "amount": 25157,
+          "sourceReference": {
+            "pdfPage": 7,
+            "table": "Statement of Financial Position",
+            "section": "liabilities",
+            "fiscalYear": "2022-2023",
+            "selectedColumn": "current year",
+            "selectedYear": "2023",
+            "yearValidated": true
+          }
+        },
+        {
+          "label": "Long-term debt",
+          "amount": 3043059,
+          "sourceReference": {
+            "pdfPage": 7,
+            "table": "Statement of Financial Position",
+            "section": "liabilities",
+            "fiscalYear": "2022-2023",
+            "selectedColumn": "current year",
+            "selectedYear": "2023",
+            "yearValidated": true
+          }
+        },
+        {
+          "label": "Capital lease obligations",
+          "amount": 301652,
+          "sourceReference": {
+            "pdfPage": 7,
+            "table": "Statement of Financial Position",
+            "section": "liabilities",
+            "fiscalYear": "2022-2023",
+            "selectedColumn": "current year",
+            "selectedYear": "2023",
+            "yearValidated": true
+          }
+        }
+      ]
+    },
+    "sourceRevenueRows": [
+      {
+        "label": "Indigenous Services Canada",
+        "category": "Government funding and transfers",
+        "amount": 32162175,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "SIIT",
+        "category": "Unclassified",
+        "amount": 620496,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Settlement",
+        "category": "Settlement and claim revenue",
+        "amount": 868978,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Canada Mortgage and Housing Corporation",
+        "category": "Government funding and transfers",
+        "amount": 280734,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Farming income",
+        "category": "Business and enterprise revenue",
+        "amount": 2795876,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Lease income",
+        "category": "Rental and property income",
+        "amount": 2043542,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Other",
+        "category": "Other revenue",
+        "amount": 1577606,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        },
+        "classificationReview": {
+          "status": "verified_misclassification",
+          "evidenceId": "361:2022-2023:revenue:6",
+          "method": "independent_pdf_review",
+          "pdfSha256": "bebe0c35af8d2cd9d0da28b90859dc7e90301afea5bfdc12e5ca443aa5fdb2d6",
+          "pdfPage": 8,
+          "originalCategory": "Unclassified",
+          "explanation": "The consolidated revenue section explicitly reports Other at 1,577,606 actual. The separate FSIN extraction issue is not balanced or changed.",
+          "reviewRequired": false
+        }
+      },
+      {
+        "label": "First Nations Trust",
+        "category": "Investment income",
+        "amount": 1570530,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Investment income",
+        "category": "Investment income",
+        "amount": 553780,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Rental income",
+        "category": "Rental and property income",
+        "amount": 515592,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Golf course sales",
+        "category": "Business and enterprise revenue",
+        "amount": 369881,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Contributions",
+        "category": "Donations or contributions",
+        "amount": 819703,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "TLE Four Trusts",
+        "category": "Investment income",
+        "amount": 172900,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Gain from investment in Nation business entities",
+        "category": "Business and enterprise revenue",
+        "amount": 139948,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Insurance proceeds",
+        "category": "Other revenue",
+        "amount": 123803,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Community Development Corporation",
+        "category": "Unclassified",
+        "amount": 112091,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Royalties",
+        "category": "Business and enterprise revenue",
+        "amount": 75239,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Bingo and fundraising activities",
+        "category": "Donations or contributions",
+        "amount": 50329,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Saskatchewan Ministry of Social Services",
+        "category": "Program and service revenue",
+        "amount": 0,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "FSIN (net of deferred revenue of",
+        "category": "Unclassified",
+        "amount": 2022,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "revenue",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      }
+    ],
+    "sourceExpenseRows": [
+      {
+        "label": "Lands and Memberships",
+        "category": "Administration",
+        "amount": 1824521,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Education",
+        "category": "Education",
+        "amount": 4985532,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Social Development",
+        "category": "Social programs",
+        "amount": 1788093,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Health",
+        "category": "Health",
+        "amount": 1896818,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Community Infrastructure",
+        "category": "Infrastructure / public works",
+        "amount": 3777724,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Band Government",
+        "category": "Administration",
+        "amount": 2338415,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Capital",
+        "category": "Infrastructure / public works",
+        "amount": 2255511,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "label": "Other Band Programs",
+        "category": "Operations",
+        "amount": 13804861,
+        "sourceReference": {
+          "pdfPage": 8,
+          "table": "Statement of Operations",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "actual",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      }
+    ],
+    "expenseDetails": [
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "label": "Amortization",
+        "amount": 480408,
+        "sourceReference": {
+          "pdfPage": 35,
+          "table": "Schedule 3",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "label": "Program expense",
+        "amount": 25000,
+        "sourceReference": {
+          "pdfPage": 35,
+          "table": "Schedule 3",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "label": "Professional fees",
+        "amount": 53500,
+        "sourceReference": {
+          "pdfPage": 35,
+          "table": "Schedule 3",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "label": "Salaries and benefits",
+        "amount": 318426,
+        "sourceReference": {
+          "pdfPage": 35,
+          "table": "Schedule 3",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "label": "Repairs and maintenance",
+        "amount": 11000,
+        "sourceReference": {
+          "pdfPage": 35,
+          "table": "Schedule 3",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "label": "Administration",
+        "amount": 34800,
+        "sourceReference": {
+          "pdfPage": 35,
+          "table": "Schedule 3",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "label": "Property tax",
+        "amount": 18000,
+        "sourceReference": {
+          "pdfPage": 35,
+          "table": "Schedule 3",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "label": "Contracted services",
+        "amount": 5000,
+        "sourceReference": {
+          "pdfPage": 35,
+          "table": "Schedule 3",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "label": "Rent and lease",
+        "amount": 32700,
+        "sourceReference": {
+          "pdfPage": 35,
+          "table": "Schedule 3",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "label": "Travel and workshops",
+        "amount": 8000,
+        "sourceReference": {
+          "pdfPage": 35,
+          "table": "Schedule 3",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "label": "Insurance",
+        "amount": 12000,
+        "sourceReference": {
+          "pdfPage": 35,
+          "table": "Schedule 3",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "label": "Materials and supplies",
+        "amount": 6000,
+        "sourceReference": {
+          "pdfPage": 35,
+          "table": "Schedule 3",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "label": "Utilities",
+        "amount": 2500,
+        "sourceReference": {
+          "pdfPage": 35,
+          "table": "Schedule 3",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "label": "Elders fees",
+        "amount": 1725,
+        "sourceReference": {
+          "pdfPage": 35,
+          "table": "Schedule 3",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "label": "Telephone",
+        "amount": 2160,
+        "sourceReference": {
+          "pdfPage": 35,
+          "table": "Schedule 3",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "label": "Bank charges and interest",
+        "amount": 581,
+        "sourceReference": {
+          "pdfPage": 35,
+          "table": "Schedule 3",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "label": "Postage",
+        "amount": 500,
+        "sourceReference": {
+          "pdfPage": 35,
+          "table": "Schedule 3",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "Salaries and benefits",
+        "amount": 3228925,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "Student expenses",
+        "amount": 631080,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "Tuition",
+        "amount": 467620,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "Administration",
+        "amount": 414197,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "Contracted services",
+        "amount": 53763,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "Repairs and maintenance",
+        "amount": 130000,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "Amortization",
+        "amount": 111385,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "Program expense",
+        "amount": 52000,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "Materials and supplies",
+        "amount": 58500,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "Travel and workshops",
+        "amount": 144873,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "COVID",
+        "amount": -19,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "Utilities",
+        "amount": 5000,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "Insurance",
+        "amount": 5000,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "Telephone",
+        "amount": 39480,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "Interest on long-term debt",
+        "amount": 2507,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "Professional fees",
+        "amount": 25887,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "Community donations and events",
+        "amount": 292311,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "label": "Rent and lease",
+        "amount": 36720,
+        "sourceReference": {
+          "pdfPage": 36,
+          "table": "Schedule 4",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 5",
+        "page": 37,
+        "label": "Social assistance",
+        "amount": 775149,
+        "sourceReference": {
+          "pdfPage": 37,
+          "table": "Schedule 5",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 5",
+        "page": 37,
+        "label": "Program expense",
+        "amount": 344074,
+        "sourceReference": {
+          "pdfPage": 37,
+          "table": "Schedule 5",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 5",
+        "page": 37,
+        "label": "Contracted services",
+        "amount": 1000,
+        "sourceReference": {
+          "pdfPage": 37,
+          "table": "Schedule 5",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 5",
+        "page": 37,
+        "label": "Salaries and benefits",
+        "amount": 450298,
+        "sourceReference": {
+          "pdfPage": 37,
+          "table": "Schedule 5",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 5",
+        "page": 37,
+        "label": "COVID",
+        "amount": -19,
+        "sourceReference": {
+          "pdfPage": 37,
+          "table": "Schedule 5",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 5",
+        "page": 37,
+        "label": "Travel and workshops",
+        "amount": 23750,
+        "sourceReference": {
+          "pdfPage": 37,
+          "table": "Schedule 5",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 5",
+        "page": 37,
+        "label": "Administration",
+        "amount": 19202,
+        "sourceReference": {
+          "pdfPage": 37,
+          "table": "Schedule 5",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 5",
+        "page": 37,
+        "label": "Professional fees",
+        "amount": 25000,
+        "sourceReference": {
+          "pdfPage": 37,
+          "table": "Schedule 5",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 5",
+        "page": 37,
+        "label": "Repairs and maintenance",
+        "amount": 36585,
+        "sourceReference": {
+          "pdfPage": 37,
+          "table": "Schedule 5",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 5",
+        "page": 37,
+        "label": "Utilities",
+        "amount": 6000,
+        "sourceReference": {
+          "pdfPage": 37,
+          "table": "Schedule 5",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 5",
+        "page": 37,
+        "label": "Materials and supplies",
+        "amount": 25650,
+        "sourceReference": {
+          "pdfPage": 37,
+          "table": "Schedule 5",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 5",
+        "page": 37,
+        "label": "Tuition",
+        "amount": 2722,
+        "sourceReference": {
+          "pdfPage": 37,
+          "table": "Schedule 5",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 5",
+        "page": 37,
+        "label": "Advertising",
+        "amount": 3000,
+        "sourceReference": {
+          "pdfPage": 37,
+          "table": "Schedule 5",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 5",
+        "page": 37,
+        "label": "Telephone",
+        "amount": 6745,
+        "sourceReference": {
+          "pdfPage": 37,
+          "table": "Schedule 5",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 6",
+        "page": 38,
+        "label": "Salaries and benefits",
+        "amount": 820838,
+        "sourceReference": {
+          "pdfPage": 38,
+          "table": "Schedule 6",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 6",
+        "page": 38,
+        "label": "Program expense",
+        "amount": 163288,
+        "sourceReference": {
+          "pdfPage": 38,
+          "table": "Schedule 6",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 6",
+        "page": 38,
+        "label": "Contracted services",
+        "amount": 84211,
+        "sourceReference": {
+          "pdfPage": 38,
+          "table": "Schedule 6",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 6",
+        "page": 38,
+        "label": "Amortization",
+        "amount": 104514,
+        "sourceReference": {
+          "pdfPage": 38,
+          "table": "Schedule 6",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 6",
+        "page": 38,
+        "label": "Administration",
+        "amount": 118918,
+        "sourceReference": {
+          "pdfPage": 38,
+          "table": "Schedule 6",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 6",
+        "page": 38,
+        "label": "Travel and workshops",
+        "amount": 29909,
+        "sourceReference": {
+          "pdfPage": 38,
+          "table": "Schedule 6",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 6",
+        "page": 38,
+        "label": "Telephone",
+        "amount": 17880,
+        "sourceReference": {
+          "pdfPage": 38,
+          "table": "Schedule 6",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 6",
+        "page": 38,
+        "label": "Materials and supplies",
+        "amount": 6233,
+        "sourceReference": {
+          "pdfPage": 38,
+          "table": "Schedule 6",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 6",
+        "page": 38,
+        "label": "Repairs and maintenance",
+        "amount": 3000,
+        "sourceReference": {
+          "pdfPage": 38,
+          "table": "Schedule 6",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 6",
+        "page": 38,
+        "label": "Insurance",
+        "amount": 6500,
+        "sourceReference": {
+          "pdfPage": 38,
+          "table": "Schedule 6",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 6",
+        "page": 38,
+        "label": "Professional fees",
+        "amount": 1973,
+        "sourceReference": {
+          "pdfPage": 38,
+          "table": "Schedule 6",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 6",
+        "page": 38,
+        "label": "Meeting",
+        "amount": 58800,
+        "sourceReference": {
+          "pdfPage": 38,
+          "table": "Schedule 6",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 7",
+        "page": 39,
+        "label": "Amortization",
+        "amount": 1493198,
+        "sourceReference": {
+          "pdfPage": 39,
+          "table": "Schedule 7",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 7",
+        "page": 39,
+        "label": "Salaries and benefits",
+        "amount": 895532,
+        "sourceReference": {
+          "pdfPage": 39,
+          "table": "Schedule 7",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 7",
+        "page": 39,
+        "label": "Repairs and maintenance",
+        "amount": 1101342,
+        "sourceReference": {
+          "pdfPage": 39,
+          "table": "Schedule 7",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 7",
+        "page": 39,
+        "label": "Utilities",
+        "amount": 151530,
+        "sourceReference": {
+          "pdfPage": 39,
+          "table": "Schedule 7",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 7",
+        "page": 39,
+        "label": "Administration",
+        "amount": 122995,
+        "sourceReference": {
+          "pdfPage": 39,
+          "table": "Schedule 7",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 7",
+        "page": 39,
+        "label": "Program expense",
+        "amount": 2750,
+        "sourceReference": {
+          "pdfPage": 39,
+          "table": "Schedule 7",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 7",
+        "page": 39,
+        "label": "Materials and supplies",
+        "amount": 66500,
+        "sourceReference": {
+          "pdfPage": 39,
+          "table": "Schedule 7",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 7",
+        "page": 39,
+        "label": "Insurance",
+        "amount": 61500,
+        "sourceReference": {
+          "pdfPage": 39,
+          "table": "Schedule 7",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 7",
+        "page": 39,
+        "label": "Professional fees",
+        "amount": 11148,
+        "sourceReference": {
+          "pdfPage": 39,
+          "table": "Schedule 7",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 7",
+        "page": 39,
+        "label": "Contracted services",
+        "amount": 78131,
+        "sourceReference": {
+          "pdfPage": 39,
+          "table": "Schedule 7",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 7",
+        "page": 39,
+        "label": "Travel and workshops",
+        "amount": 20022,
+        "sourceReference": {
+          "pdfPage": 39,
+          "table": "Schedule 7",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 7",
+        "page": 39,
+        "label": "Telephone",
+        "amount": 51000,
+        "sourceReference": {
+          "pdfPage": 39,
+          "table": "Schedule 7",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 7",
+        "page": 39,
+        "label": "Interest on long-term debt",
+        "amount": 19548,
+        "sourceReference": {
+          "pdfPage": 39,
+          "table": "Schedule 7",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 7",
+        "page": 39,
+        "label": "Bank charges and interest",
+        "amount": 22500,
+        "sourceReference": {
+          "pdfPage": 39,
+          "table": "Schedule 7",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 8",
+        "page": 40,
+        "label": "Salaries and benefits",
+        "amount": 1424471,
+        "sourceReference": {
+          "pdfPage": 40,
+          "table": "Schedule 8",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 8",
+        "page": 40,
+        "label": "Professional fees",
+        "amount": 210000,
+        "sourceReference": {
+          "pdfPage": 40,
+          "table": "Schedule 8",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 8",
+        "page": 40,
+        "label": "Travel and workshops",
+        "amount": 118000,
+        "sourceReference": {
+          "pdfPage": 40,
+          "table": "Schedule 8",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 8",
+        "page": 40,
+        "label": "Contracted services",
+        "amount": 154500,
+        "sourceReference": {
+          "pdfPage": 40,
+          "table": "Schedule 8",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 8",
+        "page": 40,
+        "label": "Program expense",
+        "amount": 269540,
+        "sourceReference": {
+          "pdfPage": 40,
+          "table": "Schedule 8",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 8",
+        "page": 40,
+        "label": "Materials and supplies",
+        "amount": 121580,
+        "sourceReference": {
+          "pdfPage": 40,
+          "table": "Schedule 8",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 8",
+        "page": 40,
+        "label": "Community donations and events",
+        "amount": 122261,
+        "sourceReference": {
+          "pdfPage": 40,
+          "table": "Schedule 8",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 8",
+        "page": 40,
+        "label": "Telephone",
+        "amount": 76120,
+        "sourceReference": {
+          "pdfPage": 40,
+          "table": "Schedule 8",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 8",
+        "page": 40,
+        "label": "Rent and lease",
+        "amount": 57400,
+        "sourceReference": {
+          "pdfPage": 40,
+          "table": "Schedule 8",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 8",
+        "page": 40,
+        "label": "Amortization",
+        "amount": 47569,
+        "sourceReference": {
+          "pdfPage": 40,
+          "table": "Schedule 8",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 8",
+        "page": 40,
+        "label": "Bank charges and interest",
+        "amount": 16800,
+        "sourceReference": {
+          "pdfPage": 40,
+          "table": "Schedule 8",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 8",
+        "page": 40,
+        "label": "Insurance",
+        "amount": 22500,
+        "sourceReference": {
+          "pdfPage": 40,
+          "table": "Schedule 8",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 8",
+        "page": 40,
+        "label": "Repairs and maintenance",
+        "amount": 6100,
+        "sourceReference": {
+          "pdfPage": 40,
+          "table": "Schedule 8",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 8",
+        "page": 40,
+        "label": "Bad debts (recovery)",
+        "amount": -12426,
+        "sourceReference": {
+          "pdfPage": 40,
+          "table": "Schedule 8",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 8",
+        "page": 40,
+        "label": "Administration (recovery)",
+        "amount": -877741,
+        "sourceReference": {
+          "pdfPage": 40,
+          "table": "Schedule 8",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 9",
+        "page": 41,
+        "label": "Repairs and maintenance",
+        "amount": 32351,
+        "sourceReference": {
+          "pdfPage": 41,
+          "table": "Schedule 9",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 9",
+        "page": 41,
+        "label": "Insurance",
+        "amount": 1400,
+        "sourceReference": {
+          "pdfPage": 41,
+          "table": "Schedule 9",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 9",
+        "page": 41,
+        "label": "Amortization",
+        "amount": 256453,
+        "sourceReference": {
+          "pdfPage": 41,
+          "table": "Schedule 9",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 9",
+        "page": 41,
+        "label": "Salaries and benefits",
+        "amount": 381482,
+        "sourceReference": {
+          "pdfPage": 41,
+          "table": "Schedule 9",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 9",
+        "page": 41,
+        "label": "Contracted services",
+        "amount": 178513,
+        "sourceReference": {
+          "pdfPage": 41,
+          "table": "Schedule 9",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 9",
+        "page": 41,
+        "label": "Bad debts",
+        "amount": 44056,
+        "sourceReference": {
+          "pdfPage": 41,
+          "table": "Schedule 9",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 9",
+        "page": 41,
+        "label": "Telephone",
+        "amount": 10320,
+        "sourceReference": {
+          "pdfPage": 41,
+          "table": "Schedule 9",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 9",
+        "page": 41,
+        "label": "Materials and supplies",
+        "amount": 2500,
+        "sourceReference": {
+          "pdfPage": 41,
+          "table": "Schedule 9",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 9",
+        "page": 41,
+        "label": "Travel and workshops",
+        "amount": 7620,
+        "sourceReference": {
+          "pdfPage": 41,
+          "table": "Schedule 9",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 9",
+        "page": 41,
+        "label": "Utilities",
+        "amount": 249126,
+        "sourceReference": {
+          "pdfPage": 41,
+          "table": "Schedule 9",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 9",
+        "page": 41,
+        "label": "Bank charges and interest (recovery)",
+        "amount": 1210,
+        "sourceReference": {
+          "pdfPage": 41,
+          "table": "Schedule 9",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 9",
+        "page": 41,
+        "label": "Professional fees",
+        "amount": 9600,
+        "sourceReference": {
+          "pdfPage": 41,
+          "table": "Schedule 9",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 9",
+        "page": 41,
+        "label": "Program expense",
+        "amount": 1169,
+        "sourceReference": {
+          "pdfPage": 41,
+          "table": "Schedule 9",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 9",
+        "page": 41,
+        "label": "Administration (recovery)",
+        "amount": 36007,
+        "sourceReference": {
+          "pdfPage": 41,
+          "table": "Schedule 9",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Salaries and benefits",
+        "amount": 968665,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Program expense",
+        "amount": 210999,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Materials and supplies",
+        "amount": 126882,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Travel and workshops",
+        "amount": 58700,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Contracted services",
+        "amount": 197993,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Amortization",
+        "amount": 624508,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Professional fees",
+        "amount": 121700,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Senior subsidy",
+        "amount": 527473,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Repairs and maintenance",
+        "amount": 137500,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "COVID",
+        "amount": -19,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Community donations and events",
+        "amount": 294489,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Administration",
+        "amount": 54060,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Rent and lease",
+        "amount": 40176,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Insurance",
+        "amount": 132300,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Student expenses",
+        "amount": 175018,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Food and beverage - cost of sales",
+        "amount": 105200,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Utilities",
+        "amount": 26170,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Bad debts",
+        "amount": 101268,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Bank charges and interest",
+        "amount": 2000,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Interest on long-term debt",
+        "amount": 48200,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Bingo and game payouts",
+        "amount": 229530,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Property tax",
+        "amount": 31886,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Advertising",
+        "amount": 6000,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Telephone",
+        "amount": 24720,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Social assistance",
+        "amount": 4123,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Contributions",
+        "amount": 82017,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Renovations",
+        "amount": 25000,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Office equipment lease",
+        "amount": 10000,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Meeting",
+        "amount": 1840,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Postage",
+        "amount": 890,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Impairment loss",
+        "amount": 367200,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "label": "Miscellaneous",
+        "amount": 484502,
+        "sourceReference": {
+          "pdfPage": 43,
+          "table": "Schedule 10",
+          "section": "expenses",
+          "fiscalYear": "2022-2023",
+          "selectedColumn": "current year",
+          "selectedYear": "2023",
+          "yearValidated": true
+        }
+      }
+    ],
+    "expenseDetailSchedules": [
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 3",
+        "page": 35,
+        "reportedTotal": 529586,
+        "extractedTotal": 1012300,
+        "reconciles": false,
+        "itemCount": 17
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 4",
+        "page": 36,
+        "reportedTotal": 5585356,
+        "extractedTotal": 5699229,
+        "reconciles": false,
+        "itemCount": 18
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 5",
+        "page": 37,
+        "reportedTotal": 1716453,
+        "extractedTotal": 1719156,
+        "reconciles": true,
+        "itemCount": 14
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 6",
+        "page": 38,
+        "reportedTotal": 1309577,
+        "extractedTotal": 1416064,
+        "reconciles": false,
+        "itemCount": 12
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 7",
+        "page": 39,
+        "reportedTotal": 2584950,
+        "extractedTotal": 4097696,
+        "reconciles": false,
+        "itemCount": 14
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 8",
+        "page": 40,
+        "reportedTotal": 2477011,
+        "extractedTotal": 1756674,
+        "reconciles": false,
+        "itemCount": 15
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 9",
+        "page": 41,
+        "reportedTotal": 731575,
+        "extractedTotal": 1211807,
+        "reconciles": false,
+        "itemCount": 14
+      },
+      {
+        "sourceLabel": "Unaudited",
+        "category": "Operations",
+        "schedule": "Schedule 10",
+        "page": 43,
+        "reportedTotal": 3589062,
+        "extractedTotal": 5220990,
+        "reconciles": false,
+        "itemCount": 32
+      }
+    ],
+    "surplusAdjustments": [
+      {
+        "label": "Gain (loss) on disposal of tangible capital assets",
+        "amount": 4955
+      },
+      {
+        "label": "Contribution from (to) TLE",
+        "amount": 3495172
+      }
+    ],
+    "sourceReferences": {
+      "totalRevenue": {
+        "pdfPage": 8,
+        "table": "Statement of Operations",
+        "section": "revenue",
+        "fiscalYear": "2022-2023",
+        "selectedColumn": "actual",
+        "selectedYear": "2023",
+        "yearValidated": true
+      },
+      "totalExpenses": {
+        "pdfPage": 8,
+        "table": "Statement of Operations",
+        "section": "expenses",
+        "fiscalYear": "2022-2023",
+        "selectedColumn": "actual",
+        "selectedYear": "2023",
+        "yearValidated": true
+      },
+      "annualSurplusDeficit": {
+        "pdfPage": 8,
+        "table": "Statement of Operations",
+        "section": "surplus / deficit",
+        "fiscalYear": "2022-2023",
+        "selectedColumn": "actual",
+        "selectedYear": "2023",
+        "yearValidated": true
+      },
+      "cash": {
+        "pdfPage": 6,
+        "table": "Statement of Financial Position",
+        "section": "assets",
+        "fiscalYear": "2022-2023",
+        "selectedColumn": "current year",
+        "selectedYear": "2023",
+        "yearValidated": true
+      },
+      "investments": {
+        "pdfPage": 6,
+        "table": "Statement of Financial Position",
+        "section": "assets",
+        "fiscalYear": "2022-2023",
+        "selectedColumn": "current year",
+        "selectedYear": "2023",
+        "yearValidated": true
+      },
+      "capitalAssets": {
+        "pdfPage": 7,
+        "table": "Statement of Financial Position",
+        "section": "assets",
+        "fiscalYear": "2022-2023",
+        "selectedColumn": "current year",
+        "selectedYear": "2023",
+        "yearValidated": true
+      },
+      "capitalSpending": {
+        "pdfPage": 9,
+        "table": "Statement of Changes in Net Financial Assets / Debt",
+        "section": "capital spending",
+        "fiscalYear": "2022-2023",
+        "selectedColumn": "actual",
+        "selectedYear": "2023",
+        "yearValidated": true
+      }
+    },
+    "sourceUrl": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=361&FY=2022-2023&DOC=Audited consolidated financial statements&lang=eng",
+    "fiscalYear": "2022-2023",
+    "parser": "capital_text_v3",
+    "parseStatus": "parsed",
+    "confidence": "medium",
+    "warnings": [
+      "Annual surplus includes separately reported adjustments"
+    ],
+    "publishable": true,
+    "extractionCompleteness": "complete"
+  }
+}

@@ -191,7 +191,7 @@ def audit_dataset(data, inventory, manifest=None, evidence_root=Path('.')):
                                         reference=row.get('sourceReference'), row=row)
                     issues = row_issues(row, summary, year, kind, seen)
                     url_band = re.search(r'BAND_NUMBER_FF=(\d+)', str(row.get('sourceDocument') or summary.get('sourceUrl') or ''), re.I)
-                    if url_band and url_band.group(1) != str(bid):
+                    if url_band and url_band.group(1) != str(identity.get('iscBandNumber') or bid):
                         issues.append('Source URL belongs to another Nation')
                     ref = row.get('sourceReference') or {}
                     notes = []
@@ -241,8 +241,47 @@ def audit_dataset(data, inventory, manifest=None, evidence_root=Path('.')):
                             'explanation': 'Published category has no underlying source activity rows',
                             'issues': ['Missing source rows'], 'reviewNotes': []})
     report['unusedEvidence'] = sorted(set(evidence) - used)
+    report['disclosureCoverage'] = disclosure_coverage(data, inventory)
     report['counts'] = summarize(report)
     return report
+
+
+def disclosure_coverage(data, inventory):
+    """Inventory posted sources separately from extraction and disclosure absence.
+
+    Only explicit filing entries are counted; an unindexed year is never inferred
+    to be an unsubmitted statement. These are indexed filing counts, not PDF review.
+    """
+    counts = Counter()
+    for band in inventory['bands']:
+        if band.get('province') not in PROVINCES:
+            continue
+        counts['nations'] += 1
+        years = data.get('bands', {}).get(str(band['id']), {}).get('years', {})
+        seen_years = set()
+        filings = sorted(band.get('filings', []), key=lambda f: bool(f.get('posted') and f.get('href')), reverse=True)
+        for filing in filings:
+            if 'audited' not in str(filing.get('docType', '')).lower():
+                continue
+            counts['indexedAuditedFilings'] += 1
+            year = str(filing.get('year'))
+            if year in seen_years:
+                counts['duplicateIndexedNationYears'] += 1
+                continue
+            seen_years.add(year)
+            counts['uniqueIndexedNationYears'] += 1
+            if not filing.get('posted') or not filing.get('href'):
+                counts['notPostedOrLinkUnavailable'] += 1
+                continue
+            counts['postedAuditedFilings'] += 1
+            summary = years.get(str(filing.get('year')))
+            if not summary:
+                counts['postedWithoutSummary'] += 1
+            elif published(summary):
+                counts['postedWithPublishedSummary'] += 1
+            else:
+                counts['postedAwaitingReviewOrExtraction'] += 1
+    return dict(counts)
 
 
 def summarize(report):

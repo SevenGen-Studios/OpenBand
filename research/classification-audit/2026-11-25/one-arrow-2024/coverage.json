@@ -1,0 +1,60 @@
+{
+  "counts": {
+    "nationYears": 840,
+    "revenueRows": 12875,
+    "expenseRows": 8920,
+    "missingSourceCategoryRows": 24,
+    "statuses": {
+      "ambiguous": 21775,
+      "extraction_issue": 24,
+      "verified_correct": 20
+    },
+    "independentlyPdfReviewedRows": 23,
+    "unclassifiedRevenueRows": 4986,
+    "unclassifiedRevenueNet": 6403189781,
+    "unclassifiedRevenueAbsolute": 11674836067,
+    "unresolvedOperationsFallbackRows": 2517,
+    "classificationProposalDifferences": 3328,
+    "reconciliationFailures": 45,
+    "missingSurplus": 71,
+    "provinces": {
+      "AB": {
+        "nationYears": 244,
+        "revenueRows": 3105,
+        "expenseRows": 3113,
+        "statuses": {
+          "ambiguous": 6218
+        }
+      },
+      "MB": {
+        "nationYears": 135,
+        "revenueRows": 1767,
+        "expenseRows": 1349,
+        "statuses": {
+          "ambiguous": 3116
+        }
+      },
+      "SK": {
+        "nationYears": 461,
+        "revenueRows": 8003,
+        "expenseRows": 4458,
+        "statuses": {
+          "ambiguous": 12441,
+          "extraction_issue": 24,
+          "verified_correct": 20
+        }
+      }
+    }
+  },
+  "disclosureCoverage": {
+    "nations": 180,
+    "indexedAuditedFilings": 1906,
+    "uniqueIndexedNationYears": 1894,
+    "postedAuditedFilings": 1749,
+    "postedWithPublishedSummary": 840,
+    "postedAwaitingReviewOrExtraction": 880,
+    "postedWithoutSummary": 29,
+    "notPostedOrLinkUnavailable": 145,
+    "duplicateIndexedNationYears": 12
+  }
+}
