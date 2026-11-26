@@ -24,4 +24,6 @@ The reusable inventory command is:
 
     python3 -m tools.audit_financial_coverage --output research/financial-recovery/2026-11-26-blood
 
-financial-coverage.json and .md inventory all 180 communities and separate posted-but-unextracted files, review holds, and records not indexed as posted. They are not a fresh HTTP check of every filing. Publication readiness is distinct from source availability. This provides a reproducible queue for further source discovery and recovery across both financial categories and all provinces.
+financial-coverage.json.gz and .md inventory all 180 communities and separate posted-but-unextracted files, review holds, and records not indexed as posted. They are not a fresh HTTP check of every filing. Publication readiness is distinct from source availability. This provides a reproducible queue for further source discovery and recovery across both financial categories and all provinces.
+
+Absent category/year pairs are included as availability unknown for 2014–2015 through the latest completed March fiscal year. They are not treated as proven missing at source. The full inventory is gzip-compressed to keep the evidence compact.

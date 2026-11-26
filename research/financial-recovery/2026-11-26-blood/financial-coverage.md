@@ -2,11 +2,11 @@
 
 Inventory of indexed sources, not a live availability check. Posted files and validated financial extraction are separate.
 
-| Province | Communities | No publishable capital years | Posted audits without a summary | Posted audits needing review | Posted remuneration without rows |
-|---|---:|---:|---:|---:|---:|
-| SK | 69 | 3 | 19 | 272 | 166 |
-| AB | 48 | 9 | 2 | 159 | 112 |
-| MB | 63 | 20 | 8 | 454 | 226 |
+| Province | Communities | No publishable capital years | Posted audits without a summary | Posted audits needing review | Posted remuneration without rows | Unindexed pairs (availability unknown) |
+|---|---:|---:|---:|---:|---:|---:|
+| SK | 69 | 3 | 19 | 272 | 166 | 1 |
+| AB | 48 | 9 | 2 | 159 | 112 | 399 |
+| MB | 63 | 20 | 8 | 454 | 226 | 325 |
 
 ## Community priorities
 
@@ -47,4 +47,5 @@ Nations with no publishable capital year:
 ## Limitations
 - Inventory of current indexed source links and extraction states; this report does not HTTP-check every source or prove that unindexed files are unavailable.
 - Department-only or otherwise ambiguous documents remain review work, even when their arithmetic can be extracted.
-- Counts are filing records, except explicitly named community counts.
+- Absent category/year pairs are listed as unknown availability, not confirmed not posted. Expected window: 2014–2015 through the latest completed March fiscal year; older indexed records are retained.
+- Counts are filing records or explicit unknown-availability pairs, except named community counts.
