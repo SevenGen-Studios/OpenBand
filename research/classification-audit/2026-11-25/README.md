@@ -1,5 +1,7 @@
 # Community Capital audit, 25 November 2026
 
+Follow-up: [One Arrow source-row restoration](one-arrow-2024/README.md) reduces missing source-category rows from 38 to 24, adds 23 original-statement rows and records 20 supported category decisions plus three unresolved classifications. The figures below are the preserved initial audit snapshot.
+
 Audited current `main` at `e08cb277` on isolated branch `audit/community-capital-20261125`. This is a complete automated inventory of current published records plus a bounded original-PDF review, not a claim that every financial statement has been independently verified. No production changes or merges are authorized by this review.
 
 ## Coverage verified from current datasets

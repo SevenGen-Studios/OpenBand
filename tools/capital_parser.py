@@ -1079,6 +1079,19 @@ def validate_summary(summary):
     source_references = summary.get("sourceReferences") or {}
     adjustments = sum_rows(adjustment_rows)
 
+    # Category totals can reconcile while the underlying drill-down is missing
+    # or double-counted. Validate supplied activity rows independently as well.
+    # Legacy category-only records remain explicit audit gaps, not invented rows.
+    for key, reported, title in (("sourceRevenueRows", revenue, "Revenue"),
+                                  ("sourceExpenseRows", expenses, "Expense")):
+        activity = summary.get(key) or []
+        if not activity:
+            continue
+        if any(parse_money(row.get("amount")) is None for row in activity):
+            severe.append(title + " source activity contains an unreadable amount")
+        elif reported is not None and not nearly_equal(sum_rows(activity), reported):
+            severe.append(title + " source activity rows do not reconcile to the reported total")
+
     if summary.get('requiresReportedTotals'):
         if summary.get('finalResultReported') is False:
             severe.append('Recovery requires a reported final annual result')
