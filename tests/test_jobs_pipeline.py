@@ -1,6 +1,7 @@
 import json
 import tempfile
 import unittest
+from unittest.mock import patch
 from datetime import date
 from pathlib import Path
 
@@ -16,6 +17,7 @@ from tools.jobs_collector import (
     title_from_document,
     refresh_pending_documents,
     retain_manual_check,
+    document_candidate,
 )
 
 
@@ -23,6 +25,18 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class JobsPipelineTests(unittest.TestCase):
+    def test_open_til_filled_document_is_reviewable_but_not_automatically_active(self):
+        source = {"id": "ocn", "name": "Opaskwayak Child & Family Services",
+                  "communityIds": ["315"], "communityNames": ["Opaskwayak"], "verifiedOfficialSource": True}
+        text = "EXTERNAL JOB POSTING\nPosition: Social Worker\nDEADLINE DATE: Open til Filled"
+        with patch("tools.jobs_collector.extract_document_text", return_value=(text, "pdf", None)):
+            row, _ = document_candidate("https://example.test/job.pdf", source, date(2026, 11, 25))
+        self.assertEqual(row["status"], "Date unavailable")
+        self.assertIsNone(row["closingDate"])
+        with patch("tools.jobs_collector.extract_document_text", return_value=(text + "\nPosting closed", "pdf", None)):
+            row, _ = document_candidate("https://example.test/job.pdf", source, date(2026, 11, 25))
+        self.assertEqual(row["status"], "Closed")
+
     def test_closing_dates_control_public_status(self):
         today = date(2026, 8, 11)
         base = {"status": "Open", "lastChecked": "2026-08-11"}
