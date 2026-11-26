@@ -190,7 +190,20 @@ def rounded(value):
 
 def line_parts(line):
     line = re.sub(r"\((?:note|schedule)[^)]*\)", "", line, flags=re.I)
-    matches = list(MONEY_RE.finditer(line))
+    # Numeric disclosures inside a prose parenthesis belong to the label,
+    # including nested comparative years. Bare (412,859) remains a money cell.
+    stack, prose_spans = [], []
+    for index, char in enumerate(line):
+        if char == '(':
+            stack.append(index)
+        elif char == ')' and stack:
+            start = stack.pop()
+            if re.search(r'[A-Za-z]', line[start:index + 1]):
+                prose_spans.append((start, index + 1))
+    matches = [match for match in MONEY_RE.finditer(line) if not any(
+        start <= match.end() - len(match.group(0).lstrip()) < end
+        for start, end in prose_spans
+    )]
     # Numbers embedded in legal names are part of the label even when a
     # wrapped line has no monetary cells (e.g. the 1907 Specific Claim Trust).
     label_numbers = list(re.finditer(r"\bTreaty\s+\d+\b|\b\d{4}\s+Specific Claim\b", line, re.I))
@@ -1123,6 +1136,19 @@ def validate_summary(summary):
     for reference in source_references.values():
         if reference and reference.get("yearValidated") is False:
             severe.append("A reported total was extracted from the wrong fiscal-year column")
+    expected = expected_fiscal_year(summary.get("fiscalYear"))
+    references = list(source_references.values()) + [
+        row.get("sourceReference") or {} for key in ("sourceRevenueRows", "sourceExpenseRows")
+        for row in summary.get(key) or []]
+    for reference in references:
+        if not reference:
+            continue
+        if re.search(r"budget|prior|previous", str(reference.get("selectedColumn", "")), re.I):
+            severe.append("A source value was extracted from a non-actual column")
+        if expected and reference.get("selectedYear") is not None and str(reference["selectedYear"]) != expected:
+            severe.append("A source value selected year differs from the summary fiscal year")
+        if summary.get("fiscalYear") and reference.get("fiscalYear") and reference["fiscalYear"] != summary["fiscalYear"]:
+            severe.append("A source reference fiscal year differs from the summary fiscal year")
     if str(summary.get("parser") or "").startswith("capital_openai"):
         required_references = ("totalRevenue", "totalExpenses")
         if any(not source_references.get(key) for key in required_references):
