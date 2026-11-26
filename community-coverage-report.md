@@ -4,9 +4,9 @@ As of 2026-11-25. Counts are Nations with verified records; activity is not infe
 
 | Province | Tracked | News ≤90 days | Upcoming events | Projects/partnerships | Active jobs | All four | No verified information |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| SK | 69 | 12 → 28 | 1 → 9 | 67 → 69 | 0 → 28 | 0 → 5 | 1 → 0 |
-| AB | 48 | 15 → 17 | 2 → 8 | 47 → 48 | 0 → 8 | 0 → 6 | 1 → 0 |
-| MB | 63 | 6 → 18 | 0 → 6 | 0 → 46 | 0 → 12 | 0 → 4 | 50 → 11 |
+| SK | 69 | 12 → 28 | 1 → 10 | 67 → 69 | 0 → 28 | 0 → 5 | 1 → 0 |
+| AB | 48 | 15 → 17 | 2 → 9 | 47 → 48 | 0 → 8 | 0 → 6 | 1 → 0 |
+| MB | 63 | 6 → 18 | 0 → 6 | 0 → 53 | 0 → 13 | 0 → 5 | 50 → 9 |
 
 - An empty inventory is not proof that no public information exists.
 - Regional employment source coverage does not imply a job in every member Nation.
@@ -30,9 +30,9 @@ This uses the current inventory and its known expiries. Employers and event orga
 
 | Category | Added records | Materially updated | Check metadata only | Removed/merged |
 |---|---:|---:|---:|---:|
-| news | 297 | 193 | 336 | 0 |
-| events | 307 | 50 | 47 | 87 |
-| projects | 73 | 5 | 0 | 0 |
-| jobs | 260 | 57 | 41 | 29 |
+| news | 313 | 193 | 336 | 0 |
+| events | 313 | 53 | 41 | 90 |
+| projects | 76 | 5 | 0 | 0 |
+| jobs | 270 | 56 | 41 | 30 |
 
 Added job candidates include held and closed postings; only confirmed active jobs contribute to coverage above. Shared projects are counted once as records and separately as community associations.
