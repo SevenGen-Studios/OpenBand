@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from tools.nation_name import nation_name_markup
-from tools.build_site import ORIGIN, build, slugify  # noqa: E402
+from tools.build_site import ORIGIN, build, slugify, main_script_tag  # noqa: E402
 
 
 class SiteRouteTests(unittest.TestCase):
@@ -18,6 +18,16 @@ class SiteRouteTests(unittest.TestCase):
     def setUpClass(cls):
         build()
         cls.data = json.loads((ROOT / "data.json").read_text(encoding="utf-8"))
+
+    def test_versioned_script_keeps_boot_and_history_in_generated_routes(self):
+        template = (ROOT / "index.html").read_text()
+        tag = main_script_tag(template.replace("20261125yearcards1", "future-version"))
+        self.assertIn("future-version", tag)
+        for route in ["saskatchewan/index.html", "alberta/index.html", "manitoba/index.html", "first-nations/day-star-first-nation/index.html"]:
+            page = (ROOT / route).read_text()
+            self.assertIn("window.OPENBAND_BOOT=", page, route)
+            self.assertIn(main_script_tag(template), page, route)
+        self.assertIn("/assets/profile-history.js", (ROOT / "first-nations/day-star-first-nation/index.html").read_text())
 
     def test_slug_generation_is_stable(self):
         cases = {
