@@ -68,10 +68,11 @@ class SourceRowsTests(unittest.TestCase):
 
     def test_category_totals_cannot_hide_broken_source_activity(self):
         for key in ['sourceRevenueRows','sourceExpenseRows']:
-            for failure in ['missing_row','unreadable','duplicate_total']:
+            for failure in ['missing_row','unreadable','duplicate_total','one_dollar']:
                 with self.subTest(key=key,failure=failure):
                     s=copy.deepcopy(self.summary)
                     if failure=='missing_row':s[key].pop(0)
                     elif failure=='unreadable':s[key][0]['amount']=None
+                    elif failure=='one_dollar':s[key][0]['amount']-=1
                     else:s[key].append(dict(label='Total',amount=s['totalRevenue' if key=='sourceRevenueRows' else 'totalExpenses']))
                     self.assertFalse(validate_summary(s)['publishable'])

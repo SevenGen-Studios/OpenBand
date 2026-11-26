@@ -1089,8 +1089,13 @@ def validate_summary(summary):
             continue
         if any(parse_money(row.get("amount")) is None for row in activity):
             severe.append(title + " source activity contains an unreadable amount")
-        elif reported is not None and not nearly_equal(sum_rows(activity), reported):
-            severe.append(title + " source activity rows do not reconcile to the reported total")
+        elif reported is not None:
+            activity_total = sum_rows(activity)
+            reviewed_source = (summary.get("sourceRowReview") or {}).get("method") == "independent_pdf_review"
+            matches = (round(activity_total, 2) == round(reported, 2) if reviewed_source
+                       else nearly_equal(activity_total, reported))
+            if not matches:
+                severe.append(title + " source activity rows do not reconcile to the reported total")
 
     if summary.get('requiresReportedTotals'):
         if summary.get('finalResultReported') is False:
