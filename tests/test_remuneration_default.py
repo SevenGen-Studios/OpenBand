@@ -22,7 +22,6 @@ class RemunerationDefaultTests(unittest.TestCase):
 const assert = require('node:assert/strict');
 const vm = require('node:vm');
 const calls = [];
-const select = {value:''};
 const filing = (year, overrides={}) => ({year, posted:true,
   docType:'Schedule of Remuneration and Expenses', people:[{name:'Official'}], ...overrides});
 const band = {filings:[filing('2021-2022'), filing('2025-2026', {people:[]}),
@@ -31,7 +30,7 @@ const context = vm.createContext({
   VALID_TABS:['overview','remuneration','capital','sources'], activeProfileTab:'overview',
   curYear:'2021-2022', curCapitalYear:'2022-2023', band,
   hasRows:f => Boolean(f?.people?.length), selectedBand:() => band,
-  el:() => select, document:{querySelectorAll:() => []}, window:{},
+  el:id => {assert.notEqual(id,'yearSel','Removed dropdown must not be accessed');return {};}, document:{querySelectorAll:() => []}, window:{},
   renderYear:() => calls.push('renderYear'), ensureProfileData:async()=>{},
   getCapitalDisplayYear:()=>'2022-2023', renderActiveProfilePanel:()=>{},
   updateProfileMeta:()=>{}, updateHeaderSource:()=>calls.push('source'),
@@ -42,7 +41,6 @@ vm.runInContext(FUNCTIONS, context);
   // An old Recently Updated card must not set the default remuneration year.
   await context.switchProfileTab('remuneration');
   assert.equal(context.curYear,'2024-2025');
-  assert.equal(select.value,'2024-2025');
   assert.ok(calls.includes('renderYear'));
   assert.ok(calls.includes('source'));
   assert.equal(calls.at(-1),'push');
@@ -75,7 +73,6 @@ vm.runInContext(FUNCTIONS, context);
   band.filings=[]; context.activeProfileTab='overview';
   await context.switchProfileTab('remuneration');
   assert.equal(context.curYear,null);
-  assert.equal(select.value,'');
 })().catch(error=>{console.error(error);process.exitCode=1});
 '''.replace('FUNCTIONS', json.dumps(functions))
         result = subprocess.run([NODE, '-e', script], capture_output=True, text=True)

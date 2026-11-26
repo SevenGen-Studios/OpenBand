@@ -2,7 +2,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const vm=require('node:vm');
 const source=fs.readFileSync('assets/openband.js','utf8');
-const functions=['identitySourceLabel','hasCheckedDisclosureCoverage','remFilings','auditedFilings','auditedFilingsByYear','isManualReview','getFilingStatus','isReliableParsed','filingScore','disclosureYears','remFilingsByYear','bestYear','directoryStatus','capitalYearsForBand','getCapitalSummary','getCapitalAvailableYears','capitalYearStatus','getCapitalParsedYears','getCapitalDisplayYear','capitalYearControlMarkup','renderCommunityCapital'];
+const functions=['identitySourceLabel','hasCheckedDisclosureCoverage','remFilings','auditedFilings','auditedFilingsByYear','isManualReview','getFilingStatus','isReliableParsed','filingScore','disclosureYears','remFilingsByYear','bestYear','directoryStatus','capitalYearsForBand','getCapitalSummary','getCapitalAvailableYears','capitalYearStatus','getCapitalParsedYears','getCapitalDisplayYear','yearCardMarkup','capitalYearControlMarkup','renderCommunityCapital'];
 const panel={dataset:{},innerHTML:''};
 const context=vm.createContext({capitalData:{bands:{}},curCapitalYear:'2025-2026',curYear:null,
     OpenBandNationName:require('../assets/nation-name.js'),
@@ -39,3 +39,10 @@ assert.equal(context.getFilingStatus(context.remFilingsByYear(context.band)[0]).
 context.band.discoveryStatus='error';
 assert.equal(context.remFilingsByYear(context.band).length,0,'Failed Manitoba listings cannot become unposted disclosures');
 assert.equal(context.capitalYearStatus(context.band,'2025-2026'),'unavailable');
+
+const capitalCards=context.capitalYearControlMarkup({id:1,filings:[{year:'2024-2025',docType:'Audited financial statements',posted:true,href:'https://example.test/audit.pdf'}]},'2024-2025');
+assert.match(capitalCards,/class="filing-overview"/);
+assert.match(capitalCards,/aria-pressed="true"/);
+assert.doesNotMatch(capitalCards,/<select/);
+assert.doesNotMatch(fs.readFileSync('index.html','utf8'),/id="yearSel"/);
+assert.doesNotMatch(source,/capitalYearSel|el\('yearSel'\)/);

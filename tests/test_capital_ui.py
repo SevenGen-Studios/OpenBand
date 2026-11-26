@@ -25,7 +25,8 @@ class CapitalUiTests(unittest.TestCase):
             "auditedFilingsByYear(band).filter(f=>f.posted&&f.href)", self.script
         )
         self.assertIn("capitalYearStatus(band,item)", self.script)
-        self.assertIn('<select id="capitalYearSel"', self.script)
+        self.assertIn('aria-label="Community Capital fiscal year"', self.script)
+        self.assertNotIn('capitalYearSel', self.script)
 
     def test_review_state_keeps_year_selector_and_pdf_link(self):
         review_branch = self.script.split(
