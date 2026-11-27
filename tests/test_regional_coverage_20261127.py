@@ -34,6 +34,13 @@ class RegionalCoverageTests(unittest.TestCase):
 
     def test_onion_jobs_are_explicitly_open_and_require_rechecks(self):
         config=json.loads((ROOT/'jobs-sources.json').read_text())['sources']
+        from tools.jobs_collector import PUBLIC_STATUSES
+        data=json.loads((ROOT/'jobs-data.json').read_text());ids=set()
+        for row in data['listings']:
+            if row.get('status') in PUBLIC_STATUSES:
+                if row.get('communityId'):ids.add(str(row['communityId']))
+                ids.update(map(str,row.get('firstNationIds',[])))
+        self.assertEqual(data['communityCount'],len(ids))
         for e in self.entries():
             if e['kind']!='jobs':continue
             r=e['record'];self.assertIn(effective_status(r,TODAY),ACTIVE_STATUSES)
