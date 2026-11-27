@@ -95,6 +95,7 @@ Some tests deliberately fingerprint public assets. For an intentional UI change,
 
 ## Automation and notifications
 
+- For a bounded live jobs verification, dispatch jobs.yml with province and optional source_id. The collector validates the ID against configured sources and preserves other sources; scheduled runs still scan all configured sources.
 - Shared data writers use workflow concurrency. Preserve their serialization and safely reconcile concurrent commits; do not force-push main or discard data updates.
 - Inspect the latest run and its logs before retrying. Re-running an old workflow can use old code; use a fresh dispatch on the intended branch when appropriate.
 - Preserve existing D1 bindings, VAPID key pair, subscriptions, delivery records, and environment configuration when updating Follow. Setup examples in follow-worker/README.md are not instructions to recreate production resources.
