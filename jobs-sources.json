@@ -1248,6 +1248,25 @@
       "sameHostOnly": true,
       "parser": "bamboo_embed",
       "researchSourceId": "onion-feed-wider-20261127"
+    },
+    {
+      "id": "research-onion-health-careers",
+      "url": "https://onionlakehealth.org/careers/",
+      "name": "Onion Lake Health Board — official employer careers",
+      "sourceType": "official_employer",
+      "communityIds": [
+        "344"
+      ],
+      "communityNames": [
+        "Onion Lake Cree Nation"
+      ],
+      "verifiedOfficialSource": true,
+      "autoPublish": false,
+      "inspectDetails": true,
+      "scanMedia": false,
+      "sameHostOnly": true,
+      "parser": "job_link_index",
+      "maxDetailPages": 20
     }
   ]
 }
