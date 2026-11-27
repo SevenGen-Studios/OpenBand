@@ -299,6 +299,14 @@ def job_posting_schema(band: dict, listings: list[dict]) -> list[dict]:
         if not all(row.get(field) for field in ("title", "description", "employer", "postedDate", "location")):
             continue
         location = str(row["location"]).split(",", 1)[0].strip()
+        region_names = {"Saskatchewan": "SK", "Alberta": "AB", "Manitoba": "MB",
+                        "Ontario": "ON", "British Columbia": "BC", "Quebec": "QC",
+                        "New Brunswick": "NB", "Nova Scotia": "NS", "Prince Edward Island": "PE",
+                        "Newfoundland and Labrador": "NL", "Yukon": "YT", "Nunavut": "NU", "Northwest Territories": "NT"}
+        region = next((code for name, code in region_names.items()
+                       if re.search(r"\b(?:" + re.escape(name) + "|" + code + r")\b", str(row["location"]), re.I)), None)
+        if not region and str(row.get("communityId")) == str(band["id"]) and row.get("scope", "community") == "community":
+            region = band.get("province")
         schema = {
             "@context": "https://schema.org",
             "@type": "JobPosting",
@@ -309,7 +317,7 @@ def job_posting_schema(band: dict, listings: list[dict]) -> list[dict]:
             "hiringOrganization": {"@type": "Organization", "name": row["employer"]},
             "jobLocation": {
                 "@type": "Place",
-                "address": {"@type": "PostalAddress", "addressLocality": location, "addressRegion": "SK", "addressCountry": "CA"},
+                "address": {"@type": "PostalAddress", "addressLocality": location, **({"addressRegion": region} if region else {}), "addressCountry": "CA"},
             },
             "url": row.get("applicationUrl") or row["sourceUrl"],
         }

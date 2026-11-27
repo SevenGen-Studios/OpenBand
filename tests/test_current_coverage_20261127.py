@@ -66,3 +66,14 @@ class CurrentCoverageTests(unittest.TestCase):
         for key,count in [('374',5),('293',1)]:
             self.assertEqual(rows[key]['upcomingEvents'],count)
             self.assertTrue(rows[key]['allFour'])
+
+    def test_job_search_metadata_uses_actual_province(self):
+        from tools.build_site import job_posting_schema
+        jobs=json.loads((ROOT/'jobs-data.json').read_text())['listings']
+        bands={str(b['id']):b for b in json.loads((ROOT/'data.json').read_text())['bands']}
+        swan=job_posting_schema(bands['293'],jobs)
+        reviewed=[r for r in swan if r['title'] in ['Housing Manager','Equipment Operator-Laborer (Public Works)']]
+        self.assertEqual(len(reviewed),2)
+        self.assertTrue(all(r['jobLocation']['address']['addressRegion']=='MB' for r in reviewed))
+        row={'id':'test','title':'Test job','description':'Example','employer':'Employer','postedDate':'2026-11-25','location':'Edmonton, Alberta','status':'Open','verifiedOfficialSource':True,'sourceUrl':'https://example.test/job','communityId':'293'}
+        self.assertEqual(job_posting_schema(bands['293'],[row])[0]['jobLocation']['address']['addressRegion'],'AB')
