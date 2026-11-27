@@ -4,6 +4,7 @@ from copy import deepcopy
 import argparse
 from tools.ingest_alberta import read, write, download, page_url, parse_filings, canonical_url, now
 from urllib.parse import urlsplit, parse_qs
+from tools.sanitize_data import normalize_filing_status
 
 
 def listing_identity(url):
@@ -38,6 +39,9 @@ def reconcile_listing(band, source_filings, years=None):
         proposed.update(parse_status='pending_manual_review',manual_review_required=True,
                         verificationStatus='source_listed_pending_extraction',people=[],
                         warnings=['Official ISC listing confirms the document is posted; figures await source verification.'])
+        # Publish the same category-specific status as the sanitizer. Audit
+        # extraction lives in capital-data; it is not pending remuneration.
+        normalize_filing_status(proposed)
         if matches:
             # Keep a before image, including the stale availability classification.
             proposed['previousAvailability']={k:matches[0].get(k) for k in ('posted','href','date','parse_status')}
