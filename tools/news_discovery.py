@@ -736,6 +736,50 @@ def article_page_metadata(markup, page_url):
     }
 
 
+def wordpress_publication_date(payload, article_url, api_url):
+    """Original publication date from an exact, same-publisher public post."""
+    article=urllib.parse.urlsplit(article_url);api=urllib.parse.urlsplit(api_url)
+    if (api.scheme!='https' or api.netloc!=article.netloc or api.query or api.fragment
+            or not re.fullmatch(r'/wp-json/wp/v2/[\w-]+/\d+/?',api.path)):
+        return None
+    if (not isinstance(payload,dict) or payload.get('id')!=int(api.path.rstrip('/').rsplit('/',1)[-1])
+            or payload.get('status')!='publish' or canonical_url(payload.get('link'))!=canonical_url(article_url)):
+        return None
+    # Never substitute date-modified for date-published.
+    value=payload.get('date_gmt') or payload.get('date')
+    published,precision=parse_date_text(value)
+    return published if precision=='day' else None
+
+
+def article_metadata_with_api(fetcher, markup, page_url):
+    metadata=article_page_metadata(markup,page_url)
+    if metadata.get('published'):
+        return metadata
+    class PublicPostLinks(HTMLParser):
+        def __init__(self):
+            super().__init__();self.urls=[]
+        def handle_starttag(self,tag,attrs):
+            a=dict(attrs)
+            if tag.lower()=='link' and a.get('rel')=='alternate' and a.get('type')=='application/json':
+                self.urls.append(urllib.parse.urljoin(page_url,a.get('href','')))
+    links=PublicPostLinks();links.feed(markup)
+    for url in links.urls[:3]:
+        # Validate the destination before making any request.
+        parts=urllib.parse.urlsplit(url);origin=urllib.parse.urlsplit(page_url)
+        if (parts.scheme!='https' or parts.netloc!=origin.netloc or parts.query or parts.fragment
+                or not re.fullmatch(r'/wp-json/wp/v2/[\w-]+/\d+/?',parts.path)):
+            continue
+        try:
+            body,final_url,_=fetcher.get(url)
+            if canonical_url(final_url)!=canonical_url(url):continue
+            published=wordpress_publication_date(json.loads(body),page_url,url)
+            if published:
+                return {**metadata,'published':published,'datePrecision':'day','dateSource':'wordpress-rest:original-date'}
+        except (ValueError,TypeError,OSError,RuntimeError):
+            continue
+    return metadata
+
+
 def run_text_command(command, timeout=45):
     try:
         result = subprocess.run(
@@ -1696,7 +1740,7 @@ def enrich_html_candidate(fetcher, item):
     if "html" not in content_type:
         return item, "detail URL did not return HTML"
     if not same_host(item['url'],final_url):return item,'Detail redirect changed publisher; source review required'
-    metadata = article_page_metadata(body.decode("utf-8", errors="replace"), final_url)
+    metadata = article_metadata_with_api(fetcher, body.decode("utf-8", errors="replace"), final_url)
     if metadata.get('canonical') and not same_host(final_url,metadata['canonical']):return item,'Canonical URL changed publisher; source review required'
     detail_title = clean_text(metadata.get("title"))
     if detail_title and titles_match(detail_title, item.get("title")):
@@ -1757,8 +1801,8 @@ def detail_candidates_from_page(
             if "html" not in content_type:
                 continue
             if not same_host(page_url,final_url):raise ValueError("Detail redirect changed publisher")
-            metadata = article_page_metadata(
-                body.decode("utf-8", errors="replace"), final_url
+            metadata = article_metadata_with_api(
+                fetcher, body.decode("utf-8", errors="replace"), final_url
             )
         except Exception as error:
             review.append({
