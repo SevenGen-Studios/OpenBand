@@ -53,3 +53,15 @@ class RegionalCoverageTests(unittest.TestCase):
         self.assertNotIn('completionDate',row)
         self.assertNotIn('status',row)
         self.assertIn('does not establish completion',row['description'])
+
+    def test_employer_scan_reaches_the_reviewed_postings(self):
+        import gzip
+        from unittest.mock import patch
+        from tools.jobs_collector import fetch_source
+        source=next(s for s in json.loads((ROOT/'jobs-sources.json').read_text())['sources'] if s['id']=='research-onion-health-careers')
+        markup=gzip.decompress((FOLDER/'onion-careers.html.gz').read_bytes()).decode()
+        with patch('tools.jobs_collector.fetch_markup',return_value=(markup,None)), patch('tools.jobs_collector.inspect_candidate_page',return_value=({},[])) as inspect:
+            fetch_source(source,TODAY)
+        checked={call.args[0] for call in inspect.call_args_list}
+        for e in self.entries():
+            if e['kind']=='jobs':self.assertIn(e['record']['sourceUrl'],checked)
