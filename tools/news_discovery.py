@@ -687,6 +687,13 @@ def article_page_metadata(markup, page_url):
     event_page = calendar_url(page_url) or any("Event" in str(row.get("@type", "")) for row in records)
     if not event_page:
         date_sources.extend((value, "time:datetime") for value in parser.times)
+    # SaskPower's release template has no machine-readable publication date.
+    # Accept only the date immediately beside its article heading, never a
+    # navigation/calendar/footer date elsewhere on the page.
+    if (urllib.parse.urlsplit(page_url).hostname or '').lower() in {'saskpower.com','www.saskpower.com'} and '/news-releases/' in page_url:
+        release = re.search(r'<h1\b[^>]*class=["\'][^"\']*\barticle-content\b[^"\']*["\'][^>]*>.*?</h1>\s*<p\b[^>]*class=["\']blog-feature-date["\'][^>]*>([^<]+)</p>', markup, re.I | re.S)
+        if release:
+            date_sources.append((release.group(1), 'saskpower:release-date'))
     for raw_date, source in date_sources:
         published, precision = parse_date_text(raw_date)
         if published:
