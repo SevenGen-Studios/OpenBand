@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-11-27T00:06:18Z",
-  "notes": "Manually maintain verified community websites, public Facebook pages, and local organizations here. The discovery job preserves these records.",
+  "generated": "2026-11-27T22:20:40Z",
+  "notes": "Event discovery sources are derived from the verified News registry. Add event-specific calendars here when found.",
   "communities": [
     {
       "bandId": 378,
@@ -49,8 +49,8 @@
             "https://cowessessfn.com/",
             "https://cowessessfn.com/news/"
           ],
-          "lastCheckedAt": "2026-11-27T00:06:41Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:06:41Z",
+          "lastCheckedAt": "2026-11-27T22:21:37Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:37Z",
           "lastScanStatus": "ok"
         },
         {
@@ -81,8 +81,8 @@
           "monitor": true,
           "official": true,
           "associationConfidence": 0.96,
-          "lastCheckedAt": "2026-11-27T00:06:42Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:06:42Z",
+          "lastCheckedAt": "2026-11-27T22:21:40Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:40Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://cowessessfn.com/feed/",
@@ -102,8 +102,8 @@
           "monitor": true,
           "official": true,
           "associationConfidence": 0.96,
-          "lastCheckedAt": "2026-11-27T00:06:44Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:06:44Z",
+          "lastCheckedAt": "2026-11-27T22:21:41Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:41Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://cowessessfn.com/feed/",
@@ -146,8 +146,8 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "lastCheckedAt": "2026-11-27T00:06:25Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:06:25Z",
+          "lastCheckedAt": "2026-11-27T22:20:45Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:20:45Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://cotefirstnation.ca/feed/",
@@ -218,9 +218,9 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "Reviewed Nation home page and November 13, 2026 member memo",
-          "lastCheckedAt": "2026-11-27T00:06:24Z",
+          "lastCheckedAt": "2026-11-27T22:20:46Z",
           "lastScanStatus": "ok",
-          "lastSuccessfulScanAt": "2026-11-27T00:06:24Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:20:46Z",
           "identityEvidenceUrl": "https://www.daystarfn.com/api/media/file/Christmas%20memo%202026.pdf"
         }
       ],
@@ -256,8 +256,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:06:21Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:06:21Z",
+          "lastCheckedAt": "2026-11-27T22:20:43Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:20:43Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://ggfn.ca/feed/",
@@ -301,8 +301,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:06:35Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:06:35Z",
+          "lastCheckedAt": "2026-11-27T22:20:52Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:20:52Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.kfn72.com/feed/",
@@ -346,8 +346,35 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:06:24Z",
+          "lastCheckedAt": "2026-11-27T22:20:46Z",
           "lastScanStatus": "robots_blocked"
+        },
+        {
+          "name": "MBC Radio — Keeseekoose reporting",
+          "url": "https://www.mbcradio.com/tag/keeseekoose-first-nation",
+          "type": "Traditional News",
+          "status": "verified",
+          "adapter": "html",
+          "official": false,
+          "monitor": true,
+          "requiresCommunityMention": true,
+          "associationCommunityNames": [
+            "Keeseekoose First Nation"
+          ],
+          "researchSourceId": "keesee-news-monitor-20261127",
+          "verifiedAt": "2026-11-27",
+          "lastSuccess": null,
+          "lastCheckedAt": "2026-11-27T22:20:52Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:20:52Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.mbcradio.com/feed",
+            "https://www.mbcradio.com/tag/keeseekoose-first-nation/feed",
+            "https://www.mbcradio.com/news",
+            "https://www.mbcradio.com/author/mbcnews",
+            "https://www.mbcradio.com/news/page/2?et_blog=",
+            "https://www.mbcradio.com/author/mbcnews/feed"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -382,8 +409,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:06:36Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:06:36Z",
+          "lastCheckedAt": "2026-11-27T22:21:35Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:35Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.kinistin.sk.ca/feed/",
@@ -420,8 +447,8 @@
           "researchSourceId": "stc-family-agreement",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:21:51+00:00",
-          "lastCheckedAt": "2026-11-27T00:06:37Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:06:37Z",
+          "lastCheckedAt": "2026-11-27T22:21:08Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:08Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.canada.ca/en/services/life-events.html",
@@ -491,8 +518,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:06:40Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:06:40Z",
+          "lastCheckedAt": "2026-11-27T22:20:58Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:20:58Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://luckymancree.com/feed/",
@@ -525,6 +552,43 @@
           "adapter": "static",
           "monitor": false,
           "official": false
+        },
+        {
+          "name": "Meadow Lake Tribal Council news",
+          "url": "https://www.mltc.net/news/",
+          "type": "Tribal Council",
+          "status": "verified",
+          "adapter": "html",
+          "official": false,
+          "monitor": true,
+          "requiresCommunityMention": true,
+          "associationCommunityNames": [
+            "Makwa Sahgaiehcan First Nation",
+            "Waterhen Lake First Nation",
+            "Buffalo River Dene Nation",
+            "Canoe Lake Cree First Nation",
+            "Clearwater River Dene Nation",
+            "English River Dene Nation",
+            "Flying Dust First Nation",
+            "Ministikwan Lake Cree Nation",
+            "Birch Narrows Dene Nation"
+          ],
+          "researchSourceId": "mltc-news-20261127",
+          "verifiedAt": "2026-11-27",
+          "lastSuccess": null,
+          "lastCheckedAt": "2026-11-27T22:21:41Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:41Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.mltc.net/feed/",
+            "https://www.mltc.net/events",
+            "https://www.mltc.net/videos",
+            "https://www.mltc.net/news?s=",
+            "https://www.mltc.net/category/announcements",
+            "https://www.mltc.net/events/feed/",
+            "https://www.mltc.net/news",
+            "https://www.mltc.net/events?s="
+          ]
         }
       ],
       "discoveryQueries": [
@@ -549,9 +613,9 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "lastCheckedAt": "2026-11-27T00:06:49Z",
+          "lastCheckedAt": "2026-11-27T22:21:21Z",
           "lastScanStatus": "partial",
-          "lastSuccessfulScanAt": "2026-11-27T00:06:49Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:21Z",
           "discoveryUrls": [
             "https://mistawasis.ca/address",
             "https://mistawasis.ca/mistawasis-nehiyawak-app-never-miss-and-update",
@@ -577,9 +641,9 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:06:50Z",
+          "lastCheckedAt": "2026-11-27T22:21:26Z",
           "lastScanStatus": "partial",
-          "lastSuccessfulScanAt": "2026-11-27T00:06:50Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:26Z",
           "discoveryUrls": [
             "https://mistawasis.ca/address",
             "https://mistawasis.ca/mistawasis-nehiyawak-app-never-miss-and-update",
@@ -615,8 +679,8 @@
           "researchSourceId": "stc-family-agreement",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:21:51+00:00",
-          "lastCheckedAt": "2026-11-27T00:06:58Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:06:58Z",
+          "lastCheckedAt": "2026-11-27T22:21:33Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:33Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.canada.ca/en/services/life-events.html",
@@ -643,7 +707,9 @@
           ],
           "researchSourceId": "mistawasis-notices-current",
           "verifiedAt": "2026-11-27",
-          "lastSuccess": null
+          "lastSuccess": null,
+          "lastCheckedAt": "2026-11-27T22:21:33Z",
+          "lastScanStatus": "fetch_failed"
         }
       ],
       "discoveryQueries": [
@@ -676,8 +742,8 @@
             "https://muskodayfn.ca/",
             "https://muskodayfn.ca/news-posts/"
           ],
-          "lastCheckedAt": "2026-11-27T00:07:02Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:02Z",
+          "lastCheckedAt": "2026-11-27T22:21:53Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:53Z",
           "lastScanStatus": "ok"
         },
         {
@@ -693,8 +759,8 @@
             "https://www.mfncs.org/",
             "https://www.mfncs.org/newsletters"
           ],
-          "lastCheckedAt": "2026-11-27T00:06:44Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:06:44Z",
+          "lastCheckedAt": "2026-11-27T22:21:37Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:37Z",
           "lastScanStatus": "ok"
         },
         {
@@ -858,8 +924,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:07:08Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:08Z",
+          "lastCheckedAt": "2026-11-27T22:21:58Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:58Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://muskodayfn.ca/feed/",
@@ -899,8 +965,8 @@
           "researchSourceId": "stc-family-agreement",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:21:51+00:00",
-          "lastCheckedAt": "2026-11-27T00:07:07Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:07Z",
+          "lastCheckedAt": "2026-11-27T22:21:47Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:47Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.canada.ca/en/services/life-events.html",
@@ -946,8 +1012,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:06:53Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:06:53Z",
+          "lastCheckedAt": "2026-11-27T22:21:47Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:47Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://ochapowace.com/news/rss",
@@ -971,7 +1037,18 @@
           ],
           "researchSourceId": "ochapowace-news-current",
           "verifiedAt": "2026-11-27",
-          "lastSuccess": null
+          "lastSuccess": null,
+          "lastCheckedAt": "2026-11-27T22:21:47Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:47Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://ochapowace.com/news/rss",
+            "https://ochapowace.com/news/kakisiwew-ochapowace-2026-christmas-dividend-form",
+            "https://ochapowace.com/news/welcome-simon-bird---director-of-education",
+            "https://ochapowace.com/news/call-out-to-nation-citizens-law-development-ad-hoc-working-group",
+            "https://ochapowace.com/news/location-change---citizen-engagement",
+            "https://ochapowace.com/news"
+          ]
         }
       ],
       "discoveryQueries": [
@@ -996,8 +1073,8 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "lastCheckedAt": "2026-11-27T00:07:01Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:01Z",
+          "lastCheckedAt": "2026-11-27T22:21:48Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:48Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://onionlake.ca/feed/",
@@ -1027,8 +1104,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:07:04Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:04Z",
+          "lastCheckedAt": "2026-11-27T22:22:02Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:22:02Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://onionlake.ca/feed/",
@@ -1055,9 +1132,9 @@
           "researchSourceId": "onion-lake-calendar",
           "verifiedAt": "2026-11-06",
           "lastSuccess": "2026-11-06T07:05:17+00:00",
-          "lastCheckedAt": "2026-11-27T00:07:02Z",
+          "lastCheckedAt": "2026-11-27T22:21:50Z",
           "lastScanStatus": "ok",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:02Z"
+          "lastSuccessfulScanAt": "2026-11-27T22:21:50Z"
         }
       ],
       "discoveryQueries": [
@@ -1092,8 +1169,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:07:56Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:56Z",
+          "lastCheckedAt": "2026-11-27T22:22:53Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:22:53Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.pasquafn.ca/news-events",
@@ -1141,7 +1218,7 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:07:02Z",
+          "lastCheckedAt": "2026-11-27T22:21:48Z",
           "lastSuccessfulScanAt": "2026-11-22T20:37:39Z",
           "lastScanStatus": "robots_unavailable",
           "discoveryUrls": [
@@ -1179,8 +1256,8 @@
           "researchSourceId": "peepeekisis-funeral",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:21:50+00:00",
-          "lastCheckedAt": "2026-11-27T00:07:18Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:18Z",
+          "lastCheckedAt": "2026-11-27T22:22:00Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:22:00Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.canada.ca/en/services/life-events.html",
@@ -1250,8 +1327,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:07:06Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:06Z",
+          "lastCheckedAt": "2026-11-27T22:21:53Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:53Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://pbcn.ca/news.html",
@@ -1321,7 +1398,7 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:07:04Z",
+          "lastCheckedAt": "2026-11-27T22:21:53Z",
           "lastScanStatus": "javascript_required"
         }
       ],
@@ -1387,8 +1464,8 @@
           "researchSourceId": "red-pheasant-calendar",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:15:52+00:00",
-          "lastCheckedAt": "2026-11-27T00:07:12Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:12Z",
+          "lastCheckedAt": "2026-11-27T22:21:59Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:21:59Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://redpheasantcreenation.ca/feed/",
@@ -1428,7 +1505,7 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:07:06Z",
+          "lastCheckedAt": "2026-11-27T22:21:53Z",
           "lastScanStatus": "access_restricted"
         }
       ],
@@ -1488,8 +1565,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:08:23Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:08:23Z",
+          "lastCheckedAt": "2026-11-27T22:23:08Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:23:08Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://sweetgrassfirstnation.ca/news.html",
@@ -1533,8 +1610,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:07:32Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:32Z",
+          "lastCheckedAt": "2026-11-27T22:22:26Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:22:26Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://keyband.com/feed/",
@@ -1574,8 +1651,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:07:40Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:40Z",
+          "lastCheckedAt": "2026-11-27T22:22:38Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:22:38Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.thunderchild.ca/news.html",
@@ -1632,6 +1709,43 @@
           "adapter": "static",
           "monitor": false,
           "official": false
+        },
+        {
+          "name": "Meadow Lake Tribal Council news",
+          "url": "https://www.mltc.net/news/",
+          "type": "Tribal Council",
+          "status": "verified",
+          "adapter": "html",
+          "official": false,
+          "monitor": true,
+          "requiresCommunityMention": true,
+          "associationCommunityNames": [
+            "Makwa Sahgaiehcan First Nation",
+            "Waterhen Lake First Nation",
+            "Buffalo River Dene Nation",
+            "Canoe Lake Cree First Nation",
+            "Clearwater River Dene Nation",
+            "English River Dene Nation",
+            "Flying Dust First Nation",
+            "Ministikwan Lake Cree Nation",
+            "Birch Narrows Dene Nation"
+          ],
+          "researchSourceId": "mltc-news-20261127",
+          "verifiedAt": "2026-11-27",
+          "lastSuccess": null,
+          "lastCheckedAt": "2026-11-27T22:23:54Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:23:54Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.mltc.net/feed/",
+            "https://www.mltc.net/events",
+            "https://www.mltc.net/videos",
+            "https://www.mltc.net/news?s=",
+            "https://www.mltc.net/category/announcements",
+            "https://www.mltc.net/events/feed/",
+            "https://www.mltc.net/news",
+            "https://www.mltc.net/events?s="
+          ]
         }
       ],
       "discoveryQueries": [
@@ -1666,8 +1780,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:07:18Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:18Z",
+          "lastCheckedAt": "2026-11-27T22:22:07Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:22:07Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://whitebearfirstnation.com/feed/",
@@ -1697,8 +1811,8 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "lastCheckedAt": "2026-11-27T00:08:47Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:08:47Z",
+          "lastCheckedAt": "2026-11-27T22:23:42Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:23:42Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.whitecapdakota.com/our-community/community-newsletter",
@@ -1748,8 +1862,8 @@
           "researchSourceId": "stc-family-agreement",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:21:51+00:00",
-          "lastCheckedAt": "2026-11-27T00:07:29Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:29Z",
+          "lastCheckedAt": "2026-11-27T22:22:40Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:22:40Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.canada.ca/en/services/life-events.html",
@@ -1795,8 +1909,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:07:33Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:33Z",
+          "lastCheckedAt": "2026-11-27T22:22:42Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:22:42Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.woodmountainlakotafn.ca/gen-announcements",
@@ -1860,8 +1974,8 @@
           "researchSourceId": "yellow-quill-homes",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:21:53+00:00",
-          "lastCheckedAt": "2026-11-27T00:07:53Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:53Z",
+          "lastCheckedAt": "2026-11-27T22:23:01Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:23:01Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.canada.ca/en/services/life-events.html",
@@ -1902,8 +2016,8 @@
           "researchSourceId": "stc-family-agreement",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:21:51+00:00",
-          "lastCheckedAt": "2026-11-27T00:07:56Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:56Z",
+          "lastCheckedAt": "2026-11-27T22:23:06Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:23:06Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.canada.ca/en/services/life-events.html",
@@ -1946,8 +2060,8 @@
           "discoveryUrls": [
             "https://www.ahtahkakoop.com/"
           ],
-          "lastCheckedAt": "2026-11-27T00:07:41Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:07:41Z",
+          "lastCheckedAt": "2026-11-27T22:22:54Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:22:54Z",
           "lastScanStatus": "partial"
         },
         {
@@ -1978,8 +2092,8 @@
           "monitor": true,
           "official": true,
           "associationConfidence": 0.94,
-          "lastCheckedAt": "2026-11-27T00:09:30Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:09:30Z",
+          "lastCheckedAt": "2026-11-27T22:24:43Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:24:43Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.ahtahkakoop.ca/event-calendar.html",
@@ -2006,8 +2120,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:09:41Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:09:41Z",
+          "lastCheckedAt": "2026-11-27T22:24:50Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:24:50Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.ahtahkakoop.ca/event-calendar.html",
@@ -2031,9 +2145,9 @@
           "researchSourceId": "ahtahkakoop-leadership",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:15:52+00:00",
-          "lastCheckedAt": "2026-11-27T00:08:59Z",
+          "lastCheckedAt": "2026-11-27T22:24:21Z",
           "lastScanStatus": "partial",
-          "lastSuccessfulScanAt": "2026-11-27T00:08:59Z"
+          "lastSuccessfulScanAt": "2026-11-27T22:24:21Z"
         }
       ],
       "discoveryQueries": [
@@ -2092,8 +2206,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:08:00Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:08:00Z",
+          "lastCheckedAt": "2026-11-27T22:23:11Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:23:11Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.brdn.ca/news-events",
@@ -2102,6 +2216,43 @@
             "https://www.brdn.ca/news-events/calendar",
             "https://www.brdn.ca/events.ics",
             "https://www.brdn.ca/events/aa-meetings/event.ics"
+          ]
+        },
+        {
+          "name": "Meadow Lake Tribal Council news",
+          "url": "https://www.mltc.net/news/",
+          "type": "Tribal Council",
+          "status": "verified",
+          "adapter": "html",
+          "official": false,
+          "monitor": true,
+          "requiresCommunityMention": true,
+          "associationCommunityNames": [
+            "Makwa Sahgaiehcan First Nation",
+            "Waterhen Lake First Nation",
+            "Buffalo River Dene Nation",
+            "Canoe Lake Cree First Nation",
+            "Clearwater River Dene Nation",
+            "English River Dene Nation",
+            "Flying Dust First Nation",
+            "Ministikwan Lake Cree Nation",
+            "Birch Narrows Dene Nation"
+          ],
+          "researchSourceId": "mltc-news-20261127",
+          "verifiedAt": "2026-11-27",
+          "lastSuccess": null,
+          "lastCheckedAt": "2026-11-27T22:25:09Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:25:09Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.mltc.net/feed/",
+            "https://www.mltc.net/events",
+            "https://www.mltc.net/videos",
+            "https://www.mltc.net/news?s=",
+            "https://www.mltc.net/category/announcements",
+            "https://www.mltc.net/events/feed/",
+            "https://www.mltc.net/news",
+            "https://www.mltc.net/events?s="
           ]
         }
       ],
@@ -2137,8 +2288,45 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:08:01Z",
+          "lastCheckedAt": "2026-11-27T22:23:42Z",
           "lastScanStatus": "not_found"
+        },
+        {
+          "name": "Meadow Lake Tribal Council news",
+          "url": "https://www.mltc.net/news/",
+          "type": "Tribal Council",
+          "status": "verified",
+          "adapter": "html",
+          "official": false,
+          "monitor": true,
+          "requiresCommunityMention": true,
+          "associationCommunityNames": [
+            "Makwa Sahgaiehcan First Nation",
+            "Waterhen Lake First Nation",
+            "Buffalo River Dene Nation",
+            "Canoe Lake Cree First Nation",
+            "Clearwater River Dene Nation",
+            "English River Dene Nation",
+            "Flying Dust First Nation",
+            "Ministikwan Lake Cree Nation",
+            "Birch Narrows Dene Nation"
+          ],
+          "researchSourceId": "mltc-news-20261127",
+          "verifiedAt": "2026-11-27",
+          "lastSuccess": null,
+          "lastCheckedAt": "2026-11-27T22:25:39Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:25:39Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.mltc.net/feed/",
+            "https://www.mltc.net/events",
+            "https://www.mltc.net/videos",
+            "https://www.mltc.net/news?s=",
+            "https://www.mltc.net/category/announcements",
+            "https://www.mltc.net/events/feed/",
+            "https://www.mltc.net/news",
+            "https://www.mltc.net/events?s="
+          ]
         }
       ],
       "discoveryQueries": [
@@ -2163,6 +2351,43 @@
           "adapter": "static",
           "monitor": false,
           "official": false
+        },
+        {
+          "name": "Meadow Lake Tribal Council news",
+          "url": "https://www.mltc.net/news/",
+          "type": "Tribal Council",
+          "status": "verified",
+          "adapter": "html",
+          "official": false,
+          "monitor": true,
+          "requiresCommunityMention": true,
+          "associationCommunityNames": [
+            "Makwa Sahgaiehcan First Nation",
+            "Waterhen Lake First Nation",
+            "Buffalo River Dene Nation",
+            "Canoe Lake Cree First Nation",
+            "Clearwater River Dene Nation",
+            "English River Dene Nation",
+            "Flying Dust First Nation",
+            "Ministikwan Lake Cree Nation",
+            "Birch Narrows Dene Nation"
+          ],
+          "researchSourceId": "mltc-news-20261127",
+          "verifiedAt": "2026-11-27",
+          "lastSuccess": null,
+          "lastCheckedAt": "2026-11-27T22:25:51Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:25:51Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.mltc.net/feed/",
+            "https://www.mltc.net/events",
+            "https://www.mltc.net/videos",
+            "https://www.mltc.net/news?s=",
+            "https://www.mltc.net/category/announcements",
+            "https://www.mltc.net/events/feed/",
+            "https://www.mltc.net/news",
+            "https://www.mltc.net/events?s="
+          ]
         }
       ],
       "discoveryQueries": [
@@ -2197,8 +2422,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:09:23Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:09:23Z",
+          "lastCheckedAt": "2026-11-27T22:25:44Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:25:44Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://chcn.ca/feed/",
@@ -2239,10 +2464,47 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:08:26Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:08:26Z",
+          "lastCheckedAt": "2026-11-27T22:24:46Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:24:46Z",
           "lastScanStatus": "ok",
           "discoveryUrls": []
+        },
+        {
+          "name": "Meadow Lake Tribal Council news",
+          "url": "https://www.mltc.net/news/",
+          "type": "Tribal Council",
+          "status": "verified",
+          "adapter": "html",
+          "official": false,
+          "monitor": true,
+          "requiresCommunityMention": true,
+          "associationCommunityNames": [
+            "Makwa Sahgaiehcan First Nation",
+            "Waterhen Lake First Nation",
+            "Buffalo River Dene Nation",
+            "Canoe Lake Cree First Nation",
+            "Clearwater River Dene Nation",
+            "English River Dene Nation",
+            "Flying Dust First Nation",
+            "Ministikwan Lake Cree Nation",
+            "Birch Narrows Dene Nation"
+          ],
+          "researchSourceId": "mltc-news-20261127",
+          "verifiedAt": "2026-11-27",
+          "lastSuccess": null,
+          "lastCheckedAt": "2026-11-27T22:26:20Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:26:20Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.mltc.net/feed/",
+            "https://www.mltc.net/events",
+            "https://www.mltc.net/videos",
+            "https://www.mltc.net/news?s=",
+            "https://www.mltc.net/category/announcements",
+            "https://www.mltc.net/events/feed/",
+            "https://www.mltc.net/news",
+            "https://www.mltc.net/events?s="
+          ]
         }
       ],
       "discoveryQueries": [
@@ -2277,8 +2539,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:08:31Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:08:31Z",
+          "lastCheckedAt": "2026-11-27T22:24:56Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:24:56Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.fishinglakefirstnation.com/blog-feed.xml",
@@ -2317,8 +2579,8 @@
             "https://www.flyingdust.net/",
             "https://www.flyingdust.net/newsletters.html"
           ],
-          "lastCheckedAt": "2026-11-27T00:08:36Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:08:36Z",
+          "lastCheckedAt": "2026-11-27T22:24:59Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:24:59Z",
           "lastScanStatus": "ok"
         },
         {
@@ -2329,7 +2591,19 @@
           "adapter": "html",
           "monitor": false,
           "official": true,
-          "associationConfidence": 0.84
+          "associationConfidence": 0.84,
+          "requiresCommunityMention": true,
+          "associationCommunityNames": [
+            "Makwa Sahgaiehcan First Nation",
+            "Waterhen Lake First Nation",
+            "Buffalo River Dene Nation",
+            "Canoe Lake Cree First Nation",
+            "Clearwater River Dene Nation",
+            "English River Dene Nation",
+            "Flying Dust First Nation",
+            "Ministikwan Lake Cree Nation",
+            "Birch Narrows Dene Nation"
+          ]
         },
         {
           "type": "Government Source",
@@ -2339,6 +2613,43 @@
           "adapter": "static",
           "monitor": false,
           "official": false
+        },
+        {
+          "name": "Meadow Lake Tribal Council news",
+          "url": "https://www.mltc.net/news/",
+          "type": "Tribal Council",
+          "status": "verified",
+          "adapter": "html",
+          "official": false,
+          "monitor": true,
+          "requiresCommunityMention": true,
+          "associationCommunityNames": [
+            "Makwa Sahgaiehcan First Nation",
+            "Waterhen Lake First Nation",
+            "Buffalo River Dene Nation",
+            "Canoe Lake Cree First Nation",
+            "Clearwater River Dene Nation",
+            "English River Dene Nation",
+            "Flying Dust First Nation",
+            "Ministikwan Lake Cree Nation",
+            "Birch Narrows Dene Nation"
+          ],
+          "researchSourceId": "mltc-news-20261127",
+          "verifiedAt": "2026-11-27",
+          "lastSuccess": null,
+          "lastCheckedAt": "2026-11-27T22:26:56Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:26:56Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.mltc.net/feed/",
+            "https://www.mltc.net/events",
+            "https://www.mltc.net/videos",
+            "https://www.mltc.net/news?s=",
+            "https://www.mltc.net/category/announcements",
+            "https://www.mltc.net/events/feed/",
+            "https://www.mltc.net/news",
+            "https://www.mltc.net/events?s="
+          ]
         }
       ],
       "discoveryQueries": [
@@ -2407,8 +2718,8 @@
           "researchSourceId": "hatchet-tle",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:13:52+00:00",
-          "lastCheckedAt": "2026-11-27T00:08:51Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:08:51Z",
+          "lastCheckedAt": "2026-11-27T22:25:24Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:25:24Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.canada.ca/en/services/life-events.html",
@@ -2454,8 +2765,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:08:57Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:08:57Z",
+          "lastCheckedAt": "2026-11-27T22:25:33Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:25:33Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://llrib.com/feed/",
@@ -2499,8 +2810,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:09:00Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:09:00Z",
+          "lastCheckedAt": "2026-11-27T22:25:40Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:25:40Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://littlepine.ca/feed/",
@@ -2530,6 +2841,43 @@
           "adapter": "static",
           "monitor": false,
           "official": false
+        },
+        {
+          "name": "Meadow Lake Tribal Council news",
+          "url": "https://www.mltc.net/news/",
+          "type": "Tribal Council",
+          "status": "verified",
+          "adapter": "html",
+          "official": false,
+          "monitor": true,
+          "requiresCommunityMention": true,
+          "associationCommunityNames": [
+            "Makwa Sahgaiehcan First Nation",
+            "Waterhen Lake First Nation",
+            "Buffalo River Dene Nation",
+            "Canoe Lake Cree First Nation",
+            "Clearwater River Dene Nation",
+            "English River Dene Nation",
+            "Flying Dust First Nation",
+            "Ministikwan Lake Cree Nation",
+            "Birch Narrows Dene Nation"
+          ],
+          "researchSourceId": "mltc-news-20261127",
+          "verifiedAt": "2026-11-27",
+          "lastSuccess": null,
+          "lastCheckedAt": "2026-11-27T22:27:25Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:27:25Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.mltc.net/feed/",
+            "https://www.mltc.net/events",
+            "https://www.mltc.net/videos",
+            "https://www.mltc.net/news?s=",
+            "https://www.mltc.net/category/announcements",
+            "https://www.mltc.net/events/feed/",
+            "https://www.mltc.net/news",
+            "https://www.mltc.net/events?s="
+          ]
         }
       ],
       "discoveryQueries": [
@@ -2564,8 +2912,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:09:51Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:09:51Z",
+          "lastCheckedAt": "2026-11-27T22:26:37Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:26:37Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://mlcn.ca/feed/",
@@ -2608,8 +2956,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:09:03Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:09:03Z",
+          "lastCheckedAt": "2026-11-27T22:25:49Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:25:49Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.moosomin.ca/careers_events.html"
@@ -2648,8 +2996,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:09:06Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:09:06Z",
+          "lastCheckedAt": "2026-11-27T22:25:54Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:25:54Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://mosquitofn.ca/community/newsletter.html",
@@ -2682,8 +3030,8 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "lastCheckedAt": "2026-11-27T00:10:30Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:10:30Z",
+          "lastCheckedAt": "2026-11-27T22:27:29Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:27:29Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://muscowpetung.com/feed/",
@@ -2711,8 +3059,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:10:40Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:10:40Z",
+          "lastCheckedAt": "2026-11-27T22:27:26Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:27:26Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://muscowpetung.com/feed/",
@@ -2745,8 +3093,8 @@
           "adapter": "html",
           "monitor": true,
           "official": true,
-          "lastCheckedAt": "2026-11-27T00:11:16Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:11:16Z",
+          "lastCheckedAt": "2026-11-27T22:27:39Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:27:39Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://muskeglake.com/feed/",
@@ -2774,8 +3122,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:11:23Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:11:23Z",
+          "lastCheckedAt": "2026-11-27T22:28:15Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:28:15Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://muskeglake.com/feed/",
@@ -2813,8 +3161,8 @@
           "researchSourceId": "stc-family-agreement",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:21:51+00:00",
-          "lastCheckedAt": "2026-11-27T00:09:49Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:09:49Z",
+          "lastCheckedAt": "2026-11-27T22:27:07Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:27:07Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.canada.ca/en/services/life-events.html",
@@ -2860,7 +3208,7 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:09:49Z",
+          "lastCheckedAt": "2026-11-27T22:27:08Z",
           "lastScanStatus": "robots_blocked"
         }
       ],
@@ -2896,7 +3244,7 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:09:49Z",
+          "lastCheckedAt": "2026-11-27T22:27:08Z",
           "lastScanStatus": "tls_error"
         }
       ],
@@ -2999,8 +3347,8 @@
           "researchSourceId": "stc-family-agreement",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:21:51+00:00",
-          "lastCheckedAt": "2026-11-27T00:09:59Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:09:59Z",
+          "lastCheckedAt": "2026-11-27T22:27:18Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:27:18Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.canada.ca/en/services/life-events.html",
@@ -3046,8 +3394,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:11:31Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:11:31Z",
+          "lastCheckedAt": "2026-11-27T22:29:00Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:29:00Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://piapotnation.com/feed/",
@@ -3090,8 +3438,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:10:04Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:10:04Z",
+          "lastCheckedAt": "2026-11-27T22:27:28Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:27:28Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.saulteauxfn.ca/news.html?NewsID=80",
@@ -3135,8 +3483,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:10:09Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:10:09Z",
+          "lastCheckedAt": "2026-11-27T22:27:29Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:27:29Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.standingbuffalodakotanation.com/article-to-government"
@@ -3223,8 +3571,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:10:18Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:10:18Z",
+          "lastCheckedAt": "2026-11-27T22:27:38Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:27:38Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://riviere-au-tonnerre.ca/feed/"
@@ -3253,6 +3601,43 @@
           "adapter": "static",
           "monitor": false,
           "official": false
+        },
+        {
+          "name": "Meadow Lake Tribal Council news",
+          "url": "https://www.mltc.net/news/",
+          "type": "Tribal Council",
+          "status": "verified",
+          "adapter": "html",
+          "official": false,
+          "monitor": true,
+          "requiresCommunityMention": true,
+          "associationCommunityNames": [
+            "Makwa Sahgaiehcan First Nation",
+            "Waterhen Lake First Nation",
+            "Buffalo River Dene Nation",
+            "Canoe Lake Cree First Nation",
+            "Clearwater River Dene Nation",
+            "English River Dene Nation",
+            "Flying Dust First Nation",
+            "Ministikwan Lake Cree Nation",
+            "Birch Narrows Dene Nation"
+          ],
+          "researchSourceId": "mltc-news-20261127",
+          "verifiedAt": "2026-11-27",
+          "lastSuccess": null,
+          "lastCheckedAt": "2026-11-27T22:28:15Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:28:15Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://www.mltc.net/feed/",
+            "https://www.mltc.net/events",
+            "https://www.mltc.net/videos",
+            "https://www.mltc.net/news?s=",
+            "https://www.mltc.net/category/announcements",
+            "https://www.mltc.net/events/feed/",
+            "https://www.mltc.net/news",
+            "https://www.mltc.net/events?s="
+          ]
         }
       ],
       "discoveryQueries": [
@@ -3287,8 +3672,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:10:27Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:10:27Z",
+          "lastCheckedAt": "2026-11-27T22:27:38Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:27:38Z",
           "lastScanStatus": "partial",
           "discoveryUrls": []
         }
@@ -3325,8 +3710,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:10:31Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:10:31Z",
+          "lastCheckedAt": "2026-11-27T22:27:41Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:27:41Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.fonddulac.ca/pages/community_calendar.html",
@@ -3366,7 +3751,7 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:10:31Z",
+          "lastCheckedAt": "2026-11-27T22:27:39Z",
           "lastScanStatus": "tls_error",
           "requiresCommunityMention": true,
           "associationCommunityNames": [
@@ -3407,8 +3792,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:11:38Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:11:38Z",
+          "lastCheckedAt": "2026-11-27T22:28:53Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:28:53Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://kawacatoosefirstnation.ca/feed/",
@@ -3466,8 +3851,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:10:35Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:10:35Z",
+          "lastCheckedAt": "2026-11-27T22:27:42Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:27:42Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.alexanderfn.com/blog-feed.xml",
@@ -3514,7 +3899,7 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:10:35Z",
+          "lastCheckedAt": "2026-11-27T22:27:41Z",
           "lastScanStatus": "tls_error"
         },
         {
@@ -3550,8 +3935,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:12:00Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:12:00Z",
+          "lastCheckedAt": "2026-11-27T22:29:03Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:29:03Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://acfn.com/in-the-news",
@@ -3596,9 +3981,9 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:10:43Z",
+          "lastCheckedAt": "2026-11-27T22:27:44Z",
           "lastScanStatus": "ok",
-          "lastSuccessfulScanAt": "2026-11-27T00:10:43Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:27:44Z",
           "discoveryUrls": [
             "https://stoneynakodanations.com/feed/",
             "https://stoneynakodanations.com/events"
@@ -3622,8 +4007,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:11:38Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:11:38Z",
+          "lastCheckedAt": "2026-11-27T22:28:57Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:28:57Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://bearspawfirstnation.ca/feed/",
@@ -3661,8 +4046,8 @@
           "researchSourceId": "ab-broadband-2026",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:14:35+00:00",
-          "lastCheckedAt": "2026-11-27T00:11:37Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:11:37Z",
+          "lastCheckedAt": "2026-11-27T22:28:33Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:28:33Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.canada.ca/en/services/life-events.html",
@@ -3690,8 +4075,8 @@
           "researchSourceId": "bearspaw-subdivision",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:14:39+00:00",
-          "lastCheckedAt": "2026-11-27T00:11:31Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:11:31Z",
+          "lastCheckedAt": "2026-11-27T22:28:22Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:28:22Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://iaac-aeic.gc.ca/050/evaluations/proj/89115",
@@ -3732,8 +4117,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:11:34Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:11:34Z",
+          "lastCheckedAt": "2026-11-27T22:28:24Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:28:24Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.beaverfirstnation.com/events",
@@ -3775,8 +4160,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:11:43Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:11:43Z",
+          "lastCheckedAt": "2026-11-27T22:29:06Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:29:06Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://beaverlakecreenation.ca/feed/",
@@ -3820,8 +4205,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:11:39Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:11:39Z",
+          "lastCheckedAt": "2026-11-27T22:28:37Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:28:37Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.bigstone.ca/employment"
@@ -3863,8 +4248,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:12:33Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:12:33Z",
+          "lastCheckedAt": "2026-11-27T22:29:36Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:29:36Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://bloodtribe.org/feed/",
@@ -3893,8 +4278,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:12:34Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:12:34Z",
+          "lastCheckedAt": "2026-11-27T22:29:55Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:29:55Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://bloodtribe.org/feed/",
@@ -3939,8 +4324,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:12:01Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:12:01Z",
+          "lastCheckedAt": "2026-11-27T22:30:01Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:30:01Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.chiniki.com/events",
@@ -3987,8 +4372,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:12:37Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:12:37Z",
+          "lastCheckedAt": "2026-11-27T22:30:05Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:30:05Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.cpfn.ca/latest-news",
@@ -4031,8 +4416,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:12:25Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:12:25Z",
+          "lastCheckedAt": "2026-11-27T22:29:46Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:29:46Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://clfns.com/feed/",
@@ -4061,8 +4446,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:12:33Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:12:33Z",
+          "lastCheckedAt": "2026-11-27T22:29:48Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:29:48Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://clfns.com/feed/",
@@ -4097,9 +4482,9 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:12:35Z",
+          "lastCheckedAt": "2026-11-27T22:30:16Z",
           "lastScanStatus": "ok",
-          "lastSuccessfulScanAt": "2026-11-27T00:12:35Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:30:16Z",
           "discoveryUrls": [
             "https://denetha.ca/feed/",
             "https://denetha.ca/events/?ical=1",
@@ -4143,9 +4528,9 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:14:29Z",
+          "lastCheckedAt": "2026-11-27T22:32:01Z",
           "lastScanStatus": "ok",
-          "lastSuccessfulScanAt": "2026-11-27T00:14:29Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:32:01Z",
           "discoveryUrls": [
             "https://dcn450.com/feed/",
             "https://dcn450.com/events/?ical=1",
@@ -4173,8 +4558,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:14:29Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:14:29Z",
+          "lastCheckedAt": "2026-11-27T22:32:13Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:32:13Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://dcn450.com/feed/",
@@ -4210,8 +4595,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:12:36Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:12:36Z",
+          "lastCheckedAt": "2026-11-27T22:29:57Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:29:57Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.duncansfirstnation.com/healthcare",
@@ -4254,8 +4639,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:12:42Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:12:42Z",
+          "lastCheckedAt": "2026-11-27T22:30:06Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:30:06Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://enochnation.ca/announcements",
@@ -4300,8 +4685,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:13:58Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:13:58Z",
+          "lastCheckedAt": "2026-11-27T22:30:57Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:30:57Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://ermineskin.ca/feed/",
@@ -4330,8 +4715,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:13:23Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:13:23Z",
+          "lastCheckedAt": "2026-11-27T22:31:28Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:31:28Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://ermineskin.ca/feed/",
@@ -4366,8 +4751,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:12:53Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:12:53Z",
+          "lastCheckedAt": "2026-11-27T22:30:17Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:30:17Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.fortmckay.com/feed/",
@@ -4414,9 +4799,9 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:13:23Z",
+          "lastCheckedAt": "2026-11-27T22:30:56Z",
           "lastScanStatus": "ok",
-          "lastSuccessfulScanAt": "2026-11-27T00:13:23Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:30:56Z",
           "discoveryUrls": [
             "https://www.fmfn468.com/news-events",
             "https://www.fmfn468.com/news-events/golf-tournament",
@@ -4443,8 +4828,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:13:30Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:13:30Z",
+          "lastCheckedAt": "2026-11-27T22:30:56Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:30:56Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.fmfn468.com/news-events",
@@ -4482,8 +4867,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:13:24Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:13:24Z",
+          "lastCheckedAt": "2026-11-27T22:30:57Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:30:57Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.froglake.ca/event-list"
@@ -4513,8 +4898,8 @@
           "researchSourceId": "frog-lake-bears-lair",
           "verifiedAt": "2026-11-06",
           "lastSuccess": "2026-11-06T06:52:57+00:00",
-          "lastCheckedAt": "2026-11-27T00:13:27Z",
-          "lastScanStatus": "partial",
+          "lastCheckedAt": "2026-11-27T22:31:21Z",
+          "lastScanStatus": "timeout",
           "lastSuccessfulScanAt": "2026-11-27T00:13:27Z"
         }
       ],
@@ -4545,8 +4930,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:13:28Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:13:28Z",
+          "lastCheckedAt": "2026-11-27T22:30:59Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:30:59Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.goodstoneynation.ca/feed/",
@@ -4598,8 +4983,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:14:07Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:14:07Z",
+          "lastCheckedAt": "2026-11-27T22:31:27Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:31:27Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://heartlakefirstnation.com/feed/",
@@ -4643,7 +5028,7 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:13:28Z",
+          "lastCheckedAt": "2026-11-27T22:30:59Z",
           "lastSuccessfulScanAt": "2026-11-03T03:23:12Z",
           "lastScanStatus": "robots_unavailable",
           "discoveryUrls": []
@@ -4681,8 +5066,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:13:29Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:13:29Z",
+          "lastCheckedAt": "2026-11-27T22:31:00Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:31:00Z",
           "lastScanStatus": "ok",
           "discoveryUrls": []
         },
@@ -4728,7 +5113,7 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:13:29Z",
+          "lastCheckedAt": "2026-11-27T22:31:00Z",
           "lastSuccessfulScanAt": "2026-11-25T22:56:14Z",
           "lastScanStatus": "dns_error",
           "discoveryUrls": []
@@ -4761,8 +5146,8 @@
           "researchSourceId": "ab-broadband-2026",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:14:35+00:00",
-          "lastCheckedAt": "2026-11-27T00:13:48Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:13:48Z",
+          "lastCheckedAt": "2026-11-27T22:31:21Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:31:21Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.canada.ca/en/services/life-events.html",
@@ -4799,8 +5184,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:14:20Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:14:20Z",
+          "lastCheckedAt": "2026-11-27T22:32:09Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:32:09Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://lrrcn.ab.ca/feed/",
@@ -4844,7 +5229,7 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:13:49Z",
+          "lastCheckedAt": "2026-11-27T22:31:23Z",
           "lastScanStatus": "javascript_required"
         },
         {
@@ -4882,8 +5267,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:14:18Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:14:18Z",
+          "lastCheckedAt": "2026-11-27T22:31:32Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:31:32Z",
           "lastScanStatus": "ok",
           "discoveryUrls": []
         },
@@ -4926,8 +5311,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:15:42Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:15:42Z",
+          "lastCheckedAt": "2026-11-27T22:32:53Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:32:53Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.lubiconlakeband.ca/news",
@@ -4974,8 +5359,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:14:21Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:14:21Z",
+          "lastCheckedAt": "2026-11-27T22:31:45Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:31:45Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://mikisewcree.ca/feed",
@@ -5021,7 +5406,7 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:14:22Z",
+          "lastCheckedAt": "2026-11-27T22:31:35Z",
           "lastScanStatus": "not_found"
         },
         {
@@ -5042,8 +5427,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:14:30Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:14:30Z",
+          "lastCheckedAt": "2026-11-27T22:31:43Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:31:43Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://montanafirstnation.com/feed/",
@@ -5079,8 +5464,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:14:25Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:14:25Z",
+          "lastCheckedAt": "2026-11-27T22:31:46Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:31:46Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.ochiese.ca/news",
@@ -5123,8 +5508,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:14:25Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:14:25Z",
+          "lastCheckedAt": "2026-11-27T22:31:48Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:31:48Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.paulfirstnation.com/events",
@@ -5169,8 +5554,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:16:17Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:16:17Z",
+          "lastCheckedAt": "2026-11-27T22:33:39Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:39Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.ptfn.net/feed/",
@@ -5214,8 +5599,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:14:31Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:14:31Z",
+          "lastCheckedAt": "2026-11-27T22:31:54Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:31:54Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://piikanination.com/news",
@@ -5258,8 +5643,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:15:52Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:15:52Z",
+          "lastCheckedAt": "2026-11-27T22:33:13Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:13Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://slcn125.ca/feed/",
@@ -5281,8 +5666,8 @@
           "official": true,
           "sourceOrigin": "Saddle Lake Education Authority identification and public program contact details at https://www.slps.ca/news",
           "lastVerified": "2026-10-28",
-          "lastCheckedAt": "2026-11-27T00:15:13Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:15:13Z",
+          "lastCheckedAt": "2026-11-27T22:32:44Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:32:44Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.slps.ca/events",
@@ -5319,9 +5704,9 @@
           "researchSourceId": "saddle-lake-events",
           "verifiedAt": "2026-11-06",
           "lastSuccess": null,
-          "lastCheckedAt": "2026-11-27T00:15:54Z",
+          "lastCheckedAt": "2026-11-27T22:33:28Z",
           "lastScanStatus": "ok",
-          "lastSuccessfulScanAt": "2026-11-27T00:15:54Z"
+          "lastSuccessfulScanAt": "2026-11-27T22:33:28Z"
         }
       ],
       "discoveryQueries": [
@@ -5349,8 +5734,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:14:36Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:14:36Z",
+          "lastCheckedAt": "2026-11-27T22:32:18Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:32:18Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://samsoncree.com/feed/",
@@ -5376,8 +5761,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:14:39Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:14:39Z",
+          "lastCheckedAt": "2026-11-27T22:32:20Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:32:20Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://samsoncree.com/feed/",
@@ -5413,8 +5798,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:14:53Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:14:53Z",
+          "lastCheckedAt": "2026-11-27T22:32:32Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:32:32Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://sawridgefirstnation.com/feed/",
@@ -5455,8 +5840,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:16:21Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:16:21Z",
+          "lastCheckedAt": "2026-11-27T22:33:48Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:48Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://siksikanation.com/feed/",
@@ -5486,8 +5871,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:16:27Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:16:27Z",
+          "lastCheckedAt": "2026-11-27T22:33:44Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:44Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://siksikanation.com/feed/",
@@ -5514,8 +5899,8 @@
           "researchSourceId": "siksika-home-maintenance",
           "verifiedAt": "2026-11-03",
           "lastSuccess": null,
-          "lastCheckedAt": "2026-11-27T00:17:17Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:17Z",
+          "lastCheckedAt": "2026-11-27T22:33:48Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:48Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://siksikanation.com/feed/",
@@ -5542,9 +5927,9 @@
           "researchSourceId": "siksika-health-calendar",
           "verifiedAt": "2026-11-03",
           "lastSuccess": null,
-          "lastCheckedAt": "2026-11-27T00:16:10Z",
+          "lastCheckedAt": "2026-11-27T22:33:39Z",
           "lastScanStatus": "ok",
-          "lastSuccessfulScanAt": "2026-11-27T00:16:10Z"
+          "lastSuccessfulScanAt": "2026-11-27T22:33:39Z"
         }
       ],
       "discoveryQueries": [
@@ -5570,8 +5955,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:15:58Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:15:58Z",
+          "lastCheckedAt": "2026-11-27T22:33:32Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:32Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.sturgeonlake.ca/feed/",
@@ -5614,8 +5999,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:16:09Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:16:09Z",
+          "lastCheckedAt": "2026-11-27T22:33:44Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:44Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://scfn.ca/feed/",
@@ -5659,8 +6044,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:16:14Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:16:14Z",
+          "lastCheckedAt": "2026-11-27T22:33:42Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:42Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.sunchildfirstnation.com/news-events",
@@ -5706,8 +6091,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:16:37Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:16:37Z",
+          "lastCheckedAt": "2026-11-27T22:34:06Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:06Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://srfn.ca/feed/",
@@ -5749,8 +6134,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:16:22Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:16:22Z",
+          "lastCheckedAt": "2026-11-27T22:33:50Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:50Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.tallcree.ca/feed/",
@@ -5795,9 +6180,9 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:16:59Z",
+          "lastCheckedAt": "2026-11-27T22:33:55Z",
           "lastScanStatus": "partial",
-          "lastSuccessfulScanAt": "2026-11-27T00:16:59Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:55Z",
           "discoveryUrls": [
             "https://tsuutina.com/events-calendar",
             "https://tsuutina.com/news",
@@ -5826,8 +6211,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:17:01Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:01Z",
+          "lastCheckedAt": "2026-11-27T22:33:55Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:55Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://tsuutina.com/events-calendar",
@@ -5869,8 +6254,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:16:23Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:16:23Z",
+          "lastCheckedAt": "2026-11-27T22:33:49Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:49Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.slfn196.com/latest-news"
@@ -5920,9 +6305,9 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:16:26Z",
+          "lastCheckedAt": "2026-11-27T22:33:51Z",
           "lastScanStatus": "partial",
-          "lastSuccessfulScanAt": "2026-11-27T00:16:26Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:51Z",
           "discoveryUrls": [
             "https://www.whitefishlake459.com/blog-feed.xml",
             "https://www.whitefishlake459.com/media-center"
@@ -5972,8 +6357,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:17:06Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:06Z",
+          "lastCheckedAt": "2026-11-27T22:33:53Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:53Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.wfl128.ca/news-1"
@@ -6020,8 +6405,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC First Nation profile",
-          "lastCheckedAt": "2026-11-27T00:18:19Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:18:19Z",
+          "lastCheckedAt": "2026-11-27T22:34:01Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:01Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://woodlandcree.ca/feed",
@@ -6062,8 +6447,8 @@
           "official": false,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
           "requiresCommunityMention": true,
-          "lastCheckedAt": "2026-11-27T00:16:41Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:16:41Z",
+          "lastCheckedAt": "2026-11-27T22:33:54Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:54Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.ktc.ca/news",
@@ -6117,8 +6502,8 @@
             "Sayisi Dene First Nation",
             "Shamattawa First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:17:29Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:29Z",
+          "lastCheckedAt": "2026-11-27T22:34:01Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:01Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.awasisagency.ca/news",
@@ -6156,8 +6541,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:17:03Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:03Z",
+          "lastCheckedAt": "2026-11-27T22:33:56Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:56Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.berensriver.ca/faq",
@@ -6201,8 +6586,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:17:04Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:04Z",
+          "lastCheckedAt": "2026-11-27T22:33:56Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:56Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://birdtailsioux.ca/feed/",
@@ -6244,8 +6629,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:17:04Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:04Z",
+          "lastCheckedAt": "2026-11-27T22:33:56Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:56Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.black-river.ca/links/communitynews.htm",
@@ -6271,8 +6656,8 @@
           "official": true,
           "requiresCommunityMention": false,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:17:06Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:06Z",
+          "lastCheckedAt": "2026-11-27T22:33:58Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:33:58Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.blackriverfn.ca/blog-feed.xml",
@@ -6305,8 +6690,8 @@
           "official": false,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
           "requiresCommunityMention": true,
-          "lastCheckedAt": "2026-11-27T00:17:19Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:19Z",
+          "lastCheckedAt": "2026-11-27T22:34:13Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:13Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://pimaki.ca/feed/",
@@ -6346,8 +6731,8 @@
           "researchSourceId": "amc-bloodvein",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:23:50+00:00",
-          "lastCheckedAt": "2026-11-27T00:18:22Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:18:22Z",
+          "lastCheckedAt": "2026-11-27T22:34:18Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:18Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://manitobachiefs.com/news-events/amc-news",
@@ -6384,8 +6769,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:18:56Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:18:56Z",
+          "lastCheckedAt": "2026-11-27T22:34:02Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:02Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://brokenheadojibwaynation.ca/feed/",
@@ -6430,8 +6815,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:17:19Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:19Z",
+          "lastCheckedAt": "2026-11-27T22:34:02Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:02Z",
           "lastScanStatus": "ok",
           "discoveryUrls": []
         },
@@ -6469,8 +6854,8 @@
           "official": false,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
           "requiresCommunityMention": true,
-          "lastCheckedAt": "2026-11-27T00:17:22Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:22Z",
+          "lastCheckedAt": "2026-11-27T22:34:04Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:04Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.ktc.ca/news",
@@ -6524,8 +6909,8 @@
             "Sayisi Dene First Nation",
             "Shamattawa First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:18:04Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:18:04Z",
+          "lastCheckedAt": "2026-11-27T22:34:18Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:18Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.awasisagency.ca/news",
@@ -6563,7 +6948,7 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:17:23Z",
+          "lastCheckedAt": "2026-11-27T22:34:02Z",
           "lastScanStatus": "tls_error"
         },
         {
@@ -6585,8 +6970,8 @@
           "official": false,
           "requiresCommunityMention": true,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:17:50Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:50Z",
+          "lastCheckedAt": "2026-11-27T22:34:40Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:40Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://horizonmap.ca/feed/",
@@ -6621,8 +7006,8 @@
           "monitor": true,
           "official": false,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:17:34Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:34Z",
+          "lastCheckedAt": "2026-11-27T22:34:13Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:13Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://swampycree.com/feed/",
@@ -6650,8 +7035,8 @@
           "official": true,
           "requiresCommunityMention": false,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:17:47Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:47Z",
+          "lastCheckedAt": "2026-11-27T22:34:10Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:10Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://chemawawin.com/feed/",
@@ -6702,8 +7087,8 @@
           "official": false,
           "requiresCommunityMention": true,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:17:51Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:51Z",
+          "lastCheckedAt": "2026-11-27T22:34:13Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:13Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.thombc.com/blog",
@@ -6744,8 +7129,8 @@
           "official": true,
           "requiresCommunityMention": false,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:17:53Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:53Z",
+          "lastCheckedAt": "2026-11-27T22:34:19Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:19Z",
           "lastScanStatus": "ok",
           "discoveryUrls": []
         }
@@ -6774,8 +7159,8 @@
           "official": true,
           "requiresCommunityMention": false,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:17:53Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:53Z",
+          "lastCheckedAt": "2026-11-27T22:34:14Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:14Z",
           "lastScanStatus": "ok",
           "discoveryUrls": []
         },
@@ -6813,8 +7198,8 @@
           "official": false,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
           "requiresCommunityMention": true,
-          "lastCheckedAt": "2026-11-27T00:17:57Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:57Z",
+          "lastCheckedAt": "2026-11-27T22:34:19Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:19Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://irtc.ca/feed/",
@@ -6866,8 +7251,8 @@
           "official": true,
           "requiresCommunityMention": false,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:17:57Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:17:57Z",
+          "lastCheckedAt": "2026-11-27T22:34:19Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:19Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://ebbandflowfn.ca/feed/",
@@ -6900,8 +7285,8 @@
           "researchSourceId": "ebb-flow-events",
           "verifiedAt": "2026-11-03",
           "lastSuccess": null,
-          "lastCheckedAt": "2026-11-27T00:19:20Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:19:20Z",
+          "lastCheckedAt": "2026-11-27T22:34:27Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:27Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://ebbandflowfn.ca/feed/",
@@ -6935,8 +7320,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:19:30Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:19:30Z",
+          "lastCheckedAt": "2026-11-27T22:34:33Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:33Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://fisherriver.ca/feed/",
@@ -6984,8 +7369,8 @@
           "researchSourceId": "mfnp-expansion",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:13:54+00:00",
-          "lastCheckedAt": "2026-11-27T00:18:23Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:18:23Z",
+          "lastCheckedAt": "2026-11-27T22:34:35Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:35Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.canada.ca/en/services/life-events.html",
@@ -7015,8 +7400,8 @@
           "researchSourceId": "amc-flood",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:23:50+00:00",
-          "lastCheckedAt": "2026-11-27T00:19:33Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:19:33Z",
+          "lastCheckedAt": "2026-11-27T22:34:28Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:28Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://manitobachiefs.com/news-events/amc-news",
@@ -7043,8 +7428,8 @@
           "researchSourceId": "fisher-river-events-breadth",
           "verifiedAt": "2026-11-04",
           "lastSuccess": "2026-11-04T19:13:25+00:00",
-          "lastCheckedAt": "2026-11-27T00:18:56Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:18:56Z",
+          "lastCheckedAt": "2026-11-27T22:34:33Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:33Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://fisherriver.ca/feed/",
@@ -7089,9 +7474,9 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:19:45Z",
+          "lastCheckedAt": "2026-11-27T22:34:34Z",
           "lastScanStatus": "ok",
-          "lastSuccessfulScanAt": "2026-11-27T00:19:45Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:34Z",
           "discoveryUrls": [
             "https://sagkeeng.ca/feed/",
             "https://sagkeeng.ca/category/community-news",
@@ -7113,9 +7498,9 @@
           "official": true,
           "requiresCommunityMention": false,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:20:24Z",
+          "lastCheckedAt": "2026-11-27T22:34:36Z",
           "lastScanStatus": "ok",
-          "lastSuccessfulScanAt": "2026-11-27T00:20:24Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:36Z",
           "discoveryUrls": [
             "https://sagkeeng.ca/feed/",
             "https://sagkeeng.ca/category/community-news",
@@ -7151,8 +7536,8 @@
           "researchSourceId": "sagkeeng-news",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:13:50+00:00",
-          "lastCheckedAt": "2026-11-27T00:19:47Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:19:47Z",
+          "lastCheckedAt": "2026-11-27T22:34:41Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:41Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://sagkeeng.ca/feed/",
@@ -7180,8 +7565,8 @@
           "researchSourceId": "sagkeeng-news-index",
           "verifiedAt": "2026-11-03",
           "lastSuccess": null,
-          "lastCheckedAt": "2026-11-27T00:20:24Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:20:24Z",
+          "lastCheckedAt": "2026-11-27T22:34:41Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:41Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://sagkeeng.ca/feed/",
@@ -7224,7 +7609,7 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:19:30Z",
+          "lastCheckedAt": "2026-11-27T22:34:34Z",
           "lastScanStatus": "tls_error"
         },
         {
@@ -7252,8 +7637,8 @@
             "War Lake First Nation",
             "York Factory First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:19:34Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:19:34Z",
+          "lastCheckedAt": "2026-11-27T22:34:41Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:41Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://keeyask.com/feed/",
@@ -7293,8 +7678,8 @@
           "official": true,
           "requiresCommunityMention": false,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:19:38Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:19:38Z",
+          "lastCheckedAt": "2026-11-27T22:34:40Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:40Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.gamblerfirstnation.ca/news-events/news",
@@ -7343,8 +7728,8 @@
           "researchSourceId": "mfnp-expansion",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:13:54+00:00",
-          "lastCheckedAt": "2026-11-27T00:19:52Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:19:52Z",
+          "lastCheckedAt": "2026-11-27T22:34:55Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:55Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.canada.ca/en/services/life-events.html",
@@ -7397,7 +7782,7 @@
             "St. Theresa Point",
             "Wasagamack First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:19:38Z",
+          "lastCheckedAt": "2026-11-27T22:34:40Z",
           "lastScanStatus": "unsupported_content_type"
         }
       ],
@@ -7425,8 +7810,8 @@
           "official": false,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
           "requiresCommunityMention": true,
-          "lastCheckedAt": "2026-11-27T00:19:42Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:19:42Z",
+          "lastCheckedAt": "2026-11-27T22:34:43Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:43Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.ktc.ca/news",
@@ -7480,8 +7865,8 @@
             "Sayisi Dene First Nation",
             "Shamattawa First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:20:25Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:20:25Z",
+          "lastCheckedAt": "2026-11-27T22:34:46Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:46Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.awasisagency.ca/news",
@@ -7517,8 +7902,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:21:11Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:21:11Z",
+          "lastCheckedAt": "2026-11-27T22:34:44Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:44Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://hollowwater.ca/feed/",
@@ -7573,8 +7958,8 @@
             "Keeseekoowenin",
             "O-Chi-Chak-Ko-Sipi First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:19:55Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:19:55Z",
+          "lastCheckedAt": "2026-11-27T22:34:47Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:47Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://treaty2.ca/feed/",
@@ -7612,8 +7997,8 @@
           "official": false,
           "requiresCommunityMention": true,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:19:55Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:19:55Z",
+          "lastCheckedAt": "2026-11-27T22:34:45Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:45Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://irtc.ca/feed/",
@@ -7664,8 +8049,8 @@
           "official": false,
           "requiresCommunityMention": true,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:20:01Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:20:01Z",
+          "lastCheckedAt": "2026-11-27T22:34:50Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:50Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://irtc.ca/feed/",
@@ -7716,8 +8101,8 @@
           "official": false,
           "requiresCommunityMention": true,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:20:02Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:20:02Z",
+          "lastCheckedAt": "2026-11-27T22:34:50Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:50Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://irtc.ca/feed/",
@@ -7767,9 +8152,9 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:21:11Z",
+          "lastCheckedAt": "2026-11-27T22:34:52Z",
           "lastScanStatus": "ok",
-          "lastSuccessfulScanAt": "2026-11-27T00:21:11Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:52Z",
           "discoveryUrls": [
             "https://www.littlegrandrapidsfn.ca/feed/",
             "https://www.littlegrandrapidsfn.ca/news-and-events"
@@ -7785,8 +8170,8 @@
           "official": false,
           "requiresCommunityMention": true,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:20:14Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:20:14Z",
+          "lastCheckedAt": "2026-11-27T22:35:00Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:00Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://pimaki.ca/feed/",
@@ -7833,8 +8218,8 @@
           "official": false,
           "requiresCommunityMention": true,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:20:17Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:20:17Z",
+          "lastCheckedAt": "2026-11-27T22:34:52Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:52Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://irtc.ca/feed/",
@@ -7884,7 +8269,7 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:20:18Z",
+          "lastCheckedAt": "2026-11-27T22:34:50Z",
           "lastScanStatus": "javascript_required"
         },
         {
@@ -7921,8 +8306,8 @@
           "official": false,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
           "requiresCommunityMention": true,
-          "lastCheckedAt": "2026-11-27T00:20:21Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:20:21Z",
+          "lastCheckedAt": "2026-11-27T22:34:53Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:53Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.ktc.ca/news",
@@ -7976,8 +8361,8 @@
             "Sayisi Dene First Nation",
             "Shamattawa First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:21:04Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:21:04Z",
+          "lastCheckedAt": "2026-11-27T22:34:56Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:56Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.awasisagency.ca/news",
@@ -8031,8 +8416,8 @@
             "Sapotaweyak Cree Nation",
             "Wuskwi Sipihk First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:20:28Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:20:28Z",
+          "lastCheckedAt": "2026-11-27T22:34:55Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:55Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://swampycree.com/feed/",
@@ -8064,8 +8449,8 @@
           "official": true,
           "requiresCommunityMention": false,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:20:28Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:20:28Z",
+          "lastCheckedAt": "2026-11-27T22:34:55Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:34:55Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://mathiascolomb.ca/news",
@@ -8110,8 +8495,8 @@
           "official": true,
           "requiresCommunityMention": false,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:21:10Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:21:10Z",
+          "lastCheckedAt": "2026-11-27T22:35:01Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:01Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://pinecreekfirstnation.com/feed/",
@@ -8170,8 +8555,8 @@
           "official": true,
           "requiresCommunityMention": false,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:21:09Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:21:09Z",
+          "lastCheckedAt": "2026-11-27T22:35:00Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:00Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://misipawistik.com/news-%26-events",
@@ -8221,8 +8606,8 @@
             "Sapotaweyak Cree Nation",
             "Wuskwi Sipihk First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:20:32Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:20:32Z",
+          "lastCheckedAt": "2026-11-27T22:35:00Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:00Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://swampycree.com/feed/",
@@ -8256,8 +8641,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:22:49Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:22:49Z",
+          "lastCheckedAt": "2026-11-27T22:37:16Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:37:16Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.ncncree.com/events/?ical=1",
@@ -8292,8 +8677,8 @@
           "researchSourceId": "ncn-news",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:18:00+00:00",
-          "lastCheckedAt": "2026-11-27T00:23:27Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:23:27Z",
+          "lastCheckedAt": "2026-11-27T22:37:15Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:37:15Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.ncncree.com/events/?ical=1",
@@ -8319,8 +8704,8 @@
           "researchSourceId": "ncn-housing-notices",
           "verifiedAt": "2026-11-03",
           "lastSuccess": null,
-          "lastCheckedAt": "2026-11-27T00:23:31Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:23:31Z",
+          "lastCheckedAt": "2026-11-27T22:37:16Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:37:16Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.ncncree.com/events/?ical=1",
@@ -8356,8 +8741,8 @@
           "official": false,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
           "requiresCommunityMention": true,
-          "lastCheckedAt": "2026-11-27T00:21:13Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:21:13Z",
+          "lastCheckedAt": "2026-11-27T22:35:03Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:03Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.ktc.ca/news",
@@ -8411,8 +8796,8 @@
             "Sayisi Dene First Nation",
             "Shamattawa First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:21:17Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:21:17Z",
+          "lastCheckedAt": "2026-11-27T22:35:06Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:06Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.awasisagency.ca/news",
@@ -8448,8 +8833,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:21:17Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:21:17Z",
+          "lastCheckedAt": "2026-11-27T22:35:06Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:06Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://nhcn.ca/feed/",
@@ -8470,8 +8855,8 @@
           "official": true,
           "requiresCommunityMention": false,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:21:19Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:21:19Z",
+          "lastCheckedAt": "2026-11-27T22:35:07Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:07Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://nhcn.ca/feed/",
@@ -8529,8 +8914,8 @@
             "Keeseekoowenin",
             "O-Chi-Chak-Ko-Sipi First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:21:25Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:21:25Z",
+          "lastCheckedAt": "2026-11-27T22:35:11Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:11Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://treaty2.ca/feed/",
@@ -8577,8 +8962,8 @@
           "official": false,
           "requiresCommunityMention": true,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:21:30Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:21:30Z",
+          "lastCheckedAt": "2026-11-27T22:35:17Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:17Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.sealriverwatershed.ca/news",
@@ -8611,7 +8996,7 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:21:21Z",
+          "lastCheckedAt": "2026-11-27T22:35:09Z",
           "lastScanStatus": "source_identity_unconfirmed"
         },
         {
@@ -8641,8 +9026,8 @@
             "Sapotaweyak Cree Nation",
             "Wuskwi Sipihk First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:21:25Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:21:25Z",
+          "lastCheckedAt": "2026-11-27T22:35:13Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:13Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://swampycree.com/feed/",
@@ -8674,8 +9059,8 @@
           "official": false,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
           "requiresCommunityMention": true,
-          "lastCheckedAt": "2026-11-27T00:21:38Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:21:38Z",
+          "lastCheckedAt": "2026-11-27T22:35:27Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:27Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://pimaki.ca/feed/",
@@ -8724,8 +9109,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:22:45Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:22:45Z",
+          "lastCheckedAt": "2026-11-27T22:35:33Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:33Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://peguis.ca/index.php?format=feed&type=rss",
@@ -8762,8 +9147,8 @@
           "researchSourceId": "amc-flood",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:23:50+00:00",
-          "lastCheckedAt": "2026-11-27T00:22:45Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:22:45Z",
+          "lastCheckedAt": "2026-11-27T22:35:30Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:30Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://manitobachiefs.com/news-events/amc-news",
@@ -8789,8 +9174,8 @@
             "Peguis",
             "Roseau River Anishinabe First Nation Government"
           ],
-          "lastCheckedAt": "2026-11-27T00:22:05Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:22:05Z",
+          "lastCheckedAt": "2026-11-27T22:35:46Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:46Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://treaty1.ca/feed/",
@@ -8817,8 +9202,8 @@
           "researchSourceId": "peguis-cfs-community-updates",
           "verifiedAt": "2026-11-07",
           "lastSuccess": "2026-11-07T10:40:24+00:00",
-          "lastCheckedAt": "2026-11-27T00:22:11Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:22:11Z",
+          "lastCheckedAt": "2026-11-27T22:35:32Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:32Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.peguiscfs.ca/feed/rss2",
@@ -8842,9 +9227,9 @@
           "researchSourceId": "peguis-events-breadth",
           "verifiedAt": "2026-11-04",
           "lastSuccess": "2026-11-04T19:13:25+00:00",
-          "lastCheckedAt": "2026-11-27T00:24:00Z",
+          "lastCheckedAt": "2026-11-27T22:35:49Z",
           "lastScanStatus": "ok",
-          "lastSuccessfulScanAt": "2026-11-27T00:24:00Z"
+          "lastSuccessfulScanAt": "2026-11-27T22:35:49Z"
         }
       ],
       "discoveryQueries": [
@@ -8875,8 +9260,8 @@
           "official": false,
           "requiresCommunityMention": true,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:23:00Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:23:00Z",
+          "lastCheckedAt": "2026-11-27T22:35:46Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:46Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://irtc.ca/feed/",
@@ -8926,8 +9311,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:22:48Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:22:48Z",
+          "lastCheckedAt": "2026-11-27T22:35:49Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:49Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.prfn.ca/news",
@@ -8970,7 +9355,7 @@
           "official": false,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
           "requiresCommunityMention": true,
-          "lastCheckedAt": "2026-11-27T00:22:49Z",
+          "lastCheckedAt": "2026-11-27T22:35:47Z",
           "lastScanStatus": "not_found",
           "associationConfidence": 0.9,
           "associationCommunityNames": [
@@ -9003,7 +9388,7 @@
             "St. Theresa Point",
             "Wasagamack First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:22:49Z",
+          "lastCheckedAt": "2026-11-27T22:35:48Z",
           "lastScanStatus": "unsupported_content_type"
         }
       ],
@@ -9040,7 +9425,7 @@
           "official": false,
           "requiresCommunityMention": true,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:22:50Z",
+          "lastCheckedAt": "2026-11-27T22:35:48Z",
           "lastScanStatus": "unsupported_content_type"
         }
       ],
@@ -9069,9 +9454,9 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:23:23Z",
+          "lastCheckedAt": "2026-11-27T22:35:51Z",
           "lastScanStatus": "ok",
-          "lastSuccessfulScanAt": "2026-11-27T00:23:23Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:51Z",
           "discoveryUrls": [
             "https://rrafn.com/news-%26-jobs",
             "https://rrafn.com/cows-and-plows-update"
@@ -9114,8 +9499,8 @@
           "researchSourceId": "roseau-pathways",
           "verifiedAt": "2026-11-02",
           "lastSuccess": "2026-11-03T04:13:51+00:00",
-          "lastCheckedAt": "2026-11-27T00:23:01Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:23:01Z",
+          "lastCheckedAt": "2026-11-27T22:36:01Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:36:01Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.canada.ca/en/services/life-events.html",
@@ -9142,8 +9527,8 @@
             "Peguis",
             "Roseau River Anishinabe First Nation Government"
           ],
-          "lastCheckedAt": "2026-11-27T00:23:39Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:23:39Z",
+          "lastCheckedAt": "2026-11-27T22:35:53Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:53Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://treaty1.ca/feed/",
@@ -9180,8 +9565,8 @@
           "official": true,
           "requiresCommunityMention": false,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:23:13Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:23:13Z",
+          "lastCheckedAt": "2026-11-27T22:36:02Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:36:02Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://sbofn.com/feed/",
@@ -9239,12 +9624,40 @@
             "Sapotaweyak Cree Nation",
             "Wuskwi Sipihk First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:23:16Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:23:16Z",
+          "lastCheckedAt": "2026-11-27T22:35:57Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:35:57Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://swampycree.com/feed/",
             "https://swampycree.com/sctc-events"
+          ]
+        },
+        {
+          "name": "Sapotaweyak Cree Nation official news",
+          "url": "https://scn314.com/news/",
+          "type": "Official First Nation Website",
+          "status": "verified",
+          "adapter": "html",
+          "official": true,
+          "monitor": true,
+          "requiresCommunityMention": false,
+          "associationCommunityNames": [
+            "Sapotaweyak Cree Nation"
+          ],
+          "researchSourceId": "scn-news-wider-20261127",
+          "verifiedAt": "2026-11-27",
+          "lastSuccess": "2026-11-27T07:42:39.596454+00:00",
+          "lastCheckedAt": "2026-11-27T22:36:04Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:36:04Z",
+          "lastScanStatus": "ok",
+          "discoveryUrls": [
+            "https://scn314.com/feed/",
+            "https://scn314.com/news/feed/",
+            "https://scn314.com/scn-cows-and-plows-quarterly-update",
+            "https://scn314.com/cows-and-plows-claim-february-27-update",
+            "https://scn314.com/event-directory",
+            "https://scn314.com/news/sapotaweyak-cree-nationagricultural-benefits-settlement-trustquarterly-report-q3-2026",
+            "https://scn314.com/scn-newsletter"
           ]
         }
       ],
@@ -9272,8 +9685,8 @@
           "official": false,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
           "requiresCommunityMention": true,
-          "lastCheckedAt": "2026-11-27T00:23:20Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:23:20Z",
+          "lastCheckedAt": "2026-11-27T22:36:05Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:36:05Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.ktc.ca/news",
@@ -9327,8 +9740,8 @@
             "Sayisi Dene First Nation",
             "Shamattawa First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:24:05Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:24:05Z",
+          "lastCheckedAt": "2026-11-27T22:36:48Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:36:48Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.awasisagency.ca/news",
@@ -9365,8 +9778,8 @@
           "official": false,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
           "requiresCommunityMention": true,
-          "lastCheckedAt": "2026-11-27T00:23:26Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:23:26Z",
+          "lastCheckedAt": "2026-11-27T22:36:08Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:36:08Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.ktc.ca/news",
@@ -9420,8 +9833,8 @@
             "Sayisi Dene First Nation",
             "Shamattawa First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:24:11Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:24:11Z",
+          "lastCheckedAt": "2026-11-27T22:36:50Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:36:50Z",
           "lastScanStatus": "partial",
           "discoveryUrls": [
             "https://www.awasisagency.ca/news",
@@ -9457,8 +9870,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:23:42Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:23:42Z",
+          "lastCheckedAt": "2026-11-27T22:36:43Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:36:43Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://svdngovernance.com/feed/",
@@ -9512,8 +9925,8 @@
           "official": false,
           "requiresCommunityMention": true,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:23:37Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:23:37Z",
+          "lastCheckedAt": "2026-11-27T22:36:48Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:36:48Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.fnccec.ca/feed/"
@@ -9543,7 +9956,7 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:23:39Z",
+          "lastCheckedAt": "2026-11-27T22:36:51Z",
           "lastScanStatus": "unrelated_or_parked_domain"
         },
         {
@@ -9571,7 +9984,7 @@
             "St. Theresa Point",
             "Wasagamack First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:23:39Z",
+          "lastCheckedAt": "2026-11-27T22:36:49Z",
           "lastScanStatus": "unsupported_content_type"
         }
       ],
@@ -9600,8 +10013,8 @@
           "monitor": true,
           "official": true,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
-          "lastCheckedAt": "2026-11-27T00:24:12Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:24:12Z",
+          "lastCheckedAt": "2026-11-27T22:37:19Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:37:19Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://swanlakefirstnation.com/feed/",
@@ -9647,8 +10060,8 @@
           "official": false,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
           "requiresCommunityMention": true,
-          "lastCheckedAt": "2026-11-27T00:23:43Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:23:43Z",
+          "lastCheckedAt": "2026-11-27T22:36:54Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:36:54Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.ktc.ca/news",
@@ -9699,8 +10112,8 @@
             "War Lake First Nation",
             "York Factory First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:23:46Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:23:46Z",
+          "lastCheckedAt": "2026-11-27T22:36:55Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:36:55Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://keeyask.com/feed/",
@@ -9745,8 +10158,8 @@
           "official": true,
           "requiresCommunityMention": false,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:24:13Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:24:13Z",
+          "lastCheckedAt": "2026-11-27T22:37:20Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:37:20Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://ttr292.ca/index.php/feed/",
@@ -9779,8 +10192,8 @@
           "official": false,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
           "requiresCommunityMention": true,
-          "lastCheckedAt": "2026-11-27T00:23:49Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:23:49Z",
+          "lastCheckedAt": "2026-11-27T22:36:59Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:36:59Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.ktc.ca/news",
@@ -9831,8 +10244,8 @@
             "War Lake First Nation",
             "York Factory First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:23:52Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:23:52Z",
+          "lastCheckedAt": "2026-11-27T22:37:03Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:37:03Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://keeyask.com/feed/",
@@ -9868,7 +10281,7 @@
           "official": false,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
           "requiresCommunityMention": true,
-          "lastCheckedAt": "2026-11-27T00:23:53Z",
+          "lastCheckedAt": "2026-11-27T22:37:04Z",
           "lastScanStatus": "not_found",
           "associationConfidence": 0.9,
           "associationCommunityNames": [
@@ -9901,7 +10314,7 @@
             "St. Theresa Point",
             "Wasagamack First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:23:53Z",
+          "lastCheckedAt": "2026-11-27T22:37:04Z",
           "lastScanStatus": "unsupported_content_type"
         }
       ],
@@ -9931,8 +10344,8 @@
           "official": false,
           "requiresCommunityMention": true,
           "sourceOrigin": "Visually reviewed Nation identity/source evidence; news availability requires a successful scan",
-          "lastCheckedAt": "2026-11-27T00:24:00Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:24:00Z",
+          "lastCheckedAt": "2026-11-27T22:37:09Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:37:09Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://labrc.com/feed/",
@@ -9994,8 +10407,8 @@
             "Sapotaweyak Cree Nation",
             "Wuskwi Sipihk First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:24:03Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:24:03Z",
+          "lastCheckedAt": "2026-11-27T22:37:13Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:37:13Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://swampycree.com/feed/",
@@ -10027,8 +10440,8 @@
           "official": false,
           "sourceOrigin": "ISC-listed website; working news coverage not yet established",
           "requiresCommunityMention": true,
-          "lastCheckedAt": "2026-11-27T00:24:04Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:24:04Z",
+          "lastCheckedAt": "2026-11-27T22:37:16Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:37:16Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://www.ktc.ca/news",
@@ -10079,8 +10492,8 @@
             "War Lake First Nation",
             "York Factory First Nation"
           ],
-          "lastCheckedAt": "2026-11-27T00:24:06Z",
-          "lastSuccessfulScanAt": "2026-11-27T00:24:06Z",
+          "lastCheckedAt": "2026-11-27T22:37:18Z",
+          "lastSuccessfulScanAt": "2026-11-27T22:37:18Z",
           "lastScanStatus": "ok",
           "discoveryUrls": [
             "https://keeyask.com/feed/",
