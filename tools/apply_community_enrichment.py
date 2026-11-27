@@ -6,13 +6,13 @@ from datetime import date
 from pathlib import Path
 try:
     from tools.community_updates import fold, track_changes
-    from tools.news_discovery import write_json, canonical_url, article_page_metadata
+    from tools.news_discovery import write_json, canonical_url, article_page_metadata, wordpress_publication_date
     from tools.events_discovery import is_publishable_event, explicit_event_dates
     from tools.jobs_collector import normalize_listing, validation_warnings, OPEN_UNTIL_FILLED
     from tools.research_public_sources import evidence_text
 except ImportError:
     from community_updates import fold, track_changes
-    from news_discovery import write_json, canonical_url, article_page_metadata
+    from news_discovery import write_json, canonical_url, article_page_metadata, wordpress_publication_date
     from events_discovery import is_publishable_event, explicit_event_dates
     from jobs_collector import normalize_listing, validation_warnings, OPEN_UNTIL_FILLED
     from research_public_sources import evidence_text
@@ -59,7 +59,18 @@ def validate(entry, roster, checks, root, today):
         check = proof if proof.get('evidencePath') else checks[proof['url']]
         markup = gzip.decompress((root / check['evidencePath']).read_bytes()).decode('utf-8', errors='replace')
         metadata = article_page_metadata(markup, check['url'])
-        if metadata.get('published') != record['publishedAt']: raise ValueError('Publication metadata absent or mismatched')
+        if metadata.get('published') != record['publishedAt']:
+            # Some official WordPress custom-post templates omit HTML dates.
+            # Require an archived, same-origin published API record bound to
+            # the exact reader-facing article; modified dates are never used.
+            api_url=entry.get('publicationEvidenceUrl')
+            api_proof=next((p for p in entry['evidence'] if p['url']==api_url),None)
+            if not api_proof:
+                raise ValueError('Publication metadata absent or mismatched')
+            api_check=api_proof if api_proof.get('evidencePath') else checks[api_url]
+            api=json.loads(gzip.decompress((root/api_check['evidencePath']).read_bytes()))
+            if wordpress_publication_date(api,record['url'],api_url)!=record['publishedAt']:
+                raise ValueError('Publication API identity or original date mismatched')
     elif kind == 'events':
         if not is_publishable_event(record, today): raise ValueError('Event fails publication gate')
         dates={d for pair in explicit_event_dates(record.get('description','')) for d in pair if d}

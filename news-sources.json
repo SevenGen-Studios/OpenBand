@@ -2472,7 +2472,19 @@
           "adapter": "html",
           "monitor": false,
           "official": true,
-          "associationConfidence": 0.84
+          "associationConfidence": 0.84,
+          "requiresCommunityMention": true,
+          "associationCommunityNames": [
+            "Makwa Sahgaiehcan First Nation",
+            "Waterhen Lake First Nation",
+            "Buffalo River Dene Nation",
+            "Canoe Lake Cree First Nation",
+            "Clearwater River Dene Nation",
+            "English River Dene Nation",
+            "Flying Dust First Nation",
+            "Ministikwan Lake Cree Nation",
+            "Birch Narrows Dene Nation"
+          ]
         },
         {
           "type": "Government Source",
@@ -9521,6 +9533,22 @@
             "https://swampycree.com/feed/",
             "https://swampycree.com/sctc-events"
           ]
+        },
+        {
+          "name": "Sapotaweyak Cree Nation official news",
+          "url": "https://scn314.com/news/",
+          "type": "Official First Nation Website",
+          "status": "verified",
+          "adapter": "html",
+          "official": true,
+          "monitor": true,
+          "requiresCommunityMention": false,
+          "associationCommunityNames": [
+            "Sapotaweyak Cree Nation"
+          ],
+          "researchSourceId": "scn-news-wider-20261127",
+          "verifiedAt": "2026-11-27",
+          "lastSuccess": "2026-11-27T07:42:39.596454+00:00"
         }
       ],
       "discoveryQueries": [
