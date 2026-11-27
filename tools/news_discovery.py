@@ -694,6 +694,18 @@ def article_page_metadata(markup, page_url):
         release = re.search(r'<h1\b[^>]*class=["\'][^"\']*\barticle-content\b[^"\']*["\'][^>]*>.*?</h1>\s*<p\b[^>]*class=["\']blog-feature-date["\'][^>]*>([^<]+)</p>', markup, re.I | re.S)
         if release:
             date_sources.append((release.group(1), 'saskpower:release-date'))
+    # These official templates put the publication date beside the article
+    # heading instead of in metadata. Scope to their single-post structure;
+    # unrelated dates in navigation, sidebars and event posters are excluded.
+    host = (urllib.parse.urlsplit(page_url).hostname or '').lower().removeprefix('www.')
+    if not event_page and host == 'mistawasis.ca':
+        release = re.search(r'<article\b[^>]*\bid=["\']post-\d+["\'][^>]*>\s*<div\b[^>]*class=["\']et_post_meta_wrapper["\'][^>]*>\s*<h1\b[^>]*>.*?</h1>\s*<p\b[^>]*class=["\']post-meta["\'][^>]*>\s*<span\b[^>]*class=["\']published["\'][^>]*>([^<]+)</span>', markup, re.I | re.S)
+        if release:
+            date_sources.append((release.group(1), 'mistawasis:article-published'))
+    if not event_page and host == 'ochapowace.com' and '/news/' in page_url:
+        release = re.search(r'<div\b[^>]*class=["\']post single["\'][^>]*>\s*<div\b[^>]*class=["\']post-date["\'][^>]*>([^<]+)</div>\s*<div\b[^>]*class=["\']post-content["\']', markup, re.I | re.S)
+        if release:
+            date_sources.append((release.group(1), 'ochapowace:article-date'))
     for raw_date, source in date_sources:
         published, precision = parse_date_text(raw_date)
         if published:

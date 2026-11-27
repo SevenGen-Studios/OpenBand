@@ -5,13 +5,13 @@
       "SK": {
         "tracked": 69,
         "recentNews30": 9,
-        "recentNews90": 28,
+        "recentNews90": 29,
         "upcomingEvents": 8,
         "verifiedProjects": 69,
         "activeJobs": 28,
-        "allFour": 5,
+        "allFour": 6,
         "noVerifiedInformation": 0,
-        "newsRecords": 261,
+        "newsRecords": 262,
         "upcomingEventRecords": 44,
         "projectAssociations": 163,
         "activeJobAssociations": 111,
@@ -68,16 +68,16 @@
       },
       "MB": {
         "tracked": 63,
-        "recentNews30": 14,
-        "recentNews90": 18,
+        "recentNews30": 17,
+        "recentNews90": 21,
         "upcomingEvents": 3,
-        "verifiedProjects": 53,
+        "verifiedProjects": 57,
         "activeJobs": 12,
         "allFour": 3,
-        "noVerifiedInformation": 9,
-        "newsRecords": 154,
+        "noVerifiedInformation": 2,
+        "newsRecords": 159,
         "upcomingEventRecords": 7,
-        "projectAssociations": 86,
+        "projectAssociations": 90,
         "activeJobAssociations": 28,
         "sourceStates": {
           "news": {
@@ -94,192 +94,13 @@
             "not_registered": 23
           },
           "projects": {
-            "not_recently_checked": 53,
-            "not_registered": 10
+            "not_recently_checked": 57,
+            "not_registered": 6
           }
         }
       }
     },
     "communities": [
-      {
-        "communityId": "265",
-        "communityName": "Buffalo Point First Nation",
-        "province": "MB",
-        "newsCount": 0,
-        "latestNews": null,
-        "recentNews30": 0,
-        "recentNewsWeeks30": 0,
-        "recentNews90": 0,
-        "upcomingEvents": 0,
-        "verifiedProjects": 0,
-        "activeJobs": 0,
-        "allFour": false,
-        "noVerifiedInformation": true,
-        "missingCategories": [
-          "recentNews90",
-          "upcomingEvents",
-          "verifiedProjects",
-          "activeJobs"
-        ],
-        "researchPriority": 4,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://www.buffalopoint-firstnation.ca/",
-            "name": "Buffalo Point First Nation official website",
-            "verification": "verified",
-            "lastCheck": "checked",
-            "lastAttempted": "2026-11-27T00:01:38Z",
-            "lastSuccess": "2026-11-26T23:55:32Z"
-          },
-          {
-            "category": "events",
-            "url": "https://www.buffalopoint-firstnation.ca/",
-            "name": "Buffalo Point First Nation official website",
-            "verification": "verified",
-            "lastCheck": "ok",
-            "lastAttempted": "2026-11-27T00:17:19Z",
-            "lastSuccess": "2026-11-27T00:17:19Z"
-          },
-          {
-            "category": "jobs",
-            "url": "https://www.buffalopoint-firstnation.ca/",
-            "name": "Buffalo Point First Nation official website",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-26"
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "checked",
-          "events": "checked",
-          "jobs": "checked",
-          "projects": "not_registered"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
-      {
-        "communityId": "289",
-        "communityName": "Canupawakpa Dakota First Nation",
-        "province": "MB",
-        "newsCount": 0,
-        "latestNews": null,
-        "recentNews30": 0,
-        "recentNewsWeeks30": 0,
-        "recentNews90": 0,
-        "upcomingEvents": 0,
-        "verifiedProjects": 0,
-        "activeJobs": 0,
-        "allFour": false,
-        "noVerifiedInformation": true,
-        "missingCategories": [
-          "recentNews90",
-          "upcomingEvents",
-          "verifiedProjects",
-          "activeJobs"
-        ],
-        "researchPriority": 4,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://canupawakpanation.com/",
-            "name": "Canupawakpa Dakota First Nation official website",
-            "verification": "candidate",
-            "lastCheck": "tls_error",
-            "lastAttempted": "2026-11-27T00:01:38Z",
-            "lastSuccess": null
-          },
-          {
-            "category": "news",
-            "url": "https://horizonmap.ca/supports-for-students/community",
-            "name": "Canupawakpa Dakota First Nation attributable community source",
-            "verification": "verified",
-            "lastCheck": "checked",
-            "lastAttempted": "2026-11-27T00:01:38Z",
-            "lastSuccess": "2026-11-26T23:56:43Z"
-          },
-          {
-            "category": "events",
-            "url": "https://canupawakpanation.com/",
-            "name": "Canupawakpa Dakota First Nation official website",
-            "verification": "candidate",
-            "lastCheck": "tls_error",
-            "lastAttempted": "2026-11-27T00:17:23Z",
-            "lastSuccess": null
-          },
-          {
-            "category": "events",
-            "url": "https://horizonmap.ca/supports-for-students/community",
-            "name": "Canupawakpa Dakota First Nation attributable community source",
-            "verification": "verified",
-            "lastCheck": "partial",
-            "lastAttempted": "2026-11-27T00:17:50Z",
-            "lastSuccess": "2026-11-27T00:17:50Z"
-          },
-          {
-            "category": "jobs",
-            "url": "https://canupawakpanation.com/",
-            "name": "Canupawakpa Dakota First Nation official website",
-            "lastCheck": "unavailable",
-            "lastSuccess": "2026-11-03"
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "checked",
-          "events": "checked",
-          "jobs": "source_failure_or_restriction",
-          "projects": "not_registered"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
-      {
-        "communityId": "288",
-        "communityName": "Dakota Plains",
-        "province": "MB",
-        "newsCount": 0,
-        "latestNews": null,
-        "recentNews30": 0,
-        "recentNewsWeeks30": 0,
-        "recentNews90": 0,
-        "upcomingEvents": 0,
-        "verifiedProjects": 0,
-        "activeJobs": 0,
-        "allFour": false,
-        "noVerifiedInformation": true,
-        "missingCategories": [
-          "recentNews90",
-          "upcomingEvents",
-          "verifiedProjects",
-          "activeJobs"
-        ],
-        "researchPriority": 4,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://dakotaplains.ca/",
-            "name": "Dakota Plains attributable community source",
-            "verification": "verified",
-            "lastCheck": "checked",
-            "lastAttempted": "2026-11-27T00:01:38Z",
-            "lastSuccess": "2026-11-26T23:56:28Z"
-          },
-          {
-            "category": "events",
-            "url": "https://dakotaplains.ca/",
-            "name": "Dakota Plains attributable community source",
-            "verification": "verified",
-            "lastCheck": "ok",
-            "lastAttempted": "2026-11-27T00:17:53Z",
-            "lastSuccess": "2026-11-27T00:17:53Z"
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "checked",
-          "events": "checked",
-          "jobs": "not_registered",
-          "projects": "not_registered"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
       {
         "communityId": "295",
         "communityName": "Dakota Tipi",
@@ -319,202 +140,6 @@
             "lastCheck": "ok",
             "lastAttempted": "2026-11-27T00:17:53Z",
             "lastSuccess": "2026-11-27T00:17:53Z"
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "checked",
-          "events": "checked",
-          "jobs": "not_registered",
-          "projects": "not_registered"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
-      {
-        "communityId": "271",
-        "communityName": "Lake Manitoba",
-        "province": "MB",
-        "newsCount": 0,
-        "latestNews": null,
-        "recentNews30": 0,
-        "recentNewsWeeks30": 0,
-        "recentNews90": 0,
-        "upcomingEvents": 0,
-        "verifiedProjects": 0,
-        "activeJobs": 0,
-        "allFour": false,
-        "noVerifiedInformation": true,
-        "missingCategories": [
-          "recentNews90",
-          "upcomingEvents",
-          "verifiedProjects",
-          "activeJobs"
-        ],
-        "researchPriority": 4,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://irtc.ca/lake-manitoba-first-nation",
-            "name": "Lake Manitoba attributable community source",
-            "verification": "verified",
-            "lastCheck": "checked",
-            "lastAttempted": "2026-11-27T00:01:38Z",
-            "lastSuccess": "2026-11-26T23:58:47Z"
-          },
-          {
-            "category": "events",
-            "url": "https://irtc.ca/lake-manitoba-first-nation",
-            "name": "Lake Manitoba attributable community source",
-            "verification": "verified",
-            "lastCheck": "ok",
-            "lastAttempted": "2026-11-27T00:20:01Z",
-            "lastSuccess": "2026-11-27T00:20:01Z"
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "checked",
-          "events": "checked",
-          "jobs": "not_registered",
-          "projects": "not_registered"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
-      {
-        "communityId": "318",
-        "communityName": "O-Pipon-Na-Piwin Cree Nation",
-        "province": "MB",
-        "newsCount": 0,
-        "latestNews": null,
-        "recentNews30": 0,
-        "recentNewsWeeks30": 0,
-        "recentNews90": 0,
-        "upcomingEvents": 0,
-        "verifiedProjects": 0,
-        "activeJobs": 0,
-        "allFour": false,
-        "noVerifiedInformation": true,
-        "missingCategories": [
-          "recentNews90",
-          "upcomingEvents",
-          "verifiedProjects",
-          "activeJobs"
-        ],
-        "researchPriority": 4,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://www.sealriverwatershed.ca/the-nations",
-            "name": "O-Pipon-Na-Piwin Cree Nation attributable community source",
-            "verification": "verified",
-            "lastCheck": "partial",
-            "lastAttempted": "2026-11-27T00:01:38Z",
-            "lastSuccess": "2026-11-26T23:59:28Z"
-          },
-          {
-            "category": "events",
-            "url": "https://www.sealriverwatershed.ca/the-nations",
-            "name": "O-Pipon-Na-Piwin Cree Nation attributable community source",
-            "verification": "verified",
-            "lastCheck": "partial",
-            "lastAttempted": "2026-11-27T00:21:30Z",
-            "lastSuccess": "2026-11-27T00:21:30Z"
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "checked",
-          "events": "checked",
-          "jobs": "not_registered",
-          "projects": "not_registered"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
-      {
-        "communityId": "291",
-        "communityName": "Rolling River",
-        "province": "MB",
-        "newsCount": 0,
-        "latestNews": null,
-        "recentNews30": 0,
-        "recentNewsWeeks30": 0,
-        "recentNews90": 0,
-        "upcomingEvents": 0,
-        "verifiedProjects": 0,
-        "activeJobs": 0,
-        "allFour": false,
-        "noVerifiedInformation": true,
-        "missingCategories": [
-          "recentNews90",
-          "upcomingEvents",
-          "verifiedProjects",
-          "activeJobs"
-        ],
-        "researchPriority": 4,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://parti.fng.ca/fng-gpn-i/pi/en/471581/1/document.do",
-            "name": "Rolling River attributable community source",
-            "verification": "candidate",
-            "lastCheck": "unsupported_content_type",
-            "lastAttempted": "2026-11-27T00:01:38Z",
-            "lastSuccess": null
-          },
-          {
-            "category": "events",
-            "url": "https://parti.fng.ca/fng-gpn-i/pi/en/471581/1/document.do",
-            "name": "Rolling River attributable community source",
-            "verification": "candidate",
-            "lastCheck": "unsupported_content_type",
-            "lastAttempted": "2026-11-27T00:22:50Z",
-            "lastSuccess": null
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "source_failure_or_restriction",
-          "events": "source_failure_or_restriction",
-          "jobs": "not_registered",
-          "projects": "not_registered"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
-      {
-        "communityId": "314",
-        "communityName": "Sapotaweyak Cree Nation",
-        "province": "MB",
-        "newsCount": 0,
-        "latestNews": null,
-        "recentNews30": 0,
-        "recentNewsWeeks30": 0,
-        "recentNews90": 0,
-        "upcomingEvents": 0,
-        "verifiedProjects": 0,
-        "activeJobs": 0,
-        "allFour": false,
-        "noVerifiedInformation": true,
-        "missingCategories": [
-          "recentNews90",
-          "upcomingEvents",
-          "verifiedProjects",
-          "activeJobs"
-        ],
-        "researchPriority": 4,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://swampycree.com/sapotaweyak-cree-nation",
-            "name": "Sapotaweyak Cree Nation attributable community source",
-            "verification": "verified",
-            "lastCheck": "checked",
-            "lastAttempted": "2026-11-27T00:01:38Z",
-            "lastSuccess": "2026-11-27T00:00:25Z"
-          },
-          {
-            "category": "events",
-            "url": "https://swampycree.com/sapotaweyak-cree-nation",
-            "name": "Sapotaweyak Cree Nation attributable community source",
-            "verification": "verified",
-            "lastCheck": "ok",
-            "lastAttempted": "2026-11-27T00:23:16Z",
-            "lastSuccess": "2026-11-27T00:23:16Z"
           }
         ],
         "sourceStateByCategory": {
@@ -2981,6 +2606,61 @@
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
       },
       {
+        "communityId": "265",
+        "communityName": "Buffalo Point First Nation",
+        "province": "MB",
+        "newsCount": 1,
+        "latestNews": "2026-11-26",
+        "recentNews30": 1,
+        "recentNewsWeeks30": 1,
+        "recentNews90": 1,
+        "upcomingEvents": 0,
+        "verifiedProjects": 0,
+        "activeJobs": 0,
+        "allFour": false,
+        "noVerifiedInformation": false,
+        "missingCategories": [
+          "upcomingEvents",
+          "verifiedProjects",
+          "activeJobs"
+        ],
+        "researchPriority": 3,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://www.buffalopoint-firstnation.ca/",
+            "name": "Buffalo Point First Nation official website",
+            "verification": "verified",
+            "lastCheck": "checked",
+            "lastAttempted": "2026-11-27T00:01:38Z",
+            "lastSuccess": "2026-11-26T23:55:32Z"
+          },
+          {
+            "category": "events",
+            "url": "https://www.buffalopoint-firstnation.ca/",
+            "name": "Buffalo Point First Nation official website",
+            "verification": "verified",
+            "lastCheck": "ok",
+            "lastAttempted": "2026-11-27T00:17:19Z",
+            "lastSuccess": "2026-11-27T00:17:19Z"
+          },
+          {
+            "category": "jobs",
+            "url": "https://www.buffalopoint-firstnation.ca/",
+            "name": "Buffalo Point First Nation official website",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-26"
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "checked",
+          "events": "checked",
+          "jobs": "checked",
+          "projects": "not_registered"
+        },
+        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
+      },
+      {
         "communityId": "301",
         "communityName": "Bunibonibee Cree Nation",
         "province": "MB",
@@ -3074,6 +2754,79 @@
           "events": "checked",
           "jobs": "checked",
           "projects": "not_recently_checked"
+        },
+        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
+      },
+      {
+        "communityId": "289",
+        "communityName": "Canupawakpa Dakota First Nation",
+        "province": "MB",
+        "newsCount": 1,
+        "latestNews": "2026-11-03",
+        "recentNews30": 1,
+        "recentNewsWeeks30": 1,
+        "recentNews90": 1,
+        "upcomingEvents": 0,
+        "verifiedProjects": 0,
+        "activeJobs": 0,
+        "allFour": false,
+        "noVerifiedInformation": false,
+        "missingCategories": [
+          "upcomingEvents",
+          "verifiedProjects",
+          "activeJobs"
+        ],
+        "researchPriority": 3,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://canupawakpanation.com/",
+            "name": "Canupawakpa Dakota First Nation official website",
+            "verification": "candidate",
+            "lastCheck": "tls_error",
+            "lastAttempted": "2026-11-27T00:01:38Z",
+            "lastSuccess": null
+          },
+          {
+            "category": "news",
+            "url": "https://horizonmap.ca/supports-for-students/community",
+            "name": "Canupawakpa Dakota First Nation attributable community source",
+            "verification": "verified",
+            "lastCheck": "checked",
+            "lastAttempted": "2026-11-27T00:01:38Z",
+            "lastSuccess": "2026-11-26T23:56:43Z"
+          },
+          {
+            "category": "events",
+            "url": "https://canupawakpanation.com/",
+            "name": "Canupawakpa Dakota First Nation official website",
+            "verification": "candidate",
+            "lastCheck": "tls_error",
+            "lastAttempted": "2026-11-27T00:17:23Z",
+            "lastSuccess": null
+          },
+          {
+            "category": "events",
+            "url": "https://horizonmap.ca/supports-for-students/community",
+            "name": "Canupawakpa Dakota First Nation attributable community source",
+            "verification": "verified",
+            "lastCheck": "partial",
+            "lastAttempted": "2026-11-27T00:17:50Z",
+            "lastSuccess": "2026-11-27T00:17:50Z"
+          },
+          {
+            "category": "jobs",
+            "url": "https://canupawakpanation.com/",
+            "name": "Canupawakpa Dakota First Nation official website",
+            "lastCheck": "unavailable",
+            "lastSuccess": "2026-11-03"
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "checked",
+          "events": "checked",
+          "jobs": "source_failure_or_restriction",
+          "projects": "not_registered"
         },
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
       },
@@ -3204,6 +2957,62 @@
             "lastCheck": "historical_review",
             "lastSuccess": "2026-11-04",
             "relationship": "Named community infrastructure beneficiary; ownership not inferred"
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "checked",
+          "events": "checked",
+          "jobs": "not_registered",
+          "projects": "not_recently_checked"
+        },
+        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
+      },
+      {
+        "communityId": "288",
+        "communityName": "Dakota Plains",
+        "province": "MB",
+        "newsCount": 0,
+        "latestNews": null,
+        "recentNews30": 0,
+        "recentNewsWeeks30": 0,
+        "recentNews90": 0,
+        "upcomingEvents": 0,
+        "verifiedProjects": 1,
+        "activeJobs": 0,
+        "allFour": false,
+        "noVerifiedInformation": false,
+        "missingCategories": [
+          "recentNews90",
+          "upcomingEvents",
+          "activeJobs"
+        ],
+        "researchPriority": 3,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://dakotaplains.ca/",
+            "name": "Dakota Plains attributable community source",
+            "verification": "verified",
+            "lastCheck": "checked",
+            "lastAttempted": "2026-11-27T00:01:38Z",
+            "lastSuccess": "2026-11-26T23:56:28Z"
+          },
+          {
+            "category": "events",
+            "url": "https://dakotaplains.ca/",
+            "name": "Dakota Plains attributable community source",
+            "verification": "verified",
+            "lastCheck": "ok",
+            "lastAttempted": "2026-11-27T00:17:53Z",
+            "lastSuccess": "2026-11-27T00:17:53Z"
+          },
+          {
+            "category": "projects",
+            "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/84623?culture=en-CA",
+            "name": "Government of Canada — project source",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-11-27",
+            "relationship": "Named Nation is the project community/proponent or direct beneficiary; no ownership percentage inferred"
           }
         ],
         "sourceStateByCategory": {
@@ -3597,6 +3406,62 @@
           "news": "checked",
           "events": "checked",
           "jobs": "checked",
+          "projects": "not_recently_checked"
+        },
+        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
+      },
+      {
+        "communityId": "271",
+        "communityName": "Lake Manitoba",
+        "province": "MB",
+        "newsCount": 0,
+        "latestNews": null,
+        "recentNews30": 0,
+        "recentNewsWeeks30": 0,
+        "recentNews90": 0,
+        "upcomingEvents": 0,
+        "verifiedProjects": 1,
+        "activeJobs": 0,
+        "allFour": false,
+        "noVerifiedInformation": false,
+        "missingCategories": [
+          "recentNews90",
+          "upcomingEvents",
+          "activeJobs"
+        ],
+        "researchPriority": 3,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://irtc.ca/lake-manitoba-first-nation",
+            "name": "Lake Manitoba attributable community source",
+            "verification": "verified",
+            "lastCheck": "checked",
+            "lastAttempted": "2026-11-27T00:01:38Z",
+            "lastSuccess": "2026-11-26T23:58:47Z"
+          },
+          {
+            "category": "events",
+            "url": "https://irtc.ca/lake-manitoba-first-nation",
+            "name": "Lake Manitoba attributable community source",
+            "verification": "verified",
+            "lastCheck": "ok",
+            "lastAttempted": "2026-11-27T00:20:01Z",
+            "lastSuccess": "2026-11-27T00:20:01Z"
+          },
+          {
+            "category": "projects",
+            "url": "https://iaac-aeic.gc.ca/050/evaluations/proj/88641?culture=en-CA",
+            "name": "Government of Canada — project source",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-11-27",
+            "relationship": "Named Nation is the project community/proponent or direct beneficiary; no ownership percentage inferred"
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "checked",
+          "events": "checked",
+          "jobs": "not_registered",
           "projects": "not_recently_checked"
         },
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
@@ -4187,6 +4052,62 @@
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
       },
       {
+        "communityId": "318",
+        "communityName": "O-Pipon-Na-Piwin Cree Nation",
+        "province": "MB",
+        "newsCount": 0,
+        "latestNews": null,
+        "recentNews30": 0,
+        "recentNewsWeeks30": 0,
+        "recentNews90": 0,
+        "upcomingEvents": 0,
+        "verifiedProjects": 1,
+        "activeJobs": 0,
+        "allFour": false,
+        "noVerifiedInformation": false,
+        "missingCategories": [
+          "recentNews90",
+          "upcomingEvents",
+          "activeJobs"
+        ],
+        "researchPriority": 3,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://www.sealriverwatershed.ca/the-nations",
+            "name": "O-Pipon-Na-Piwin Cree Nation attributable community source",
+            "verification": "verified",
+            "lastCheck": "partial",
+            "lastAttempted": "2026-11-27T00:01:38Z",
+            "lastSuccess": "2026-11-26T23:59:28Z"
+          },
+          {
+            "category": "events",
+            "url": "https://www.sealriverwatershed.ca/the-nations",
+            "name": "O-Pipon-Na-Piwin Cree Nation attributable community source",
+            "verification": "verified",
+            "lastCheck": "partial",
+            "lastAttempted": "2026-11-27T00:21:30Z",
+            "lastSuccess": "2026-11-27T00:21:30Z"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.canada.ca/en/indigenous-services-canada/news/2024/11/canada-and-manitoba-first-nations-collaborate-to-build-more-schools.html",
+            "name": "Government of Canada — project source",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-11-27",
+            "relationship": "Named Nation is the project community/proponent or direct beneficiary; no ownership percentage inferred"
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "checked",
+          "events": "checked",
+          "jobs": "not_registered",
+          "projects": "not_recently_checked"
+        },
+        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
+      },
+      {
         "communityId": "327",
         "communityName": "Pauingassi First Nation",
         "province": "MB",
@@ -4470,6 +4391,119 @@
           "events": "source_failure_or_restriction",
           "jobs": "source_failure_or_restriction",
           "projects": "not_recently_checked"
+        },
+        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
+      },
+      {
+        "communityId": "291",
+        "communityName": "Rolling River",
+        "province": "MB",
+        "newsCount": 0,
+        "latestNews": null,
+        "recentNews30": 0,
+        "recentNewsWeeks30": 0,
+        "recentNews90": 0,
+        "upcomingEvents": 0,
+        "verifiedProjects": 1,
+        "activeJobs": 0,
+        "allFour": false,
+        "noVerifiedInformation": false,
+        "missingCategories": [
+          "recentNews90",
+          "upcomingEvents",
+          "activeJobs"
+        ],
+        "researchPriority": 3,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://parti.fng.ca/fng-gpn-i/pi/en/471581/1/document.do",
+            "name": "Rolling River attributable community source",
+            "verification": "candidate",
+            "lastCheck": "unsupported_content_type",
+            "lastAttempted": "2026-11-27T00:01:38Z",
+            "lastSuccess": null
+          },
+          {
+            "category": "events",
+            "url": "https://parti.fng.ca/fng-gpn-i/pi/en/471581/1/document.do",
+            "name": "Rolling River attributable community source",
+            "verification": "candidate",
+            "lastCheck": "unsupported_content_type",
+            "lastAttempted": "2026-11-27T00:22:50Z",
+            "lastSuccess": null
+          },
+          {
+            "category": "projects",
+            "url": "https://irfund.ca/en/a-nations-guidepost/",
+            "name": "Indigenous Reconciliation Fund",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-11-27",
+            "relationship": "Named Nation is the project community/proponent or direct beneficiary; no ownership percentage inferred"
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "source_failure_or_restriction",
+          "events": "source_failure_or_restriction",
+          "jobs": "not_registered",
+          "projects": "not_recently_checked"
+        },
+        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
+      },
+      {
+        "communityId": "314",
+        "communityName": "Sapotaweyak Cree Nation",
+        "province": "MB",
+        "newsCount": 2,
+        "latestNews": "2026-11-11",
+        "recentNews30": 2,
+        "recentNewsWeeks30": 2,
+        "recentNews90": 2,
+        "upcomingEvents": 0,
+        "verifiedProjects": 0,
+        "activeJobs": 0,
+        "allFour": false,
+        "noVerifiedInformation": false,
+        "missingCategories": [
+          "upcomingEvents",
+          "verifiedProjects",
+          "activeJobs"
+        ],
+        "researchPriority": 3,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://swampycree.com/sapotaweyak-cree-nation",
+            "name": "Sapotaweyak Cree Nation attributable community source",
+            "verification": "verified",
+            "lastCheck": "checked",
+            "lastAttempted": "2026-11-27T00:01:38Z",
+            "lastSuccess": "2026-11-27T00:00:25Z"
+          },
+          {
+            "category": "news",
+            "url": "https://scn314.com/news/",
+            "name": "Sapotaweyak Cree Nation official news",
+            "verification": "verified",
+            "lastCheck": "not_checked",
+            "lastAttempted": null,
+            "lastSuccess": "2026-11-27T07:42:39.596454+00:00"
+          },
+          {
+            "category": "events",
+            "url": "https://swampycree.com/sapotaweyak-cree-nation",
+            "name": "Sapotaweyak Cree Nation attributable community source",
+            "verification": "verified",
+            "lastCheck": "ok",
+            "lastAttempted": "2026-11-27T00:23:16Z",
+            "lastSuccess": "2026-11-27T00:23:16Z"
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "checked",
+          "events": "checked",
+          "jobs": "not_registered",
+          "projects": "not_registered"
         },
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
       },
@@ -12435,11 +12469,11 @@
         "communityId": "293",
         "communityName": "Swan Lake First Nation",
         "province": "MB",
-        "newsCount": 5,
+        "newsCount": 6,
         "latestNews": "2026-11-18",
-        "recentNews30": 2,
+        "recentNews30": 3,
         "recentNewsWeeks30": 2,
-        "recentNews90": 4,
+        "recentNews90": 5,
         "upcomingEvents": 0,
         "verifiedProjects": 1,
         "activeJobs": 1,
@@ -13054,89 +13088,6 @@
             "category": "projects",
             "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2025/07/government-of-canada-to-bring-high-speed-internet-access-to-saskatchewan-communities.html",
             "name": "Innovation, Science and Economic Development Canada",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-08-10",
-            "relationship": "See source-dated project description; ownership not inferred"
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "checked",
-          "events": "checked",
-          "jobs": "checked",
-          "projects": "not_recently_checked"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
-      {
-        "communityId": "342",
-        "communityName": "Moosomin First Nation",
-        "province": "SK",
-        "newsCount": 0,
-        "latestNews": null,
-        "recentNews30": 0,
-        "recentNewsWeeks30": 0,
-        "recentNews90": 0,
-        "upcomingEvents": 11,
-        "verifiedProjects": 1,
-        "activeJobs": 1,
-        "allFour": false,
-        "noVerifiedInformation": false,
-        "missingCategories": [
-          "recentNews90"
-        ],
-        "researchPriority": 1,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://www.moosomin.ca/",
-            "name": "Moosomin First Nation official website",
-            "verification": "verified",
-            "lastCheck": "partial",
-            "lastAttempted": "2026-11-27T00:01:38Z",
-            "lastSuccess": "2026-11-26T23:48:18Z"
-          },
-          {
-            "category": "events",
-            "url": "https://www.moosomin.ca/",
-            "name": "Moosomin First Nation official website",
-            "verification": "verified",
-            "lastCheck": "partial",
-            "lastAttempted": "2026-11-27T00:09:03Z",
-            "lastSuccess": "2026-11-27T00:09:03Z"
-          },
-          {
-            "category": "jobs",
-            "url": "https://www.moosomin.ca/",
-            "name": "Moosomin First Nation official website",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-26"
-          },
-          {
-            "category": "jobs",
-            "url": "https://www.fsin.ca/employment-opportunities",
-            "name": "FSIN Employment Opportunities",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-26"
-          },
-          {
-            "category": "jobs",
-            "url": "https://batc.ca/career_opportunities.html",
-            "name": "Battlefords Agency Tribal Chiefs Career Opportunities",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-26"
-          },
-          {
-            "category": "projects",
-            "url": "https://housing-infrastructure.canada.ca/pub/drr-rrm/2025/2025-supp-hi-ih-eng.html",
-            "name": "Housing, Infrastructure and Communities Canada, 2024-25 Departmental Results Report",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-08-10",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.canada.ca/en/indigenous-services-canada/news/2021/08/improvements-to-support-child-and-family-services-new-school-infrastructure-and-an-emergency-shelter-announced-for-saskatchewan-first-nations.html",
-            "name": "Indigenous Services Canada",
             "lastCheck": "historical_review",
             "lastSuccess": "2026-08-10",
             "relationship": "See source-dated project description; ownership not inferred"
@@ -15595,6 +15546,87 @@
         "emptyResultMeaning": null
       },
       {
+        "communityId": "342",
+        "communityName": "Moosomin First Nation",
+        "province": "SK",
+        "newsCount": 1,
+        "latestNews": "2026-10-27",
+        "recentNews30": 0,
+        "recentNewsWeeks30": 0,
+        "recentNews90": 1,
+        "upcomingEvents": 11,
+        "verifiedProjects": 1,
+        "activeJobs": 1,
+        "allFour": true,
+        "noVerifiedInformation": false,
+        "missingCategories": [],
+        "researchPriority": 0,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://www.moosomin.ca/",
+            "name": "Moosomin First Nation official website",
+            "verification": "verified",
+            "lastCheck": "partial",
+            "lastAttempted": "2026-11-27T00:01:38Z",
+            "lastSuccess": "2026-11-26T23:48:18Z"
+          },
+          {
+            "category": "events",
+            "url": "https://www.moosomin.ca/",
+            "name": "Moosomin First Nation official website",
+            "verification": "verified",
+            "lastCheck": "partial",
+            "lastAttempted": "2026-11-27T00:09:03Z",
+            "lastSuccess": "2026-11-27T00:09:03Z"
+          },
+          {
+            "category": "jobs",
+            "url": "https://www.moosomin.ca/",
+            "name": "Moosomin First Nation official website",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-26"
+          },
+          {
+            "category": "jobs",
+            "url": "https://www.fsin.ca/employment-opportunities",
+            "name": "FSIN Employment Opportunities",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-26"
+          },
+          {
+            "category": "jobs",
+            "url": "https://batc.ca/career_opportunities.html",
+            "name": "Battlefords Agency Tribal Chiefs Career Opportunities",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-26"
+          },
+          {
+            "category": "projects",
+            "url": "https://housing-infrastructure.canada.ca/pub/drr-rrm/2025/2025-supp-hi-ih-eng.html",
+            "name": "Housing, Infrastructure and Communities Canada, 2024-25 Departmental Results Report",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-08-10",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.canada.ca/en/indigenous-services-canada/news/2021/08/improvements-to-support-child-and-family-services-new-school-infrastructure-and-an-emergency-shelter-announced-for-saskatchewan-first-nations.html",
+            "name": "Indigenous Services Canada",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-08-10",
+            "relationship": "See source-dated project description; ownership not inferred"
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "checked",
+          "events": "checked",
+          "jobs": "checked",
+          "projects": "not_recently_checked"
+        },
+        "emptyResultMeaning": null
+      },
+      {
         "communityId": "372",
         "communityName": "Whitecap Dakota First Nation",
         "province": "SK",
@@ -15722,17 +15754,17 @@
     "byProvince": {
       "SK": {
         "tracked": 69,
-        "recentNews30": 9,
+        "recentNews30": 11,
         "recentNews90": 29,
-        "upcomingEvents": 8,
+        "upcomingEvents": 10,
         "verifiedProjects": 69,
         "activeJobs": 28,
-        "allFour": 6,
+        "allFour": 7,
         "noVerifiedInformation": 0,
-        "newsRecords": 262,
-        "upcomingEventRecords": 44,
-        "projectAssociations": 163,
-        "activeJobAssociations": 111,
+        "newsRecords": 265,
+        "upcomingEventRecords": 51,
+        "projectAssociations": 166,
+        "activeJobAssociations": 114,
         "sourceStates": {
           "news": {
             "not_registered": 13,
@@ -15749,8 +15781,8 @@
             "checked": 69
           },
           "projects": {
-            "not_recently_checked": 45,
-            "checked": 24
+            "not_recently_checked": 44,
+            "checked": 25
           }
         }
       },
@@ -15763,7 +15795,7 @@
         "activeJobs": 8,
         "allFour": 7,
         "noVerifiedInformation": 0,
-        "newsRecords": 446,
+        "newsRecords": 447,
         "upcomingEventRecords": 55,
         "projectAssociations": 77,
         "activeJobAssociations": 33,
@@ -15790,15 +15822,15 @@
         "tracked": 63,
         "recentNews30": 17,
         "recentNews90": 21,
-        "upcomingEvents": 3,
+        "upcomingEvents": 4,
         "verifiedProjects": 57,
         "activeJobs": 12,
-        "allFour": 3,
+        "allFour": 4,
         "noVerifiedInformation": 2,
         "newsRecords": 159,
-        "upcomingEventRecords": 7,
+        "upcomingEventRecords": 8,
         "projectAssociations": 90,
-        "activeJobAssociations": 28,
+        "activeJobAssociations": 30,
         "sourceStates": {
           "news": {
             "checked": 57,
@@ -27250,128 +27282,6 @@
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
       },
       {
-        "communityId": "383",
-        "communityName": "Pasqua First Nation",
-        "province": "SK",
-        "newsCount": 1,
-        "latestNews": "2025-03-07",
-        "recentNews30": 0,
-        "recentNewsWeeks30": 0,
-        "recentNews90": 0,
-        "upcomingEvents": 0,
-        "verifiedProjects": 3,
-        "activeJobs": 1,
-        "allFour": false,
-        "noVerifiedInformation": false,
-        "missingCategories": [
-          "recentNews90",
-          "upcomingEvents"
-        ],
-        "researchPriority": 2,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://www.pasquafn.ca/",
-            "name": "Pasqua First Nation official website",
-            "verification": "verified",
-            "lastCheck": "partial",
-            "lastAttempted": "2026-11-27T00:01:38Z",
-            "lastSuccess": "2026-11-26T23:46:23Z"
-          },
-          {
-            "category": "events",
-            "url": "https://www.pasquafn.ca/",
-            "name": "Pasqua First Nation official website",
-            "verification": "verified",
-            "lastCheck": "partial",
-            "lastAttempted": "2026-11-27T00:07:56Z",
-            "lastSuccess": "2026-11-27T00:07:56Z"
-          },
-          {
-            "category": "jobs",
-            "url": "https://www.pasquafn.ca/news-events/",
-            "name": "Pasqua First Nation News and Events",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-26"
-          },
-          {
-            "category": "jobs",
-            "url": "https://www.pasquafn.ca/about-pasqua-first-nation/employment/",
-            "name": "Pasqua First Nation",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-26"
-          },
-          {
-            "category": "jobs",
-            "url": "https://www.pasquafn.ca/",
-            "name": "Pasqua First Nation official website",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-26"
-          },
-          {
-            "category": "jobs",
-            "url": "https://www.fsin.ca/employment-opportunities",
-            "name": "FSIN Employment Opportunities",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-26"
-          },
-          {
-            "category": "jobs",
-            "url": "https://fhqtc.com/careers/",
-            "name": "File Hills Qu'Appelle Tribal Council Careers",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-26"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.enbridge.com/Projects-and-Infrastructure/Projects/Seven-Stars-Energy-Project",
-            "name": "Enbridge — project overview and 2029 in-service target",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-10-29",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.saskpower.com/our-power-future/infrastructure-projects/construction-projects/planning-and-construction-projects/seven-stars-wind-energy-project",
-            "name": "SaskPower — partners, ownership and late-2028 estimate",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-10-29",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.enbridge.com/projects-and-infrastructure/public-awareness/seven-stars-rm-griffin-and-saskatchewan-provincial-approvals",
-            "name": "Enbridge — approvals and final investment decision requirement",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-10-29",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.cmhc-schl.gc.ca/media-newsroom/news-releases/2023/canada-supports-rapid-housing-projects-saskatchewan",
-            "name": "Canada Mortgage and Housing Corporation",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-08-10",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://fhqdev.com/fhq-developments/about-us/who-we-are/",
-            "name": "FHQ Developments",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-08-14",
-            "relationship": "See source-dated project description; ownership not inferred"
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "checked",
-          "events": "checked",
-          "jobs": "checked",
-          "projects": "not_recently_checked"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
-      {
         "communityId": "384",
         "communityName": "Peepeekisis Cree Nation",
         "province": "SK",
@@ -27768,11 +27678,11 @@
         "communityId": "478",
         "communityName": "Peerless Trout First Nation",
         "province": "AB",
-        "newsCount": 9,
-        "latestNews": "2026-11-06",
-        "recentNews30": 3,
-        "recentNewsWeeks30": 1,
-        "recentNews90": 7,
+        "newsCount": 10,
+        "latestNews": "2026-11-17",
+        "recentNews30": 4,
+        "recentNewsWeeks30": 2,
+        "recentNews90": 8,
         "upcomingEvents": 0,
         "verifiedProjects": 1,
         "activeJobs": 2,
@@ -28187,67 +28097,6 @@
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
       },
       {
-        "communityId": "293",
-        "communityName": "Swan Lake First Nation",
-        "province": "MB",
-        "newsCount": 6,
-        "latestNews": "2026-11-18",
-        "recentNews30": 3,
-        "recentNewsWeeks30": 2,
-        "recentNews90": 5,
-        "upcomingEvents": 0,
-        "verifiedProjects": 1,
-        "activeJobs": 1,
-        "allFour": false,
-        "noVerifiedInformation": false,
-        "missingCategories": [
-          "upcomingEvents"
-        ],
-        "researchPriority": 1,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://swanlakefirstnation.com/",
-            "name": "Swan Lake First Nation official website",
-            "verification": "verified",
-            "lastCheck": "checked",
-            "lastAttempted": "2026-11-27T00:01:38Z",
-            "lastSuccess": "2026-11-27T00:00:56Z"
-          },
-          {
-            "category": "events",
-            "url": "https://swanlakefirstnation.com/",
-            "name": "Swan Lake First Nation official website",
-            "verification": "verified",
-            "lastCheck": "ok",
-            "lastAttempted": "2026-11-27T00:24:12Z",
-            "lastSuccess": "2026-11-27T00:24:12Z"
-          },
-          {
-            "category": "jobs",
-            "url": "https://swanlakefirstnation.com/",
-            "name": "Swan Lake First Nation official website",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-26"
-          },
-          {
-            "category": "projects",
-            "url": "https://search.open.canada.ca/grants/record/aafc-aac,235-2025-2026-Q4-00334,current",
-            "name": "Agriculture and Agri-Food Canada – proactive disclosure",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-11-19",
-            "relationship": "Swan Lake First Nation is the named grant recipient and project community."
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "checked",
-          "events": "checked",
-          "jobs": "checked",
-          "projects": "not_recently_checked"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
-      {
         "communityId": "403",
         "communityName": "Birch Narrows Dene Nation",
         "province": "SK",
@@ -28372,7 +28221,7 @@
         "recentNews90": 9,
         "upcomingEvents": 0,
         "verifiedProjects": 3,
-        "activeJobs": 3,
+        "activeJobs": 4,
         "allFour": false,
         "noVerifiedInformation": false,
         "missingCategories": [
@@ -28613,212 +28462,6 @@
           "events": "checked",
           "jobs": "checked",
           "projects": "not_recently_checked"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
-      {
-        "communityId": "374",
-        "communityName": "Mistawasis Nehiyawak",
-        "province": "SK",
-        "newsCount": 3,
-        "latestNews": "2026-10-07",
-        "recentNews30": 0,
-        "recentNewsWeeks30": 0,
-        "recentNews90": 1,
-        "upcomingEvents": 0,
-        "verifiedProjects": 5,
-        "activeJobs": 9,
-        "allFour": false,
-        "noVerifiedInformation": false,
-        "missingCategories": [
-          "upcomingEvents"
-        ],
-        "researchPriority": 1,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://mistawasis.ca/",
-            "name": "Mistawasis Nehiyawak",
-            "verification": "verified",
-            "lastCheck": "partial",
-            "lastAttempted": "2026-11-27T00:01:38Z",
-            "lastSuccess": "2026-11-26T23:45:30Z"
-          },
-          {
-            "category": "news",
-            "url": "https://www.mistawasis.ca/",
-            "name": "Mistawasis Nehiyawak official website",
-            "verification": "verified",
-            "lastCheck": "partial",
-            "lastAttempted": "2026-11-27T00:01:38Z",
-            "lastSuccess": "2026-11-26T23:45:35Z"
-          },
-          {
-            "category": "news",
-            "url": "https://www.canada.ca/en/indigenous-services-canada/news/2026/10/minister-gull-masty-joins-the-saskatoon-tribal-council-to-sign-regional-agreement-to-reform-child-and-family-services.html",
-            "name": "Indigenous Services Canada",
-            "verification": "verified",
-            "lastCheck": "partial",
-            "lastAttempted": "2026-11-27T00:01:38Z",
-            "lastSuccess": "2026-11-26T23:46:34Z"
-          },
-          {
-            "category": "events",
-            "url": "https://mistawasis.ca/",
-            "name": "Mistawasis Nehiyawak",
-            "verification": "verified",
-            "lastCheck": "partial",
-            "lastAttempted": "2026-11-27T00:06:49Z",
-            "lastSuccess": "2026-11-27T00:06:49Z"
-          },
-          {
-            "category": "events",
-            "url": "https://www.mistawasis.ca/",
-            "name": "Mistawasis Nehiyawak official website",
-            "verification": "verified",
-            "lastCheck": "partial",
-            "lastAttempted": "2026-11-27T00:06:50Z",
-            "lastSuccess": "2026-11-27T00:06:50Z"
-          },
-          {
-            "category": "events",
-            "url": "https://www.canada.ca/en/indigenous-services-canada/news/2026/10/minister-gull-masty-joins-the-saskatoon-tribal-council-to-sign-regional-agreement-to-reform-child-and-family-services.html",
-            "name": "Indigenous Services Canada",
-            "verification": "verified",
-            "lastCheck": "partial",
-            "lastAttempted": "2026-11-27T00:06:58Z",
-            "lastSuccess": "2026-11-27T00:06:58Z"
-          },
-          {
-            "category": "jobs",
-            "url": "https://mistawasis.ca/jobs/",
-            "name": "Mistawasis Nehiyawak Employment",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-26"
-          },
-          {
-            "category": "jobs",
-            "url": "https://www.mistawasis.ca",
-            "name": "Mistawasis Nehiyawak official website",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-26"
-          },
-          {
-            "category": "jobs",
-            "url": "https://www.fsin.ca/employment-opportunities",
-            "name": "FSIN Employment Opportunities",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-26"
-          },
-          {
-            "category": "jobs",
-            "url": "https://sktc.sk.ca/employment-opportunities/",
-            "name": "Saskatoon Tribal Council Employment Opportunities",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-26"
-          },
-          {
-            "category": "projects",
-            "url": "https://mistyventures.ca/misty-ventures-announces-kiyam-and-iskotew-solar-projects/",
-            "name": "Misty Ventures",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-08-11",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.canada.ca/en/environment-climate-change/news/2024/12/the-government-of-canada-announces-over-2567-million-in-funding-for-clean-electricity-projects-in-saskatchewan.html",
-            "name": "Environment and Climate Change Canada",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-08-11",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://mistyventures.ca/misty-ventures-announces-kiyam-and-iskotew-solar-projects/",
-            "name": "Misty Ventures",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-08-11",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.canada.ca/en/environment-climate-change/news/2024/12/the-government-of-canada-announces-over-2567-million-in-funding-for-clean-electricity-projects-in-saskatchewan.html",
-            "name": "Environment and Climate Change Canada",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-08-11",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://cib-bic.ca/en/medias/articles/advancing-wind-energy-infrastructure-and-indigenous-ownership-in-saskatchewan/",
-            "name": "Canada Infrastructure Bank",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-10-29",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.mltc.net/about/",
-            "name": "Meadow Lake Tribal Council — member Nations",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-27T07:26:25.164205+00:00",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.saskpower.com/about-us/media-information/news-releases/2026/construction-on-200-mw-rose-valley-wind-project-now-underway",
-            "name": "SaskPower — construction announcement",
-            "lastCheck": "checked",
-            "lastSuccess": "2026-11-27T07:26:25.164205+00:00",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.saskpower.com/our-power-future/infrastructure-projects/construction-projects/planning-and-construction-projects/rose-valley-wind-project",
-            "name": "SaskPower — Rose Valley Wind Project",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-10-29",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.saskpower.com/our-power-future/infrastructure-projects/construction-projects/planning-and-construction-projects/southern-springs-solar-project",
-            "name": "SaskPower — capacity, ownership and expected operation",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-10-29",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.saskpower.com/about-us/media-information/news-releases/2025/saskpower-awards-wind-project-and-solar-project-in-south-central-saskatchewan",
-            "name": "SaskPower — project awards",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-10-29",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.potentiarenewables.com/our-portfolio/southern-springs-solar-project/",
-            "name": "Potentia Renewables — project overview",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-10-29",
-            "relationship": "See source-dated project description; ownership not inferred"
-          },
-          {
-            "category": "projects",
-            "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2025/07/government-of-canada-to-bring-high-speed-internet-access-to-saskatchewan-communities.html",
-            "name": "Innovation, Science and Economic Development Canada",
-            "lastCheck": "historical_review",
-            "lastSuccess": "2026-08-10",
-            "relationship": "See source-dated project description; ownership not inferred"
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "checked",
-          "events": "checked",
-          "jobs": "checked",
-          "projects": "checked"
         },
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
       },
@@ -29241,11 +28884,11 @@
         "communityId": "363",
         "communityName": "Ochapowace First Nation",
         "province": "SK",
-        "newsCount": 1,
-        "latestNews": "2026-10-06",
-        "recentNews30": 0,
-        "recentNewsWeeks30": 0,
-        "recentNews90": 1,
+        "newsCount": 2,
+        "latestNews": "2026-11-26",
+        "recentNews30": 1,
+        "recentNewsWeeks30": 1,
+        "recentNews90": 2,
         "upcomingEvents": 0,
         "verifiedProjects": 2,
         "activeJobs": 1,
@@ -29266,6 +28909,15 @@
             "lastSuccess": "2026-11-26T23:45:56Z"
           },
           {
+            "category": "news",
+            "url": "https://ochapowace.com/news",
+            "name": "Ochapowace Nation news",
+            "verification": "verified",
+            "lastCheck": "not_checked",
+            "lastAttempted": null,
+            "lastSuccess": null
+          },
+          {
             "category": "events",
             "url": "https://ochapowace.com/",
             "name": "Ochapowace First Nation official website",
@@ -29273,6 +28925,15 @@
             "lastCheck": "ok",
             "lastAttempted": "2026-11-27T00:06:53Z",
             "lastSuccess": "2026-11-27T00:06:53Z"
+          },
+          {
+            "category": "events",
+            "url": "https://ochapowace.com/news",
+            "name": "Ochapowace Nation news",
+            "verification": "verified",
+            "lastCheck": "not_checked",
+            "lastAttempted": null,
+            "lastSuccess": null
           },
           {
             "category": "jobs",
@@ -29503,6 +29164,151 @@
           "events": "checked",
           "jobs": "checked",
           "projects": "not_recently_checked"
+        },
+        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
+      },
+      {
+        "communityId": "383",
+        "communityName": "Pasqua First Nation",
+        "province": "SK",
+        "newsCount": 1,
+        "latestNews": "2025-03-07",
+        "recentNews30": 0,
+        "recentNewsWeeks30": 0,
+        "recentNews90": 0,
+        "upcomingEvents": 2,
+        "verifiedProjects": 6,
+        "activeJobs": 1,
+        "allFour": false,
+        "noVerifiedInformation": false,
+        "missingCategories": [
+          "recentNews90"
+        ],
+        "researchPriority": 1,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://www.pasquafn.ca/",
+            "name": "Pasqua First Nation official website",
+            "verification": "verified",
+            "lastCheck": "partial",
+            "lastAttempted": "2026-11-27T00:01:38Z",
+            "lastSuccess": "2026-11-26T23:46:23Z"
+          },
+          {
+            "category": "events",
+            "url": "https://www.pasquafn.ca/",
+            "name": "Pasqua First Nation official website",
+            "verification": "verified",
+            "lastCheck": "partial",
+            "lastAttempted": "2026-11-27T00:07:56Z",
+            "lastSuccess": "2026-11-27T00:07:56Z"
+          },
+          {
+            "category": "jobs",
+            "url": "https://www.pasquafn.ca/news-events/",
+            "name": "Pasqua First Nation News and Events",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-26"
+          },
+          {
+            "category": "jobs",
+            "url": "https://www.pasquafn.ca/about-pasqua-first-nation/employment/",
+            "name": "Pasqua First Nation",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-26"
+          },
+          {
+            "category": "jobs",
+            "url": "https://www.pasquafn.ca/",
+            "name": "Pasqua First Nation official website",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-26"
+          },
+          {
+            "category": "jobs",
+            "url": "https://www.fsin.ca/employment-opportunities",
+            "name": "FSIN Employment Opportunities",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-26"
+          },
+          {
+            "category": "jobs",
+            "url": "https://fhqtc.com/careers/",
+            "name": "File Hills Qu'Appelle Tribal Council Careers",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-26"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.enbridge.com/Projects-and-Infrastructure/Projects/Seven-Stars-Energy-Project",
+            "name": "Enbridge — project overview and 2029 in-service target",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-10-29",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.saskpower.com/our-power-future/infrastructure-projects/construction-projects/planning-and-construction-projects/seven-stars-wind-energy-project",
+            "name": "SaskPower — partners, ownership and late-2028 estimate",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-10-29",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.enbridge.com/projects-and-infrastructure/public-awareness/seven-stars-rm-griffin-and-saskatchewan-provincial-approvals",
+            "name": "Enbridge — approvals and final investment decision requirement",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-10-29",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.cmhc-schl.gc.ca/media-newsroom/news-releases/2023/canada-supports-rapid-housing-projects-saskatchewan",
+            "name": "Canada Mortgage and Housing Corporation",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-08-10",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.pasquafn.ca/fileadmin/user_upload/Pelican_Post_Final_-_November_6__2026.pdf",
+            "name": "Pasqua First Nation — The Pelican Post, November 2026, page 1",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-27T17:33:22.737702+00:00",
+            "relationship": "Nation capital project explicitly named by Pasqua leadership; phase and completion unconfirmed"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.pasquafn.ca/fileadmin/user_upload/Pelican_Post_Final_-_November_6__2026.pdf",
+            "name": "Pasqua First Nation — The Pelican Post, November 2026, page 1",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-27T17:33:22.737702+00:00",
+            "relationship": "Nation capital project explicitly named by Pasqua leadership; phase and completion unconfirmed"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.pasquafn.ca/fileadmin/user_upload/Pelican_Post_Final_-_November_6__2026.pdf",
+            "name": "Pasqua First Nation — The Pelican Post, November 2026, page 1",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-27T17:33:22.737702+00:00",
+            "relationship": "Nation capital project explicitly named by Pasqua leadership; phase and completion unconfirmed"
+          },
+          {
+            "category": "projects",
+            "url": "https://fhqdev.com/fhq-developments/about-us/who-we-are/",
+            "name": "FHQ Developments",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-08-14",
+            "relationship": "See source-dated project description; ownership not inferred"
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "checked",
+          "events": "checked",
+          "jobs": "checked",
+          "projects": "checked"
         },
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
       },
@@ -30742,6 +30548,65 @@
         "emptyResultMeaning": null
       },
       {
+        "communityId": "293",
+        "communityName": "Swan Lake First Nation",
+        "province": "MB",
+        "newsCount": 6,
+        "latestNews": "2026-11-18",
+        "recentNews30": 3,
+        "recentNewsWeeks30": 2,
+        "recentNews90": 5,
+        "upcomingEvents": 1,
+        "verifiedProjects": 1,
+        "activeJobs": 3,
+        "allFour": true,
+        "noVerifiedInformation": false,
+        "missingCategories": [],
+        "researchPriority": 0,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://swanlakefirstnation.com/",
+            "name": "Swan Lake First Nation official website",
+            "verification": "verified",
+            "lastCheck": "checked",
+            "lastAttempted": "2026-11-27T00:01:38Z",
+            "lastSuccess": "2026-11-27T00:00:56Z"
+          },
+          {
+            "category": "events",
+            "url": "https://swanlakefirstnation.com/",
+            "name": "Swan Lake First Nation official website",
+            "verification": "verified",
+            "lastCheck": "ok",
+            "lastAttempted": "2026-11-27T00:24:12Z",
+            "lastSuccess": "2026-11-27T00:24:12Z"
+          },
+          {
+            "category": "jobs",
+            "url": "https://swanlakefirstnation.com/",
+            "name": "Swan Lake First Nation official website",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-26"
+          },
+          {
+            "category": "projects",
+            "url": "https://search.open.canada.ca/grants/record/aafc-aac,235-2025-2026-Q4-00334,current",
+            "name": "Agriculture and Agri-Food Canada – proactive disclosure",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-11-19",
+            "relationship": "Swan Lake First Nation is the named grant recipient and project community."
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "checked",
+          "events": "checked",
+          "jobs": "checked",
+          "projects": "not_recently_checked"
+        },
+        "emptyResultMeaning": null
+      },
+      {
         "communityId": "406",
         "communityName": "Ahtahkakoop Cree Nation",
         "province": "SK",
@@ -31267,6 +31132,228 @@
         "emptyResultMeaning": null
       },
       {
+        "communityId": "374",
+        "communityName": "Mistawasis Nehiyawak",
+        "province": "SK",
+        "newsCount": 5,
+        "latestNews": "2026-11-20",
+        "recentNews30": 2,
+        "recentNewsWeeks30": 2,
+        "recentNews90": 3,
+        "upcomingEvents": 5,
+        "verifiedProjects": 5,
+        "activeJobs": 11,
+        "allFour": true,
+        "noVerifiedInformation": false,
+        "missingCategories": [],
+        "researchPriority": 0,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://mistawasis.ca/",
+            "name": "Mistawasis Nehiyawak",
+            "verification": "verified",
+            "lastCheck": "partial",
+            "lastAttempted": "2026-11-27T00:01:38Z",
+            "lastSuccess": "2026-11-26T23:45:30Z"
+          },
+          {
+            "category": "news",
+            "url": "https://www.mistawasis.ca/",
+            "name": "Mistawasis Nehiyawak official website",
+            "verification": "verified",
+            "lastCheck": "partial",
+            "lastAttempted": "2026-11-27T00:01:38Z",
+            "lastSuccess": "2026-11-26T23:45:35Z"
+          },
+          {
+            "category": "news",
+            "url": "https://www.canada.ca/en/indigenous-services-canada/news/2026/10/minister-gull-masty-joins-the-saskatoon-tribal-council-to-sign-regional-agreement-to-reform-child-and-family-services.html",
+            "name": "Indigenous Services Canada",
+            "verification": "verified",
+            "lastCheck": "partial",
+            "lastAttempted": "2026-11-27T00:01:38Z",
+            "lastSuccess": "2026-11-26T23:46:34Z"
+          },
+          {
+            "category": "news",
+            "url": "https://mistawasis.ca/notices/",
+            "name": "Mistawasis Nêhiyawak community notices",
+            "verification": "verified",
+            "lastCheck": "not_checked",
+            "lastAttempted": null,
+            "lastSuccess": null
+          },
+          {
+            "category": "events",
+            "url": "https://mistawasis.ca/",
+            "name": "Mistawasis Nehiyawak",
+            "verification": "verified",
+            "lastCheck": "partial",
+            "lastAttempted": "2026-11-27T00:06:49Z",
+            "lastSuccess": "2026-11-27T00:06:49Z"
+          },
+          {
+            "category": "events",
+            "url": "https://www.mistawasis.ca/",
+            "name": "Mistawasis Nehiyawak official website",
+            "verification": "verified",
+            "lastCheck": "partial",
+            "lastAttempted": "2026-11-27T00:06:50Z",
+            "lastSuccess": "2026-11-27T00:06:50Z"
+          },
+          {
+            "category": "events",
+            "url": "https://www.canada.ca/en/indigenous-services-canada/news/2026/10/minister-gull-masty-joins-the-saskatoon-tribal-council-to-sign-regional-agreement-to-reform-child-and-family-services.html",
+            "name": "Indigenous Services Canada",
+            "verification": "verified",
+            "lastCheck": "partial",
+            "lastAttempted": "2026-11-27T00:06:58Z",
+            "lastSuccess": "2026-11-27T00:06:58Z"
+          },
+          {
+            "category": "events",
+            "url": "https://mistawasis.ca/notices/",
+            "name": "Mistawasis Nêhiyawak community notices",
+            "verification": "verified",
+            "lastCheck": "not_checked",
+            "lastAttempted": null,
+            "lastSuccess": null
+          },
+          {
+            "category": "jobs",
+            "url": "https://mistawasis.ca/jobs/",
+            "name": "Mistawasis Nehiyawak Employment",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-26"
+          },
+          {
+            "category": "jobs",
+            "url": "https://www.mistawasis.ca",
+            "name": "Mistawasis Nehiyawak official website",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-26"
+          },
+          {
+            "category": "jobs",
+            "url": "https://www.fsin.ca/employment-opportunities",
+            "name": "FSIN Employment Opportunities",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-26"
+          },
+          {
+            "category": "jobs",
+            "url": "https://sktc.sk.ca/employment-opportunities/",
+            "name": "Saskatoon Tribal Council Employment Opportunities",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-26"
+          },
+          {
+            "category": "projects",
+            "url": "https://mistyventures.ca/misty-ventures-announces-kiyam-and-iskotew-solar-projects/",
+            "name": "Misty Ventures",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-08-11",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.canada.ca/en/environment-climate-change/news/2024/12/the-government-of-canada-announces-over-2567-million-in-funding-for-clean-electricity-projects-in-saskatchewan.html",
+            "name": "Environment and Climate Change Canada",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-08-11",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://mistyventures.ca/misty-ventures-announces-kiyam-and-iskotew-solar-projects/",
+            "name": "Misty Ventures",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-08-11",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.canada.ca/en/environment-climate-change/news/2024/12/the-government-of-canada-announces-over-2567-million-in-funding-for-clean-electricity-projects-in-saskatchewan.html",
+            "name": "Environment and Climate Change Canada",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-08-11",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://cib-bic.ca/en/medias/articles/advancing-wind-energy-infrastructure-and-indigenous-ownership-in-saskatchewan/",
+            "name": "Canada Infrastructure Bank",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-10-29",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.mltc.net/about/",
+            "name": "Meadow Lake Tribal Council — member Nations",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-27T07:26:25.164205+00:00",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.saskpower.com/about-us/media-information/news-releases/2026/construction-on-200-mw-rose-valley-wind-project-now-underway",
+            "name": "SaskPower — construction announcement",
+            "lastCheck": "checked",
+            "lastSuccess": "2026-11-27T07:26:25.164205+00:00",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.saskpower.com/our-power-future/infrastructure-projects/construction-projects/planning-and-construction-projects/rose-valley-wind-project",
+            "name": "SaskPower — Rose Valley Wind Project",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-10-29",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.saskpower.com/our-power-future/infrastructure-projects/construction-projects/planning-and-construction-projects/southern-springs-solar-project",
+            "name": "SaskPower — capacity, ownership and expected operation",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-10-29",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.saskpower.com/about-us/media-information/news-releases/2025/saskpower-awards-wind-project-and-solar-project-in-south-central-saskatchewan",
+            "name": "SaskPower — project awards",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-10-29",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.potentiarenewables.com/our-portfolio/southern-springs-solar-project/",
+            "name": "Potentia Renewables — project overview",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-10-29",
+            "relationship": "See source-dated project description; ownership not inferred"
+          },
+          {
+            "category": "projects",
+            "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2025/07/government-of-canada-to-bring-high-speed-internet-access-to-saskatchewan-communities.html",
+            "name": "Innovation, Science and Economic Development Canada",
+            "lastCheck": "historical_review",
+            "lastSuccess": "2026-08-10",
+            "relationship": "See source-dated project description; ownership not inferred"
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "checked",
+          "events": "checked",
+          "jobs": "checked",
+          "projects": "checked"
+        },
+        "emptyResultMeaning": null
+      },
+      {
         "communityId": "342",
         "communityName": "Moosomin First Nation",
         "province": "SK",
@@ -31472,7 +31559,7 @@
   },
   "followPilot": {
     "through": "2026-12-04",
-    "allFourThrough": 12,
+    "allFourThrough": 14,
     "candidates": [
       {
         "communityId": "435",
@@ -31493,6 +31580,12 @@
         "recentNewsWeeks30": 2
       },
       {
+        "communityId": "293",
+        "communityName": "Swan Lake First Nation",
+        "province": "MB",
+        "recentNewsWeeks30": 2
+      },
+      {
         "communityId": "361",
         "communityName": "Cowessess First Nation",
         "province": "SK",
@@ -31510,156 +31603,260 @@
     {
       "category": "news",
       "change": "added",
-      "id": "scn-q3-314-20261111",
-      "title": "Sapotaweyak publishes Q3 agricultural-benefits trust report",
+      "id": "current-374-mistawasis-sessions-20261127",
+      "title": "Mistawasis announces December community information sessions",
       "communityIds": [
-        314
+        374
       ],
-      "sourceUrl": "https://scn314.com/news/sapotaweyak-cree-nationagricultural-benefits-settlement-trustquarterly-report-q3-2026/",
+      "sourceUrl": "https://mistawasis.ca/community-information-sessions/",
       "status": null,
-      "publishedAt": "2026-11-11",
+      "publishedAt": "2026-11-20",
       "startDate": null
     },
     {
       "category": "news",
       "change": "added",
-      "id": "scn-election-314-20261103",
-      "title": "Sapotaweyak seeks comments on proposed election-code amendments",
+      "id": "current-374-mistawasis-dinners-20261127",
+      "title": "Mistawasis shares December urban dinner dates",
       "communityIds": [
-        314
+        374
       ],
-      "sourceUrl": "https://scn314.com/news/notice-to-electors-of-proposed-amendments-to-the-sapotaweyak-cree-nation-election-code/",
+      "sourceUrl": "https://mistawasis.ca/urban-christmas-dinners/",
       "status": null,
-      "publishedAt": "2026-11-03",
+      "publishedAt": "2026-11-04",
       "startDate": null
     },
     {
       "category": "news",
       "change": "added",
-      "id": "buffalo-appeal-265-20261126",
-      "title": "Osgoode’s TheCourt.ca reviews Buffalo Point appeal",
+      "id": "current-478-ptfn-benefit-20261127",
+      "title": "Peerless Trout announces member inflation relief",
       "communityIds": [
-        265
+        478
       ],
-      "sourceUrl": "https://www.yorku.ca/osgoode/thecourt/2026/11/26/appeal-watch-who-chose-this-appeal-arbitration-and-deference-in-buffalo-point/",
+      "sourceUrl": "https://www.ptfn.net/membership-inflation-relief-benefit-3/",
+      "status": null,
+      "publishedAt": "2026-11-17",
+      "startDate": null
+    },
+    {
+      "category": "news",
+      "change": "added",
+      "id": "current-363-ochapowace-dividend-20261127",
+      "title": "Ochapowace posts 2026 Christmas dividend form",
+      "communityIds": [
+        363
+      ],
+      "sourceUrl": "https://ochapowace.com/news/kakisiwew-ochapowace-2026-christmas-dividend-form",
       "status": null,
       "publishedAt": "2026-11-26",
       "startDate": null
     },
     {
-      "category": "news",
+      "category": "events",
       "change": "added",
-      "id": "moosomin-news-342-20261027",
-      "title": "Moosomin issues community safety notice",
+      "id": "current-event-374-2026-12-02-1800",
+      "title": "Misty Ventures Community Information Session",
       "communityIds": [
-        342
+        374
       ],
-      "sourceUrl": "https://battlefordsnow.com/2026/10/27/moosomin-first-nation-raises-concerns-over-possible-drug-activity/",
-      "status": null,
-      "publishedAt": "2026-10-27",
-      "startDate": null
+      "sourceUrl": "https://mistawasis.ca/community-information-sessions/",
+      "status": "Upcoming",
+      "publishedAt": null,
+      "startDate": "2026-12-02"
     },
     {
-      "category": "news",
+      "category": "events",
       "change": "added",
-      "id": "swan-asl-293-20261118",
-      "title": "Swan Lake members invited to shape possible ASL training",
+      "id": "current-event-374-2026-12-03-1800",
+      "title": "Misty Ventures Community Information Session",
+      "communityIds": [
+        374
+      ],
+      "sourceUrl": "https://mistawasis.ca/community-information-sessions/",
+      "status": "Upcoming",
+      "publishedAt": null,
+      "startDate": "2026-12-03"
+    },
+    {
+      "category": "events",
+      "change": "added",
+      "id": "current-event-374-2026-12-14-1800",
+      "title": "Misty Ventures Community Information Session",
+      "communityIds": [
+        374
+      ],
+      "sourceUrl": "https://mistawasis.ca/community-information-sessions/",
+      "status": "Upcoming",
+      "publishedAt": null,
+      "startDate": "2026-12-14"
+    },
+    {
+      "category": "events",
+      "change": "added",
+      "id": "current-event-374-2026-12-08-1800",
+      "title": "Mistawasis Urban Christmas Dinner",
+      "communityIds": [
+        374
+      ],
+      "sourceUrl": "https://mistawasis.ca/urban-christmas-dinners/",
+      "status": "Upcoming",
+      "publishedAt": null,
+      "startDate": "2026-12-08"
+    },
+    {
+      "category": "events",
+      "change": "added",
+      "id": "current-event-374-2026-12-10-1800",
+      "title": "Mistawasis Urban Christmas Dinner",
+      "communityIds": [
+        374
+      ],
+      "sourceUrl": "https://mistawasis.ca/urban-christmas-dinners/",
+      "status": "Upcoming",
+      "publishedAt": null,
+      "startDate": "2026-12-10"
+    },
+    {
+      "category": "events",
+      "change": "added",
+      "id": "current-event-293-2026-12-16-0930",
+      "title": "Swan Lake Mock Interview Workshop",
       "communityIds": [
         293
       ],
-      "sourceUrl": "https://www.rrc.ca/indigenous/2026/11/18/american-sign-language-asl-in-swan-lake-first-nation/",
-      "status": null,
-      "publishedAt": "2026-11-18",
-      "startDate": null
-    },
-    {
-      "category": "news",
-      "change": "added",
-      "id": "canupawakpa-veterans-news-20261103",
-      "title": "SCO shares Canupawakpa Indigenous Veterans Day details",
-      "communityIds": [
-        289
-      ],
-      "sourceUrl": "https://scoinc.mb.ca/veterans-events/",
-      "status": null,
-      "publishedAt": "2026-11-03",
-      "startDate": null
+      "sourceUrl": "https://swanlakefirstnation.com/mock-interview-workshop-december-16/",
+      "status": "Upcoming",
+      "publishedAt": null,
+      "startDate": "2026-12-16"
     },
     {
       "category": "events",
       "change": "added",
-      "id": "recent-community-event-289-20261108",
-      "title": "Canupawakpa Indigenous Veterans Day Community Event",
+      "id": "current-event-383-2026-12-12-1700",
+      "title": "Pasqua Urban Christmas Dinner",
       "communityIds": [
-        289
+        383
       ],
-      "sourceUrl": "https://scoinc.mb.ca/veterans-events/",
-      "status": "Recently held",
+      "sourceUrl": "https://www.pasquafn.ca/fileadmin/user_upload/Pelican_Post_Final_-_November_6__2026.pdf",
+      "status": "Upcoming",
       "publishedAt": null,
-      "startDate": "2026-11-08"
+      "startDate": "2026-12-12"
     },
     {
       "category": "events",
       "change": "added",
-      "id": "recent-community-event-323-20261117",
-      "title": "Senate Committee Meeting with War Lake Chief Betsy Kennedy",
+      "id": "current-event-383-2026-12-13-1400",
+      "title": "Pasqua On-Reserve Christmas Dinner",
       "communityIds": [
-        323
+        383
       ],
-      "sourceUrl": "https://sencanada.ca/en/content/sen/committee/451/appa/47mn-57960-e",
-      "status": "Recently held",
+      "sourceUrl": "https://www.pasquafn.ca/fileadmin/user_upload/Pelican_Post_Final_-_November_6__2026.pdf",
+      "status": "Upcoming",
       "publishedAt": null,
-      "startDate": "2026-11-17"
+      "startDate": "2026-12-13"
     },
     {
       "category": "projects",
       "change": "added",
-      "id": "rolling-arbor-291-reviewed",
-      "title": "Rolling River Truth and Reconciliation Ceremonial Arbor",
+      "id": "pasqua-water-treatment-202611",
+      "title": "Water treatment plant",
       "communityIds": [
-        "291"
+        "383"
       ],
-      "sourceUrl": "https://irfund.ca/en/a-nations-guidepost/",
-      "status": "Under Construction",
-      "publishedAt": null,
-      "startDate": null
-    },
-    {
-      "category": "projects",
-      "change": "added",
-      "id": "lake-manitoba-271-reviewed",
-      "title": "Lake Manitoba FNCFS Prevention Centre",
-      "communityIds": [
-        "271"
-      ],
-      "sourceUrl": "https://iaac-aeic.gc.ca/050/evaluations/proj/88641?culture=en-CA",
-      "status": "Planned",
+      "sourceUrl": "https://www.pasquafn.ca/fileadmin/user_upload/Pelican_Post_Final_-_November_6__2026.pdf",
+      "status": null,
       "publishedAt": null,
       "startDate": null
     },
     {
       "category": "projects",
       "change": "added",
-      "id": "dakota-lodge-288-reviewed",
-      "title": "Dakota Women’s Lodge — Winyan Tipi",
+      "id": "pasqua-lagoon-202611",
+      "title": "Wastewater lagoon",
       "communityIds": [
-        "288"
+        "383"
       ],
-      "sourceUrl": "https://iaac-aeic.gc.ca/050/evaluations/proj/84623?culture=en-CA",
-      "status": "Planned",
+      "sourceUrl": "https://www.pasquafn.ca/fileadmin/user_upload/Pelican_Post_Final_-_November_6__2026.pdf",
+      "status": null,
       "publishedAt": null,
       "startDate": null
     },
     {
       "category": "projects",
       "change": "added",
-      "id": "opcn-schools-318-reviewed",
-      "title": "O-Pipon-Na-Piwin New School Feasibility and Design",
+      "id": "pasqua-subdivision-4-202611",
+      "title": "Subdivision 4",
       "communityIds": [
-        "318"
+        "383"
       ],
-      "sourceUrl": "https://www.canada.ca/en/indigenous-services-canada/news/2024/11/canada-and-manitoba-first-nations-collaborate-to-build-more-schools.html",
-      "status": "Planned",
+      "sourceUrl": "https://www.pasquafn.ca/fileadmin/user_upload/Pelican_Post_Final_-_November_6__2026.pdf",
+      "status": null,
+      "publishedAt": null,
+      "startDate": null
+    },
+    {
+      "category": "jobs",
+      "change": "updated",
+      "id": "job-housing-manager-employment-opportunity-cb9f2905f3",
+      "title": "Housing Manager",
+      "communityIds": [
+        "293"
+      ],
+      "sourceUrl": "https://swanlakefirstnation.com/housing-manager-employment-opportunity/",
+      "status": "Open",
+      "publishedAt": null,
+      "startDate": null
+    },
+    {
+      "category": "jobs",
+      "change": "updated",
+      "id": "job-equipment-operator-laborer-public-works-full-tim-92f6a6a925",
+      "title": "Equipment Operator-Laborer (Public Works)",
+      "communityIds": [
+        "293"
+      ],
+      "sourceUrl": "https://swanlakefirstnation.com/equipment-operator-laborer-public-works-full-time-opportunity/",
+      "status": "Open",
+      "publishedAt": null,
+      "startDate": null
+    },
+    {
+      "category": "jobs",
+      "change": "added",
+      "id": "current-job-374-stc-finance-20261127",
+      "title": "Director of Finance",
+      "communityIds": [
+        "374"
+      ],
+      "sourceUrl": "https://sktc.sk.ca/job/mistawasis-nehiyawak-director-of-finance/",
+      "status": "Open",
+      "publishedAt": null,
+      "startDate": null
+    },
+    {
+      "category": "jobs",
+      "change": "added",
+      "id": "current-job-374-stc-operations-20261127",
+      "title": "Director of Operations",
+      "communityIds": [
+        "374"
+      ],
+      "sourceUrl": "https://sktc.sk.ca/job/mistawasis-nehiyawak-director-of-operations-2/",
+      "status": "Open",
+      "publishedAt": null,
+      "startDate": null
+    },
+    {
+      "category": "jobs",
+      "change": "added",
+      "id": "current-job-391-ggfn-assistant-20261127",
+      "title": "TLE & Lands Administrative Assistant",
+      "communityIds": [
+        "391"
+      ],
+      "sourceUrl": "https://ggfn.ca/tle-lands-administrative-assistant-opportunity/",
+      "status": "Open",
       "publishedAt": null,
       "startDate": null
     }
