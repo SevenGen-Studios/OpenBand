@@ -18,7 +18,7 @@ Keeseekoose KCEC's employer-published SaskJobs Educational Assistant posting is 
 
 ## Proposed project
 
-Keeseekoose Well Completions: ISC's April 2, 2026 determination confirms the Nation-authorized proposal, required mitigation and permits. The record remains Proposed, not under construction or completed. The 2019 page-modified footer is not treated as the determination date.
+Keeseekoose Well Completions: ISC's April 2, 2026 determination confirms the Nation-authorized proposal, required mitigation and permits. The record uses the existing Planned status for this proposal, not under construction or completed. The 2019 page-modified footer is not treated as the determination date.
 
 ## Coverage measures
 
