@@ -147,7 +147,7 @@ def posting_key(record):
     url = urllib.parse.urlsplit(clean_text(record.get('sourceUrl')))
     if not url.netloc or not url.path.strip('/'):
         return None
-    title = re.sub(r"\s*[–—-]\s*(?:(?:term|full[ -]time|part[ -]time)\s+)?opportunity\s*$", '', clean_job_title(record.get('title')), flags=re.I)
+    title = re.sub(r"\s*[–—-]\s*(?:(?:term|full[ -]time|part[ -]time|employment)\s+)?opportunity\s*$", '', clean_job_title(record.get('title')), flags=re.I)
     associations = tuple(sorted({str(record.get('communityId') or '')} | set(map(str, record.get('firstNationIds') or []))))
     return (url.netloc.lower().removeprefix('www.'), url.path.rstrip('/'), url.query, associations, slug(title))
 
@@ -901,6 +901,12 @@ def fetch_source(source: dict, today: date | None = None) -> tuple[list[dict], l
                 "lastChecked": today.isoformat(),
                 "extractionConfidence": "high" if detected_status in PUBLIC_STATUSES | {"Closed"} else "low",
                 "verifiedOfficialSource": bool(source.get("verifiedOfficialSource")),
+                **({"activeEvidence": {
+                    "kind": "deadline" if detail.get("closingDate") else "open_until_filled",
+                    "checkedAt": today.isoformat(), "sourceUrl": href,
+                }} if inspect and detail.get("detailText") and (
+                    detail.get("closingDate") or OPEN_UNTIL_FILLED.search(detail["detailText"])
+                ) else {}),
             }, today)
             candidates.append(candidate)
         if source.get("scanMedia"):
@@ -929,17 +935,34 @@ def source_coverage(source: dict, tracked_ids: set[str], province_by_id=None) ->
     return {clean_text(value) for value in source.get("communityIds", []) if clean_text(value) in tracked_ids}
 
 
-def listing_is_confirmed_on_source(record: dict, source_texts: dict[str, str]) -> bool:
+def listing_is_confirmed_on_source(record: dict, source_texts: dict[str, str],
+                                   candidates: list[dict] | None = None, today: date | None = None) -> bool:
+    """Renew a manual check only from this run's exact posting evidence.
+
+    Board-wide title/availability text can belong to different vacancies.
+    A successful board fetch alone must never reset a posting's freshness.
+    """
+    today = today or date.today()
     source_id = clean_text(record.get("sourceId"))
-    page_text = source_texts.get(source_id, "")
-    title = clean_text(record.get("title"))
-    if not page_text or not title:
+    if not source_texts.get(source_id) or not posting_key(record):
         return False
-    if record.get('activeEvidence', {}).get('kind') == 'open_until_filled' and not OPEN_UNTIL_FILLED.search(page_text):
-        return False
-    normalized_page = slug(page_text)
-    normalized_title = slug(re.sub(r"\b(job|employment)\s+opportunit(?:y|ies)\b", "", title, flags=re.I))
-    return bool(normalized_title and normalized_title in normalized_page)
+    for candidate in candidates or []:
+        evidence = candidate.get('activeEvidence')
+        if (candidate.get('sourceId') != source_id
+                or posting_key(candidate) != posting_key(record)
+                or not candidate.get('verifiedOfficialSource')
+                or parse_date(candidate.get('lastChecked')) != today
+                or not isinstance(evidence, dict)
+                or parse_date(evidence.get('checkedAt')) != today
+                or str(evidence.get('sourceUrl') or '').rstrip('/') != str(candidate.get('sourceUrl') or '').rstrip('/')
+                or candidate.get('status') not in PUBLIC_STATUSES):
+            continue
+        if evidence.get('kind') == 'open_until_filled':
+            return True
+        if evidence.get('kind') == 'deadline' and parse_date(candidate.get('closingDate')):
+            return (candidate.get('closingDate') == record.get('closingDate')
+                    and parse_date(candidate['closingDate']) >= today)
+    return False
 
 
 def expand_verified_batches(overrides: dict) -> list[dict]:
@@ -1033,6 +1056,7 @@ def collect(
     warnings = []
     candidates = [dict(row) for row in previous.get("listings", []) if not row.get("manualOverride")]
     source_texts = {}
+    fresh_posting_checks = []
     review_items = []
     registry_before = read_json(root / 'jobs-source-registry.json', {})
     prior_runs = []
@@ -1050,6 +1074,7 @@ def collect(
             found, source_warnings, source_text, source_review = result
             candidates = refresh_pending_documents(candidates, found)
             candidates.extend(found)
+            fresh_posting_checks.extend(found)
             warnings.extend(source_warnings)
             review_items.extend(source_review)
             source_runs.append({
@@ -1082,16 +1107,15 @@ def collect(
     for raw in expand_verified_batches(overrides):
         key = raw.get('id') or stable_id(raw)
         refreshed = retain_manual_check(raw, previous_manual.get(key), today)
-        closed_match = next((r for r in candidates if r.get('status') == 'Closed' and r.get('verifiedOfficialSource')
-            and r.get('extractionConfidence') == 'high' and str(r.get('communityId')) == str(refreshed.get('communityId'))
-            and r.get('sourceUrl','').rstrip('/') == str(refreshed.get('sourceUrl') or '').rstrip('/')
-            and slug(clean_job_title(r.get('title'))) == slug(clean_job_title(refreshed.get('title')))
+        closed_match = next((r for r in fresh_posting_checks if r.get('status') == 'Closed' and r.get('verifiedOfficialSource')
+            and r.get('extractionConfidence') == 'high' and posting_key(refreshed)
+            and posting_key(r) == posting_key(refreshed)
             and parse_date(r.get('lastChecked')) == today), None)
         if closed_match:
             # Fresh closure evidence from the same posting withdraws availability;
             # manually reviewed salary, employer and application fields survive.
             refreshed['status'] = 'Closed';refreshed['lastChecked'] = today.isoformat()
-        if not offline and listing_is_confirmed_on_source(refreshed, source_texts):
+        if not offline and listing_is_confirmed_on_source(refreshed, source_texts, fresh_posting_checks, today):
             refreshed["lastChecked"] = today.isoformat()
         manual_rows.append(refreshed)
     for raw in candidates + manual_rows:

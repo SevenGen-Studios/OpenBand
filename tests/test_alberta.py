@@ -21,14 +21,20 @@ class AlbertaTests(unittest.TestCase):
         from tools import ingest_alberta
         import subprocess
         task = ({'id':'1'}, {'href':'https://example.test/source.pdf'}, True)
-        for revision, expected in ((ingest_alberta.PARSER_REVISION, 'automated_validated'), ('old-parser','parse_timeout_or_error')):
+        started = 1700000000.0
+        for revision, offset, expected in ((ingest_alberta.PARSER_REVISION, 1, 'automated_validated'), ('old-parser', 1, 'parse_timeout_or_error'), (ingest_alberta.PARSER_REVISION, -1, 'parse_timeout_or_error')):
             with tempfile.TemporaryDirectory() as directory:
                 def completed_then_timeout(args, **kwargs):
                     output = Path(args[args.index('--result')+1])
                     ingest_alberta.write(output, ['1', task[1]['href'], {'parserRevision':revision,
                                          'sha256':'source-digest', 'verificationStatus':'automated_validated'}, None])
+                    # Model file freshness explicitly; real filesystem timestamp
+                    # rounding can otherwise predate the mocked worker start.
+                    import os
+                    os.utime(output, (started + offset, started + offset))
                     raise subprocess.TimeoutExpired(args, 180)
                 with patch.object(ingest_alberta, 'CACHE', Path(directory)), patch.object(
+                        ingest_alberta.time, 'time', return_value=started), patch.object(
                         ingest_alberta.subprocess, 'run', side_effect=completed_then_timeout):
                     result = ingest_alberta.bounded_parse(task)
                 self.assertEqual(result[2]['verificationStatus'], expected)

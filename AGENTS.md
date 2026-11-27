@@ -69,6 +69,7 @@ Leave the PR/commit, affected source files, validation results, remaining review
 - A grant agreement confirms funding and the named recipient; it does not alone establish construction, completion, or Nation ownership. Distinguish a benefiting community from the recipient/provider.
 - Prioritize recency when expanding community coverage: news within 30 days first, then 90 days; upcoming events and confirmed open jobs. Do not pad news with old announcements to fill a category. Label recently held events as past and exclude them from upcoming-event and active all-four gains.
 - Keep historical project evidence clearly dated. Do not present an old announcement as a current development.
+- A job index fetch is not a vacancy recheck. Renew manual availability only from a fresh exact posting match (source URL, role, community and current-run evidence); another vacancy’s “open until filled” text must not extend freshness.
 - For jobs, verify the employer, direct posting, application route, and closing date. Do not revive expired vacancies. Use reviewed overrides where appropriate and verify the final public dataset.
 - For events, verify the actual event date and community/organizer. Calendar navigation dates, an organizer directory entry, and a speaker's Nation identity alone do not establish a community event.
 - Coverage across news/jobs/events/projects must use consistent community associations. Report whether counts include historical records, regional jobs, current jobs, or upcoming events.
@@ -94,6 +95,7 @@ Some tests deliberately fingerprint public assets. For an intentional UI change,
 
 ## Automation and notifications
 
+- For a bounded live jobs verification, dispatch jobs.yml with province and optional source_id. The collector validates the ID against configured sources and preserves other sources; scheduled runs still scan all configured sources.
 - Shared data writers use workflow concurrency. Preserve their serialization and safely reconcile concurrent commits; do not force-push main or discard data updates.
 - Inspect the latest run and its logs before retrying. Re-running an old workflow can use old code; use a fresh dispatch on the intended branch when appropriate.
 - Preserve existing D1 bindings, VAPID key pair, subscriptions, delivery records, and environment configuration when updating Follow. Setup examples in follow-worker/README.md are not instructions to recreate production resources.

@@ -13,6 +13,10 @@ on:
           - MB
           - ALL
         default: ALL
+      source_id:
+        description: "Optional configured source ID for a targeted verification run"
+        required: false
+        type: string
   schedule:
     - cron: "20 13 * * *"
 
@@ -43,14 +47,20 @@ jobs:
         run: python -m tools.register_community_sources
 
       - name: Collect and validate public opportunities
+        env:
+          OPENBAND_JOB_PROVINCE: ${{ github.event.inputs.province || 'ALL' }}
+          OPENBAND_JOB_SOURCE: ${{ github.event.inputs.source_id || '' }}
         run: |
-          if [ "${{ github.event.inputs.province || 'ALL' }}" = "ALL" ]; then
-            python tools/jobs_collector.py
-          else
-            python tools/jobs_collector.py --province "${{ github.event.inputs.province || 'ALL' }}"
+          collector_args=()
+          if [ "$OPENBAND_JOB_PROVINCE" != "ALL" ]; then
+            collector_args+=(--province "$OPENBAND_JOB_PROVINCE")
           fi
+          if [ -n "$OPENBAND_JOB_SOURCE" ]; then
+            collector_args+=(--source-id "$OPENBAND_JOB_SOURCE")
+          fi
+          python tools/jobs_collector.py "${collector_args[@]}"
       - name: Test employment pipeline
-        run: python -m unittest tests.test_jobs_pipeline tests.test_community_coverage_phase2 tests.test_coverage_expansion tests.test_breadth_20261106 -v
+        run: python -m unittest tests.test_jobs_pipeline tests.test_job_refresh_identity tests.test_community_coverage_phase2 tests.test_coverage_expansion tests.test_breadth_20261106 -v
       - name: Rebase generated changes onto latest main
         run: |
           git config pull.rebase true
