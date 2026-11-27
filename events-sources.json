@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "generated": "2026-11-27T00:06:18Z",
-  "notes": "Event discovery sources are derived from the verified News registry. Add event-specific calendars here when found.",
+  "notes": "Manually maintain verified community websites, public Facebook pages, and local organizations here. The discovery job preserves these records.",
   "communities": [
     {
       "bandId": 378,
@@ -628,6 +628,22 @@
             "https://www.canada.ca/content/canadasite/en/services/life-events/child.html",
             "https://www.canada.ca/content/canadasite/en/services/life-events/retirement.html"
           ]
+        },
+        {
+          "name": "Mistawasis Nêhiyawak community notices",
+          "url": "https://mistawasis.ca/notices/",
+          "type": "Official First Nation Website",
+          "status": "verified",
+          "adapter": "html",
+          "official": true,
+          "monitor": true,
+          "requiresCommunityMention": false,
+          "associationCommunityNames": [
+            "Mistawasis Nehiyawak"
+          ],
+          "researchSourceId": "mistawasis-notices-current",
+          "verifiedAt": "2026-11-27",
+          "lastSuccess": null
         }
       ],
       "discoveryQueries": [
@@ -940,6 +956,22 @@
             "https://ochapowace.com/news/kakisiwew-ochapowace-communique-the-big-game-hunting-on-ochapowace-lands",
             "https://ochapowace.com/news"
           ]
+        },
+        {
+          "name": "Ochapowace Nation news",
+          "url": "https://ochapowace.com/news",
+          "type": "Official First Nation Website",
+          "status": "verified",
+          "adapter": "html",
+          "official": true,
+          "monitor": true,
+          "requiresCommunityMention": false,
+          "associationCommunityNames": [
+            "Ochapowace First Nation"
+          ],
+          "researchSourceId": "ochapowace-news-current",
+          "verifiedAt": "2026-11-27",
+          "lastSuccess": null
         }
       ],
       "discoveryQueries": [
