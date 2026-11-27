@@ -2,7 +2,7 @@ import gzip
 import json
 import unittest
 from copy import deepcopy
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 from tools.apply_community_enrichment import validate
 from tools.news_discovery import article_metadata_with_api, wordpress_publication_date, prune_invalid_generated_articles
@@ -58,3 +58,18 @@ class WiderCoverageTests(unittest.TestCase):
         lodge=next(e['record'] for e in records if e['record']['id']=='dakota-lodge-288-reviewed')
         self.assertEqual(lodge['status'],'Planned')
         self.assertIn('not construction',lodge['description'])
+
+    def test_batch_news_is_recent_and_past_events_do_not_inflate_upcoming(self):
+        from tools.community_coverage import inventory
+        today=date(2026,11,27)
+        entries=json.loads((FOLDER/'reviewed-enrichment.json').read_text())['records']
+        news=[e['record'] for e in entries if e['kind']=='news']
+        self.assertEqual(len(news),6)
+        self.assertTrue(all(today-timedelta(days=90) <= date.fromisoformat(r['publishedAt']) <= today for r in news))
+        self.assertEqual(sum(date.fromisoformat(r['publishedAt']) >= today-timedelta(days=30) for r in news),5)
+        rows={r['communityId']:r for r in inventory(ROOT,today)['communities']}
+        for entry in entries:
+            if entry['kind']=='events':
+                self.assertLess(date.fromisoformat(entry['record']['endDate']),today)
+                self.assertEqual(rows[str(entry['record']['bandId'])]['upcomingEvents'],0)
+                self.assertFalse(rows[str(entry['record']['bandId'])]['allFour'])

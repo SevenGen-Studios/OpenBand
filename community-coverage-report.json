@@ -15788,14 +15788,14 @@
       },
       "MB": {
         "tracked": 63,
-        "recentNews30": 16,
-        "recentNews90": 20,
+        "recentNews30": 17,
+        "recentNews90": 21,
         "upcomingEvents": 3,
         "verifiedProjects": 57,
         "activeJobs": 12,
         "allFour": 3,
         "noVerifiedInformation": 2,
-        "newsRecords": 161,
+        "newsRecords": 159,
         "upcomingEventRecords": 7,
         "projectAssociations": 90,
         "activeJobAssociations": 28,
@@ -15823,8 +15823,8 @@
     },
     "communities": [
       {
-        "communityId": "289",
-        "communityName": "Canupawakpa Dakota First Nation",
+        "communityId": "295",
+        "communityName": "Dakota Tipi",
         "province": "MB",
         "newsCount": 0,
         "latestNews": null,
@@ -15836,80 +15836,6 @@
         "activeJobs": 0,
         "allFour": false,
         "noVerifiedInformation": true,
-        "missingCategories": [
-          "recentNews90",
-          "upcomingEvents",
-          "verifiedProjects",
-          "activeJobs"
-        ],
-        "researchPriority": 4,
-        "sources": [
-          {
-            "category": "news",
-            "url": "https://canupawakpanation.com/",
-            "name": "Canupawakpa Dakota First Nation official website",
-            "verification": "candidate",
-            "lastCheck": "tls_error",
-            "lastAttempted": "2026-11-27T00:01:38Z",
-            "lastSuccess": null
-          },
-          {
-            "category": "news",
-            "url": "https://horizonmap.ca/supports-for-students/community",
-            "name": "Canupawakpa Dakota First Nation attributable community source",
-            "verification": "verified",
-            "lastCheck": "checked",
-            "lastAttempted": "2026-11-27T00:01:38Z",
-            "lastSuccess": "2026-11-26T23:56:43Z"
-          },
-          {
-            "category": "events",
-            "url": "https://canupawakpanation.com/",
-            "name": "Canupawakpa Dakota First Nation official website",
-            "verification": "candidate",
-            "lastCheck": "tls_error",
-            "lastAttempted": "2026-11-27T00:17:23Z",
-            "lastSuccess": null
-          },
-          {
-            "category": "events",
-            "url": "https://horizonmap.ca/supports-for-students/community",
-            "name": "Canupawakpa Dakota First Nation attributable community source",
-            "verification": "verified",
-            "lastCheck": "partial",
-            "lastAttempted": "2026-11-27T00:17:50Z",
-            "lastSuccess": "2026-11-27T00:17:50Z"
-          },
-          {
-            "category": "jobs",
-            "url": "https://canupawakpanation.com/",
-            "name": "Canupawakpa Dakota First Nation official website",
-            "lastCheck": "unavailable",
-            "lastSuccess": "2026-11-03"
-          }
-        ],
-        "sourceStateByCategory": {
-          "news": "checked",
-          "events": "checked",
-          "jobs": "source_failure_or_restriction",
-          "projects": "not_registered"
-        },
-        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
-      },
-      {
-        "communityId": "295",
-        "communityName": "Dakota Tipi",
-        "province": "MB",
-        "newsCount": 1,
-        "latestNews": "2026-06-24",
-        "recentNews30": 0,
-        "recentNewsWeeks30": 0,
-        "recentNews90": 0,
-        "upcomingEvents": 0,
-        "verifiedProjects": 0,
-        "activeJobs": 0,
-        "allFour": false,
-        "noVerifiedInformation": false,
         "missingCategories": [
           "recentNews90",
           "upcomingEvents",
@@ -18553,6 +18479,79 @@
         "emptyResultMeaning": "No verified records in current inventory; public availability not established"
       },
       {
+        "communityId": "289",
+        "communityName": "Canupawakpa Dakota First Nation",
+        "province": "MB",
+        "newsCount": 1,
+        "latestNews": "2026-11-03",
+        "recentNews30": 1,
+        "recentNewsWeeks30": 1,
+        "recentNews90": 1,
+        "upcomingEvents": 0,
+        "verifiedProjects": 0,
+        "activeJobs": 0,
+        "allFour": false,
+        "noVerifiedInformation": false,
+        "missingCategories": [
+          "upcomingEvents",
+          "verifiedProjects",
+          "activeJobs"
+        ],
+        "researchPriority": 3,
+        "sources": [
+          {
+            "category": "news",
+            "url": "https://canupawakpanation.com/",
+            "name": "Canupawakpa Dakota First Nation official website",
+            "verification": "candidate",
+            "lastCheck": "tls_error",
+            "lastAttempted": "2026-11-27T00:01:38Z",
+            "lastSuccess": null
+          },
+          {
+            "category": "news",
+            "url": "https://horizonmap.ca/supports-for-students/community",
+            "name": "Canupawakpa Dakota First Nation attributable community source",
+            "verification": "verified",
+            "lastCheck": "checked",
+            "lastAttempted": "2026-11-27T00:01:38Z",
+            "lastSuccess": "2026-11-26T23:56:43Z"
+          },
+          {
+            "category": "events",
+            "url": "https://canupawakpanation.com/",
+            "name": "Canupawakpa Dakota First Nation official website",
+            "verification": "candidate",
+            "lastCheck": "tls_error",
+            "lastAttempted": "2026-11-27T00:17:23Z",
+            "lastSuccess": null
+          },
+          {
+            "category": "events",
+            "url": "https://horizonmap.ca/supports-for-students/community",
+            "name": "Canupawakpa Dakota First Nation attributable community source",
+            "verification": "verified",
+            "lastCheck": "partial",
+            "lastAttempted": "2026-11-27T00:17:50Z",
+            "lastSuccess": "2026-11-27T00:17:50Z"
+          },
+          {
+            "category": "jobs",
+            "url": "https://canupawakpanation.com/",
+            "name": "Canupawakpa Dakota First Nation official website",
+            "lastCheck": "unavailable",
+            "lastSuccess": "2026-11-03"
+          }
+        ],
+        "sourceStateByCategory": {
+          "news": "checked",
+          "events": "checked",
+          "jobs": "source_failure_or_restriction",
+          "projects": "not_registered"
+        },
+        "emptyResultMeaning": "No verified records in current inventory; public availability not established"
+      },
+      {
         "communityId": "309",
         "communityName": "Chemawawin Cree Nation",
         "province": "MB",
@@ -19777,8 +19776,8 @@
         "communityId": "318",
         "communityName": "O-Pipon-Na-Piwin Cree Nation",
         "province": "MB",
-        "newsCount": 1,
-        "latestNews": "2024-11-29",
+        "newsCount": 0,
+        "latestNews": null,
         "recentNews30": 0,
         "recentNewsWeeks30": 0,
         "recentNews90": 0,
@@ -20120,8 +20119,8 @@
         "communityId": "291",
         "communityName": "Rolling River",
         "province": "MB",
-        "newsCount": 1,
-        "latestNews": "2025-03-08",
+        "newsCount": 0,
+        "latestNews": null,
         "recentNews30": 0,
         "recentNewsWeeks30": 0,
         "recentNews90": 0,
@@ -31550,45 +31549,6 @@
     {
       "category": "news",
       "change": "added",
-      "id": "dakota-culture-295-20260624",
-      "title": "Dakota Tipi councillor joins effort to bring sacred belongings home",
-      "communityIds": [
-        295
-      ],
-      "sourceUrl": "https://winnipeg.citynews.ca/2026/06/24/whatever-it-takes-manitoba-indigenous-group-seeks-help-repatriating-items-from-switzerland/",
-      "status": null,
-      "publishedAt": "2026-06-24",
-      "startDate": null
-    },
-    {
-      "category": "news",
-      "change": "added",
-      "id": "rolling-arbor-291-20250308",
-      "title": "Fund supports Rolling River ceremonial-arbor redevelopment",
-      "communityIds": [
-        291
-      ],
-      "sourceUrl": "https://irfund.ca/en/a-nations-guidepost/",
-      "status": null,
-      "publishedAt": "2025-03-08",
-      "startDate": null
-    },
-    {
-      "category": "news",
-      "change": "added",
-      "id": "opcn-schools-318-20241129",
-      "title": "School feasibility and design announced for O-Pipon-Na-Piwin",
-      "communityIds": [
-        318
-      ],
-      "sourceUrl": "https://www.canada.ca/en/indigenous-services-canada/news/2024/11/canada-and-manitoba-first-nations-collaborate-to-build-more-schools.html",
-      "status": null,
-      "publishedAt": "2024-11-29",
-      "startDate": null
-    },
-    {
-      "category": "news",
-      "change": "added",
       "id": "moosomin-news-342-20261027",
       "title": "Moosomin issues community safety notice",
       "communityIds": [
@@ -31611,6 +31571,45 @@
       "status": null,
       "publishedAt": "2026-11-18",
       "startDate": null
+    },
+    {
+      "category": "news",
+      "change": "added",
+      "id": "canupawakpa-veterans-news-20261103",
+      "title": "SCO shares Canupawakpa Indigenous Veterans Day details",
+      "communityIds": [
+        289
+      ],
+      "sourceUrl": "https://scoinc.mb.ca/veterans-events/",
+      "status": null,
+      "publishedAt": "2026-11-03",
+      "startDate": null
+    },
+    {
+      "category": "events",
+      "change": "added",
+      "id": "recent-community-event-289-20261108",
+      "title": "Canupawakpa Indigenous Veterans Day Community Event",
+      "communityIds": [
+        289
+      ],
+      "sourceUrl": "https://scoinc.mb.ca/veterans-events/",
+      "status": "Recently held",
+      "publishedAt": null,
+      "startDate": "2026-11-08"
+    },
+    {
+      "category": "events",
+      "change": "added",
+      "id": "recent-community-event-323-20261117",
+      "title": "Senate Committee Meeting with War Lake Chief Betsy Kennedy",
+      "communityIds": [
+        323
+      ],
+      "sourceUrl": "https://sencanada.ca/en/content/sen/committee/451/appa/47mn-57960-e",
+      "status": "Recently held",
+      "publishedAt": null,
+      "startDate": "2026-11-17"
     },
     {
       "category": "projects",

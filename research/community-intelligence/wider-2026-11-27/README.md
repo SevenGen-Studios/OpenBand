@@ -1,26 +1,31 @@
 # Wider coverage review — November 27, 2026
 
-12 reviewed records across nine Nations: eight news stories and four source-backed project records. Seven communities that previously had no news, active jobs, upcoming events or verified projects now have at least one category represented. This is broader indexed coverage, not a claim that every category is current everywhere.
+Prioritize fresh, useful coverage: news from the last 30 days first, then 90 days; upcoming events and confirmed open jobs. Historical projects retain explicit evidence dates and do not count as current activity.
+
+12 reviewed records across ten Nations: six recent news stories, two recently held events, and four historical, source-backed project records. Five news stories are within 30 days; Moosomin’s October 27 story is 31 days old. Three older news candidates were excluded from publication.
 
 ## Before / after on the same date
 
-- Nations with any news: 107 → 113.
+- Nations with any news: 107 → 111.
 - Nations with source-backed projects/partnerships: 170 → 174.
-- Nations with no records in the four-category inventory: 9 → 2 (remaining: Canupawakpa and War Lake).
-- Active all-four coverage: 15 → 16. Moosomin gains recent news; its existing upcoming event, active jobs and project coverage are unchanged.
-- Upcoming-event and active-job community counts are unchanged. No expired event, undated meeting or closed vacancy is republished to inflate those measures.
+- Active all-four coverage: 15 → 16. This requires news within 90 days, an upcoming event, a confirmed active job and a source-backed project. Moosomin gains recent news.
+- Upcoming-event and active-job community counts are unchanged. The two November events are clearly past and excluded from upcoming-event and all-four gains.
+- The strict inventory’s “no verified information” measure ignores past events; do not use it to claim War Lake has no public activity.
 
 ## Reviewed additions
 
-- Sapotaweyak: November 11 Q3 Agricultural Benefits Settlement Trust report and November 3 Elections Board notice. The archived public WordPress post records bind the original publication dates to the exact article URLs. The election post was modified November 11; that is not its publication date. The PDF's first page was visually checked: comments close December 3, but the special meeting and referendum dates will be announced separately. Those are not invented events.
-- Buffalo Point: November 26 Osgoode Hall / TheCourt.ca commentary on its pending appeal. Labelled commentary, not a new judicial decision or OpenBand legal advice.
-- Dakota Tipi: June 24 Canadian Press / CityNews report about Indigenous advocates' repatriation effort. An explicitly historical story, not a claim that the items have returned.
-- Rolling River: March 2025 funder story and ceremonial-arbor project. Construction status is explicitly as of October 2024. The anticipated July 2025 unveiling is not treated as confirmed completion.
-- Lake Manitoba: planned FNCFS Prevention Centre, with the July 17, 2024 environmental-review update. Registry assessment status is not construction status.
-- Dakota Plains: planned Winyan Tipi women's lodge. Its December 15, 2023 assessment determination is not evidence the building is complete.
-- O-Pipon-Na-Piwin: November 29, 2024 ISC school-planning announcement and a separate planned school feasibility/design project. No opening, construction or completion date is inferred.
-- Moosomin: October 27 community-safety notice coverage by battlefordsNOW. The brief summary attributes the notice and avoids naming or accusing individuals.
-- Swan Lake: November 18 RRC Polytech request for member feedback on possible ASL programming. This is a survey/exploration, not a scheduled course or event.
+- Sapotaweyak: November 11 Q3 Agricultural Benefits Settlement Trust report and November 3 Elections Board notice. Public WordPress post records bind original publication dates to exact article URLs. The election post’s November 11 modification date is not its publication date. The visually checked PDF gives a December 3 comment deadline; special meeting and referendum dates are not yet announced.
+- Buffalo Point: November 26 Osgoode Hall / TheCourt.ca commentary on its pending appeal, explicitly identified as commentary rather than a new decision.
+- Moosomin: October 27 community-safety notice reported by battlefordsNOW. Summary attributes the notice without naming or accusing individuals.
+- Swan Lake: November 18 RRC Polytech survey about possible ASL programming, not a confirmed scheduled course.
+- Canupawakpa: November 3 SCO news notice and its November 8 Veterans Day community event, labelled recently held.
+- War Lake: official November 17 Senate minutes confirm Chief Betsy Kennedy appeared with Arctic Gateway Group. This is a recently held committee meeting, not an upcoming community invitation.
+- Rolling River: ceremonial-arbor project, construction status explicitly as of October 2024; anticipated July 2025 unveiling is not confirmed completion.
+- Lake Manitoba: planned FNCFS Prevention Centre, evidence dated July 17, 2024. Environmental-review status is not construction status.
+- Dakota Plains: planned Winyan Tipi women’s lodge; December 15, 2023 assessment determination does not establish completion.
+- O-Pipon-Na-Piwin: planned school feasibility/design project, evidence dated November 29, 2024. No construction or opening date inferred.
+
+The June 2026 Dakota Tipi, March 2025 Rolling River and November 2024 O-Pipon-Na-Piwin news candidates are excluded because they would pad the news feed with old announcements. Canupawakpa’s clerk vacancy closes November 27 at 15:00; it is not added using date-only expiry, which could overstate availability after that time.
 
 ## Continuous collection
 

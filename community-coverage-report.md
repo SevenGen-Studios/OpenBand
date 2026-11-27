@@ -6,7 +6,7 @@ As of 2026-11-27. Counts are Nations with verified records; activity is not infe
 |---|---:|---:|---:|---:|---:|---:|---:|
 | SK | 69 | 28 → 29 | 8 → 8 | 69 → 69 | 28 → 28 | 5 → 6 | 0 → 0 |
 | AB | 48 | 17 → 17 | 10 → 10 | 48 → 48 | 8 → 8 | 7 → 7 | 0 → 0 |
-| MB | 63 | 18 → 20 | 3 → 3 | 53 → 57 | 12 → 12 | 3 → 3 | 9 → 2 |
+| MB | 63 | 18 → 21 | 3 → 3 | 53 → 57 | 12 → 12 | 3 → 3 | 9 → 2 |
 
 - An empty inventory is not proof that no public information exists.
 - Regional employment source coverage does not imply a job in every member Nation.
@@ -31,8 +31,8 @@ This uses the current inventory and its known expiries. Employers and event orga
 
 | Category | Added records | Materially updated | Check metadata only | Removed/merged |
 |---|---:|---:|---:|---:|
-| news | 8 | 0 | 0 | 0 |
-| events | 0 | 0 | 0 | 0 |
+| news | 6 | 0 | 0 | 0 |
+| events | 2 | 0 | 0 | 0 |
 | projects | 4 | 0 | 0 | 0 |
 | jobs | 0 | 0 | 0 | 0 |
 
