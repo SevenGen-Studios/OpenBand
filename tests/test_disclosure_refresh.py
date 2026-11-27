@@ -32,6 +32,24 @@ class DisclosureRefreshTests(unittest.TestCase):
         reconcile_listing(self.band,[self.source]);self.assertEqual(reconcile_listing(self.band,[self.source]),[])
         self.assertEqual(len(self.band['filings']),1)
 
+    def test_new_audit_and_pay_statuses_survive_sanitization(self):
+        from tools.sanitize_data import sanitize_data
+        for doc_type in ('Audited consolidated financial statements','Schedule of Remuneration and Expenses'):
+            source=deepcopy(self.source)
+            source['href']=source['href'].replace('Audited%20consolidated%20financial%20statements',doc_type.replace(' ','%20'))
+            source['docType']=doc_type
+            band=dict(id=394,iscBandNumber=394,filings=[])
+            reconcile_listing(band,[source])
+            before=deepcopy(band)
+            sanitize_data({'bands':[band]})
+            self.assertEqual(band,before)
+            filing=band['filings'][0]
+            self.assertTrue(filing['manual_review_required'])
+            self.assertEqual(filing['verificationStatus'],'source_listed_pending_extraction')
+            self.assertEqual(filing['parse_status'],'not_required' if doc_type.startswith('Audited') else 'pending_manual_review')
+            if doc_type.startswith('Audited'):
+                self.assertEqual(filing['technical_status'],'pending_manual_review')
+
     def test_parsed_values_and_source_are_preserved(self):
         self.band['filings'][0].update(posted=True,href='https://original.example/a.pdf',people=[{'name':'Original','remuneration':10}],parse_status='ok_pdf_text')
         original=deepcopy(self.band);self.assertEqual(reconcile_listing(self.band,[self.source]),[])
