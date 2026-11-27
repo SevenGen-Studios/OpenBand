@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generated": "2026-11-26T22:34:23Z",
+  "generated": "2026-11-27T19:14:54Z",
   "trackedCommunityCount": 180,
-  "configuredSourceCount": 204,
+  "configuredSourceCount": 206,
   "communities": [
     {
       "communityId": "406",
@@ -29,14 +29,14 @@
           "lastAttempted": "2026-11-26"
         },
         {
-          "id": "community-facebook-406-203",
+          "id": "community-facebook-406-205",
           "name": "Ahtahkakoop Cree Nation official Facebook page",
           "url": "https://www.facebook.com/ahtahkakoopcreenation/",
           "sourceType": "verified_official_facebook",
           "direct": true,
           "checkStatus": "authorized_api_required",
           "lastChecked": null,
-          "lastAttempted": "2026-11-26"
+          "lastAttempted": null
         }
       ],
       "regionalSources": [
@@ -943,14 +943,14 @@
           "lastAttempted": "2026-11-26"
         },
         {
-          "id": "community-facebook-361-195",
+          "id": "community-facebook-361-197",
           "name": "Cowessess First Nation official Facebook page",
           "url": "https://www.facebook.com/cowessessfn",
           "sourceType": "verified_official_facebook",
           "direct": true,
           "checkStatus": "authorized_api_required",
           "lastChecked": null,
-          "lastAttempted": "2026-11-26"
+          "lastAttempted": null
         }
       ],
       "regionalSources": [
@@ -2852,7 +2852,7 @@
           "lastAttempted": "2026-11-26"
         },
         {
-          "id": "community-facebook-371-196",
+          "id": "community-facebook-371-198",
           "name": "Muskoday First Nation official Facebook page",
           "url": "https://www.facebook.com/MCHCFacebook",
           "sourceType": "verified_official_facebook",
@@ -2862,7 +2862,7 @@
           "lastAttempted": "2026-11-26"
         },
         {
-          "id": "community-facebook-371-197",
+          "id": "community-facebook-371-199",
           "name": "Muskoday First Nation official Facebook page",
           "url": "https://www.facebook.com/MuskodayFireDepartment",
           "sourceType": "verified_official_facebook",
@@ -2872,7 +2872,7 @@
           "lastAttempted": "2026-11-26"
         },
         {
-          "id": "community-facebook-371-198",
+          "id": "community-facebook-371-200",
           "name": "Muskoday First Nation official Facebook page",
           "url": "https://www.facebook.com/profile.php?id=100063922874799",
           "sourceType": "verified_official_facebook",
@@ -2882,7 +2882,7 @@
           "lastAttempted": "2026-11-26"
         },
         {
-          "id": "community-facebook-371-199",
+          "id": "community-facebook-371-201",
           "name": "Muskoday First Nation official Facebook page",
           "url": "https://www.facebook.com/changingdirectionsmfn2017",
           "sourceType": "verified_official_facebook",
@@ -2892,7 +2892,7 @@
           "lastAttempted": "2026-11-26"
         },
         {
-          "id": "community-facebook-371-200",
+          "id": "community-facebook-371-202",
           "name": "Muskoday First Nation official Facebook page",
           "url": "https://www.facebook.com/MFNCS",
           "sourceType": "verified_official_facebook",
@@ -2902,24 +2902,24 @@
           "lastAttempted": "2026-11-26"
         },
         {
-          "id": "community-facebook-371-201",
+          "id": "community-facebook-371-203",
           "name": "Muskoday First Nation official Facebook page",
           "url": "https://www.facebook.com/MuskodayEldersClub",
           "sourceType": "verified_official_facebook",
           "direct": true,
           "checkStatus": "authorized_api_required",
           "lastChecked": null,
-          "lastAttempted": "2026-11-26"
+          "lastAttempted": null
         },
         {
-          "id": "community-facebook-371-202",
+          "id": "community-facebook-371-204",
           "name": "Muskoday First Nation official Facebook page",
           "url": "https://www.facebook.com/MuskodayGardening",
           "sourceType": "verified_official_facebook",
           "direct": true,
           "checkStatus": "authorized_api_required",
           "lastChecked": null,
-          "lastAttempted": "2026-11-26"
+          "lastAttempted": null
         }
       ],
       "regionalSources": [
@@ -3309,6 +3309,26 @@
           "checkStatus": "checked",
           "lastChecked": "2026-11-26",
           "lastAttempted": "2026-11-26"
+        },
+        {
+          "id": "research-onion-feed-wider-20261127",
+          "name": "Onion Lake Cree Nation",
+          "url": "https://onionlake.bamboohr.com/jobs/embed2.php?version=1.0.0&format=json",
+          "sourceType": "official_first_nation",
+          "direct": true,
+          "checkStatus": "not_checked",
+          "lastChecked": null,
+          "lastAttempted": null
+        },
+        {
+          "id": "research-onion-health-careers",
+          "name": "Onion Lake Health Board — official employer careers",
+          "url": "https://onionlakehealth.org/careers/",
+          "sourceType": "official_employer",
+          "direct": true,
+          "checkStatus": "checked",
+          "lastChecked": "2026-11-27",
+          "lastAttempted": "2026-11-27"
         },
         {
           "id": "community-site-344",
@@ -8930,6 +8950,21 @@
       "warnings": [
         "community-facebook-406-203: fetch failed: authorized platform API required; HTML scraping withheld"
       ]
+    },
+    {
+      "lastAttempted": "2026-11-27",
+      "lastChecked": "2026-11-27",
+      "sourceId": "research-onion-health-careers",
+      "sourceName": "Onion Lake Health Board — official employer careers",
+      "url": "https://onionlakehealth.org/careers/",
+      "sourceType": "official_employer",
+      "communityIds": [
+        "344"
+      ],
+      "candidatesFound": 17,
+      "reviewItems": 0,
+      "status": "checked",
+      "warnings": []
     }
   ],
   "sourceRunHistory": [
@@ -97908,6 +97943,21 @@
       "warnings": [
         "community-facebook-406-203: fetch failed: authorized platform API required; HTML scraping withheld"
       ]
+    },
+    {
+      "lastAttempted": "2026-11-27",
+      "lastChecked": "2026-11-27",
+      "sourceId": "research-onion-health-careers",
+      "sourceName": "Onion Lake Health Board — official employer careers",
+      "url": "https://onionlakehealth.org/careers/",
+      "sourceType": "official_employer",
+      "communityIds": [
+        "344"
+      ],
+      "candidatesFound": 17,
+      "reviewItems": 0,
+      "status": "checked",
+      "warnings": []
     }
   ]
 }
