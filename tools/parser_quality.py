@@ -93,9 +93,16 @@ def normalize_person(person):
     cleaned = dict(person)
     cleaned["travelExpenses"] = travel_expenses(cleaned)
     cleaned["other"] = other_amount(cleaned)
+    # A source review can explicitly identify a blank/dash. Keep that absence
+    # through override replay instead of turning it into a reported zero.
+    source_nulls = cleaned.get("sourceNullFields") or []
+    if "travel" in source_nulls and all(cleaned.get(key) is None for key in ("travel", "expenses", "creditCard")):
+        cleaned["travelExpenses"] = None
+    if "otherPayments" in source_nulls and cleaned.get("otherPayments") is None:
+        cleaned["other"] = None
     total = number(cleaned.get("total"))
     if total is None:
-        total = (number(cleaned.get("remuneration")) or 0) + cleaned["travelExpenses"] + cleaned["other"]
+        total = (number(cleaned.get("remuneration")) or 0) + (cleaned["travelExpenses"] or 0) + (cleaned["other"] or 0)
     cleaned["total"] = int(total) if float(total).is_integer() else total
     return cleaned
 

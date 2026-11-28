@@ -21,6 +21,8 @@ data.json contains Nation filing entries and people/payment rows. run_scraper.py
 
 Check official names, Chief/Councillor roles, months served and each printed payment component. Preserve separate remuneration, travel, expenses, credit-card and other-payment columns. Do not double-count repeated columns, omit continuation pages, substitute organization totals for individual people, or infer missing amounts as zero. Retain source warnings and distinguish reported totals from sums derived from components.
 
+A visually reviewed row can use `sourceNullFields` to identify source blanks or dashes (for example, `["travel", "otherPayments"]`). The normalizer retains those explicitly reviewed absences as null canonical values; this marker does not change unmarked legacy records or authorize treating absent amounts as zero. Keep the original source cells in `reportedComponents`.
+
 Inspect parse_status, parse_confidence, manual_review_required, warnings and parse_stages when present. Do not assume every pipeline uses identical status strings; consult the producer and frontend status handling.
 
 ### Audited Community Capital
