@@ -93,9 +93,19 @@ def normalize_person(person):
     cleaned = dict(person)
     cleaned["travelExpenses"] = travel_expenses(cleaned)
     cleaned["other"] = other_amount(cleaned)
+    # A source review can explicitly identify a blank/dash. Keep that absence
+    # through override replay instead of turning it into a reported zero.
+    source_nulls = cleaned.get("sourceNullFields") or []
+    if "travel" in source_nulls and all(cleaned.get(key) is None for key in ("travel", "expenses", "creditCard")):
+        cleaned["travelExpenses"] = None
+    if "otherPayments" in source_nulls and cleaned.get("otherPayments") is None:
+        cleaned["other"] = None
     total = number(cleaned.get("total"))
+    if "total" in source_nulls and cleaned.get("sourceAllAmountsUnreported") and all(cleaned.get(key) is None for key in PAYMENT_KEYS):
+        cleaned["total"] = None
+        return cleaned
     if total is None:
-        total = (number(cleaned.get("remuneration")) or 0) + cleaned["travelExpenses"] + cleaned["other"]
+        total = (number(cleaned.get("remuneration")) or 0) + (cleaned["travelExpenses"] or 0) + (cleaned["other"] or 0)
     cleaned["total"] = int(total) if float(total).is_integer() else total
     return cleaned
 
@@ -188,7 +198,7 @@ def source_total_from_table(table, require_total_header=False):
     return None
 
 
-def validate_people(people, source_total=None, table_quality=None, strict=False):
+def validate_people(people, source_total=None, table_quality=None, strict=False, source_review=None):
     warnings = []
     severe = []
     normalized = []
@@ -204,6 +214,19 @@ def validate_people(people, source_total=None, table_quality=None, strict=False)
     mismatch_count = 0
     inferred_count = 0
     chief_count = 0
+    review = source_review or {}
+    reviewed_omissions = bool(review.get('completeSchedule') and review.get('identityAndYearConfirmed')
+                              and review.get('sourceRowCount') == len(people)
+                              and re.fullmatch(r'[a-f0-9]{64}', str(review.get('sha256', ''))))
+    def bound_row(person):
+        reference = person.get('sourceReference') or {}
+        return (reviewed_omissions and reference.get('sha256') == review['sha256']
+                and type(person.get('sourceRowNumber')) is int
+                and 1 <= person['sourceRowNumber'] <= len(people))
+    if any(p.get('sourceNameOmitted') or p.get('sourceRoleOmitted') or p.get('sourceAllAmountsUnreported') for p in people):
+        row_numbers = [p.get('sourceRowNumber') for p in people]
+        if any(type(n) is not int for n in row_numbers) or sorted(row_numbers) != list(range(1, len(people) + 1)):
+            severe.append('Reviewed source rows must have distinct consecutive source-row numbers')
 
     for index, person in enumerate(people, start=1):
         row_warnings = []
@@ -218,8 +241,11 @@ def validate_people(people, source_total=None, table_quality=None, strict=False)
             + other_amount(normalized_person)
         )
 
-        if not name:
+        omitted_name = not name and normalized_person.get('sourceNameOmitted') and bound_row(normalized_person)
+        if not name and not omitted_name:
             severe.append(f"Row {index}: missing official name")
+        elif omitted_name:
+            row_warnings.append(f"Row {index}: individual name is not disclosed in the source")
         elif TOTAL_NAME_RE.search(name):
             severe.append(f"Row {index}: possible footer total parsed as official")
         elif len(re.sub(r'[^A-Za-z]', '', name)) < 3 or re.search(
@@ -237,7 +263,12 @@ def validate_people(people, source_total=None, table_quality=None, strict=False)
         if months is not None and not (0 < months <= 12):
             row_warnings.append(f"Row {index}: months outside 0-12")
 
-        if total is None or total <= 0:
+        unreported_amounts = (total is None and normalized_person.get('sourceAllAmountsUnreported')
+                              and bound_row(normalized_person)
+                              and all(normalized_person.get(key) is None for key in PAYMENT_KEYS))
+        if unreported_amounts:
+            row_warnings.append(f"Row {index}: all payment cells are source dashes; no zero inferred")
+        elif total is None or total <= 0:
             severe.append(f"Row {index}: missing or zero total")
         elif component_total > 0 and not nearly_equal(total, component_total, tolerance=0 if strict else 0.04):
             mismatch_count += 1
@@ -262,7 +293,9 @@ def validate_people(people, source_total=None, table_quality=None, strict=False)
 
     if chief_count == 0:
         warnings.append("No Chief row detected")
-        if strict:
+        all_roles_omitted = reviewed_omissions and all(bound_row(p) and p.get('sourceRoleOmitted')
+                                                      and p.get('role') == 'Not specified' for p in people)
+        if strict and not all_roles_omitted:
             severe.append("A complete Chief and Council schedule requires an identified Chief row")
 
     if len(normalized) == 1:

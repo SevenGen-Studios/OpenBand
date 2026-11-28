@@ -82,11 +82,14 @@ def financial_markup(summary, year):
 
 def remuneration_markup(filing, year):
     rows = []
+    qualification = (filing.get('manualSourceReview') or {}).get('sourceAssuranceNote')
+    qualification_markup = f'<p class="source-qualification">{esc(qualification)}</p>' if qualification else ''
     people = filing.get('people', [])
     show_credit_card = any(person.get('creditCard') is not None for person in people)
     credit_card_header = '<th scope="col">Credit card</th>' if show_credit_card else ''
     for person in people:
-        if not str(person.get('name') or '').strip():
+        name = person.get('name') or ''
+        if not str(name).strip() and not (person.get('sourceNameOmitted') and person.get('sourceRowNumber')):
             continue
         # Keep source fields distinct. No calculated row or aggregate totals.
         travel = person.get('travel')
@@ -94,7 +97,7 @@ def remuneration_markup(filing, year):
         credit_card = person.get('creditCard')
         if travel is None and expenses is None and credit_card is None:
             travel = person.get('travelExpenses')
-        fields = [esc(person['name']), esc(person.get('role') or 'Not specified'),
+        fields = [esc(name), esc(person.get('role') or 'Not specified'),
                   esc(person['months']) if person.get('months') is not None else 'Not reported',
                   money(person.get('remuneration')), money(travel), money(expenses)]
         if show_credit_card:
@@ -106,7 +109,7 @@ def remuneration_markup(filing, year):
             '<div class="record-table-wrap"><table><caption>Parsed remuneration schedule · amounts in Canadian dollars</caption><thead><tr>'
             f'<th scope="col">Name</th><th scope="col">Position</th><th scope="col">Months</th><th scope="col">Remuneration</th><th scope="col">Travel</th><th scope="col">Expenses</th>{credit_card_header}<th scope="col">Other payments</th>'
             '</tr></thead><tbody>' + ''.join(rows) + '</tbody></table></div>'
-            f'<p>{source_link(filing.get("href"), "Review original remuneration and expenses schedule (PDF)")}</p></section>')
+            f'<p>{source_link(filing.get("href"), "Review original remuneration and expenses schedule (PDF)")}</p>{qualification_markup}</section>')
 
 def breadcrumb(items, nation=None):
     return '<nav class="record-breadcrumb" aria-label="Breadcrumb">' + ' <span aria-hidden="true">/</span> '.join(f'<a href="{esc(path)}">{nation_name_markup(nation) if nation and name == nation["name"] else esc(name)}</a>' for name, path in items) + '</nav>'

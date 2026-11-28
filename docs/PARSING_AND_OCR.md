@@ -21,6 +21,10 @@ data.json contains Nation filing entries and people/payment rows. run_scraper.py
 
 Check official names, Chief/Councillor roles, months served and each printed payment component. Preserve separate remuneration, travel, expenses, credit-card and other-payment columns. Do not double-count repeated columns, omit continuation pages, substitute organization totals for individual people, or infer missing amounts as zero. Retain source warnings and distinguish reported totals from sums derived from components.
 
+A visually reviewed row can use `sourceNullFields` to identify source blanks or dashes (for example, `["travel", "otherPayments"]`). The normalizer retains those explicitly reviewed absences as null canonical values; this marker does not change unmarked legacy records or authorize treating absent amounts as zero. Keep the original source cells in `reportedComponents`.
+
+Complete, hash-bound manual source reviews can retain omitted names (`sourceNameOmitted`), omitted roles (`sourceRoleOmitted` with `Not specified`), or an all-dash payment row (`sourceAllAmountsUnreported`). These require distinct source-row numbers and matching per-row source hashes. Generic parsing still rejects missing names, missing Chief rows and absent totals. Display labels for anonymous source rows are not personal identities, and all-dash totals remain null. Explicit exchanged ISC listing labels are replayed by source URL/year/hash before applying reviewed rows.
+
 Inspect parse_status, parse_confidence, manual_review_required, warnings and parse_stages when present. Do not assume every pipeline uses identical status strings; consult the producer and frontend status handling.
 
 ### Audited Community Capital

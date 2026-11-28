@@ -120,6 +120,28 @@ def apply_record(data, record):
     if target_band is None:
         return 0
 
+    # Replay explicit, reviewed ISC listing-label corrections before selecting
+    # a schedule. Never attach reviewed rows to the other, mislabelled URL.
+    for correction in record.get('sourceClassifications') or []:
+        if not re.fullmatch(r'[a-f0-9]{64}', correction.get('sha256', '')):
+            raise ValueError('Classification correction requires a reviewed source hash')
+        matches = [f for f in target_band.get('filings', [])
+                   if f.get('year') == correction['year'] and f.get('href') == correction['sourcePdf']]
+        if len(matches) != 1:
+            raise ValueError('Classification source is missing or ambiguous')
+        filing = matches[0]
+        if filing.get('sha256') and filing['sha256'] != correction['sha256']:
+            raise ValueError('Classification source hash changed')
+        if filing.get('docType') == correction['docType']:
+            continue
+        if filing.get('docType') != correction['listedDocType'] or filing.get('people'):
+            raise ValueError('Classification correction conflicts with an existing record')
+        filing['listedDocType'] = filing['docType']
+        filing['docType'] = correction['docType']
+        filing['documentTypeMethod'] = correction['reviewMethod']
+        if not is_remuneration(filing):
+            filing['parse_status'] = 'not_required'
+
     applied = 0
     for year, status_values in (record.get("filingStatuses") or {}).items():
         selected_filing = target_filing(target_band, year)
@@ -147,7 +169,13 @@ def apply_record(data, record):
         target = selected_filing
 
         people = [normalize_row(row) for row in rows]
-        validation = parser_quality.validate_people(people)
+        source_review = (record.get('sourceReviews') or {}).get(year)
+        has_source_omissions = any(person.get('sourceNameOmitted') or person.get('sourceRoleOmitted')
+                                  or person.get('sourceAllAmountsUnreported') for person in people)
+        validation = parser_quality.validate_people(people, strict=has_source_omissions,
+                                                    source_review=source_review)
+        if has_source_omissions and validation['manual_review_required']:
+            raise ValueError('Source omission review failed: ' + '; '.join(validation['warnings']))
         target["people"] = validation["people"]
         target["parse_status"] = record.get("status") or "manual_override"
         target["parse_confidence"] = "manual_reviewed"

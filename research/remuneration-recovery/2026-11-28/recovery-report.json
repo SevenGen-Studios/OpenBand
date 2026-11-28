@@ -1,0 +1,2611 @@
+{
+  "date": "2026-11-28",
+  "baseCommit": "907de0a4",
+  "branch": "recovery/remuneration-20261128",
+  "deployment": "Local isolated branch only; not pushed, merged, or deployed.",
+  "scope": "Recover 2023–2024 and 2024–2025 remuneration gaps for the 16 identified communities; independently audit all available ISC listing years for all 180 tracked profiles. Additional historical pending filings for those 16 communities are inventoried separately, not claimed recovered.",
+  "summary": {
+    "initialMissingSchedules": 20,
+    "originalSchedulesRecovered": 14,
+    "remainingOriginalSchedules": 6,
+    "totalSchedulesRecovered": 16,
+    "additionalHistoricalSchedulesRecovered": 2,
+    "totalSourceRows": 104,
+    "namedRows": 92,
+    "anonymousRows": 12,
+    "unreportedRoleRows": 15,
+    "allDashPaymentRows": 1
+  },
+  "beforeCoverage": {
+    "SK": {
+      "publishedBothYears": 41,
+      "completeParsedBothYears": 40
+    },
+    "AB": {
+      "publishedBothYears": 20,
+      "completeParsedBothYears": 17
+    },
+    "MB": {
+      "publishedBothYears": 31,
+      "completeParsedBothYears": 19
+    }
+  },
+  "afterCoverage": {
+    "SK": {
+      "publishedBothYears": 41,
+      "extractedBothYears": 41
+    },
+    "AB": {
+      "publishedBothYears": 20,
+      "extractedBothYears": 19
+    },
+    "MB": {
+      "publishedBothYears": 31,
+      "extractedBothYears": 27
+    }
+  },
+  "initialSchedules": [
+    {
+      "bandId": 369,
+      "name": "Beardy's and Okemasis' Cree Nation",
+      "province": "SK",
+      "year": "2024-2025",
+      "originalStatus": "not_applicable_wrong_document",
+      "result": "recovered_applied",
+      "officials": 7,
+      "sourceUrl": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=369&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
+      "sha256": "79d89602aa13f01e19d244713bdf8cf00e8e2f082a8c06de5a6a7e6bf533beb4",
+      "explanation": "ISC exchanged the two document links; the original listing types and source URLs are preserved with an explicit classification correction.",
+      "originalSourceUrl": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=369&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng"
+    },
+    {
+      "bandId": 467,
+      "name": "Fort McKay First Nation",
+      "province": "AB",
+      "year": "2023-2024",
+      "originalStatus": "manual_review",
+      "result": "recovered_applied",
+      "officials": 7,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "7bb76c5cee0a145a9ba4bea1bda67dea3962136f4cf99ed18bc7c478af027627",
+      "explanation": "The ISC schedule omits all individual names. Rows retain null names and original source-row numbers; display labels are placeholders, not identified people. The printed remuneration subtotal excludes travel; combined displayed totals add travel once. Printed salary/subtotal footer differs by $1 from transcribed individual rows; no amount adjusted. Printed source column discrepancies retained: salary: printed 1,734,521, rows 1,734,520; remunerationSubtotal: printed 2,153,121, rows 2,153,120. No values adjusted.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 467,
+      "name": "Fort McKay First Nation",
+      "province": "AB",
+      "year": "2024-2025",
+      "originalStatus": "manual_review",
+      "result": "recovered_applied",
+      "officials": 5,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "15670960396f0a1856dfa97c364ca286ea13fffcea39bb46f7d0458af55d3245",
+      "explanation": "The ISC schedule omits all individual names. Rows retain null names and original source-row numbers; display labels are placeholders, not identified people. The printed remuneration subtotal excludes travel; combined displayed totals add travel once.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 431,
+      "name": "O'Chiese",
+      "province": "AB",
+      "year": "2023-2024",
+      "originalStatus": "manual_review",
+      "result": "retained_pending",
+      "officials": 0,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=431&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "f45193d9d8fbebd01990450cac27417ea552a304ae053514e16c194258e93722",
+      "explanation": "Schedule covers ISC-funded remuneration only, prints dashes, and explicitly says remuneration/per diem/expenses were paid from own-source revenue. No total-compensation zeros have been inferred."
+    },
+    {
+      "bandId": 431,
+      "name": "O'Chiese",
+      "province": "AB",
+      "year": "2024-2025",
+      "originalStatus": "manual_review",
+      "result": "retained_pending",
+      "officials": 0,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=431&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "cf4fde524a3f4491171d3413927198a612f06a948afea5f79ca0f1b08fafc6d6",
+      "explanation": "Schedule covers ISC-funded remuneration only, prints dashes, and explicitly says remuneration/per diem/expenses were paid from own-source revenue. No total-compensation zeros have been inferred."
+    },
+    {
+      "bandId": 455,
+      "name": "Sturgeon Lake Cree Nation",
+      "province": "AB",
+      "year": "2023-2024",
+      "originalStatus": "manual_review",
+      "result": "recovered_applied",
+      "officials": 8,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "f0e37c39f8987e265836e3e08524083bde861caec2e0eef8315556af2e4dcf5f",
+      "explanation": "The source names the elected officials but does not print individual roles. All roles remain Not specified, rather than assigning Chief/Councillor. Wildfire overtime and separately labelled honoraria are retained under Other with original components. Combined totals are derived. Printed source column discrepancies retained: baseRemuneration: printed 342,463, rows 342,466; wildfireOvertime: printed 879,042, rows 879,043; travel: printed 225,311, rows 225,312. No values adjusted.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 455,
+      "name": "Sturgeon Lake Cree Nation",
+      "province": "AB",
+      "year": "2024-2025",
+      "originalStatus": "manual_review",
+      "result": "recovered_applied",
+      "officials": 7,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "5886057bc1f6ef83b95548695b07a76cde25e01cf7fc30d61483c10314c97ca5",
+      "explanation": "Individual roles are not specified in the source. Overtime and separate honoraria are retained under Other without double-counting the printed total. Printed source column discrepancies retained: baseRemuneration: printed 312,924, rows 312,926; overtime: printed 622,590, rows 622,589; travel: printed 199,997, rows 199,996. No values adjusted.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 309,
+      "name": "Chemawawin Cree Nation",
+      "province": "MB",
+      "year": "2023-2024",
+      "originalStatus": "pending_review",
+      "result": "retained_pending",
+      "officials": 0,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "2a7f622f943836f8fa0acbdd65a77d6d12239fbbdaf25e7271d3623b01fe918b",
+      "explanation": "The retrieved PDF is password-encrypted; PDFium and Poppler both reject it with Incorrect password. No password guessing or extraction from another year."
+    },
+    {
+      "bandId": 288,
+      "name": "Dakota Plains",
+      "province": "MB",
+      "year": "2023-2024",
+      "originalStatus": "manual_review",
+      "result": "recovered_applied",
+      "officials": 7,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=288&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "04104e06dc5339d80dc2d74b89d507c62585dec5d899a0cece8389be0c33d28d",
+      "explanation": "Deborah Houle is printed with dashes in every payment and total cell. The row is retained with null amounts and Not reported total, not omitted or converted to zero. Printed schedule totals equal the sum of the known reported amounts.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=288&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 262,
+      "name": "Fort Alexander",
+      "province": "MB",
+      "year": "2023-2024",
+      "originalStatus": "manual_review",
+      "result": "recovered_applied",
+      "officials": 7,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=262&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "d2703547162c90bcc864cb86b2f49c9afea1daa10be81c2e74843b863052908e",
+      "explanation": "Complete original schedule verified and integrated.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=262&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 305,
+      "name": "Fox Lake",
+      "province": "MB",
+      "year": "2024-2025",
+      "originalStatus": "pending_manual_review",
+      "result": "recovered_applied",
+      "officials": 4,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=305&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "be31c71183112f5b8ac11e098520d9fe26800cb54776cdc7e3e61708453e1aa0",
+      "explanation": "Complete original schedule verified and integrated.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=305&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 294,
+      "name": "Gambler First Nation",
+      "province": "MB",
+      "year": "2023-2024",
+      "originalStatus": "manual_review",
+      "result": "recovered_applied",
+      "officials": 3,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=294&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "e4bfdb6f88402660032c6b5d9abe383ffa39f73c85a8bd484e87f256699970cd",
+      "explanation": "Complete original schedule verified and integrated.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=294&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 287,
+      "name": "Long Plain",
+      "province": "MB",
+      "year": "2023-2024",
+      "originalStatus": "manual_review",
+      "result": "recovered_applied",
+      "officials": 8,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "6b6daa37ff538308d8229896198f3061ad47b6f71d26ef1e133c8a806dbc0a9e",
+      "explanation": "Complete original schedule verified and integrated.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 302,
+      "name": "Manto Sipi Cree Nation",
+      "province": "MB",
+      "year": "2024-2025",
+      "originalStatus": "manual_review",
+      "result": "retained_pending",
+      "officials": 0,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "893ac1f86fe3df7b180f865da57300e13d0216c309148b265950a37cdc0658de",
+      "explanation": "Remuneration URL returns 116 pages of consolidated revenue/expenditure schedules, not a person-level remuneration schedule. The audited counterpart is also financial statements. No organizational expense line has been substituted for individual compensation."
+    },
+    {
+      "bandId": 315,
+      "name": "Opaskwayak Cree Nation",
+      "province": "MB",
+      "year": "2023-2024",
+      "originalStatus": "manual_review",
+      "result": "retained_pending",
+      "officials": 0,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "7a4ca1030b12c884de0b7846385eb2c081291be37a99fac0975d8689350d0ba4",
+      "explanation": "Remuneration URL returns 30 pages of consolidated financial statements. The audited counterpart returns a 153-byte HTML placeholder, not a PDF. No remuneration schedule located in either source."
+    },
+    {
+      "bandId": 314,
+      "name": "Sapotaweyak Cree Nation",
+      "province": "MB",
+      "year": "2023-2024",
+      "originalStatus": "manual_review",
+      "result": "recovered_applied",
+      "officials": 8,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "710853ecbb5e874fb825fe008187897cca120932aa0b1f9a75d09bd0a84bf507",
+      "explanation": "Complete original schedule verified and integrated.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 290,
+      "name": "Sioux Valley Dakota Nation",
+      "province": "MB",
+      "year": "2023-2024",
+      "originalStatus": "manual_review",
+      "result": "recovered_applied",
+      "officials": 9,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=290&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "67e58b2c9f65b3f7cc0384c4fbfe03777cc719505bdfc5ef1d4cbc8e578b228b",
+      "explanation": "Complete original schedule verified and integrated.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=290&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 285,
+      "name": "Waywayseecappo First Nation Treaty Four - 1874",
+      "province": "MB",
+      "year": "2023-2024",
+      "originalStatus": "manual_review",
+      "result": "recovered_applied",
+      "officials": 7,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "1cc1e209c7275d821dd34ddfad8242a132406e61d949036f6d574fcc5bd54202",
+      "explanation": "Complete original schedule verified and integrated.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 285,
+      "name": "Waywayseecappo First Nation Treaty Four - 1874",
+      "province": "MB",
+      "year": "2024-2025",
+      "originalStatus": "manual_review",
+      "result": "retained_pending",
+      "officials": 0,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "4bb3ac9730289a57dd7e34a1c61d30ba84b9b15aa03ddaa14984fd2bac76a0ae",
+      "explanation": "2024–2025 remuneration URL returns 128 pages of compiled financial statements and program schedules. The paired audited statement contains no person-level remuneration schedule. 2023–2024 recovered separately."
+    },
+    {
+      "bandId": 324,
+      "name": "Wuskwi Sipihk First Nation",
+      "province": "MB",
+      "year": "2023-2024",
+      "originalStatus": "manual_review",
+      "result": "recovered_applied",
+      "officials": 4,
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=324&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "sha256": "ace261960b57b26b9a16a31862ad405b7a25a4b10383b9e29076175bbe27c994",
+      "explanation": "Complete original schedule verified and integrated.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=324&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    }
+  ],
+  "additionalPublished": [
+    {
+      "bandId": 269,
+      "name": "Peguis",
+      "province": "MB",
+      "year": "2019-2020",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=269&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "result": "recovered_applied"
+    },
+    {
+      "bandId": 401,
+      "name": "Clearwater River Dene Nation",
+      "province": "SK",
+      "year": "2020-2021",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=401&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "result": "recovered_applied"
+    }
+  ],
+  "independentAudit": {
+    "profilesAttempted": 180,
+    "listingChecksSucceeded": 174,
+    "unresolved": [
+      {
+        "bandId": 363,
+        "name": "Ochapowace First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=363&lang=eng",
+        "sha256": "320a870aec6106de7f3ab5206c9608052865e11a90211dce808b10e531069c72",
+        "error": "No filing rows; empty listing not interpreted as complete absence"
+      },
+      {
+        "bandId": 433,
+        "name": "Chiniki",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=433&lang=eng",
+        "sha256": "d4966f36b27ddcc216c933e339043471edbfcec22facc8fa604e699c2268b35d",
+        "error": "No filing rows; empty listing not interpreted as complete absence"
+      },
+      {
+        "bandId": 454,
+        "name": "Sawridge First Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=454&lang=eng",
+        "sha256": "e4ea3f6b63685bd987c611f0ebdde97736a72ed38d284da06c26c784ffb0360a",
+        "error": "No filing rows; empty listing not interpreted as complete absence"
+      },
+      {
+        "bandId": 473,
+        "name": "Bearspaw",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=473&lang=eng",
+        "sha256": "2dfab6f894db15b53f111778d93cf243dc4c310b9043cad93d1866735038bbb8",
+        "error": "No filing rows; empty listing not interpreted as complete absence"
+      },
+      {
+        "bandId": 475,
+        "name": "Goodstoney",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=475&lang=eng",
+        "sha256": "8ef198f1b704ea7eb226cd6be7650785d3e1be471fc08501564bbdf8ab5e729f",
+        "error": "No filing rows; empty listing not interpreted as complete absence"
+      },
+      {
+        "bandId": "ab-whitefish-lake-128",
+        "name": "Whitefish Lake First Nation #128",
+        "error": "Shared ISC identity requires separate review"
+      }
+    ],
+    "newTargetYearListingsFound": 0,
+    "retainedClassificationRecords": [
+      {
+        "bandId": 287,
+        "name": "Long Plain",
+        "year": "2015-2016",
+        "reason": "Already indexed under an evidence-reviewed document classification; original listing label retained. No duplicate added."
+      },
+      {
+        "bandId": 287,
+        "name": "Long Plain",
+        "year": "2016-2017",
+        "reason": "Already indexed under an evidence-reviewed document classification; original listing label retained. No duplicate added."
+      },
+      {
+        "bandId": 351,
+        "name": "Fond du Lac Denesuline First Nation",
+        "year": "2017-2018",
+        "reason": "Already indexed under an evidence-reviewed document classification; original listing label retained. No duplicate added."
+      },
+      {
+        "bandId": 436,
+        "name": "Piikani Nation",
+        "year": "2019-2020",
+        "reason": "Already indexed under an evidence-reviewed document classification; original listing label retained. No duplicate added."
+      },
+      {
+        "bandId": 460,
+        "name": "Beaver Lake Cree Nation",
+        "year": "2014-2015",
+        "reason": "Already indexed under an evidence-reviewed document classification; original listing label retained. No duplicate added."
+      },
+      {
+        "bandId": 462,
+        "name": "Saddle Lake Cree Nation",
+        "year": "2014-2015",
+        "reason": "Already indexed under an evidence-reviewed document classification; original listing label retained. No duplicate added."
+      },
+      {
+        "bandId": 462,
+        "name": "Saddle Lake Cree Nation",
+        "year": "2015-2016",
+        "reason": "Already indexed under an evidence-reviewed document classification; original listing label retained. No duplicate added."
+      },
+      {
+        "bandId": 462,
+        "name": "Saddle Lake Cree Nation",
+        "year": "2016-2017",
+        "reason": "Already indexed under an evidence-reviewed document classification; original listing label retained. No duplicate added."
+      }
+    ],
+    "checks": [
+      {
+        "bandId": 260,
+        "name": "Black River First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=260&lang=eng",
+        "sha256": "83789d811a490c535b001855dea7fdbd69ab341d60753cbe8847e7ec6e61f2f3"
+      },
+      {
+        "bandId": 261,
+        "name": "Brokenhead Ojibway Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=261&lang=eng",
+        "sha256": "01c8e2e6020735b462741752fa8f19b76d0a1a5d98c767af1323532d2f54d902"
+      },
+      {
+        "bandId": 262,
+        "name": "Fort Alexander",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=262&lang=eng",
+        "sha256": "4efbc1cc06161cf08995161ec9bdd7d3cc028d526ea23f6da0479397ccd933bf"
+      },
+      {
+        "bandId": 263,
+        "name": "Hollow Water",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=263&lang=eng",
+        "sha256": "7b12f247037986041b29aa20ed35d7b40e8c06c2601d8aa7fc8d3c0f74b7287b"
+      },
+      {
+        "bandId": 264,
+        "name": "Fisher River",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=264&lang=eng",
+        "sha256": "6306a823ed218f7f1308be6bb60b0b203e23fe0624fae32e80bf6415e71b0697"
+      },
+      {
+        "bandId": 265,
+        "name": "Buffalo Point First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=265&lang=eng",
+        "sha256": "578e5af28e3fcb8d415292d3cfd9546c52b4a5ce2cddbce3d0ceb97e55f5e71d"
+      },
+      {
+        "bandId": 266,
+        "name": "Berens River",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=266&lang=eng",
+        "sha256": "59b4f3b6eb1b9b28959462c2e9c109d500c4637f33032b92ee97447107659886"
+      },
+      {
+        "bandId": 267,
+        "name": "Bloodvein",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=267&lang=eng",
+        "sha256": "51b513a4a9daa48596ba1e669a6e660cceb52e93c5becb8e5b814db114ae233f"
+      },
+      {
+        "bandId": 268,
+        "name": "Kinonjeoshtegon First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=268&lang=eng",
+        "sha256": "ada8f6ce30b240b27691e728535b9511cb818d56aa087b5fdcc8c49013479a9a"
+      },
+      {
+        "bandId": 269,
+        "name": "Peguis",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=269&lang=eng",
+        "sha256": "2caf3dc530d62f28f7e70da2f92431195d12bc8128a42a171dd776334600d547"
+      },
+      {
+        "bandId": 270,
+        "name": "Little Grand Rapids",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=270&lang=eng",
+        "sha256": "45759b8afe80a0f462df162d065a503bb6a28b7167eb4bc6f10f51b4fe755d96"
+      },
+      {
+        "bandId": 271,
+        "name": "Lake Manitoba",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=271&lang=eng",
+        "sha256": "41239d78fa4feb6fb6131a3c12b910fcdf197a7b6f75c5dd914340a3e856a9ed"
+      },
+      {
+        "bandId": 272,
+        "name": "Pinaymootang First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=272&lang=eng",
+        "sha256": "23db645abfebedafa9affbf01d38fbb468dd01db4c34ceb19bad1c05f0c5982e"
+      },
+      {
+        "bandId": 273,
+        "name": "Roseau River Anishinabe First Nation Government",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=273&lang=eng",
+        "sha256": "2a610228974a9a3e41ec9a3f5ecacbbe9fff592df6b087dd5b1310f44c45d946"
+      },
+      {
+        "bandId": 274,
+        "name": "Little Saskatchewan",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=274&lang=eng",
+        "sha256": "9d8c361cf3b3b514ccba77490fbd8bfe24c385a2d324ca45c40abd41f1e58d17"
+      },
+      {
+        "bandId": 275,
+        "name": "Lake St. Martin",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=275&lang=eng",
+        "sha256": "7e5fdff057dba41ae41a560738b93c231ae7603be6253b19441b6700ccd9da8a"
+      },
+      {
+        "bandId": 276,
+        "name": "Cross Lake Band of Indians",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=276&lang=eng",
+        "sha256": "007e42c3a12c5c797ff4016fd042b5447d196f601f894c301f0ed22dc942f137"
+      },
+      {
+        "bandId": 277,
+        "name": "Poplar River First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=277&lang=eng",
+        "sha256": "a9020f284095ac6737071dd80e16d40c6703cb41511eb1c307a5821a23666423"
+      },
+      {
+        "bandId": 278,
+        "name": "Norway House Cree Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=278&lang=eng",
+        "sha256": "06f4a5bc954a5a58c38112ba6f898454d7eb2bf57394ec9b056d9ac375f8a2ce"
+      },
+      {
+        "bandId": 279,
+        "name": "O-Chi-Chak-Ko-Sipi First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=279&lang=eng",
+        "sha256": "248ec18222396efa2c59f14a1b6ba705182b8d55fc29513fd3e0b2e18be6af9a"
+      },
+      {
+        "bandId": 280,
+        "name": "Ebb and Flow",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=280&lang=eng",
+        "sha256": "ef86b61498889643a7518060b33196cdfe8cf3487fa39562cf771000e3fe346d"
+      },
+      {
+        "bandId": 281,
+        "name": "Skownan First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=281&lang=eng",
+        "sha256": "9f8334a977c8c850caf5f6214fa47ee6434cca2aa32e54c96b17671107391c87"
+      },
+      {
+        "bandId": 282,
+        "name": "Minegoziibe Anishinabe",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=282&lang=eng",
+        "sha256": "d30eaf8ee7ad07b48a6c852b9b0fd9162fa825589a23d5224be41facd6bbd5ab"
+      },
+      {
+        "bandId": 283,
+        "name": "Sandy Bay",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=283&lang=eng",
+        "sha256": "05f9144f8441dd82ca81447457b72063566bf671316ecc36ceaae9186b90ac76"
+      },
+      {
+        "bandId": 284,
+        "name": "Birdtail Sioux",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=284&lang=eng",
+        "sha256": "b1f61c3d1ab7cbf629c4a83c68e9215952d1acac012f7c1dcce7f5331420afdb"
+      },
+      {
+        "bandId": 285,
+        "name": "Waywayseecappo First Nation Treaty Four - 1874",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=285&lang=eng",
+        "sha256": "6abcc7e5e351c30a05174aed4e6d201dee4c85d6bdc8ca0067fb867ccb42d4fb"
+      },
+      {
+        "bandId": 286,
+        "name": "Keeseekoowenin",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=286&lang=eng",
+        "sha256": "984244b7372446c068d2c915b4db18763143a2fcd50b8008133eb317d52d24a9"
+      },
+      {
+        "bandId": 287,
+        "name": "Long Plain",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=287&lang=eng",
+        "sha256": "ec81eb7a32d52a28dffc7041c0ba7421f6676db214f9762069447f9a3aa37b3d"
+      },
+      {
+        "bandId": 288,
+        "name": "Dakota Plains",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=288&lang=eng",
+        "sha256": "458ae45a44def8dc88f3a855343ad4e83f2f0b15d4ab0c4e040fc0408119f8ff"
+      },
+      {
+        "bandId": 289,
+        "name": "Canupawakpa Dakota First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=289&lang=eng",
+        "sha256": "c5d6dcde66a4bb225c8391b1c22d32700b60f56640acd29bf5740162e3b82749"
+      },
+      {
+        "bandId": 290,
+        "name": "Sioux Valley Dakota Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=290&lang=eng",
+        "sha256": "8dc99e0066b465f02be9002d707f782aae206c532888ebe25cca01a935cfd5e5"
+      },
+      {
+        "bandId": 291,
+        "name": "Rolling River",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=291&lang=eng",
+        "sha256": "d2f29a171f342d2d5c0a60834b37b69f29591e4ca534473d942a1cf3f2246ccc"
+      },
+      {
+        "bandId": 292,
+        "name": "Tootinaowaziibeeng Treaty Reserve",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=292&lang=eng",
+        "sha256": "33a50003e675a5527cf59c14ee181fe4c7a5a0ad63fcd68da69bda7af72bc7b4"
+      },
+      {
+        "bandId": 293,
+        "name": "Swan Lake First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=293&lang=eng",
+        "sha256": "ebbbeda26fa73657add637e37f1c41e61648ffd9d42e55adb55e713e8c46b1bf"
+      },
+      {
+        "bandId": 294,
+        "name": "Gambler First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=294&lang=eng",
+        "sha256": "6eefc825d45cbb1733821b67aeab4603c7d9e13a77579b74bffce94dde831fee"
+      },
+      {
+        "bandId": 295,
+        "name": "Dakota Tipi",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=295&lang=eng",
+        "sha256": "626af34525f5cb347f711fe8e0ff1b1519fd296a9a69e7719c5cf03aee7a37ae"
+      },
+      {
+        "bandId": 296,
+        "name": "God's Lake First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=296&lang=eng",
+        "sha256": "d1098501a4ff9d7d805203522f684c791b1517e740cd41f7e39a3b531c43c902"
+      },
+      {
+        "bandId": 297,
+        "name": "Garden Hill First Nations",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=297&lang=eng",
+        "sha256": "eb2f52c0923eb1f30ae01b6dd1c391a1e9f970964f78c8c89a62ed53e3499b83"
+      },
+      {
+        "bandId": 298,
+        "name": "St. Theresa Point",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=298&lang=eng",
+        "sha256": "9a6b0fa8cb3e9f060dac67a911e67cdb89d2ce9e24b912d430f7f8337c043e58"
+      },
+      {
+        "bandId": 299,
+        "name": "Wasagamack First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=299&lang=eng",
+        "sha256": "c65544cd40c3242ffd077a688dbbc07e1e750427bd9a5996ec69ddcbd71421e7"
+      },
+      {
+        "bandId": 300,
+        "name": "Red Sucker Lake",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=300&lang=eng",
+        "sha256": "bc2769ffaa13dc182573f2eee2bf453d52cc04ad4de9b0722091ec8f1e332eb9"
+      },
+      {
+        "bandId": 301,
+        "name": "Bunibonibee Cree Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=301&lang=eng",
+        "sha256": "b9dd2203626d85aa690f1f6b0a902caa2298fdc178e3fbeef30d8daf422eb857"
+      },
+      {
+        "bandId": 302,
+        "name": "Manto Sipi Cree Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=302&lang=eng",
+        "sha256": "4a50554e646f095bead7c3645ab22d207889f5db5cb84b9c80a44d659321215c"
+      },
+      {
+        "bandId": 303,
+        "name": "Sayisi Dene First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=303&lang=eng",
+        "sha256": "3fce8379d31c68a7c1b53ec28d1047963d3d5346b349033ca34a5cf0499f59f5"
+      },
+      {
+        "bandId": 304,
+        "name": "York Factory First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=304&lang=eng",
+        "sha256": "aebb4bcd6022f6a1eae44d5b0c15582eb91ff71fd8de60029988981ce6e991bb"
+      },
+      {
+        "bandId": 305,
+        "name": "Fox Lake",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=305&lang=eng",
+        "sha256": "03cf4ee98bcea736695b6454a37ccd1c6c06193c74d7e5419f01b3a270658280"
+      },
+      {
+        "bandId": 306,
+        "name": "Tataskweyak Cree Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=306&lang=eng",
+        "sha256": "a54105e9503d20decee631529a8c61b35a71e9abd45f7b353c96d2fccdcf2460"
+      },
+      {
+        "bandId": 307,
+        "name": "Shamattawa First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=307&lang=eng",
+        "sha256": "140e82950d88c1c408dcfe738542be9551b7b64643e874a25521c73f6af326e7"
+      },
+      {
+        "bandId": 308,
+        "name": "Barren Lands",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=308&lang=eng",
+        "sha256": "55371d9760e42cbd08d33ee5afc9bbafab3084e84b70f73eab1d09609c9444b0"
+      },
+      {
+        "bandId": 309,
+        "name": "Chemawawin Cree Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=309&lang=eng",
+        "sha256": "0d24570056c66cde7812be68d8500df6151b80259c8555017f0da888b6f42aca"
+      },
+      {
+        "bandId": 310,
+        "name": "Misipawistik Cree Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=310&lang=eng",
+        "sha256": "4ee028aafe5b82d8201c52c6e998204f9f48d1d60ad1948588f4e91fcd4e0506"
+      },
+      {
+        "bandId": 311,
+        "name": "Mathias Colomb",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=311&lang=eng",
+        "sha256": "9cb6ab3416ded410c2800a641cb6382060f347066b8e9ea2d766c059af0f715f"
+      },
+      {
+        "bandId": 312,
+        "name": "Mosakahiken Cree Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=312&lang=eng",
+        "sha256": "00fb659f6dfb95775bc8be71acb79bce1cbefcb74c520fd18b78694ce46553eb"
+      },
+      {
+        "bandId": 313,
+        "name": "Nisichawayasihk Cree Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=313&lang=eng",
+        "sha256": "3b9ddb8fd928c175830c562fc9672b0bccdc8e6e6560ae9e0e5acd21d39c31da"
+      },
+      {
+        "bandId": 314,
+        "name": "Sapotaweyak Cree Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=314&lang=eng",
+        "sha256": "f333d63ca02eaaa1f3fb2cc24cc757537f263a20869f7a61725ce2fd5c436a31"
+      },
+      {
+        "bandId": 315,
+        "name": "Opaskwayak Cree Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=315&lang=eng",
+        "sha256": "b753e8619258ccbfa298d24184c7886bb2e690976e1659177201261f34585437"
+      },
+      {
+        "bandId": 316,
+        "name": "Dauphin River",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=316&lang=eng",
+        "sha256": "a6b785041869b368558aafa6de81eb93146504f04c482ce6b8b8341f8c1b5d47"
+      },
+      {
+        "bandId": 317,
+        "name": "Northlands Denesuline First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=317&lang=eng",
+        "sha256": "65d7482f2a25ff074e6c241a0511c3c0935131d8d25a4d15e1eecfca043dceaf"
+      },
+      {
+        "bandId": 318,
+        "name": "O-Pipon-Na-Piwin Cree Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=318&lang=eng",
+        "sha256": "aed7136d16f2a046fdd0adaacd17939bdc8d2d6bb018a4a9067fbe0a7ab95e36"
+      },
+      {
+        "bandId": 323,
+        "name": "War Lake First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=323&lang=eng",
+        "sha256": "b8df59c51fea1bc7b368f27d18f7350c6583da5d4da7dd7523d75162226f43ac"
+      },
+      {
+        "bandId": 324,
+        "name": "Wuskwi Sipihk First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=324&lang=eng",
+        "sha256": "ab5407518d729e10a12ca22ec6492600cd45d3b19c837aad3c58bf8f7158980f"
+      },
+      {
+        "bandId": 327,
+        "name": "Pauingassi First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=327&lang=eng",
+        "sha256": "8e933f6e25cec797125f68ee676afbefa77d2f631f79c5cd88ad6e77627de843"
+      },
+      {
+        "bandId": 328,
+        "name": "Marcel Colomb First Nation",
+        "province": "MB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=328&lang=eng",
+        "sha256": "71162b086a43e751ea7cc43d8eefa15fc89f9f22bc943161056bdff354830d51"
+      },
+      {
+        "bandId": 340,
+        "name": "Little Pine First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=340&lang=eng",
+        "sha256": "a901f7bd10ebc20fcf6e0c9b2cd2d486cbaa5dfa55350306dd767f00d425a634"
+      },
+      {
+        "bandId": 341,
+        "name": "Lucky Man Cree Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=341&lang=eng",
+        "sha256": "83b20569f1bfca424d5365bf8180b6edb4ddbd8118b03ac37c998ba1aa0ef6c3"
+      },
+      {
+        "bandId": 342,
+        "name": "Moosomin First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=342&lang=eng",
+        "sha256": "2b5a55dd6a9b270739c21de7516f16495060edd941aaa666b90462512d5ef036"
+      },
+      {
+        "bandId": 343,
+        "name": "Mosquito, Grizzly Bear's Head, Lean Man",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=343&lang=eng",
+        "sha256": "82262b74bff1e533b41e0ac5bc1ae8181e4caf2b6ee69bd2e6ac926f6f20f43d"
+      },
+      {
+        "bandId": 344,
+        "name": "Onion Lake Cree Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=344&lang=eng",
+        "sha256": "d4cfc4b65e828126fa956d3c677c542e575bb391366ebc087ff58ec1f8bdde98"
+      },
+      {
+        "bandId": 345,
+        "name": "Poundmaker Cree Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=345&lang=eng",
+        "sha256": "be3645fc1094ff0917f750eb39fa255e65402e3e1fddbadbae79817b49d5aa2d"
+      },
+      {
+        "bandId": 346,
+        "name": "Red Pheasant Cree Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=346&lang=eng",
+        "sha256": "a4fbb1c97453c9c4ca011e8dd3d28e39696310728a8874908ffecfe9a66e794c"
+      },
+      {
+        "bandId": 347,
+        "name": "Saulteaux First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=347&lang=eng",
+        "sha256": "68118519e6650e80a21ff8728f03a1d6809713a99f72ee284d91315a19498c04"
+      },
+      {
+        "bandId": 348,
+        "name": "Sweetgrass First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=348&lang=eng",
+        "sha256": "96832dfce779caf1ad9ec2622d268363f44525041b88acfa50584d2e8a1abf43"
+      },
+      {
+        "bandId": 349,
+        "name": "Thunderchild First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=349&lang=eng",
+        "sha256": "a53414794ed1817414a1f4d59866a24b49dd7331083614f7550adaf185a50a27"
+      },
+      {
+        "bandId": 350,
+        "name": "Cumberland House Cree Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=350&lang=eng",
+        "sha256": "172b7e47bf1a41ffcae22d73c49546f9160ea67f4304d3b49bca1a98ebde5469"
+      },
+      {
+        "bandId": 351,
+        "name": "Fond du Lac Denesuline First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=351&lang=eng",
+        "sha256": "f9a248218c0170bfe5751b567dc010bd529a7681f663bd75b94417151750c995"
+      },
+      {
+        "bandId": 352,
+        "name": "Hatchet Lake Denesuline",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=352&lang=eng",
+        "sha256": "d6cd9f233fdba16db836c0b2b9eb66e06f17bf210ca0b9da22d079ee86dc31a1"
+      },
+      {
+        "bandId": 353,
+        "name": "Lac La Ronge Indian Band",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=353&lang=eng",
+        "sha256": "5c2f560aa61b727308e99ee9aa8cd59fe7a6336d7d9ae7887bf3a72cb3929cd0"
+      },
+      {
+        "bandId": 354,
+        "name": "Montreal Lake Cree Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=354&lang=eng",
+        "sha256": "c389b83e04d9ca787c9c9d4aad54aeab03c55f8a3982436f7bb7ba5231334c4e"
+      },
+      {
+        "bandId": 355,
+        "name": "Peter Ballantyne Cree Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=355&lang=eng",
+        "sha256": "093aa81124fce65775778b165a7e4dd5635d2a078ae992616c201db144673a51"
+      },
+      {
+        "bandId": 356,
+        "name": "Red Earth Cree Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=356&lang=eng",
+        "sha256": "541c09e902f048fffc655e0c8f4f8db5ac2c540a7cec280673104b1da58a2c3d"
+      },
+      {
+        "bandId": 357,
+        "name": "Shoal Lake Cree Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=357&lang=eng",
+        "sha256": "9add7556bb2ecefb6fc723c7848d49959adfbf799f5980136bcc45ebfc37fef2"
+      },
+      {
+        "bandId": 358,
+        "name": "Wahpeton Dakota Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=358&lang=eng",
+        "sha256": "c4443c6189cf2889ec8227f7bb2e8b26fac3d019dd95890f4a1918f569284fcb"
+      },
+      {
+        "bandId": 359,
+        "name": "Black Lake Denesuline First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=359&lang=eng",
+        "sha256": "255175f12e7194e04ae72e780399b34a83f9cd9e908509f994a38fe2ef90cbae"
+      },
+      {
+        "bandId": 360,
+        "name": "Sturgeon Lake First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=360&lang=eng",
+        "sha256": "3e2b8dd2a32aa1bc8dd97f307949d7ce25685669ea38347337df1b8d1b5e69b6"
+      },
+      {
+        "bandId": 361,
+        "name": "Cowessess First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=361&lang=eng",
+        "sha256": "4b68207a98870b535c3e129b9a3c068df3d65ff9531726b40edb6cc6701d7a83"
+      },
+      {
+        "bandId": 362,
+        "name": "Kahkewistahaw First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=362&lang=eng",
+        "sha256": "0b80d27bf22cddcd88a004bf0845cf8621f0e13fcc2483b9d50cae73f428a81f"
+      },
+      {
+        "bandId": 363,
+        "name": "Ochapowace First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=363&lang=eng",
+        "sha256": "320a870aec6106de7f3ab5206c9608052865e11a90211dce808b10e531069c72",
+        "error": "No filing rows; empty listing not interpreted as complete absence"
+      },
+      {
+        "bandId": 364,
+        "name": "Sakimay First Nations",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=364&lang=eng",
+        "sha256": "1d211489778377a8e76305fb638cf824950c3fcfe42ba3453b2a3c586756ce09"
+      },
+      {
+        "bandId": 365,
+        "name": "White Bear First Nations",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=365&lang=eng",
+        "sha256": "41f0deb61ffa6a10e5863b14ad246661c3979134479681edc75e01affa3d4766"
+      },
+      {
+        "bandId": 366,
+        "name": "Cote First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=366&lang=eng",
+        "sha256": "8515fbb2081e2af4d5942c5cc6cec5267df3c13bc3dd2766031734f888df68fe"
+      },
+      {
+        "bandId": 367,
+        "name": "Keeseekoose First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=367&lang=eng",
+        "sha256": "86beb419b71cccafcb850a635578e6347d940f045b742efe8c0d5f1065eed008"
+      },
+      {
+        "bandId": 368,
+        "name": "The Key First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=368&lang=eng",
+        "sha256": "095c7a0971fb05165b1f607c879adc2e44bb37405dfa841c3bb473296bcc3e63"
+      },
+      {
+        "bandId": 369,
+        "name": "Beardy's and Okemasis' Cree Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=369&lang=eng",
+        "sha256": "9ac72dc58448fa8280f68489c7c2317b5585624fb5588456df90407bcfc65217"
+      },
+      {
+        "bandId": 370,
+        "name": "James Smith Cree Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=370&lang=eng",
+        "sha256": "9ed36d069b915f23bbb22139076f0f0355a4f344d97034afed02794aec309bfc"
+      },
+      {
+        "bandId": 371,
+        "name": "Muskoday First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=371&lang=eng",
+        "sha256": "dd7f8d8a463180c78c745ea37186c27635c9e6827d37fdb1252781a63af64e49"
+      },
+      {
+        "bandId": 372,
+        "name": "Whitecap Dakota First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=372&lang=eng",
+        "sha256": "a29d26678579bdf364ddf5d8f51687b1f3d220c5ab8757380f2223383bc3ede5"
+      },
+      {
+        "bandId": 373,
+        "name": "One Arrow First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=373&lang=eng",
+        "sha256": "60a7dcfbdaba3cf18addc330f9f550e947c57c74793941d5168a08f6872b9e88"
+      },
+      {
+        "bandId": 374,
+        "name": "Mistawasis Nehiyawak",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=374&lang=eng",
+        "sha256": "08a63f9c5c92c87e16cd72049106d33d721b8be203c68faac18a86cd65f1e6d7"
+      },
+      {
+        "bandId": 375,
+        "name": "Muskeg Lake Cree Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=375&lang=eng",
+        "sha256": "a6dd9115ba3fae6fa93208021146bb649bf263eac867e4105a59f8bf9ba6dbd2"
+      },
+      {
+        "bandId": 376,
+        "name": "Yellow Quill First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=376&lang=eng",
+        "sha256": "537a0b30716fbb9358e13cbb6eb49eec4129905af65c5d27945110782026414f"
+      },
+      {
+        "bandId": 377,
+        "name": "Kinistin Saulteaux Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=377&lang=eng",
+        "sha256": "8ceddde63d866e6a23e2a1dc7e862a319c91d873522d49a47f18e21f8cd8b3ed"
+      },
+      {
+        "bandId": 378,
+        "name": "Carry the Kettle Nakoda Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=378&lang=eng",
+        "sha256": "bf03142de9307ec166971339945fe12032316e8cb28ab537afbcfc447692ade5"
+      },
+      {
+        "bandId": 379,
+        "name": "Little Black Bear First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=379&lang=eng",
+        "sha256": "e0a3526d334a1c95b05cc3fde5200b29ffb75411544350522b3ce5871869a26e"
+      },
+      {
+        "bandId": 380,
+        "name": "Nekaneet Cree Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=380&lang=eng",
+        "sha256": "f5c0f036bcc11cbc547107eb34b6e0547af4e46b4f1eae2235ceef626b9c580d"
+      },
+      {
+        "bandId": 381,
+        "name": "Muscowpetung First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=381&lang=eng",
+        "sha256": "7d46aa8025b82742490506413613ab9d80255926aa49284ebdbba0dc532020be"
+      },
+      {
+        "bandId": 382,
+        "name": "Okanese First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=382&lang=eng",
+        "sha256": "6d408479e4eedf78e77df2c07d1f6738ac32c6008214b5f522267b534da0ac12"
+      },
+      {
+        "bandId": 383,
+        "name": "Pasqua First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=383&lang=eng",
+        "sha256": "fb4970bfafb12ca9f349f3ecf160e5e59ffed62d8996d71ed2dddc01ce6af7a7"
+      },
+      {
+        "bandId": 384,
+        "name": "Peepeekisis Cree Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=384&lang=eng",
+        "sha256": "da660a8f13b65d1b6cc6017938fffda199933015793e303bed791e27a0f9a670"
+      },
+      {
+        "bandId": 385,
+        "name": "Piapot First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=385&lang=eng",
+        "sha256": "88364455b5856212c1db94301301c19937696c371dddf944441db0bdbc41148a"
+      },
+      {
+        "bandId": 386,
+        "name": "Standing Buffalo Dakota Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=386&lang=eng",
+        "sha256": "f498efd5fab26db2d21bf65b82cdcd63ebbcad908dd1df7e214d754bab90b44f"
+      },
+      {
+        "bandId": 387,
+        "name": "Star Blanket Cree Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=387&lang=eng",
+        "sha256": "d6dbd1b510bd9056466d032e71893b8e4b32cd44f5d1d0dc0bb7b5471b574bf6"
+      },
+      {
+        "bandId": 388,
+        "name": "Wood Mountain First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=388&lang=eng",
+        "sha256": "bfc7f4d8e967e9e93674cf64104dae89fa205dfafaf923c6658c9a4a0542050b"
+      },
+      {
+        "bandId": 389,
+        "name": "Day Star First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=389&lang=eng",
+        "sha256": "6fc2ff549a16d39fe63739cf501c810f22b5c68072fab4cb143ff189c9b7f19d"
+      },
+      {
+        "bandId": 390,
+        "name": "Fishing Lake First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=390&lang=eng",
+        "sha256": "2f1e6caa9d69e061a6fd8c126fd63032af1bfe1c2ad94e310b526b5d2199ff0f"
+      },
+      {
+        "bandId": 391,
+        "name": "George Gordon First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=391&lang=eng",
+        "sha256": "3558588a423f6cdc5510134fe19d0b3a8b132d578c5e5b4b92e46dfff7ccc819"
+      },
+      {
+        "bandId": 392,
+        "name": "Muskowekwan First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=392&lang=eng",
+        "sha256": "fc5162dbd511d3cb25a1136f9c75292e8af30ff8f57aaa7a3ba43b7ac6360f89"
+      },
+      {
+        "bandId": 393,
+        "name": "Kawacatoose First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=393&lang=eng",
+        "sha256": "a5941de0702d60303b69a8462d2c6bae67b299c1e7a4017abe623f2af576a25e"
+      },
+      {
+        "bandId": 394,
+        "name": "Canoe Lake Cree First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=394&lang=eng",
+        "sha256": "9e97e9914e30465de64bd8285129ed03f428a410163ba69e659a15edfe8d11ee"
+      },
+      {
+        "bandId": 395,
+        "name": "Flying Dust First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=395&lang=eng",
+        "sha256": "2962b236242e100fed9a9d6550a58fd5ad2e3f61918dff2eb598dadfa3a03a8e"
+      },
+      {
+        "bandId": 396,
+        "name": "Makwa Sahgaiehcan First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=396&lang=eng",
+        "sha256": "59b51098696d65419d3c9658fb2b3e274f8cf6709d2489bd349aa7899351bfde"
+      },
+      {
+        "bandId": 397,
+        "name": "Ministikwan Lake Cree Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=397&lang=eng",
+        "sha256": "e4f47ddf5fae0bd15920551d10a6fd677dd5c203e3a53cef31d58bc378e0581d"
+      },
+      {
+        "bandId": 398,
+        "name": "Buffalo River Dene Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=398&lang=eng",
+        "sha256": "1c5327e0705fed3e1dad8137560abc5492782ce50571c4617122496ad68be2e2"
+      },
+      {
+        "bandId": 400,
+        "name": "English River Dene Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=400&lang=eng",
+        "sha256": "25def8bfb8e9ccb8e364889cafd9d767b8e085a44422a67dde8512cd9ab412f5"
+      },
+      {
+        "bandId": 401,
+        "name": "Clearwater River Dene Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=401&lang=eng",
+        "sha256": "8106c696a38ef8dfd99ae1cd7e33060431960d9d8f99b18eb3434daff7b708e7"
+      },
+      {
+        "bandId": 402,
+        "name": "Waterhen Lake First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=402&lang=eng",
+        "sha256": "e037a71bda68d5beb9723195dba130567da2d65eec4a04b93a2cde9f68adc4b4"
+      },
+      {
+        "bandId": 403,
+        "name": "Birch Narrows Dene Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=403&lang=eng",
+        "sha256": "991383dd2ef0b4f9c1fe0d8e8c8b7f6863e9517c6bb42497e483defc782b1f8a"
+      },
+      {
+        "bandId": 404,
+        "name": "Big River First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=404&lang=eng",
+        "sha256": "056937de42e69387d5e33b4e4208cbc519791024a074a7b1832e2f83a3e7ed63"
+      },
+      {
+        "bandId": 405,
+        "name": "Pelican Lake First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=405&lang=eng",
+        "sha256": "a07a845e3d44405b470a896193ff224949f6a9f6f289729e5b1eaadc605d19dc"
+      },
+      {
+        "bandId": 406,
+        "name": "Ahtahkakoop Cree Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=406&lang=eng",
+        "sha256": "6fa84429fcd4a0fa0d3aa912c7b1c02e9d1ba0100cc6a2f72a36d8e8805cebb1"
+      },
+      {
+        "bandId": 407,
+        "name": "Witchekan Lake First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=407&lang=eng",
+        "sha256": "782c7cd268edcc81cac49df5cbe201066b6a6380289d3869445cf22adcba8f38"
+      },
+      {
+        "bandId": 408,
+        "name": "Ocean Man First Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=408&lang=eng",
+        "sha256": "1ea6f0ba333b7c9207782d542b9fd3cfbe36288ae70e4382770797b9af0ed406"
+      },
+      {
+        "bandId": 409,
+        "name": "Pheasant Rump Nakota Nation",
+        "province": "SK",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=409&lang=eng",
+        "sha256": "49aaa8903bf5523b29d9dab2b782af39e0219e91f8ec47ec3a7352cd80efd7d2"
+      },
+      {
+        "bandId": 430,
+        "name": "Siksika Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=430&lang=eng",
+        "sha256": "63bacd824a901d561a1cb948c639bb40e6d213ffd896e78d9a321f270e2142b3"
+      },
+      {
+        "bandId": 431,
+        "name": "O'Chiese",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=431&lang=eng",
+        "sha256": "d3cd0282807427a4bf674995d59cf6a14f51ca31fed474e22d08c2f5574d2309"
+      },
+      {
+        "bandId": 432,
+        "name": "Tsuut'ina Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=432&lang=eng",
+        "sha256": "aa9831cbd384a05e44edd78bafffd7bf1cf966342f888a4c3949d255f1459d2d"
+      },
+      {
+        "bandId": 433,
+        "name": "Chiniki",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=433&lang=eng",
+        "sha256": "d4966f36b27ddcc216c933e339043471edbfcec22facc8fa604e699c2268b35d",
+        "error": "No filing rows; empty listing not interpreted as complete absence"
+      },
+      {
+        "bandId": 434,
+        "name": "Sunchild First Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=434&lang=eng",
+        "sha256": "ef91bd171260ea0d481c7d9c92bd7877cbe5fc36b9a33156e1f2a3177a573a2d"
+      },
+      {
+        "bandId": 435,
+        "name": "Blood",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=435&lang=eng",
+        "sha256": "179241aa4e83c8867d3754595b3e3e6e9bb7f875e3c6c89f4738bebe65219607"
+      },
+      {
+        "bandId": 436,
+        "name": "Piikani Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=436&lang=eng",
+        "sha256": "1a63823349264a94256efb149d832d249a79606758793e9b1d1b0bf3c0340b77"
+      },
+      {
+        "bandId": 437,
+        "name": "Alexis Nakota Sioux Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=437&lang=eng",
+        "sha256": "7f4eda0550437e96c4d3e65b642db7db80d3abce91c4450a1b3617cfcfce9b5b"
+      },
+      {
+        "bandId": 438,
+        "name": "Alexander",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=438&lang=eng",
+        "sha256": "6dcba0a9dadb6ce7ef2725c7b075bad14fc08ebe9cab953f2c6a2233a3f364b8"
+      },
+      {
+        "bandId": 439,
+        "name": "Louis Bull Tribe",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=439&lang=eng",
+        "sha256": "48e8f4f430020cd7d7f1b3d24ebffcd923e30549086383ccb24a5762ac2821d8"
+      },
+      {
+        "bandId": 440,
+        "name": "Enoch Cree Nation #440",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=440&lang=eng",
+        "sha256": "015b786b41369e6f41b3ef81cc750273c9613a6d646ba9d08b10129efe5a8979"
+      },
+      {
+        "bandId": 441,
+        "name": "Paul",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=441&lang=eng",
+        "sha256": "4526a0340e61966ce51ec5e98e58db425fa964178e8811e3ed4272fb2d59b1e5"
+      },
+      {
+        "bandId": 442,
+        "name": "Montana",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=442&lang=eng",
+        "sha256": "3bdc3113fb2e765ed40b9c45eb97a4c9acf7fbb21516b8e430e9c19d16291427"
+      },
+      {
+        "bandId": 443,
+        "name": "Ermineskin Tribe",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=443&lang=eng",
+        "sha256": "dac7b04fab8bf6a880b017ca2f858270eacef51e9306422af846c38d82b61fbd"
+      },
+      {
+        "bandId": 444,
+        "name": "Samson",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=444&lang=eng",
+        "sha256": "96699d03b2e5f6d61954707924019c193ea086b258dee1d190046d79a29c1e9b"
+      },
+      {
+        "bandId": 445,
+        "name": "Beaver First Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=445&lang=eng",
+        "sha256": "8a5ce9f13e88962df3059debb106b4cc1f3b9bc373de5811ac60ec21b362afbe"
+      },
+      {
+        "bandId": 446,
+        "name": "Tallcree Tribal Government",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=446&lang=eng",
+        "sha256": "16b395b6f39695f1db9359b09be1afacbe1ca5b560857b7762578ea3992c9e64"
+      },
+      {
+        "bandId": 447,
+        "name": "Little Red River Cree Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=447&lang=eng",
+        "sha256": "eb7864c72f36b6689a6cf9ecf2298c2713344e48581160d7599d99e3de1f08e0"
+      },
+      {
+        "bandId": 448,
+        "name": "Dene Tha'",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=448&lang=eng",
+        "sha256": "413e074585f051d61e47d90a4e8c802ce2f768f125355764472ac1d19547830f"
+      },
+      {
+        "bandId": 449,
+        "name": "Horse Lake First Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=449&lang=eng",
+        "sha256": "c90f151466525c8d8636cd9806d455c376918167a3f9189b6fe661b2d735cb13"
+      },
+      {
+        "bandId": 450,
+        "name": "Driftpile Cree Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=450&lang=eng",
+        "sha256": "ace432b46b4fa379e8b603aeda956e3dd68dc5dea91e2295e10a26a4e268bae5"
+      },
+      {
+        "bandId": 451,
+        "name": "Duncan's First Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=451&lang=eng",
+        "sha256": "b31c35a8e988332d1158680177633f4af85f00829c9da1a8c4ed3c581ced9640"
+      },
+      {
+        "bandId": 452,
+        "name": "Kapawe'no First Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=452&lang=eng",
+        "sha256": "2aa6e61d59350a302375084bd9113066ea577b17def2dbc4595cdec1c7f75e62"
+      },
+      {
+        "bandId": 453,
+        "name": "Lubicon Lake Band No. 453",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=453&lang=eng",
+        "sha256": "ca55578177fd164256d5276b017b428d48c76c4dfe011621903f40b1c6bccbac"
+      },
+      {
+        "bandId": 454,
+        "name": "Sawridge First Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=454&lang=eng",
+        "sha256": "e4ea3f6b63685bd987c611f0ebdde97736a72ed38d284da06c26c784ffb0360a",
+        "error": "No filing rows; empty listing not interpreted as complete absence"
+      },
+      {
+        "bandId": 455,
+        "name": "Sturgeon Lake Cree Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=455&lang=eng",
+        "sha256": "6945905959d948b66d0a90c3d5c14a8068515e4e222f635674d3e026edb1383b"
+      },
+      {
+        "bandId": 456,
+        "name": "Sucker Creek",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=456&lang=eng",
+        "sha256": "3dad00eed52db81716d0495d96fd97d67a63b4ca6476fc70f91249d82f316605"
+      },
+      {
+        "bandId": 457,
+        "name": "Swan River First Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=457&lang=eng",
+        "sha256": "3859d3ef187c79fb933c03f7a5030c81fd3d37b10d1854b420f642b0d638eb51"
+      },
+      {
+        "bandId": 458,
+        "name": "Bigstone Cree Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=458&lang=eng",
+        "sha256": "4e3f01859a34699d05bcb361702a411e055cc091b62f82386aabc3e1eccd1371"
+      },
+      {
+        "bandId": 459,
+        "name": "Whitefish Lake",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=459&lang=eng",
+        "sha256": "38d6322a0e365c7dd4df61b88972e6aa4b169e9ede91e85b1632fc49bccd3a46"
+      },
+      {
+        "bandId": 460,
+        "name": "Beaver Lake Cree Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=460&lang=eng",
+        "sha256": "b9007db13c771c4bd5eb886b0303d711c3c86efde2e6e02a27e6b7d31ed0ef69"
+      },
+      {
+        "bandId": 461,
+        "name": "Mikisew Cree First Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=461&lang=eng",
+        "sha256": "f874e6491bf901d32aabafc5cc85254a2242d2b5e02b2cd70b89a06e4777c9fb"
+      },
+      {
+        "bandId": 462,
+        "name": "Saddle Lake Cree Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=462&lang=eng",
+        "sha256": "9fe05b8203737b9e82260296125dfd9fcf16fc3835578ad93f93bf17258e7c41"
+      },
+      {
+        "bandId": 463,
+        "name": "Athabasca Chipewyan First Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=463&lang=eng",
+        "sha256": "0bdedfc15991afaa5ba44889d75b08ccc606f75f38d9a921a6a829694849e114"
+      },
+      {
+        "bandId": 464,
+        "name": "Cold Lake First Nations",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=464&lang=eng",
+        "sha256": "3735e33145b70d9d1a7be2bf89f0422cc4235046d49c7c14b3d7863a86910ac2"
+      },
+      {
+        "bandId": 465,
+        "name": "Frog Lake",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=465&lang=eng",
+        "sha256": "40150f9775fb88b9d21c79967f890d71181cd4b41bd77b9385df69bb72d24da4"
+      },
+      {
+        "bandId": 466,
+        "name": "Kehewin Cree Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=466&lang=eng",
+        "sha256": "12721f0b1fc5a2eae440802238cf9faa8da25b4d18e0c6e50ad7b5371badecfa"
+      },
+      {
+        "bandId": 467,
+        "name": "Fort McKay First Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=467&lang=eng",
+        "sha256": "f5f03c379a09a8e14bd35c60c36d168ae41f749f46738be155dd72c180db9c1e"
+      },
+      {
+        "bandId": 468,
+        "name": "Fort McMurray #468 First Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=468&lang=eng",
+        "sha256": "6f10813c1cc1ec3d867e316750fccd073fdef0d7ddb9e147db6dd51c3dde3142"
+      },
+      {
+        "bandId": 469,
+        "name": "Heart Lake",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=469&lang=eng",
+        "sha256": "904669aafb9bf9ee66071cf10021ddd57ffc53532e709cfc850dc0f0aac13a85"
+      },
+      {
+        "bandId": 470,
+        "name": "Chipewyan Prairie First Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=470&lang=eng",
+        "sha256": "5b4ce2f68bc90af44358eeaafdc764d9045e4f4577f82f8ea6e15b0b79588a47"
+      },
+      {
+        "bandId": 473,
+        "name": "Bearspaw",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=473&lang=eng",
+        "sha256": "2dfab6f894db15b53f111778d93cf243dc4c310b9043cad93d1866735038bbb8",
+        "error": "No filing rows; empty listing not interpreted as complete absence"
+      },
+      {
+        "bandId": 474,
+        "name": "Woodland Cree First Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=474&lang=eng",
+        "sha256": "b7ef3228626bf44633552efbd20e693d86a1f8369cf06ece5d91f097c9fea298"
+      },
+      {
+        "bandId": 475,
+        "name": "Goodstoney",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=475&lang=eng",
+        "sha256": "8ef198f1b704ea7eb226cd6be7650785d3e1be471fc08501564bbdf8ab5e729f",
+        "error": "No filing rows; empty listing not interpreted as complete absence"
+      },
+      {
+        "bandId": 476,
+        "name": "Loon River Cree",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=476&lang=eng",
+        "sha256": "3d507a8144ad29677b7b950c753f98c6d43fb8880bca446043804f05bb1dc288"
+      },
+      {
+        "bandId": 477,
+        "name": "Tthebatthie Denesųłiné Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=477&lang=eng",
+        "sha256": "14bdb91def6e0635cb5eac014d9742b40d5ca726de5afe7bf8ffaeeed631f607"
+      },
+      {
+        "bandId": 478,
+        "name": "Peerless Trout First Nation",
+        "province": "AB",
+        "url": "https://services.sac-isc.gc.ca/fnp/main/Search/FederalFundingMain.aspx?BAND_NUMBER=478&lang=eng",
+        "sha256": "343b6fbc5ee034e23107fd5b676f50352796fe773d558a710b9552f981153743"
+      },
+      {
+        "bandId": "ab-whitefish-lake-128",
+        "name": "Whitefish Lake First Nation #128",
+        "error": "Shared ISC identity requires separate review"
+      }
+    ],
+    "limits": "An empty/unparseable listing or shared ISC identity is unresolved, not proof of no publication. Audit is bounded to the existing 180-profile roster; withdrawn/untracked communities were not reintroduced. Broader web searches did not establish replacement schedules for unresolved sources."
+  },
+  "allYearsStillPendingForOriginalCommunities": [
+    {
+      "bandId": 369,
+      "name": "Beardy's and Okemasis' Cree Nation",
+      "year": "2013-2014",
+      "status": "pending_openai_opt_in",
+      "sourceUrl": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=369&FY=2013-2014&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 467,
+      "name": "Fort McKay First Nation",
+      "year": "2014-2015",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 467,
+      "name": "Fort McKay First Nation",
+      "year": "2015-2016",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 467,
+      "name": "Fort McKay First Nation",
+      "year": "2016-2017",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 467,
+      "name": "Fort McKay First Nation",
+      "year": "2017-2018",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 467,
+      "name": "Fort McKay First Nation",
+      "year": "2018-2019",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 467,
+      "name": "Fort McKay First Nation",
+      "year": "2020-2021",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 467,
+      "name": "Fort McKay First Nation",
+      "year": "2021-2022",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 467,
+      "name": "Fort McKay First Nation",
+      "year": "2022-2023",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 467,
+      "name": "Fort McKay First Nation",
+      "year": "2025-2026",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 431,
+      "name": "O'Chiese",
+      "year": "2019-2020",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=431&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 431,
+      "name": "O'Chiese",
+      "year": "2020-2021",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=431&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 431,
+      "name": "O'Chiese",
+      "year": "2021-2022",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=431&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 431,
+      "name": "O'Chiese",
+      "year": "2022-2023",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=431&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 431,
+      "name": "O'Chiese",
+      "year": "2023-2024",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=431&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 431,
+      "name": "O'Chiese",
+      "year": "2024-2025",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=431&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 455,
+      "name": "Sturgeon Lake Cree Nation",
+      "year": "2014-2015",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 455,
+      "name": "Sturgeon Lake Cree Nation",
+      "year": "2015-2016",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 455,
+      "name": "Sturgeon Lake Cree Nation",
+      "year": "2016-2017",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 455,
+      "name": "Sturgeon Lake Cree Nation",
+      "year": "2017-2018",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 455,
+      "name": "Sturgeon Lake Cree Nation",
+      "year": "2018-2019",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 455,
+      "name": "Sturgeon Lake Cree Nation",
+      "year": "2019-2020",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 455,
+      "name": "Sturgeon Lake Cree Nation",
+      "year": "2021-2022",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 455,
+      "name": "Sturgeon Lake Cree Nation",
+      "year": "2022-2023",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 309,
+      "name": "Chemawawin Cree Nation",
+      "year": "2014-2015",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 309,
+      "name": "Chemawawin Cree Nation",
+      "year": "2015-2016",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 309,
+      "name": "Chemawawin Cree Nation",
+      "year": "2016-2017",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 309,
+      "name": "Chemawawin Cree Nation",
+      "year": "2017-2018",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 309,
+      "name": "Chemawawin Cree Nation",
+      "year": "2018-2019",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 309,
+      "name": "Chemawawin Cree Nation",
+      "year": "2021-2022",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 309,
+      "name": "Chemawawin Cree Nation",
+      "year": "2023-2024",
+      "status": "pending_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 288,
+      "name": "Dakota Plains",
+      "year": "2017-2018",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=288&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 288,
+      "name": "Dakota Plains",
+      "year": "2022-2023",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=288&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 262,
+      "name": "Fort Alexander",
+      "year": "2014-2015",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=262&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 262,
+      "name": "Fort Alexander",
+      "year": "2015-2016",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=262&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 262,
+      "name": "Fort Alexander",
+      "year": "2016-2017",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=262&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 262,
+      "name": "Fort Alexander",
+      "year": "2017-2018",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=262&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 262,
+      "name": "Fort Alexander",
+      "year": "2018-2019",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=262&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 262,
+      "name": "Fort Alexander",
+      "year": "2020-2021",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=262&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 305,
+      "name": "Fox Lake",
+      "year": "2014-2015",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=305&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 305,
+      "name": "Fox Lake",
+      "year": "2015-2016",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=305&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 305,
+      "name": "Fox Lake",
+      "year": "2017-2018",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=305&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 294,
+      "name": "Gambler First Nation",
+      "year": "2014-2015",
+      "status": "pending_manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=294&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 294,
+      "name": "Gambler First Nation",
+      "year": "2018-2019",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=294&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 294,
+      "name": "Gambler First Nation",
+      "year": "2019-2020",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=294&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 294,
+      "name": "Gambler First Nation",
+      "year": "2020-2021",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=294&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 287,
+      "name": "Long Plain",
+      "year": "2014-2015",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 287,
+      "name": "Long Plain",
+      "year": "2017-2018",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 287,
+      "name": "Long Plain",
+      "year": "2018-2019",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 287,
+      "name": "Long Plain",
+      "year": "2019-2020",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 287,
+      "name": "Long Plain",
+      "year": "2020-2021",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 287,
+      "name": "Long Plain",
+      "year": "2021-2022",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 287,
+      "name": "Long Plain",
+      "year": "2022-2023",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 287,
+      "name": "Long Plain",
+      "year": "2025-2026",
+      "status": "pending_manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 302,
+      "name": "Manto Sipi Cree Nation",
+      "year": "2014-2015",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 302,
+      "name": "Manto Sipi Cree Nation",
+      "year": "2024-2025",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 315,
+      "name": "Opaskwayak Cree Nation",
+      "year": "2014-2015",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 315,
+      "name": "Opaskwayak Cree Nation",
+      "year": "2015-2016",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 315,
+      "name": "Opaskwayak Cree Nation",
+      "year": "2016-2017",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 315,
+      "name": "Opaskwayak Cree Nation",
+      "year": "2017-2018",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 315,
+      "name": "Opaskwayak Cree Nation",
+      "year": "2018-2019",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 315,
+      "name": "Opaskwayak Cree Nation",
+      "year": "2019-2020",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 315,
+      "name": "Opaskwayak Cree Nation",
+      "year": "2020-2021",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 315,
+      "name": "Opaskwayak Cree Nation",
+      "year": "2023-2024",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 314,
+      "name": "Sapotaweyak Cree Nation",
+      "year": "2014-2015",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 314,
+      "name": "Sapotaweyak Cree Nation",
+      "year": "2015-2016",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 314,
+      "name": "Sapotaweyak Cree Nation",
+      "year": "2016-2017",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 314,
+      "name": "Sapotaweyak Cree Nation",
+      "year": "2017-2018",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 314,
+      "name": "Sapotaweyak Cree Nation",
+      "year": "2018-2019",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 314,
+      "name": "Sapotaweyak Cree Nation",
+      "year": "2019-2020",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 314,
+      "name": "Sapotaweyak Cree Nation",
+      "year": "2020-2021",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 314,
+      "name": "Sapotaweyak Cree Nation",
+      "year": "2021-2022",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 314,
+      "name": "Sapotaweyak Cree Nation",
+      "year": "2022-2023",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 290,
+      "name": "Sioux Valley Dakota Nation",
+      "year": "2019-2020",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=290&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 285,
+      "name": "Waywayseecappo First Nation Treaty Four - 1874",
+      "year": "2014-2015",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 285,
+      "name": "Waywayseecappo First Nation Treaty Four - 1874",
+      "year": "2015-2016",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 285,
+      "name": "Waywayseecappo First Nation Treaty Four - 1874",
+      "year": "2016-2017",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 285,
+      "name": "Waywayseecappo First Nation Treaty Four - 1874",
+      "year": "2017-2018",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 285,
+      "name": "Waywayseecappo First Nation Treaty Four - 1874",
+      "year": "2018-2019",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 285,
+      "name": "Waywayseecappo First Nation Treaty Four - 1874",
+      "year": "2019-2020",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 285,
+      "name": "Waywayseecappo First Nation Treaty Four - 1874",
+      "year": "2020-2021",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 285,
+      "name": "Waywayseecappo First Nation Treaty Four - 1874",
+      "year": "2021-2022",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 285,
+      "name": "Waywayseecappo First Nation Treaty Four - 1874",
+      "year": "2022-2023",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 285,
+      "name": "Waywayseecappo First Nation Treaty Four - 1874",
+      "year": "2024-2025",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 324,
+      "name": "Wuskwi Sipihk First Nation",
+      "year": "2014-2015",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=324&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    },
+    {
+      "bandId": 324,
+      "name": "Wuskwi Sipihk First Nation",
+      "year": "2018-2019",
+      "status": "manual_review",
+      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=324&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
+    }
+  ],
+  "preservation": {
+    "originalPopulatedFilingsPreserved": 1190,
+    "firstPassPopulatedFilingsPreserved": true,
+    "existingManualOverrideFilesUnchanged": 22,
+    "originalProtectedBaselineArchivedUnchanged": true,
+    "activeBaselineOnlyDataFingerprintAdvanced": true,
+    "capitalAndOtherVerifiedDatasetsUnchanged": true
+  },
+  "validation": {
+    "fullSuite": "760 tests passed; 58 final targeted tests also passed",
+    "browserLogicSuites": 11,
+    "allRecoveredSchedulesCheckedInStaticAndInteractiveViews": 16,
+    "browserEvidence": {
+      "results": [
+        {
+          "bandId": 262,
+          "year": "2023-2024",
+          "staticRows": 7,
+          "interactiveRows": 7
+        },
+        {
+          "bandId": 285,
+          "year": "2023-2024",
+          "staticRows": 7,
+          "interactiveRows": 7
+        },
+        {
+          "bandId": 314,
+          "year": "2023-2024",
+          "staticRows": 8,
+          "interactiveRows": 8
+        },
+        {
+          "bandId": 324,
+          "year": "2023-2024",
+          "staticRows": 4,
+          "interactiveRows": 4
+        },
+        {
+          "bandId": 290,
+          "year": "2023-2024",
+          "staticRows": 9,
+          "interactiveRows": 9
+        },
+        {
+          "bandId": 305,
+          "year": "2024-2025",
+          "staticRows": 4,
+          "interactiveRows": 4
+        },
+        {
+          "bandId": 294,
+          "year": "2023-2024",
+          "staticRows": 3,
+          "interactiveRows": 3
+        },
+        {
+          "bandId": 287,
+          "year": "2023-2024",
+          "staticRows": 8,
+          "interactiveRows": 8
+        },
+        {
+          "bandId": 269,
+          "year": "2019-2020",
+          "staticRows": 7,
+          "interactiveRows": 7
+        },
+        {
+          "bandId": 369,
+          "year": "2024-2025",
+          "staticRows": 7,
+          "interactiveRows": 7
+        },
+        {
+          "bandId": 401,
+          "year": "2020-2021",
+          "staticRows": 6,
+          "interactiveRows": 6
+        },
+        {
+          "bandId": 455,
+          "year": "2023-2024",
+          "staticRows": 8,
+          "interactiveRows": 8
+        },
+        {
+          "bandId": 455,
+          "year": "2024-2025",
+          "staticRows": 7,
+          "interactiveRows": 7
+        },
+        {
+          "bandId": 467,
+          "year": "2023-2024",
+          "staticRows": 7,
+          "interactiveRows": 7
+        },
+        {
+          "bandId": 467,
+          "year": "2024-2025",
+          "staticRows": 5,
+          "interactiveRows": 5
+        },
+        {
+          "bandId": 288,
+          "year": "2023-2024",
+          "staticRows": 7,
+          "interactiveRows": 7
+        }
+      ],
+      "sourceLinksChecked": 16,
+      "reviewedNullDisplayedAsNotReported": true,
+      "mobileViewport": 390,
+      "consoleErrors": []
+    }
+  },
+  "notes": [
+    "Schedule extraction completeness is distinct from disclosure completeness: 12 source rows omit individual names, 15 omit roles, and one has all payment cells unreported. None of those omissions was filled by inference.",
+    "Source-provided component and footer arithmetic differences are retained verbatim with explicit qualifications; totals are never adjusted to make them balance.",
+    "The old baseline and original classification records are archived; the active preservation guard remains enforced.",
+    "No paid extraction was used and no changes have been pushed or deployed."
+  ],
+  "protectedRecoveryStatus": "Both previously held proposals integrated. Original baseline archived byte-for-byte; only the active data.json fingerprint advanced through a documented transition. All prior populated records and existing manual override files preserved.",
+  "secondPassSourceChecks": [
+    {
+      "key": "309-2023-2024-services-aud-eng",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&DOC=Audited+consolidated+financial+statements&FY=2023-2024&lang=eng",
+      "sha256": "eef02775e606012e5ade85b85ec3b37e57c9000eaa4de2721f9305f4399aa715",
+      "bytes": 930285
+    },
+    {
+      "key": "315-2023-2024-fnp-ppn-aud-eng",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&DOC=Audited+consolidated+financial+statements&FY=2023-2024&lang=eng",
+      "sha256": "d5e29b2075e9c0c9527b4b86280173e101ab1419b6bca69a1ee4388d40b38b97",
+      "bytes": 153
+    },
+    {
+      "key": "315-2023-2024-services-rem-eng",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&DOC=Schedule+of+Remuneration+and+Expenses&FY=2023-2024&lang=eng",
+      "sha256": "7a4ca1030b12c884de0b7846385eb2c081291be37a99fac0975d8689350d0ba4",
+      "bytes": 939455
+    },
+    {
+      "key": "309-2023-2024-fnp-ppn-rem-fra",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&DOC=Schedule+of+Remuneration+and+Expenses&FY=2023-2024&lang=fra",
+      "sha256": "2a7f622f943836f8fa0acbdd65a77d6d12239fbbdaf25e7271d3623b01fe918b",
+      "bytes": 544305
+    },
+    {
+      "key": "302-2024-2025-fnp-ppn-rem-fra",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=fra",
+      "sha256": "893ac1f86fe3df7b180f865da57300e13d0216c309148b265950a37cdc0658de",
+      "bytes": 2257746
+    },
+    {
+      "key": "285-2024-2025-fnp-ppn-aud-eng",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=eng",
+      "sha256": "da26a020b63e59341d583eabbf7dc6c148c3e22134c65ab4f03331bb6fdbe6b4",
+      "bytes": 256462
+    },
+    {
+      "key": "302-2024-2025-services-rem-fra",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=fra",
+      "sha256": "893ac1f86fe3df7b180f865da57300e13d0216c309148b265950a37cdc0658de",
+      "bytes": 2257746
+    },
+    {
+      "key": "285-2024-2025-services-aud-eng",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=eng",
+      "sha256": "da26a020b63e59341d583eabbf7dc6c148c3e22134c65ab4f03331bb6fdbe6b4",
+      "bytes": 256462
+    },
+    {
+      "key": "309-2023-2024-fnp-ppn-aud-fra",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&DOC=Audited+consolidated+financial+statements&FY=2023-2024&lang=fra",
+      "sha256": "eef02775e606012e5ade85b85ec3b37e57c9000eaa4de2721f9305f4399aa715",
+      "bytes": 930285
+    },
+    {
+      "key": "309-2023-2024-services-rem-eng",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&DOC=Schedule+of+Remuneration+and+Expenses&FY=2023-2024&lang=eng",
+      "sha256": "2a7f622f943836f8fa0acbdd65a77d6d12239fbbdaf25e7271d3623b01fe918b",
+      "bytes": 544305
+    },
+    {
+      "key": "315-2023-2024-fnp-ppn-rem-eng",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&DOC=Schedule+of+Remuneration+and+Expenses&FY=2023-2024&lang=eng",
+      "sha256": "7a4ca1030b12c884de0b7846385eb2c081291be37a99fac0975d8689350d0ba4",
+      "bytes": 939455
+    },
+    {
+      "key": "315-2023-2024-services-aud-eng",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&DOC=Audited+consolidated+financial+statements&FY=2023-2024&lang=eng",
+      "sha256": "d5e29b2075e9c0c9527b4b86280173e101ab1419b6bca69a1ee4388d40b38b97",
+      "bytes": 153
+    },
+    {
+      "key": "302-2024-2025-services-aud-fra",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=fra",
+      "sha256": "48d0e29c54fb0b8f4b2ce5096366ed2c0a469e56eb4f8dc1c136d2d2f7231849",
+      "bytes": 1028971
+    },
+    {
+      "key": "285-2024-2025-services-rem-eng",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=eng",
+      "sha256": "4bb3ac9730289a57dd7e34a1c61d30ba84b9b15aa03ddaa14984fd2bac76a0ae",
+      "bytes": 432290
+    },
+    {
+      "key": "302-2024-2025-fnp-ppn-aud-fra",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=fra",
+      "sha256": "48d0e29c54fb0b8f4b2ce5096366ed2c0a469e56eb4f8dc1c136d2d2f7231849",
+      "bytes": 1028971
+    },
+    {
+      "key": "285-2024-2025-fnp-ppn-rem-eng",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=eng",
+      "sha256": "4bb3ac9730289a57dd7e34a1c61d30ba84b9b15aa03ddaa14984fd2bac76a0ae",
+      "bytes": 432290
+    },
+    {
+      "key": "315-2023-2024-services-rem-fra",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&DOC=Schedule+of+Remuneration+and+Expenses&FY=2023-2024&lang=fra",
+      "sha256": "7a4ca1030b12c884de0b7846385eb2c081291be37a99fac0975d8689350d0ba4",
+      "bytes": 939455
+    },
+    {
+      "key": "315-2023-2024-fnp-ppn-aud-fra",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&DOC=Audited+consolidated+financial+statements&FY=2023-2024&lang=fra",
+      "sha256": "d5e29b2075e9c0c9527b4b86280173e101ab1419b6bca69a1ee4388d40b38b97",
+      "bytes": 153
+    },
+    {
+      "key": "309-2023-2024-services-aud-fra",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&DOC=Audited+consolidated+financial+statements&FY=2023-2024&lang=fra",
+      "sha256": "eef02775e606012e5ade85b85ec3b37e57c9000eaa4de2721f9305f4399aa715",
+      "bytes": 930285
+    },
+    {
+      "key": "309-2023-2024-fnp-ppn-rem-eng",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&DOC=Schedule+of+Remuneration+and+Expenses&FY=2023-2024&lang=eng",
+      "sha256": "2a7f622f943836f8fa0acbdd65a77d6d12239fbbdaf25e7271d3623b01fe918b",
+      "bytes": 544305
+    },
+    {
+      "key": "285-2024-2025-fnp-ppn-aud-fra",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=fra",
+      "sha256": "da26a020b63e59341d583eabbf7dc6c148c3e22134c65ab4f03331bb6fdbe6b4",
+      "bytes": 256462
+    },
+    {
+      "key": "302-2024-2025-fnp-ppn-rem-eng",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=eng",
+      "sha256": "893ac1f86fe3df7b180f865da57300e13d0216c309148b265950a37cdc0658de",
+      "bytes": 2257746
+    },
+    {
+      "key": "285-2024-2025-services-aud-fra",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=fra",
+      "sha256": "da26a020b63e59341d583eabbf7dc6c148c3e22134c65ab4f03331bb6fdbe6b4",
+      "bytes": 256462
+    },
+    {
+      "key": "302-2024-2025-services-rem-eng",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=eng",
+      "sha256": "893ac1f86fe3df7b180f865da57300e13d0216c309148b265950a37cdc0658de",
+      "bytes": 2257746
+    },
+    {
+      "key": "309-2023-2024-fnp-ppn-aud-eng",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&DOC=Audited+consolidated+financial+statements&FY=2023-2024&lang=eng",
+      "sha256": "eef02775e606012e5ade85b85ec3b37e57c9000eaa4de2721f9305f4399aa715",
+      "bytes": 930285
+    },
+    {
+      "key": "315-2023-2024-services-aud-fra",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&DOC=Audited+consolidated+financial+statements&FY=2023-2024&lang=fra",
+      "sha256": "d5e29b2075e9c0c9527b4b86280173e101ab1419b6bca69a1ee4388d40b38b97",
+      "bytes": 153
+    },
+    {
+      "key": "315-2023-2024-fnp-ppn-rem-fra",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&DOC=Schedule+of+Remuneration+and+Expenses&FY=2023-2024&lang=fra",
+      "sha256": "7a4ca1030b12c884de0b7846385eb2c081291be37a99fac0975d8689350d0ba4",
+      "bytes": 939455
+    },
+    {
+      "key": "309-2023-2024-services-rem-fra",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&DOC=Schedule+of+Remuneration+and+Expenses&FY=2023-2024&lang=fra",
+      "sha256": "2a7f622f943836f8fa0acbdd65a77d6d12239fbbdaf25e7271d3623b01fe918b",
+      "bytes": 544305
+    },
+    {
+      "key": "285-2024-2025-services-rem-fra",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=fra",
+      "sha256": "4bb3ac9730289a57dd7e34a1c61d30ba84b9b15aa03ddaa14984fd2bac76a0ae",
+      "bytes": 432290
+    },
+    {
+      "key": "302-2024-2025-services-aud-eng",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=eng",
+      "sha256": "48d0e29c54fb0b8f4b2ce5096366ed2c0a469e56eb4f8dc1c136d2d2f7231849",
+      "bytes": 1028971
+    },
+    {
+      "key": "285-2024-2025-fnp-ppn-rem-fra",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=fra",
+      "sha256": "4bb3ac9730289a57dd7e34a1c61d30ba84b9b15aa03ddaa14984fd2bac76a0ae",
+      "bytes": 432290
+    },
+    {
+      "key": "302-2024-2025-fnp-ppn-aud-eng",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=eng",
+      "sha256": "48d0e29c54fb0b8f4b2ce5096366ed2c0a469e56eb4f8dc1c136d2d2f7231849",
+      "bytes": 1028971
+    }
+  ]
+}
