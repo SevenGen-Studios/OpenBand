@@ -46,9 +46,9 @@ def public_fetcher():
 ACTIVE_STATUSES = {"Open", "Closing soon"}
 PUBLIC_STATUSES = ACTIVE_STATUSES | {"Date unavailable"}
 JOB_WORDS = re.compile(
-    r"\b(job|career|position|worker|manager|director|coordinator|teacher|nurse|"
+    r"\b(job|career|position|workers?|manager|director|coordinator|teacher|nurse|"
     r"clerk|accountant|receptionist|janitor|maintenance|employment|officer|"
-    r"counsellor|educator|peacekeeper|support|lead|analyst|assistant|operator|representative)\b",
+    r"counsellor|educator|peacekeeper|support|lead|analyst|assistants?|operator|representative)\b",
     re.IGNORECASE,
 )
 GENERIC_LINK_TITLES = re.compile(
