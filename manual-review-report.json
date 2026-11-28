@@ -1,6 +1,6 @@
 {
-  "generatedFrom": "2026-11-25T20:04:21.388931+00:00",
-  "manualReviewCount": 502,
+  "generatedFrom": "2026-11-28T08:16:04.160416+00:00",
+  "manualReviewCount": 491,
   "reasonCounts": {
     "implausibly small remuneration values appear in money columns": 6,
     "month values appear in money columns": 1,
@@ -9,7 +9,7 @@
     "no reliable official rows remain after validation": 81,
     "only one parsed row": 1,
     "only one parsed row; no Chief row in a small parsed filing": 6,
-    "parser confidence is low": 398
+    "parser confidence is low": 387
   },
   "filings": [
     {
@@ -1393,19 +1393,6 @@
       ]
     },
     {
-      "bandId": 288,
-      "band": "Dakota Plains",
-      "province": "MB",
-      "year": "2023-2024",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=288&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "No clear Chief and Council remuneration table found",
-        "OCR deferred; rerun with --ocr or review original PDF",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
       "bandId": 295,
       "band": "Dakota Tipi",
       "province": "MB",
@@ -1959,18 +1946,6 @@
       ]
     },
     {
-      "bandId": 262,
-      "band": "Fort Alexander",
-      "province": "MB",
-      "year": "2023-2024",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=262&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "OCR deferred; rerun with --ocr or review original PDF",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
       "bandId": 467,
       "band": "Fort McKay First Nation",
       "province": "AB",
@@ -2087,30 +2062,6 @@
       "bandId": 467,
       "band": "Fort McKay First Nation",
       "province": "AB",
-      "year": "2023-2024",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Local OCR text contained no reliable official rows",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 467,
-      "band": "Fort McKay First Nation",
-      "province": "AB",
-      "year": "2024-2025",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Local OCR text contained no reliable official rows",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 467,
-      "band": "Fort McKay First Nation",
-      "province": "AB",
       "year": "2025-2026",
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
@@ -2158,17 +2109,6 @@
         "PDF has no usable native text; used free local OCR",
         "Parsed via free local OCR fallback",
         "Parsed officials are fewer than the printed Chief and Council rows"
-      ]
-    },
-    {
-      "bandId": 305,
-      "band": "Fox Lake",
-      "province": "MB",
-      "year": "2024-2025",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=305&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Official ISC listing confirms the document is posted; figures await source verification."
       ]
     },
     {
@@ -2267,22 +2207,6 @@
       "warnings": [
         "PDF has no usable native text; used free local OCR",
         "Local OCR text contained no reliable official rows",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 294,
-      "band": "Gambler First Nation",
-      "province": "MB",
-      "year": "2023-2024",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=294&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "PDF has no usable native text; used free local OCR",
-        "Parsed via free local OCR fallback",
-        "Parsed officials do not reconcile with the source total row",
-        "Parsed row totals do not match source total row",
-        "OCR output failed validation",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
@@ -3149,6 +3073,17 @@
       ]
     },
     {
+      "bandId": 270,
+      "band": "Little Grand Rapids",
+      "province": "MB",
+      "year": "2025-2026",
+      "reason": "no reliable official rows remain after validation",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=270&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "Official ISC listing confirms the document is posted; figures await source verification."
+      ]
+    },
+    {
       "bandId": 340,
       "band": "Little Pine First Nation",
       "province": "SK",
@@ -3312,27 +3247,6 @@
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted",
         "Nation identity not confirmed in document cover; manual review required",
         "Fiscal year end not confirmed in document cover; manual review required"
-      ]
-    },
-    {
-      "bandId": 287,
-      "band": "Long Plain",
-      "province": "MB",
-      "year": "2023-2024",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Totals do not reconcile for many rows",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "Row 6: total does not equal remuneration + travel/expenses + other",
-        "Local text output failed validation; trying free local OCR",
-        "OCR deferred; rerun with --ocr or review original PDF",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },
     {
@@ -3646,6 +3560,17 @@
         "Local OCR text contained no reliable official rows",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted",
         "Preserved pending parse status from previous data.json snapshot"
+      ]
+    },
+    {
+      "bandId": 396,
+      "band": "Makwa Sahgaiehcan First Nation",
+      "province": "SK",
+      "year": "2025-2026",
+      "reason": "no reliable official rows remain after validation",
+      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=396&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng",
+      "warnings": [
+        "Official ISC listing confirms the document is posted; figures await source verification."
       ]
     },
     {
@@ -5844,18 +5769,6 @@
       ]
     },
     {
-      "bandId": 314,
-      "band": "Sapotaweyak Cree Nation",
-      "province": "MB",
-      "year": "2023-2024",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "OCR deferred; rerun with --ocr or review original PDF",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
       "bandId": 303,
       "band": "Sayisi Dene First Nation",
       "province": "MB",
@@ -6109,19 +6022,6 @@
       ]
     },
     {
-      "bandId": 290,
-      "band": "Sioux Valley Dakota Nation",
-      "province": "MB",
-      "year": "2023-2024",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=290&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "No clear Chief and Council remuneration table found",
-        "OCR deferred; rerun with --ocr or review original PDF",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
       "bandId": 281,
       "band": "Skownan First Nation",
       "province": "MB",
@@ -6345,57 +6245,6 @@
         "Parsed from PDF text fallback",
         "A complete Chief and Council schedule requires an identified Chief row",
         "Totals do not reconcile for many rows",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "Row 6: total does not equal remuneration + travel/expenses + other",
-        "Row 7: total does not equal remuneration + travel/expenses + other",
-        "No Chief row detected",
-        "Local text output failed validation; trying free local OCR",
-        "Parsed via free local OCR fallback",
-        "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 455,
-      "band": "Sturgeon Lake Cree Nation",
-      "province": "AB",
-      "year": "2023-2024",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "A complete Chief and Council schedule requires an identified Chief row",
-        "Totals do not reconcile for many rows",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
-        "Row 2: total does not equal remuneration + travel/expenses + other",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Row 5: total does not equal remuneration + travel/expenses + other",
-        "Row 6: total does not equal remuneration + travel/expenses + other",
-        "Row 7: total does not equal remuneration + travel/expenses + other",
-        "Row 8: total does not equal remuneration + travel/expenses + other",
-        "No Chief row detected",
-        "Local text output failed validation; trying free local OCR",
-        "Parsed via free local OCR fallback",
-        "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 455,
-      "band": "Sturgeon Lake Cree Nation",
-      "province": "AB",
-      "year": "2024-2025",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "A complete Chief and Council schedule requires an identified Chief row",
-        "Totals do not reconcile for many rows",
-        "Row 1: total does not equal remuneration + travel/expenses + other",
         "Row 2: total does not equal remuneration + travel/expenses + other",
         "Row 3: total does not equal remuneration + travel/expenses + other",
         "Row 4: total does not equal remuneration + travel/expenses + other",
@@ -7207,21 +7056,6 @@
       "bandId": 285,
       "band": "Waywayseecappo First Nation Treaty Four - 1874",
       "province": "MB",
-      "year": "2023-2024",
-      "reason": "no reliable official rows remain after validation",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from keyword-aware PDF table extraction",
-        "Coordinate-aware pdfplumber table extraction was validated before publication",
-        "Multiple candidate Chief and Council tables found",
-        "Possible unrelated financial statement table",
-        "Nation identity not confirmed in document cover; manual review required"
-      ]
-    },
-    {
-      "bandId": 285,
-      "band": "Waywayseecappo First Nation Treaty Four - 1874",
-      "province": "MB",
       "year": "2024-2025",
       "reason": "parser confidence is low",
       "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
@@ -7443,23 +7277,6 @@
         "Row 1: total does not equal remuneration + travel/expenses + other",
         "Row 2: total does not equal remuneration + travel/expenses + other",
         "OCR output failed validation",
-        "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
-      ]
-    },
-    {
-      "bandId": 324,
-      "band": "Wuskwi Sipihk First Nation",
-      "province": "MB",
-      "year": "2023-2024",
-      "reason": "parser confidence is low",
-      "sourcePdf": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=324&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "warnings": [
-        "Parsed from PDF text fallback",
-        "Totals do not reconcile for many rows",
-        "Row 3: total does not equal remuneration + travel/expenses + other",
-        "Row 4: total does not equal remuneration + travel/expenses + other",
-        "Local text output failed validation; trying free local OCR",
-        "OCR deferred; rerun with --ocr or review original PDF",
         "OpenAI fallback was not enabled; local parsing and free OCR were exhausted"
       ]
     },

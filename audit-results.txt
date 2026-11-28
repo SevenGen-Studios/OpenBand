@@ -1,18 +1,18 @@
-generated: 2026-11-25T20:04:21.388931+00:00
+generated: 2026-11-28T08:16:04.160416+00:00
 bands: 180
 error_count: 0
-bands with parsed remuneration: 167
-parsed remuneration filings: 1190
-posted remuneration filings still pending: 504
+bands with parsed remuneration: 169
+parsed remuneration filings: 1206
+posted remuneration filings still pending: 492
 
 pending by fiscal year:
-  2025-2026: 8 pending, 28 parsed
-  2024-2025: 7 pending, 86 parsed
-  2023-2024: 15 pending, 101 parsed
+  2025-2026: 10 pending, 28 parsed
+  2024-2025: 3 pending, 90 parsed
+  2023-2024: 5 pending, 111 parsed
   2022-2023: 16 pending, 118 parsed
   2021-2022: 18 pending, 117 parsed
-  2020-2021: 29 pending, 112 parsed
-  2019-2020: 31 pending, 122 parsed
+  2020-2021: 29 pending, 113 parsed
+  2019-2020: 31 pending, 123 parsed
   2018-2019: 57 pending, 98 parsed
   2017-2018: 52 pending, 111 parsed
   2016-2017: 62 pending, 104 parsed
@@ -21,10 +21,9 @@ pending by fiscal year:
   2013-2014: 48 pending, 18 parsed
 
 pending by parse status:
-  manual_review: 326
+  manual_review: 314
   pending_openai_opt_in: 142
-  pending_manual_review: 34
-  not_applicable_wrong_document: 1
+  pending_manual_review: 35
   pending_review: 1
 
 expected SK names missing: 1
@@ -56,6 +55,7 @@ first pending examples:
   PENDING: Makwa Sahgaiehcan First Nation 2015-2016 (pending_openai_opt_in)
   PENDING: Makwa Sahgaiehcan First Nation 2016-2017 (pending_openai_opt_in)
   PENDING: Makwa Sahgaiehcan First Nation 2017-2018 (pending_openai_opt_in)
+  PENDING: Makwa Sahgaiehcan First Nation 2025-2026 (pending_manual_review)
   PENDING: Mistawasis Nehiyawak 2013-2014 (pending_openai_opt_in)
   PENDING: Mistawasis Nehiyawak 2014-2015 (pending_openai_opt_in)
   PENDING: Mistawasis Nehiyawak 2015-2016 (pending_openai_opt_in)
@@ -70,6 +70,5 @@ first pending examples:
   PENDING: Peepeekisis Cree Nation 2013-2014 (pending_openai_opt_in)
   PENDING: Peepeekisis Cree Nation 2014-2015 (pending_openai_opt_in)
   PENDING: Red Earth Cree Nation 2013-2014 (pending_manual_review)
-  PENDING: Red Earth Cree Nation 2020-2021 (pending_openai_opt_in)
 
 Audit note: missing names are informational until the next successful scraper run updates data.json.
