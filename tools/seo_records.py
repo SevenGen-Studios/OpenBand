@@ -88,9 +88,8 @@ def remuneration_markup(filing, year):
     show_credit_card = any(person.get('creditCard') is not None for person in people)
     credit_card_header = '<th scope="col">Credit card</th>' if show_credit_card else ''
     for person in people:
-        name = person.get('name') or (f"Name not disclosed (row {person['sourceRowNumber']})"
-                                     if person.get('sourceNameOmitted') and person.get('sourceRowNumber') else '')
-        if not str(name).strip():
+        name = person.get('name') or ''
+        if not str(name).strip() and not (person.get('sourceNameOmitted') and person.get('sourceRowNumber')):
             continue
         # Keep source fields distinct. No calculated row or aggregate totals.
         travel = person.get('travel')
