@@ -9,4 +9,5 @@ assert.equal(context.roleOf({name: 'Roy Fox', role: 'Chief'}), 'Chief');
 assert.equal(context.roleOf({name: 'Winston Day Chief Jr.', role: 'Councillor'}), 'Councillor');
 assert.equal(context.roleOf({name: 'Day Chief', role: 'Councillor'}), 'Councillor');
 assert.equal(context.roleOf({name: 'Another official', role: 'Chief'}), 'Chief');
+assert.equal(context.roleOf({name: 'Source official', role: 'Not specified'}), 'Not specified');
 console.log('Official role labels follow the source role field.');

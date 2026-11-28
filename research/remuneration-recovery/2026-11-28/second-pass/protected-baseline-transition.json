@@ -1,0 +1,13 @@
+{
+  "reason": "Source-backed remediation of missing schedules; all prior populated records retained. Prior baseline archived unchanged; guard remains enforced against this new reviewed state.",
+  "previousDataFingerprint": "6e5752af4ec849fea5211c65e74596a8aaf417e79ba06bbf1778e85abacca98c",
+  "newDataFingerprint": "69e22bf1ff4800bf0c64b2e10baa863b666ba2ab29486125a5c11ba9ae0764af",
+  "affectedProtectedBands": [
+    369,
+    401,
+    455,
+    467
+  ],
+  "allOtherBaselineFieldsUnchanged": true,
+  "archivedBaseline": "prior-protected-baseline.json"
+}

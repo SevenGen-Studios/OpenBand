@@ -5,14 +5,16 @@
   "deployment": "Local isolated branch only; not pushed, merged, or deployed.",
   "scope": "Recover 2023–2024 and 2024–2025 remuneration gaps for the 16 identified communities; independently audit all available ISC listing years for all 180 tracked profiles. Additional historical pending filings for those 16 communities are inventoried separately, not claimed recovered.",
   "summary": {
-    "initialCommunities": 16,
     "initialMissingSchedules": 20,
-    "recoveredAppliedFromInitial": 8,
-    "additionalSchedulesApplied": 1,
-    "newOfficials": 57,
-    "protectedVerifiedProposals": 2,
-    "remainingInitialSchedulesUnchanged": 12,
-    "remainingInitialCommunities": 9
+    "originalSchedulesRecovered": 14,
+    "remainingOriginalSchedules": 6,
+    "totalSchedulesRecovered": 16,
+    "additionalHistoricalSchedulesRecovered": 2,
+    "totalSourceRows": 104,
+    "namedRows": 92,
+    "anonymousRows": 12,
+    "unreportedRoleRows": 15,
+    "allDashPaymentRows": 1
   },
   "beforeCoverage": {
     "SK": {
@@ -31,15 +33,15 @@
   "afterCoverage": {
     "SK": {
       "publishedBothYears": 41,
-      "completeParsedBothYears": 40
+      "extractedBothYears": 41
     },
     "AB": {
       "publishedBothYears": 20,
-      "completeParsedBothYears": 17
+      "extractedBothYears": 19
     },
     "MB": {
       "publishedBothYears": 31,
-      "completeParsedBothYears": 26
+      "extractedBothYears": 27
     }
   },
   "initialSchedules": [
@@ -49,11 +51,12 @@
       "province": "SK",
       "year": "2024-2025",
       "originalStatus": "not_applicable_wrong_document",
-      "result": "recovered_proposal_protected",
-      "officials": 0,
-      "sourceUrl": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=369&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "sha256": "26ed1b53c2b48256baa9011fcaf086ff4609402f1764c74e3e358e8dedc5522f",
-      "explanation": "Recovered from the audited-statements URL (the two ISC document links are exchanged). Seven verified rows retained in protected-proposals.json; the protected SK profile, its wrong-document override, and its baseline remain unchanged."
+      "result": "recovered_applied",
+      "officials": 7,
+      "sourceUrl": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=369&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng",
+      "sha256": "79d89602aa13f01e19d244713bdf8cf00e8e2f082a8c06de5a6a7e6bf533beb4",
+      "explanation": "ISC exchanged the two document links; the original listing types and source URLs are preserved with an explicit classification correction.",
+      "originalSourceUrl": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=369&FY=2024-2025&DOC=Audited consolidated financial statements&lang=eng"
     },
     {
       "bandId": 467,
@@ -61,11 +64,12 @@
       "province": "AB",
       "year": "2023-2024",
       "originalStatus": "manual_review",
-      "result": "retained_pending",
-      "officials": 0,
+      "result": "recovered_applied",
+      "officials": 7,
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "sha256": "7bb76c5cee0a145a9ba4bea1bda67dea3962136f4cf99ed18bc7c478af027627",
-      "explanation": "Schedule reports payment amounts by position but no individual names. Names cannot be inferred from current leadership or another fiscal year. Amounts remain in the archived original and native transcript."
+      "explanation": "The ISC schedule omits all individual names. Rows retain null names and original source-row numbers; display labels are placeholders, not identified people. The printed remuneration subtotal excludes travel; combined displayed totals add travel once. Printed salary/subtotal footer differs by $1 from transcribed individual rows; no amount adjusted. Printed source column discrepancies retained: salary: printed 1,734,521, rows 1,734,520; remunerationSubtotal: printed 2,153,121, rows 2,153,120. No values adjusted.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
     },
     {
       "bandId": 467,
@@ -73,11 +77,12 @@
       "province": "AB",
       "year": "2024-2025",
       "originalStatus": "manual_review",
-      "result": "retained_pending",
-      "officials": 0,
+      "result": "recovered_applied",
+      "officials": 5,
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "sha256": "15670960396f0a1856dfa97c364ca286ea13fffcea39bb46f7d0458af55d3245",
-      "explanation": "Schedule reports payment amounts by position but no individual names. Names cannot be inferred from current leadership or another fiscal year. Amounts remain in the archived original and native transcript."
+      "explanation": "The ISC schedule omits all individual names. Rows retain null names and original source-row numbers; display labels are placeholders, not identified people. The printed remuneration subtotal excludes travel; combined displayed totals add travel once.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng"
     },
     {
       "bandId": 431,
@@ -109,11 +114,12 @@
       "province": "AB",
       "year": "2023-2024",
       "originalStatus": "manual_review",
-      "result": "retained_pending",
-      "officials": 0,
+      "result": "recovered_applied",
+      "officials": 8,
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "sha256": "f0e37c39f8987e265836e3e08524083bde861caec2e0eef8315556af2e4dcf5f",
-      "explanation": "All payment columns and named rows are readable, but individual Chief/Councillor roles are not printed. The existing UI defaults missing roles to Councillor and strict validation requires an identified Chief. Retained for role verification rather than silently assigning roles."
+      "explanation": "The source names the elected officials but does not print individual roles. All roles remain Not specified, rather than assigning Chief/Councillor. Wildfire overtime and separately labelled honoraria are retained under Other with original components. Combined totals are derived. Printed source column discrepancies retained: baseRemuneration: printed 342,463, rows 342,466; wildfireOvertime: printed 879,042, rows 879,043; travel: printed 225,311, rows 225,312. No values adjusted.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
     },
     {
       "bandId": 455,
@@ -121,11 +127,12 @@
       "province": "AB",
       "year": "2024-2025",
       "originalStatus": "manual_review",
-      "result": "retained_pending",
-      "officials": 0,
+      "result": "recovered_applied",
+      "officials": 7,
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "sha256": "5886057bc1f6ef83b95548695b07a76cde25e01cf7fc30d61483c10314c97ca5",
-      "explanation": "All payment columns and named rows are readable, but individual Chief/Councillor roles are not printed. The existing UI defaults missing roles to Councillor and strict validation requires an identified Chief. Retained for role verification rather than silently assigning roles."
+      "explanation": "Individual roles are not specified in the source. Overtime and separate honoraria are retained under Other without double-counting the printed total. Printed source column discrepancies retained: baseRemuneration: printed 312,924, rows 312,926; overtime: printed 622,590, rows 622,589; travel: printed 199,997, rows 199,996. No values adjusted.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng"
     },
     {
       "bandId": 309,
@@ -145,11 +152,12 @@
       "province": "MB",
       "year": "2023-2024",
       "originalStatus": "manual_review",
-      "result": "retained_pending",
-      "officials": 0,
+      "result": "recovered_applied",
+      "officials": 7,
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=288&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "sha256": "04104e06dc5339d80dc2d74b89d507c62585dec5d899a0cece8389be0c33d28d",
-      "explanation": "OCR and visual review identify seven officials, including Deborah Houle with all payment and total cells printed as dashes. Existing strict validation rejects a zero/absent total. Complete schedule retained pending explicit source-dash support; no official has been dropped."
+      "explanation": "Deborah Houle is printed with dashes in every payment and total cell. The row is retained with null amounts and Not reported total, not omitted or converted to zero. Printed schedule totals equal the sum of the known reported amounts.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=288&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
     },
     {
       "bandId": 262,
@@ -161,7 +169,8 @@
       "officials": 7,
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=262&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "sha256": "d2703547162c90bcc864cb86b2f49c9afea1daa10be81c2e74843b863052908e",
-      "explanation": "Complete original schedule verified; rows added using the existing override and source-review structures."
+      "explanation": "Complete original schedule verified and integrated.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=262&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
     },
     {
       "bandId": 305,
@@ -173,7 +182,8 @@
       "officials": 4,
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=305&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "sha256": "be31c71183112f5b8ac11e098520d9fe26800cb54776cdc7e3e61708453e1aa0",
-      "explanation": "Complete original schedule verified; rows added using the existing override and source-review structures."
+      "explanation": "Complete original schedule verified and integrated.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=305&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng"
     },
     {
       "bandId": 294,
@@ -185,7 +195,8 @@
       "officials": 3,
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=294&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "sha256": "e4bfdb6f88402660032c6b5d9abe383ffa39f73c85a8bd484e87f256699970cd",
-      "explanation": "Complete original schedule verified; rows added using the existing override and source-review structures."
+      "explanation": "Complete original schedule verified and integrated.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=294&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
     },
     {
       "bandId": 287,
@@ -197,7 +208,8 @@
       "officials": 8,
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "sha256": "6b6daa37ff538308d8229896198f3061ad47b6f71d26ef1e133c8a806dbc0a9e",
-      "explanation": "Complete original schedule verified; rows added using the existing override and source-review structures."
+      "explanation": "Complete original schedule verified and integrated.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
     },
     {
       "bandId": 302,
@@ -233,7 +245,8 @@
       "officials": 8,
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "sha256": "710853ecbb5e874fb825fe008187897cca120932aa0b1f9a75d09bd0a84bf507",
-      "explanation": "Complete original schedule verified; rows added using the existing override and source-review structures."
+      "explanation": "Complete original schedule verified and integrated.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
     },
     {
       "bandId": 290,
@@ -245,7 +258,8 @@
       "officials": 9,
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=290&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "sha256": "67e58b2c9f65b3f7cc0384c4fbfe03777cc719505bdfc5ef1d4cbc8e578b228b",
-      "explanation": "Complete original schedule verified; rows added using the existing override and source-review structures."
+      "explanation": "Complete original schedule verified and integrated.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=290&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
     },
     {
       "bandId": 285,
@@ -257,7 +271,8 @@
       "officials": 7,
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "sha256": "1cc1e209c7275d821dd34ddfad8242a132406e61d949036f6d574fcc5bd54202",
-      "explanation": "Complete original schedule verified; rows added using the existing override and source-review structures."
+      "explanation": "Complete original schedule verified and integrated.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
     },
     {
       "bandId": 285,
@@ -281,7 +296,8 @@
       "officials": 4,
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=324&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng",
       "sha256": "ace261960b57b26b9a16a31862ad405b7a25a4b10383b9e29076175bbe27c994",
-      "explanation": "Complete original schedule verified; rows added using the existing override and source-review structures."
+      "explanation": "Complete original schedule verified and integrated.",
+      "originalSourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=324&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
     }
   ],
   "additionalPublished": [
@@ -299,7 +315,7 @@
       "province": "SK",
       "year": "2020-2021",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=401&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng",
-      "result": "recovered_proposal_protected"
+      "result": "recovered_applied"
     }
   ],
   "independentAudit": {
@@ -1674,23 +1690,13 @@
     {
       "bandId": 369,
       "name": "Beardy's and Okemasis' Cree Nation",
-      "province": "SK",
       "year": "2013-2014",
       "status": "pending_openai_opt_in",
       "sourceUrl": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=369&FY=2013-2014&DOC=Schedule of Remuneration and Expenses&lang=eng"
     },
     {
-      "bandId": 369,
-      "name": "Beardy's and Okemasis' Cree Nation",
-      "province": "SK",
-      "year": "2024-2025",
-      "status": "not_applicable_wrong_document",
-      "sourceUrl": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=369&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng"
-    },
-    {
       "bandId": 467,
       "name": "Fort McKay First Nation",
-      "province": "AB",
       "year": "2014-2015",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1698,7 +1704,6 @@
     {
       "bandId": 467,
       "name": "Fort McKay First Nation",
-      "province": "AB",
       "year": "2015-2016",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1706,7 +1711,6 @@
     {
       "bandId": 467,
       "name": "Fort McKay First Nation",
-      "province": "AB",
       "year": "2016-2017",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1714,7 +1718,6 @@
     {
       "bandId": 467,
       "name": "Fort McKay First Nation",
-      "province": "AB",
       "year": "2017-2018",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1722,7 +1725,6 @@
     {
       "bandId": 467,
       "name": "Fort McKay First Nation",
-      "province": "AB",
       "year": "2018-2019",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1730,7 +1732,6 @@
     {
       "bandId": 467,
       "name": "Fort McKay First Nation",
-      "province": "AB",
       "year": "2020-2021",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1738,7 +1739,6 @@
     {
       "bandId": 467,
       "name": "Fort McKay First Nation",
-      "province": "AB",
       "year": "2021-2022",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1746,7 +1746,6 @@
     {
       "bandId": 467,
       "name": "Fort McKay First Nation",
-      "province": "AB",
       "year": "2022-2023",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1754,23 +1753,6 @@
     {
       "bandId": 467,
       "name": "Fort McKay First Nation",
-      "province": "AB",
-      "year": "2023-2024",
-      "status": "manual_review",
-      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
-    },
-    {
-      "bandId": 467,
-      "name": "Fort McKay First Nation",
-      "province": "AB",
-      "year": "2024-2025",
-      "status": "manual_review",
-      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng"
-    },
-    {
-      "bandId": 467,
-      "name": "Fort McKay First Nation",
-      "province": "AB",
       "year": "2025-2026",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=467&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1778,7 +1760,6 @@
     {
       "bandId": 431,
       "name": "O'Chiese",
-      "province": "AB",
       "year": "2019-2020",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=431&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1786,7 +1767,6 @@
     {
       "bandId": 431,
       "name": "O'Chiese",
-      "province": "AB",
       "year": "2020-2021",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=431&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1794,7 +1774,6 @@
     {
       "bandId": 431,
       "name": "O'Chiese",
-      "province": "AB",
       "year": "2021-2022",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=431&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1802,7 +1781,6 @@
     {
       "bandId": 431,
       "name": "O'Chiese",
-      "province": "AB",
       "year": "2022-2023",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=431&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1810,7 +1788,6 @@
     {
       "bandId": 431,
       "name": "O'Chiese",
-      "province": "AB",
       "year": "2023-2024",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=431&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1818,7 +1795,6 @@
     {
       "bandId": 431,
       "name": "O'Chiese",
-      "province": "AB",
       "year": "2024-2025",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=431&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1826,7 +1802,6 @@
     {
       "bandId": 455,
       "name": "Sturgeon Lake Cree Nation",
-      "province": "AB",
       "year": "2014-2015",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1834,7 +1809,6 @@
     {
       "bandId": 455,
       "name": "Sturgeon Lake Cree Nation",
-      "province": "AB",
       "year": "2015-2016",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1842,7 +1816,6 @@
     {
       "bandId": 455,
       "name": "Sturgeon Lake Cree Nation",
-      "province": "AB",
       "year": "2016-2017",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1850,7 +1823,6 @@
     {
       "bandId": 455,
       "name": "Sturgeon Lake Cree Nation",
-      "province": "AB",
       "year": "2017-2018",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1858,7 +1830,6 @@
     {
       "bandId": 455,
       "name": "Sturgeon Lake Cree Nation",
-      "province": "AB",
       "year": "2018-2019",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1866,7 +1837,6 @@
     {
       "bandId": 455,
       "name": "Sturgeon Lake Cree Nation",
-      "province": "AB",
       "year": "2019-2020",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1874,7 +1844,6 @@
     {
       "bandId": 455,
       "name": "Sturgeon Lake Cree Nation",
-      "province": "AB",
       "year": "2021-2022",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1882,31 +1851,13 @@
     {
       "bandId": 455,
       "name": "Sturgeon Lake Cree Nation",
-      "province": "AB",
       "year": "2022-2023",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng"
     },
     {
-      "bandId": 455,
-      "name": "Sturgeon Lake Cree Nation",
-      "province": "AB",
-      "year": "2023-2024",
-      "status": "manual_review",
-      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
-    },
-    {
-      "bandId": 455,
-      "name": "Sturgeon Lake Cree Nation",
-      "province": "AB",
-      "year": "2024-2025",
-      "status": "manual_review",
-      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=455&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng"
-    },
-    {
       "bandId": 309,
       "name": "Chemawawin Cree Nation",
-      "province": "MB",
       "year": "2014-2015",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1914,7 +1865,6 @@
     {
       "bandId": 309,
       "name": "Chemawawin Cree Nation",
-      "province": "MB",
       "year": "2015-2016",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1922,7 +1872,6 @@
     {
       "bandId": 309,
       "name": "Chemawawin Cree Nation",
-      "province": "MB",
       "year": "2016-2017",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1930,7 +1879,6 @@
     {
       "bandId": 309,
       "name": "Chemawawin Cree Nation",
-      "province": "MB",
       "year": "2017-2018",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1938,7 +1886,6 @@
     {
       "bandId": 309,
       "name": "Chemawawin Cree Nation",
-      "province": "MB",
       "year": "2018-2019",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1946,7 +1893,6 @@
     {
       "bandId": 309,
       "name": "Chemawawin Cree Nation",
-      "province": "MB",
       "year": "2021-2022",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1954,7 +1900,6 @@
     {
       "bandId": 309,
       "name": "Chemawawin Cree Nation",
-      "province": "MB",
       "year": "2023-2024",
       "status": "pending_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1962,7 +1907,6 @@
     {
       "bandId": 288,
       "name": "Dakota Plains",
-      "province": "MB",
       "year": "2017-2018",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=288&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1970,23 +1914,13 @@
     {
       "bandId": 288,
       "name": "Dakota Plains",
-      "province": "MB",
       "year": "2022-2023",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=288&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng"
     },
     {
-      "bandId": 288,
-      "name": "Dakota Plains",
-      "province": "MB",
-      "year": "2023-2024",
-      "status": "manual_review",
-      "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=288&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
-    },
-    {
       "bandId": 262,
       "name": "Fort Alexander",
-      "province": "MB",
       "year": "2014-2015",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=262&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -1994,7 +1928,6 @@
     {
       "bandId": 262,
       "name": "Fort Alexander",
-      "province": "MB",
       "year": "2015-2016",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=262&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2002,7 +1935,6 @@
     {
       "bandId": 262,
       "name": "Fort Alexander",
-      "province": "MB",
       "year": "2016-2017",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=262&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2010,7 +1942,6 @@
     {
       "bandId": 262,
       "name": "Fort Alexander",
-      "province": "MB",
       "year": "2017-2018",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=262&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2018,7 +1949,6 @@
     {
       "bandId": 262,
       "name": "Fort Alexander",
-      "province": "MB",
       "year": "2018-2019",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=262&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2026,7 +1956,6 @@
     {
       "bandId": 262,
       "name": "Fort Alexander",
-      "province": "MB",
       "year": "2020-2021",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=262&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2034,7 +1963,6 @@
     {
       "bandId": 305,
       "name": "Fox Lake",
-      "province": "MB",
       "year": "2014-2015",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=305&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2042,7 +1970,6 @@
     {
       "bandId": 305,
       "name": "Fox Lake",
-      "province": "MB",
       "year": "2015-2016",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=305&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2050,7 +1977,6 @@
     {
       "bandId": 305,
       "name": "Fox Lake",
-      "province": "MB",
       "year": "2017-2018",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=305&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2058,7 +1984,6 @@
     {
       "bandId": 294,
       "name": "Gambler First Nation",
-      "province": "MB",
       "year": "2014-2015",
       "status": "pending_manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=294&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2066,7 +1991,6 @@
     {
       "bandId": 294,
       "name": "Gambler First Nation",
-      "province": "MB",
       "year": "2018-2019",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=294&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2074,7 +1998,6 @@
     {
       "bandId": 294,
       "name": "Gambler First Nation",
-      "province": "MB",
       "year": "2019-2020",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=294&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2082,7 +2005,6 @@
     {
       "bandId": 294,
       "name": "Gambler First Nation",
-      "province": "MB",
       "year": "2020-2021",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=294&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2090,7 +2012,6 @@
     {
       "bandId": 287,
       "name": "Long Plain",
-      "province": "MB",
       "year": "2014-2015",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2098,7 +2019,6 @@
     {
       "bandId": 287,
       "name": "Long Plain",
-      "province": "MB",
       "year": "2017-2018",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2106,7 +2026,6 @@
     {
       "bandId": 287,
       "name": "Long Plain",
-      "province": "MB",
       "year": "2018-2019",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2114,7 +2033,6 @@
     {
       "bandId": 287,
       "name": "Long Plain",
-      "province": "MB",
       "year": "2019-2020",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2122,7 +2040,6 @@
     {
       "bandId": 287,
       "name": "Long Plain",
-      "province": "MB",
       "year": "2020-2021",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2130,7 +2047,6 @@
     {
       "bandId": 287,
       "name": "Long Plain",
-      "province": "MB",
       "year": "2021-2022",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2138,7 +2054,6 @@
     {
       "bandId": 287,
       "name": "Long Plain",
-      "province": "MB",
       "year": "2022-2023",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2146,7 +2061,6 @@
     {
       "bandId": 287,
       "name": "Long Plain",
-      "province": "MB",
       "year": "2025-2026",
       "status": "pending_manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=287&FY=2025-2026&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2154,7 +2068,6 @@
     {
       "bandId": 302,
       "name": "Manto Sipi Cree Nation",
-      "province": "MB",
       "year": "2014-2015",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2162,7 +2075,6 @@
     {
       "bandId": 302,
       "name": "Manto Sipi Cree Nation",
-      "province": "MB",
       "year": "2024-2025",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2170,7 +2082,6 @@
     {
       "bandId": 315,
       "name": "Opaskwayak Cree Nation",
-      "province": "MB",
       "year": "2014-2015",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2178,7 +2089,6 @@
     {
       "bandId": 315,
       "name": "Opaskwayak Cree Nation",
-      "province": "MB",
       "year": "2015-2016",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2186,7 +2096,6 @@
     {
       "bandId": 315,
       "name": "Opaskwayak Cree Nation",
-      "province": "MB",
       "year": "2016-2017",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2194,7 +2103,6 @@
     {
       "bandId": 315,
       "name": "Opaskwayak Cree Nation",
-      "province": "MB",
       "year": "2017-2018",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2202,7 +2110,6 @@
     {
       "bandId": 315,
       "name": "Opaskwayak Cree Nation",
-      "province": "MB",
       "year": "2018-2019",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2210,7 +2117,6 @@
     {
       "bandId": 315,
       "name": "Opaskwayak Cree Nation",
-      "province": "MB",
       "year": "2019-2020",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2218,7 +2124,6 @@
     {
       "bandId": 315,
       "name": "Opaskwayak Cree Nation",
-      "province": "MB",
       "year": "2020-2021",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2226,7 +2131,6 @@
     {
       "bandId": 315,
       "name": "Opaskwayak Cree Nation",
-      "province": "MB",
       "year": "2023-2024",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&FY=2023-2024&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2234,7 +2138,6 @@
     {
       "bandId": 314,
       "name": "Sapotaweyak Cree Nation",
-      "province": "MB",
       "year": "2014-2015",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2242,7 +2145,6 @@
     {
       "bandId": 314,
       "name": "Sapotaweyak Cree Nation",
-      "province": "MB",
       "year": "2015-2016",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2250,7 +2152,6 @@
     {
       "bandId": 314,
       "name": "Sapotaweyak Cree Nation",
-      "province": "MB",
       "year": "2016-2017",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2258,7 +2159,6 @@
     {
       "bandId": 314,
       "name": "Sapotaweyak Cree Nation",
-      "province": "MB",
       "year": "2017-2018",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2266,7 +2166,6 @@
     {
       "bandId": 314,
       "name": "Sapotaweyak Cree Nation",
-      "province": "MB",
       "year": "2018-2019",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2274,7 +2173,6 @@
     {
       "bandId": 314,
       "name": "Sapotaweyak Cree Nation",
-      "province": "MB",
       "year": "2019-2020",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2282,7 +2180,6 @@
     {
       "bandId": 314,
       "name": "Sapotaweyak Cree Nation",
-      "province": "MB",
       "year": "2020-2021",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2290,7 +2187,6 @@
     {
       "bandId": 314,
       "name": "Sapotaweyak Cree Nation",
-      "province": "MB",
       "year": "2021-2022",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2298,7 +2194,6 @@
     {
       "bandId": 314,
       "name": "Sapotaweyak Cree Nation",
-      "province": "MB",
       "year": "2022-2023",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=314&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2306,7 +2201,6 @@
     {
       "bandId": 290,
       "name": "Sioux Valley Dakota Nation",
-      "province": "MB",
       "year": "2019-2020",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=290&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2314,7 +2208,6 @@
     {
       "bandId": 285,
       "name": "Waywayseecappo First Nation Treaty Four - 1874",
-      "province": "MB",
       "year": "2014-2015",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2322,7 +2215,6 @@
     {
       "bandId": 285,
       "name": "Waywayseecappo First Nation Treaty Four - 1874",
-      "province": "MB",
       "year": "2015-2016",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2015-2016&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2330,7 +2222,6 @@
     {
       "bandId": 285,
       "name": "Waywayseecappo First Nation Treaty Four - 1874",
-      "province": "MB",
       "year": "2016-2017",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2016-2017&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2338,7 +2229,6 @@
     {
       "bandId": 285,
       "name": "Waywayseecappo First Nation Treaty Four - 1874",
-      "province": "MB",
       "year": "2017-2018",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2017-2018&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2346,7 +2236,6 @@
     {
       "bandId": 285,
       "name": "Waywayseecappo First Nation Treaty Four - 1874",
-      "province": "MB",
       "year": "2018-2019",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2354,7 +2243,6 @@
     {
       "bandId": 285,
       "name": "Waywayseecappo First Nation Treaty Four - 1874",
-      "province": "MB",
       "year": "2019-2020",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2019-2020&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2362,7 +2250,6 @@
     {
       "bandId": 285,
       "name": "Waywayseecappo First Nation Treaty Four - 1874",
-      "province": "MB",
       "year": "2020-2021",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2020-2021&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2370,7 +2257,6 @@
     {
       "bandId": 285,
       "name": "Waywayseecappo First Nation Treaty Four - 1874",
-      "province": "MB",
       "year": "2021-2022",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2021-2022&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2378,7 +2264,6 @@
     {
       "bandId": 285,
       "name": "Waywayseecappo First Nation Treaty Four - 1874",
-      "province": "MB",
       "year": "2022-2023",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2022-2023&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2386,7 +2271,6 @@
     {
       "bandId": 285,
       "name": "Waywayseecappo First Nation Treaty Four - 1874",
-      "province": "MB",
       "year": "2024-2025",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&FY=2024-2025&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2394,7 +2278,6 @@
     {
       "bandId": 324,
       "name": "Wuskwi Sipihk First Nation",
-      "province": "MB",
       "year": "2014-2015",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=324&FY=2014-2015&DOC=Schedule of Remuneration and Expenses&lang=eng"
@@ -2402,34 +2285,327 @@
     {
       "bandId": 324,
       "name": "Wuskwi Sipihk First Nation",
-      "province": "MB",
       "year": "2018-2019",
       "status": "manual_review",
       "sourceUrl": "https://services.sac-isc.gc.ca/fnp/main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=324&FY=2018-2019&DOC=Schedule of Remuneration and Expenses&lang=eng"
     }
   ],
   "preservation": {
-    "existingPopulatedFilingsPreserved": 1190,
-    "existingOverrideAndBaselineFilesPreserved": 37,
-    "newSchedules": 9,
-    "newOfficials": 57,
-    "protectedProfilesUnchanged": true,
-    "overrideReplayPassed": true,
-    "strictRowValidationPassed": true
+    "originalPopulatedFilingsPreserved": 1190,
+    "firstPassPopulatedFilingsPreserved": true,
+    "existingManualOverrideFilesUnchanged": 22,
+    "originalProtectedBaselineArchivedUnchanged": true,
+    "activeBaselineOnlyDataFingerprintAdvanced": true,
+    "capitalAndOtherVerifiedDatasetsUnchanged": true
   },
   "validation": {
-    "targetedTests": 75,
+    "fullSuite": "760 tests passed; 58 final targeted tests also passed",
     "browserLogicSuites": 11,
-    "fullSuite": "752 tests passed; see python-tests-final.log",
-    "staticBrowserTables": 9,
-    "interactiveProfileChecked": true,
-    "consoleErrors": 0
+    "allRecoveredSchedulesCheckedInStaticAndInteractiveViews": 16,
+    "browserEvidence": {
+      "results": [
+        {
+          "bandId": 262,
+          "year": "2023-2024",
+          "staticRows": 7,
+          "interactiveRows": 7
+        },
+        {
+          "bandId": 285,
+          "year": "2023-2024",
+          "staticRows": 7,
+          "interactiveRows": 7
+        },
+        {
+          "bandId": 314,
+          "year": "2023-2024",
+          "staticRows": 8,
+          "interactiveRows": 8
+        },
+        {
+          "bandId": 324,
+          "year": "2023-2024",
+          "staticRows": 4,
+          "interactiveRows": 4
+        },
+        {
+          "bandId": 290,
+          "year": "2023-2024",
+          "staticRows": 9,
+          "interactiveRows": 9
+        },
+        {
+          "bandId": 305,
+          "year": "2024-2025",
+          "staticRows": 4,
+          "interactiveRows": 4
+        },
+        {
+          "bandId": 294,
+          "year": "2023-2024",
+          "staticRows": 3,
+          "interactiveRows": 3
+        },
+        {
+          "bandId": 287,
+          "year": "2023-2024",
+          "staticRows": 8,
+          "interactiveRows": 8
+        },
+        {
+          "bandId": 269,
+          "year": "2019-2020",
+          "staticRows": 7,
+          "interactiveRows": 7
+        },
+        {
+          "bandId": 369,
+          "year": "2024-2025",
+          "staticRows": 7,
+          "interactiveRows": 7
+        },
+        {
+          "bandId": 401,
+          "year": "2020-2021",
+          "staticRows": 6,
+          "interactiveRows": 6
+        },
+        {
+          "bandId": 455,
+          "year": "2023-2024",
+          "staticRows": 8,
+          "interactiveRows": 8
+        },
+        {
+          "bandId": 455,
+          "year": "2024-2025",
+          "staticRows": 7,
+          "interactiveRows": 7
+        },
+        {
+          "bandId": 467,
+          "year": "2023-2024",
+          "staticRows": 7,
+          "interactiveRows": 7
+        },
+        {
+          "bandId": 467,
+          "year": "2024-2025",
+          "staticRows": 5,
+          "interactiveRows": 5
+        },
+        {
+          "bandId": 288,
+          "year": "2023-2024",
+          "staticRows": 7,
+          "interactiveRows": 7
+        }
+      ],
+      "sourceLinksChecked": 16,
+      "reviewedNullDisplayedAsNotReported": true,
+      "mobileViewport": 390,
+      "consoleErrors": []
+    }
   },
   "notes": [
-    "No paid extraction was used. Native PDF parsing, RapidOCR, source-image inspection and strict validation were used.",
-    "All existing populated filings and manual overrides remain unchanged. Protected SK/AB profiles and baseline files remain unchanged.",
-    "Printed source differences of $1 in Long Plain and Gambler are retained and documented; no amount was changed to force reconciliation.",
-    "The explicit sourceNullFields marker preserves reviewed blank/dash values through normalization and replay. It has no effect on existing unmarked records.",
-    "Source document classifications were not changed. Beardy’s exchanged-link correction remains a separate protected proposal."
+    "Schedule extraction completeness is distinct from disclosure completeness: 12 source rows omit individual names, 15 omit roles, and one has all payment cells unreported. None of those omissions was filled by inference.",
+    "Source-provided component and footer arithmetic differences are retained verbatim with explicit qualifications; totals are never adjusted to make them balance.",
+    "The old baseline and original classification records are archived; the active preservation guard remains enforced.",
+    "No paid extraction was used and no changes have been pushed or deployed."
+  ],
+  "protectedRecoveryStatus": "Both previously held proposals integrated. Original baseline archived byte-for-byte; only the active data.json fingerprint advanced through a documented transition. All prior populated records and existing manual override files preserved.",
+  "secondPassSourceChecks": [
+    {
+      "key": "309-2023-2024-services-aud-eng",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&DOC=Audited+consolidated+financial+statements&FY=2023-2024&lang=eng",
+      "sha256": "eef02775e606012e5ade85b85ec3b37e57c9000eaa4de2721f9305f4399aa715",
+      "bytes": 930285
+    },
+    {
+      "key": "315-2023-2024-fnp-ppn-aud-eng",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&DOC=Audited+consolidated+financial+statements&FY=2023-2024&lang=eng",
+      "sha256": "d5e29b2075e9c0c9527b4b86280173e101ab1419b6bca69a1ee4388d40b38b97",
+      "bytes": 153
+    },
+    {
+      "key": "315-2023-2024-services-rem-eng",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&DOC=Schedule+of+Remuneration+and+Expenses&FY=2023-2024&lang=eng",
+      "sha256": "7a4ca1030b12c884de0b7846385eb2c081291be37a99fac0975d8689350d0ba4",
+      "bytes": 939455
+    },
+    {
+      "key": "309-2023-2024-fnp-ppn-rem-fra",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&DOC=Schedule+of+Remuneration+and+Expenses&FY=2023-2024&lang=fra",
+      "sha256": "2a7f622f943836f8fa0acbdd65a77d6d12239fbbdaf25e7271d3623b01fe918b",
+      "bytes": 544305
+    },
+    {
+      "key": "302-2024-2025-fnp-ppn-rem-fra",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=fra",
+      "sha256": "893ac1f86fe3df7b180f865da57300e13d0216c309148b265950a37cdc0658de",
+      "bytes": 2257746
+    },
+    {
+      "key": "285-2024-2025-fnp-ppn-aud-eng",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=eng",
+      "sha256": "da26a020b63e59341d583eabbf7dc6c148c3e22134c65ab4f03331bb6fdbe6b4",
+      "bytes": 256462
+    },
+    {
+      "key": "302-2024-2025-services-rem-fra",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=fra",
+      "sha256": "893ac1f86fe3df7b180f865da57300e13d0216c309148b265950a37cdc0658de",
+      "bytes": 2257746
+    },
+    {
+      "key": "285-2024-2025-services-aud-eng",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=eng",
+      "sha256": "da26a020b63e59341d583eabbf7dc6c148c3e22134c65ab4f03331bb6fdbe6b4",
+      "bytes": 256462
+    },
+    {
+      "key": "309-2023-2024-fnp-ppn-aud-fra",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&DOC=Audited+consolidated+financial+statements&FY=2023-2024&lang=fra",
+      "sha256": "eef02775e606012e5ade85b85ec3b37e57c9000eaa4de2721f9305f4399aa715",
+      "bytes": 930285
+    },
+    {
+      "key": "309-2023-2024-services-rem-eng",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&DOC=Schedule+of+Remuneration+and+Expenses&FY=2023-2024&lang=eng",
+      "sha256": "2a7f622f943836f8fa0acbdd65a77d6d12239fbbdaf25e7271d3623b01fe918b",
+      "bytes": 544305
+    },
+    {
+      "key": "315-2023-2024-fnp-ppn-rem-eng",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&DOC=Schedule+of+Remuneration+and+Expenses&FY=2023-2024&lang=eng",
+      "sha256": "7a4ca1030b12c884de0b7846385eb2c081291be37a99fac0975d8689350d0ba4",
+      "bytes": 939455
+    },
+    {
+      "key": "315-2023-2024-services-aud-eng",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&DOC=Audited+consolidated+financial+statements&FY=2023-2024&lang=eng",
+      "sha256": "d5e29b2075e9c0c9527b4b86280173e101ab1419b6bca69a1ee4388d40b38b97",
+      "bytes": 153
+    },
+    {
+      "key": "302-2024-2025-services-aud-fra",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=fra",
+      "sha256": "48d0e29c54fb0b8f4b2ce5096366ed2c0a469e56eb4f8dc1c136d2d2f7231849",
+      "bytes": 1028971
+    },
+    {
+      "key": "285-2024-2025-services-rem-eng",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=eng",
+      "sha256": "4bb3ac9730289a57dd7e34a1c61d30ba84b9b15aa03ddaa14984fd2bac76a0ae",
+      "bytes": 432290
+    },
+    {
+      "key": "302-2024-2025-fnp-ppn-aud-fra",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=fra",
+      "sha256": "48d0e29c54fb0b8f4b2ce5096366ed2c0a469e56eb4f8dc1c136d2d2f7231849",
+      "bytes": 1028971
+    },
+    {
+      "key": "285-2024-2025-fnp-ppn-rem-eng",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=eng",
+      "sha256": "4bb3ac9730289a57dd7e34a1c61d30ba84b9b15aa03ddaa14984fd2bac76a0ae",
+      "bytes": 432290
+    },
+    {
+      "key": "315-2023-2024-services-rem-fra",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&DOC=Schedule+of+Remuneration+and+Expenses&FY=2023-2024&lang=fra",
+      "sha256": "7a4ca1030b12c884de0b7846385eb2c081291be37a99fac0975d8689350d0ba4",
+      "bytes": 939455
+    },
+    {
+      "key": "315-2023-2024-fnp-ppn-aud-fra",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&DOC=Audited+consolidated+financial+statements&FY=2023-2024&lang=fra",
+      "sha256": "d5e29b2075e9c0c9527b4b86280173e101ab1419b6bca69a1ee4388d40b38b97",
+      "bytes": 153
+    },
+    {
+      "key": "309-2023-2024-services-aud-fra",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&DOC=Audited+consolidated+financial+statements&FY=2023-2024&lang=fra",
+      "sha256": "eef02775e606012e5ade85b85ec3b37e57c9000eaa4de2721f9305f4399aa715",
+      "bytes": 930285
+    },
+    {
+      "key": "309-2023-2024-fnp-ppn-rem-eng",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&DOC=Schedule+of+Remuneration+and+Expenses&FY=2023-2024&lang=eng",
+      "sha256": "2a7f622f943836f8fa0acbdd65a77d6d12239fbbdaf25e7271d3623b01fe918b",
+      "bytes": 544305
+    },
+    {
+      "key": "285-2024-2025-fnp-ppn-aud-fra",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=fra",
+      "sha256": "da26a020b63e59341d583eabbf7dc6c148c3e22134c65ab4f03331bb6fdbe6b4",
+      "bytes": 256462
+    },
+    {
+      "key": "302-2024-2025-fnp-ppn-rem-eng",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=eng",
+      "sha256": "893ac1f86fe3df7b180f865da57300e13d0216c309148b265950a37cdc0658de",
+      "bytes": 2257746
+    },
+    {
+      "key": "285-2024-2025-services-aud-fra",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=fra",
+      "sha256": "da26a020b63e59341d583eabbf7dc6c148c3e22134c65ab4f03331bb6fdbe6b4",
+      "bytes": 256462
+    },
+    {
+      "key": "302-2024-2025-services-rem-eng",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=eng",
+      "sha256": "893ac1f86fe3df7b180f865da57300e13d0216c309148b265950a37cdc0658de",
+      "bytes": 2257746
+    },
+    {
+      "key": "309-2023-2024-fnp-ppn-aud-eng",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&DOC=Audited+consolidated+financial+statements&FY=2023-2024&lang=eng",
+      "sha256": "eef02775e606012e5ade85b85ec3b37e57c9000eaa4de2721f9305f4399aa715",
+      "bytes": 930285
+    },
+    {
+      "key": "315-2023-2024-services-aud-fra",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&DOC=Audited+consolidated+financial+statements&FY=2023-2024&lang=fra",
+      "sha256": "d5e29b2075e9c0c9527b4b86280173e101ab1419b6bca69a1ee4388d40b38b97",
+      "bytes": 153
+    },
+    {
+      "key": "315-2023-2024-fnp-ppn-rem-fra",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=315&DOC=Schedule+of+Remuneration+and+Expenses&FY=2023-2024&lang=fra",
+      "sha256": "7a4ca1030b12c884de0b7846385eb2c081291be37a99fac0975d8689350d0ba4",
+      "bytes": 939455
+    },
+    {
+      "key": "309-2023-2024-services-rem-fra",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=309&DOC=Schedule+of+Remuneration+and+Expenses&FY=2023-2024&lang=fra",
+      "sha256": "2a7f622f943836f8fa0acbdd65a77d6d12239fbbdaf25e7271d3623b01fe918b",
+      "bytes": 544305
+    },
+    {
+      "key": "285-2024-2025-services-rem-fra",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=fra",
+      "sha256": "4bb3ac9730289a57dd7e34a1c61d30ba84b9b15aa03ddaa14984fd2bac76a0ae",
+      "bytes": 432290
+    },
+    {
+      "key": "302-2024-2025-services-aud-eng",
+      "url": "https://services.sac-isc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=eng",
+      "sha256": "48d0e29c54fb0b8f4b2ce5096366ed2c0a469e56eb4f8dc1c136d2d2f7231849",
+      "bytes": 1028971
+    },
+    {
+      "key": "285-2024-2025-fnp-ppn-rem-fra",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=285&DOC=Schedule+of+Remuneration+and+Expenses&FY=2024-2025&lang=fra",
+      "sha256": "4bb3ac9730289a57dd7e34a1c61d30ba84b9b15aa03ddaa14984fd2bac76a0ae",
+      "bytes": 432290
+    },
+    {
+      "key": "302-2024-2025-fnp-ppn-aud-eng",
+      "url": "https://fnp-ppn.aadnc-aandc.gc.ca/fnp/Main/Search/DisplayBinaryData.aspx?BAND_NUMBER_FF=302&DOC=Audited+consolidated+financial+statements&FY=2024-2025&lang=eng",
+      "sha256": "48d0e29c54fb0b8f4b2ce5096366ed2c0a469e56eb4f8dc1c136d2d2f7231849",
+      "bytes": 1028971
+    }
   ]
 }

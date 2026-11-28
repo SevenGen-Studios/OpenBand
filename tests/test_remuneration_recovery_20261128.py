@@ -65,8 +65,7 @@ class RecoveryTests(unittest.TestCase):
         self.assertEqual(row['reportedComponents']['indirectExpensesIncludedInBusinessExpenses'], 25524)
 
     def test_protected_and_ambiguous_records_stay_unpublished(self):
-        self.assertEqual(self.filing(369, '2024-2025')['parse_status'], 'not_applicable_wrong_document')
-        for bid, year in [(467,'2024-2025'), (431,'2024-2025'), (455,'2024-2025'), (288,'2023-2024'), (309,'2023-2024'), (302,'2024-2025'), (315,'2023-2024'), (285,'2024-2025')]:
+        for bid, year in [(431,'2024-2025'), (309,'2023-2024'), (302,'2024-2025'), (315,'2023-2024'), (285,'2024-2025')]:
             self.assertFalse(self.filing(bid, year)['people'])
 
 if __name__ == '__main__':

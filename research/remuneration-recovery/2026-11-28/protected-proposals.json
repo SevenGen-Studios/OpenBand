@@ -117,12 +117,13 @@
       "sourceRowCount": 7,
       "identityAndYearConfirmed": true,
       "completeSchedule": true,
-      "applied": false,
-      "reason": "Protected SK profile and baseline retained unchanged. Requires an explicit, documented protected-record update before import.",
+      "applied": true,
+      "reason": "Integrated in the second pass with a documented source correction and protected-baseline transition.",
       "warnings": [
         "Combined totals are derived from separately printed components.",
         "ISC has exchanged the two document links: the audited-statements URL returns this remuneration schedule; the remuneration URL returns audited financial statements. Existing manual wrong-document override remains valid for its original URL and is preserved."
-      ]
+      ],
+      "transition": "second-pass/protected-baseline-transition.json"
     },
     {
       "bandId": 401,
@@ -226,11 +227,12 @@
       "sourceRowCount": 6,
       "identityAndYearConfirmed": true,
       "completeSchedule": true,
-      "applied": false,
-      "reason": "Protected SK profile and baseline retained unchanged. Requires an explicit, documented protected-record update before import.",
+      "applied": true,
+      "reason": "Integrated in the second pass with a documented source correction and protected-baseline transition.",
       "warnings": [
         "Combined totals are derived from separately printed components."
-      ]
+      ],
+      "transition": "second-pass/protected-baseline-transition.json"
     }
   ]
 }
